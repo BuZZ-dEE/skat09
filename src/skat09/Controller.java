@@ -453,6 +453,8 @@ public class Controller implements Observer, IController {
 			// Stichauswertung ausgeben
 			stichAuswertung(gespielteKarten, spieler1);
 
+			
+			// ??? WAS MACHT DIESES IF ???
 			if (tisch.getSpielart().getSpielart() == Spielartbezeichnung.NULL
 					&& spieler1.getName() == tisch.ermittleAlleinspieler()
 							.getName()) {
