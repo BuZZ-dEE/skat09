@@ -579,6 +579,9 @@ public class SchlauerSpieler extends Spieler {
 			if (ergebnis != null) {
 				System.out.println("ergebnis rauskommNull " + ergebnis.toString());
 			}
+			else {
+				System.out.println("es wurde keine karte gespielt");
+			}
 		}
 
 		else {
