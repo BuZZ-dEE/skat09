@@ -577,10 +577,10 @@ public class SchlauerSpieler extends Spieler {
 			ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
 
 			if (ergebnis != null) {
-				System.out.println("ergebnis rauskommNull " + ergebnis.toString());
+				System.out.println("ergebnis rauskommNull Alleinspieler " + ergebnis.toString());
 			}
 			else {
-				System.out.println("es wurde keine karte gespielt");
+				System.out.println("es wurde keine karte gespielt Alleinspieler");
 			}
 		}
 
@@ -614,6 +614,13 @@ public class SchlauerSpieler extends Spieler {
 
 					ergebnis = farbe.get(zufallszahl.nextInt(farbe.size()));
 				}
+			}
+			
+			if (ergebnis != null) {
+				System.out.println("ergebnis rauskommNull nicht Alleinspieler " + ergebnis.toString());
+			}
+			else {
+				System.out.println("es wurde keine karte gespielt nicht Alleinspieler");
 			}
 		}
 
