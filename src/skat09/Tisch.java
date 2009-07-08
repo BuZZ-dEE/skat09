@@ -771,7 +771,7 @@ public class Tisch extends Observable {
 	}
 
 	/**
-	 * Diese Methode ermittelt den Mitspieler zur&uuml;ck.
+	 * Diese Methode ermittelt den Mitspieler.
 	 * 
 	 * @return der Mitspieler
 	 */
@@ -794,6 +794,7 @@ public class Tisch extends Observable {
 
 			mitspieler = spieler3;
 		}
+		
 		return mitspieler;
 	}
 
@@ -808,17 +809,33 @@ public class Tisch extends Observable {
 
 				spieler1.setMitspieler(ermittleMitspieler(spieler1));
 			}
+			
+			else {
+				
+				spieler1.setMitspieler(null);
+			}
 
 			if (!spieler2.getIstAlleinspieler()) {
 
 				spieler2.setMitspieler(ermittleMitspieler(spieler2));
+			}
+			
+			else {
+				
+				spieler2.setMitspieler(null);
 			}
 
 			if (!spieler3.getIstAlleinspieler()) {
 
 				spieler3.setMitspieler(ermittleMitspieler(spieler3));
 			}
+			
+			else {
+				
+				spieler3.setMitspieler(null);
+			}
 		} else {
+			
 			spieler1.setMitspieler(null);
 			spieler2.setMitspieler(null);
 			spieler3.setMitspieler(null);
