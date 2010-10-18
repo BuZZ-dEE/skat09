@@ -1,14 +1,11 @@
 package skat09.ui;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.SortedSet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.SortedSet;
 
-import skat09.Controller;
 import skat09.Tisch;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
@@ -17,7 +14,6 @@ import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
-import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
@@ -28,7 +24,8 @@ import skat09.test.interfaces.ISpieler;
  * &uuml;ber den aktuellen Spielestand einzuholen, sowie seine Z&uuml;ge zu
  * machen.
  * 
- * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
+ * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin
+ *         Bruhns
  * @version 03.07.2009
  */
 public class CLIausgabe extends Ausgabe {
@@ -63,8 +60,8 @@ public class CLIausgabe extends Ausgabe {
 	/**
 	 * Der Konstruktor der Klasse CLIAusgabe
 	 * 
-	 * @param tisch 
-	 * Der Tisch, auf dem gespielt wird
+	 * @param tisch
+	 *            Der Tisch, auf dem gespielt wird
 	 */
 	public CLIausgabe(Tisch tisch) {
 
@@ -72,8 +69,6 @@ public class CLIausgabe extends Ausgabe {
 		this.tisch = tisch;
 
 	}
-
-
 
 	/**
 	 * Methode fordert den Spieler auf seine Eingabe zu wiederholen, falls sie
@@ -202,11 +197,13 @@ public class CLIausgabe extends Ausgabe {
 		}
 		if (s.compareTo("o") != 0) {
 			if (s.compareTo("r") != 0) {
+				if (s.compareTo("s") != 0) {
 
-				System.out
-						.println("Sie haben einen falschen Buchstaben angegeben! "
-								+ "Waehlen sie nocheinmal.");
-				s = gegner(nummer);
+					System.out
+							.println("Sie haben einen falschen Buchstaben angegeben! "
+									+ "Waehlen sie nocheinmal.");
+					s = gegner(nummer);
+				}
 			}
 		}
 		return s;
@@ -588,6 +585,13 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public void spielBeendet() {
 		System.out.println("Das Spiel ist beendet!");
+		System.out.println("Im Skat lag:");
+		Spielkarte[] skat = tisch.getSkat();
+		System.out.println("Karte 1: " + skat[0].toString());
+		System.out.println("Karte 1: " + skat[1].toString());
+		if (skat[2] != null) {
+			System.out.println("Karte 1: " + skat[2].toString());
+		}
 
 	}
 
@@ -656,9 +660,10 @@ public class CLIausgabe extends Ausgabe {
 				.println(tisch.ermittleAlleinspieler().getName() + " spielt!");
 
 	}
-	
+
 	/**
 	 * Gibt an welcher Spieler das Reizen gewonnen hat
+	 * 
 	 * @param spieler
 	 */
 	public void gewinntReizen(ISpieler spieler) {
@@ -704,11 +709,12 @@ public class CLIausgabe extends Ausgabe {
 
 		System.out.println("Sie verwenden den Reizagenten.");
 		System.out.println("Bis zu welchem Wert moechten Sie reizen?");
+		System.out.println("Geben Sie [0] ein, um zu passen.");
 		ergebnis = intEinlesen();
 		while (!fertig) {
 
 			SortedSet reizwerte = tisch.getReizwerte();
-			if (reizwerte.contains(ergebnis)) {
+			if (reizwerte.contains(ergebnis) || ergebnis == 0) {
 
 				fertig = true;
 			} else {

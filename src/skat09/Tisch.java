@@ -23,7 +23,9 @@ import skat09.test.interfaces.ISpieler;
  * 
  * MVC: Der Tisch ist das Model, er erweitert die Klasse Observable. Eventuell
  * m&uuml;ssen noch Methoden &uuml;berschrieben werden.
- * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
+ * 
+ * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin
+ *         Bruhns
  * @version 03.07.2009
  */
 
@@ -85,7 +87,8 @@ public class Tisch extends Observable {
 	 */
 	private int reizagentWert;
 	/**
-	 * Skatvariante: Raeuberskat oder normales Skat oder Skat mit Ramsch und Bock?
+	 * Skatvariante: Raeuberskat oder normales Skat oder Skat mit Ramsch und
+	 * Bock?
 	 */
 	private Spielvariante variante;
 	/**
@@ -147,6 +150,30 @@ public class Tisch extends Observable {
 	 * Stiche gewonnen hat. Bei 32 Karten 30, beim Sechserskat 33
 	 */
 	private int allestiche; // 32 Karten: 30 Karten, 6erSkat: 33 Karten
+	/**
+	 * Gibt an, ob das letzte Spiel ueberreizt war.
+	 */
+	private boolean ueberreizt;
+	/**
+	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
+	 * jedes Spiel ist notiert, ob das Spiel &uuml;berreizt war oder nicht.
+	 */
+	public ArrayList<Boolean> ueberreizliste;
+	/**
+	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
+	 * jedes Spiel ist notiert, wie viele Augen gewonnen wurden.
+	 */
+	public ArrayList<Integer> augenliste;
+	/**
+	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
+	 * jedes Spiel ist notiert, wie viele Punkte gewonnen wurden.
+	 */
+	public ArrayList<Integer> punkteliste;
+	/**
+	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
+	 * jedes Spiel ist notiert, wie hoch der Grundwert des Spiels war.
+	 */
+	public ArrayList<Integer> grundwertliste;
 
 	//
 	// Konstruktor
@@ -163,6 +190,10 @@ public class Tisch extends Observable {
 		gespielteKarten = new Spielkarte[3];
 		skat = new Spielkarte[3];
 		deck = new ArrayList<Spielkarte>();
+		grundwertliste = new ArrayList<Integer>();
+		augenliste = new ArrayList<Integer>();
+		punkteliste = new ArrayList<Integer>();
+		ueberreizliste = new ArrayList<Boolean>();
 		reizwerte = new TreeSet<Integer>();
 		reizwert = 18;
 		reizagentWert = 0;
@@ -239,7 +270,8 @@ public class Tisch extends Observable {
 	/**
 	 * Liefert alle existierenden Reizwerte in einem SortedSet zur&uuml;ck.
 	 * 
-	 * @return SortedSet (sortierte Reizwerte, die nicht doppelt vorkommen k&ouml;nnen)
+	 * @return SortedSet (sortierte Reizwerte, die nicht doppelt vorkommen
+	 *         k&ouml;nnen)
 	 */
 	public SortedSet getReizwerte() {
 
@@ -339,6 +371,7 @@ public class Tisch extends Observable {
 
 	/**
 	 * Die Methode gibt die Anzahl der Spiele zur&uuml;ck
+	 * 
 	 * @return anzahlSpiele Die Anzahl der Spiele
 	 */
 	public int getAnzahlSpiele() {
@@ -358,6 +391,7 @@ public class Tisch extends Observable {
 
 	/**
 	 * Die Methode gibt an, ob Sechserskat gespielt wird oder nicht
+	 * 
 	 * @return sechserskat Ob Sechserskat gespielt wird
 	 */
 	public boolean getSechserskat() {
@@ -390,12 +424,63 @@ public class Tisch extends Observable {
 	public boolean getSchneider() {
 		return schneider;
 	}
+	
+	/**
+	 * Gibt die ArrayList ueberreizliste zur&uuml;ck
+	 * 
+	 * @return ueberreizliste
+	 */
+	public ArrayList<Boolean> getUeber() {
+		return ueberreizliste;
+	}
+	
+	/**
+	 * Gibt die ArrayList augenliste zur&uuml;ck
+	 * 
+	 * @return augenliste
+	 */
+	public ArrayList<Integer> getAugenListe() {
+		return augenliste;
+	}
+	
+	/**
+	 * Gibt die ArrayList punkteliste zur&uuml;ck
+	 * 
+	 * @return punkteliste
+	 */
+	public ArrayList<Integer> getPunkteListe() {
+		return punkteliste;
+	}
+	
+	/**
+	 * Gibt die ArrayList grundwertliste zur&uuml;ck
+	 * 
+	 * @return grundwertliste
+	 */
+	public ArrayList<Integer> getGrundwertListe() {
+		return grundwertliste;
+	}
+	
+	
 
 	//
 	// set-Methoden
 	//
 
+	/**
+	 * @param ueberreizt
+	 *            the ueberreizt to set
+	 */
+	public void setUeberreizt(boolean ueberreizt) {
+		this.ueberreizt = ueberreizt;
+	}
 
+	/**
+	 * @return the ueberreizt
+	 */
+	public boolean istUeberreizt() {
+		return ueberreizt;
+	}
 
 	/**
 	 * @param sechserskat
@@ -589,7 +674,8 @@ public class Tisch extends Observable {
 	/**
 	 * setzt die truempfe Variable neu.
 	 * 
-	 * @param truempfe - die neuen truempfe
+	 * @param truempfe
+	 *            - die neuen truempfe
 	 */
 	public void setTruempfe(Spielkarte[] truempfe) {
 
@@ -638,9 +724,10 @@ public class Tisch extends Observable {
 	 * Wertet einen gespielten Stich aus und gibt den Gewinner zur&uuml;ck.
 	 * 
 	 * @param gespielteKarten
-	 *            - im Stich enthaltene Karten@return das neue Deck bestehend aus 32 Karten in einer ArrayList
+	 *            - im Stich enthaltene Karten@return das neue Deck bestehend
+	 *            aus 32 Karten in einer ArrayList
 	 * @param spielart
-	 * 			  - &uuml;bergibt die Spielart
+	 *            - &uuml;bergibt die Spielart
 	 * @return Spieler, der den Stich gewonnen hat
 	 */
 	public ISpieler stichAuswerten(ISpielart spielart,
@@ -771,7 +858,7 @@ public class Tisch extends Observable {
 	}
 
 	/**
-	 * Diese Methode ermittelt den Mitspieler.
+	 * Diese Methode ermittelt den Mitspieler zur&uuml;ck.
 	 * 
 	 * @return der Mitspieler
 	 */
@@ -794,7 +881,6 @@ public class Tisch extends Observable {
 
 			mitspieler = spieler3;
 		}
-		
 		return mitspieler;
 	}
 
@@ -809,9 +895,9 @@ public class Tisch extends Observable {
 
 				spieler1.setMitspieler(ermittleMitspieler(spieler1));
 			}
-			
+
 			else {
-				
+
 				spieler1.setMitspieler(null);
 			}
 
@@ -819,9 +905,9 @@ public class Tisch extends Observable {
 
 				spieler2.setMitspieler(ermittleMitspieler(spieler2));
 			}
-			
+
 			else {
-				
+
 				spieler2.setMitspieler(null);
 			}
 
@@ -829,13 +915,13 @@ public class Tisch extends Observable {
 
 				spieler3.setMitspieler(ermittleMitspieler(spieler3));
 			}
-			
+
 			else {
-				
+
 				spieler3.setMitspieler(null);
 			}
 		} else {
-			
+
 			spieler1.setMitspieler(null);
 			spieler2.setMitspieler(null);
 			spieler3.setMitspieler(null);
@@ -1140,6 +1226,8 @@ public class Tisch extends Observable {
 			int augen = werteAugen(temp);
 
 			int punkte = wertePunkte(augen);
+			augenliste.add(augen);
+			punkteliste.add(punkte);
 
 			if (punkte > 0) {
 				gewonnen = true;
@@ -1170,6 +1258,12 @@ public class Tisch extends Observable {
 			}
 		} else {
 			gewonnen = ramschAuswertung();
+		}
+		
+		if (ueberreizt) {
+			ueberreizliste.add(true);
+		} else {
+			ueberreizliste.add(false);
 		}
 		return gewonnen;
 	}
@@ -1267,9 +1361,12 @@ public class Tisch extends Observable {
 	 */
 	public ISpieler[] entscheideRamsch(ISpieler[] spieler, int skataugen,
 			int bock) {
+		grundwertliste.add(0);
 		// Ist ein Durchmarsch gelungen?
 		if (werteAugen(spieler[2].getStiche()) == maximaleaugen) {
 			spieler[2].getSpiele().add(maximaleaugen * bock);
+			augenliste.add(maximaleaugen);
+			punkteliste.add(maximaleaugen * bock);
 			spieler[1].getSpiele().add(0);
 			spieler[0].getSpiele().add(0);
 			// Ist ansonsten ein anderer Spieler Jungfrau geblieben? Dann werden
@@ -1278,6 +1375,10 @@ public class Tisch extends Observable {
 			spieler[2].getSpiele().add(
 					-((werteAugen(spieler[2].getStiche()) + skataugen) * 2)
 							* bock);
+			augenliste.add((werteAugen(spieler[2].getStiche()) + skataugen));
+			punkteliste
+					.add(-((werteAugen(spieler[2].getStiche()) + skataugen) * 2)
+							* bock);
 			spieler[1].getSpiele().add(0);
 			spieler[0].getSpiele().add(0);
 			// Ansonsten bekommt der Spieler mit den meisten Augen so viele
@@ -1285,6 +1386,9 @@ public class Tisch extends Observable {
 		} else {
 			spieler[2].getSpiele().add(
 					-((werteAugen(spieler[2].getStiche()) + skataugen)) * bock);
+			augenliste.add((werteAugen(spieler[2].getStiche()) + skataugen));
+			punkteliste.add(-(werteAugen(spieler[2].getStiche()) + skataugen)
+					* bock);
 			spieler[1].getSpiele().add(0);
 			spieler[0].getSpiele().add(0);
 		}
@@ -1357,6 +1461,7 @@ public class Tisch extends Observable {
 	public int wertePunkte(int augenzahl) {
 
 		int erg = 0;
+		ueberreizt = false;
 		// int zwerg = 0;
 		// int stufe = berechneStufe(augenzahl);
 
@@ -1374,18 +1479,22 @@ public class Tisch extends Observable {
 		if (variante == Spielvariante.SKAT
 				|| variante == Spielvariante.RAMSCHBOCK) {
 			if (ueberreizCheck(erg) != 0 && reizwert != 0) {
+				
 				erg = ueberreizCheck(erg);
-			}
+			} 
 		}
+
 		return erg;
 
 	}
 
 	public int punkteVarianten(int erg, int augenzahl) {
 		if (spielart.getSpielart() == Spielartbezeichnung.NULL) {
+			grundwertliste.add(23);
 			erg = punkteNullspiel();
 		}
 		if (spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+			grundwertliste.add(24);
 			erg = punkteGrandspiel(augenzahl);
 		}
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE) {
@@ -1590,12 +1699,18 @@ public class Tisch extends Observable {
 			Farbspiel spiel = (Farbspiel) spielart;
 			zwierg = spiel.getTrumpffarbe().wert();
 		}
-
+		
+		if (punkte < 0) {
+			punkte = Math.abs(punkte / 2);
+		}
 		stufe = ueberreizcheck2(stufe);
+		
 
-		if (((Math.abs(ermittleAlleinspieler().spitzenZahl()) + 1 + stufe) * zwierg) < reizwert
+		if (((Math.abs(ermittleAlleinspieler().spitzenZahl()) + stufe) * zwierg) < reizwert
 				&& spielart.getSpielart() != Spielartbezeichnung.NULL) {
+			
 			if (reizwert > punkte) {
+				setUeberreizt(true);
 				while (reizwert > erg) {
 					erg = erg + zwierg;
 				}
@@ -1696,6 +1811,7 @@ public class Tisch extends Observable {
 		int grundwert = 0;
 		Farbspiel spiel = (Farbspiel) spielart;
 		grundwert = spiel.getTrumpffarbe().wert();
+		grundwertliste.add(grundwert);
 		punkte = (Math.abs(ermittleAlleinspieler().spitzenZahl()) + berechneStufe(augenzahl))
 				* grundwert;
 		return punkte;

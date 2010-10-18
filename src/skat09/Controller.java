@@ -22,16 +22,15 @@ import skat09.test.interfaces.IMenschlicherSpieler;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
+
 /**
- * 
- * Der Controller ist die Logik des Spiels, alle relevanten Ereignisse im Spiel
- * werden hier definiert und koordiniert
- * 
- * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin
- *         Bruhns
+ *
+ * Der Controller ist die Logik des Spiels, alle relevanten Ereignisse im Spiel werden
+ * hier definiert und koordiniert 
+ * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  * 
- * 
+ *
  */
 public class Controller implements Observer, IController {
 
@@ -39,12 +38,13 @@ public class Controller implements Observer, IController {
 	 * H&auml;lt einen Tisch, auf dem das Spiel stattfindet
 	 */
 	private Tisch tisch;
-
+	
 	/**
 	 * eine Ausgabe, auf der das Spiel ausgegeben wird
 	 */
 	private IAusgabe ausgabe;
 
+	
 	/**
 	 * wird gesetzt, falls niemand spielen will und somit das Spiel einzupassen
 	 * ist
@@ -53,10 +53,8 @@ public class Controller implements Observer, IController {
 
 	/**
 	 * 
-	 * @param tisch
-	 *            wird übergeben um darauf arbeiten zu k&ouml;nnen
-	 * @param ausgabe
-	 *            wir ben&ouml;tigt um das Spiel ausgeben zu k
+	 * @param tisch wird übergeben um darauf arbeiten zu k&ouml;nnen
+	 * @param ausgabe wir ben&ouml;tigt um das Spiel ausgeben zu k
 	 * 
 	 * 
 	 */
@@ -66,7 +64,7 @@ public class Controller implements Observer, IController {
 		spielEinpassen = false;
 	}
 
-	@Override
+	//@Override
 	public IAusgabe getAusgabe() {
 
 		return ausgabe;
@@ -74,7 +72,6 @@ public class Controller implements Observer, IController {
 
 	/**
 	 * Dient zur r&uuml;ckgabe des Tisches
-	 * 
 	 * @return tisch gibt den Tisch zur&uuml;ck
 	 */
 	public Tisch getTisch() {
@@ -82,14 +79,14 @@ public class Controller implements Observer, IController {
 		return tisch;
 	}
 
-	@Override
+	//@Override
 	public void release() {
 
 		tisch = null;
 		ausgabe = null;
 	}
 
-	@Override
+	//@Override
 	public void spiel() throws IOException {
 
 		boolean weiterspielen = true;
@@ -124,7 +121,7 @@ public class Controller implements Observer, IController {
 		System.exit(1);
 	}
 
-	@Override
+	//@Override
 	public void anmelden() {
 
 		String name = "";
@@ -134,7 +131,7 @@ public class Controller implements Observer, IController {
 
 	}
 
-	@Override
+	//@Override
 	public void waehleGegner() {
 
 		String s;
@@ -180,7 +177,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	@Override
+	//@Override
 	public void waehleSkatart() {
 
 		String s;
@@ -204,7 +201,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	@Override
+	//@Override
 	public void waehleSkatblatt() {
 
 		String s;
@@ -220,7 +217,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	@Override
+	//@Override
 	public void leiteReizen() throws IOException {
 
 		// Positionen der Spieler ermitteln
@@ -273,7 +270,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	@Override
+	//@Override
 	public ISpieler reizen2(ISpieler spieler1, ISpieler spieler2) {
 
 		// Gewinner des reizens
@@ -330,13 +327,13 @@ public class Controller implements Observer, IController {
 		return gewinner;
 	}
 
-	@Override
+	//@Override
 	public boolean reizenOderReizagent(ISpieler spieler, int reizwert,
 			boolean sagen) {
 
 		boolean ergebnis = false;
 
-		if (tisch.getReizagentWert() > 0
+		if (tisch.getReizagentWert() >= 0
 				&& spieler instanceof IMenschlicherSpieler) {
 
 			ergebnis = reizagent(spieler);
@@ -353,7 +350,7 @@ public class Controller implements Observer, IController {
 		return ergebnis;
 	}
 
-	@Override
+	//@Override
 	public ISpieler reizen1(ISpieler spieler1, ISpieler spieler2) {
 
 		// Gewinner des Reizens
@@ -396,14 +393,14 @@ public class Controller implements Observer, IController {
 		return gewinner;
 	}
 
-	@Override
+	//@Override
 	public void entscheideraeuberspiel() {
 
 		tisch.getVorhand().setIstAlleinspieler(true);
 
 	}
 
-	@Override
+	//@Override
 	public void leiteSpiel() throws NullPointerException, IOException {
 
 		ISpieler spieler1 = tisch.getVorhand();
@@ -453,11 +450,12 @@ public class Controller implements Observer, IController {
 			// Stichauswertung ausgeben
 			stichAuswertung(gespielteKarten, spieler1);
 
-			
-			// ??? WAS MACHT DIESES IF ???
 			if (tisch.getSpielart().getSpielart() == Spielartbezeichnung.NULL
 					&& spieler1.getName() == tisch.ermittleAlleinspieler()
 							.getName()) {
+				
+				Spielkarte[] leer = new Spielkarte[3];
+				tisch.setGespielteKarten(leer);
 				break;
 			}
 
@@ -467,7 +465,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	@Override
+	//@Override
 	public void alleinspielerAktionen() throws IOException {
 
 		// Der Spieler wird gefragt, ob er Hand spielt
@@ -530,11 +528,15 @@ public class Controller implements Observer, IController {
 		alleinspieler.spitzenEinordnen();
 		if (tisch.getSechserskat()) {
 
+			alleinspieler.getBlatt().remove(13);
 			alleinspieler.getBlatt().remove(12);
+			alleinspieler.getBlatt().remove(11);
+		} else {
+
+			alleinspieler.getBlatt().remove(11);
+			alleinspieler.getBlatt().remove(10);
 		}
 
-		alleinspieler.getBlatt().remove(11);
-		alleinspieler.getBlatt().remove(10);
 
 		// &Uuml;berpr&uuml;fen, ob schneider/schwarz/ouvert gefragt werden muss
 		// und entsprechende Variablen am Tisch setzen.
@@ -542,7 +544,7 @@ public class Controller implements Observer, IController {
 		schlauerSpielerInit();
 	}
 
-	@Override
+	//@Override
 	public void bereiteSpielvor() {
 
 		tisch.erstelleDeck();
@@ -550,7 +552,7 @@ public class Controller implements Observer, IController {
 		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 			if (alleSpieler instanceof SchlauerSpieler) {
-
+				
 				((SchlauerSpieler) alleSpieler)
 						.setDeck(new ArrayList<Spielkarte>((tisch.getDeck())));
 			}
@@ -559,8 +561,7 @@ public class Controller implements Observer, IController {
 		tisch.mischeDeck();
 		tisch.kartenAusteilen();
 
-		// für alle Spieler das Blatt nach Grandspiel sortieren
-		// außer für die Oma
+		// für alle menschlichen Spieler das Blatt nach Grandspiel sortieren
 		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
@@ -576,7 +577,7 @@ public class Controller implements Observer, IController {
 						.getBlatt());
 				if (tisch.getVariante() == Spielvariante.SKAT
 						|| tisch.getVariante() == Spielvariante.RAMSCHBOCK) {
-
+					
 					((SchlauerSpieler) alleSpieler).bestimmeMaxReizwert();
 				}
 			}
@@ -586,7 +587,7 @@ public class Controller implements Observer, IController {
 
 	}
 
-	@Override
+	//@Override
 	public void auswertung() {
 		// Spieler spieler = tisch.ermittleAlleinspieler();
 		boolean gewonnen = false;
@@ -594,7 +595,7 @@ public class Controller implements Observer, IController {
 
 		ausgabe.spielBeendet();
 		if (tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
-
+			
 			augen = tisch.werteAugen(tisch.ermittleAlleinspieler().getStiche());
 			int punkte = tisch.wertePunkte(augen);
 			ausgabe.augen(augen);
@@ -608,7 +609,7 @@ public class Controller implements Observer, IController {
 
 	}
 
-	@Override
+	//@Override
 	public void aufrauemen() {
 
 		spielEinpassen = false;
@@ -619,6 +620,10 @@ public class Controller implements Observer, IController {
 		tisch.setReizwert(18);
 		tisch.setReizagentWert(0);
 		tisch.setBock(false);
+		tisch.setHandspiel(false);
+		tisch.setSchneider(false);
+		tisch.setSchwarz(false);
+		tisch.setOuvert(false);
 
 		if (tisch.getVariante() == Spielvariante.RAMSCHBOCK
 				&& tisch.getSpaltarsch() && tisch.getBockrunden() == 0) {
@@ -637,7 +642,7 @@ public class Controller implements Observer, IController {
 		ausgabe.guiAufraumen();
 	}
 
-	@Override
+	//@Override
 	public void stichAuswertung(Spielkarte[] gespielteKarten, ISpieler gewinner) {
 		ausgabe.tischLoeschen();
 		for (int i = 0; i < 3; i++) {
@@ -651,7 +656,7 @@ public class Controller implements Observer, IController {
 		ausgabe.leerzeile();
 	}
 
-	@Override
+	//@Override
 	public boolean reizagent(ISpieler spieler) {
 
 		boolean ergebnis = false;
@@ -659,7 +664,12 @@ public class Controller implements Observer, IController {
 		int reizwert = tisch.getReizwert();
 		int maxReizwert = tisch.getReizagentWert();
 
-		if (maxReizwert >= reizwert) {
+		//Falls der Spieler passen will
+		if (maxReizwert == 0) {
+			
+			ergebnis = false;
+		}
+		else if (maxReizwert >= reizwert) {
 
 			ergebnis = true;
 		}
@@ -667,13 +677,13 @@ public class Controller implements Observer, IController {
 		return ergebnis;
 	}
 
-	@Override
+	//@Override
 	public boolean spielBeenden() {
 
 		return ausgabe.spielBeenden();
 	}
 
-	@Override
+	//@Override
 	public void skatkartenBesitzergeben() {
 
 		ISpieler alleinspieler = tisch.ermittleAlleinspieler();
@@ -686,17 +696,16 @@ public class Controller implements Observer, IController {
 		tisch.setSkat(skat);
 	}
 
-	@Override
+	//@Override
 	public void flagsSetzen(ISpieler alleinspieler, ISpielart spielart) {
 
 		if (tisch.getHandspiel()) {
 
 			if (spielart instanceof Nullspiel) {
 
-				tisch.setSchneider(true);
-				tisch.setSchwarz(true);
+				tisch.setSchneider(false);
+				tisch.setSchwarz(false);
 				tisch.setOuvert(alleinspieler.ouvert());
-
 			} else if (alleinspieler.schneider()) {
 
 				tisch.setSchneider(true);
@@ -718,7 +727,6 @@ public class Controller implements Observer, IController {
 				tisch.setSchneider(true);
 				tisch.setSchwarz(true);
 				tisch.setOuvert(alleinspieler.ouvert());
-
 			} else {
 
 				tisch.setSchneider(false);
@@ -728,7 +736,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	@Override
+	//@Override
 	public void update(Observable tisch, Object gespielteKarten) {
 		//		
 		// Spielkarte[] gespielterKarten = this.tisch.getGespielteKarten();
@@ -738,7 +746,7 @@ public class Controller implements Observer, IController {
 		// else
 	}
 
-	@Override
+	//@Override
 	public void warte() {
 		while (!ausgabe.getRelease()) {
 			try {
@@ -750,7 +758,7 @@ public class Controller implements Observer, IController {
 		ausgabe.setRelease(false);
 	}
 
-	@Override
+	//@Override
 	public void einpassen() throws IOException {
 
 		ausgabe.spielEinpassen();
@@ -759,9 +767,8 @@ public class Controller implements Observer, IController {
 		aufrauemen();
 	}
 
-	@Override
+	//@Override
 	public void ramschen() throws NullPointerException, IOException {
-		
 		ISpielart spielart = new Ramsch();
 		tisch.setSpielart(spielart);
 		tisch.getSpieler1().setSpielart(spielart);
@@ -779,9 +786,8 @@ public class Controller implements Observer, IController {
 		tisch.positionWechseln();
 	}
 
-	@Override
+	//@Override
 	public void normalerSpielverlauf() throws IOException {
-		
 		skatkartenBesitzergeben();
 		alleinspielerAktionen();
 		ausgabe.trumpf();
@@ -791,59 +797,50 @@ public class Controller implements Observer, IController {
 		tisch.positionWechseln();
 	}
 
-	@Override
+	//@Override
 	public void spielRaeuberskat() throws IOException {
-		
 		entscheideraeuberspiel();
 		ausgabe.alleinspieler();
 		normalerSpielverlauf();
 	}
 
-	@Override
+	//@Override
 	public void spielRamschBock() throws IOException {
-		
 		if (tisch.getSpaltarsch() && tisch.getRamschrunden() == 0) {
-			
 			tisch.setBock(true);
 			tisch.setBockrunden(tisch.getBockrunden() - 1);
 		}
 
 		if (!tisch.getSpaltarsch()
 				|| (tisch.getSpaltarsch() && tisch.getRamschrunden() == 0)) {
-			
 			leiteReizen();
 
 			if (!spielEinpassen) {
-				
 				normalerSpielverlauf();
-				
 			} else {
 				ramschen();
 
 			}
-			
 		} else {
 			ramschen();
 			tisch.setRamschrunden(tisch.getRamschrunden() - 1);
 		}
 	}
 
-	@Override
+	//@Override
 	public void spielIntSkat() throws IOException {
-		
 		leiteReizen();
 		if (!spielEinpassen) {
-			
 			normalerSpielverlauf();
 		} else {
-			
 			einpassen();
 		}
 	}
 
-	@Override
+	//@Override
 	public void schlauerSpielerInit() {
 
+		// für alle schlauen Spieler das Deck setzen.
 		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
@@ -858,7 +855,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	@Override
+	//@Override
 	public void namenVergleich() {
 
 		String spieler1 = tisch.getSpieler1().getName();
@@ -867,27 +864,22 @@ public class Controller implements Observer, IController {
 
 		if (spieler1.equals(spieler2) && spieler1.equals(spieler3)
 				&& spieler2.equals(spieler3)) {
-			
 			spieler1 = spieler1 + 1;
 			spieler2 = spieler2 + 2;
 			spieler3 = spieler3 + 3;
-			
 		} else if (spieler1.equals(spieler2)) {
 
 			spieler1 = spieler1 + 1;
 			spieler2 = spieler2 + 2;
-			
 		} else if (spieler1.equals(spieler3)) {
 
 			spieler1 = spieler1 + 1;
 			spieler3 = spieler3 + 2;
-			
 		} else if (spieler2.equals(spieler3)) {
 
 			spieler2 = spieler2 + 1;
 			spieler3 = spieler3 + 2;
 		}
-		
 		tisch.getSpieler1().setName(spieler1);
 		tisch.getSpieler2().setName(spieler2);
 		tisch.getSpieler3().setName(spieler3);

@@ -271,12 +271,12 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 
 		// ComboBox mit Label:
 		gegner1 = new JComboBox(gegner);
-		gegner1.setSelectedIndex(0);
+		gegner1.setSelectedIndex(1);
 		lgegner1.setLabelFor(gegner1);
 
 		// Combobox Gegner2 mit Label:
 		gegner2 = new JComboBox(gegner);
-		gegner2.setSelectedIndex(0);
+		gegner2.setSelectedIndex(1);
 		lgegner2.setLabelFor(gegner2);
 
 		// Combobox Skatvariante mit Label

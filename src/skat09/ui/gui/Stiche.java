@@ -23,7 +23,8 @@ import skat09.spielkarte.Spielkarte;
 /**
  * Diese Klasse beschreibt das Fenster, welches die vergangenen Stiche ausgibt.
  * 
- * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
+ * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin
+ *         Bruhns
  * @version 03.07.2009
  */
 public class Stiche extends JFrame {
@@ -46,9 +47,10 @@ public class Stiche extends JFrame {
 	 * Der konstruktor der Klasse Stiche. In diesem werden die Komponenten
 	 * initialisiert und das erste mal die update()-Methode aufgerufen.
 	 * 
-	 * @param tisch Der Tisch auf dem das Spiel gespielt wird
+	 * @param tisch
+	 *            Der Tisch auf dem das Spiel gespielt wird
 	 */
-	public Stiche(Tisch tisch) {
+	public Stiche(Tisch tisch, boolean allestiche) {
 		super("Vergangene Stiche");
 		this.tisch = tisch;
 		setSize(300, 200);
@@ -59,7 +61,7 @@ public class Stiche extends JFrame {
 		scroller = new JScrollPane(panel);
 		scroller.setPreferredSize(new Dimension(300, 200));
 		add(scroller);
-		update();
+		update(allestiche);
 	}
 
 	/**
@@ -74,10 +76,26 @@ public class Stiche extends JFrame {
 	}
 
 	/**
+	 * Mit dieser Methode wird die entsprechende Updatemethode aufgerufen, je
+	 * nachdem ob alle Stiche oder nur der letzte Stich ausgegeben werden soll.
+	 * 
+	 * @param allestiche
+	 *            Gibt an, ob alle Stiche oder nur der letzte Stiche angezeigt
+	 *            werden sollen
+	 */
+	public void update(boolean allestiche) {
+		if (allestiche) {
+			alleStiche();
+		} else {
+			letzterStich();
+		}
+	}
+
+	/**
 	 * Mit dieser Methode wird ein bestehendes Stichefenster aktualisiert, indem
 	 * die aktuelle alleGespielteKarten-ArrayList ausgegeben wird
 	 */
-	public void update() {
+	private void alleStiche() {
 		int spalte = 0;
 		int reihe = 0;
 		GridBagConstraints c = new GridBagConstraints();
@@ -115,6 +133,59 @@ public class Stiche extends JFrame {
 		panel.setVisible(true);
 
 		pack();
+	}
+
+	/**
+	 * Gibt den letzten Stich auf dem Stichefenster aus
+	 */
+	private void letzterStich() {
+		int spalte = 0;
+		int reihe = 0;
+		GridBagConstraints c = new GridBagConstraints();
+		ArrayList<Spielkarte> karten = tisch.getSpieler1()
+				.getAllegespieltenkarten();
+
+		panel.removeAll();
+		panel.setSize(new Dimension(300, 200));
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		if (karten.size() > 0) {
+			for (int i = karten.size() - 3; i < karten.size(); i++) {
+
+				Image image = null;
+
+				image = new ImageIcon(Fenster.getFileUrl("img/"
+						+ karten.get(i).dateiPfad() + ".png")).getImage();
+
+				JLabel label = new JLabel(new ImageIcon(image
+						.getScaledInstance(70, 110, 1)));
+				c.gridx = spalte;
+				c.gridy = reihe;
+
+				panel.add(label, c);
+
+				if (spalte == 2) {
+					spalte = 0;
+					reihe = reihe + 1;
+				} else {
+					spalte = spalte + 1;
+				}
+
+			}
+		}
+		panel.setVisible(true);
+
+		pack();
+
+	}
+
+	/**
+	 * L&ouml;scht den Inhalt des Stiche-Fensters
+	 */
+	public void clear() {
+		panel.removeAll();
+		panel.setSize(new Dimension(300, 200));
 	}
 
 	/**

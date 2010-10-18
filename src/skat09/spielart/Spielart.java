@@ -29,7 +29,7 @@ abstract public class Spielart implements ISpielart {
 	// get-Methoden
 	//
 
-	@Override
+	//@Override
 	public Spielartbezeichnung getSpielart() {
 		return spielart;
 	}
@@ -38,7 +38,7 @@ abstract public class Spielart implements ISpielart {
 	// set-Methoden
 	//
 
-	@Override
+	//@Override
 	public void setSpielart(Spielartbezeichnung art) {
 		spielart = art;
 	}
@@ -47,11 +47,11 @@ abstract public class Spielart implements ISpielart {
 	// weitere Methoden
 	//
 
-	@Override
+	//@Override
 	abstract public boolean gespielteKartePruefen(ArrayList<Spielkarte> blatt,
 			Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte);
 	
-	@Override
+	//@Override
 	public boolean farbeBedienen(ArrayList<Spielkarte> blatt, Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
 		
 		boolean ergebnis = true;
@@ -78,17 +78,17 @@ abstract public class Spielart implements ISpielart {
 		return ergebnis;
 	}
 
-	@Override
+	//@Override
 	abstract public Spielkarte hoehereKarte(Spielkarte karte1, Spielkarte karte2);
 
-	@Override
+	//@Override
 	abstract public Spielkarte sortiereKarte(Spielkarte karte1,
 			Spielkarte karte2);
 
 	@Override
 	public abstract String toString();
 
-	@Override
+	//@Override
 	public Spielkarte hoehererBube(Spielkarte karte1, Spielkarte karte2) {
 
 		Spielkarte ergebnis;
@@ -106,7 +106,7 @@ abstract public class Spielart implements ISpielart {
 		return ergebnis;
 	}
 	
-	@Override
+	//@Override
 	public Spielkarte hoehereFarbe(Spielkarte karte1, Spielkarte karte2) {
 		
 		Spielkarte ergebnis;
@@ -146,7 +146,7 @@ abstract public class Spielart implements ISpielart {
 		return ergebnis;
 	}
 	
-	@Override
+	//@Override
 	public Spielkarte hoehereKarteEinBube(Spielkarte karte1, Spielkarte karte2) {
 
 		Spielkarte ergebnis;
@@ -164,7 +164,7 @@ abstract public class Spielart implements ISpielart {
 		return ergebnis;
 	}
 	
-	@Override
+	//@Override
 	public Spielkarte hoehereKarteFarbe(Spielkarte karte1, Spielkarte karte2) {
 
 		Spielkarte ergebnis;
@@ -182,7 +182,7 @@ abstract public class Spielart implements ISpielart {
 		return ergebnis;
 	}
 	
-	@Override
+	//@Override
 	public int karteBewerten(Spielkarte karte) {
 
 		Wert wert = karte.getWert();
@@ -223,7 +223,7 @@ abstract public class Spielart implements ISpielart {
 		return ergebnis;
 	}
 
-	@Override
+	//@Override
 	public int bubeBewerten(Spielkarte karte) {
 
 		Farbe farbe = karte.getFarbe();

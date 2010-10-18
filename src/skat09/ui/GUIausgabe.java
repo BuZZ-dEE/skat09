@@ -284,7 +284,8 @@ public class GUIausgabe extends Ausgabe {
 
 	@Override
 	public void spielBeendet() {
-
+		hfenster.skataufTisch();
+		warte();
 	}
 
 	@Override
@@ -375,7 +376,7 @@ public class GUIausgabe extends Ausgabe {
 		while (!fertig) {
 
 			SortedSet reizwerte = tisch.getReizwerte();
-			if (reizwerte.contains(wert)) {
+			if (reizwerte.contains(wert) || wert == 0) {
 				fertig = true;
 			} else {
 				hfenster.reizLimfest();
@@ -492,6 +493,8 @@ public class GUIausgabe extends Ausgabe {
 	@Override
 	public void statistik() {
 		hfenster.statistik();
+		hfenster.neuesSpiel();
+		warte();
 
 	}
 

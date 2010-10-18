@@ -1,7 +1,13 @@
 package skat09.test;
 
-import static org.junit.Assert.*;
-import java.util.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.junit.After;
 import org.junit.Before;
@@ -587,10 +593,41 @@ public class TischTest {
 
 	@Test
 	public void ueberreizCheckTest() {
+		
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(0, tisch.ueberreizCheck(18));
+	}
+	
+	@Test
+	public void ueberreizCheckTest4() {
+		Spielart spiel = new Farbspiel(Farbe.KARO);
+		tisch.setSpielart(spiel);
+		tisch.setReizwert(23);
+		tisch.ermittleAlleinspieler().getBlatt().add(
+				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
+		tisch.ermittleAlleinspieler().spitzenEinordnen();
+		tisch.ueberreizCheck(18);
+		assertEquals(true, tisch.istUeberreizt());
+	}
+	
+	@Test
+	public void ueberreizCheckTest5() {
+		tisch.setVariante(Spielvariante.SKAT);
+		tisch.setHandspiel(false);
+		tisch.setSchneider(false);
+		tisch.setSchwarz(false);
+		tisch.setOuvert(false);
+		Spielart spiel = new Farbspiel(Farbe.KARO);
+		tisch.setSpielart(spiel);
+		tisch.setReizwert(23);
+		tisch.ermittleAlleinspieler().getBlatt().clear();
+		tisch.ermittleAlleinspieler().getBlatt().add(
+				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
+		tisch.ermittleAlleinspieler().spitzenEinordnen();
+		
+		assertEquals(-54, tisch.ueberreizCheck(18));
 	}
 	
 	@Test

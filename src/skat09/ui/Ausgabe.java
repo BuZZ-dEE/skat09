@@ -28,151 +28,151 @@ abstract public class Ausgabe implements IAusgabe {
 	 */
 	private boolean release = false;
 
-	@Override
+	//@Override
 	public boolean getRelease() {
 		return release;
 	}
 
-	@Override
+	//@Override
 	public void setRelease(boolean release) {
 		this.release = release;
 	}
 
-	@Override
+	//@Override
 	public abstract String name();
 
-	@Override
+	//@Override
 	public abstract boolean hoeren(int wert);
 
-	@Override
+	//@Override
 	public abstract boolean sagen(int reizWert);
 
-	@Override
+	//@Override
 	public abstract String gegner(int nummer);
 
-	@Override
+	//@Override
 	public abstract String frageVariante();
 
-	@Override
+	//@Override
 	public abstract void falscheEingabe();
 
-	@Override
+	//@Override
 	public abstract boolean handspiel();
 
-	@Override
+	//@Override
 	public abstract void spiel();
 
-	@Override
+	//@Override
 	public abstract int druecken(ArrayList<Spielkarte> blatt, int nummer);
 
-	@Override
+	//@Override
 	public abstract boolean schneider();
 
-	@Override 
+	//@Override 
 	 
 	public abstract boolean schwarz();
 
-	@Override
+	//@Override
 	public abstract boolean ouvert();
 
-	@Override
+	//@Override
 	public abstract ISpielart spielAnsagen();
 
-	@Override
+	//@Override
 	public abstract Farbspiel farbe();
 
-	@Override
+	//@Override
 	public abstract Spielkarte spieleKarte(Spielkarte[] gespielteKarten,
 			ISpieler spieler) throws IOException;
 
-	@Override
+	//@Override
 	public abstract void stichGewonnen(ISpieler spieler);
 
-	@Override
+	//@Override
 	public abstract void blattAusgeben(ISpieler spieler) throws IOException;
 
-	@Override
+	//@Override
 	public abstract void skatAusgeben(Spielkarte[] skat) throws IOException;
 
-	@Override
+	//@Override
 	public abstract void weg(ISpieler spieler);
 
-	@Override
+	//@Override
 	public abstract void spielBeendet();
 
-	@Override
+	//@Override
 	public abstract void auswertung(boolean gewonnen);
 
-	@Override
+	//@Override
 	public abstract void hhVSgewinner(ISpieler gewinner);
 
-	@Override
+	//@Override
 	public abstract void mhVSvh();
 
-	@Override
+	//@Override
 	public abstract void leerzeile();
 
-	@Override
+	//@Override
 	public abstract void spielEinpassen();
 
-	@Override
+	//@Override
 	public abstract void spielBeginnt();
 
-	@Override
+	//@Override
 	public abstract void andereKarte();
 
-	@Override
+	//@Override
 	public abstract void augen(int augen);
 
-	@Override
+	//@Override
 	public abstract void punkte(int punkte);
 
-	@Override
+	//@Override
 	public abstract void alleinspieler();
 
-	@Override
+	//@Override
 	public abstract void trumpf();
 
-	@Override
+	//@Override
 	public abstract void neuesSpiel();
 
-	@Override
+	//@Override
 	public abstract String einlesen();
 
-	@Override
+	//@Override
 	public abstract void spieltKarte(ISpieler spieler, Spielkarte karte);
 
-	@Override
+	//@Override
 	public abstract int reizlimitFestlegen();
 
-	@Override
+	//@Override
 	public abstract boolean reizAgent();
 
-	@Override
+	//@Override
 	public abstract boolean spielBeenden();
 
-	@Override
+	//@Override
 	public abstract void punkteAusgeben();
 
-	@Override
+	//@Override
 	public abstract void tischLoeschen();
 
-	@Override
+	//@Override
 	public abstract String getBlattwahl();
 
-	@Override
+	//@Override
 	public abstract String frageSechserskat();
 
-	@Override
+	//@Override
 	public abstract void hauptfensterOeffnen();
 
-	@Override
+	//@Override
 	public abstract void statistik();
 
-	@Override
+	//@Override
 	public abstract void guiAufraumen();
 
-	@Override
+	//@Override
 	public abstract void positionAnzeigen();
 
 }

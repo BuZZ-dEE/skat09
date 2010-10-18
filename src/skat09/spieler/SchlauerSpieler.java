@@ -575,13 +575,6 @@ public class SchlauerSpieler extends Spieler {
 		if (istAlleinspieler) {
 
 			ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
-
-			if (ergebnis != null) {
-				System.out.println("ergebnis rauskommNull Alleinspieler " + ergebnis.toString());
-			}
-			else {
-				System.out.println("es wurde keine karte gespielt Alleinspieler");
-			}
 		}
 
 		else {
@@ -614,13 +607,6 @@ public class SchlauerSpieler extends Spieler {
 
 					ergebnis = farbe.get(zufallszahl.nextInt(farbe.size()));
 				}
-			}
-			
-			if (ergebnis != null) {
-				System.out.println("ergebnis rauskommNull nicht Alleinspieler " + ergebnis.toString());
-			}
-			else {
-				System.out.println("es wurde keine karte gespielt nicht Alleinspieler");
 			}
 		}
 
@@ -1387,7 +1373,7 @@ public class SchlauerSpieler extends Spieler {
 
 		return ergebnis;
 	}
-
+	
 	/**
 	 * Die Methode liefert für die Karte mit dem Wert "BUBE" die n&auml;chst
 	 * niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies geschieht unter
@@ -1398,9 +1384,9 @@ public class SchlauerSpieler extends Spieler {
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
 	public Spielkarte naechstNiedrigereKarteBube(Farbe farbe) {
-
+		
 		Spielkarte ergebnis = null;
-
+		
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND
 				|| spielart.getSpielart() == Spielartbezeichnung.RAMSCH) {
@@ -1410,7 +1396,7 @@ public class SchlauerSpieler extends Spieler {
 
 			ergebnis = new Spielkarte(farbe, Wert.ZEHN);
 		}
-
+		
 		return ergebnis;
 	}
 

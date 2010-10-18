@@ -887,7 +887,7 @@ public class ControllerTest {
 		tisch.setSpieler2(new Oma("Renate"));
 		tisch.setSpieler3(new Oma("Mochochocho"));
 		tisch.setSpielart(new Nullspiel());
-		tisch.setHandspiel(true);
+		tisch.setHandspiel(false);
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
 		
 		boolean ergebnis = false;

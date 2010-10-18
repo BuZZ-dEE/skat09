@@ -20,6 +20,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,7 +44,8 @@ import skat09.ui.GUIausgabe;
  * Die Klasse beinhaltet das Hauptfenster der GUI. In diesem Fenster wird der
  * Spielablauf f&uuml;r den menschlichen Spieler dargestellt
  * 
- * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
+ * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin
+ *         Bruhns
  * @version 02.07.09
  */
 public class HFenster extends JFrame implements ActionListener, MouseListener,
@@ -164,6 +166,10 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	private boolean stichehilfe = false;
 	/**
+	 * erfasst, ob dder letzte Stich angezeigt werden soll
+	 */
+	private boolean letzterStichhilfe = false;
+	/**
 	 * Beinhaltet die bereits gespielten Karten
 	 */
 	private Spielkarte[] gespielteKarten = null;
@@ -195,6 +201,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 * vergangenen Stiche angezeigt werden sollen
 	 */
 	private JCheckBoxMenuItem cbMenuItem2;
+	/**
+	 * Die Checkbox im Men&uuml;, in der ausgew&auml;hlt werden kann, ob der
+	 * letzte Stiche angezeigt werden soll
+	 */
+	private JCheckBoxMenuItem cbMenuItem3;
 	/**
 	 * Das Panel rechteSeite soll scrollbar sein
 	 */
@@ -268,12 +279,21 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	/**
 	 * Diese Methode setzt den Wert der Variable zug. zug soll true sein, falls
 	 * der menschliche Spieler einen Zug machen muss und false, falls er gerade
-	 * nicht am zug ist.
+	 * nicht am zug ist. Wenn die Methode auf true gesetzt wird und
+	 * zus&auml;tzlich das Stichfenster aktiviert ist, soll das Stichfenster
+	 * akutalisiert werden
 	 * 
 	 * @param zug
 	 *            Der Wert von zug
 	 */
 	public void setZug(boolean zug) {
+		if (zug) {
+			if (stichfenster != null && letzterStichhilfe) {
+
+				stichfenster.update(false);
+
+			}
+		}
 		this.zug = zug;
 	}
 
@@ -366,8 +386,9 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 	/**
 	 * setzt die Augen
+	 * 
 	 * @param augen
-	 *            
+	 * 
 	 */
 	public void setAugen(int augen) {
 		this.augen = augen;
@@ -450,7 +471,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		rechteSeite.setFocusable(false);
 		rechteSeite.setLayout(new GridBagLayout());
 		rechteSeite.setBorder(BorderFactory.createTitledBorder("Auswertung:"));
-		rechteSeite.setPreferredSize(new Dimension(400, 150));
+		// rechteSeite.setPreferredSize(new Dimension(400, 150));
 		scroller = new JScrollPane(rechteSeite);
 		scroller.setPreferredSize(new Dimension(150, 300));
 
@@ -563,6 +584,40 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	}
 
 	/**
+	 * 
+	 */
+	public void skataufTisch() {
+		Spielkarte[] skat = tisch.getSkat();
+		aufTisch.removeAll();
+		JButton button = new JButton("Skat gesehen");
+		button.setName("Skat");
+		button.setPreferredSize(new Dimension(150, 30));
+		button.addActionListener(this);
+
+		for (int i = 0; i < skat.length; i++) {
+
+			Image image;
+
+			image = new ImageIcon(Fenster.getFileUrl("img/"
+					+ skat[i].dateiPfad() + ".png")).getImage();
+
+			JLabel label = new JLabel(new ImageIcon(image.getScaledInstance(70,
+					110, 1)));
+			aufTisch.add(label);
+
+		}
+		aufTisch.add(button);
+		pack();
+		mitte.repaint();
+
+		// JOptionPane.showMessageDialog(this,
+		// "Das Spiel ist vorbei" ,
+		// "Das Spiel ist vorbei",
+		// JOptionPane.PLAIN_MESSAGE);
+
+	}
+
+	/**
 	 * Diese Methode gibt die aktuelle Puntkeliste auf der GUI aus.
 	 * 
 	 * @param gewonnen
@@ -576,8 +631,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		JLabel punkte;
 		JLabel punkte1;
 		JLabel punkte2;
-		JLabel punkt = new JLabel("Punkte:");
+		JLabel punkt = new JLabel("Gesamtpunktzahl:");
 		JLabel name = new JLabel("Name:");
+		JLabel augen = new JLabel("Augen:");
+		JLabel grund = new JLabel("Grundw.:");
+
 		GridBagConstraints c = new GridBagConstraints();
 
 		// Alle Elemente entfernen und sichtbar machen
@@ -591,27 +649,49 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 		ISpieler spieler1 = tisch.getSpieler1();
 		label = new JLabel(spieler1.getName());
-		punkte = new JLabel(tisch.getAktuellePunkte(spieler1) + "");
-
 		ISpieler spieler2 = tisch.getSpieler2();
 		label1 = new JLabel(spieler2.getName());
-		punkte1 = new JLabel(tisch.getAktuellePunkte(spieler2) + "");
-
 		ISpieler spieler3 = tisch.getSpieler3();
 		label2 = new JLabel(spieler3.getName());
-		punkte2 = new JLabel(tisch.getAktuellePunkte(spieler3) + "");
 
 		setzeStats(name, 0, 0);
-		setzeStats(punkt, 0, 1);
 		setzeStats(label, 1, 0);
-		setzeStats(punkte, 1, 1);
 		setzeStats(label1, 2, 0);
-		setzeStats(punkte1, 2, 1);
 		setzeStats(label2, 3, 0);
-		setzeStats(punkte2, 3, 1);
+		setzeStats(grund, 4, 0);
+		setzeStats(augen, 5, 0);
+		punkteliste();
 
+		punkte = new JLabel(tisch.getAktuellePunkte(spieler1) + "");
+		punkte1 = new JLabel(tisch.getAktuellePunkte(spieler2) + "");
+		punkte2 = new JLabel(tisch.getAktuellePunkte(spieler3) + "");
+		setzeStats(punkt, 0, 1 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(punkte, 1, 1 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(punkte1, 2, 1 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(punkte2, 3, 1 + tisch.getSpieler1().getSpiele().size());
 		pack();
 		auswertung2(gewonnen);
+		flagsLoeschen();
+		
+	}
+
+	/**
+	 * F&uuml;gt einen Button auf dem Tisch ein, der ein neues Spiel startet,
+	 * wenn der Spieler es w&uuml;scht.
+	 */
+	public void neuesSpiel(){
+		JButton button = new JButton("Neues Spiel");
+		button.addActionListener(this);
+		aufTisch.removeAll();
+		aufTisch.add(button);
+		pack();
+		mitte.repaint();
+	}
+
+	/**
+	 * L&ouml;scht die Flags nach der Auswertung
+	 */
+	public void flagsLoeschen() {
 		hoeren = false;
 		sagen = false;
 		reizagent = false;
@@ -619,6 +699,52 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		schneider = false;
 		schwarz = false;
 		ouvert = false;
+	}
+
+	/**
+	 * Schreibt die Punkteliste in die Auswertungsbox
+	 */
+	public void punkteliste() {
+		JLabel punkt = new JLabel("Punkte:");
+		JLabel punkte;
+		JLabel punkte1;
+		JLabel punkte2;
+		JLabel grundw;
+		JLabel augenzahl;
+		String s = "";
+
+		for (int i = 0; i < tisch.getSpieler1().getSpiele().size(); i++) {
+
+			if (tisch.getSpieler1().getSpiele().get(i) != 0
+					&& tisch.getUeber().get(i)) {
+				s = "(ue)";
+			} else
+				s = "";
+			punkte = new JLabel(tisch.getSpieler1().getSpiele().get(i) + s);
+			if (tisch.getSpieler2().getSpiele().get(i) != 0
+					&& tisch.getUeber().get(i)) {
+				s = "(ue)";
+			} else
+				s = "";
+			punkte1 = new JLabel(tisch.getSpieler2().getSpiele().get(i) + s);
+			if (tisch.getSpieler3().getSpiele().get(i) != 0
+					&& tisch.getUeber().get(i)) {
+				s = "(ue)";
+			} else
+				s = "";
+			punkte2 = new JLabel(tisch.getSpieler3().getSpiele().get(i) + s);
+			grundw = new JLabel(tisch.getGrundwertListe().get(i) + "");
+			augenzahl = new JLabel(tisch.getAugenListe().get(i) + "");
+
+			setzeStats(punkt, 0, 1 + i);
+			setzeStats(punkte, 1, 1 + i);
+			setzeStats(punkte1, 2, 1 + i);
+			setzeStats(punkte2, 3, 1 + i);
+			setzeStats(grundw, 4, 1 + i);
+			setzeStats(augenzahl, 5, i + 1);
+
+			pack();
+		}
 	}
 
 	/**
@@ -665,10 +791,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		pack();
 		mitte.repaint();
 	}
-	
+
 	/**
 	 * Regelt die Ausgabe falls Ramsch gespielt wird - dient zur MLOC Einhaltung
-	 * @param gewonnen 
+	 * 
+	 * @param gewonnen
 	 * @return String
 	 */
 	public String ramschAuswertung(boolean gewonnen) {
@@ -733,7 +860,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void reizLimfest() {
 		String s = (String) JOptionPane.showInputDialog(null,
-				"Bitte geben Sie einen Reizwert an:");
+				"Bitte geben Sie einen Reizwert an: (0 fuer passen)");
 
 		// If a string was returned, say so.
 		if ((s != null) && (s.length() > 0)) {
@@ -892,6 +1019,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			s = s + "Schwarz ";
 		} else if (tisch.getSchneider()) {
 			s = s + "Schneider ";
+		} else {
+			s = "";
 		}
 		if (tisch.getHandspiel()) {
 			s = s + "Hand";
@@ -934,14 +1063,17 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 *            Der Spieler, der den Stich gewonnen hat.
 	 */
 	public void stichGewonnen(ISpieler spieler) {
-		
+
 		JOptionPane.showMessageDialog(null, spieler.getName()
 				+ " hat den Stich gewonnen!");
 		aufTisch.removeAll();
 		pack();
 
-		if (stichfenster != null) {
-			stichfenster.update();
+		if (cbMenuItem2.isSelected()) {
+			stichfenster.update(true);
+		}
+		if (cbMenuItem3.isSelected()) {
+			stichfenster.clear();
 		}
 	}
 
@@ -1078,18 +1210,28 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 * Fenster geschlossen.
 	 */
 	public void actionPerformed(ActionEvent e) {
-		JMenuItem item = (JMenuItem) (e.getSource());
-		if (item.getText() == "Spiel beenden") {
+
+		if (e.getActionCommand().compareTo("Skat gesehen") == 0) {
+			ausgabe.setRelease(true);
+		}
+		if (e.getActionCommand().compareTo("Neues Spiel") == 0) {
+			ausgabe.setRelease(true);
+		}
+		if (e.getActionCommand().compareTo("Spiel beenden") == 0) {
 			System.exit(1);
-		} else if (item.getText() == "Spielbare Karten zeigen") {
+		}
+		if (e.getActionCommand().compareTo("Spielbare Karten zeigen") == 0) {
 			if (!spielbarhilfe) {
 				spielbarhilfe = true;
 			} else {
 				spielbarhilfe = false;
 			}
-		} else if (item.getText() == "Vergangene Stiche anzeigen") {
+		}
+		if (e.getActionCommand().compareTo("Vergangene Stiche anzeigen") == 0) {
 			if (!stichehilfe) {
-				stichfenster = new Stiche(tisch);
+				cbMenuItem3.setSelected(false);
+				letzterStichhilfe = false;
+				stichfenster = new Stiche(tisch, true);
 				stichehilfe = true;
 			} else {
 				stichfenster.schliessen();
@@ -1097,6 +1239,19 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 				stichehilfe = false;
 			}
 		}
+		if (e.getActionCommand().compareTo("Letzten Stich anzeigen") == 0) {
+			if (!letzterStichhilfe) {
+				cbMenuItem2.setSelected(false);
+				stichehilfe = false;
+				stichfenster = new Stiche(tisch, false);
+				letzterStichhilfe = true;
+			} else {
+				stichfenster.schliessen();
+				stichfenster = null;
+				letzterStichhilfe = false;
+			}
+		}
+
 	}
 
 	/**
@@ -1132,6 +1287,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void mouseClicked(MouseEvent e) {
 		if (e.getClickCount() > 1) {
 			if (e.getComponent().getParent() == aufHand && zug) {
+
 				gewaehlt = (JLabel) e.getComponent();
 				gewaehlteKarte = handkarte();
 
@@ -1274,11 +1430,17 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		cbMenuItem.addActionListener(this);
 		menu.add(cbMenuItem);
 
-		// Hilfe: Stiche Werten in neuem Fenster angezeigt
+		// Hilfe: Stiche werden in neuem Fenster angezeigt
 		cbMenuItem2 = new JCheckBoxMenuItem("Vergangene Stiche anzeigen");
 		cbMenuItem2.setMnemonic(KeyEvent.VK_A);
 		cbMenuItem2.addActionListener(this);
 		menu.add(cbMenuItem2);
+
+		// Hilfe: Stiche werden in neuem Fenster angezeigt
+		cbMenuItem3 = new JCheckBoxMenuItem("Letzten Stich anzeigen");
+		cbMenuItem3.setMnemonic(KeyEvent.VK_L);
+		cbMenuItem3.addActionListener(this);
+		menu.add(cbMenuItem3);
 
 		this.setJMenuBar(menuBar);
 
@@ -1326,8 +1488,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	}
 
 	/**
-	 * Die Methode beschreibt das Verhalten beim Loslassen einer Taste, wenn
-	 * der Fokus auf der Komponente ist.
+	 * Die Methode beschreibt das Verhalten beim Loslassen einer Taste, wenn der
+	 * Fokus auf der Komponente ist.
 	 */
 	public void keyReleased(KeyEvent e) {
 		JLabel label = new JLabel();
@@ -1345,9 +1507,9 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			// Wurde die linke Pfeiltaste gedrueckt, wird diese Schleife
 			// betreten
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				
+
 				gewaehlteKarte(true);
-				
+
 				label = (JLabel) aufHand.getComponent(gewaehlteKarte);
 				label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 				// Ist die alte gewaehlte Karte nicht gleich der neuen
@@ -1363,9 +1525,9 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			// Wurde die rechte Pfeiltaste gedrueckt, wird diese Schleife
 			// betreten
 			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-				
+
 				gewaehlteKarte(false);
-				
+
 				label = (JLabel) aufHand.getComponent(gewaehlteKarte);
 				label.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
@@ -1395,16 +1557,18 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	}
 
 	/**
-	 * Die Methode beschreibt das Verhalten beim Tippen einer Taste, wenn
-	 * der Fokus auf der Komponente ist.
+	 * Die Methode beschreibt das Verhalten beim Tippen einer Taste, wenn der
+	 * Fokus auf der Komponente ist.
 	 */
 	public void keyTyped(KeyEvent e) {
 
 	}
-	
+
 	/**
 	 * Die Methode &auml;ndert die Variable gewaehlteKarte
-	 * @param rechts falls die rechte Pfeiltaste genutzt wurde
+	 * 
+	 * @param rechts
+	 *            falls die rechte Pfeiltaste genutzt wurde
 	 */
 	public void gewaehlteKarte(boolean rechts) {
 		if (rechts) {
@@ -1450,46 +1614,47 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		JLabel auswert = new JLabel("Prozent der Alleinspiele:");
 		JLabel gewinne = new JLabel("Anzahl der Gewinne:");
 		JLabel hand = new JLabel("Handspiele:");
-	
-		setzeStats(auswert, 0, 2);
-		setzeStats(gewinne, 0, 3);
-		setzeStats(hand, 0, 4);
-		
-		setzeStats(auswert1, 1, 2);
-		setzeStats(gewinne1, 1, 3);
-		setzeStats(hand1, 1, 4);
-		
-		setzeStats(auswert2, 2, 2);
-		setzeStats(gewinne2, 2, 3);
-		setzeStats(hand2, 2, 4);
-		
-		setzeStats(auswert3, 3, 2);
-		setzeStats(gewinne3, 3, 3);
-		setzeStats(hand3, 3, 4);
+
+		setzeStats(auswert, 0, 2 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(gewinne, 0, 3 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(hand, 0, 4 + tisch.getSpieler1().getSpiele().size());
+
+		setzeStats(auswert1, 1, 2 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(gewinne1, 1, 3 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(hand1, 1, 4 + tisch.getSpieler1().getSpiele().size());
+
+		setzeStats(auswert2, 2, 2 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(gewinne2, 2, 3 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(hand2, 2, 4 + tisch.getSpieler1().getSpiele().size());
+
+		setzeStats(auswert3, 3, 2 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(gewinne3, 3, 3 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(hand3, 3, 4 + tisch.getSpieler1().getSpiele().size());
 
 		pack();
 		rechteSeite.repaint();
 
 	}
-	
+
 	/**
 	 * Setzt den Text f&uuml;r die Statistikausgabe
-	 * @param spieler Der Spieler, dessen Statistik ausgegeben werden soll
+	 * 
+	 * @param spieler
+	 *            Der Spieler, dessen Statistik ausgegeben werden soll
 	 * @return Das Array mit den Strings, die die Daten enthalten
 	 */
 	public String[] statistikText(ISpieler spieler) {
 		String[] s = new String[3];
-		
-		//Prozent allein
-		s[0]= tisch.getProzentAllein(spieler) + "("
-		+ +tisch.getAnzahlAllein(spieler) + ")";
-		//Anzahl Gewinne
-		s[1]= tisch.anzahlderGewinne(spieler) + "/"
-		+ tisch.getAnzahlAllein(spieler);
-		//Handspiele
-		s[2]= spieler.getHandspiele() + "/"
-		+ tisch.getAnzahlAllein(spieler);
-		
+
+		// Prozent allein
+		s[0] = tisch.getProzentAllein(spieler) + "("
+				+ +tisch.getAnzahlAllein(spieler) + ")";
+		// Anzahl Gewinne
+		s[1] = tisch.anzahlderGewinne(spieler) + "/"
+				+ tisch.getAnzahlAllein(spieler);
+		// Handspiele
+		s[2] = spieler.getHandspiele() + "/" + tisch.getAnzahlAllein(spieler);
+
 		return s;
 	}
 
