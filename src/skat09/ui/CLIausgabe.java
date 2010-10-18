@@ -37,7 +37,10 @@ public class CLIausgabe extends Ausgabe {
 	//
 	// Datenfelder
 	//
-	
+	/**
+	 * localisation variable
+	 * http://code.google.com/p/gettext-commons/
+	 */
 	private I18n i18n;
 	/**
 	 * Der Tisch, auf dem gespielt wird
