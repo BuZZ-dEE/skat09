@@ -114,11 +114,11 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	//
 
 	/**
-	 * Gibt die Eigenschaften einer Karte als Sting aus.
+	 * Gibt die Eigenschaften einer Karte als String aus.
 	 * @return Eigenschaften der Karte
 	 */
 	public String toString() {
-		String string ="";
+		String string = "";
 		if (deutsch == false) {
 		string = farbe + " " + wert;
 		} else {
