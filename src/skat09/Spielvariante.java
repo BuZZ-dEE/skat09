@@ -12,5 +12,4 @@ public enum Spielvariante {
 	RAEUBER, 
 	SKAT, 
 	RAMSCHBOCK
-
 }

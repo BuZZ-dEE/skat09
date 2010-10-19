@@ -28,7 +28,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	 */
 	private ISpieler besitzer;
 	/**
-	 * Feld das angiebt, ob deutsches oder franz&ouml;sisches Blatt benutzt wird
+	 * Feld das angibt, ob deutsches oder franz&ouml;sisches Blatt benutzt wird
 	 */
 	private static boolean deutsch;
 

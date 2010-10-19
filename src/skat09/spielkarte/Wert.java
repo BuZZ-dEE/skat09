@@ -43,5 +43,4 @@ public enum Wert {
 	 * Halter des Farbwertes Ass
 	 */
 	ASS
-
 }
