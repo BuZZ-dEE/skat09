@@ -14,5 +14,4 @@ public enum Position {
 	 * Halter f&uuml;r die Position Hinterhand
 	 */
 	HINTERHAND
-
 }

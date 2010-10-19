@@ -18,5 +18,4 @@ public enum Spielartbezeichnung {
 	 * Halter der Spielart "Ramsch"
 	 */
 	RAMSCH
-
 }
