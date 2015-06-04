@@ -1,7 +1,7 @@
-*A Skat Game*
+**A Skat Game**
 
 
-_TODOs:_
+__TODOs:__
 
 1. Localisation 
 2. Network game
