@@ -1,4 +1,7 @@
-TODO:
+*A Skat Game*
 
-1. Localisation (gettext)
-http://code.google.com/p/gettext-commons/
+
+_TODOs:_
+
+1. Localisation 
+2. Network game
