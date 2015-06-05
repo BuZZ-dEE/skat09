@@ -2,13 +2,10 @@ package skat09.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 import skat09.spielart.Farbspiel;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IAusgabe;
-import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 

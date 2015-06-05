@@ -6,7 +6,6 @@ import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import skat09.Controller;
 import skat09.Tisch;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
@@ -14,7 +13,6 @@ import skat09.spielart.Nullspiel;
 import skat09.spieler.SpielerEnum;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
-import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 import skat09.ui.gui.*;
@@ -375,7 +373,7 @@ public class GUIausgabe extends Ausgabe {
 		int wert = hfenster.getReizlim();
 		while (!fertig) {
 
-			SortedSet reizwerte = tisch.getReizwerte();
+			SortedSet<Integer> reizwerte = tisch.getReizwerte();
 			if (reizwerte.contains(wert) || wert == 0) {
 				fertig = true;
 			} else {

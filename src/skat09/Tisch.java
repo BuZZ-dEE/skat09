@@ -273,7 +273,7 @@ public class Tisch extends Observable {
 	 * @return SortedSet (sortierte Reizwerte, die nicht doppelt vorkommen
 	 *         k&ouml;nnen)
 	 */
-	public SortedSet getReizwerte() {
+	public SortedSet<Integer> getReizwerte() {
 
 		return reizwerte;
 	}

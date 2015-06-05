@@ -5,11 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,6 +25,11 @@ import skat09.spielkarte.Spielkarte;
  * @version 03.07.2009
  */
 public class Stiche extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6359770795617608420L;
 
 	/**
 	 * Das Panel, auf dem die Karten ausgegeben werden sollen.

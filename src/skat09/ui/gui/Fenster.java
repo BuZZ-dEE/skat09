@@ -35,6 +35,10 @@ import skat09.ui.GUIausgabe;
  */
 public class Fenster extends JFrame implements ActionListener, KeyListener {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1429828124945726723L;
+	/**
 	 * das Hauptfenster, in das die verschiednen Bereich wie Logo, Optionen etc.
 	 * integirert werden
 	 */
@@ -50,11 +54,11 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	/**
 	 * Wahlbox f&uuml;r den ersten Gegner
 	 */
-	private JComboBox gegner1;
+	private JComboBox<String> gegner1;
 	/**
 	 * Wahlbox f&uuml;r den zweiten Gegner
 	 */
-	private JComboBox gegner2;
+	private JComboBox<String> gegner2;
 	/**
 	 * Eingabefeld in das der menschliche Spiel seinen
 	 * Spielname eingeben kann
@@ -63,12 +67,12 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	/**
 	 * Wahlbox f&uuml;r die Skatvariante
 	 */
-	private JComboBox skatvariante;
+	private JComboBox<String> skatvariante;
 	/**
 	 * Wahl, ob nach deutschen oder franz&ouml;sischem Blatt
 	 * gespielt werden soll
 	 */
-	private JComboBox blattwahl;
+	private JComboBox<String> blattwahl;
 	/**
 	 * Zeigt an wo der Spielername eingetragen werden soll
 	 */
@@ -270,22 +274,22 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		lname.setLabelFor(name);
 
 		// ComboBox mit Label:
-		gegner1 = new JComboBox(gegner);
+		gegner1 = new JComboBox<String>(gegner);
 		gegner1.setSelectedIndex(1);
 		lgegner1.setLabelFor(gegner1);
 
 		// Combobox Gegner2 mit Label:
-		gegner2 = new JComboBox(gegner);
+		gegner2 = new JComboBox<String>(gegner);
 		gegner2.setSelectedIndex(1);
 		lgegner2.setLabelFor(gegner2);
 
 		// Combobox Skatvariante mit Label
-		skatvariante = new JComboBox(variante);
+		skatvariante = new JComboBox<String>(variante);
 		skatvariante.setSelectedIndex(0);
 		lvariante.setLabelFor(skatvariante);
 
 		// ComboBox Blattwahl mit Label
-		blattwahl = new JComboBox(blattwahl2);
+		blattwahl = new JComboBox<String>(blattwahl2);
 		blattwahl.setSelectedIndex(1);
 		lblattw.setLabelFor(blattwahl);
 

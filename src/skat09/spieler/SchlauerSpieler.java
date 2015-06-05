@@ -81,6 +81,7 @@ public class SchlauerSpieler extends Spieler {
 	 * 
 	 * @param blatt
 	 */
+	@SuppressWarnings("unchecked")
 	public void setAnfangsblatt(ArrayList<Spielkarte> blatt) {
 
 		anfangsBlatt = (ArrayList<Spielkarte>) blatt.clone();
@@ -1687,6 +1688,8 @@ public class SchlauerSpieler extends Spieler {
 
 			case NULL:
 				maxReizwertNull();
+				break;
+			default:
 				break;
 			}
 		}

@@ -76,6 +76,7 @@ public class RegelkonformerSpielerTest {
 	//aus seinem Blatt. Es wird getestet, ob die gespielte
 	//Karte vorher im Blatt enthalten war und daraufhin auch 
 	//entfernt wurde.
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testSpieleKarte() {
 	
