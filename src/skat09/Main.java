@@ -1,6 +1,8 @@
 package skat09;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -19,6 +21,8 @@ import skat09.ui.GUIausgabe;
  * @version 03.07.2009
  */
 public class Main {
+	
+	private static ResourceBundle messages;
 
 	/**
 	 * Die Mainmethode f&uuml;hrt das Programm aus.
@@ -31,9 +35,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		Tisch tisch = new Tisch();
-
+		Locale locale = Locale.getDefault();
+		messages = ResourceBundle.getBundle("languages.message", locale);
 		String s = null;
 		IAusgabe ausgabe;
+		
 		try {
 			s = args[0];
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -68,5 +74,18 @@ public class Main {
 		controller.spiel();
 
 	}
-
+	
+	/**
+	 * Get the translation for the given key for current locale.
+	 * 
+	 * @param {String} key , the message key
+	 * @return {String} the translation
+	 * 
+	 * @since 05.06.2015 21:50:06
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 */
+	public static String getI18n(String key) {
+		return messages.getString(key);
+	}
 }

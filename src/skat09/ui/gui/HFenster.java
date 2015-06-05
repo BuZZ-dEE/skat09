@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -33,6 +34,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 
+import skat09.Main;
 import skat09.Tisch;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
@@ -51,6 +53,10 @@ import skat09.ui.GUIausgabe;
 public class HFenster extends JFrame implements ActionListener, MouseListener,
 		KeyListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3601814665019765071L;
 	/**
 	 * Das JPanel, das die Karten der Gegner darstellt
 	 */
@@ -206,6 +212,10 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 * letzte Stiche angezeigt werden soll
 	 */
 	private JCheckBoxMenuItem cbMenuItem3;
+	/**
+	 * 
+	 */
+	private JCheckBoxMenuItem cbMenuItem4;
 	/**
 	 * Das Panel rechteSeite soll scrollbar sein
 	 */
@@ -499,7 +509,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		aufTisch.setFocusable(false);
 		aufTisch.setLayout(new FlowLayout());
 
-		infobox.setBorder(BorderFactory.createTitledBorder("Spielergebnis:"));
+		infobox.setBorder(BorderFactory.createTitledBorder(Main.getI18n("game.score") + ":"));
 		aufTisch.setPreferredSize(new Dimension(500, 120));
 		infobox.setPreferredSize(new Dimension(500, 50));
 
@@ -589,7 +599,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void skataufTisch() {
 		Spielkarte[] skat = tisch.getSkat();
 		aufTisch.removeAll();
-		JButton button = new JButton("Skat gesehen");
+		JButton button = new JButton(Main.getI18n("game.skat.seen"));
 		button.setName("Skat");
 		button.setPreferredSize(new Dimension(150, 30));
 		button.addActionListener(this);
@@ -631,10 +641,10 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		JLabel punkte;
 		JLabel punkte1;
 		JLabel punkte2;
-		JLabel punkt = new JLabel("Gesamtpunktzahl:");
-		JLabel name = new JLabel("Name:");
-		JLabel augen = new JLabel("Augen:");
-		JLabel grund = new JLabel("Grundw.:");
+		JLabel punkt = new JLabel(Main.getI18n("game.score.total") + ":");
+		JLabel name = new JLabel(Main.getI18n("player.name") + ":");
+		JLabel augen = new JLabel(Main.getI18n("game.augen") + ":");
+		JLabel grund = new JLabel(Main.getI18n("game.value.basic") + ":");
 
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -680,7 +690,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 * wenn der Spieler es w&uuml;scht.
 	 */
 	public void neuesSpiel(){
-		JButton button = new JButton("Neues Spiel");
+		JButton button = new JButton(Main.getI18n("game.new"));
 		button.addActionListener(this);
 		aufTisch.removeAll();
 		aufTisch.add(button);
@@ -705,7 +715,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 * Schreibt die Punkteliste in die Auswertungsbox
 	 */
 	public void punkteliste() {
-		JLabel punkt = new JLabel("Punkte:");
+		JLabel punkt = new JLabel(Main.getI18n("game.points") + ":");
 		JLabel punkte;
 		JLabel punkte1;
 		JLabel punkte2;
@@ -1441,6 +1451,14 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		cbMenuItem3.setMnemonic(KeyEvent.VK_L);
 		cbMenuItem3.addActionListener(this);
 		menu.add(cbMenuItem3);
+		
+		// About
+		menu = new JMenu(Main.getI18n("application.about"));
+		cbMenuItem4 = new JCheckBoxMenuItem("Vergangene Stiche anzeigen");
+		cbMenuItem4.setMnemonic(KeyEvent.VK_U);
+		cbMenuItem4.addActionListener(this);
+		menu.add(cbMenuItem4);
+		menuBar.add(menu);
 
 		this.setJMenuBar(menuBar);
 

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.SortedSet;
 
+import skat09.Main;
 import skat09.Tisch;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
@@ -66,7 +67,7 @@ public class CLIausgabe extends Ausgabe {
 	 */
 	public CLIausgabe(Tisch tisch) {
 		
-		System.out.println("Herzlich Willkommen bei Skat09.");
+		System.out.println(Main.getI18n("application.welcome"));
 		this.tisch = tisch;
 
 	}
@@ -714,7 +715,7 @@ public class CLIausgabe extends Ausgabe {
 		ergebnis = intEinlesen();
 		while (!fertig) {
 
-			SortedSet reizwerte = tisch.getReizwerte();
+			SortedSet<Integer> reizwerte = tisch.getReizwerte();
 			if (reizwerte.contains(ergebnis) || ergebnis == 0) {
 
 				fertig = true;
