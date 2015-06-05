@@ -335,7 +335,7 @@ public class CLIausgabe extends Ausgabe {
 		System.out
 				.println("Bitte waehlen Sie ihre Spielart aus durch Eingabe der"
 						+ " entsprechenden Nummer.");
-		for (Enum spielartbezeichnung : Spielartbezeichnung.values()) {
+		for (Enum<Spielartbezeichnung> spielartbezeichnung : Spielartbezeichnung.values()) {
 
 			System.out.println(zaehler + ": " + spielartbezeichnung);
 			zaehler++;
@@ -372,7 +372,7 @@ public class CLIausgabe extends Ausgabe {
 
 		System.out.println("Welche Farbe soll Trumpf sein? Waehlen Sie die"
 				+ " entsprechende Nummer!");
-		for (Enum farbe : Farbe.values()) {
+		for (Enum<Farbe> farbe : Farbe.values()) {
 
 			System.out.println(zaehler + ": " + farbe);
 			zaehler++;
