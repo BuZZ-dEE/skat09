@@ -441,7 +441,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		gegnerHand = new JPanel();
 		gegnerHand.setFocusable(false);
 		gegnerHand.setLayout(new FlowLayout());
-		gegnerHand.setBorder(BorderFactory.createTitledBorder("Gegner"));
+		gegnerHand.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("player.adversary")));
 		add(gegnerHand, BorderLayout.NORTH);
 	}
 
@@ -451,7 +451,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void aufHandInit() {
 		aufHand = new JPanel();
 
-		aufHand.setBorder(BorderFactory.createTitledBorder("Ihr Blatt "));
+		aufHand.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.deck.yours") + " "));
 		aufHand.setPreferredSize(new Dimension(960, 150));
 		aufHand.setFocusCycleRoot(false);
 		aufHand.addKeyListener(this);
@@ -466,7 +466,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		linkeSeite = new JPanel();
 		linkeSeite.setFocusable(false);
 		linkeSeite.setLayout(new BoxLayout(linkeSeite, BoxLayout.PAGE_AXIS));
-		linkeSeite.setBorder(BorderFactory.createTitledBorder("Spielinfos"));
+		linkeSeite.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.infos")));
 		linkeSeite.setPreferredSize(new Dimension(150, 300));
 
 		add(linkeSeite, BorderLayout.WEST);
@@ -480,7 +480,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		rechteSeite = new JPanel();
 		rechteSeite.setFocusable(false);
 		rechteSeite.setLayout(new GridBagLayout());
-		rechteSeite.setBorder(BorderFactory.createTitledBorder("Auswertung:"));
+		rechteSeite.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.evaluation") + ":"));
 		// rechteSeite.setPreferredSize(new Dimension(400, 150));
 		scroller = new JScrollPane(rechteSeite);
 		scroller.setPreferredSize(new Dimension(150, 300));
@@ -533,7 +533,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void blattAusgeben(ISpieler spieler) throws IOException {
 
 		aufHand.removeAll();
-		aufHand.setBorder(BorderFactory.createTitledBorder("Ihr Blatt: "
+		aufHand.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.deck.yours") + ": "
 				+ spieler.getPosition().toString()));
 
 		for (Spielkarte karte : spieler.getBlatt()) {
@@ -604,7 +604,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		button.setPreferredSize(new Dimension(150, 30));
 		button.addActionListener(this);
 
-		for (int i = 0; i < skat.length; i++) {
+//		for (int i = 0; i < skat.length; i++) {
+		for (int i = 0; i < 2; i++) {
 
 			Image image;
 
@@ -856,7 +857,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		// JOptionPane ok = new JOptionPane();
 
 		JOptionPane.showMessageDialog(null,
-				"Falsche Auswahl! Andere Karte waehlen!");
+				Messages.getI18n("game.card.other.choose"));
 		aufTisch.removeAll();
 		aufHand.setFocusCycleRoot(false);
 	}
@@ -870,7 +871,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void reizLimfest() {
 		String s = (String) JOptionPane.showInputDialog(null,
-				"Bitte geben Sie einen Reizwert an: (0 fuer passen)");
+				Messages.getI18n("game.agent.value.appeal.enter"));
 
 		// If a string was returned, say so.
 		if ((s != null) && (s.length() > 0)) {
@@ -902,8 +903,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
-		int n = JOptionPane.showOptionDialog(null, "Wollen Sie Hand spielen?", // question
-				"Handspiel", // title
+		int n = JOptionPane.showOptionDialog(null, Messages.getI18n("game.handgame.play.choose"), // question
+				Messages.getI18n("game.handgame"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
 
@@ -925,8 +926,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
-				"Wollen Sie Schneider ansagen?", // question
-				"Schneider", // title
+				Messages.getI18n("game.schneider.play.choose"), // question
+				Messages.getI18n("game.schneider"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
 
@@ -947,8 +948,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
-				"Wollen Sie Schwarz ansagen?", // question
-				"Schwarz", // title
+				Messages.getI18n("game.schwarz.play.choose"), // question
+				Messages.getI18n("game.schwarz"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
 
@@ -969,8 +970,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
-				"Wollen Sie ouvert spielen?", // question
-				"Ouvert", // title
+				Messages.getI18n("game.ouvert.play.choose"), // question
+				Messages.getI18n("game.ouvert"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
 
@@ -988,17 +989,23 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void ansagen() {
 		aufHand.repaint();
-		String[] spielart = { "Karo", "Herz", "Pik", "Kreuz", "Grand", "Null" };
+		String[] spielart = { 
+				Messages.getI18n("game.type.diamonds"), 
+				Messages.getI18n("game.type.hearts"), 
+				Messages.getI18n("game.type.spades"), 
+				Messages.getI18n("game.type.clubs"), 
+				Messages.getI18n("game.type.grand"), 
+				Messages.getI18n("game.type.null") };
 
 		if (Spielkarte.getDeutsch()) {
-			spielart[0] = "Schellen";
-			spielart[1] = "Herz";
-			spielart[2] = "Gruen";
-			spielart[3] = "Eichel";
+			spielart[0] = Messages.getI18n("game.type.german.schellen");
+			spielart[1] = Messages.getI18n("game.type.german.herz");
+			spielart[2] = Messages.getI18n("game.type.german.gruen");
+			spielart[3] = Messages.getI18n("game.type.german.eichel");
 		}
 
 		String spielarte = (String) JOptionPane.showInputDialog(null,
-				"Spielart", "Bitte die Spielart waehlen!",
+				Messages.getI18n("game.type"), Messages.getI18n("game.type.selection"),
 				JOptionPane.QUESTION_MESSAGE, null, spielart, spielart[0]);
 		this.spielart = spielarte;
 		ausgabe.setRelease(true);
@@ -1145,8 +1152,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
-				"Wollen Sie den Reizagenten nutzen ?", // question
-				"Reizagent", // title
+				Messages.getI18n("game.agent.appeal.use"), // question
+				Messages.getI18n("game.agent.appeal"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
 
@@ -1171,9 +1178,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		pack();
 		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
-		int n = JOptionPane.showOptionDialog(null, "Sagen Sie " + reizwert
-				+ "?", // question
-				"Sagen", // title
+		int n = JOptionPane.showOptionDialog(null, Messages.getI18n("game.say.appeal.question", reizwert), // question
+				Messages.getI18n("game.say"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
 
