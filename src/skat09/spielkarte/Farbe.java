@@ -9,7 +9,7 @@ package skat09.spielkarte;
  */
 public enum Farbe {
 	
-	/*
+	/**
 	 * Halter der Farbe Karo
 	 */
 	KARO(9),
