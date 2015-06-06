@@ -34,7 +34,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 
-import skat09.Main;
+import skat09.Messages;
 import skat09.Tisch;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
@@ -237,7 +237,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public HFenster(Tisch tisch, GUIausgabe ausgabe) {
 
-		super(Main.getI18n("application.name"));
+		super(Messages.getI18n("application.name"));
 		this.ausgabe = ausgabe;
 		this.tisch = tisch;
 
@@ -509,7 +509,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		aufTisch.setFocusable(false);
 		aufTisch.setLayout(new FlowLayout());
 
-		infobox.setBorder(BorderFactory.createTitledBorder(Main.getI18n("game.score") + ":"));
+		infobox.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.score") + ":"));
 		aufTisch.setPreferredSize(new Dimension(500, 120));
 		infobox.setPreferredSize(new Dimension(500, 50));
 
@@ -599,7 +599,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void skataufTisch() {
 		Spielkarte[] skat = tisch.getSkat();
 		aufTisch.removeAll();
-		JButton button = new JButton(Main.getI18n("game.skat.seen"));
+		JButton button = new JButton(Messages.getI18n("game.skat.seen"));
 		button.setName("Skat");
 		button.setPreferredSize(new Dimension(150, 30));
 		button.addActionListener(this);
@@ -641,10 +641,10 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		JLabel punkte;
 		JLabel punkte1;
 		JLabel punkte2;
-		JLabel punkt = new JLabel(Main.getI18n("game.score.total") + ":");
-		JLabel name = new JLabel(Main.getI18n("player.name") + ":");
-		JLabel augen = new JLabel(Main.getI18n("game.augen") + ":");
-		JLabel grund = new JLabel(Main.getI18n("game.value.basic") + ":");
+		JLabel punkt = new JLabel(Messages.getI18n("game.score.total") + ":");
+		JLabel name = new JLabel(Messages.getI18n("player.name") + ":");
+		JLabel augen = new JLabel(Messages.getI18n("game.augen") + ":");
+		JLabel grund = new JLabel(Messages.getI18n("game.value.basic") + ":");
 
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -690,7 +690,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 * wenn der Spieler es w&uuml;scht.
 	 */
 	public void neuesSpiel(){
-		JButton button = new JButton(Main.getI18n("game.new"));
+		JButton button = new JButton(Messages.getI18n("game.new"));
 		button.addActionListener(this);
 		aufTisch.removeAll();
 		aufTisch.add(button);
@@ -715,7 +715,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 * Schreibt die Punkteliste in die Auswertungsbox
 	 */
 	public void punkteliste() {
-		JLabel punkt = new JLabel(Main.getI18n("game.points") + ":");
+		JLabel punkt = new JLabel(Messages.getI18n("game.points") + ":");
 		JLabel punkte;
 		JLabel punkte1;
 		JLabel punkte2;
@@ -900,7 +900,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void handspiel() {
 		handspiel = false;
 
-		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null, "Wollen Sie Hand spielen?", // question
 				"Handspiel", // title
@@ -922,7 +922,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void schneider() {
 		schneider = false;
-		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				"Wollen Sie Schneider ansagen?", // question
@@ -944,7 +944,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void schwarz() {
 		schwarz = false;
-		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				"Wollen Sie Schwarz ansagen?", // question
@@ -966,7 +966,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void ouvert() {
 		ouvert = false;
-		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				"Wollen Sie ouvert spielen?", // question
@@ -1061,7 +1061,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void spielBeginnt() {
 
-		JOptionPane.showMessageDialog(null, Main.getI18n("game.begin.announcement"));
+		JOptionPane.showMessageDialog(null, Messages.getI18n("game.begin.announcement"));
 
 	}
 
@@ -1074,8 +1074,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void stichGewonnen(ISpieler spieler) {
 
-		JOptionPane.showMessageDialog(null, spieler.getName()
-				+ " hat den Stich gewonnen!");
+		JOptionPane.showMessageDialog(null, Messages.getI18n("player.trick.won", spieler.getName()));
 		aufTisch.removeAll();
 		pack();
 
@@ -1143,7 +1142,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 		pack();
 		reizagent = false;
-		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				"Wollen Sie den Reizagenten nutzen ?", // question
@@ -1170,7 +1169,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void sagen(int reizwert) {
 		pack();
-		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null, "Sagen Sie " + reizwert
 				+ "?", // question
@@ -1196,7 +1195,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void hoeren(int reizwert) {
 		pack();
-		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null, "Es wird " + reizwert
 				+ " gereizt. Gehen Sie mit?", // question
@@ -1453,7 +1452,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		menu.add(cbMenuItem3);
 		
 		// About
-		menu = new JMenu(Main.getI18n("application.about"));
+		menu = new JMenu(Messages.getI18n("application.about"));
 		cbMenuItem4 = new JCheckBoxMenuItem("Vergangene Stiche anzeigen");
 		cbMenuItem4.setMnemonic(KeyEvent.VK_U);
 		cbMenuItem4.addActionListener(this);

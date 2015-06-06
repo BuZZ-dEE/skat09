@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.SortedSet;
 
-import skat09.Main;
+import skat09.Messages;
 import skat09.Tisch;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
@@ -67,7 +67,7 @@ public class CLIausgabe extends Ausgabe {
 	 */
 	public CLIausgabe(Tisch tisch) {
 		
-		System.out.println(Main.getI18n("application.welcome"));
+		System.out.println(Messages.getI18n("application.welcome"));
 		this.tisch = tisch;
 
 	}
@@ -524,8 +524,7 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public void stichGewonnen(ISpieler spieler) {
 
-		System.out.println(">> " + spieler.getName()
-				+ " hat den Stich gewonnen.");
+		System.out.println(">> " + Messages.getI18n("player.trick.won", spieler.getName()));
 	}
 
 	/**

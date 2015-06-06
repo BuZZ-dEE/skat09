@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import skat09.Main;
+import skat09.Messages;
 import skat09.spieler.SpielerEnum;
 import skat09.ui.GUIausgabe;
 
@@ -153,7 +153,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 *            released werden kann.
 	 */
 	public Fenster(GUIausgabe ausgabe) {
-		super(Main.getI18n("application.settings"));
+		super(Messages.getI18n("application.settings"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.ausgabe = ausgabe;
@@ -257,21 +257,21 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	private void erstelleOptions() {
 
 		// Beschriftungen der ComboBoxes
-		String[] gegner = { Main.getI18n("player.granny"), Main.getI18n("player.rule.compliant"), Main.getI18n("player.smart") };
-		String[] variante = { Main.getI18n("game.skat.international"), Main.getI18n("game.skat.raeuber"),
-				Main.getI18n("game.skat.ramschbock") };
-		String[] blattwahl2 = { Main.getI18n("game.skat.sheet.german"), Main.getI18n("game.skat.sheet.french") };
+		String[] gegner = { Messages.getI18n("player.granny"), Messages.getI18n("player.rule.compliant"), Messages.getI18n("player.smart") };
+		String[] variante = { Messages.getI18n("game.skat.international"), Messages.getI18n("game.skat.raeuber"),
+				Messages.getI18n("game.skat.ramschbock") };
+		String[] blattwahl2 = { Messages.getI18n("game.skat.sheet.german"), Messages.getI18n("game.skat.sheet.french") };
 
 		// Namen der Items
-		lname = new JLabel(Main.getI18n("player.name") + ":", JLabel.TRAILING);
-		lgegner1 = new JLabel(Main.getI18n("player.adversary.first") + ":", JLabel.TRAILING);
-		lgegner2 = new JLabel(Main.getI18n("player.adversary.second") + ":", JLabel.TRAILING);
-		lvariante = new JLabel(Main.getI18n("game.skat.variant") + ":", JLabel.TRAILING);
-		lsechser = new JLabel(Main.getI18n("game.skat.variant.six") + ":", JLabel.TRAILING);
-		lblattw = new JLabel(Main.getI18n("game.sheet.choice") + ":", JLabel.TRAILING);
+		lname = new JLabel(Messages.getI18n("player.name") + ":", JLabel.TRAILING);
+		lgegner1 = new JLabel(Messages.getI18n("player.adversary.first") + ":", JLabel.TRAILING);
+		lgegner2 = new JLabel(Messages.getI18n("player.adversary.second") + ":", JLabel.TRAILING);
+		lvariante = new JLabel(Messages.getI18n("game.skat.variant") + ":", JLabel.TRAILING);
+		lsechser = new JLabel(Messages.getI18n("game.skat.variant.six") + ":", JLabel.TRAILING);
+		lblattw = new JLabel(Messages.getI18n("game.sheet.choice") + ":", JLabel.TRAILING);
 
 		// Textfeld
-		name = new JTextField(Main.getI18n("player"));
+		name = new JTextField(Messages.getI18n("player"));
 		lname.setLabelFor(name);
 
 		// ComboBox mit Label:
