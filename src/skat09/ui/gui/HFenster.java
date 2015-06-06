@@ -237,7 +237,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public HFenster(Tisch tisch, GUIausgabe ausgabe) {
 
-		super("Skat 09");
+		super(Main.getI18n("application.name"));
 		this.ausgabe = ausgabe;
 		this.tisch = tisch;
 
@@ -900,7 +900,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void handspiel() {
 		handspiel = false;
 
-		String[] yesNoOptions = { "Ja", "Nein" };
+		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null, "Wollen Sie Hand spielen?", // question
 				"Handspiel", // title
@@ -922,7 +922,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void schneider() {
 		schneider = false;
-		String[] yesNoOptions = { "Ja", "Nein" };
+		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				"Wollen Sie Schneider ansagen?", // question
@@ -944,7 +944,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void schwarz() {
 		schwarz = false;
-		String[] yesNoOptions = { "Ja", "Nein" };
+		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				"Wollen Sie Schwarz ansagen?", // question
@@ -966,7 +966,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void ouvert() {
 		ouvert = false;
-		String[] yesNoOptions = { "Ja", "Nein" };
+		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				"Wollen Sie ouvert spielen?", // question
@@ -1061,7 +1061,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void spielBeginnt() {
 
-		JOptionPane.showMessageDialog(null, "Das Spiel beginnt!");
+		JOptionPane.showMessageDialog(null, Main.getI18n("game.begin.announcement"));
 
 	}
 
@@ -1143,7 +1143,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 		pack();
 		reizagent = false;
-		String[] yesNoOptions = { "Ja", "Nein" };
+		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				"Wollen Sie den Reizagenten nutzen ?", // question
@@ -1170,7 +1170,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void sagen(int reizwert) {
 		pack();
-		String[] yesNoOptions = { "Ja", "Nein" };
+		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null, "Sagen Sie " + reizwert
 				+ "?", // question
@@ -1196,7 +1196,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void hoeren(int reizwert) {
 		pack();
-		String[] yesNoOptions = { "Ja", "Nein" };
+		String[] yesNoOptions = { Main.getI18n("application.yes"), Main.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null, "Es wird " + reizwert
 				+ " gereizt. Gehen Sie mit?", // question
