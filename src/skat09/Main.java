@@ -55,13 +55,13 @@ public class Main {
 				UIManager.setLookAndFeel(UIManager
 						.getSystemLookAndFeelClassName());
 			} catch (UnsupportedLookAndFeelException e) {
-				// handle exception
+				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				// handle exception
+				e.printStackTrace();
 			} catch (InstantiationException e) {
-				// handle exception
+				e.printStackTrace();
 			} catch (IllegalAccessException e) {
-				// handle exception
+				e.printStackTrace();
 			}
 
 			ausgabe = new GUIausgabe(tisch);
