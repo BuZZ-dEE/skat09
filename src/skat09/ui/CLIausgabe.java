@@ -79,9 +79,7 @@ public class CLIausgabe extends Ausgabe {
 	public void falscheEingabe() {
 
 		System.out
-				.println("ACHTUNG: Leider haben Sie einen ungueltigen Wert "
-						+ "eingegeben. Bitte lesen Sie die folgende Anweisung gruendlich "
-						+ "und versuchen Sie es erneut.");
+				.println(Messages.getI18n("application.output.input.wrong"));
 	}
 
 	/**
@@ -95,14 +93,12 @@ public class CLIausgabe extends Ausgabe {
 		boolean eingabeKorrekt = false;
 		boolean ergebnis = false;
 
-		System.out.println("Ihr Gegenspieler hat den Wert " + wert
-				+ " gereizt. Moechten Sie "
-				+ "mitgehen [m] oder aussteigen [a]?");
+		System.out.println(Messages.getI18n("game.commandline.hold", wert));
 
 		String eingabe = einlesen();
 
 		while (!eingabeKorrekt) {
-
+			// TODO also i18n user input
 			if (eingabe.equalsIgnoreCase("m")) {
 
 				ergebnis = true;
@@ -115,7 +111,7 @@ public class CLIausgabe extends Ausgabe {
 				eingabeKorrekt = true;
 			} else {
 
-				System.out.println("Falsche Eingabe. Versuchen Sie es erneut!");
+				System.out.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
 		return ergebnis;
@@ -126,7 +122,7 @@ public class CLIausgabe extends Ausgabe {
 
 		String name = spieler.getName();
 
-		System.out.println(name + " : Ich bin weg!");
+		System.out.println(Messages.getI18n("game.hear.off", name));
 		leerzeile();
 	}
 
@@ -139,7 +135,7 @@ public class CLIausgabe extends Ausgabe {
 	 */
 	public boolean sagen(int reizWert) {
 
-		System.out.println("Sagen Sie " + reizWert + "?");
+		System.out.println(Messages.getI18n("game.say.value", reizWert));
 
 		return jaNeinAbfrage();
 	}
@@ -151,7 +147,7 @@ public class CLIausgabe extends Ausgabe {
 
 	@Override
 	public String name() {
-		System.out.println("Bitte geben Sie sich einen Namen!");
+		System.out.println(Messages.getI18n("game.name.enter"));
 		String s = "";
 
 		try {
