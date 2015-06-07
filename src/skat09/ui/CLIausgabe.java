@@ -168,22 +168,22 @@ public class CLIausgabe extends Ausgabe {
 
 		if (nummer == 1) {
 
-			System.out.println("Bitte waehlen Sie ihren ersten Gegner!");
+			System.out.println(Messages.getI18n("game.commandline.adversary.first.choose"));
+			
+		} else if (nummer == 2) {
+
+			System.out.println(Messages.getI18n("game.commandline.adversary.second.choose"));
+			
+		} else {
+
+			System.out.println(Messages.getI18n("game.commandline.adversary.parameter.wrong"));
 		}
-
-		else if (nummer == 2) {
-
-			System.out.println("Bitte waehlen Sie ihren zweiten Gegner!");
-		}
-
-		else {
-
-			System.out.println("Methode gegner >> falscher Parameter!");
-		}
-
+		
 		System.out
-				.println("Druecken Sie [o] fuer Oma, [r] fuer "
-						+ "regelkonformen Spieler oder [s] fuer einen schlauen Spieler!");
+				.println(Messages.getI18n("game.commandline.adversary.type.choose", 
+						Messages.getI18n("game.commandline.adversary.type.granny.abbr"),
+						Messages.getI18n("game.commandline.adversary.type.normal.abbr"),
+						Messages.getI18n("game.commandline.adversary.type.smart.abbr")));
 		try {
 
 			s = eingabe.readLine();
@@ -193,13 +193,12 @@ public class CLIausgabe extends Ausgabe {
 
 			e.printStackTrace();
 		}
-		if (s.compareTo("o") != 0) {
-			if (s.compareTo("r") != 0) {
-				if (s.compareTo("s") != 0) {
+		if (s.compareTo(Messages.getI18n("game.commandline.adversary.type.granny.abbr")) != 0) {
+			if (s.compareTo(Messages.getI18n("game.commandline.adversary.type.normal.abbr")) != 0) {
+				if (s.compareTo(Messages.getI18n("game.commandline.adversary.type.smart.abbr")) != 0) {
 
 					System.out
-							.println("Sie haben einen falschen Buchstaben angegeben! "
-									+ "Waehlen sie nocheinmal.");
+							.println(Messages.getI18n("game.commandline.input.short.wrong"));
 					s = gegner(nummer);
 				}
 			}
@@ -210,9 +209,12 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public String frageVariante() {
 
-		System.out.println("Bitte waehlen sie die gewuenschte Skatvariante!");
+		System.out.println(Messages.getI18n("game.commandline.skat.type.choose.question"));
 		System.out
-				.println("Druecken sie [r] fuer Rauberskat, [i] fuer Skat nach der internationalen Skatordnung, [b] fuer Skat mit Ramsch/Bockrunden");
+				.println(Messages.getI18n("game.commandline.skat.type.choose", 
+						Messages.getI18n("game.commandline.skat.type.robber.abbr"),
+						Messages.getI18n("game.commandline.skat.type.international.abbr"),
+						Messages.getI18n("game.commandline.skat.type.bock.abbr")));
 		String s = "";
 
 		try {
@@ -224,12 +226,11 @@ public class CLIausgabe extends Ausgabe {
 
 			e.printStackTrace();
 		}
-		if (s.compareTo("i") != 0) {
-			if (s.compareTo("r") != 0) {
-				if (s.compareTo("b") != 0) {
+		if (s.compareTo(Messages.getI18n("game.commandline.skat.type.international.abbr")) != 0) {
+			if (s.compareTo(Messages.getI18n("game.commandline.skat.type.robber.abbr")) != 0) {
+				if (s.compareTo(Messages.getI18n("game.commandline.skat.type.bock.abbr")) != 0) {
 					System.out
-							.println("Sie haben einen falschen Buchstaben angegeben! "
-									+ "Waehlen sie nocheinmal.");
+							.println(Messages.getI18n("game.commandline.input.short.wrong"));
 					s = frageVariante();
 				}
 			}
