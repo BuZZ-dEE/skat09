@@ -3,8 +3,8 @@
 
 __TODOs:__
 
-1. Localisation 
-2. Network game
+1. [Localisation](https://github.com/BuZZ-dEE/skat09/issues/1) 
+2. [Network game](https://github.com/BuZZ-dEE/skat09/issues/2)
 
 ## License
 
