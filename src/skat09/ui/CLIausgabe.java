@@ -247,7 +247,7 @@ public class CLIausgabe extends Ausgabe {
 	 */
 	public boolean handspiel() {
 
-		System.out.println("Moechten Sie den Skat aufnehmen?");
+		System.out.println(Messages.getI18n("game.skat.take"));
 
 		return !jaNeinAbfrage();
 	}
@@ -260,25 +260,24 @@ public class CLIausgabe extends Ausgabe {
 
 		if (nummer == 1) {
 			System.out
-					.println("Sie haben den Skat aufgenommen. Bitte waehlen Sie die erste Karte, "
-							+ "die gedrueckt werden soll, indem Sie die entsprechende Nummer eingeben.");
+					.println(Messages.getI18n("game.skat.choose.press.card.first"));
 		} else if (nummer == 2) {
-			System.out.println("Bitte druecken Sie nun die 2. Karte.");
-		} else if (nummer == 3) {
-			System.out.println("Bitte druecken Sie nun die 3. Karte.");
+			System.out.println(Messages.getI18n("game.skat.press.card.second"));
+		} else if (nummer == 3) { // TODO why this case?
+			System.out.println(Messages.getI18n("game.skat.press.card.third"));
 		}
 
 		// Karten sortieren
 		tisch.gibMenschlicherSpieler().blattSortieren(spielart);
 
 		// Alle Karten auflisten
-		System.out.println("Ihr Blatt:");
+		System.out.println(Messages.getI18n("game.deck.yours") + ":");
 		for (int i = 0; i < blatt.size(); i++) {
 
 			Spielkarte karte = blatt.get(i);
 			Farbe farbe = karte.getFarbe();
 			Wert wert = karte.getWert();
-			System.out.println(i + ": " + farbe + " " + wert);
+			System.out.println(i + ": " + farbe + " " + wert); // TODO also translate
 		}
 
 		// Einlesen
@@ -293,7 +292,7 @@ public class CLIausgabe extends Ausgabe {
 				eingabeKorrekt = true;
 			} else {
 
-				System.out.println("Falsche Eingabe. Versuchen Sie es erneut!");
+				System.out.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
 		return ergebnis;
@@ -302,7 +301,7 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public boolean schneider() {
 
-		System.out.println("Moechten Sie schneider ansagen?");
+		System.out.println(Messages.getI18n("game.schneider.play.choose"));
 
 		return jaNeinAbfrage();
 	}
@@ -310,7 +309,7 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public boolean schwarz() {
 
-		System.out.println("Moechten Sie schwarz ansagen?");
+		System.out.println(Messages.getI18n("game.schwarz.play.choose"));
 
 		return jaNeinAbfrage();
 	}
@@ -318,7 +317,7 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public boolean ouvert() {
 
-		System.out.println("Moechten Sie ouvert spielen?");
+		System.out.println(Messages.getI18n("game.ouvert.play.choose"));
 
 		return jaNeinAbfrage();
 	}
@@ -331,8 +330,7 @@ public class CLIausgabe extends Ausgabe {
 		ISpielart rueckgabe = null;
 
 		System.out
-				.println("Bitte waehlen Sie ihre Spielart aus durch Eingabe der"
-						+ " entsprechenden Nummer.");
+				.println(Messages.getI18n("game.type.number.choose"));
 		for (Enum<Spielartbezeichnung> spielartbezeichnung : Spielartbezeichnung.values()) {
 
 			System.out.println(zaehler + ": " + spielartbezeichnung);
@@ -353,7 +351,7 @@ public class CLIausgabe extends Ausgabe {
 			rueckgabe = new Farbspiel(null);
 			break;
 		default:
-			System.out.println("Fehler: Diese Spielart existiert nicht!");
+			System.out.println(Messages.getI18n("game.type.input.wrong"));
 			System.out.println();
 			spielAnsagen();
 		}
