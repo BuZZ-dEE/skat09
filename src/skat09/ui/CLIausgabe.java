@@ -535,8 +535,8 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public void skatAusgeben(Spielkarte[] skat) {
 
-		System.out.println("Die folgenden Karten lagen im Skat:");
-		System.out.println(skat[0].toString() + " und " + skat[1].toString());
+		System.out.println(Messages.getI18n("game.skat.cards.in"));
+		System.out.println(Messages.getI18n("game.skat.cards", skat[0].toString(), skat[1].toString()));
 		System.out.println();
 	}
 
@@ -544,49 +544,52 @@ public class CLIausgabe extends Ausgabe {
 	public void auswertung(boolean gewonnen) {
 		if (tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
 			if (gewonnen == true) {
-				System.out.println(tisch.ermittleAlleinspieler().getName()
-						+ " hat gewonnen!");
-				System.out.println(tisch.ermittleAlleinspieler().getSpiele()
-						.get(
-								tisch.ermittleAlleinspieler().getSpiele()
-										.size() - 1)
-						+ " Punkte wurden erreicht!");
+				System.out.println(Messages.getI18n("player.won", tisch.ermittleAlleinspieler().getName()));
+				System.out.println(Messages.getI18n(
+						"player.win.score",
+						tisch.ermittleAlleinspieler()
+								.getSpiele()
+								.get(tisch.ermittleAlleinspieler().getSpiele()
+										.size() - 1)));
 			} else {
-				System.out.println(tisch.ermittleAlleinspieler().getName()
-						+ " hat verloren!");
-				System.out.println(tisch.ermittleAlleinspieler().getSpiele()
-						.get(
-								tisch.ermittleAlleinspieler().getSpiele()
-										.size() - 1)
-						+ " Punkte wurden abgezogen!");
+				System.out.println(Messages.getI18n("player.loose", tisch.ermittleAlleinspieler().getName()));
+				System.out.println(Messages.getI18n(
+						"player.looser.score",
+						tisch.ermittleAlleinspieler()
+								.getSpiele()
+								.get(tisch.ermittleAlleinspieler().getSpiele()
+										.size() - 1)));
 			}
 		} else {
 			if (gewonnen) {
-				System.out.println("Sie haben gewonnen! ");
-				System.out.println("Sie haben "
-						+ tisch.gibMenschlicherSpieler().getSpiele().get(
-								tisch.gibMenschlicherSpieler().getSpiele()
-										.size() - 1) + "Punkte erreicht!");
+				System.out.println(Messages.getI18n("player.winner") + " ");
+				System.out.println(Messages.getI18n(
+						"player.winner.score",
+						tisch.gibMenschlicherSpieler()
+								.getSpiele()
+								.get(tisch.gibMenschlicherSpieler().getSpiele()
+										.size() - 1)));
 			} else {
-				System.out.println("Sie haben verloren! ");
-				System.out.println(tisch.gibMenschlicherSpieler().getSpiele()
-						.get(
-								tisch.gibMenschlicherSpieler().getSpiele()
-										.size() - 1)
-						+ "Punkte wurden abgezogen!");
+				System.out.println(Messages.getI18n("player.looser"));
+				System.out.println(Messages.getI18n(
+						"player.looser.score",
+						tisch.gibMenschlicherSpieler()
+								.getSpiele()
+								.get(tisch.gibMenschlicherSpieler().getSpiele()
+										.size() - 1)));
 			}
 		}
 	}
 
 	@Override
 	public void spielBeendet() {
-		System.out.println("Das Spiel ist beendet!");
-		System.out.println("Im Skat lag:");
+		System.out.println(Messages.getI18n("game.over"));
+		System.out.println(Messages.getI18n("game.skat.in.was"));
 		Spielkarte[] skat = tisch.getSkat();
-		System.out.println("Karte 1: " + skat[0].toString());
-		System.out.println("Karte 1: " + skat[1].toString());
+		System.out.println(Messages.getI18n("game.skat.card.first", skat[0].toString()));
+		System.out.println(Messages.getI18n("game.skat.card.second", skat[1].toString()));
 		if (skat[2] != null) {
-			System.out.println("Karte 1: " + skat[2].toString());
+			System.out.println(Messages.getI18n("game.skat.card.third", skat[2].toString()));
 		}
 
 	}

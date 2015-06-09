@@ -871,7 +871,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void reizLimfest() {
 		String s = (String) JOptionPane.showInputDialog(null,
-				Messages.getI18n("game.agent.value.appeal.enter"));
+				Messages.getI18n("game.agent.value.bidding.enter"));
 
 		// If a string was returned, say so.
 		if ((s != null) && (s.length() > 0)) {
@@ -1152,8 +1152,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
-				Messages.getI18n("game.agent.appeal.use"), // question
-				Messages.getI18n("game.agent.appeal"), // title
+				Messages.getI18n("game.agent.bidding.use"), // question
+				Messages.getI18n("game.agent.bidding"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
 
@@ -1178,7 +1178,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		pack();
 		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
 
-		int n = JOptionPane.showOptionDialog(null, Messages.getI18n("game.say.appeal.question", reizwert), // question
+		int n = JOptionPane.showOptionDialog(null, Messages.getI18n("game.say.bidding.question", reizwert), // question
 				Messages.getI18n("game.say"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
