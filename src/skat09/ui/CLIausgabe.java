@@ -599,7 +599,7 @@ public class CLIausgabe extends Ausgabe {
 
 		String mittelhand = tisch.getMittelhand().getName();
 		String vorhand = tisch.getVorhand().getName();
-		System.out.println(mittelhand + " reizt gegen " + vorhand);
+		System.out.println(Messages.getI18n("game.bidding.against", mittelhand, vorhand));
 	}
 
 	/**
@@ -614,28 +614,26 @@ public class CLIausgabe extends Ausgabe {
 	public void hhVSgewinner(ISpieler gewinner) {
 
 		String hinterhand = tisch.getHinterhand().getName();
-		System.out.println(hinterhand + " reizt gegen " + gewinner.getName());
+		System.out.println(Messages.getI18n("game.bidding.against", hinterhand, gewinner.getName()));
 	}
 
 	@Override
 	public void spielEinpassen() {
 
-		System.out.println("Niemand moechte Spielen. Das Spiel wird eingepasst"
-				+ " und der naechste Spieler ist an der Reihe.");
+		System.out.println(Messages.getI18n("game.bidding.cancel"));
 	}
 
 	@Override
 	public void spielBeginnt() {
 
-		System.out.println("Achtung: Das Spiel beginnt!");
+		System.out.println(Messages.getI18n("game.starts"));
 	}
 
 	@Override
 	public void andereKarte() {
 
 		System.out
-				.println("Diese Karte darf nicht gespielt werden! Waehlen Sie "
-						+ "eine andere Karte!");
+				.println(Messages.getI18n("game.card.forbidden.other.choose"));
 	}
 
 	@Override

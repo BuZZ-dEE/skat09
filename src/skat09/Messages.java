@@ -5,7 +5,9 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
- * Work with messages properties.
+ * Work with i18n messages properties.
+ * 
+ * Property files located in resources/languages/.
  * 
  * @since 06.06.2015 13:24:33
  * 
@@ -13,7 +15,6 @@ import java.util.ResourceBundle;
  */
 public class Messages { 
 	
-    // property file is: resources/languages/messages.properties
     private static final String BUNDLE_NAME = "languages.message";
     private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
     
