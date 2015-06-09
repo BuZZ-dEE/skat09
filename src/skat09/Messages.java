@@ -43,6 +43,7 @@ public class Messages {
 	 * substitue parameters in message.
 	 * 
 	 * @param {String} key , the message key
+	 * @param {Object} params , substitute values
 	 * @return {String} the translation
 	 * 
 	 * @since 06.06.2015 13:26:24
