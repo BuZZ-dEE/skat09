@@ -366,8 +366,7 @@ public class CLIausgabe extends Ausgabe {
 		int zaehler = 0;
 		int ergebnis = -1;
 
-		System.out.println("Welche Farbe soll Trumpf sein? Waehlen Sie die"
-				+ " entsprechende Nummer!");
+		System.out.println(Messages.getI18n("game.commandline.trump.choose"));
 		for (Enum<Farbe> farbe : Farbe.values()) {
 
 			System.out.println(zaehler + ": " + farbe);
@@ -386,7 +385,7 @@ public class CLIausgabe extends Ausgabe {
 			} else {
 
 				System.out
-						.println("Falsche Eingabe. Bitte versuchen Sie es erneut!");
+						.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
 		switch (ergebnis) {
@@ -404,7 +403,7 @@ public class CLIausgabe extends Ausgabe {
 			rueckgabe = new Farbspiel(Farbe.KREUZ);
 			break;
 		default:
-			System.out.println("Fehler: Diese Farbe existiert nicht!");
+			System.out.println(Messages.getI18n("game.color.input.wrong"));
 		}
 		return rueckgabe;
 	}
@@ -414,7 +413,7 @@ public class CLIausgabe extends Ausgabe {
 
 		ArrayList<Spielkarte> blatt = spieler.getBlatt();
 
-		System.out.println("Sie haben die folgenden Handkarten:");
+		System.out.println(Messages.getI18n("game.hand.card.yours"));
 
 		for (int i = 0; i < blatt.size(); i++) {
 
@@ -445,24 +444,26 @@ public class CLIausgabe extends Ausgabe {
 		}
 
 		// Handkarten zeigen
-		System.out.println("Bitte spielen Sie eine Karte durch Zahleneingabe!");
+		System.out.println(Messages.getI18n("game.commandline.card.play.input"));
 		leerzeile();
 		blattAusgeben(spieler);
 
 		// Tischkarten zeigen
 		if (gespielteKarten[0] == null) {
 
-			System.out.println("Sie kommen raus.");
+			System.out.println(Messages.getI18n("game.getOut.you"));
 		} else {
 
-			System.out.println("Die folgenden Karten liegen auf dem Tisch:");
+			System.out.println(Messages.getI18n("game.table.cards.on"));
 
 			for (int i = 0; i < 3; i++) {
 
 				if (gespielteKarten[i] != null) {
-					System.out.println(i + ": "
-							+ gespielteKarten[i].getBesitzer().getName()
-							+ " spielte " + gespielteKarten[i].toString());
+					System.out.println(i
+							+ ": "
+							+ Messages.getI18n("player.card.played",
+									gespielteKarten[i].getBesitzer().getName(),
+									gespielteKarten[i].toString()));
 				}
 			}
 		}
@@ -473,8 +474,7 @@ public class CLIausgabe extends Ausgabe {
 			if (zahl <= blatt.size() - 1) {
 				gueltig = true;
 			} else {
-				System.out.println("Diese Karte existiert nicht. Bitte geben "
-						+ "Sie eine gueltige Zahl an!");
+				System.out.println(Messages.getI18n("game.commandline.card.number.input.wrong"));
 				zahl = intEinlesen();
 			}
 		}
@@ -509,7 +509,7 @@ public class CLIausgabe extends Ausgabe {
 				eingabeKorrekt = true;
 			} catch (Exception E) {
 				System.out
-						.println("Das war keine Zahl! Bitte Eingabe wiederholen.");
+						.println(Messages.getI18n("game.commandline.input.not.number"));
 				eingabeKorrekt = false;
 			}
 		}
