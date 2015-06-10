@@ -207,9 +207,9 @@ public class Controller implements Observer, IController {
 		String s;
 
 		s = ausgabe.getBlattwahl();
-		if (s.equals("d")) {
+		if (s.equals(Messages.getI18n("game.skat.deck.g"))) {
 			Spielkarte.setDeutsch(true);
-		} else if (s.equals("f")) {
+		} else if (s.equals(Messages.getI18n("game.skat.deck.f"))) {
 
 			Spielkarte.setDeutsch(false);
 		} else {

@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.SortedSet;
 
+import com.sun.xml.internal.ws.api.model.MEP;
+
 import skat09.Messages;
 import skat09.Tisch;
 import skat09.spielart.Farbspiel;
@@ -760,26 +762,28 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public void spieltKarte(ISpieler spieler, Spielkarte karte) {
 
-		System.out.println(spieler.getName() + " hat " + karte.toString()
-				+ " gespielt");
+		System.out.println(Messages.getI18n("player.name.playing.card",
+				spieler.getName(), karte.toString()));
 	}
 
 	@Override
 	public boolean spielBeenden() {
 
-		System.out.println("Moechten Sie das Spiel beenden?");
+		System.out.println(Messages.getI18n("player.game.end"));
 
 		return jaNeinAbfrage();
 	}
 
 	/**
-	 * Fragt dem Benutzer, ob er ja oder nein sagen m&oouml;chte.
+	 * Fragt den Benutzer, ob er ja oder nein sagen m&oouml;chte.
 	 * 
 	 * @return true, falls ja; false falls nein
 	 */
 	public boolean jaNeinAbfrage() {
 
-		System.out.println("Waehlen Sie [j] fuer ja oder [n] fuer nein");
+		System.out.println(Messages.getI18n("application.yes.no.enter",
+				Messages.getI18n("application.y"),
+				Messages.getI18n("application.n")));
 
 		boolean eingabeKorrekt = false;
 		boolean ergebnis = false;
@@ -795,17 +799,18 @@ public class CLIausgabe extends Ausgabe {
 
 				e.printStackTrace();
 			}
-			if (string.equalsIgnoreCase("j")) {
+			if (string.equalsIgnoreCase(Messages.getI18n("application.y"))) {
 
 				ergebnis = true;
 				eingabeKorrekt = true;
-			} else if (string.equalsIgnoreCase("n")) {
+			} else if (string.equalsIgnoreCase(Messages
+					.getI18n("application.n"))) {
 
 				ergebnis = false;
 				eingabeKorrekt = true;
 			} else {
 
-				System.out.println("Falsche Eingabe. Versuchen Sie es erneut!");
+				System.out.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
 		return ergebnis;
@@ -814,7 +819,7 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public void punkteAusgeben() {
 		System.out.println("******** ****** ********");
-		System.out.println("Die aktuelle Punkteliste:");
+		System.out.println(Messages.getI18n("game.score.list.current"));
 		System.out.println(tisch.getSpieler1().getName() + "     "
 				+ tisch.getSpieler2().getName() + "     "
 				+ tisch.getSpieler3().getName());
@@ -834,9 +839,10 @@ public class CLIausgabe extends Ausgabe {
 
 	@Override
 	public String getBlattwahl() {
-		System.out.println("Bitte waehlen Sie das Skatblatt!");
-		System.out
-				.println("Waehlen Sie [f] fuer das franzoesische Blatt, [d] fuer ein deutsches Blatt!");
+		System.out.println(Messages.getI18n("game.skat.deck.choose"));
+		System.out.println(Messages.getI18n("game.skat.deck.enter",
+				Messages.getI18n("game.skat.deck.f"),
+				Messages.getI18n("game.skat.deck.g")));
 		String s = "";
 
 		try {
@@ -854,8 +860,10 @@ public class CLIausgabe extends Ausgabe {
 
 	@Override
 	public String frageSechserskat() {
-		System.out.println("Moechten Sie Sechserskat spielen?");
-		System.out.println("Druecken sie [j] fuer ja, [n] fuer nein!");
+		System.out.println(Messages.getI18n("game.skat.variant.six.play"));
+		System.out.println(Messages.getI18n("application.yes.no.enter",
+				Messages.getI18n("application.y"),
+				Messages.getI18n("application.n")));
 		String s = "";
 
 		try {
@@ -867,11 +875,10 @@ public class CLIausgabe extends Ausgabe {
 
 			e.printStackTrace();
 		}
-		if (s.compareTo("j") != 0) {
-			if (s.compareTo("n") != 0) {
-				System.out
-						.println("Sie haben einen falschen Buchstaben angegeben! "
-								+ "Waehlen sie nocheinmal.");
+		if (s.compareTo(Messages.getI18n("application.y")) != 0) {
+			if (s.compareTo(Messages.getI18n("application.n")) != 0) {
+				System.out.println(Messages
+						.getI18n("game.commandline.input.short.wrong"));
 				s = frageVariante();
 			}
 		}
@@ -900,17 +907,16 @@ public class CLIausgabe extends Ausgabe {
 	 * will.
 	 */
 	public void hilfe() {
-		System.out.println("Wollen Sie eine Hilfe haben?");
+		System.out.println(Messages.getI18n("game.help.want"));
 		boolean ergebnis = jaNeinAbfrage();
 		if (ergebnis) {
-			System.out
-					.println("Sollen die spielbaren Karten angezeigt werden?");
+			System.out.println(Messages.getI18n("game.playable.cards.show"));
 			ergebnis = jaNeinAbfrage();
 			if (ergebnis) {
 				hilfespielbar = true;
 			}
-			System.out
-					.println("Sollen die vergangenen Stiche angezeigt werden?");
+			System.out.println(Messages
+					.getI18n("game.trick.last.show.question"));
 			ergebnis = jaNeinAbfrage();
 			if (ergebnis) {
 				hilfestiche = true;
@@ -927,7 +933,7 @@ public class CLIausgabe extends Ausgabe {
 	public void hilfeSpielbar(Spielkarte[] gespielteKarten) {
 		ArrayList<Spielkarte> karten = tisch.gibMenschlicherSpieler()
 				.spielbareKarten(gespielteKarten);
-		System.out.println("Die spielbaren Karten:");
+		System.out.println(Messages.getI18n("game.playable.cards"));
 		for (Spielkarte karte : karten) {
 			System.out.println(karte.toString());
 		}
@@ -939,7 +945,7 @@ public class CLIausgabe extends Ausgabe {
 	public void hilfeStiche() {
 		ArrayList<Spielkarte> karten = tisch.getSpieler1()
 				.getAllegespieltenkarten();
-		System.out.println("Die vergangenen Stiche:");
+		System.out.println(Messages.getI18n("game.tricks.last"));
 		for (Spielkarte karte : karten) {
 			System.out.println(karte.toString());
 		}
@@ -949,16 +955,19 @@ public class CLIausgabe extends Ausgabe {
 	public void statistik() {
 		// Titel
 		System.out.println("*************************************");
-		System.out.println("**************Statistik**************");
+		System.out.println("**************"
+				+ Messages.getI18n("game.statistic") + "**************");
 		System.out.println("");
 
 		// Daten des ersten Spielers
 		System.out.println(tisch.getSpieler1().getName() + ":");
-		System.out.print("Wie haeufig ist der Spieler Alleinspieler?   ");
-		System.out.println(tisch.getProzentAllein(tisch.getSpieler1())
-				+ " Prozent aller Spiele");
+		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")
+				+ "   ");
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.percent.result",
+				tisch.getProzentAllein(tisch.getSpieler1())));
 		System.out
-				.print("Wie viele Spiele wurden als Alleinspieler gewonnen?   ");
+				.print(Messages.getI18n("game.statistic.declarer.quantity.won.result") + "   ");
 		System.out.println(tisch.anzahlderGewinne(tisch.getSpieler1())
 				+ "Spiele von " + tisch.getSpieler1().getSpiele().size()
 				+ " Spielen");
