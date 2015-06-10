@@ -18,8 +18,6 @@ import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
-
-
 /**
  * Diese Klasse wird das Spiel f&uuml;r den menschlichen Spieler &uuml;ber die
  * Konsole abbilden. Der Spieler soll so bef&auml;higt werden, Informationen
@@ -66,7 +64,7 @@ public class CLIausgabe extends Ausgabe {
 	 *            Der Tisch, auf dem gespielt wird
 	 */
 	public CLIausgabe(Tisch tisch) {
-		
+
 		System.out.println(Messages.getI18n("application.welcome"));
 		this.tisch = tisch;
 
@@ -78,8 +76,7 @@ public class CLIausgabe extends Ausgabe {
 	 */
 	public void falscheEingabe() {
 
-		System.out
-				.println(Messages.getI18n("application.output.input.wrong"));
+		System.out.println(Messages.getI18n("application.output.input.wrong"));
 	}
 
 	/**
@@ -168,19 +165,23 @@ public class CLIausgabe extends Ausgabe {
 
 		if (nummer == 1) {
 
-			System.out.println(Messages.getI18n("game.commandline.adversary.first.choose"));
-			
+			System.out.println(Messages
+					.getI18n("game.commandline.adversary.first.choose"));
+
 		} else if (nummer == 2) {
 
-			System.out.println(Messages.getI18n("game.commandline.adversary.second.choose"));
-			
+			System.out.println(Messages
+					.getI18n("game.commandline.adversary.second.choose"));
+
 		} else {
 
-			System.out.println(Messages.getI18n("game.commandline.adversary.parameter.wrong"));
+			System.out.println(Messages
+					.getI18n("game.commandline.adversary.parameter.wrong"));
 		}
-		
+
 		System.out
-				.println(Messages.getI18n("game.commandline.adversary.type.choose", 
+				.println(Messages.getI18n(
+						"game.commandline.adversary.type.choose",
 						Messages.getI18n("game.commandline.adversary.type.granny.abbr"),
 						Messages.getI18n("game.commandline.adversary.type.normal.abbr"),
 						Messages.getI18n("game.commandline.adversary.type.smart.abbr")));
@@ -193,12 +194,15 @@ public class CLIausgabe extends Ausgabe {
 
 			e.printStackTrace();
 		}
-		if (s.compareTo(Messages.getI18n("game.commandline.adversary.type.granny.abbr")) != 0) {
-			if (s.compareTo(Messages.getI18n("game.commandline.adversary.type.normal.abbr")) != 0) {
-				if (s.compareTo(Messages.getI18n("game.commandline.adversary.type.smart.abbr")) != 0) {
+		if (s.compareTo(Messages
+				.getI18n("game.commandline.adversary.type.granny.abbr")) != 0) {
+			if (s.compareTo(Messages
+					.getI18n("game.commandline.adversary.type.normal.abbr")) != 0) {
+				if (s.compareTo(Messages
+						.getI18n("game.commandline.adversary.type.smart.abbr")) != 0) {
 
-					System.out
-							.println(Messages.getI18n("game.commandline.input.short.wrong"));
+					System.out.println(Messages
+							.getI18n("game.commandline.input.short.wrong"));
 					s = gegner(nummer);
 				}
 			}
@@ -209,9 +213,11 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public String frageVariante() {
 
-		System.out.println(Messages.getI18n("game.commandline.skat.type.choose.question"));
+		System.out.println(Messages
+				.getI18n("game.commandline.skat.type.choose.question"));
 		System.out
-				.println(Messages.getI18n("game.commandline.skat.type.choose", 
+				.println(Messages.getI18n(
+						"game.commandline.skat.type.choose",
 						Messages.getI18n("game.commandline.skat.type.robber.abbr"),
 						Messages.getI18n("game.commandline.skat.type.international.abbr"),
 						Messages.getI18n("game.commandline.skat.type.bock.abbr")));
@@ -226,11 +232,14 @@ public class CLIausgabe extends Ausgabe {
 
 			e.printStackTrace();
 		}
-		if (s.compareTo(Messages.getI18n("game.commandline.skat.type.international.abbr")) != 0) {
-			if (s.compareTo(Messages.getI18n("game.commandline.skat.type.robber.abbr")) != 0) {
-				if (s.compareTo(Messages.getI18n("game.commandline.skat.type.bock.abbr")) != 0) {
-					System.out
-							.println(Messages.getI18n("game.commandline.input.short.wrong"));
+		if (s.compareTo(Messages
+				.getI18n("game.commandline.skat.type.international.abbr")) != 0) {
+			if (s.compareTo(Messages
+					.getI18n("game.commandline.skat.type.robber.abbr")) != 0) {
+				if (s.compareTo(Messages
+						.getI18n("game.commandline.skat.type.bock.abbr")) != 0) {
+					System.out.println(Messages
+							.getI18n("game.commandline.input.short.wrong"));
 					s = frageVariante();
 				}
 			}
@@ -259,8 +268,8 @@ public class CLIausgabe extends Ausgabe {
 		int ergebnis = -1;
 
 		if (nummer == 1) {
-			System.out
-					.println(Messages.getI18n("game.skat.choose.press.card.first"));
+			System.out.println(Messages
+					.getI18n("game.skat.choose.press.card.first"));
 		} else if (nummer == 2) {
 			System.out.println(Messages.getI18n("game.skat.press.card.second"));
 		} else if (nummer == 3) { // TODO why this case?
@@ -277,7 +286,8 @@ public class CLIausgabe extends Ausgabe {
 			Spielkarte karte = blatt.get(i);
 			Farbe farbe = karte.getFarbe();
 			Wert wert = karte.getWert();
-			System.out.println(i + ": " + farbe + " " + wert); // TODO also translate
+			System.out.println(i + ": " + farbe + " " + wert); // TODO also
+																// translate
 		}
 
 		// Einlesen
@@ -329,9 +339,9 @@ public class CLIausgabe extends Ausgabe {
 		int ergebnis = -1;
 		ISpielart rueckgabe = null;
 
-		System.out
-				.println(Messages.getI18n("game.type.number.choose"));
-		for (Enum<Spielartbezeichnung> spielartbezeichnung : Spielartbezeichnung.values()) {
+		System.out.println(Messages.getI18n("game.type.number.choose"));
+		for (Enum<Spielartbezeichnung> spielartbezeichnung : Spielartbezeichnung
+				.values()) {
 
 			System.out.println(zaehler + ": " + spielartbezeichnung);
 			zaehler++;
@@ -384,8 +394,7 @@ public class CLIausgabe extends Ausgabe {
 				eingabeKorrekt = true;
 			} else {
 
-				System.out
-						.println(Messages.getI18n("application.input.wrong"));
+				System.out.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
 		switch (ergebnis) {
@@ -444,7 +453,8 @@ public class CLIausgabe extends Ausgabe {
 		}
 
 		// Handkarten zeigen
-		System.out.println(Messages.getI18n("game.commandline.card.play.input"));
+		System.out
+				.println(Messages.getI18n("game.commandline.card.play.input"));
 		leerzeile();
 		blattAusgeben(spieler);
 
@@ -474,7 +484,8 @@ public class CLIausgabe extends Ausgabe {
 			if (zahl <= blatt.size() - 1) {
 				gueltig = true;
 			} else {
-				System.out.println(Messages.getI18n("game.commandline.card.number.input.wrong"));
+				System.out.println(Messages
+						.getI18n("game.commandline.card.number.input.wrong"));
 				zahl = intEinlesen();
 			}
 		}
@@ -508,8 +519,8 @@ public class CLIausgabe extends Ausgabe {
 				ergebnis = Integer.parseInt(s);
 				eingabeKorrekt = true;
 			} catch (Exception E) {
-				System.out
-						.println(Messages.getI18n("game.commandline.input.not.number"));
+				System.out.println(Messages
+						.getI18n("game.commandline.input.not.number"));
 				eingabeKorrekt = false;
 			}
 		}
@@ -519,7 +530,8 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public void stichGewonnen(ISpieler spieler) {
 
-		System.out.println(">> " + Messages.getI18n("player.trick.won", spieler.getName()));
+		System.out.println(">> "
+				+ Messages.getI18n("player.trick.won", spieler.getName()));
 	}
 
 	/**
@@ -536,7 +548,8 @@ public class CLIausgabe extends Ausgabe {
 	public void skatAusgeben(Spielkarte[] skat) {
 
 		System.out.println(Messages.getI18n("game.skat.cards.in"));
-		System.out.println(Messages.getI18n("game.skat.cards", skat[0].toString(), skat[1].toString()));
+		System.out.println(Messages.getI18n("game.skat.cards",
+				skat[0].toString(), skat[1].toString()));
 		System.out.println();
 	}
 
@@ -544,7 +557,8 @@ public class CLIausgabe extends Ausgabe {
 	public void auswertung(boolean gewonnen) {
 		if (tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
 			if (gewonnen == true) {
-				System.out.println(Messages.getI18n("player.won", tisch.ermittleAlleinspieler().getName()));
+				System.out.println(Messages.getI18n("player.won", tisch
+						.ermittleAlleinspieler().getName()));
 				System.out.println(Messages.getI18n(
 						"player.win.score",
 						tisch.ermittleAlleinspieler()
@@ -552,7 +566,8 @@ public class CLIausgabe extends Ausgabe {
 								.get(tisch.ermittleAlleinspieler().getSpiele()
 										.size() - 1)));
 			} else {
-				System.out.println(Messages.getI18n("player.loose", tisch.ermittleAlleinspieler().getName()));
+				System.out.println(Messages.getI18n("player.loose", tisch
+						.ermittleAlleinspieler().getName()));
 				System.out.println(Messages.getI18n(
 						"player.looser.score",
 						tisch.ermittleAlleinspieler()
@@ -586,10 +601,13 @@ public class CLIausgabe extends Ausgabe {
 		System.out.println(Messages.getI18n("game.over"));
 		System.out.println(Messages.getI18n("game.skat.in.was"));
 		Spielkarte[] skat = tisch.getSkat();
-		System.out.println(Messages.getI18n("game.skat.card.first", skat[0].toString()));
-		System.out.println(Messages.getI18n("game.skat.card.second", skat[1].toString()));
+		System.out.println(Messages.getI18n("game.skat.card.first",
+				skat[0].toString()));
+		System.out.println(Messages.getI18n("game.skat.card.second",
+				skat[1].toString()));
 		if (skat[2] != null) {
-			System.out.println(Messages.getI18n("game.skat.card.third", skat[2].toString()));
+			System.out.println(Messages.getI18n("game.skat.card.third",
+					skat[2].toString()));
 		}
 
 	}
@@ -599,7 +617,8 @@ public class CLIausgabe extends Ausgabe {
 
 		String mittelhand = tisch.getMittelhand().getName();
 		String vorhand = tisch.getVorhand().getName();
-		System.out.println(Messages.getI18n("game.bidding.against", mittelhand, vorhand));
+		System.out.println(Messages.getI18n("game.bidding.against", mittelhand,
+				vorhand));
 	}
 
 	/**
@@ -614,7 +633,8 @@ public class CLIausgabe extends Ausgabe {
 	public void hhVSgewinner(ISpieler gewinner) {
 
 		String hinterhand = tisch.getHinterhand().getName();
-		System.out.println(Messages.getI18n("game.bidding.against", hinterhand, gewinner.getName()));
+		System.out.println(Messages.getI18n("game.bidding.against", hinterhand,
+				gewinner.getName()));
 	}
 
 	@Override
@@ -638,23 +658,21 @@ public class CLIausgabe extends Ausgabe {
 
 	@Override
 	public void augen(int augen) {
-		System.out.println("Der Alleinspieler "
-				+ tisch.ermittleAlleinspieler().getName() + " hat " + augen
-				+ " Augen erspielt!");
+		System.out.println(Messages.getI18n("player.declarer.points", tisch
+				.ermittleAlleinspieler().getName(), augen));
 
 	}
 
 	@Override
 	public void punkte(int punkte) {
-		System.out.println("Der Alleinspieler "
-				+ tisch.ermittleAlleinspieler().getName() + " hat " + punkte
-				+ " Punkte erreicht!");
+		System.out.println(Messages.getI18n("player.declarer.score", tisch
+				.ermittleAlleinspieler().getName(), punkte));
 	}
 
 	@Override
 	public void alleinspieler() {
-		System.out
-				.println(tisch.ermittleAlleinspieler().getName() + " spielt!");
+		System.out.println(Messages.getI18n("player.name.playing", tisch
+				.ermittleAlleinspieler().getName()));
 
 	}
 
@@ -665,18 +683,19 @@ public class CLIausgabe extends Ausgabe {
 	 */
 	public void gewinntReizen(ISpieler spieler) {
 
-		System.out.println(spieler.getName() + "gewinnt das Reizen zwischen "
-				+ "Mittelhand und Vorhand");
+		System.out.println(Messages.getI18n(
+				"player.win.bidding.middlehand.forehand", spieler.getName()));
 	}
 
 	@Override
 	public void trumpf() {
 		if (tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
-			System.out.println(tisch.ermittleAlleinspieler().getName()
-					+ " spielt " + tisch.getSpielart().toString() + "!");
+			System.out.println(Messages.getI18n("player.name.playing.game",
+					tisch.ermittleAlleinspieler().getName(), tisch
+							.getSpielart().toString()));
 			System.out.println("");
 		} else {
-			System.out.println("Es wird Ramsch gespielt!");
+			System.out.println(Messages.getI18n("game.ramsch.playing"));
 			System.out.println("");
 		}
 	}
@@ -685,7 +704,7 @@ public class CLIausgabe extends Ausgabe {
 	public void neuesSpiel() {
 		leerzeile();
 		System.out.println("*************************************");
-		System.out.println("Ein neues Spiel beginnt!");
+		System.out.println(Messages.getI18n("game.new.begins"));
 		leerzeile();
 
 	}
@@ -693,7 +712,7 @@ public class CLIausgabe extends Ausgabe {
 	@Override
 	public boolean reizAgent() {
 
-		System.out.println("Moechten Sie den Reizagenten benutzen?");
+		System.out.println(Messages.getI18n("game.agent.bidding.use"));
 
 		return jaNeinAbfrage();
 	}
@@ -704,9 +723,9 @@ public class CLIausgabe extends Ausgabe {
 		int ergebnis = -1;
 		boolean fertig = false;
 
-		System.out.println("Sie verwenden den Reizagenten.");
-		System.out.println("Bis zu welchem Wert moechten Sie reizen?");
-		System.out.println("Geben Sie [0] ein, um zu passen.");
+		System.out.println(Messages.getI18n("game.agent.bidding.you.use"));
+		System.out.println(Messages.getI18n("game.agent.bidding.value.enter"));
+		System.out.println(Messages.getI18n("game.agent.bidding.zero.cancel"));
 		ergebnis = intEinlesen();
 		while (!fertig) {
 
