@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.SortedSet;
 
-import com.sun.xml.internal.ws.api.model.MEP;
-
 import skat09.Messages;
 import skat09.Tisch;
 import skat09.spielart.Farbspiel;
