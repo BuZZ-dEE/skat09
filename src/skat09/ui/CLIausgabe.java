@@ -964,32 +964,41 @@ public class CLIausgabe extends Ausgabe {
 		System.out.println(Messages.getI18n(
 				"game.statistic.declarer.quantity.percent.result",
 				tisch.getProzentAllein(tisch.getSpieler1())));
-		System.out
-				.print(Messages.getI18n("game.statistic.declarer.quantity.won.result") + "   ");
-		System.out.println(tisch.anzahlderGewinne(tisch.getSpieler1())
-				+ "Spiele von " + tisch.getSpieler1().getSpiele().size()
-				+ " Spielen");
-		System.out.print("Wie oft spielt " + tisch.getSpieler1().getName()
-				+ " Hand?   ");
-		System.out.println(tisch.getSpieler1().getHandspiele()
-				+ " Handspiele von " + tisch.getSpieler1().getSpiele().size()
-				+ " Spielen");
+		System.out.print(Messages
+				.getI18n("game.statistic.declarer.quantity.won") + "   ");
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.won.result",
+				tisch.anzahlderGewinne(tisch.getSpieler1()), tisch
+						.getSpieler1().getSpiele().size()));
+		System.out.print(Messages.getI18n(
+				"game.statistic.declarer.quantity.hand", tisch.getSpieler1()
+						.getName())
+				+ "   ");
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.hand.result", tisch
+						.getSpieler1().getHandspiele(), tisch.getSpieler1()
+						.getSpiele().size()));
 
 		// Daten des zweiten Spielers
 		System.out.println(tisch.getSpieler2().getName() + ":");
-		System.out.print("Wie haeufig ist der Spieler Alleinspieler?   ");
-		System.out.println(tisch.getProzentAllein(tisch.getSpieler2())
-				+ " Prozent aller Spiele");
-		System.out
-				.print("Wie viele Spiele wurden als Alleinspieler gewonnen?   ");
-		System.out.println(tisch.anzahlderGewinne(tisch.getSpieler2())
-				+ "Spiele von " + tisch.getSpieler2().getSpiele().size()
-				+ " Spielen");
-		System.out.print("Wie oft spielt " + tisch.getSpieler2().getName()
-				+ " Hand?   ");
-		System.out.println(tisch.getSpieler2().getHandspiele()
-				+ " Handspiele von " + tisch.getSpieler2().getSpiele().size()
-				+ " Spielen");
+		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")
+				+ "   ");
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.percent.result",
+				tisch.getProzentAllein(tisch.getSpieler2())));
+		System.out.print(Messages
+				.getI18n("game.statistic.declarer.quantity.won") + "   ");
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.won.result",
+				tisch.anzahlderGewinne(tisch.getSpieler2()), tisch
+						.getSpieler2().getSpiele().size()));
+		System.out.print(Messages.getI18n(
+				"game.statistic.declarer.quantity.hand", tisch.getSpieler2()
+						.getName()));
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.hand.result", tisch
+						.getSpieler2().getHandspiele(), tisch.getSpieler2()
+						.getSpiele().size()));
 
 		statistik2();
 
@@ -1002,19 +1011,24 @@ public class CLIausgabe extends Ausgabe {
 	public void statistik2() {
 		// Daten des dritten Spielers
 		System.out.println(tisch.getSpieler3().getName() + ":");
-		System.out.print("Wie haeufig ist der Spieler Alleinspieler?   ");
-		System.out.println(tisch.getProzentAllein(tisch.getSpieler3())
-				+ " Prozent aller Spiele");
-		System.out
-				.print("Wie viele Spiele wurden als Alleinspieler gewonnen?   ");
-		System.out.println(tisch.anzahlderGewinne(tisch.getSpieler3())
-				+ "Spiele von " + tisch.getSpieler3().getSpiele().size()
-				+ " Spielen");
-		System.out.print("Wie oft spielt " + tisch.getSpieler3().getName()
-				+ " Hand?   ");
-		System.out.println(tisch.getSpieler3().getHandspiele()
-				+ " Handspiele von " + tisch.getSpieler3().getSpiele().size()
-				+ " Spielen");
+		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")
+				+ "   ");
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.percent.result",
+				tisch.getProzentAllein(tisch.getSpieler3())));
+		System.out.print(Messages
+				.getI18n("game.statistic.declarer.quantity.won") + "   ");
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.won.result",
+				tisch.anzahlderGewinne(tisch.getSpieler3()), tisch
+						.getSpieler3().getSpiele().size()));
+		System.out.print(Messages.getI18n(
+				"game.statistic.declarer.quantity.hand", tisch.getSpieler3()
+						.getName())
+				+ "   ");
+		System.out.println(Messages.getI18n(
+				"game.statistic.declarer.quantity.hand.result", tisch
+						.getSpieler3().getHandspiele(), tisch.getSpieler3()
+						.getSpiele().size()));
 	}
-
 }
