@@ -90,19 +90,21 @@ public class CLIausgabe extends Ausgabe {
 		boolean eingabeKorrekt = false;
 		boolean ergebnis = false;
 
-		System.out.println(Messages.getI18n("game.commandline.hold", wert));
+		System.out.println(Messages.getI18n("game.commandline.hold", wert,
+				Messages.getI18n("game.commandline.bidding.g"),
+				Messages.getI18n("game.commandline.bidding.p")));
 
 		String eingabe = einlesen();
 
 		while (!eingabeKorrekt) {
-			// TODO also i18n user input
-			if (eingabe.equalsIgnoreCase("m")) {
+			if (eingabe.equalsIgnoreCase(Messages
+					.getI18n("game.commandline.bidding.g"))) {
 
 				ergebnis = true;
 				eingabeKorrekt = true;
 			}
 
-			else if (eingabe.equalsIgnoreCase("a")) {
+			else if (eingabe.equalsIgnoreCase(Messages.getI18n("game.commandline.bidding.p"))) {
 
 				ergebnis = false;
 				eingabeKorrekt = true;
@@ -956,13 +958,13 @@ public class CLIausgabe extends Ausgabe {
 		System.out.println("**************"
 				+ Messages.getI18n("game.statistic") + "**************");
 		System.out.println("");
-		
+
 		ISpieler[] allPlayer = tisch.getAllPlayer();
 		for (ISpieler player : allPlayer) {
 			statisticOut(tisch, player);
 		}
 	}
-	
+
 	/**
 	 * Output statistics for a player from the game table.
 	 * 
@@ -974,7 +976,7 @@ public class CLIausgabe extends Ausgabe {
 	 * @author Sebastian Schlatow <ssc@openmailbox.org>
 	 */
 	private void statisticOut(Tisch table, ISpieler player) {
-		
+
 		System.out.println(player.getName() + ":");
 		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")
 				+ "   ");
@@ -987,8 +989,7 @@ public class CLIausgabe extends Ausgabe {
 				"game.statistic.declarer.quantity.won.result",
 				table.anzahlderGewinne(player), player.getSpiele().size()));
 		System.out.print(Messages.getI18n(
-				"game.statistic.declarer.quantity.hand", player
-						.getName())
+				"game.statistic.declarer.quantity.hand", player.getName())
 				+ "   ");
 		System.out.println(Messages.getI18n(
 				"game.statistic.declarer.quantity.hand.result",
