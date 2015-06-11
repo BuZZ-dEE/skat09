@@ -956,79 +956,42 @@ public class CLIausgabe extends Ausgabe {
 		System.out.println("**************"
 				+ Messages.getI18n("game.statistic") + "**************");
 		System.out.println("");
-
-		// Daten des ersten Spielers
-		System.out.println(tisch.getSpieler1().getName() + ":");
-		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")
-				+ "   ");
-		System.out.println(Messages.getI18n(
-				"game.statistic.declarer.quantity.percent.result",
-				tisch.getProzentAllein(tisch.getSpieler1())));
-		System.out.print(Messages
-				.getI18n("game.statistic.declarer.quantity.won") + "   ");
-		System.out.println(Messages.getI18n(
-				"game.statistic.declarer.quantity.won.result",
-				tisch.anzahlderGewinne(tisch.getSpieler1()), tisch
-						.getSpieler1().getSpiele().size()));
-		System.out.print(Messages.getI18n(
-				"game.statistic.declarer.quantity.hand", tisch.getSpieler1()
-						.getName())
-				+ "   ");
-		System.out.println(Messages.getI18n(
-				"game.statistic.declarer.quantity.hand.result", tisch
-						.getSpieler1().getHandspiele(), tisch.getSpieler1()
-						.getSpiele().size()));
-
-		// Daten des zweiten Spielers
-		System.out.println(tisch.getSpieler2().getName() + ":");
-		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")
-				+ "   ");
-		System.out.println(Messages.getI18n(
-				"game.statistic.declarer.quantity.percent.result",
-				tisch.getProzentAllein(tisch.getSpieler2())));
-		System.out.print(Messages
-				.getI18n("game.statistic.declarer.quantity.won") + "   ");
-		System.out.println(Messages.getI18n(
-				"game.statistic.declarer.quantity.won.result",
-				tisch.anzahlderGewinne(tisch.getSpieler2()), tisch
-						.getSpieler2().getSpiele().size()));
-		System.out.print(Messages.getI18n(
-				"game.statistic.declarer.quantity.hand", tisch.getSpieler2()
-						.getName()));
-		System.out.println(Messages.getI18n(
-				"game.statistic.declarer.quantity.hand.result", tisch
-						.getSpieler2().getHandspiele(), tisch.getSpieler2()
-						.getSpiele().size()));
-
-		statistik2();
-
+		
+		ISpieler[] allPlayer = tisch.getAllPlayer();
+		for (ISpieler player : allPlayer) {
+			statisticOut(tisch, player);
+		}
 	}
-
+	
 	/**
-	 * Diese Methode ist eine Hilfsmethode f&uuml;r statistik() und wird nur von
-	 * dieser Methode aufgerufen
+	 * Output statistics for a player from the game table.
+	 * 
+	 * @param {Tisch} table , the game table
+	 * @param {ISpieler} player , the player the get the statistics from.
+	 * 
+	 * @since 11.06.2015 22:14:56
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
 	 */
-	public void statistik2() {
-		// Daten des dritten Spielers
-		System.out.println(tisch.getSpieler3().getName() + ":");
+	private void statisticOut(Tisch table, ISpieler player) {
+		
+		System.out.println(player.getName() + ":");
 		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")
 				+ "   ");
 		System.out.println(Messages.getI18n(
 				"game.statistic.declarer.quantity.percent.result",
-				tisch.getProzentAllein(tisch.getSpieler3())));
+				table.getProzentAllein(player)));
 		System.out.print(Messages
 				.getI18n("game.statistic.declarer.quantity.won") + "   ");
 		System.out.println(Messages.getI18n(
 				"game.statistic.declarer.quantity.won.result",
-				tisch.anzahlderGewinne(tisch.getSpieler3()), tisch
-						.getSpieler3().getSpiele().size()));
+				table.anzahlderGewinne(player), player.getSpiele().size()));
 		System.out.print(Messages.getI18n(
-				"game.statistic.declarer.quantity.hand", tisch.getSpieler3()
+				"game.statistic.declarer.quantity.hand", player
 						.getName())
 				+ "   ");
 		System.out.println(Messages.getI18n(
-				"game.statistic.declarer.quantity.hand.result", tisch
-						.getSpieler3().getHandspiele(), tisch.getSpieler3()
-						.getSpiele().size()));
+				"game.statistic.declarer.quantity.hand.result",
+				player.getHandspiele(), player.getSpiele().size()));
 	}
 }

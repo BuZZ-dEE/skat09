@@ -246,6 +246,22 @@ public class Tisch extends Observable {
 
 		return spieler3;
 	}
+	
+	/**
+	 * Get all players from the table.
+	 * 
+	 * @return all player from table.
+	 * 
+	 * @since 11.06.2015 21:59:32
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 */
+	public ISpieler[] getAllPlayer() {
+
+		ISpieler[] playerAll = {spieler1, spieler2, spieler3};
+		
+		return playerAll;
+	}
 
 	/**
 	 * Liefert die bereits auf dem Tisch liegenden Karten zur&uuml;ck.
