@@ -23,6 +23,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -40,7 +41,6 @@ import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpieler;
 import skat09.ui.GUIausgabe;
-
 
 /**
  * Die Klasse beinhaltet das Hauptfenster der GUI. In diesem Fenster wird der
@@ -441,7 +441,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		gegnerHand = new JPanel();
 		gegnerHand.setFocusable(false);
 		gegnerHand.setLayout(new FlowLayout());
-		gegnerHand.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("player.adversary")));
+		gegnerHand.setBorder(BorderFactory.createTitledBorder(Messages
+				.getI18n("player.adversary")));
 		add(gegnerHand, BorderLayout.NORTH);
 	}
 
@@ -451,7 +452,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void aufHandInit() {
 		aufHand = new JPanel();
 
-		aufHand.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.deck.yours") + " "));
+		aufHand.setBorder(BorderFactory.createTitledBorder(Messages
+				.getI18n("game.deck.yours") + " "));
 		aufHand.setPreferredSize(new Dimension(960, 150));
 		aufHand.setFocusCycleRoot(false);
 		aufHand.addKeyListener(this);
@@ -466,7 +468,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		linkeSeite = new JPanel();
 		linkeSeite.setFocusable(false);
 		linkeSeite.setLayout(new BoxLayout(linkeSeite, BoxLayout.PAGE_AXIS));
-		linkeSeite.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.infos")));
+		linkeSeite.setBorder(BorderFactory.createTitledBorder(Messages
+				.getI18n("game.infos")));
 		linkeSeite.setPreferredSize(new Dimension(150, 300));
 
 		add(linkeSeite, BorderLayout.WEST);
@@ -480,7 +483,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		rechteSeite = new JPanel();
 		rechteSeite.setFocusable(false);
 		rechteSeite.setLayout(new GridBagLayout());
-		rechteSeite.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.evaluation") + ":"));
+		rechteSeite.setBorder(BorderFactory.createTitledBorder(Messages
+				.getI18n("game.evaluation") + ":"));
 		// rechteSeite.setPreferredSize(new Dimension(400, 150));
 		scroller = new JScrollPane(rechteSeite);
 		scroller.setPreferredSize(new Dimension(150, 300));
@@ -509,7 +513,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		aufTisch.setFocusable(false);
 		aufTisch.setLayout(new FlowLayout());
 
-		infobox.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.score") + ":"));
+		infobox.setBorder(BorderFactory.createTitledBorder(Messages
+				.getI18n("game.score") + ":"));
 		aufTisch.setPreferredSize(new Dimension(500, 120));
 		infobox.setPreferredSize(new Dimension(500, 50));
 
@@ -533,7 +538,9 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void blattAusgeben(ISpieler spieler) throws IOException {
 
 		aufHand.removeAll();
-		aufHand.setBorder(BorderFactory.createTitledBorder(Messages.getI18n("game.deck.yours") + ": "
+		aufHand.setBorder(BorderFactory.createTitledBorder(Messages
+				.getI18n("game.deck.yours")
+				+ ": "
 				+ spieler.getPosition().toString()));
 
 		for (Spielkarte karte : spieler.getBlatt()) {
@@ -577,13 +584,13 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void skatAusgeben(Spielkarte[] skat) throws IOException {
 
-//		for (int i = 0; i < 2; i++) {
+		// for (int i = 0; i < 2; i++) {
 		int skatLength = tisch.getSkat().length;
-		
+
 		if (!tisch.getSechserskat()) {
 			skatLength = skatLength - 1;
 		}
-		
+
 		for (int i = 0; i < skatLength; i++) {
 
 			Image image;
@@ -611,13 +618,13 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		button.setName("Skat");
 		button.setPreferredSize(new Dimension(150, 30));
 		button.addActionListener(this);
-		
+
 		if (!tisch.getSechserskat()) {
 			skatLength = skatLength - 1;
 		}
 
 		for (int i = 0; i < skatLength; i++) {
-//		for (int i = 0; i < 2; i++) {
+			// for (int i = 0; i < 2; i++) {
 
 			Image image;
 
@@ -695,14 +702,14 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		pack();
 		auswertung2(gewonnen);
 		flagsLoeschen();
-		
+
 	}
 
 	/**
 	 * F&uuml;gt einen Button auf dem Tisch ein, der ein neues Spiel startet,
 	 * wenn der Spieler es w&uuml;scht.
 	 */
-	public void neuesSpiel(){
+	public void neuesSpiel() {
 		JButton button = new JButton(Messages.getI18n("game.new"));
 		button.addActionListener(this);
 		aufTisch.removeAll();
@@ -790,22 +797,22 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			spiel.setText(""
 					+ tisch.ermittleAlleinspieler().getName()
 					+ " hat mit "
-					+ tisch.ermittleAlleinspieler().getSpiele()
-							.get(
-									tisch.ermittleAlleinspieler().getSpiele()
-											.size() - 1)
-					+ " Punkten gewonnen und " + augen + " Augen erspielt");
+					+ tisch.ermittleAlleinspieler()
+							.getSpiele()
+							.get(tisch.ermittleAlleinspieler().getSpiele()
+									.size() - 1) + " Punkten gewonnen und "
+					+ augen + " Augen erspielt");
 		}
 		if (!gewonnen
 				&& tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
 			spiel.setText(""
 					+ tisch.ermittleAlleinspieler().getName()
 					+ " hat mit "
-					+ tisch.ermittleAlleinspieler().getSpiele()
-							.get(
-									tisch.ermittleAlleinspieler().getSpiele()
-											.size() - 1)
-					+ " Punkten verloren und " + augen + " Augen erspielt");
+					+ tisch.ermittleAlleinspieler()
+							.getSpiele()
+							.get(tisch.ermittleAlleinspieler().getSpiele()
+									.size() - 1) + " Punkten verloren und "
+					+ augen + " Augen erspielt");
 		}
 		spiel.setText(ramschAuswertung(gewonnen));
 
@@ -826,18 +833,18 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		if (gewonnen
 				&& tisch.getSpielart().getSpielart() == Spielartbezeichnung.RAMSCH) {
 			s = "Sie haben gewonnen! Sie haben "
-					+ tisch.gibMenschlicherSpieler().getSpiele()
-							.get(
-									tisch.gibMenschlicherSpieler().getSpiele()
-											.size() - 1) + " Punkte erreicht!";
+					+ tisch.gibMenschlicherSpieler()
+							.getSpiele()
+							.get(tisch.gibMenschlicherSpieler().getSpiele()
+									.size() - 1) + " Punkte erreicht!";
 		}
 		if (!gewonnen
 				&& tisch.getSpielart().getSpielart() == Spielartbezeichnung.RAMSCH) {
 			s = "Sie haben verloren! Sie haben "
-					+ tisch.gibMenschlicherSpieler().getSpiele()
-							.get(
-									tisch.gibMenschlicherSpieler().getSpiele()
-											.size() - 1) + " Punkte verloren!";
+					+ tisch.gibMenschlicherSpieler()
+							.getSpiele()
+							.get(tisch.gibMenschlicherSpieler().getSpiele()
+									.size() - 1) + " Punkte verloren!";
 		}
 		return s;
 	}
@@ -913,9 +920,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void handspiel() {
 		handspiel = false;
 
-		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"),
+				Messages.getI18n("application.no") };
 
-		int n = JOptionPane.showOptionDialog(null, Messages.getI18n("game.handgame.play.choose"), // question
+		int n = JOptionPane.showOptionDialog(null,
+				Messages.getI18n("game.handgame.play.choose"), // question
 				Messages.getI18n("game.handgame"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
@@ -935,7 +944,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void schneider() {
 		schneider = false;
-		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"),
+				Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				Messages.getI18n("game.schneider.play.choose"), // question
@@ -957,7 +967,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void schwarz() {
 		schwarz = false;
-		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"),
+				Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				Messages.getI18n("game.schwarz.play.choose"), // question
@@ -979,7 +990,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void ouvert() {
 		ouvert = false;
-		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"),
+				Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				Messages.getI18n("game.ouvert.play.choose"), // question
@@ -1001,12 +1013,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void ansagen() {
 		aufHand.repaint();
-		String[] spielart = { 
-				Messages.getI18n("game.type.diamonds"), 
-				Messages.getI18n("game.type.hearts"), 
-				Messages.getI18n("game.type.spades"), 
-				Messages.getI18n("game.type.clubs"), 
-				Messages.getI18n("game.type.grand"), 
+		String[] spielart = { Messages.getI18n("game.type.diamonds"),
+				Messages.getI18n("game.type.hearts"),
+				Messages.getI18n("game.type.spades"),
+				Messages.getI18n("game.type.clubs"),
+				Messages.getI18n("game.type.grand"),
 				Messages.getI18n("game.type.null") };
 
 		if (Spielkarte.getDeutsch()) {
@@ -1017,7 +1028,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		}
 
 		String spielarte = (String) JOptionPane.showInputDialog(null,
-				Messages.getI18n("game.type"), Messages.getI18n("game.type.selection"),
+				Messages.getI18n("game.type"),
+				Messages.getI18n("game.type.selection"),
 				JOptionPane.QUESTION_MESSAGE, null, spielart, spielart[0]);
 		this.spielart = spielarte;
 		ausgabe.setRelease(true);
@@ -1080,7 +1092,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void spielBeginnt() {
 
-		JOptionPane.showMessageDialog(null, Messages.getI18n("game.begin.announcement"));
+		JOptionPane.showMessageDialog(null,
+				Messages.getI18n("game.begin.announcement"));
 
 	}
 
@@ -1093,7 +1106,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void stichGewonnen(ISpieler spieler) {
 
-		JOptionPane.showMessageDialog(null, Messages.getI18n("player.trick.won", spieler.getName()));
+		JOptionPane.showMessageDialog(null,
+				Messages.getI18n("player.trick.won", spieler.getName()));
 		aufTisch.removeAll();
 		pack();
 
@@ -1161,7 +1175,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 		pack();
 		reizagent = false;
-		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"),
+				Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null,
 				Messages.getI18n("game.agent.bidding.use"), // question
@@ -1188,9 +1203,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void sagen(int reizwert) {
 		pack();
-		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"),
+				Messages.getI18n("application.no") };
 
-		int n = JOptionPane.showOptionDialog(null, Messages.getI18n("game.say.bidding.question", reizwert), // question
+		int n = JOptionPane.showOptionDialog(null,
+				Messages.getI18n("game.say.bidding.question", reizwert), // question
 				Messages.getI18n("game.say"), // title
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
 				null, yesNoOptions, yesNoOptions[0]);
@@ -1213,7 +1230,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void hoeren(int reizwert) {
 		pack();
-		String[] yesNoOptions = { Messages.getI18n("application.yes"), Messages.getI18n("application.no") };
+		String[] yesNoOptions = { Messages.getI18n("application.yes"),
+				Messages.getI18n("application.no") };
 
 		int n = JOptionPane.showOptionDialog(null, "Es wird " + reizwert
 				+ " gereizt. Gehen Sie mit?", // question
@@ -1241,12 +1259,15 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		if (e.getActionCommand().compareTo("Skat gesehen") == 0) {
 			ausgabe.setRelease(true);
 		}
+
 		if (e.getActionCommand().compareTo("Neues Spiel") == 0) {
 			ausgabe.setRelease(true);
 		}
+
 		if (e.getActionCommand().compareTo("Spiel beenden") == 0) {
 			System.exit(1);
 		}
+
 		if (e.getActionCommand().compareTo("Spielbare Karten zeigen") == 0) {
 			if (!spielbarhilfe) {
 				spielbarhilfe = true;
@@ -1254,6 +1275,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 				spielbarhilfe = false;
 			}
 		}
+
 		if (e.getActionCommand().compareTo("Vergangene Stiche anzeigen") == 0) {
 			if (!stichehilfe) {
 				cbMenuItem3.setSelected(false);
@@ -1266,6 +1288,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 				stichehilfe = false;
 			}
 		}
+
 		if (e.getActionCommand().compareTo("Letzten Stich anzeigen") == 0) {
 			if (!letzterStichhilfe) {
 				cbMenuItem2.setSelected(false);
@@ -1279,6 +1302,18 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			}
 		}
 
+		if (e.getActionCommand().compareTo(Messages.getI18n("application.about")) == 0) {
+			
+			Point point = this.getLocation();
+			int width = this.getWidth();
+			int height = this.getHeight();
+			AboutDialog aboutDialog = new AboutDialog(new JFrame(),
+					Messages.getI18n("application.about"),
+					Messages.getI18n("application.name"));
+			aboutDialog.setLocation((int) (point.getX() + width) / 2,
+					(int) (point.getY() + height) / 2);
+			aboutDialog.setSize(200, 200);
+		}
 	}
 
 	/**
@@ -1390,8 +1425,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 						"img/" + karte.dateiPfad() + ".png").getPath())
 						.getImage();
 
-				JLabel label = new JLabel(new ImageIcon(image
-						.getScaledInstance(70, 110, 1)));
+				JLabel label = new JLabel(new ImageIcon(
+						image.getScaledInstance(70, 110, 1)));
 				layeredPane.add(label);// , new Integer(i)
 				layeredPane.getComponent(i).setBounds(origin.x, origin.y, 70,
 						110);
@@ -1403,11 +1438,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			for (int i = 0; i < spieler.getBlatt().size(); i++) {
 				Image image = null;
 
-				image = new ImageIcon(Fenster
-						.getFileUrl("img/kartenruecken.png")).getImage();
+				image = new ImageIcon(
+						Fenster.getFileUrl("img/kartenruecken.png")).getImage();
 
-				JLabel label = new JLabel(new ImageIcon(image
-						.getScaledInstance(70, 110, 1)));
+				JLabel label = new JLabel(new ImageIcon(
+						image.getScaledInstance(70, 110, 1)));
 				layeredPane.add(label);// , new Integer(i)
 				layeredPane.getComponent(i).setBounds(origin.x, origin.y, 70,
 						110);
@@ -1452,33 +1487,38 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 		// Hilfe: Spielbare Karten zeigen als Checkbox
 		menu.addSeparator();
-		cbMenuItem = new JCheckBoxMenuItem("Spielbare Karten zeigen");
+		cbMenuItem = new JCheckBoxMenuItem(
+				Messages.getI18n("game.cards.playable.show"));
 		cbMenuItem.setMnemonic(KeyEvent.VK_K);
 		cbMenuItem.addActionListener(this);
 		menu.add(cbMenuItem);
 
 		// Hilfe: Stiche werden in neuem Fenster angezeigt
-		cbMenuItem2 = new JCheckBoxMenuItem("Vergangene Stiche anzeigen");
+		cbMenuItem2 = new JCheckBoxMenuItem(
+				Messages.getI18n("game.trick.past.show"));
 		cbMenuItem2.setMnemonic(KeyEvent.VK_A);
 		cbMenuItem2.addActionListener(this);
 		menu.add(cbMenuItem2);
 
 		// Hilfe: Stiche werden in neuem Fenster angezeigt
-		cbMenuItem3 = new JCheckBoxMenuItem("Letzten Stich anzeigen");
+		cbMenuItem3 = new JCheckBoxMenuItem(
+				Messages.getI18n("game.trick.last.show"));
 		cbMenuItem3.setMnemonic(KeyEvent.VK_L);
 		cbMenuItem3.addActionListener(this);
 		menu.add(cbMenuItem3);
-		
+
 		// About
 		menu = new JMenu(Messages.getI18n("application.about"));
-		cbMenuItem4 = new JCheckBoxMenuItem("Vergangene Stiche anzeigen");
+		menu.setMnemonic(KeyEvent.VK_3);
+		menu.getAccessibleContext().setAccessibleDescription("about");
+		menuBar.add(menu);
+
+		cbMenuItem4 = new JCheckBoxMenuItem(Messages.getI18n("application.about"));
 		cbMenuItem4.setMnemonic(KeyEvent.VK_U);
 		cbMenuItem4.addActionListener(this);
 		menu.add(cbMenuItem4);
-		menuBar.add(menu);
 
 		this.setJMenuBar(menuBar);
-
 	}
 
 	/**
