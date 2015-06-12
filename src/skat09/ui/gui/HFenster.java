@@ -577,7 +577,14 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void skatAusgeben(Spielkarte[] skat) throws IOException {
 
-		for (int i = 0; i < 2; i++) {
+//		for (int i = 0; i < 2; i++) {
+		int skatLength = tisch.getSkat().length;
+		
+		if (!tisch.getSechserskat()) {
+			skatLength = skatLength - 1;
+		}
+		
+		for (int i = 0; i < skatLength; i++) {
 
 			Image image;
 
@@ -598,14 +605,19 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void skataufTisch() {
 		Spielkarte[] skat = tisch.getSkat();
+		int skatLength = skat.length;
 		aufTisch.removeAll();
 		JButton button = new JButton(Messages.getI18n("game.skat.seen"));
 		button.setName("Skat");
 		button.setPreferredSize(new Dimension(150, 30));
 		button.addActionListener(this);
+		
+		if (!tisch.getSechserskat()) {
+			skatLength = skatLength - 1;
+		}
 
-//		for (int i = 0; i < skat.length; i++) {
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < skatLength; i++) {
+//		for (int i = 0; i < 2; i++) {
 
 			Image image;
 
