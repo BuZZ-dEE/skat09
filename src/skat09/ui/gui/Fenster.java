@@ -191,7 +191,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		setzteOptionen();
 
 		// Initialisiere und erstelle den OK-Button
-		button = new JButton(Messages.getI18n("applicaton.ok"));
+		button = new JButton(Messages.getI18n("application.ok"));
 		button.setName("ok");
 		button.addActionListener(this);
 		button.addKeyListener(this);
