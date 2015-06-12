@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import skat09.Messages;
 import skat09.Tisch;
 import skat09.spielkarte.Spielkarte;
 
@@ -53,7 +54,7 @@ public class Stiche extends JFrame {
 	 *            Der Tisch auf dem das Spiel gespielt wird
 	 */
 	public Stiche(Tisch tisch, boolean allestiche) {
-		super("Vergangene Stiche");
+		super(Messages.getI18n("game.trick.past"));
 		this.tisch = tisch;
 		setSize(300, 200);
 		setResizable(false);

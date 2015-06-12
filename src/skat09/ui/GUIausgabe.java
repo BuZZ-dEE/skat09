@@ -6,6 +6,7 @@ import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import skat09.Messages;
 import skat09.Tisch;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
@@ -154,8 +155,8 @@ public class GUIausgabe extends Ausgabe {
 	@Override
 	public void falscheEingabe() {
 
-		JFrame frame = new JFrame("ACHTUNG!");
-		frame.add(new JLabel("Achtung, ihre Eingabe wahr fehlerhaft!"));
+		JFrame frame = new JFrame(Messages.getI18n("application.attention"));
+		frame.add(new JLabel(Messages.getI18n("application.attention.wrong.input")));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 
