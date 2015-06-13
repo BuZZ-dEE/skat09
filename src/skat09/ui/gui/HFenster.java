@@ -23,7 +23,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -614,7 +613,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		Spielkarte[] skat = tisch.getSkat();
 		int skatLength = skat.length;
 		aufTisch.removeAll();
-		JButton button = new JButton(Messages.getI18n("game.skat.seen"));
+		JButton button = new JButton(Messages.getI18n("game.skat_seen"));
 		button.setName("Skat");
 		button.setPreferredSize(new Dimension(150, 30));
 		button.addActionListener(this);
@@ -1256,7 +1255,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 */
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand().compareTo("Skat gesehen") == 0) {
+		if (e.getActionCommand().compareTo(Messages.getI18n("game.skat_seen")) == 0) {
 			ausgabe.setRelease(true);
 		}
 
