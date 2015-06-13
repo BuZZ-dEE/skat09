@@ -790,24 +790,24 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		if (gewonnen
 				&& tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
 			spiel.setText(""
-					+ tisch.ermittleAlleinspieler().getName()
-					+ " hat mit "
-					+ tisch.ermittleAlleinspieler()
-							.getSpiele()
-							.get(tisch.ermittleAlleinspieler().getSpiele()
-									.size() - 1) + " Punkten gewonnen und "
-					+ augen + " Augen erspielt");
+					+ Messages.getI18n(
+							"game.statistic.declarer.score.won",
+							tisch.ermittleAlleinspieler().getName(),
+							tisch.ermittleAlleinspieler()
+									.getSpiele()
+									.get(tisch.ermittleAlleinspieler()
+											.getSpiele().size() - 1), augen));
 		}
 		if (!gewonnen
 				&& tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
 			spiel.setText(""
-					+ tisch.ermittleAlleinspieler().getName()
-					+ " hat mit "
-					+ tisch.ermittleAlleinspieler()
-							.getSpiele()
-							.get(tisch.ermittleAlleinspieler().getSpiele()
-									.size() - 1) + " Punkten verloren und "
-					+ augen + " Augen erspielt");
+					+ Messages.getI18n(
+							"game.statistic.declarer.score.lost",
+							tisch.ermittleAlleinspieler().getName(),
+							tisch.ermittleAlleinspieler()
+									.getSpiele()
+									.get(tisch.ermittleAlleinspieler()
+											.getSpiele().size() - 1), augen));
 		}
 		spiel.setText(ramschAuswertung(gewonnen));
 
@@ -1296,8 +1296,9 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			}
 		}
 
-		if (e.getActionCommand().compareTo(Messages.getI18n("application.about")) == 0) {
-			
+		if (e.getActionCommand().compareTo(
+				Messages.getI18n("application.about")) == 0) {
+
 			Point point = this.getLocation();
 			int width = this.getWidth();
 			int height = this.getHeight();
@@ -1415,8 +1416,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 				Spielkarte karte = spieler.getBlatt().get(i);
 				Image image;
 
-				image = new ImageIcon(karte.getCardPath())
-						.getImage();
+				image = new ImageIcon(karte.getCardPath()).getImage();
 
 				JLabel label = new JLabel(new ImageIcon(
 						image.getScaledInstance(70, 110, 1)));
@@ -1506,7 +1506,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		menu.getAccessibleContext().setAccessibleDescription("about");
 		menuBar.add(menu);
 
-		cbMenuItem4 = new JCheckBoxMenuItem(Messages.getI18n("application.about"));
+		cbMenuItem4 = new JCheckBoxMenuItem(
+				Messages.getI18n("application.about"));
 		cbMenuItem4.setMnemonic(KeyEvent.VK_U);
 		cbMenuItem4.addActionListener(this);
 		menu.add(cbMenuItem4);
