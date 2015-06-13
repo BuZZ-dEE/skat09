@@ -1,5 +1,7 @@
 package skat09.spielkarte;
 
+import java.net.URL;
+
 import skat09.test.interfaces.ISpieler;
 
 /**
@@ -231,5 +233,18 @@ public class Spielkarte implements Comparable<Spielkarte> {
 		String neuerString = this.toString().replace(' ', '_');
 		dateipfad += neuerString;
 		return dateipfad;
+	}
+	
+	/**
+	 * Get the complete path URL to the given card.
+	 * 
+	 * @return the path for the card
+	 * 
+	 * @since 13.06.2015 21:45:49
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 */
+	public URL getCardPath() {
+		return this.getClass().getClassLoader().getResource("img/" + dateiPfad() + ".png");
 	}
 }

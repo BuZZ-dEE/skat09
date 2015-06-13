@@ -549,13 +549,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 					&& gespielteKarten != null
 					&& spieler.spielbareKarten(gespielteKarten).contains(karte)) {
 
-				image = new ImageIcon(Fenster.getFileUrl("img/"
-						+ karte.dateiPfad() + "s.png")).getImage();
+				image = new ImageIcon(karte.getCardPath()).getImage();
 
 			} else {
 
-				image = new ImageIcon(Fenster.getFileUrl("img/"
-						+ karte.dateiPfad() + ".png")).getImage();
+				image = new ImageIcon(karte.getCardPath()).getImage();
 
 			}
 
@@ -594,8 +592,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 			Image image;
 
-			image = new ImageIcon(Fenster.getFileUrl("img/"
-					+ skat[i].dateiPfad() + ".png")).getImage();
+			image = new ImageIcon(skat[i].getCardPath()).getImage();
 
 			JLabel label = new JLabel(new ImageIcon(image.getScaledInstance(70,
 					110, 1)));
@@ -627,8 +624,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 
 			Image image;
 
-			image = new ImageIcon(Fenster.getFileUrl("img/"
-					+ skat[i].dateiPfad() + ".png")).getImage();
+			image = new ImageIcon(skat[i].getCardPath()).getImage();
 
 			JLabel label = new JLabel(new ImageIcon(image.getScaledInstance(70,
 					110, 1)));
@@ -1128,8 +1124,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	public void spieltKarte(Spielkarte karte) {
 		Image image = null;
 
-		image = new ImageIcon(Fenster.getFileUrl("img/" + karte.dateiPfad()
-				+ ".png")).getImage();
+		image = new ImageIcon(karte.getCardPath()).getImage();
 
 		JLabel label = new JLabel(new ImageIcon(image.getScaledInstance(70,
 				110, 1)));
@@ -1420,8 +1415,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 				Spielkarte karte = spieler.getBlatt().get(i);
 				Image image;
 
-				image = new ImageIcon(Fenster.getFileUrl(
-						"img/" + karte.dateiPfad() + ".png").getPath())
+				image = new ImageIcon(karte.getCardPath())
 						.getImage();
 
 				JLabel label = new JLabel(new ImageIcon(

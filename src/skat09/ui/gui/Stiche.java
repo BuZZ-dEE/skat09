@@ -115,8 +115,7 @@ public class Stiche extends JFrame {
 
 			Image image = null;
 
-			image = new ImageIcon(Fenster.getFileUrl("img/" + karte.dateiPfad()
-					+ ".png")).getImage();
+			image = new ImageIcon(karte.getCardPath()).getImage();
 
 			JLabel label = new JLabel(new ImageIcon(image.getScaledInstance(70,
 					110, 1)));
@@ -158,8 +157,7 @@ public class Stiche extends JFrame {
 
 				Image image = null;
 
-				image = new ImageIcon(Fenster.getFileUrl("img/"
-						+ karten.get(i).dateiPfad() + ".png")).getImage();
+				image = new ImageIcon(karten.get(i).getCardPath()).getImage();
 
 				JLabel label = new JLabel(new ImageIcon(image
 						.getScaledInstance(70, 110, 1)));
