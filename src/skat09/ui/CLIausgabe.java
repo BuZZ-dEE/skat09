@@ -910,7 +910,7 @@ public class CLIausgabe extends Ausgabe {
 		System.out.println(Messages.getI18n("game.help.want"));
 		boolean ergebnis = jaNeinAbfrage();
 		if (ergebnis) {
-			System.out.println(Messages.getI18n("game.playable.cards.show"));
+			System.out.println(Messages.getI18n("game.playable.cards.show.question"));
 			ergebnis = jaNeinAbfrage();
 			if (ergebnis) {
 				hilfespielbar = true;

@@ -827,19 +827,21 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		String s = "";
 		if (gewonnen
 				&& tisch.getSpielart().getSpielart() == Spielartbezeichnung.RAMSCH) {
-			s = "Sie haben gewonnen! Sie haben "
-					+ tisch.gibMenschlicherSpieler()
+			s = Messages.getI18n(
+					"game.statistic.player.human.score.won",
+					tisch.gibMenschlicherSpieler()
 							.getSpiele()
 							.get(tisch.gibMenschlicherSpieler().getSpiele()
-									.size() - 1) + " Punkte erreicht!";
+									.size() - 1));
 		}
 		if (!gewonnen
 				&& tisch.getSpielart().getSpielart() == Spielartbezeichnung.RAMSCH) {
-			s = "Sie haben verloren! Sie haben "
-					+ tisch.gibMenschlicherSpieler()
+			s = Messages.getI18n(
+					"game.statistic.player.human.score.lost",
+					tisch.gibMenschlicherSpieler()
 							.getSpiele()
 							.get(tisch.gibMenschlicherSpieler().getSpiele()
-									.size() - 1) + " Punkte verloren!";
+									.size() - 1));
 		}
 		return s;
 	}
@@ -893,13 +895,13 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			try {
 				zahl = Integer.parseInt(s);
 			} catch (NumberFormatException e) {
-				System.out.println("Kein Integer bei Reizagent!");
+				System.out.println(Messages.getI18n("application.exception.not.an.integer"));
 				reizlimit = -1;
 				// e.printStackTrace();
 			}
 			reizlimit = zahl;
 		} else {
-			System.out.println("Fehler beim Reizagenten!");
+			System.out.println(Messages.getI18n("application.exception.bidding.agent"));
 			reizlimit = -1;
 		}
 
@@ -1254,15 +1256,15 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			ausgabe.setRelease(true);
 		}
 
-		if (e.getActionCommand().compareTo("Neues Spiel") == 0) {
+		if (e.getActionCommand().compareTo(Messages.getI18n("game.new")) == 0) {
 			ausgabe.setRelease(true);
 		}
 
-		if (e.getActionCommand().compareTo("Spiel beenden") == 0) {
+		if (e.getActionCommand().compareTo(Messages.getI18n("game.end")) == 0) {
 			System.exit(1);
 		}
 
-		if (e.getActionCommand().compareTo("Spielbare Karten zeigen") == 0) {
+		if (e.getActionCommand().compareTo(Messages.getI18n("game.playable.cards.show")) == 0) {
 			if (!spielbarhilfe) {
 				spielbarhilfe = true;
 			} else {
@@ -1270,7 +1272,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			}
 		}
 
-		if (e.getActionCommand().compareTo("Vergangene Stiche anzeigen") == 0) {
+		if (e.getActionCommand().compareTo(Messages.getI18n("game.trick.past.show")) == 0) {
 			if (!stichehilfe) {
 				cbMenuItem3.setSelected(false);
 				letzterStichhilfe = false;
@@ -1283,7 +1285,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			}
 		}
 
-		if (e.getActionCommand().compareTo("Letzten Stich anzeigen") == 0) {
+		if (e.getActionCommand().compareTo(Messages.getI18n("game.trick.last.show")) == 0) {
 			if (!letzterStichhilfe) {
 				cbMenuItem2.setSelected(false);
 				stichehilfe = false;
@@ -1457,25 +1459,25 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		menuBar = new JMenuBar();
 
 		// Spielmenue, fuer verlassen, speichern...
-		menu = new JMenu("Spiel");
+		menu = new JMenu(Messages.getI18n("game"));
 		menu.setMnemonic(KeyEvent.VK_S);
-		menu.getAccessibleContext().setAccessibleDescription("Spielmenue");
+		menu.getAccessibleContext().setAccessibleDescription(Messages.getI18n("game.menu"));
 		menuBar.add(menu);
 
 		// Um das Spiel zu beenden, dieser Menuepunkt.
-		menuItem = new JMenuItem("Spiel beenden", KeyEvent.VK_B);
+		menuItem = new JMenuItem(Messages.getI18n("game.end"), KeyEvent.VK_B);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1,
 				ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription(
-				"Spiel beenden");
+				Messages.getI18n("game.end"));
 
 		menuItem.addActionListener(this);
 		menu.add(menuItem);
 
 		// Das Hilfemenue, enthaelt vorhandene Spielhilfen
-		menu = new JMenu("Hilfe");
+		menu = new JMenu(Messages.getI18n("game.help"));
 		menu.setMnemonic(KeyEvent.VK_H);
-		menu.getAccessibleContext().setAccessibleDescription("Hilfen");
+		menu.getAccessibleContext().setAccessibleDescription(Messages.getI18n("game.aids"));
 		menuBar.add(menu);
 
 		// Hilfe: Spielbare Karten zeigen als Checkbox
@@ -1680,9 +1682,9 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		JLabel auswert3 = new JLabel(s[0]);
 		JLabel gewinne3 = new JLabel(s[1]);
 		JLabel hand3 = new JLabel(s[2]);
-		JLabel auswert = new JLabel("Prozent der Alleinspiele:");
-		JLabel gewinne = new JLabel("Anzahl der Gewinne:");
-		JLabel hand = new JLabel("Handspiele:");
+		JLabel auswert = new JLabel(Messages.getI18n("game.statistic.declarer.games.percent") + ":");
+		JLabel gewinne = new JLabel(Messages.getI18n("game.statistic.declarer.won.count") + ":");
+		JLabel hand = new JLabel(Messages.getI18n("game.hand.games") + ":");
 
 		setzeStats(auswert, 0, 2 + tisch.getSpieler1().getSpiele().size());
 		setzeStats(gewinne, 0, 3 + tisch.getSpieler1().getSpiele().size());
