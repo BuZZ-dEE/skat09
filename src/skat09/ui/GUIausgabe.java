@@ -224,7 +224,7 @@ public class GUIausgabe extends Ausgabe {
 		} else if (spielart.compareTo("Null") == 0) {
 			spiel = new Nullspiel();
 		} else {
-
+// TODO why not spiel = new Farbspiel(spielart);
 			spiel = new Farbspiel(null);
 		}
 
