@@ -1,20 +1,25 @@
 package skat09.net;
 
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
+import io.netty.buffer.ByteBuf;
 
-public class Server extends UnicastRemoteObject implements IServer {
-	
-	private static final long serialVersionUID = -8604752504494313592L;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelHandlerAdapter;
 
-	protected Server() throws RemoteException {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+/**
+ * Handles a server-side channel.
+ */
+public class Server extends ChannelHandlerAdapter { // (1)
 
-	public String sayHello() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
+        // Discard the received data silently.
+        ((ByteBuf) msg).release(); // (3)
+    }
 
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { // (4)
+        // Close the connection when an exception is raised.
+        cause.printStackTrace();
+        ctx.close();
+    }
 }
