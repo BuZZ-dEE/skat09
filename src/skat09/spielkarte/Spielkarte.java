@@ -1,6 +1,21 @@
 package skat09.spielkarte;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+
+import org.apache.batik.dom.svg12.SVG12DOMImplementation;
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscodingHints;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.ImageTranscoder;
+import org.apache.batik.util.SVGConstants;
+import org.apache.commons.io.FileUtils;
 
 import skat09.test.interfaces.ISpieler;
 
@@ -221,6 +236,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	
 	/**
 	 * Gibt den Dateipfad einer Karte zur&uuml;ck.
+	 * 
 	 * @return Den Dateipfad einer Karte
 	 */
 	public String dateiPfad() {
@@ -229,6 +245,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 			dateipfad += "deutkarten/";
 		} else {
 			dateipfad += "frankarten/";
+//			dateipfad += "svg/";
 		}
 		String neuerString = this.toString().replace(' ', '_');
 		dateipfad += neuerString;
@@ -246,5 +263,87 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	 */
 	public URL getCardPath() {
 		return this.getClass().getClassLoader().getResource("img/" + dateiPfad() + ".png");
+	}
+	
+	/**
+	 * Get the image for the given SVG card.
+	 * 
+	 * @return the image for the card
+	 * 
+	 * @since 14.06.2015 22:45:57
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 */
+	public Image getCardImage() {
+		File svgFile;
+		try {
+			svgFile = new File(this.getClass().getClassLoader().getResource("img/" + dateiPfad() + ".svg").toURI());
+			try {
+				return rasterize(svgFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static BufferedImage rasterize(File svgFile) throws IOException {
+
+	    final BufferedImage[] imagePointer = new BufferedImage[1];
+
+	    // Rendering hints can't be set programatically, so
+	    // we override defaults with a temporary stylesheet.
+	    // These defaults emphasize quality and precision, and
+	    // are more similar to the defaults of other SVG viewers.
+	    // SVG documents can still override these defaults.
+	    String css = "svg {" +
+	            "shape-rendering: geometricPrecision;" +
+	            "text-rendering:  geometricPrecision;" +
+	            "color-rendering: optimizeQuality;" +
+	            "image-rendering: optimizeQuality;" +
+	            "}";
+	    File cssFile = File.createTempFile("batik-default-override-", ".css");
+	    FileUtils.writeStringToFile(cssFile, css);
+
+	    TranscodingHints transcoderHints = new TranscodingHints();
+	    transcoderHints.put(ImageTranscoder.KEY_XML_PARSER_VALIDATING, Boolean.FALSE);
+	    transcoderHints.put(ImageTranscoder.KEY_DOM_IMPLEMENTATION,
+	            SVG12DOMImplementation.getDOMImplementation());
+	    transcoderHints.put(ImageTranscoder.KEY_DOCUMENT_ELEMENT_NAMESPACE_URI,
+	            SVGConstants.SVG_NAMESPACE_URI);
+	    transcoderHints.put(ImageTranscoder.KEY_DOCUMENT_ELEMENT, "svg");
+	    transcoderHints.put(ImageTranscoder.KEY_USER_STYLESHEET_URI, cssFile.toURI().toString());
+
+	    try {
+
+	        TranscoderInput input = new TranscoderInput(new FileInputStream(svgFile));
+
+	        ImageTranscoder t = new ImageTranscoder() {
+
+	            @Override
+	            public BufferedImage createImage(int w, int h) {
+	                return new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+	            }
+
+	            @Override
+	            public void writeImage(BufferedImage image, TranscoderOutput out)
+	                    throws TranscoderException {
+	                imagePointer[0] = image;
+	            }
+	        };
+	        t.setTranscodingHints(transcoderHints);
+	        t.transcode(input, null);
+	    }
+	    catch (TranscoderException ex) {
+	        ex.printStackTrace();
+	        throw new IOException("Couldn't convert " + svgFile);
+	    }
+	    finally {
+	        cssFile.delete();
+	    }
+
+	    return imagePointer[0];
 	}
 }
