@@ -1,5 +1,13 @@
 package skat09.net;
 
+/**
+ * Server runnable
+ * 
+ * @since 16.06.2015 00:23:08
+ * 
+ * @author Sebastian Schlatow <ssc@openmailbox.org>
+ *
+ */
 public class ServerRunnable implements Runnable {
 
 	@Override
@@ -8,7 +16,6 @@ public class ServerRunnable implements Runnable {
 		try {
 			server.start();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
