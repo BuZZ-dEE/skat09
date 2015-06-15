@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import skat09.net.Server;
+import skat09.net.ServerRunnable;
 import skat09.test.interfaces.IAusgabe;
 import skat09.test.interfaces.IController;
 import skat09.ui.CLIausgabe;
@@ -33,6 +35,13 @@ public class Main {
 		Tisch tisch = new Tisch();
 		String s = null;
 		IAusgabe ausgabe;
+		
+		try {
+			(new Thread(new ServerRunnable())).start();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
 			s = args[0];
