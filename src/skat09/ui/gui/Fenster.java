@@ -159,17 +159,12 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		this.ausgabe = ausgabe;
 
 		init();
-		// Größe des Bildschirms ermitteln
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 		Dimension frameSize = this.getSize();
-		// Position des JFrames errechnen
 		int top = (screenSize.height - frameSize.height) / 2;
 		int left = (screenSize.width - frameSize.width) / 2;
-		// Größe zuordnen
 		// setSize(frameSize);
-
-		// Position zuordnen
 		setLocation(left, top);
 		setResizable(false);
 	}
@@ -190,7 +185,6 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		erstelleOptions();
 		setzteOptionen();
 
-		// Initialisiere und erstelle den OK-Button
 		button = new JButton(Messages.getI18n("application.ok"));
 		button.setName("ok");
 		button.addActionListener(this);
