@@ -1,5 +1,6 @@
 package skat09.ui.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -153,7 +154,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 *            released werden kann.
 	 */
 	public Fenster(GUIausgabe ausgabe) {
-		super(Messages.getI18n("application.settings"));
+		super(Messages.getI18n("application.name"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.ausgabe = ausgabe;
@@ -174,7 +175,9 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 * OK-Button
 	 */
 	private void init() {
+		
 		haupt = new JPanel();
+		getContentPane().add(new Toolbar(), BorderLayout.NORTH);
 		haupt.setLayout(new FlowLayout());
 		options = new JPanel();
 		options.setLayout(new GridBagLayout());
@@ -197,7 +200,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		haupt.add(options);
 		haupt.add(logo);
 		add(haupt);
-
+        
 		pack();
 		setVisible(true);
 	}
