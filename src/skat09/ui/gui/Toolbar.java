@@ -1,7 +1,6 @@
 package skat09.ui.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -41,7 +40,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	private void addButtons(JToolBar toolBar) {
 		JButton button = null;
 
-		button = makeNavigationButton("settings", SETTINGS,
+		button = makeNavigationButton("view-sidebar-symbolic", SETTINGS,
 				Messages.getI18n("application.settings"),
 				Messages.getI18n("application.settings"));
 		toolBar.add(button);
@@ -51,8 +50,8 @@ public class Toolbar extends JPanel implements ActionListener {
 	protected JButton makeNavigationButton(String imageName,
 			String actionCommand, String toolTipText, String altText) {
 		
-		String imgLocation = "images/" + imageName + ".png";
-		URL imageURL = Toolbar.class.getResource(imgLocation);
+		String imgLocation = "img/app/" + imageName + ".svg";
+		URL imageURL = this.getClass().getClassLoader().getResource(imgLocation);
 
 		JButton button = new JButton();
 		button.setActionCommand(actionCommand);
@@ -60,7 +59,11 @@ public class Toolbar extends JPanel implements ActionListener {
 		button.addActionListener(this);
 
 		if (imageURL != null) {
-			button.setIcon(new ImageIcon(imageURL, altText));
+//			Image img = new ImageIcon(imageURL).getImage();
+//			Image scaledImg = img.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);  
+//			button.setIcon(new ImageIcon(scaledImg, altText));
+			
+			button.setIcon(new ImageIcon(SvgImageProcessing.getImage(imageName), altText));
 		} else {
 			button.setText(altText);
 			System.err.println("Resource not found: " + imgLocation);
