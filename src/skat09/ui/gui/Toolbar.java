@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import skat09.Messages;
+
 /**
  * Toolbar
  * 
@@ -20,37 +22,38 @@ import javax.swing.JToolBar;
  *
  */
 public class Toolbar extends JPanel implements ActionListener {
-	
+
 	private static final long serialVersionUID = 2893537278971199847L;
 	static final private String SETTINGS = "settings";
 
 	public Toolbar() {
 		super(new BorderLayout());
 
-		JToolBar toolBar = new JToolBar("Still draggable");
+		JToolBar toolBar = new JToolBar(
+				Messages.getI18n("application.settings"));
+		toolBar.setFloatable(false);
 		addButtons(toolBar);
 
-		setPreferredSize(new Dimension(450, 130));
-		add(toolBar, BorderLayout.PAGE_START);
-//		add(scrollPane, BorderLayout.CENTER);
+//		setPreferredSize(new Dimension(450, 130));
+		add(toolBar, BorderLayout.EAST);
 	}
 
 	private void addButtons(JToolBar toolBar) {
 		JButton button = null;
 
-		button = makeNavigationButton("Settings", SETTINGS,
-				"Back to previous something-or-other", "Previous");
+		button = makeNavigationButton("settings", SETTINGS,
+				Messages.getI18n("application.settings"),
+				Messages.getI18n("application.settings"));
 		toolBar.add(button);
 
 	}
-	
+
 	protected JButton makeNavigationButton(String imageName,
 			String actionCommand, String toolTipText, String altText) {
-		// Look for the image.
-		String imgLocation = "images/" + imageName + ".gif";
+		
+		String imgLocation = "images/" + imageName + ".png";
 		URL imageURL = Toolbar.class.getResource(imgLocation);
 
-		// Create and initialize the button.
 		JButton button = new JButton();
 		button.setActionCommand(actionCommand);
 		button.setToolTipText(toolTipText);
@@ -67,8 +70,20 @@ public class Toolbar extends JPanel implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void actionPerformed(ActionEvent e) {
+        String cmd = e.getActionCommand();
+        String description = null;
+ 
+        // Handle each button.
+        if (SETTINGS.equals(cmd)) {
+            description = "taken you to the settings.";
+        }
+ 
+        displayResult("If this were a real app, it would have "
+                        + description);
+    }
+	
+    protected void displayResult(String actionDescription) {
+        System.out.println(Messages.getI18n("application.settings"));
+    }
 }
