@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class AboutDialogFx {
@@ -15,11 +17,12 @@ public class AboutDialogFx {
     private static void initAndShowGUI() {
         // This method is invoked on the EDT thread
         JFrame frame = new JFrame("Swing and JavaFX");
+//    	JOptionPane frame = new JOptionPane("Options");
         final JFXPanel fxPanel = new JFXPanel();
         frame.add(fxPanel);
         frame.setSize(300, 200);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         Platform.runLater(new Runnable() {
             @Override
