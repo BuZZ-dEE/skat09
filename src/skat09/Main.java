@@ -1,5 +1,8 @@
 package skat09;
 
+import io.dropwizard.Application;
+import io.dropwizard.setup.Environment;
+
 import java.io.IOException;
 
 import javax.swing.UIManager;
@@ -7,8 +10,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import skat09.test.interfaces.IAusgabe;
 import skat09.test.interfaces.IController;
+import skat09.tools.AppConfiguration;
 import skat09.ui.CLIausgabe;
 import skat09.ui.GUIausgabe;
+
 
 /**
  * Die Main Klasse dient dem Programmstart, sowie dem Initialisieren der
@@ -18,7 +23,7 @@ import skat09.ui.GUIausgabe;
  *         Bruhns
  * @version 03.07.2009
  */
-public class Main {
+public class Main extends Application<AppConfiguration> {
 
 	/**
 	 * Die Mainmethode f&uuml;hrt das Programm aus.
@@ -67,5 +72,12 @@ public class Main {
 		}
 		controller.spiel();
 
+	}
+
+	@Override
+	public void run(AppConfiguration configuration, Environment environment)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 }
