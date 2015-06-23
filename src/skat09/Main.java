@@ -1,6 +1,7 @@
 package skat09;
 
 import io.dropwizard.Application;
+import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 import java.io.IOException;
@@ -80,11 +81,18 @@ public class Main extends Application<AppConfiguration> {
 		controller.spiel();
 
 	}
+	
+
+	@Override
+	public void initialize(Bootstrap<AppConfiguration> bootstrap) {
+		// nothing to do yet
+	}
 
 	@Override
 	public void run(AppConfiguration configuration, Environment environment)
 			throws Exception {
-		// TODO Auto-generated method stub
+		
+		System.out.println("App runs");
 		
 	}
 }
