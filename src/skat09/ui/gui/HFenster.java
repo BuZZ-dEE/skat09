@@ -895,13 +895,15 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			try {
 				zahl = Integer.parseInt(s);
 			} catch (NumberFormatException e) {
-				System.out.println(Messages.getI18n("application.exception.not.an.integer"));
+				System.out.println(Messages
+						.getI18n("application.exception.not.an.integer"));
 				reizlimit = -1;
 				// e.printStackTrace();
 			}
 			reizlimit = zahl;
 		} else {
-			System.out.println(Messages.getI18n("application.exception.bidding.agent"));
+			System.out.println(Messages
+					.getI18n("application.exception.bidding.agent"));
 			reizlimit = -1;
 		}
 
@@ -1229,11 +1231,11 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		String[] yesNoOptions = { Messages.getI18n("application.yes"),
 				Messages.getI18n("application.no") };
 
-		int n = JOptionPane.showOptionDialog(null, "Es wird " + reizwert
-				+ " gereizt. Gehen Sie mit?", // question
-				"Hoeren", // title
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, // icon
-				null, yesNoOptions, yesNoOptions[0]);
+		int n = JOptionPane.showOptionDialog(null,
+				Messages.getI18n("game.hear.bidding.question", reizwert),
+				Messages.getI18n("game.hear"), JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE, null, yesNoOptions,
+				yesNoOptions[0]);
 
 		if (n == JOptionPane.YES_OPTION) {
 			hoeren = true;
@@ -1264,7 +1266,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			System.exit(1);
 		}
 
-		if (e.getActionCommand().compareTo(Messages.getI18n("game.playable.cards.show")) == 0) {
+		if (e.getActionCommand().compareTo(
+				Messages.getI18n("game.playable.cards.show")) == 0) {
 			if (!spielbarhilfe) {
 				spielbarhilfe = true;
 			} else {
@@ -1272,7 +1275,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			}
 		}
 
-		if (e.getActionCommand().compareTo(Messages.getI18n("game.trick.past.show")) == 0) {
+		if (e.getActionCommand().compareTo(
+				Messages.getI18n("game.trick.past.show")) == 0) {
 			if (!stichehilfe) {
 				cbMenuItem3.setSelected(false);
 				letzterStichhilfe = false;
@@ -1285,7 +1289,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 			}
 		}
 
-		if (e.getActionCommand().compareTo(Messages.getI18n("game.trick.last.show")) == 0) {
+		if (e.getActionCommand().compareTo(
+				Messages.getI18n("game.trick.last.show")) == 0) {
 			if (!letzterStichhilfe) {
 				cbMenuItem2.setSelected(false);
 				stichehilfe = false;
@@ -1461,7 +1466,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		// Spielmenue, fuer verlassen, speichern...
 		menu = new JMenu(Messages.getI18n("game"));
 		menu.setMnemonic(KeyEvent.VK_S);
-		menu.getAccessibleContext().setAccessibleDescription(Messages.getI18n("game.menu"));
+		menu.getAccessibleContext().setAccessibleDescription(
+				Messages.getI18n("game.menu"));
 		menuBar.add(menu);
 
 		// Um das Spiel zu beenden, dieser Menuepunkt.
@@ -1477,7 +1483,8 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		// Das Hilfemenue, enthaelt vorhandene Spielhilfen
 		menu = new JMenu(Messages.getI18n("game.help"));
 		menu.setMnemonic(KeyEvent.VK_H);
-		menu.getAccessibleContext().setAccessibleDescription(Messages.getI18n("game.aids"));
+		menu.getAccessibleContext().setAccessibleDescription(
+				Messages.getI18n("game.aids"));
 		menuBar.add(menu);
 
 		// Hilfe: Spielbare Karten zeigen als Checkbox
@@ -1682,8 +1689,10 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 		JLabel auswert3 = new JLabel(s[0]);
 		JLabel gewinne3 = new JLabel(s[1]);
 		JLabel hand3 = new JLabel(s[2]);
-		JLabel auswert = new JLabel(Messages.getI18n("game.statistic.declarer.games.percent") + ":");
-		JLabel gewinne = new JLabel(Messages.getI18n("game.statistic.declarer.won.count") + ":");
+		JLabel auswert = new JLabel(
+				Messages.getI18n("game.statistic.declarer.games.percent") + ":");
+		JLabel gewinne = new JLabel(
+				Messages.getI18n("game.statistic.declarer.won.count") + ":");
 		JLabel hand = new JLabel(Messages.getI18n("game.hand.games") + ":");
 
 		setzeStats(auswert, 0, 2 + tisch.getSpieler1().getSpiele().size());
