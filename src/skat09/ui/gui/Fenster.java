@@ -20,11 +20,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import skat09.Messages;
 import skat09.spieler.SpielerEnum;
+import skat09.tools.Configuration;
 import skat09.ui.GUIausgabe;
-
 
 /**
  * 
@@ -32,7 +34,8 @@ import skat09.ui.GUIausgabe;
  * die Klasse Fenster stellt das Einstellungsmen&uuml; des Skatspiels f&uumlr;
  * den Fall, das eine graphische Ausgabe gew&uuml;nscht wird
  * 
- * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
+ * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin
+ *         Bruhns
  * @version 03.07.2009
  */
 public class Fenster extends JFrame implements ActionListener, KeyListener {
@@ -50,7 +53,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 */
 	private JPanel options;
 	/**
-	 * Enth&auml;lt das Logo 
+	 * Enth&auml;lt das Logo
 	 */
 	private JPanel logo;
 	/**
@@ -62,8 +65,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 */
 	private JComboBox<String> gegner2;
 	/**
-	 * Eingabefeld in das der menschliche Spiel seinen
-	 * Spielname eingeben kann
+	 * Eingabefeld in das der menschliche Spiel seinen Spielname eingeben kann
 	 */
 	private JTextField name;
 	/**
@@ -71,8 +73,8 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 */
 	private JComboBox<String> skatvariante;
 	/**
-	 * Wahl, ob nach deutschen oder franz&ouml;sischem Blatt
-	 * gespielt werden soll
+	 * Wahl, ob nach deutschen oder franz&ouml;sischem Blatt gespielt werden
+	 * soll
 	 */
 	private JComboBox<String> blattwahl;
 	/**
@@ -118,13 +120,13 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 */
 	private String sname = "";
 	/**
-	 * Je nach Eingabe wird der zur Eingabe in Gegnerwahl der passende
-	 * ENUM-Wert gehalten
+	 * Je nach Eingabe wird der zur Eingabe in Gegnerwahl der passende ENUM-Wert
+	 * gehalten
 	 */
 	private SpielerEnum mitspieler1;
 	/**
-	 * Je nach Eingabe wird der zur Eingabe in Gegnerwahl der passende
-	 * ENUM-Wert gehalten
+	 * Je nach Eingabe wird der zur Eingabe in Gegnerwahl der passende ENUM-Wert
+	 * gehalten
 	 */
 	private SpielerEnum mitspieler2;
 	/**
@@ -133,8 +135,8 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 */
 	private int variante = 0;
 	/**
-	 * wird je nachdem gesetzt, ob franz&ouml;sisches oder deutsches
-	 * Spielblatt erw&uuml;nscht wird
+	 * wird je nachdem gesetzt, ob franz&ouml;sisches oder deutsches Spielblatt
+	 * erw&uuml;nscht wird
 	 */
 	private boolean deutsch = false;
 	/**
@@ -160,6 +162,16 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		this.ausgabe = ausgabe;
 
 		init();
+
+		try {
+			ClassLoader cl = this.getClass().getClassLoader();
+			ImageIcon programIcon = new ImageIcon(
+					cl.getResource("res/test.png"));
+			setIconImage(programIcon.getImage());
+		} catch (Exception whoJackedMyIcon) {
+			System.out.println("Could not load program icon.");
+		}
+
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 		Dimension frameSize = this.getSize();
@@ -175,7 +187,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 * OK-Button
 	 */
 	private void init() {
-		
+
 		haupt = new JPanel();
 		getContentPane().add(new Toolbar(), BorderLayout.NORTH);
 		haupt.setLayout(new FlowLayout());
@@ -200,7 +212,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		haupt.add(options);
 		haupt.add(logo);
 		add(haupt);
-        
+
 		pack();
 		setVisible(true);
 	}
@@ -254,25 +266,53 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	private void erstelleOptions() {
 
 		// Beschriftungen der ComboBoxes
-		String[] gegner = { Messages.getI18n("player.granny"), Messages.getI18n("player.rule.compliant"), Messages.getI18n("player.smart") };
-		String[] variante = { Messages.getI18n("game.skat.international"), Messages.getI18n("game.skat.raeuber"),
+		String[] gegner = { Messages.getI18n("player.granny"),
+				Messages.getI18n("player.rule.compliant"),
+				Messages.getI18n("player.smart") };
+		String[] variante = { Messages.getI18n("game.skat.international"),
+				Messages.getI18n("game.skat.raeuber"),
 				Messages.getI18n("game.skat.ramschbock") };
-		String[] blattwahl2 = { Messages.getI18n("game.skat.sheet.german"), Messages.getI18n("game.skat.sheet.french") };
+		String[] blattwahl2 = { Messages.getI18n("game.skat.sheet.german"),
+				Messages.getI18n("game.skat.sheet.french") };
 
 		// Namen der Items
-		lname = new JLabel(Messages.getI18n("player.name") + ":", JLabel.TRAILING);
-		lgegner1 = new JLabel(Messages.getI18n("player.adversary.first") + ":", JLabel.TRAILING);
-		lgegner2 = new JLabel(Messages.getI18n("player.adversary.second") + ":", JLabel.TRAILING);
-		lvariante = new JLabel(Messages.getI18n("game.skat.variant") + ":", JLabel.TRAILING);
-		lsechser = new JLabel(Messages.getI18n("game.skat.variant.six") + ":", JLabel.TRAILING);
-		lblattw = new JLabel(Messages.getI18n("game.sheet.choice") + ":", JLabel.TRAILING);
+		lname = new JLabel(Messages.getI18n("player.name") + ":",
+				JLabel.TRAILING);
+		lgegner1 = new JLabel(Messages.getI18n("player.adversary.first") + ":",
+				JLabel.TRAILING);
+		lgegner2 = new JLabel(
+				Messages.getI18n("player.adversary.second") + ":",
+				JLabel.TRAILING);
+		lvariante = new JLabel(Messages.getI18n("game.skat.variant") + ":",
+				JLabel.TRAILING);
+		lsechser = new JLabel(Messages.getI18n("game.skat.variant.six") + ":",
+				JLabel.TRAILING);
+		lblattw = new JLabel(Messages.getI18n("game.sheet.choice") + ":",
+				JLabel.TRAILING);
 
 		// Textfeld
-		name = new JTextField(Messages.getI18n("player"));
+		name = new JTextField(Configuration.getInstance().getDefaultName());
+		name.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				Configuration.getInstance().setDefaultName(name.getText());
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 		lname.setLabelFor(name);
 
 		// ComboBox mit Label:
-		gegner1 = new JComboBox<String>(gegner);
+u		gegner1 = new JComboBox<String>(gegner);
 		gegner1.setSelectedIndex(1);
 		lgegner1.setLabelFor(gegner1);
 
@@ -299,6 +339,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		sechser.addKeyListener(this);
 
 	}
+
 	/**
 	 * l&auml;dt das Logo und gibt es aus
 	 */
@@ -314,10 +355,11 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		logo.add(bilderrahmen);
 
 	}
-	
+
 	/**
-	 * gibt den Link an, an dem sich die ben&oetigten Mediendateien befinden
-	 * und erlaubt es, diese auch innerhalb einer Jar-Datei anzusprechen
+	 * gibt den Link an, an dem sich die ben&oetigten Mediendateien befinden und
+	 * erlaubt es, diese auch innerhalb einer Jar-Datei anzusprechen
+	 * 
 	 * @param path
 	 * @return the File URL
 	 */
@@ -335,6 +377,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 
 	/**
 	 * Gibt die Art des 1. Mitspielers zur&uuml;ck
+	 * 
 	 * @return mitspieler1
 	 */
 	public SpielerEnum getMitspieler1() {
@@ -345,8 +388,10 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		// neu
 		return mitspieler1;
 	}
+
 	/**
 	 * Gibt die Art des 2. Mitspielers zur&uuml;ck
+	 * 
 	 * @return mitspieler2
 	 */
 	public SpielerEnum getMitspieler2() {
@@ -357,18 +402,22 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		// neu
 		return mitspieler2;
 	}
+
 	/**
 	 * dient zur Abfrage der gew&auml;hlten Skatvariante
-	 * @return	Die Skatvariante
+	 * 
+	 * @return Die Skatvariante
 	 */
 	public int getSkatWahl() {
 		int erg = variante;
 		variante = 0;
 		return erg;
 	}
+
 	/**
 	 * dient zur Abfrage des gew&auml;hlten Spielernamens
-	 * @return	Der Spielername
+	 * 
+	 * @return Der Spielername
 	 */
 	public String getName() {
 		return sname;
@@ -376,7 +425,9 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 
 	/**
 	 * Setzt die gew&auml;hlte Spielblattwahl
-	 * @param deutsch - Spielblattwahl
+	 * 
+	 * @param deutsch
+	 *            - Spielblattwahl
 	 * 
 	 */
 	public void setDeutsch(boolean deutsch) {
@@ -384,7 +435,8 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	}
 
 	/**
-	 * dient zur Abfrage der gew&auml;hlten Spielblattvariante 
+	 * dient zur Abfrage der gew&auml;hlten Spielblattvariante
+	 * 
 	 * @return die gew&auml;hlte Spielblattvariante
 	 */
 	public boolean getDeutsch() {
@@ -407,9 +459,10 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent arg0) {
 
 	}
+
 	/**
-	 * Die Methode beschreibt das Verhalten beim Loslassen einer Taste, wenn
-	 * der Fokus auf der Komponente ist.
+	 * Die Methode beschreibt das Verhalten beim Loslassen einer Taste, wenn der
+	 * Fokus auf der Komponente ist.
 	 */
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -427,10 +480,10 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		}
 
 	}
-	
+
 	/**
-	 * Die Methode beschreibt das Verhalten beim Tippen einer Taste, wenn
-	 * der Fokus auf der Komponente ist.
+	 * Die Methode beschreibt das Verhalten beim Tippen einer Taste, wenn der
+	 * Fokus auf der Komponente ist.
 	 */
 	public void keyTyped(KeyEvent arg0) {
 
