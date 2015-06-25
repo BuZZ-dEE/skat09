@@ -1,14 +1,10 @@
 package skat09;
 
-import io.dropwizard.Application;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
-
 import java.io.IOException;
 
 import skat09.test.interfaces.IAusgabe;
 import skat09.test.interfaces.IController;
-import skat09.tools.AppConfiguration;
+import skat09.tools.Configuration;
 import skat09.tools.OSValidator;
 import skat09.ui.CLIausgabe;
 import skat09.ui.GUIausgabe;
@@ -21,7 +17,7 @@ import skat09.ui.GUIausgabe;
  *         Bruhns
  * @version 03.07.2009
  */
-public class Skat09 extends Application<AppConfiguration> {
+public class Skat09 {
 
 	/**
 	 * Die Mainmethode f&uuml;hrt das Programm aus.
@@ -55,19 +51,5 @@ public class Skat09 extends Application<AppConfiguration> {
 			controller.warte();
 		}
 		controller.spiel();
-
-	}
-
-	@Override
-	public void initialize(Bootstrap<AppConfiguration> bootstrap) {
-		// nothing to do yet
-	}
-
-	@Override
-	public void run(AppConfiguration configuration, Environment environment)
-			throws Exception {
-
-		System.out.println("App runs");
-
 	}
 }
