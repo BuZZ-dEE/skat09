@@ -1,11 +1,11 @@
 package skat09.tools;
 
-import io.dropwizard.Configuration;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.NotEmpty;
+import java.util.prefs.Preferences;
+
+import skat09.Messages;
 
 /**
- * Represents the applicartion configuration with methods to write
+ * Represents the application configuration with methods to write
  * it the user home folder.
  * 
  * @since 23.06.2015 21:54:13
@@ -13,31 +13,45 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Sebastian Schlatow <ssc@openmailbox.org>
  *
  */
-public class AppConfiguration extends Configuration {
+public class Configuration {
     
-	@NotEmpty
+	private static Configuration configInstance;
+
+    final String LANG = "language";
+    final String PLAYER = "playerName";
+    
     private String defaultLanguage = "de";
+    private String defaultName = Messages.getI18n("player");
+    
+    Preferences prefs = Preferences.userNodeForPackage(skat09.Skat09.class);
+    
+    static {
+    	configInstance = new Configuration();
+    }
 
-    @NotEmpty
-    private String defaultName = "Spieler";
+    private Configuration() { 
+        // hidden constructor
+    }   
 
-    @JsonProperty
     public String getLanguage() {
-        return defaultLanguage;
+    	return prefs.get(LANG, defaultLanguage);
     }
 
-    @JsonProperty
     public void setLanguage(String language) {
-        this.defaultLanguage = language;
+        prefs.put(LANG, language);
     }
-
-    @JsonProperty
+    
     public String getDefaultName() {
-        return defaultName;
+    	return prefs.get(PLAYER, defaultName);
     }
 
-    @JsonProperty
     public void setDefaultName(String name) {
-        this.defaultName = name;
+    	prefs.put(PLAYER, name);
+    }
+    
+ 
+
+    public static Configuration getInstance() {
+        return configInstance;
     }
 }
