@@ -15,10 +15,6 @@ import skat09.spielkarte.Wert;
  */
 public class Farbspiel extends Spielart {
 
-	//
-	// Datenfelder
-	//
-
 	private Farbe trumpffarbe;
 
 	/**
@@ -31,10 +27,6 @@ public class Farbspiel extends Spielart {
 
 	}
 
-	//
-	// get-Methode
-	//
-
 	/**
 	 * gibt die Trumpffarbe zurueck.
 	 * 
@@ -43,14 +35,6 @@ public class Farbspiel extends Spielart {
 	public Farbe getTrumpffarbe() {
 		return trumpffarbe;
 	}
-
-	//
-	// set-Methode
-	//
-
-	//
-	// weitere Methoden
-	//
 
 //	/**
 //	 * Prueft in Abhaengigkeit von den vorher gespielten Karten, ob eine Karte
