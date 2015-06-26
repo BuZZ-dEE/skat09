@@ -312,7 +312,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		lname.setLabelFor(name);
 
 		// ComboBox mit Label:
-u		gegner1 = new JComboBox<String>(gegner);
+		gegner1 = new JComboBox<String>(gegner);
 		gegner1.setSelectedIndex(1);
 		lgegner1.setLabelFor(gegner1);
 
