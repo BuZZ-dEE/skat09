@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import skat09.test.interfaces.IAusgabe;
 import skat09.test.interfaces.IController;
-import skat09.tools.Configuration;
 import skat09.tools.OSValidator;
 import skat09.ui.CLIausgabe;
 import skat09.ui.GUIausgabe;
@@ -32,7 +31,7 @@ public class Skat09 {
 		Tisch tisch = new Tisch();
 		String s = null;
 		IAusgabe ausgabe;
-
+		
 		try {
 			s = args[0];
 		} catch (ArrayIndexOutOfBoundsException e) {
