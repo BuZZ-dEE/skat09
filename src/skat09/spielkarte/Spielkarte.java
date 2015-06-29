@@ -81,10 +81,6 @@ public class Spielkarte implements Comparable<Spielkarte> {
 		return besitzer;
 	}
 
-	//
-	// set-Methoden
-	// 
-
 	/**
 	 * Setzt den Besitzer einer Karte neu.
 	 * 
@@ -104,10 +100,6 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	public static void setDeutsch(boolean blatt) {
 		deutsch = blatt;
 	}
-
-	//
-	// Other methods
-	//
 
 	/**
 	 * Gibt die Eigenschaften einer Karte als String aus.
