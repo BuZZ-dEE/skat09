@@ -452,9 +452,9 @@ public class GUIausgabe extends Ausgabe {
 	public String getBlattwahl() {
 		String s = "";
 		if (fenster.getDeutsch() == true) {
-			s = "d";
+			s = Messages.getI18n("game.skat.deck.g");
 		} else {
-			s = "f";
+			s = Messages.getI18n("game.skat.deck.f");
 		}
 		return s;
 	}
