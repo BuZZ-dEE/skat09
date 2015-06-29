@@ -139,19 +139,19 @@ public class Controller implements Observer, IController {
 		s = ausgabe.gegner(1);
 
 		// Eingabe o fuer Oma
-		if (s.equals("o")) {
+		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
 			ISpieler spieler2 = new Oma("Oma Karla");
 			tisch.setSpieler2(spieler2);
 		}
 		// Eingabe r fuer regelkonformer Spieler
-		if (s.equals("r")) {
+		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
 
 			ISpieler spieler2 = new RegelkonformerSpieler("Hans");
 			tisch.setSpieler2(spieler2);
 		}
 		// Eingabe s fuer schlauer Spieler
-		if (s.equals("s")) {
+		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {
 
 			ISpieler spieler2 = new SchlauerSpieler("Heinz");
 			tisch.setSpieler2(spieler2);
@@ -160,17 +160,17 @@ public class Controller implements Observer, IController {
 		// Zweiten Gegegner auf die gleiche Weise waehlen
 		s = ausgabe.gegner(2);
 
-		if (s.equals("o")) {
+		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
 			ISpieler spieler3 = new Oma("Oma Berta");
 			tisch.setSpieler3(spieler3);
 		}
-		if (s.equals("r")) {
+		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
 
 			ISpieler spieler3 = new RegelkonformerSpieler("Franz");
 			tisch.setSpieler3(spieler3);
 		}
-		if (s.equals("s")) {
+		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {
 
 			ISpieler spieler3 = new SchlauerSpieler("Wolfgang");
 			tisch.setSpieler3(spieler3);
@@ -179,24 +179,24 @@ public class Controller implements Observer, IController {
 
 	//@Override
 	public void waehleSkatart() {
-
+		
 		String s;
 		s = ausgabe.frageVariante();
 
-		if (s.equals("r")) {
+		if (s.equals(Messages.getI18n("game.commandline.skat.type.robber.abbr"))) {
 
 			tisch.setVariante(Spielvariante.RAEUBER);
 		}
-		if (s.equals("i")) {
+		if (s.equals(Messages.getI18n("game.commandline.skat.type.international.abbr"))) {
 
 			tisch.setVariante(Spielvariante.SKAT);
 		}
-		if (s.equals("b")) {
+		if (s.equals(Messages.getI18n("game.commandline.skat.type.bock.abbr"))) {
 			tisch.setVariante(Spielvariante.RAMSCHBOCK);
 		}
 
 		s = ausgabe.frageSechserskat();
-		if (s.equals("j")) {
+		if (s.equals(Messages.getI18n("application.y"))) {
 			tisch.setSechserskat(true);
 		}
 	}
