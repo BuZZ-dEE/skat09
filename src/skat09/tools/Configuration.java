@@ -17,9 +17,11 @@ public class Configuration {
     
 	private static Configuration configInstance;
 
+    final String DECK = "deck";
     final String LANG = "language";
     final String PLAYER = "playerName";
-    
+
+    private String defaultDeck = "de";
     private String defaultLanguage = "de";
     private String defaultName = Messages.getI18n("player");
     
@@ -31,7 +33,15 @@ public class Configuration {
 
     private Configuration() { 
         // hidden constructor
-    }   
+    }
+    
+    public String getDeck() {
+    	return prefs.get(DECK, defaultDeck);
+    }
+
+    public void setDeck(String deck) {
+        prefs.put(DECK, deck);
+    }
 
     public String getLanguage() {
     	return prefs.get(LANG, defaultLanguage);
