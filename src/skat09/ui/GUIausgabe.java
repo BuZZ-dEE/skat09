@@ -111,26 +111,26 @@ public class GUIausgabe extends Ausgabe {
 
 			if (fenster.getMitspieler1() == SpielerEnum.OMA) {
 
-				s = "o";
+				s = Messages.getI18n("game.commandline.adversary.type.granny.abbr");
 			} else if (fenster.getMitspieler1() == SpielerEnum.REGELKONFORM) {
 
-				s = "r";
+				s = Messages.getI18n("game.commandline.adversary.type.normal.abbr");
 			} else if (fenster.getMitspieler1() == SpielerEnum.INTELLIGENT) {
 
-				s = "s";
+				s = Messages.getI18n("game.commandline.adversary.type.smart.abbr");
 			}
 		}
 		if (nummer == 2) {
 
 			if (fenster.getMitspieler2() == SpielerEnum.OMA) {
 
-				s = "o";
+				s = Messages.getI18n("game.commandline.adversary.type.granny.abbr");
 			} else if (fenster.getMitspieler2() == SpielerEnum.REGELKONFORM) {
 
-				s = "r";
+				s = Messages.getI18n("game.commandline.adversary.type.normal.abbr");
 			} else if (fenster.getMitspieler2() == SpielerEnum.INTELLIGENT) {
 
-				s = "s";
+				s = Messages.getI18n("game.commandline.adversary.type.smart.abbr");
 			}
 		}
 		return s;
@@ -142,11 +142,11 @@ public class GUIausgabe extends Ausgabe {
 		int i = fenster.getSkatWahl();
 
 		if (i == 1) {
-			erg = "i";
+			erg = Messages.getI18n("game.commandline.skat.type.international.abbr");
 		} else if (i == 2) {
-			erg = "b";
+			erg = Messages.getI18n("game.commandline.skat.type.bock.abbr");
 		} else
-			erg = "r";
+			erg = Messages.getI18n("game.commandline.skat.type.robber.abbr");
 
 		return erg;
 
@@ -465,9 +465,9 @@ public class GUIausgabe extends Ausgabe {
 		boolean b = fenster.getSechserkat();
 
 		if (b) {
-			erg = "j";
+			erg = Messages.getI18n("application.y");
 		} else {
-			erg = "n";
+			erg = Messages.getI18n("application.n");
 		}
 
 		return erg;
