@@ -28,10 +28,7 @@ import skat09.ui.gui.*;
  * 
  */
 public class GUIausgabe extends Ausgabe {
-
-	//
-	// Datenfelder
-	//
+	
 	/**
 	 * Der Tisch, auf dem gespielt wird
 	 */
@@ -44,10 +41,6 @@ public class GUIausgabe extends Ausgabe {
 	 * Das Einstellungsfenster des Spiels
 	 */
 	private Fenster fenster;
-
-	//
-	// Konstruktor
-	//
 
 	/**
 	 * Der Konstruktor der Klasse GUIAusgabe
@@ -62,18 +55,6 @@ public class GUIausgabe extends Ausgabe {
 		fenster = new Fenster(this);
 
 	}
-
-	//
-	// get-Methoden
-	//
-
-	//
-	// set-Methoden
-	//
-
-	//
-	// weitere Methoden
-	//
 
 	@Override
 	public boolean hoeren(int wert) {
