@@ -12,6 +12,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.net.URL;
 
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.text.Text;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -20,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -212,10 +219,41 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		haupt.add(options);
 		haupt.add(logo);
 		add(haupt);
-
+		
 		pack();
 		setVisible(true);
+		
+		showAbout();
 	}
+	
+    private void initAndShowGUI() {
+        // This method is invoked on Swing thread
+        final JFXPanel fxPanel = new JFXPanel();
+        this.add(fxPanel);
+        this.setVisible(true);
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                initFX(fxPanel);
+            }
+        });
+    }
+	
+    private static void initFX(JFXPanel fxPanel) {
+        // This method is invoked on JavaFX thread
+        Scene scene = new Scene(new Group(new Text(25, 25, "Hello World!")));
+        fxPanel.setScene(scene);
+    }
+
+    public void showAbout() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                initAndShowGUI();
+            }
+        });
+    }
 
 	/**
 	 * Setzt die Optionen auf dem options-Panel
@@ -371,15 +409,9 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 */
 	public void logo() {
 
-		// System.out.println(getFileUrl("data/img/bild.jpeg"));
-
-		// System.out.println(getFileUrl("img/bild.jpeg").getPath());
-
 		bilderrahmen = new JLabel(new ImageIcon(getFileUrl("img/bild.jpeg")));
 		// bilderrahmen.setPreferredSize(new Dimension(200, 400));
-
 		logo.add(bilderrahmen);
-
 	}
 
 	/**
