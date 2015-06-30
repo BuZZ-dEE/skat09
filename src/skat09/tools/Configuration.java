@@ -20,10 +20,18 @@ public class Configuration {
     final String DECK = "deck";
     final String LANG = "language";
     final String PLAYER = "playerName";
+    final String ADVERSARY_FIRST = "adversary_first";
+    final String ADVERSARY_SECOND = "adversary_second";
+    final String SKAT_VARIANT = "skat_variant";
+    final String SKAT_SIX = "skat_six";
 
     private String defaultDeck = "de";
     private String defaultLanguage = "de";
     private String defaultName = Messages.getI18n("player");
+    private String defaultAdversaryFirst = null;
+    private String defaultAdversarySecond = null;
+    private String defaultSkatVariant = null;
+    private String defaultSkatSix = null;
     
     Preferences prefs = Preferences.userNodeForPackage(skat09.Skat09.class);
     
@@ -33,6 +41,15 @@ public class Configuration {
 
     private Configuration() { 
         // hidden constructor
+    }
+    
+    /**
+     * Get configuration instance.
+     * 
+     * @return the configuration instance
+     */
+    public static Configuration getInstance() {
+        return configInstance;
     }
     
     public String getDeck() {
@@ -58,10 +75,60 @@ public class Configuration {
     public void setDefaultName(String name) {
     	prefs.put(PLAYER, name);
     }
-    
- 
 
-    public static Configuration getInstance() {
-        return configInstance;
-    }
+	/**
+	 * @return the defaultAdversaryFirst
+	 */
+	public String getDefaultAdversaryFirst() {
+		return prefs.get(ADVERSARY_FIRST, defaultAdversaryFirst);
+	}
+
+	/**
+	 * @param adversaryFirst the defaultAdversaryFirst to set
+	 */
+	public void setDefaultAdversaryFirst(String adversaryFirst) {
+		prefs.put(ADVERSARY_FIRST, adversaryFirst);
+	}
+
+	/**
+	 * @return the defaultAdversarySecond
+	 */
+	public String getDefaultAdversarySecond() {
+		return prefs.get(ADVERSARY_SECOND, defaultAdversarySecond);
+	}
+
+	/**
+	 * @param adversarySecond the defaultAdversarySecond to set
+	 */
+	public void setDefaultAdversarySecond(String adversarySecond) {
+		prefs.put(ADVERSARY_SECOND, adversarySecond);
+	}
+
+	/**
+	 * @return the defaultSkatVariant
+	 */
+	public String getDefaultSkatVariant() {
+		return prefs.get(SKAT_VARIANT, defaultSkatVariant);
+	}
+
+	/**
+	 * @param skatVariant the defaultSkatVariant to set
+	 */
+	public void setDefaultSkatVariant(String skatVariant) {
+		prefs.put(SKAT_VARIANT, skatVariant);
+	}
+
+	/**
+	 * @return the defaultSkatSix
+	 */
+	public String getDefaultSkatSix() {
+		return prefs.get(SKAT_SIX, defaultSkatSix);
+	}
+
+	/**
+	 * @param skatSix the defaultSkatSix to set
+	 */
+	public void setDefaultSkatSix(String skatSix) {
+		prefs.put(SKAT_SIX, skatSix);
+	}
 }
