@@ -328,7 +328,33 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 
 		// ComboBox Blattwahl mit Label
 		blattwahl = new JComboBox<String>(blattwahl2);
-		blattwahl.setSelectedIndex(1);
+		
+		if (Configuration.getInstance().getDeck().equalsIgnoreCase("de")) {
+			blattwahl.setSelectedIndex(0);
+		} else if (Configuration.getInstance().getDeck().equalsIgnoreCase("fr")) {
+			blattwahl.setSelectedIndex(1);
+		}
+		
+		blattwahl.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(blattwahl.getSelectedIndex());
+				if (blattwahl.getSelectedIndex() == 0) {
+					Configuration.getInstance().setDeck("de");
+				} else if (blattwahl.getSelectedIndex() == 1) {
+					Configuration.getInstance().setDeck("fr");
+				}
+			}
+		});
+		
+		if (Configuration.getInstance().getDeck().equalsIgnoreCase("de")) {
+			blattwahl.setSelectedIndex(0);
+		} else if (Configuration.getInstance().getDeck().equalsIgnoreCase("fr")) {
+			blattwahl.setSelectedIndex(1);
+		} else {
+			blattwahl.setSelectedIndex(1);
+		}
 		lblattw.setLabelFor(blattwahl);
 
 		// Checkbox Sechserskat mit Label
