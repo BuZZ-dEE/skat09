@@ -35,7 +35,7 @@ import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 
 import skat09.Messages;
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpieler;
@@ -102,7 +102,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	/**
 	 * Der Tisch, auf dem das Spiel stattfindet
 	 */
-	private Tisch tisch;
+	private Table tisch;
 	/**
 	 * boolean der angibt wer zur Zeit spielt
 	 */
@@ -234,7 +234,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * @param ausgabe
 	 *            Die GUIausgabe, die genutzt wird
 	 */
-	public GTable(Tisch tisch, GUIausgabe ausgabe) {
+	public GTable(Table tisch, GUIausgabe ausgabe) {
 
 		super(Messages.getI18n("application.name"));
 		this.ausgabe = ausgabe;

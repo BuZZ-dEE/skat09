@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import skat09.Messages;
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielkarte.Spielkarte;
 
 
@@ -40,7 +40,7 @@ public class Stiche extends JFrame {
 	/**
 	 * Der Tisch, auf dem das Spiel gespielt wird.
 	 */
-	private Tisch tisch;
+	private Table tisch;
 	/**
 	 * Das Panel, auf dem sich die Karten befinden, soll scrollbar sein.
 	 */
@@ -53,7 +53,7 @@ public class Stiche extends JFrame {
 	 * @param tisch
 	 *            Der Tisch auf dem das Spiel gespielt wird
 	 */
-	public Stiche(Tisch tisch, boolean allestiche) {
+	public Stiche(Table tisch, boolean allestiche) {
 		super(Messages.getI18n("game.trick.past"));
 		this.tisch = tisch;
 		setSize(300, 200);

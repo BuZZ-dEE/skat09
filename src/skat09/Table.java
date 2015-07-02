@@ -29,7 +29,7 @@ import skat09.test.interfaces.ISpieler;
  * @version 03.07.2009
  */
 
-public class Tisch extends Observable {
+public class Table extends Observable {
 
 	// Datenfelder
 
@@ -182,7 +182,7 @@ public class Tisch extends Observable {
 	/**
 	 * Instanziert einen Tisch
 	 */
-	public Tisch() {
+	public Table() {
 
 		super();
 

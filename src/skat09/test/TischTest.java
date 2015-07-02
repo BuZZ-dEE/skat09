@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import skat09.Controller;
 import skat09.Spielvariante;
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
@@ -46,7 +46,7 @@ public class TischTest {
 	ISpieler spieler1 = new Oma("Bert");
 	ISpieler spieler2 = new Oma("Ernie");
 
-	Tisch tisch = new Tisch();
+	Table tisch = new Table();
 	ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 	ArrayList<Spielkarte> spitzen = new ArrayList<Spielkarte>();
 	CLIausgabe ausgabe = new CLIausgabe(tisch);

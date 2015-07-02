@@ -37,7 +37,7 @@ public class Controller implements Observer, IController {
 	/**
 	 * H&auml;lt einen Tisch, auf dem das Spiel stattfindet
 	 */
-	private Tisch tisch;
+	private Table tisch;
 	
 	/**
 	 * eine Ausgabe, auf der das Spiel ausgegeben wird
@@ -58,7 +58,7 @@ public class Controller implements Observer, IController {
 	 * 
 	 * 
 	 */
-	public Controller(Tisch tisch, IAusgabe ausgabe) {
+	public Controller(Table tisch, IAusgabe ausgabe) {
 		this.tisch = tisch;
 		this.ausgabe = ausgabe;
 		spielEinpassen = false;
@@ -74,7 +74,7 @@ public class Controller implements Observer, IController {
 	 * Dient zur r&uuml;ckgabe des Tisches
 	 * @return tisch gibt den Tisch zur&uuml;ck
 	 */
-	public Tisch getTisch() {
+	public Table getTisch() {
 
 		return tisch;
 	}

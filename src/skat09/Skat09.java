@@ -28,7 +28,7 @@ public class Skat09 {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		String s = null;
 		IAusgabe ausgabe;
 		

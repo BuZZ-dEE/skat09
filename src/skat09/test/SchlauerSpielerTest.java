@@ -12,7 +12,7 @@ import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
@@ -488,7 +488,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void alsZweiterKarteSpielenGrandTest1() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -522,7 +522,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void alsZweiterKarteSpielenGrandTest2() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -554,7 +554,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void alsZweiterKarteSpielenGrandTest3() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -587,7 +587,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void alsZweiterKarteSpielenGrandTest4() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -1295,7 +1295,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void rauskommenGrandTest() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -1324,7 +1324,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void rauskommenGrandTest2() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -1363,7 +1363,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void rauskommenGrandTest3() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -1402,7 +1402,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void alleinspieleralsZweiteKarteSpielenGrandTest1() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -1431,7 +1431,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void alleinspieleralsZweiteKarteSpielenGrandTest2() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
@@ -1582,7 +1582,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void gegnerMoeglicheSpielbareKartenTest() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		tisch.erstelleDeck();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		//Collections.shuffle(deck);
@@ -1618,7 +1618,7 @@ public class SchlauerSpielerTest {
 	@Test
 	public void moeglicheGegnerKarteTest() {
 		
-		Tisch tisch = new Tisch();
+		Table tisch = new Table();
 		tisch.erstelleDeck();
 		ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 		Collections.shuffle(deck);

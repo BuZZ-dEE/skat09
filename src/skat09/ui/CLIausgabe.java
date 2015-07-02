@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.SortedSet;
 
 import skat09.Messages;
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
@@ -36,7 +36,7 @@ public class CLIausgabe extends Ausgabe {
 	/**
 	 * Der Tisch, auf dem gespielt wird
 	 */
-	private Tisch tisch;
+	private Table tisch;
 	/**
 	 * Der BufferedReader wird ben&ouml;tigt, um den Text, den der Benutzer
 	 * eingibt, einzulesen
@@ -63,7 +63,7 @@ public class CLIausgabe extends Ausgabe {
 	 * @param tisch
 	 *            Der Tisch, auf dem gespielt wird
 	 */
-	public CLIausgabe(Tisch tisch) {
+	public CLIausgabe(Table tisch) {
 
 		System.out.println(Messages.getI18n("application.welcome"));
 		this.tisch = tisch;
@@ -975,7 +975,7 @@ public class CLIausgabe extends Ausgabe {
 	 * 
 	 * @author Sebastian Schlatow <ssc@openmailbox.org>
 	 */
-	private void statisticOut(Tisch table, ISpieler player) {
+	private void statisticOut(Table table, ISpieler player) {
 
 		System.out.println(player.getName() + ":");
 		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")
