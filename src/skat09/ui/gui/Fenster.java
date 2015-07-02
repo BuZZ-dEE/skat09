@@ -439,11 +439,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 * @return mitspieler1
 	 */
 	public SpielerEnum getMitspieler1() {
-		// SpielerEnum ergebnis = mitspieler1;
-		// mitspieler1 = null; //vermutlich zu switchen ueberfluessig?!
-		// return ergebnis;
-
-		// neu
+		
 		return mitspieler1;
 	}
 
@@ -453,11 +449,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 * @return mitspieler2
 	 */
 	public SpielerEnum getMitspieler2() {
-		// SpielerEnum ergebnis = mitspieler2;
-		// mitspieler2 = null;
-		// return ergebnis;
-
-		// neu
+		
 		return mitspieler2;
 	}
 
