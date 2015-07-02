@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Spielart;
@@ -28,7 +28,7 @@ import skat09.test.stub.NullspielStub;
 
 public class MenschlicherSpielerTest {
 
-	Tisch tisch = new Tisch();
+	Table tisch = new Table();
 	IAusgabe ausgabe = new AusgabeStub(null,null,null);
 	IController controller = new ControllerStub(tisch, ausgabe);
 	MenschlicherSpieler mensch = new MenschlicherSpieler("Peter", controller);

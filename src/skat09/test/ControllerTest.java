@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import skat09.Controller;
 import skat09.Spielvariante;
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
@@ -36,14 +36,14 @@ import skat09.ui.CLIausgabe;
 
 public class ControllerTest {
 	
-	private Tisch tisch;
+	private Table tisch;
 	private Ausgabe ausgabe;
 	private Controller controller;
 	
 	
 	public ControllerTest(){
 		
-		tisch = new Tisch();
+		tisch = new Table();
 		ausgabe = new CLIausgabe(tisch);
 		controller = new Controller(tisch,ausgabe);
 		
@@ -494,7 +494,7 @@ public class ControllerTest {
 	@Test
 	public void alleinspielerAktionenTest() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		AusgabeStub ausgabe2 = new AusgabeStub(null, null, null);
 		Controller controller2 = new Controller(tisch2, ausgabe2);
 		MenschlicherSpielerStub mensch = new MenschlicherSpielerStub("Bernd");
@@ -548,7 +548,7 @@ public class ControllerTest {
 	public void auswertungTest() {
 		
 		AusgabeStub ausgabe = new AusgabeStub(null, null, null);
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		Controller controller = new Controller(tisch2, ausgabe);
 		
 		ISpieler spieler1 = new Oma("Erna");
@@ -634,7 +634,7 @@ public class ControllerTest {
 		
 		controller.aufrauemen();
 		
-		Tisch tisch3 = controller.getTisch();
+		Table tisch3 = controller.getTisch();
 				
 		boolean spieler3Aufgeraeumt = false;
 
@@ -682,7 +682,7 @@ public class ControllerTest {
 		
 		controller.aufrauemen();
 		
-		Tisch tisch3 = controller.getTisch();
+		Table tisch3 = controller.getTisch();
 		
 		boolean tischAufgeraeumt = false;
 		
@@ -729,7 +729,7 @@ public class ControllerTest {
 		
 		controller.aufrauemen();
 		
-		Tisch tisch3 = controller.getTisch();
+		Table tisch3 = controller.getTisch();
 		
 		boolean spieler1Aufgeraeumt = false;
 		
@@ -777,7 +777,7 @@ public class ControllerTest {
 		
 		controller.aufrauemen();
 		
-		Tisch tisch3 = controller.getTisch();
+		Table tisch3 = controller.getTisch();
 		
 		boolean spieler2Aufgeraeumt = false;
 		
@@ -793,7 +793,7 @@ public class ControllerTest {
 	@Test
 	public void stichAuswertungTest() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		AusgabeStub ausgabe2 = new AusgabeStub(null, null, null);
 		Controller controller2 = new Controller(tisch2, ausgabe2);
 		
@@ -935,7 +935,7 @@ public class ControllerTest {
 	@Test
 	public void ramschenTest() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		tisch2.setSpieler1(new Oma("Hilde"));
 		tisch2.setSpieler2(new Oma("Heide"));
 		tisch2.setSpieler3(new Oma("Harald"));
@@ -958,7 +958,7 @@ public class ControllerTest {
 	@Test
 	public void normalerSpielverlaufTest() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		tisch2.setSpieler1(new Oma("Hilde"));
 		tisch2.setSpieler2(new Oma("Heide"));
 		tisch2.setSpieler3(new Oma("Harald"));
@@ -980,7 +980,7 @@ public class ControllerTest {
 	@Test
 	public void spielRaeuberskatTest() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		tisch2.setSpieler1(new Oma("Hilde"));
 		tisch2.setSpieler2(new Oma("Heide"));
 		tisch2.setSpieler3(new Oma("Harald"));
@@ -1002,7 +1002,7 @@ public class ControllerTest {
 	@Test
 	public void spielRamschBockTest() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		tisch2.setSpieler1(new Oma("Hilde"));
 		tisch2.setSpieler2(new Oma("Heide"));
 		tisch2.setSpieler3(new Oma("Harald"));
@@ -1026,7 +1026,7 @@ public class ControllerTest {
 	@Test
 	public void spielRamschBockTest2() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		tisch2.setSpieler1(new Oma("Hilde"));
 		tisch2.setSpieler2(new Oma("Heide"));
 		tisch2.setSpieler3(new Oma("Harald"));
@@ -1050,7 +1050,7 @@ public class ControllerTest {
 	@Test
 	public void spielRamschBockTest3() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		tisch2.setSpieler1(new RegelkonformerSpieler("Hilde"));
 		tisch2.setSpieler2(new RegelkonformerSpieler("Heide"));
 		tisch2.setSpieler3(new RegelkonformerSpieler("Harald"));
@@ -1072,7 +1072,7 @@ public class ControllerTest {
 	@Test
 	public void spielIntSkatTest() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		tisch2.setSpieler1(new Oma("Hilde"));
 		tisch2.setSpieler2(new Oma("Heide"));
 		tisch2.setSpieler3(new Oma("Harald"));
@@ -1094,7 +1094,7 @@ public class ControllerTest {
 	@Test
 	public void spielIntSkatTest2() {
 		
-		Tisch tisch2 = new Tisch();
+		Table tisch2 = new Table();
 		tisch2.setSpieler1(new RegelkonformerSpieler("Hilde"));
 		tisch2.setSpieler2(new RegelkonformerSpieler("Heide"));
 		tisch2.setSpieler3(new RegelkonformerSpieler("Harald"));

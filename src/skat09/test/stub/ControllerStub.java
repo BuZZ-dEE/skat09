@@ -3,7 +3,7 @@ package skat09.test.stub;
 import java.io.IOException;
 import java.util.Observable;
 
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IAusgabe;
 import skat09.test.interfaces.IController;
@@ -13,10 +13,10 @@ import skat09.test.interfaces.ISpieler;
 
 public class ControllerStub implements IController{
 
-	Tisch tisch;
+	Table tisch;
 	IAusgabe ausgabe;
 	
-	public ControllerStub(Tisch tisch, IAusgabe ausgabe) {
+	public ControllerStub(Table tisch, IAusgabe ausgabe) {
 		
 		this.tisch = tisch;
 		this.ausgabe = ausgabe;

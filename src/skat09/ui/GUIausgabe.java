@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import skat09.Messages;
-import skat09.Tisch;
+import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
@@ -32,7 +32,7 @@ public class GUIausgabe extends Ausgabe {
 	/**
 	 * Der Tisch, auf dem gespielt wird
 	 */
-	private Tisch tisch;
+	private Table tisch;
 	/**
 	 * Das Hauptfenster des Spiels
 	 */
@@ -48,7 +48,7 @@ public class GUIausgabe extends Ausgabe {
 	 * @param tisch
 	 *           Der Tisch, auf dem gespielt wird
 	 */
-	public GUIausgabe(Tisch tisch) {
+	public GUIausgabe(Table tisch) {
 
 		this.tisch = tisch;
 
