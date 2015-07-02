@@ -49,7 +49,7 @@ import skat09.ui.GUIausgabe;
  *         Bruhns
  * @version 02.07.09
  */
-public class HFenster extends JFrame implements ActionListener, MouseListener,
+public class GTable extends JFrame implements ActionListener, MouseListener,
 		KeyListener {
 
 	/**
@@ -234,7 +234,7 @@ public class HFenster extends JFrame implements ActionListener, MouseListener,
 	 * @param ausgabe
 	 *            Die GUIausgabe, die genutzt wird
 	 */
-	public HFenster(Tisch tisch, GUIausgabe ausgabe) {
+	public GTable(Tisch tisch, GUIausgabe ausgabe) {
 
 		super(Messages.getI18n("application.name"));
 		this.ausgabe = ausgabe;

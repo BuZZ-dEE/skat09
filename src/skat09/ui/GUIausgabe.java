@@ -36,7 +36,7 @@ public class GUIausgabe extends Ausgabe {
 	/**
 	 * Das Hauptfenster des Spiels
 	 */
-	private HFenster hfenster;
+	private GTable hfenster;
 	/**
 	 * Das Einstellungsfenster des Spiels
 	 */
@@ -456,7 +456,7 @@ public class GUIausgabe extends Ausgabe {
 
 	@Override
 	public void hauptfensterOeffnen() {
-		hfenster = new HFenster(this.tisch, this);
+		hfenster = new GTable(this.tisch, this);
 	}
 
 	@Override
