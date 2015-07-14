@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.Controller;
-import skat09.Spielvariante;
+import skat09.SkatVariant;
 import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
@@ -150,8 +150,8 @@ public class TischTest {
 	//Testet die Methode getVariante
 	@Test
 	public void getVarianteTest() {
-		tisch.setVariante(Spielvariante.RAEUBER);
-		assertEquals(Spielvariante.RAEUBER, tisch.getVariante());
+		tisch.setVariante(SkatVariant.RAEUBER);
+		assertEquals(SkatVariant.RAEUBER, tisch.getVariante());
 	}
 	
 	//Testet die Methode getReizwert
@@ -614,7 +614,7 @@ public class TischTest {
 	
 	@Test
 	public void ueberreizCheckTest5() {
-		tisch.setVariante(Spielvariante.SKAT);
+		tisch.setVariante(SkatVariant.SKAT);
 		tisch.setHandspiel(false);
 		tisch.setSchneider(false);
 		tisch.setSchwarz(false);
@@ -760,7 +760,7 @@ public class TischTest {
 	
 	@Test
 	public void wertePunkteTest1() {
-		tisch.setVariante(Spielvariante.RAEUBER);
+		tisch.setVariante(SkatVariant.RAEUBER);
 		Nullspiel spiel = new Nullspiel();
 		tisch.setSpielart(spiel);
 		tisch.ermittleAlleinspieler().getStiche().clear();
@@ -769,7 +769,7 @@ public class TischTest {
 	
 	@Test
 	public void wertePunkteTest() {
-		tisch.setVariante(Spielvariante.SKAT);
+		tisch.setVariante(SkatVariant.SKAT);
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
@@ -833,7 +833,7 @@ public class TischTest {
 	
 	@Test
 	public void wertePunkteTest7() {
-		tisch.setVariante(Spielvariante.SKAT);
+		tisch.setVariante(SkatVariant.SKAT);
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
@@ -848,7 +848,7 @@ public class TischTest {
 	public void wertePunkteTest8() {
 		
 		tisch.setBock(true);
-		tisch.setVariante(Spielvariante.RAMSCHBOCK);
+		tisch.setVariante(SkatVariant.RAMSCHBOCK);
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));

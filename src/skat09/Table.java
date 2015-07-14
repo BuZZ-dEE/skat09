@@ -90,7 +90,7 @@ public class Table extends Observable {
 	 * Skatvariante: Raeuberskat oder normales Skat oder Skat mit Ramsch und
 	 * Bock?
 	 */
-	private Spielvariante variante;
+	private SkatVariant variante;
 	/**
 	 * Alle Reizwerte die vorkommen koennen
 	 */
@@ -329,7 +329,7 @@ public class Table extends Observable {
 	 * 
 	 * @return gew&auml;tle variante
 	 */
-	public Spielvariante getVariante() {
+	public SkatVariant getVariante() {
 
 		return variante;
 	}
@@ -618,7 +618,7 @@ public class Table extends Observable {
 		this.spielart = spielart;
 	}
 
-	public void setVariante(Spielvariante variante) {
+	public void setVariante(SkatVariant variante) {
 
 		this.variante = variante;
 	}
@@ -1483,7 +1483,7 @@ public class Table extends Observable {
 
 		erg = punkteVarianten(erg, augenzahl);
 
-		if (variante == Spielvariante.RAMSCHBOCK && bock == true) {
+		if (variante == SkatVariant.RAMSCHBOCK && bock == true) {
 			erg = erg * 2;
 		}
 
@@ -1492,8 +1492,8 @@ public class Table extends Observable {
 			erg = erg * (-2);
 		}
 
-		if (variante == Spielvariante.SKAT
-				|| variante == Spielvariante.RAMSCHBOCK) {
+		if (variante == SkatVariant.SKAT
+				|| variante == SkatVariant.RAMSCHBOCK) {
 			if (ueberreizCheck(erg) != 0 && reizwert != 0) {
 				
 				erg = ueberreizCheck(erg);

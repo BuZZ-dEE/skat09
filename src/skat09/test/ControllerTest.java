@@ -11,7 +11,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import skat09.Controller;
-import skat09.Spielvariante;
+import skat09.SkatVariant;
 import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
@@ -197,7 +197,7 @@ public class ControllerTest {
 		AusgabeStub skat1 = new AusgabeStub(null,"r",null);
 		Controller controller = new Controller(tisch,skat1);
 		controller.waehleSkatart();
-		Spielvariante variante = Spielvariante.RAEUBER;
+		SkatVariant variante = SkatVariant.RAEUBER;
 		assertEquals(variante,controller.getTisch().getVariante());
 	}
 	
@@ -207,7 +207,7 @@ public class ControllerTest {
 		AusgabeStub skat1 = new AusgabeStub(null,"i",null);
 		Controller controller = new Controller(tisch,skat1);
 		controller.waehleSkatart();
-		Spielvariante variante = Spielvariante.SKAT;
+		SkatVariant variante = SkatVariant.SKAT;
 		assertEquals(variante,controller.getTisch().getVariante());
 	}
 	
@@ -217,7 +217,7 @@ public class ControllerTest {
 		AusgabeStub skat1 = new AusgabeStub(null,"b",null);
 		Controller controller = new Controller(tisch,skat1);
 		controller.waehleSkatart();
-		Spielvariante variante = Spielvariante.RAMSCHBOCK;
+		SkatVariant variante = SkatVariant.RAMSCHBOCK;
 		assertEquals(variante,controller.getTisch().getVariante());
 	}
 	
@@ -608,7 +608,7 @@ public class ControllerTest {
 		controller.getTisch().setReizagentWert(120);
 		controller.getTisch().setReizwert(23);
 		controller.getTisch().setBock(true);
-		controller.getTisch().setVariante(Spielvariante.RAMSCHBOCK);
+		controller.getTisch().setVariante(SkatVariant.RAMSCHBOCK);
 		controller.getTisch().setSpaltarsch(true);
 		controller.getTisch().setBockrunden(0);
 		
@@ -656,7 +656,7 @@ public class ControllerTest {
 		controller.getTisch().setReizagentWert(120);
 		controller.getTisch().setReizwert(23);
 		controller.getTisch().setBock(true);
-		controller.getTisch().setVariante(Spielvariante.RAMSCHBOCK);
+		controller.getTisch().setVariante(SkatVariant.RAMSCHBOCK);
 		controller.getTisch().setSpaltarsch(true);
 		controller.getTisch().setBockrunden(0);
 		
@@ -703,7 +703,7 @@ public class ControllerTest {
 		controller.getTisch().setReizagentWert(120);
 		controller.getTisch().setReizwert(23);
 		controller.getTisch().setBock(true);
-		controller.getTisch().setVariante(Spielvariante.RAMSCHBOCK);
+		controller.getTisch().setVariante(SkatVariant.RAMSCHBOCK);
 		controller.getTisch().setSpaltarsch(true);
 		controller.getTisch().setBockrunden(0);
 		
@@ -751,7 +751,7 @@ public class ControllerTest {
 		controller.getTisch().setReizagentWert(120);
 		controller.getTisch().setReizwert(23);
 		controller.getTisch().setBock(true);
-		controller.getTisch().setVariante(Spielvariante.RAMSCHBOCK);
+		controller.getTisch().setVariante(SkatVariant.RAMSCHBOCK);
 		controller.getTisch().setSpaltarsch(true);
 		controller.getTisch().setBockrunden(0);
 		
