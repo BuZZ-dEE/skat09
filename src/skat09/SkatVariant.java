@@ -7,7 +7,7 @@ package skat09;
  * @version 03.07.2009
  * 
  */
-public enum Spielvariante {
+public enum SkatVariant {
 
 	RAEUBER, 
 	SKAT, 

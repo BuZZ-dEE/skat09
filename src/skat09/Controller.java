@@ -102,15 +102,15 @@ public class Controller implements Observer, IController {
 			ausgabe.positionAnzeigen();
 			ausgabe.neuesSpiel();
 
-			if (tisch.getVariante() == Spielvariante.SKAT) {
+			if (tisch.getVariante() == SkatVariant.SKAT) {
 				spielIntSkat();
 			}
 
-			else if (tisch.getVariante() == Spielvariante.RAMSCHBOCK) {
+			else if (tisch.getVariante() == SkatVariant.RAMSCHBOCK) {
 				spielRamschBock();
 			}
 
-			else if (tisch.getVariante() == Spielvariante.RAEUBER) {
+			else if (tisch.getVariante() == SkatVariant.RAEUBER) {
 				spielRaeuberskat();
 			}
 
@@ -185,14 +185,14 @@ public class Controller implements Observer, IController {
 
 		if (s.equals(Messages.getI18n("game.commandline.skat.type.robber.abbr"))) {
 
-			tisch.setVariante(Spielvariante.RAEUBER);
+			tisch.setVariante(SkatVariant.RAEUBER);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.skat.type.international.abbr"))) {
 
-			tisch.setVariante(Spielvariante.SKAT);
+			tisch.setVariante(SkatVariant.SKAT);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.skat.type.bock.abbr"))) {
-			tisch.setVariante(Spielvariante.RAMSCHBOCK);
+			tisch.setVariante(SkatVariant.RAMSCHBOCK);
 		}
 
 		s = ausgabe.frageSechserskat();
@@ -575,8 +575,8 @@ public class Controller implements Observer, IController {
 
 				((SchlauerSpieler) alleSpieler).setAnfangsblatt(alleSpieler
 						.getBlatt());
-				if (tisch.getVariante() == Spielvariante.SKAT
-						|| tisch.getVariante() == Spielvariante.RAMSCHBOCK) {
+				if (tisch.getVariante() == SkatVariant.SKAT
+						|| tisch.getVariante() == SkatVariant.RAMSCHBOCK) {
 					
 					((SchlauerSpieler) alleSpieler).bestimmeMaxReizwert();
 				}
@@ -625,7 +625,7 @@ public class Controller implements Observer, IController {
 		tisch.setSchwarz(false);
 		tisch.setOuvert(false);
 
-		if (tisch.getVariante() == Spielvariante.RAMSCHBOCK
+		if (tisch.getVariante() == SkatVariant.RAMSCHBOCK
 				&& tisch.getSpaltarsch() && tisch.getBockrunden() == 0) {
 			tisch.setSpaltarsch(false);
 		}
