@@ -1,5 +1,7 @@
-*.svg eol=lf
 *.java eol=lf
+*.properties eol=lf
+*.svg eol=lf
+*.xml eol=lf
 
-*.png binary
 *.jpg binary
+*.png binary
