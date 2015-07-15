@@ -1,7 +1,11 @@
+*.css eol=lf
+*.html eol=lf
 *.java eol=lf
+*.md eol=lf
 *.properties eol=lf
 *.svg eol=lf
 *.xml eol=lf
 
 *.jpg binary
+*.jpeg binary
 *.png binary
