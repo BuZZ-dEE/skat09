@@ -15,7 +15,7 @@ import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
 
-public class AusgabeStub implements IOutput{
+public class OutputStub implements IOutput{
 
 	private String gegner;
 	private String variante;
@@ -25,7 +25,7 @@ public class AusgabeStub implements IOutput{
 	private int punkte;
 	private int gespielteKartenZahl;
 	
-	public AusgabeStub(String gegner, String variante, String blattwahl) {
+	public OutputStub(String gegner, String variante, String blattwahl) {
 	
 		this.gegner = gegner;
 		this.variante = variante;

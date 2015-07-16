@@ -27,7 +27,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.ISpieler;
-import skat09.test.stub.AusgabeStub;
+import skat09.test.stub.OutputStub;
 import skat09.test.stub.MenschlicherSpielerStub;
 import skat09.test.stub.MenschlicherSpielerStub2;
 import skat09.ui.Output;
@@ -71,7 +71,7 @@ public class ControllerTest {
 	@Test
 	public void anmeldenTest() {
 		
-		AusgabeStub stubbie = new AusgabeStub(null,null,null);
+		OutputStub stubbie = new OutputStub(null,null,null);
 		Controller controller2 = new Controller(tisch, stubbie);
 		controller2.anmelden();
 		assertEquals("Knut",controller2.getAusgabe().name());
@@ -80,7 +80,7 @@ public class ControllerTest {
 	@Test
 	public void waehleGegnerTest1(){
 		
-		AusgabeStub gegner1 = new AusgabeStub("o",null,null);
+		OutputStub gegner1 = new OutputStub("o",null,null);
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
@@ -99,7 +99,7 @@ public class ControllerTest {
 	@Test
 	public void waehleGegnerTest2(){
 		
-		AusgabeStub gegner1 = new AusgabeStub("o",null,null);
+		OutputStub gegner1 = new OutputStub("o",null,null);
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
@@ -118,7 +118,7 @@ public class ControllerTest {
 	@Test
 	public void waehleGegnerTest3(){
 		
-		AusgabeStub gegner1 = new AusgabeStub("r",null,null);
+		OutputStub gegner1 = new OutputStub("r",null,null);
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
@@ -137,7 +137,7 @@ public class ControllerTest {
 	@Test
 	public void waehleGegnerTest4(){
 		
-		AusgabeStub gegner1 = new AusgabeStub("r",null,null);
+		OutputStub gegner1 = new OutputStub("r",null,null);
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
@@ -156,7 +156,7 @@ public class ControllerTest {
 	@Test
 	public void waehleGegnerTest5(){
 		
-		AusgabeStub gegner1 = new AusgabeStub("s",null,null);
+		OutputStub gegner1 = new OutputStub("s",null,null);
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
@@ -175,7 +175,7 @@ public class ControllerTest {
 	@Test
 	public void waehleGegnerTest6(){
 		
-		AusgabeStub gegner1 = new AusgabeStub("s",null,null);
+		OutputStub gegner1 = new OutputStub("s",null,null);
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
@@ -194,7 +194,7 @@ public class ControllerTest {
 	@Test
 	public void waehleSkartartTest1() {
 		
-		AusgabeStub skat1 = new AusgabeStub(null,"r",null);
+		OutputStub skat1 = new OutputStub(null,"r",null);
 		Controller controller = new Controller(tisch,skat1);
 		controller.waehleSkatart();
 		SkatVariant variante = SkatVariant.RAEUBER;
@@ -204,7 +204,7 @@ public class ControllerTest {
 	@Test
 	public void waehleSkartartTest2() {
 		
-		AusgabeStub skat1 = new AusgabeStub(null,"i",null);
+		OutputStub skat1 = new OutputStub(null,"i",null);
 		Controller controller = new Controller(tisch,skat1);
 		controller.waehleSkatart();
 		SkatVariant variante = SkatVariant.SKAT;
@@ -214,7 +214,7 @@ public class ControllerTest {
 	@Test
 	public void waehleSkartartTest3() {
 		
-		AusgabeStub skat1 = new AusgabeStub(null,"b",null);
+		OutputStub skat1 = new OutputStub(null,"b",null);
 		Controller controller = new Controller(tisch,skat1);
 		controller.waehleSkatart();
 		SkatVariant variante = SkatVariant.RAMSCHBOCK;
@@ -224,7 +224,7 @@ public class ControllerTest {
 	@Test
 	public void waehleSkatBlattTest1() {
 		
-		AusgabeStub wahl1 = new AusgabeStub(null,null,"f");
+		OutputStub wahl1 = new OutputStub(null,null,"f");
 		Controller controller = new Controller(tisch,wahl1);
 		controller.waehleSkatblatt();
 		assertFalse(Spielkarte.getDeutsch());
@@ -233,7 +233,7 @@ public class ControllerTest {
 	@Test
 	public void waehleSkatBlattTest2() {
 		
-		AusgabeStub wahl1 = new AusgabeStub(null,null,"d");
+		OutputStub wahl1 = new OutputStub(null,null,"d");
 		Controller controller = new Controller(tisch,wahl1);
 		controller.waehleSkatblatt();
 		assertTrue(Spielkarte.getDeutsch());
@@ -247,7 +247,7 @@ public class ControllerTest {
 		tisch.setSpieler2(new Oma("Lara"));
 		tisch.setSpieler3(new Oma("Hoi"));
 		tisch.positionInitialisieren();
-		IOutput ausgabe = new AusgabeStub(null, null, null);
+		IOutput ausgabe = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch, ausgabe);
 		try {
 			controller2.leiteReizen();
@@ -265,7 +265,7 @@ public class ControllerTest {
 		tisch.setSpieler2(new RegelkonformerSpieler("Lara"));
 		tisch.setSpieler3(new RegelkonformerSpieler("Hoi"));
 		tisch.positionInitialisieren();
-		IOutput ausgabe = new AusgabeStub(null, null, null);
+		IOutput ausgabe = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch, ausgabe);
 		try {
 			controller2.leiteReizen();
@@ -495,7 +495,7 @@ public class ControllerTest {
 	public void alleinspielerAktionenTest() {
 		
 		Table tisch2 = new Table();
-		AusgabeStub ausgabe2 = new AusgabeStub(null, null, null);
+		OutputStub ausgabe2 = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch2, ausgabe2);
 		MenschlicherSpielerStub mensch = new MenschlicherSpielerStub("Bernd");
 		mensch.setIstAlleinspieler(true);
@@ -547,7 +547,7 @@ public class ControllerTest {
 	@Test
 	public void auswertungTest() {
 		
-		AusgabeStub ausgabe = new AusgabeStub(null, null, null);
+		OutputStub ausgabe = new OutputStub(null, null, null);
 		Table tisch2 = new Table();
 		Controller controller = new Controller(tisch2, ausgabe);
 		
@@ -593,7 +593,7 @@ public class ControllerTest {
 		
 		controller.auswertung();
 		
-		AusgabeStub ausgabe2 = (AusgabeStub) controller.getAusgabe();
+		OutputStub ausgabe2 = (OutputStub) controller.getAusgabe();
 		assertEquals(24, ausgabe2.getPunkte());
 		
 	}
@@ -794,7 +794,7 @@ public class ControllerTest {
 	public void stichAuswertungTest() {
 		
 		Table tisch2 = new Table();
-		AusgabeStub ausgabe2 = new AusgabeStub(null, null, null);
+		OutputStub ausgabe2 = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch2, ausgabe2);
 		
 		Spieler gewinner = new Oma("Gustav Gans");
@@ -813,7 +813,7 @@ public class ControllerTest {
 		
 		controller2.stichAuswertung(gespielteKarten, gewinner);
 		
-		AusgabeStub ausgabe = (AusgabeStub) controller2.getAusgabe();
+		OutputStub ausgabe = (OutputStub) controller2.getAusgabe();
 		assertEquals(3, ausgabe.getGespielteKartenZahl());
 		
 		
@@ -1206,7 +1206,7 @@ public class ControllerTest {
 	@Test
 	public void spielbeendenTest() {
 		
-		AusgabeStub stubbie = new AusgabeStub(null,null,null);
+		OutputStub stubbie = new OutputStub(null,null,null);
 		Controller controll = new Controller(tisch,stubbie);
 		
 		assertTrue(controll.spielBeenden());
@@ -1215,7 +1215,7 @@ public class ControllerTest {
 	@Test
 	public void warteTest() {
 		
-		AusgabeStub stubbie = new AusgabeStub(null,null,null);
+		OutputStub stubbie = new OutputStub(null,null,null);
 		Controller controll = new Controller(tisch,stubbie);
 		controll.warte();
 		assertTrue(controll.getAusgabe().getRelease());
