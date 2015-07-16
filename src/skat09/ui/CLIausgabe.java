@@ -28,7 +28,7 @@ import skat09.test.interfaces.ISpieler;
  *         Bruhns
  * @version 03.07.2009
  */
-public class CLIausgabe extends Ausgabe {
+public class CLIausgabe extends Output {
 
 	//
 	// Datenfelder

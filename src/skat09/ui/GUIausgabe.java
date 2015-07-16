@@ -27,7 +27,7 @@ import skat09.ui.gui.*;
  * @version 03.07.2009
  * 
  */
-public class GUIausgabe extends Ausgabe {
+public class GUIausgabe extends Output {
 	
 	/**
 	 * Der Tisch, auf dem gespielt wird
