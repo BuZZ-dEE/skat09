@@ -31,7 +31,7 @@ import skat09.test.stub.AusgabeStub;
 import skat09.test.stub.MenschlicherSpielerStub;
 import skat09.test.stub.MenschlicherSpielerStub2;
 import skat09.ui.Output;
-import skat09.ui.CLIausgabe;
+import skat09.ui.CLIOutput;
 
 
 public class ControllerTest {
@@ -44,7 +44,7 @@ public class ControllerTest {
 	public ControllerTest(){
 		
 		tisch = new Table();
-		ausgabe = new CLIausgabe(tisch);
+		ausgabe = new CLIOutput(tisch);
 		controller = new Controller(tisch,ausgabe);
 		
 	}
@@ -943,7 +943,7 @@ public class ControllerTest {
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
 		tisch2.kartenBesitzergeben();
-		Output ausgabe = new CLIausgabe(tisch2);
+		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
 			controller2.ramschen();
@@ -967,7 +967,7 @@ public class ControllerTest {
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
 		tisch2.kartenBesitzergeben();
-		Output ausgabe = new CLIausgabe(tisch2);
+		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
 			controller2.normalerSpielverlauf();
@@ -989,7 +989,7 @@ public class ControllerTest {
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
 		tisch2.kartenBesitzergeben();
-		Output ausgabe = new CLIausgabe(tisch2);
+		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
 			controller2.spielRaeuberskat();
@@ -1013,7 +1013,7 @@ public class ControllerTest {
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
 		tisch2.kartenBesitzergeben();
-		Output ausgabe = new CLIausgabe(tisch2);
+		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
 			controller2.spielRamschBock();
@@ -1037,7 +1037,7 @@ public class ControllerTest {
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
 		tisch2.kartenBesitzergeben();
-		Output ausgabe = new CLIausgabe(tisch2);
+		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
 			controller2.spielRamschBock();
@@ -1059,7 +1059,7 @@ public class ControllerTest {
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
 		tisch2.kartenBesitzergeben();
-		Output ausgabe = new CLIausgabe(tisch2);
+		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
 			controller2.spielRamschBock();
@@ -1081,7 +1081,7 @@ public class ControllerTest {
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
 		tisch2.kartenBesitzergeben();
-		Output ausgabe = new CLIausgabe(tisch2);
+		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
 			controller2.spielIntSkat();
@@ -1103,7 +1103,7 @@ public class ControllerTest {
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
 		tisch2.kartenBesitzergeben();
-		Output ausgabe = new CLIausgabe(tisch2);
+		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
 			controller2.spielIntSkat();
