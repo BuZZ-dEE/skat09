@@ -16,7 +16,7 @@ import skat09.spieler.Oma;
 import skat09.spieler.RegelkonformerSpieler;
 import skat09.spieler.SchlauerSpieler;
 import skat09.spielkarte.Spielkarte;
-import skat09.test.interfaces.IAusgabe;
+import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IMenschlicherSpieler;
 import skat09.test.interfaces.ISpielart;
@@ -42,7 +42,7 @@ public class Controller implements Observer, IController {
 	/**
 	 * eine Ausgabe, auf der das Spiel ausgegeben wird
 	 */
-	private IAusgabe ausgabe;
+	private IOutput ausgabe;
 
 	
 	/**
@@ -58,14 +58,14 @@ public class Controller implements Observer, IController {
 	 * 
 	 * 
 	 */
-	public Controller(Table tisch, IAusgabe ausgabe) {
+	public Controller(Table tisch, IOutput ausgabe) {
 		this.tisch = tisch;
 		this.ausgabe = ausgabe;
 		spielEinpassen = false;
 	}
 
 	//@Override
-	public IAusgabe getAusgabe() {
+	public IOutput getAusgabe() {
 
 		return ausgabe;
 	}

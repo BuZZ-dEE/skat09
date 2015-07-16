@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import skat09.spielart.Farbspiel;
 import skat09.spielkarte.Spielkarte;
-import skat09.test.interfaces.IAusgabe;
+import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
@@ -17,7 +17,7 @@ import skat09.test.interfaces.ISpieler;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-abstract public class Output implements IAusgabe {
+abstract public class Output implements IOutput {
 
 	/**
 	 * Ist das Flag true, ist die Ausgabe frei, ist es false muss die Ausgabe

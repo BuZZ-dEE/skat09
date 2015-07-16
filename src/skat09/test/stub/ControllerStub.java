@@ -5,7 +5,7 @@ import java.util.Observable;
 
 import skat09.Table;
 import skat09.spielkarte.Spielkarte;
-import skat09.test.interfaces.IAusgabe;
+import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
@@ -14,9 +14,9 @@ import skat09.test.interfaces.ISpieler;
 public class ControllerStub implements IController{
 
 	Table tisch;
-	IAusgabe ausgabe;
+	IOutput ausgabe;
 	
-	public ControllerStub(Table tisch, IAusgabe ausgabe) {
+	public ControllerStub(Table tisch, IOutput ausgabe) {
 		
 		this.tisch = tisch;
 		this.ausgabe = ausgabe;
@@ -71,7 +71,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public IAusgabe getAusgabe() {
+	public IOutput getAusgabe() {
 		
 		return ausgabe;
 	}

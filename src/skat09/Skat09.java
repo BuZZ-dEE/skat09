@@ -2,7 +2,7 @@ package skat09;
 
 import java.io.IOException;
 
-import skat09.test.interfaces.IAusgabe;
+import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.tools.OSValidator;
 import skat09.ui.CLIOutput;
@@ -30,7 +30,7 @@ public class Skat09 {
 
 		Table tisch = new Table();
 		String s = null;
-		IAusgabe ausgabe;
+		IOutput ausgabe;
 		
 		try {
 			s = args[0];

@@ -18,7 +18,7 @@ import skat09.spieler.MenschlicherSpieler;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
-import skat09.test.interfaces.IAusgabe;
+import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.stub.AusgabeStub;
@@ -29,7 +29,7 @@ import skat09.test.stub.NullspielStub;
 public class MenschlicherSpielerTest {
 
 	Table tisch = new Table();
-	IAusgabe ausgabe = new AusgabeStub(null,null,null);
+	IOutput ausgabe = new AusgabeStub(null,null,null);
 	IController controller = new ControllerStub(tisch, ausgabe);
 	MenschlicherSpieler mensch = new MenschlicherSpieler("Peter", controller);
 

@@ -21,7 +21,7 @@ public interface IController {
 	 * 
 	 * @return das Ausgabeobjekt
 	 */
-	public abstract IAusgabe getAusgabe();
+	public abstract IOutput getAusgabe();
 
 	/**
 	 * gibt das Spiel wieder frei, das vorher f&uuml;r eine GUI-Eingabe
