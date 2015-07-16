@@ -33,7 +33,7 @@ import javax.swing.event.DocumentListener;
 import skat09.Messages;
 import skat09.spieler.SpielerEnum;
 import skat09.tools.Configuration;
-import skat09.ui.GUIausgabe;
+import skat09.ui.GUIOutput;
 
 /**
  * 
@@ -154,7 +154,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	/**
 	 * H&auml;lt die Methoden, um f&uuml;r eine grafische Darstellung zu sorgen
 	 */
-	private GUIausgabe ausgabe;
+	private GUIOutput ausgabe;
 
 	/**
 	 * 
@@ -162,7 +162,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 *            Die aktuelle GUIAusgabe wird &uuml;bergeben, damit sie
 	 *            released werden kann.
 	 */
-	public Fenster(GUIausgabe ausgabe) {
+	public Fenster(GUIOutput ausgabe) {
 		super(Messages.getI18n("application.name"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
