@@ -25,7 +25,7 @@ import skat09.spieler.Spieler;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
-import skat09.test.interfaces.IAusgabe;
+import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.ISpieler;
 import skat09.test.stub.AusgabeStub;
 import skat09.test.stub.MenschlicherSpielerStub;
@@ -247,7 +247,7 @@ public class ControllerTest {
 		tisch.setSpieler2(new Oma("Lara"));
 		tisch.setSpieler3(new Oma("Hoi"));
 		tisch.positionInitialisieren();
-		IAusgabe ausgabe = new AusgabeStub(null, null, null);
+		IOutput ausgabe = new AusgabeStub(null, null, null);
 		Controller controller2 = new Controller(tisch, ausgabe);
 		try {
 			controller2.leiteReizen();
@@ -265,7 +265,7 @@ public class ControllerTest {
 		tisch.setSpieler2(new RegelkonformerSpieler("Lara"));
 		tisch.setSpieler3(new RegelkonformerSpieler("Hoi"));
 		tisch.positionInitialisieren();
-		IAusgabe ausgabe = new AusgabeStub(null, null, null);
+		IOutput ausgabe = new AusgabeStub(null, null, null);
 		Controller controller2 = new Controller(tisch, ausgabe);
 		try {
 			controller2.leiteReizen();

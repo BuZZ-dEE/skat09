@@ -15,7 +15,7 @@ import skat09.spielkarte.Spielkarte;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public interface IAusgabe {
+public interface IOutput {
 
 	/**
 	 * Diese Methode gibt den Status der Variable release zur&uuml;ck

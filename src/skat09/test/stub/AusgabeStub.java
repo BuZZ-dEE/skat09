@@ -9,13 +9,13 @@ import skat09.spielart.Grandspiel;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
-import skat09.test.interfaces.IAusgabe;
+import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
 
-public class AusgabeStub implements IAusgabe{
+public class AusgabeStub implements IOutput{
 
 	private String gegner;
 	private String variante;
