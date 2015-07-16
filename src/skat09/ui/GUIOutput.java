@@ -27,7 +27,7 @@ import skat09.ui.gui.*;
  * @version 03.07.2009
  * 
  */
-public class GUIausgabe extends Output {
+public class GUIOutput extends Output {
 	
 	/**
 	 * Der Tisch, auf dem gespielt wird
@@ -48,7 +48,7 @@ public class GUIausgabe extends Output {
 	 * @param tisch
 	 *           Der Tisch, auf dem gespielt wird
 	 */
-	public GUIausgabe(Table tisch) {
+	public GUIOutput(Table tisch) {
 
 		this.tisch = tisch;
 

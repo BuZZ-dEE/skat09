@@ -39,7 +39,7 @@ import skat09.Table;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpieler;
-import skat09.ui.GUIausgabe;
+import skat09.ui.GUIOutput;
 
 /**
  * Die Klasse beinhaltet das Hauptfenster der GUI. In diesem Fenster wird der
@@ -112,7 +112,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * Ausgabe, durch die die Interaktion mit dem menschlichen Spieler
 	 * stattfindet
 	 */
-	private GUIausgabe ausgabe;
+	private GUIOutput ausgabe;
 
 	/**
 	 * dient zur identifizierung der vom Spieler gew&auml;hlten Karte
@@ -234,7 +234,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * @param ausgabe
 	 *            Die GUIausgabe, die genutzt wird
 	 */
-	public GTable(Table tisch, GUIausgabe ausgabe) {
+	public GTable(Table tisch, GUIOutput ausgabe) {
 
 		super(Messages.getI18n("application.name"));
 		this.ausgabe = ausgabe;

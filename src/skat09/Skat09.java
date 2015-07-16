@@ -6,7 +6,7 @@ import skat09.test.interfaces.IAusgabe;
 import skat09.test.interfaces.IController;
 import skat09.tools.OSValidator;
 import skat09.ui.CLIOutput;
-import skat09.ui.GUIausgabe;
+import skat09.ui.GUIOutput;
 
 /**
  * Die Main Klasse dient dem Programmstart, sowie dem Initialisieren der
@@ -42,11 +42,11 @@ public class Skat09 {
 			ausgabe = new CLIOutput(tisch);
 		} else {
 			OSValidator.setOperatingSystemProperties();
-			ausgabe = new GUIausgabe(tisch);
+			ausgabe = new GUIOutput(tisch);
 		}
 
 		IController controller = new Controller(tisch, ausgabe);
-		if (ausgabe instanceof GUIausgabe) {
+		if (ausgabe instanceof GUIOutput) {
 			controller.warte();
 		}
 		controller.spiel();
