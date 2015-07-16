@@ -17,7 +17,7 @@ import skat09.test.interfaces.ISpieler;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-abstract public class Ausgabe implements IAusgabe {
+abstract public class Output implements IAusgabe {
 
 	/**
 	 * Ist das Flag true, ist die Ausgabe frei, ist es false muss die Ausgabe
