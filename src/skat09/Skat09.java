@@ -5,7 +5,7 @@ import java.io.IOException;
 import skat09.test.interfaces.IAusgabe;
 import skat09.test.interfaces.IController;
 import skat09.tools.OSValidator;
-import skat09.ui.CLIausgabe;
+import skat09.ui.CLIOutput;
 import skat09.ui.GUIausgabe;
 
 /**
@@ -39,7 +39,7 @@ public class Skat09 {
 		}
 
 		if (s.compareTo("-nogui") == 0) {
-			ausgabe = new CLIausgabe(tisch);
+			ausgabe = new CLIOutput(tisch);
 		} else {
 			OSValidator.setOperatingSystemProperties();
 			ausgabe = new GUIausgabe(tisch);

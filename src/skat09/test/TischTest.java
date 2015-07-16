@@ -30,7 +30,7 @@ import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
-import skat09.ui.CLIausgabe;
+import skat09.ui.CLIOutput;
 
 
 public class TischTest {
@@ -49,7 +49,7 @@ public class TischTest {
 	Table tisch = new Table();
 	ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 	ArrayList<Spielkarte> spitzen = new ArrayList<Spielkarte>();
-	CLIausgabe ausgabe = new CLIausgabe(tisch);
+	CLIOutput ausgabe = new CLIOutput(tisch);
 	IController controller = new Controller(tisch, ausgabe);
 	ISpieler spieler3 = new MenschlicherSpieler("Hans", controller);
 	Spielkarte[] skat = new Spielkarte[3];

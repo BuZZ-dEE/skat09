@@ -28,7 +28,7 @@ import skat09.test.interfaces.ISpieler;
  *         Bruhns
  * @version 03.07.2009
  */
-public class CLIausgabe extends Output {
+public class CLIOutput extends Output {
 
 	//
 	// Datenfelder
@@ -63,7 +63,7 @@ public class CLIausgabe extends Output {
 	 * @param tisch
 	 *            Der Tisch, auf dem gespielt wird
 	 */
-	public CLIausgabe(Table tisch) {
+	public CLIOutput(Table tisch) {
 
 		System.out.println(Messages.getI18n("application.welcome"));
 		this.tisch = tisch;
