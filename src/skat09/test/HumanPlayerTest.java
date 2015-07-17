@@ -23,7 +23,7 @@ import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.stub.OutputStub;
 import skat09.test.stub.ControllerStub;
-import skat09.test.stub.NullspielStub;
+import skat09.test.stub.NullGameStub;
 
 
 public class HumanPlayerTest {
@@ -103,7 +103,7 @@ public class HumanPlayerTest {
 	@Test
 	public void spieleKarteTest2() {
 
-		Spielart nullspiel = new NullspielStub();
+		Spielart nullspiel = new NullGameStub();
 		boolean ergebnis = false;
 
 		mensch.setSpielart(nullspiel);
