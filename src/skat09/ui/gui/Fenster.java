@@ -194,7 +194,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 * OK-Button
 	 */
 	private void init() {
-
+		
 		haupt = new JPanel();
 		getContentPane().add(new Toolbar(), BorderLayout.NORTH);
 		haupt.setLayout(new FlowLayout());

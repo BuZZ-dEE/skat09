@@ -5,7 +5,7 @@ import java.io.IOException;
 import skat09.spielart.Farbspiel;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IController;
-import skat09.test.interfaces.IMenschlicherSpieler;
+import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
@@ -19,7 +19,7 @@ import skat09.test.interfaces.ISpieler;
  * 
  */
 public class HumanPlayer extends Player implements ISpieler,
-		IMenschlicherSpieler {
+		IHumanPlayer {
 
 	//
 	// Datenfelder

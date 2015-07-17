@@ -18,7 +18,7 @@ import skat09.spieler.SmartPlayer;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
-import skat09.test.interfaces.IMenschlicherSpieler;
+import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
@@ -334,7 +334,7 @@ public class Controller implements Observer, IController {
 		boolean ergebnis = false;
 
 		if (tisch.getReizagentWert() >= 0
-				&& spieler instanceof IMenschlicherSpieler) {
+				&& spieler instanceof IHumanPlayer) {
 
 			ergebnis = reizagent(spieler);
 		} else {
@@ -509,7 +509,7 @@ public class Controller implements Observer, IController {
 		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
-			if (alleSpieler instanceof IMenschlicherSpieler) {
+			if (alleSpieler instanceof IHumanPlayer) {
 
 				((ISpieler) alleSpieler).blattSortieren(spielart);
 			}

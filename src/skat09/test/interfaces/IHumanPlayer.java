@@ -13,7 +13,7 @@ import skat09.spielkarte.Spielkarte;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public interface IMenschlicherSpieler {
+public interface IHumanPlayer {
 
 	/**
 	 * Die Methode simuliert das h&ouml;ren des menschlichen Spielers.

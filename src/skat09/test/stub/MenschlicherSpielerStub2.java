@@ -6,12 +6,12 @@ import skat09.spielart.Farbspiel;
 import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
-import skat09.test.interfaces.IMenschlicherSpieler;
+import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
 
-public class MenschlicherSpielerStub2 implements ISpieler, IMenschlicherSpieler {
+public class MenschlicherSpielerStub2 implements ISpieler, IHumanPlayer {
 
 	
 	private String name;
