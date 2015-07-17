@@ -14,7 +14,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 
 
-public class GrandspielTest {
+public class GrandGameTest {
 
 	GrandGame spiel;
 	Spielkarte karte1;
