@@ -21,7 +21,7 @@ import skat09.spieler.Oma;
 import skat09.spieler.Position;
 import skat09.spieler.RegelkonformerSpieler;
 import skat09.spieler.SchlauerSpieler;
-import skat09.spieler.Spieler;
+import skat09.spieler.Player;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -242,7 +242,7 @@ public class ControllerTest {
 	@Test
 	public void leiteReizenTest() {
 		
-		Spieler spieler = new Oma("Hannelore");
+		Player spieler = new Oma("Hannelore");
 		tisch.setSpieler1(spieler);
 		tisch.setSpieler2(new Oma("Lara"));
 		tisch.setSpieler3(new Oma("Hoi"));
@@ -504,8 +504,8 @@ public class ControllerTest {
 			mensch.getBlatt().add(new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		}
 		controller2.getTisch().setSpieler1(mensch);
-		Spieler spieler2 = new Oma("Basti");
-		Spieler spieler3 = new Oma("ungluecklich");
+		Player spieler2 = new Oma("Basti");
+		Player spieler3 = new Oma("ungluecklich");
 		controller2.getTisch().setSpieler2(spieler2);
 		controller2.getTisch().setSpieler3(spieler3);
 		controller2.getTisch().setSechserskat(true);
@@ -617,14 +617,14 @@ public class ControllerTest {
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.BUBE));
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.NEUN));
 	
-		Spieler spieler1 = new Oma("Joy");
+		Player spieler1 = new Oma("Joy");
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
-		Spieler spieler2 = new RegelkonformerSpieler("Leon");
+		Player spieler2 = new RegelkonformerSpieler("Leon");
 		spieler2.setBlatt(blatt);
 		spieler2.setStiche(blatt);
-		Spieler spieler3 = new RegelkonformerSpieler("John Wayne");
+		Player spieler3 = new RegelkonformerSpieler("John Wayne");
 		spieler3.setBlatt(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
@@ -665,14 +665,14 @@ public class ControllerTest {
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.BUBE));
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.NEUN));
 	
-		Spieler spieler1 = new Oma("Joy");
+		Player spieler1 = new Oma("Joy");
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
-		Spieler spieler2 = new RegelkonformerSpieler("Leon");
+		Player spieler2 = new RegelkonformerSpieler("Leon");
 		spieler2.setBlatt(blatt);
 		spieler2.setStiche(blatt);
-		Spieler spieler3 = new RegelkonformerSpieler("John Wayne");
+		Player spieler3 = new RegelkonformerSpieler("John Wayne");
 		spieler3.setBlatt(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
@@ -712,14 +712,14 @@ public class ControllerTest {
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.BUBE));
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.NEUN));
 	
-		Spieler spieler1 = new Oma("Joy");
+		Player spieler1 = new Oma("Joy");
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
-		Spieler spieler2 = new RegelkonformerSpieler("Leon");
+		Player spieler2 = new RegelkonformerSpieler("Leon");
 		spieler2.setBlatt(blatt);
 		spieler2.setStiche(blatt);
-		Spieler spieler3 = new RegelkonformerSpieler("John Wayne");
+		Player spieler3 = new RegelkonformerSpieler("John Wayne");
 		spieler3.setBlatt(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
@@ -760,14 +760,14 @@ public class ControllerTest {
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.BUBE));
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.NEUN));
 	
-		Spieler spieler1 = new Oma("Joy");
+		Player spieler1 = new Oma("Joy");
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
-		Spieler spieler2 = new RegelkonformerSpieler("Leon");
+		Player spieler2 = new RegelkonformerSpieler("Leon");
 		spieler2.setBlatt(blatt);
 		spieler2.setStiche(blatt);
-		Spieler spieler3 = new RegelkonformerSpieler("John Wayne");
+		Player spieler3 = new RegelkonformerSpieler("John Wayne");
 		spieler3.setBlatt(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
@@ -797,9 +797,9 @@ public class ControllerTest {
 		OutputStub ausgabe2 = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch2, ausgabe2);
 		
-		Spieler gewinner = new Oma("Gustav Gans");
-		Spieler s2 = new Oma("Benny");
-		Spieler s3 = new Oma("Daniel");
+		Player gewinner = new Oma("Gustav Gans");
+		Player s2 = new Oma("Benny");
+		Player s3 = new Oma("Daniel");
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		Spielkarte k1 = new Spielkarte(Farbe.HERZ, Wert.BUBE);
 		Spielkarte k2 = new Spielkarte(Farbe.HERZ, Wert.ASS);
@@ -822,7 +822,7 @@ public class ControllerTest {
 	@Test
 	public void reizagentTest() {
 		
-		Spieler spieler = new Oma("Tini");
+		Player spieler = new Oma("Tini");
 		tisch.setReizwert(23);
 		tisch.setReizagentWert(30);
 		assertTrue(controller.reizagent(spieler));
@@ -831,7 +831,7 @@ public class ControllerTest {
 	@Test
 	public void reizagentTest2() {
 		
-		Spieler spieler = new Oma("Tini");
+		Player spieler = new Oma("Tini");
 		tisch.setReizwert(30);
 		tisch.setReizagentWert(23);
 		assertFalse(controller.reizagent(spieler));
@@ -1116,9 +1116,9 @@ public class ControllerTest {
 	@Test
 	public void schlauerSpielerInitTest() {
 		
-		Spieler spieler1 = new SchlauerSpieler("Halo");
-		Spieler spieler2 = new SchlauerSpieler("Evin");
-		Spieler spieler3 = new RegelkonformerSpieler("Bernd");
+		Player spieler1 = new SchlauerSpieler("Halo");
+		Player spieler2 = new SchlauerSpieler("Evin");
+		Player spieler3 = new RegelkonformerSpieler("Bernd");
 		
 		ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
 		blatt.add(new Spielkarte(Farbe.HERZ, Wert.SIEBEN));

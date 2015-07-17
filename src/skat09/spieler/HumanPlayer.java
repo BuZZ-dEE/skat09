@@ -18,7 +18,7 @@ import skat09.test.interfaces.ISpieler;
  * @version 03.07.2009
  * 
  */
-public class HumanPlayer extends Spieler implements ISpieler,
+public class HumanPlayer extends Player implements ISpieler,
 		IMenschlicherSpieler {
 
 	//
