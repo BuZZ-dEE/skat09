@@ -16,7 +16,7 @@ import skat09.test.interfaces.ISpielart;
  * @version 03.07.2009
  * 
  */
-public class RegelkonformerSpieler extends Spieler {
+public class RegelkonformerSpieler extends Player {
 
 	//
 	// Datenfelder

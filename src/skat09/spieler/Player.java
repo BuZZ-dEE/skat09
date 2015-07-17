@@ -24,7 +24,7 @@ import skat09.test.interfaces.ISpieler;
  * @version 03.07.2009
  */
 
-abstract public class Spieler implements ISpieler {
+abstract public class Player implements ISpieler {
 
 	//
 	// Datenfelder
@@ -112,7 +112,7 @@ abstract public class Spieler implements ISpieler {
 	 *            - name des Spielers
 	 * 
 	 */
-	public Spieler(String name) {
+	public Player(String name) {
 
 		spiele = new ArrayList<Integer>();
 		this.name = name;
