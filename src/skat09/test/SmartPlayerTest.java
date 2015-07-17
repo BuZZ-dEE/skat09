@@ -27,7 +27,7 @@ import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IPlayer;
 
 
-public class SchlauerSpielerTest {
+public class SmartPlayerTest {
 
 	SmartPlayer spieler = new SmartPlayer("Max");
 	ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
