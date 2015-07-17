@@ -11,18 +11,14 @@ import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
 
 
-public class MenschlicherSpielerStub implements IPlayer, IHumanPlayer {
+public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 
-	//
-	//Datenfelder
-	//
 	
 	private String name;
 	private boolean istAlleinspieler;
 	private ArrayList<Spielkarte> blatt;
-	Position position;
 	
-	public MenschlicherSpielerStub(String name) {
+	public HumanPlayerStub2(String name) {
 		
 		this.name = name;
 		this.istAlleinspieler = false;
@@ -78,8 +74,8 @@ public class MenschlicherSpielerStub implements IPlayer, IHumanPlayer {
 
 	
 	public Position getPosition() {
-		
-		return position;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
@@ -105,7 +101,7 @@ public class MenschlicherSpielerStub implements IPlayer, IHumanPlayer {
 	
 		boolean ergebnis = false;
 		
-		if (reizwert <= 22) {
+		if (reizwert <= 18) {
 			ergebnis = true;
 		}
 		return ergebnis;
@@ -125,8 +121,8 @@ public class MenschlicherSpielerStub implements IPlayer, IHumanPlayer {
 
 	
 	public int reizlimitFestlegen() {
-		
-		return 30;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	
@@ -134,7 +130,7 @@ public class MenschlicherSpielerStub implements IPlayer, IHumanPlayer {
 		
 		boolean ergebnis = false;
 		
-		if (alterWert <= 22) {
+		if (alterWert <= 18) {
 			ergebnis = true;
 		}
 		return ergebnis;
@@ -166,8 +162,8 @@ public class MenschlicherSpielerStub implements IPlayer, IHumanPlayer {
 
 	
 	public void setPosition(Position position) {
+		// TODO Auto-generated method stub
 		
-		this.position = position;
 	}
 
 	
@@ -301,12 +297,10 @@ public class MenschlicherSpielerStub implements IPlayer, IHumanPlayer {
 	}
 
 	public int getHandspiele() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public void setHandspiele(int handspiele) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -319,6 +313,4 @@ public class MenschlicherSpielerStub implements IPlayer, IHumanPlayer {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	
 }

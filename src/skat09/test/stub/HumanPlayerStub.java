@@ -11,14 +11,18 @@ import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
 
 
-public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
+public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 
+	//
+	//Datenfelder
+	//
 	
 	private String name;
 	private boolean istAlleinspieler;
 	private ArrayList<Spielkarte> blatt;
+	Position position;
 	
-	public MenschlicherSpielerStub2(String name) {
+	public HumanPlayerStub(String name) {
 		
 		this.name = name;
 		this.istAlleinspieler = false;
@@ -74,8 +78,8 @@ public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
 
 	
 	public Position getPosition() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return position;
 	}
 
 	
@@ -101,7 +105,7 @@ public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
 	
 		boolean ergebnis = false;
 		
-		if (reizwert <= 18) {
+		if (reizwert <= 22) {
 			ergebnis = true;
 		}
 		return ergebnis;
@@ -121,8 +125,8 @@ public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
 
 	
 	public int reizlimitFestlegen() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return 30;
 	}
 
 	
@@ -130,7 +134,7 @@ public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
 		
 		boolean ergebnis = false;
 		
-		if (alterWert <= 18) {
+		if (alterWert <= 22) {
 			ergebnis = true;
 		}
 		return ergebnis;
@@ -162,8 +166,8 @@ public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
 
 	
 	public void setPosition(Position position) {
-		// TODO Auto-generated method stub
 		
+		this.position = position;
 	}
 
 	
@@ -297,10 +301,12 @@ public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	public int getHandspiele() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public void setHandspiele(int handspiele) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -313,4 +319,6 @@ public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 }
