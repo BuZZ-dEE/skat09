@@ -12,7 +12,7 @@ import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
-import skat09.test.interfaces.INullspiel;
+import skat09.test.interfaces.INullGame;
 
 
 public class NullspielTest {
@@ -28,7 +28,7 @@ public class NullspielTest {
 	Spielkarte spielkarte9;
 	Spielkarte spielkarte10;
 	Spielkarte spielkarte11;
-	INullspiel spiel = new NullGame();
+	INullGame spiel = new NullGame();
 	ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
 	Spielkarte[] gespielteKarten = new Spielkarte[3];
 	

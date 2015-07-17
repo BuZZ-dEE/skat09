@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
-import skat09.test.interfaces.INullspiel;
+import skat09.test.interfaces.INullGame;
 
 
 /**
@@ -14,7 +14,7 @@ import skat09.test.interfaces.INullspiel;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public class NullGame extends Spielart implements INullspiel {
+public class NullGame extends Spielart implements INullGame {
 
 	/**
 	 * Instanziert ein Null - Spiel
