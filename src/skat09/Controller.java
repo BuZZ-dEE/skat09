@@ -7,7 +7,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Ramsch;
 import skat09.spielart.Spielartbezeichnung;
@@ -568,7 +568,7 @@ public class Controller implements Observer, IController {
 			if (alleSpieler instanceof HumanPlayer) {
 
 				((HumanPlayer) alleSpieler)
-						.blattSortieren(new Grandspiel());
+						.blattSortieren(new GrandGame());
 			}
 
 			if (alleSpieler instanceof SmartPlayer) {

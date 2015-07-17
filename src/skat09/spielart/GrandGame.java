@@ -13,12 +13,12 @@ import skat09.spielkarte.Wert;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public class Grandspiel extends Spielart {
+public class GrandGame extends Spielart {
 
 	/**
 	 * Instanziert ein Grand - Spiel
 	 */
-	public Grandspiel() {
+	public GrandGame() {
 
 		setSpielart(Spielartbezeichnung.GRAND);
 	}

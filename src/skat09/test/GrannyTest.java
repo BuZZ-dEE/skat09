@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spieler.Granny;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -109,7 +109,7 @@ public class GrannyTest {
 	@Test
 	public void testSpielAnsagen(){
 		boolean test = false;
-		if (oma.spielAnsagen() instanceof Grandspiel) {
+		if (oma.spielAnsagen() instanceof GrandGame) {
 			test = true;
 		}
 		assertEquals(true, test);

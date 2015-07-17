@@ -17,7 +17,7 @@ import skat09.Controller;
 import skat09.SkatVariant;
 import skat09.Table;
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Ramsch;
 import skat09.spielart.Spielart;
@@ -142,7 +142,7 @@ public class TableTest {
 	//Testet die Methode getSpielart
 	@Test
 	public void getSpielartTest() {
-		ISpielart spielart = new Grandspiel();
+		ISpielart spielart = new GrandGame();
 		tisch.setSpielart(spielart);
 		assertEquals(spielart, tisch.getSpielart());
 	}
@@ -311,7 +311,7 @@ public class TableTest {
 		gespielteKarten[0] = new Spielkarte(Farbe.PIK, Wert.BUBE);
 		gespielteKarten[1] = new Spielkarte(Farbe.KARO, Wert.BUBE);
 		gespielteKarten[2] = new Spielkarte(Farbe.HERZ, Wert.BUBE);
-		ISpielart spielart = new Grandspiel();
+		ISpielart spielart = new GrandGame();
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
 		gespielteKarten[2].setBesitzer(spieler3);
@@ -633,7 +633,7 @@ public class TableTest {
 	@Test
 	public void ueberreizCheckTest2() {
 		
-		tisch.setSpielart(new Grandspiel());
+		tisch.setSpielart(new GrandGame());
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
@@ -647,7 +647,7 @@ public class TableTest {
 		tisch.setSchwarz(true);
 		tisch.setHandspiel(true);
 		tisch.setOuvert(true);
-		tisch.setSpielart(new Grandspiel());
+		tisch.setSpielart(new GrandGame());
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
@@ -815,7 +815,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Grandspiel();
+		ISpielart spielart = new GrandGame();
 		tisch.setSpielart(spielart);
 		assertEquals(48, tisch.wertePunkte(62));
 	}
@@ -826,7 +826,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Grandspiel();
+		ISpielart spielart = new GrandGame();
 		tisch.setSpielart(spielart);
 		assertEquals(-96, tisch.wertePunkte(45));
 	}
@@ -876,7 +876,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Grandspiel();
+		ISpielart spielart = new GrandGame();
 		tisch.setSpielart(spielart);
 		assertEquals(48, tisch.punkteGrandspiel(62));
 	}

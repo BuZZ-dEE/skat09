@@ -9,7 +9,7 @@ import java.util.SortedSet;
 import skat09.Messages;
 import skat09.Table;
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
@@ -266,7 +266,7 @@ public class CLIOutput extends Output {
 	@Override
 	public int druecken(ArrayList<Spielkarte> blatt, int nummer) {
 
-		ISpielart spielart = new Grandspiel();
+		ISpielart spielart = new GrandGame();
 		int ergebnis = -1;
 
 		if (nummer == 1) {
@@ -354,7 +354,7 @@ public class CLIOutput extends Output {
 		switch (ergebnis) {
 
 		case 0:
-			rueckgabe = new Grandspiel();
+			rueckgabe = new GrandGame();
 			break;
 		case 1:
 			rueckgabe = new NullGame();

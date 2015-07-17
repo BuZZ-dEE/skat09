@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -35,7 +35,7 @@ public class SpielartTest {
 	Spielkarte spielkarte11;
 	Spielkarte spielkarte12;
 	Spielkarte spielkarte13;
-	Grandspiel spiel = new Grandspiel();
+	GrandGame spiel = new GrandGame();
 
 	// Bei diesem Test enthaelt das Blatt des Spielers noch einige Karten.
 	// Wir gehen davon aus, dass die zu spielende Karte Kreuz/Zehn ist.

@@ -14,7 +14,7 @@ import skat09.Controller;
 import skat09.SkatVariant;
 import skat09.Table;
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spieler.HumanPlayer;
 import skat09.spieler.Granny;
@@ -619,7 +619,7 @@ public class ControllerTest {
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
-		spieler1.setSpielart(new Grandspiel());
+		spieler1.setSpielart(new GrandGame());
 		spieler1.setIstAlleinspieler(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setBlatt(blatt);
@@ -667,7 +667,7 @@ public class ControllerTest {
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
-		spieler1.setSpielart(new Grandspiel());
+		spieler1.setSpielart(new GrandGame());
 		spieler1.setIstAlleinspieler(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setBlatt(blatt);
@@ -714,7 +714,7 @@ public class ControllerTest {
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
-		spieler1.setSpielart(new Grandspiel());
+		spieler1.setSpielart(new GrandGame());
 		spieler1.setIstAlleinspieler(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setBlatt(blatt);
@@ -762,7 +762,7 @@ public class ControllerTest {
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
-		spieler1.setSpielart(new Grandspiel());
+		spieler1.setSpielart(new GrandGame());
 		spieler1.setIstAlleinspieler(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setBlatt(blatt);
@@ -904,7 +904,7 @@ public class ControllerTest {
 		tisch.getSpieler1().setIstAlleinspieler(true);
 		tisch.setSpieler2(new Granny("Renate"));
 		tisch.setSpieler3(new Granny("Mochochocho"));
-		tisch.setSpielart(new Grandspiel());
+		tisch.setSpielart(new GrandGame());
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
 		
 		boolean ergebnis = false;
@@ -921,7 +921,7 @@ public class ControllerTest {
 		tisch.getSpieler1().setIstAlleinspieler(true);
 		tisch.setSpieler2(new Granny("Renate"));
 		tisch.setSpieler3(new Granny("Mochochocho"));
-		tisch.setSpielart(new Grandspiel());
+		tisch.setSpielart(new GrandGame());
 		tisch.setHandspiel(true);
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
 		
