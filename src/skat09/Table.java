@@ -12,7 +12,7 @@ import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
-import skat09.test.interfaces.IMenschlicherSpieler;
+import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.ISpieler;
 
@@ -1212,10 +1212,10 @@ public class Table extends Observable {
 
 		ISpieler ergebnis = null;
 
-		if (spieler1 instanceof IMenschlicherSpieler) {
+		if (spieler1 instanceof IHumanPlayer) {
 
 			ergebnis = spieler1;
-		} else if (spieler2 instanceof IMenschlicherSpieler) {
+		} else if (spieler2 instanceof IHumanPlayer) {
 
 			ergebnis = spieler2;
 		} else {
