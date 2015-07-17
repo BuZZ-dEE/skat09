@@ -31,7 +31,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import skat09.Messages;
-import skat09.spieler.SpielerEnum;
+import skat09.spieler.PlayerEnum;
 import skat09.tools.Configuration;
 import skat09.ui.GUIOutput;
 
@@ -130,12 +130,12 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 * Je nach Eingabe wird der zur Eingabe in Gegnerwahl der passende ENUM-Wert
 	 * gehalten
 	 */
-	private SpielerEnum mitspieler1;
+	private PlayerEnum mitspieler1;
 	/**
 	 * Je nach Eingabe wird der zur Eingabe in Gegnerwahl der passende ENUM-Wert
 	 * gehalten
 	 */
-	private SpielerEnum mitspieler2;
+	private PlayerEnum mitspieler2;
 	/**
 	 * Je nach eingabe wird hier ein bestimmter Wert f&uuml;r jede Skatvariante
 	 * gehalten
@@ -438,7 +438,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 * 
 	 * @return mitspieler1
 	 */
-	public SpielerEnum getMitspieler1() {
+	public PlayerEnum getMitspieler1() {
 		
 		return mitspieler1;
 	}
@@ -448,7 +448,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 * 
 	 * @return mitspieler2
 	 */
-	public SpielerEnum getMitspieler2() {
+	public PlayerEnum getMitspieler2() {
 		
 		return mitspieler2;
 	}
@@ -549,20 +549,20 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 		int index;
 		index = gegner1.getSelectedIndex();
 		if (index == 0) {
-			mitspieler1 = SpielerEnum.OMA;
+			mitspieler1 = PlayerEnum.OMA;
 		} else if (index == 1) {
-			mitspieler1 = SpielerEnum.REGELKONFORM;
+			mitspieler1 = PlayerEnum.REGELKONFORM;
 		} else {
-			mitspieler1 = SpielerEnum.INTELLIGENT;
+			mitspieler1 = PlayerEnum.INTELLIGENT;
 		}
 
 		index = gegner2.getSelectedIndex();
 		if (index == 0) {
-			mitspieler2 = SpielerEnum.OMA;
+			mitspieler2 = PlayerEnum.OMA;
 		} else if (index == 1) {
-			mitspieler2 = SpielerEnum.REGELKONFORM;
+			mitspieler2 = PlayerEnum.REGELKONFORM;
 		} else {
-			mitspieler2 = SpielerEnum.INTELLIGENT;
+			mitspieler2 = PlayerEnum.INTELLIGENT;
 		}
 
 		index = skatvariante.getSelectedIndex();
