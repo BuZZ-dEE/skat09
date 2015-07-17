@@ -33,7 +33,7 @@ import skat09.test.interfaces.IPlayer;
 import skat09.ui.CLIOutput;
 
 
-public class TischTest {
+public class TableTest {
 
 	//
 	// Datenfelder
