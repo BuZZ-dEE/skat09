@@ -20,7 +20,7 @@ import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
 /**
@@ -126,7 +126,7 @@ public class Controller implements Observer, IController {
 
 		String name = "";
 		name = ausgabe.name();
-		ISpieler spieler = new HumanPlayer(name, this);
+		IPlayer spieler = new HumanPlayer(name, this);
 		tisch.setSpieler1(spieler);
 
 	}
@@ -141,19 +141,19 @@ public class Controller implements Observer, IController {
 		// Eingabe o fuer Oma
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
-			ISpieler spieler2 = new Oma("Oma Karla");
+			IPlayer spieler2 = new Oma("Oma Karla");
 			tisch.setSpieler2(spieler2);
 		}
 		// Eingabe r fuer regelkonformer Spieler
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
 
-			ISpieler spieler2 = new RuleCompliantPlayer("Hans");
+			IPlayer spieler2 = new RuleCompliantPlayer("Hans");
 			tisch.setSpieler2(spieler2);
 		}
 		// Eingabe s fuer schlauer Spieler
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {
 
-			ISpieler spieler2 = new SmartPlayer("Heinz");
+			IPlayer spieler2 = new SmartPlayer("Heinz");
 			tisch.setSpieler2(spieler2);
 		}
 
@@ -162,17 +162,17 @@ public class Controller implements Observer, IController {
 
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
-			ISpieler spieler3 = new Oma("Oma Berta");
+			IPlayer spieler3 = new Oma("Oma Berta");
 			tisch.setSpieler3(spieler3);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
 
-			ISpieler spieler3 = new RuleCompliantPlayer("Franz");
+			IPlayer spieler3 = new RuleCompliantPlayer("Franz");
 			tisch.setSpieler3(spieler3);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {
 
-			ISpieler spieler3 = new SmartPlayer("Wolfgang");
+			IPlayer spieler3 = new SmartPlayer("Wolfgang");
 			tisch.setSpieler3(spieler3);
 		}
 	}
@@ -221,12 +221,12 @@ public class Controller implements Observer, IController {
 	public void leiteReizen() throws IOException {
 
 		// Positionen der Spieler ermitteln
-		ISpieler vorhand = tisch.getVorhand();
-		ISpieler mittelhand = tisch.getMittelhand();
-		ISpieler hinterhand = tisch.getHinterhand();
+		IPlayer vorhand = tisch.getVorhand();
+		IPlayer mittelhand = tisch.getMittelhand();
+		IPlayer hinterhand = tisch.getHinterhand();
 
 		// ermitteln, ob menschlicher Spieler den Reizagent benutzen will
-		ISpieler mensch = tisch.gibMenschlicherSpieler();
+		IPlayer mensch = tisch.gibMenschlicherSpieler();
 		ausgabe.blattAusgeben(mensch);
 		boolean reizagent = mensch.agent();
 
@@ -241,10 +241,10 @@ public class Controller implements Observer, IController {
 		}
 		tisch.setReizagentWert(reizlimit);
 		// Gewinner des Reizens zwischen Mittelhand und Vorhand
-		ISpieler gewinner = null;
+		IPlayer gewinner = null;
 
 		// Alleinspieler - Spieler der das gesamte Reizen gewonnen hat
-		ISpieler alleinspieler = null;
+		IPlayer alleinspieler = null;
 
 		// reizen Mittelhand vs. Vorhand
 		ausgabe.mhVSvh();
@@ -271,10 +271,10 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public ISpieler reizen2(ISpieler spieler1, ISpieler spieler2) {
+	public IPlayer reizen2(IPlayer spieler1, IPlayer spieler2) {
 
 		// Gewinner des reizens
-		ISpieler gewinner = null;
+		IPlayer gewinner = null;
 
 		boolean sagen = false;
 		boolean hoeren = false;
@@ -328,7 +328,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public boolean reizenOderReizagent(ISpieler spieler, int reizwert,
+	public boolean reizenOderReizagent(IPlayer spieler, int reizwert,
 			boolean sagen) {
 
 		boolean ergebnis = false;
@@ -351,10 +351,10 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public ISpieler reizen1(ISpieler spieler1, ISpieler spieler2) {
+	public IPlayer reizen1(IPlayer spieler1, IPlayer spieler2) {
 
 		// Gewinner des Reizens
-		ISpieler gewinner = null;
+		IPlayer gewinner = null;
 
 		boolean fertig = false;
 		boolean sagen = false;
@@ -403,9 +403,9 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void leiteSpiel() throws NullPointerException, IOException {
 
-		ISpieler spieler1 = tisch.getVorhand();
-		ISpieler spieler2 = null;
-		ISpieler spieler3 = null;
+		IPlayer spieler1 = tisch.getVorhand();
+		IPlayer spieler2 = null;
+		IPlayer spieler3 = null;
 		Spielkarte[] gespielteKarten;
 
 		ausgabe.spielBeginnt();
@@ -469,8 +469,8 @@ public class Controller implements Observer, IController {
 	public void alleinspielerAktionen() throws IOException {
 
 		// Der Spieler wird gefragt, ob er Hand spielt
-		ISpieler alleinspieler = tisch.ermittleAlleinspieler();
-		ISpieler mensch = tisch.gibMenschlicherSpieler();
+		IPlayer alleinspieler = tisch.ermittleAlleinspieler();
+		IPlayer mensch = tisch.gibMenschlicherSpieler();
 		ausgabe.blattAusgeben(mensch);
 
 		tisch.setHandspiel(alleinspieler.handspiel());
@@ -506,12 +506,12 @@ public class Controller implements Observer, IController {
 
 		// Sortieren der Spielerbl&auml;tter nachdem Spielart nun bekannt ist.
 		// Dies geschieht nur für die menschlichen Spieler.
-		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
+		for (IPlayer alleSpieler : new IPlayer[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
 			if (alleSpieler instanceof IHumanPlayer) {
 
-				((ISpieler) alleSpieler).blattSortieren(spielart);
+				((IPlayer) alleSpieler).blattSortieren(spielart);
 			}
 		}
 
@@ -549,7 +549,7 @@ public class Controller implements Observer, IController {
 
 		tisch.erstelleDeck();
 
-		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
+		for (IPlayer alleSpieler : new IPlayer[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 			if (alleSpieler instanceof SmartPlayer) {
 				
@@ -562,7 +562,7 @@ public class Controller implements Observer, IController {
 		tisch.kartenAusteilen();
 
 		// für alle menschlichen Spieler das Blatt nach Grandspiel sortieren
-		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
+		for (IPlayer alleSpieler : new IPlayer[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
 			if (alleSpieler instanceof HumanPlayer) {
@@ -630,7 +630,7 @@ public class Controller implements Observer, IController {
 			tisch.setSpaltarsch(false);
 		}
 
-		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
+		for (IPlayer alleSpieler : new IPlayer[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
 			alleSpieler.setBlatt(null);
@@ -643,12 +643,12 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void stichAuswertung(Spielkarte[] gespielteKarten, ISpieler gewinner) {
+	public void stichAuswertung(Spielkarte[] gespielteKarten, IPlayer gewinner) {
 		ausgabe.tischLoeschen();
 		for (int i = 0; i < 3; i++) {
 
 			Spielkarte karte = gespielteKarten[i];
-			ISpieler besitzer = karte.getBesitzer();
+			IPlayer besitzer = karte.getBesitzer();
 			ausgabe.spieltKarte(besitzer, karte);
 		}
 		ausgabe.leerzeile();
@@ -657,7 +657,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public boolean reizagent(ISpieler spieler) {
+	public boolean reizagent(IPlayer spieler) {
 
 		boolean ergebnis = false;
 
@@ -686,7 +686,7 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void skatkartenBesitzergeben() {
 
-		ISpieler alleinspieler = tisch.ermittleAlleinspieler();
+		IPlayer alleinspieler = tisch.ermittleAlleinspieler();
 		Spielkarte[] skat = tisch.getSkat();
 		skat[0].setBesitzer(alleinspieler);
 		skat[1].setBesitzer(alleinspieler);
@@ -697,7 +697,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void flagsSetzen(ISpieler alleinspieler, ISpielart spielart) {
+	public void flagsSetzen(IPlayer alleinspieler, ISpielart spielart) {
 
 		if (tisch.getHandspiel()) {
 
@@ -841,7 +841,7 @@ public class Controller implements Observer, IController {
 	public void schlauerSpielerInit() {
 
 		// für alle schlauen Spieler das Deck setzen.
-		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
+		for (IPlayer alleSpieler : new IPlayer[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
 			if (alleSpieler instanceof SmartPlayer) {

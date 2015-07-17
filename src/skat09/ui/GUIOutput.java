@@ -15,7 +15,7 @@ import skat09.spieler.PlayerEnum;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 import skat09.ui.gui.*;
 
 
@@ -213,7 +213,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, ISpieler spieler)
+	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		hfenster.setGespielteKarten(gespielteKarten);
 		zeigegespielteKarten(gespielteKarten);
@@ -238,13 +238,13 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void stichGewonnen(ISpieler spieler) {
+	public void stichGewonnen(IPlayer spieler) {
 		hfenster.stichGewonnen(spieler);
 
 	}
 
 	@Override
-	public void blattAusgeben(ISpieler spieler) throws IOException {
+	public void blattAusgeben(IPlayer spieler) throws IOException {
 		hfenster.blattAusgeben(spieler);
 		hfenster.gegnerKarten(tisch.getSpieler2(), tisch.getSpieler3());
 
@@ -269,7 +269,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void weg(ISpieler spieler) {
+	public void weg(IPlayer spieler) {
 
 	}
 
@@ -280,7 +280,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void hhVSgewinner(ISpieler gewinner) {
+	public void hhVSgewinner(IPlayer gewinner) {
 
 	}
 
@@ -368,7 +368,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(ISpieler spieler, Spielkarte karte) {
+	public void spieltKarte(IPlayer spieler, Spielkarte karte) {
 		if (tisch.gibMenschlicherSpieler().getName() == spieler.getName()) {
 			hfenster.menschSpieltKarte();
 		} else {

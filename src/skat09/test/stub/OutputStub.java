@@ -12,7 +12,7 @@ import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
 public class OutputStub implements IOutput{
@@ -66,7 +66,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void blattAusgeben(ISpieler spieler) throws IOException {
+	public void blattAusgeben(IPlayer spieler) throws IOException {
 		
 	}
 
@@ -142,7 +142,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void hhVSgewinner(ISpieler gewinner) {
+	public void hhVSgewinner(IPlayer gewinner) {
 		
 	}
 
@@ -299,7 +299,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, ISpieler spieler)
+	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
@@ -307,13 +307,13 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void spieltKarte(ISpieler spieler, Spielkarte karte) {
+	public void spieltKarte(IPlayer spieler, Spielkarte karte) {
 		
 		gespielteKartenZahl++;
 	}
 
 	
-	public void stichGewonnen(ISpieler spieler) {
+	public void stichGewonnen(IPlayer spieler) {
 		
 	}
 
@@ -335,7 +335,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void weg(ISpieler spieler) {
+	public void weg(IPlayer spieler) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -24,7 +24,7 @@ import skat09.spieler.SmartPlayer;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
 public class SchlauerSpielerTest {
@@ -158,7 +158,7 @@ public class SchlauerSpielerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new Nullspiel());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler mate = new Oma("ho");
+		IPlayer mate = new Oma("ho");
 		mate.setPosition(Position.MITTELHAND);
 		spieler.setMitspieler(mate);
 		spieler.setPosition(Position.VORHAND);
@@ -196,7 +196,7 @@ public class SchlauerSpielerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new Nullspiel());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler mate = new Oma("ho");
+		IPlayer mate = new Oma("ho");
 		mate.setPosition(Position.HINTERHAND);
 		spieler.setMitspieler(mate);
 		spieler.setPosition(Position.VORHAND);
@@ -233,7 +233,7 @@ public class SchlauerSpielerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new Nullspiel());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler mate = new Oma("ho");
+		IPlayer mate = new Oma("ho");
 		mate.setPosition(Position.HINTERHAND);
 		spieler.setMitspieler(mate);
 		spieler.setPosition(Position.VORHAND);
@@ -300,9 +300,9 @@ public class SchlauerSpielerTest {
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new Nullspiel());
-		ISpieler mate = new Oma("mate");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
-		ISpieler gegner = new Oma("gegen");
+		IPlayer gegner = new Oma("gegen");
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.ASS);
 		gespielteKarten[0].setBesitzer(mate);
@@ -333,9 +333,9 @@ public class SchlauerSpielerTest {
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new Nullspiel());
-		ISpieler mate = new Oma("mate");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
-		ISpieler gegner = new Oma("gegen");
+		IPlayer gegner = new Oma("gegen");
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.ASS);
 		gespielteKarten[0].setBesitzer(gegner);
@@ -392,7 +392,7 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte8);
-		ISpieler mate = new RuleCompliantPlayer("mine");
+		IPlayer mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
 		spieler.getAllegespieltenkarten().add(spielkarte6);
 		spieler.getAllegespieltenkarten().add(spielkarte7);
@@ -402,7 +402,7 @@ public class SchlauerSpielerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new Nullspiel());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler gegnger = new Oma("gegner");
+		IPlayer gegnger = new Oma("gegner");
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
 		gespielteKarten[0].setBesitzer(gegnger);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.DAME);
@@ -429,7 +429,7 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte8);
-		ISpieler mate = new RuleCompliantPlayer("mine");
+		IPlayer mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
 		spieler.getAllegespieltenkarten().add(spielkarte6);
 		spieler.getAllegespieltenkarten().add(spielkarte7);
@@ -439,7 +439,7 @@ public class SchlauerSpielerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new Nullspiel());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler gegnger = new Oma("gegner");
+		IPlayer gegnger = new Oma("gegner");
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
 		gespielteKarten[0].setBesitzer(gegnger);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.DAME);
@@ -466,7 +466,7 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte8);
-		ISpieler mate = new RuleCompliantPlayer("mine");
+		IPlayer mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
 		spieler.getAllegespieltenkarten().add(spielkarte6);
 		spieler.getAllegespieltenkarten().add(spielkarte7);
@@ -476,7 +476,7 @@ public class SchlauerSpielerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new Nullspiel());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler gegnger = new Oma("gegner");
+		IPlayer gegnger = new Oma("gegner");
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
 		gespielteKarten[0].setBesitzer(mate);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.NEUN);
@@ -507,8 +507,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		spieler.setIstAlleinspieler(true);
@@ -541,7 +541,7 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		ISpieler mate = new Oma("mate");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
@@ -573,8 +573,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
@@ -606,8 +606,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
@@ -634,8 +634,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		spieler.setIstAlleinspieler(true);
@@ -665,8 +665,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
@@ -695,8 +695,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
@@ -725,8 +725,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
@@ -787,10 +787,10 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
 		spieler.setPosition(Position.VORHAND);
-		ISpieler mate = new Oma("mate");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
 		mate.setPosition(Position.MITTELHAND);
-		ISpieler gegner = new Oma("gegner");
+		IPlayer gegner = new Oma("gegner");
 		gegner.setPosition(Position.HINTERHAND);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
@@ -820,10 +820,10 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
 		spieler.setPosition(Position.VORHAND);
-		ISpieler mate = new Oma("mate");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
 		mate.setPosition(Position.HINTERHAND);
-		ISpieler gegner = new Oma("gegner");
+		IPlayer gegner = new Oma("gegner");
 		gegner.setPosition(Position.MITTELHAND);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
@@ -882,8 +882,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
@@ -910,8 +910,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
@@ -938,8 +938,8 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
-		ISpieler mate = new Oma("mate");
-		ISpieler gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
 		spieler.setMitspieler(mate);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.ZEHN);
@@ -999,9 +999,9 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler mate = new Oma("mate");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
-		ISpieler wicht = new Oma("wicht");
+		IPlayer wicht = new Oma("wicht");
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
 		gespielteKarten[0].setBesitzer(wicht);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.DAME);
@@ -1029,9 +1029,9 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler mate = new Oma("mate");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
-		ISpieler wicht = new Oma("wicht");
+		IPlayer wicht = new Oma("wicht");
 		gespielteKarten[0] = new Spielkarte(Farbe.PIK, Wert.SIEBEN);
 		gespielteKarten[0].setBesitzer(wicht);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.DAME);
@@ -1059,9 +1059,9 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		ISpieler mate = new Oma("mate");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
-		ISpieler wicht = new Oma("wicht");
+		IPlayer wicht = new Oma("wicht");
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.KOENIG);
 		gespielteKarten[0].setBesitzer(wicht);
 		gespielteKarten[1] = new Spielkarte(Farbe.KARO, Wert.DAME);
@@ -1343,8 +1343,8 @@ public class SchlauerSpielerTest {
 		spieler.setDeck(deck);
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new Grandspiel());
-		ISpieler gegner = new Oma("gegner");
-		ISpieler mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
 		spieler.setMitspieler(mate);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
@@ -1382,8 +1382,8 @@ public class SchlauerSpielerTest {
 		spieler.setDeck(deck);
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new Grandspiel());
-		ISpieler gegner = new Oma("gegner");
-		ISpieler mate = new Oma("mate");
+		IPlayer gegner = new Oma("gegner");
+		IPlayer mate = new Oma("mate");
 		spieler.setMitspieler(mate);
 		spieler.setMitspieler(mate);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];

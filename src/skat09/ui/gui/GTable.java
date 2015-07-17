@@ -38,7 +38,7 @@ import skat09.Messages;
 import skat09.Table;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 import skat09.ui.GUIOutput;
 
 /**
@@ -534,7 +534,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 *            Der Spieler, dessen Blatt ausgegeben werden soll.
 	 * @throws IOException
 	 */
-	public void blattAusgeben(ISpieler spieler) throws IOException {
+	public void blattAusgeben(IPlayer spieler) throws IOException {
 
 		aufHand.removeAll();
 		aufHand.setBorder(BorderFactory.createTitledBorder(Messages
@@ -672,11 +672,11 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 		c.gridx = 0;
 		c.gridy = 0;
 
-		ISpieler spieler1 = tisch.getSpieler1();
+		IPlayer spieler1 = tisch.getSpieler1();
 		label = new JLabel(spieler1.getName());
-		ISpieler spieler2 = tisch.getSpieler2();
+		IPlayer spieler2 = tisch.getSpieler2();
 		label1 = new JLabel(spieler2.getName());
-		ISpieler spieler3 = tisch.getSpieler3();
+		IPlayer spieler3 = tisch.getSpieler3();
 		label2 = new JLabel(spieler3.getName());
 
 		setzeStats(name, 0, 0);
@@ -1103,7 +1103,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * @param spieler
 	 *            Der Spieler, der den Stich gewonnen hat.
 	 */
-	public void stichGewonnen(ISpieler spieler) {
+	public void stichGewonnen(IPlayer spieler) {
 
 		JOptionPane.showMessageDialog(null,
 				Messages.getI18n("player.trick.won", spieler.getName()));
@@ -1324,7 +1324,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * @param spieler
 	 *            Der Spieler, dessen Blatt neu gezeichnet werden soll
 	 */
-	public void blattneu(ISpieler spieler) {
+	public void blattneu(IPlayer spieler) {
 		aufHand.removeAll();
 		pack();
 		try {
@@ -1405,7 +1405,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * @return Gibt die JLayeredPane zur&uuml;ck, auf der die Kartenr&uuml;cken
 	 *         angezeigt werden.
 	 */
-	public JLayeredPane kartenruecken(ISpieler spieler) {
+	public JLayeredPane kartenruecken(IPlayer spieler) {
 		JLayeredPane layeredPane;
 		layeredPane = new JLayeredPane();
 		layeredPane.setPreferredSize(new Dimension(450, 150));
@@ -1532,7 +1532,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * @param spieler3
 	 *            Der zweite Gegener, dessen Karten dargestellt werden sollen.
 	 */
-	public void gegnerKarten(ISpieler spieler2, ISpieler spieler3) {
+	public void gegnerKarten(IPlayer spieler2, IPlayer spieler3) {
 		gegnerHand.removeAll();
 		pane1 = kartenruecken(spieler2);
 		gegnerHand.add(pane1);
@@ -1723,7 +1723,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 *            Der Spieler, dessen Statistik ausgegeben werden soll
 	 * @return Das Array mit den Strings, die die Daten enthalten
 	 */
-	public String[] statistikText(ISpieler spieler) {
+	public String[] statistikText(IPlayer spieler) {
 		String[] s = new String[3];
 
 		// Prozent allein

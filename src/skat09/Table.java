@@ -14,7 +14,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
 /**
@@ -36,15 +36,15 @@ public class Table extends Observable {
 	/**
 	 * Der erste Spieler am Tisch
 	 */
-	private ISpieler spieler1;
+	private IPlayer spieler1;
 	/**
 	 * Der zweite Spieler am Tisch
 	 */
-	private ISpieler spieler2;
+	private IPlayer spieler2;
 	/**
 	 * Der dritte Spieler am Tisch
 	 */
-	private ISpieler spieler3;
+	private IPlayer spieler3;
 	/**
 	 * Die aktuell gespielte Spielart
 	 */
@@ -222,7 +222,7 @@ public class Table extends Observable {
 	 * 
 	 * @return spieler1
 	 */
-	public ISpieler getSpieler1() {
+	public IPlayer getSpieler1() {
 
 		return spieler1;
 	}
@@ -232,7 +232,7 @@ public class Table extends Observable {
 	 * 
 	 * @return spieler2
 	 */
-	public ISpieler getSpieler2() {
+	public IPlayer getSpieler2() {
 
 		return spieler2;
 	}
@@ -242,7 +242,7 @@ public class Table extends Observable {
 	 * 
 	 * @return spieler3
 	 */
-	public ISpieler getSpieler3() {
+	public IPlayer getSpieler3() {
 
 		return spieler3;
 	}
@@ -256,9 +256,9 @@ public class Table extends Observable {
 	 * 
 	 * @author Sebastian Schlatow <ssc@openmailbox.org>
 	 */
-	public ISpieler[] getAllPlayer() {
+	public IPlayer[] getAllPlayer() {
 
-		ISpieler[] playerAll = {spieler1, spieler2, spieler3};
+		IPlayer[] playerAll = {spieler1, spieler2, spieler3};
 		
 		return playerAll;
 	}
@@ -518,7 +518,7 @@ public class Table extends Observable {
 	 * @param spieler1
 	 *            - der neue Spieler
 	 */
-	public void setSpieler1(ISpieler spieler1) {
+	public void setSpieler1(IPlayer spieler1) {
 
 		this.spieler1 = spieler1;
 		// Spielnachricht nachricht = new Spielnachricht(
@@ -534,7 +534,7 @@ public class Table extends Observable {
 	 * @param spieler2
 	 *            - der neue Spieler
 	 */
-	public void setSpieler2(ISpieler spieler2) {
+	public void setSpieler2(IPlayer spieler2) {
 
 		this.spieler2 = spieler2;
 	}
@@ -545,7 +545,7 @@ public class Table extends Observable {
 	 * @param spieler3
 	 *            - der neue Spieler
 	 */
-	public void setSpieler3(ISpieler spieler3) {
+	public void setSpieler3(IPlayer spieler3) {
 
 		this.spieler3 = spieler3;
 	}
@@ -746,10 +746,10 @@ public class Table extends Observable {
 	 *            - &uuml;bergibt die Spielart
 	 * @return Spieler, der den Stich gewonnen hat
 	 */
-	public ISpieler stichAuswerten(ISpielart spielart,
+	public IPlayer stichAuswerten(ISpielart spielart,
 			Spielkarte[] gespielteKarten) throws NullPointerException {
 
-		ISpieler stichGewinner = null;
+		IPlayer stichGewinner = null;
 		Spielkarte hoechsteKarte = null;
 
 		hoechsteKarte = spielart.hoehereKarte(gespielteKarten[0],
@@ -852,9 +852,9 @@ public class Table extends Observable {
 	 * 
 	 * @return der Alleinspieler
 	 */
-	public ISpieler ermittleAlleinspieler() {
+	public IPlayer ermittleAlleinspieler() {
 
-		ISpieler alleinSpieler = null;
+		IPlayer alleinSpieler = null;
 
 		if (spieler1.getIstAlleinspieler()) {
 
@@ -878,9 +878,9 @@ public class Table extends Observable {
 	 * 
 	 * @return der Mitspieler
 	 */
-	public ISpieler ermittleMitspieler(ISpieler spieler) {
+	public IPlayer ermittleMitspieler(IPlayer spieler) {
 
-		ISpieler mitspieler = null;
+		IPlayer mitspieler = null;
 
 		String spielername = spieler.getName();
 		String alleinspielername = ermittleAlleinspieler().getName();
@@ -1029,9 +1029,9 @@ public class Table extends Observable {
 	 * 
 	 * @return den Vorhandspieler
 	 */
-	public ISpieler getVorhand() {
+	public IPlayer getVorhand() {
 
-		ISpieler vorhand;
+		IPlayer vorhand;
 
 		if (spieler1.getPosition() == Position.VORHAND) {
 
@@ -1055,9 +1055,9 @@ public class Table extends Observable {
 	 * 
 	 * @return den Mittelhandspieler
 	 */
-	public ISpieler getMittelhand() {
+	public IPlayer getMittelhand() {
 
-		ISpieler mittelhand;
+		IPlayer mittelhand;
 
 		if (spieler1.getPosition() == Position.MITTELHAND) {
 
@@ -1081,9 +1081,9 @@ public class Table extends Observable {
 	 * 
 	 * @return den Hinterhandspieler
 	 */
-	public ISpieler getHinterhand() {
+	public IPlayer getHinterhand() {
 
-		ISpieler hinterhand = null;
+		IPlayer hinterhand = null;
 
 		if (spieler1.getPosition() == Position.HINTERHAND) {
 
@@ -1188,9 +1188,9 @@ public class Table extends Observable {
 	 *            - aktueller Spieler
 	 * @return der n&auml;chste Spieler
 	 */
-	public ISpieler naechsterSpieler(ISpieler spieler) {
+	public IPlayer naechsterSpieler(IPlayer spieler) {
 
-		ISpieler ergebnis = null;
+		IPlayer ergebnis = null;
 
 		if (spieler.getPosition() == Position.VORHAND) {
 
@@ -1208,9 +1208,9 @@ public class Table extends Observable {
 	/**
 	 * Diese Methode liefert den menschlichen Spieler zur&uuml;ck.
 	 */
-	public ISpieler gibMenschlicherSpieler() {
+	public IPlayer gibMenschlicherSpieler() {
 
-		ISpieler ergebnis = null;
+		IPlayer ergebnis = null;
 
 		if (spieler1 instanceof IHumanPlayer) {
 
@@ -1294,7 +1294,7 @@ public class Table extends Observable {
 	 */
 	private boolean ramschAuswertung() {
 		boolean gewonnen = false;
-		ISpieler[] spieler = new ISpieler[3];
+		IPlayer[] spieler = new IPlayer[3];
 		spieler[0] = spieler1;
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
@@ -1346,7 +1346,7 @@ public class Table extends Observable {
 	 *            - array mit allen Spielern
 	 * @return das sortierte Array
 	 */
-	public ISpieler[] sortiereSpielerRamsch(ISpieler[] spieler) {
+	public IPlayer[] sortiereSpielerRamsch(IPlayer[] spieler) {
 
 		// Sortieren des Arrays nach gewonnenen Augen, [0] ist dabei die
 		// niedrigste Augenzahl
@@ -1354,7 +1354,7 @@ public class Table extends Observable {
 			for (int j = 0; j < spieler.length - 1; j++) {
 				if (werteAugen(spieler[j].getStiche()) > werteAugen(spieler[j + 1]
 						.getStiche())) {
-					ISpieler a = spieler[j];
+					IPlayer a = spieler[j];
 					spieler[j] = spieler[j + 1];
 					spieler[j + 1] = a;
 				}
@@ -1375,7 +1375,7 @@ public class Table extends Observable {
 	 *            Ob Bock gespielt wird oder nicht
 	 * @return Das ver&auml;nderte Spielerarray
 	 */
-	public ISpieler[] entscheideRamsch(ISpieler[] spieler, int skataugen,
+	public IPlayer[] entscheideRamsch(IPlayer[] spieler, int skataugen,
 			int bock) {
 		grundwertliste.add(0);
 		// Ist ein Durchmarsch gelungen?
@@ -1418,7 +1418,7 @@ public class Table extends Observable {
 	 *            - spieler dessen Punkte berechnet werden sollen
 	 * @return Punktzahl des Spielers
 	 */
-	public int getAktuellePunkte(ISpieler spieler) {
+	public int getAktuellePunkte(IPlayer spieler) {
 
 		int ergebnis = 0;
 
@@ -1437,7 +1437,7 @@ public class Table extends Observable {
 	 *            - spieler dessen Prozentwert gesucht ist
 	 * @return Prozent Alleinspieler
 	 */
-	public int getProzentAllein(ISpieler spieler) {
+	public int getProzentAllein(IPlayer spieler) {
 		int erg = 0;
 		for (int i = 0; i < spieler.getSpiele().size(); i++) {
 			if (spieler.getSpiele().get(i) != 0) {
@@ -1455,7 +1455,7 @@ public class Table extends Observable {
 	 *            - Spieler dessen Anzahl der Alleinspiele gesucht ist
 	 * @return Anzahl der Spiele
 	 */
-	public int getAnzahlAllein(ISpieler spieler) {
+	public int getAnzahlAllein(IPlayer spieler) {
 		int erg = 0;
 		for (int i = 0; i < spieler.getSpiele().size(); i++) {
 			if (spieler.getSpiele().get(i) != 0) {
@@ -1768,7 +1768,7 @@ public class Table extends Observable {
 	 *            - spieler, dessen gewonnen Spiele ausgegeben werden sollen
 	 * @return Anzahl der gewonnen Spiele
 	 */
-	public int anzahlderGewinne(ISpieler spieler) {
+	public int anzahlderGewinne(IPlayer spieler) {
 
 		int ergebnis = 0;
 

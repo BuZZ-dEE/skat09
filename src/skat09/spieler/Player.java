@@ -12,7 +12,7 @@ import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
 /**
@@ -24,7 +24,7 @@ import skat09.test.interfaces.ISpieler;
  * @version 03.07.2009
  */
 
-abstract public class Player implements ISpieler {
+abstract public class Player implements IPlayer {
 
 	//
 	// Datenfelder
@@ -58,7 +58,7 @@ abstract public class Player implements ISpieler {
 	/**
 	 *  Ein Spieler kennt seinen Mitspieler, wenn er einen hat.
 	 */
-	protected ISpieler mitspieler;
+	protected IPlayer mitspieler;
 
 	/**
 	 *  Liste der gespielten Spiele, enth&auml;lt Punkte
@@ -161,7 +161,7 @@ abstract public class Player implements ISpieler {
 	}
 
 	//@Override
-	public ISpieler getMitspieler() {
+	public IPlayer getMitspieler() {
 
 		return mitspieler;
 	}
@@ -228,7 +228,7 @@ abstract public class Player implements ISpieler {
 	}
 
 	//@Override
-	public void setMitspieler(ISpieler mitspieler) {
+	public void setMitspieler(IPlayer mitspieler) {
 
 		this.mitspieler = mitspieler;
 	}
@@ -420,7 +420,7 @@ abstract public class Player implements ISpieler {
 	public abstract boolean agent();
 
 	//@Override
-	public boolean equals(ISpieler spieler) {
+	public boolean equals(IPlayer spieler) {
 
 		boolean erg = false;
 

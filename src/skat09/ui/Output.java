@@ -7,7 +7,7 @@ import skat09.spielart.Farbspiel;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
 /**
@@ -80,19 +80,19 @@ abstract public class Output implements IOutput {
 
 	//@Override
 	public abstract Spielkarte spieleKarte(Spielkarte[] gespielteKarten,
-			ISpieler spieler) throws IOException;
+			IPlayer spieler) throws IOException;
 
 	//@Override
-	public abstract void stichGewonnen(ISpieler spieler);
+	public abstract void stichGewonnen(IPlayer spieler);
 
 	//@Override
-	public abstract void blattAusgeben(ISpieler spieler) throws IOException;
+	public abstract void blattAusgeben(IPlayer spieler) throws IOException;
 
 	//@Override
 	public abstract void skatAusgeben(Spielkarte[] skat) throws IOException;
 
 	//@Override
-	public abstract void weg(ISpieler spieler);
+	public abstract void weg(IPlayer spieler);
 
 	//@Override
 	public abstract void spielBeendet();
@@ -101,7 +101,7 @@ abstract public class Output implements IOutput {
 	public abstract void auswertung(boolean gewonnen);
 
 	//@Override
-	public abstract void hhVSgewinner(ISpieler gewinner);
+	public abstract void hhVSgewinner(IPlayer gewinner);
 
 	//@Override
 	public abstract void mhVSvh();
@@ -137,7 +137,7 @@ abstract public class Output implements IOutput {
 	public abstract String einlesen();
 
 	//@Override
-	public abstract void spieltKarte(ISpieler spieler, Spielkarte karte);
+	public abstract void spieltKarte(IPlayer spieler, Spielkarte karte);
 
 	//@Override
 	public abstract int reizlimitFestlegen();

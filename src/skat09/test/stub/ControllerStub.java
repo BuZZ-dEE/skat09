@@ -8,7 +8,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
 public class ControllerStub implements IController{
@@ -65,7 +65,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void flagsSetzen(ISpieler alleinspieler, ISpielart spielart) {
+	public void flagsSetzen(IPlayer alleinspieler, ISpielart spielart) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -101,25 +101,25 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public boolean reizagent(ISpieler spieler) {
+	public boolean reizagent(IPlayer spieler) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	
-	public ISpieler reizen1(ISpieler spieler1, ISpieler spieler2) {
+	public IPlayer reizen1(IPlayer spieler1, IPlayer spieler2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	public ISpieler reizen2(ISpieler spieler1, ISpieler spieler2) {
+	public IPlayer reizen2(IPlayer spieler1, IPlayer spieler2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	public boolean reizenOderReizagent(ISpieler spieler, int reizwert, boolean sagen) {
+	public boolean reizenOderReizagent(IPlayer spieler, int reizwert, boolean sagen) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -173,7 +173,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void stichAuswertung(Spielkarte[] gespielteKarten, ISpieler gewinner) {
+	public void stichAuswertung(Spielkarte[] gespielteKarten, IPlayer gewinner) {
 		// TODO Auto-generated method stub
 		
 	}

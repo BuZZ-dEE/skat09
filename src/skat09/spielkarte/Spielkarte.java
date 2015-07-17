@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 import skat09.ui.gui.SvgImageProcessing;
 
 /**
@@ -29,7 +29,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	/**
 	 * Feld f&uuml;r den Besitzer
 	 */
-	private ISpieler besitzer;
+	private IPlayer besitzer;
 	/**
 	 * Feld das angibt, ob deutsches oder franz&ouml;sisches Blatt benutzt wird
 	 */
@@ -77,7 +77,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	 * Gibt den Besitzer zur&uuml;
 	 * @return der Besitzer der Karte
 	 */
-	public ISpieler getBesitzer() {
+	public IPlayer getBesitzer() {
 		return besitzer;
 	}
 
@@ -87,7 +87,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	 * @param besitzer
 	 *            - der zuk&uuml;nfitge Besitzer der Karte
 	 */
-	public void setBesitzer(ISpieler besitzer) {
+	public void setBesitzer(IPlayer besitzer) {
 		this.besitzer = besitzer;
 	}
 	
