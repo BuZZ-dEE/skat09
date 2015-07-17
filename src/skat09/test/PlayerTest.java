@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
-import skat09.spieler.Oma;
+import skat09.spieler.Granny;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -29,7 +29,7 @@ public class PlayerTest{
 	@Before
 	public void setUp(){
 		String name_bsp = "Rainer Hohn";
-		spieler = new Oma(name_bsp);
+		spieler = new Granny(name_bsp);
 		stiche.clear();
 		spieler.setStiche(stiche);
 		spieler.getSpiele().clear();
@@ -122,7 +122,7 @@ public class PlayerTest{
 	@Test
 	public void test1sortiereBlatt(){
 		final ISpielart spiel = new Grandspiel();
-		IPlayer spieler = new Oma("Hallo");
+		IPlayer spieler = new Granny("Hallo");
 		
 		spieler.setSpielart(spiel);
 		ArrayList<Spielkarte> blattest = new ArrayList<Spielkarte>();
@@ -600,7 +600,7 @@ public class PlayerTest{
 	@Test
 	public void equalsTest() {
 		
-		IPlayer spieler2 = new Oma("Rainer Hohn");
+		IPlayer spieler2 = new Granny("Rainer Hohn");
 		assertTrue(spieler.equals(spieler2));
 	}
 	@Test

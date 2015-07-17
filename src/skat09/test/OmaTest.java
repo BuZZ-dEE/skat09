@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import skat09.spielart.Grandspiel;
-import skat09.spieler.Oma;
+import skat09.spieler.Granny;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 //import de.uniluebeck.skat09.*;
 public class OmaTest {
 
-	private Oma oma = new Oma("Franz");
+	private Granny oma = new Granny("Franz");
 	Spielkarte spielkarte1 = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
 	Spielkarte spielkarte2 = new Spielkarte(Farbe.KARO, Wert.ACHT);
 	Spielkarte spielkarte3 = new Spielkarte(Farbe.KARO, Wert.NEUN);

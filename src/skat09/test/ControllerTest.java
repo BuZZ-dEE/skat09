@@ -17,7 +17,7 @@ import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spieler.HumanPlayer;
-import skat09.spieler.Oma;
+import skat09.spieler.Granny;
 import skat09.spieler.Position;
 import skat09.spieler.RuleCompliantPlayer;
 import skat09.spieler.SmartPlayer;
@@ -84,7 +84,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		IPlayer spieler = new Oma("Oma Karla");
+		IPlayer spieler = new Granny("Oma Karla");
 		
 		boolean pruefe = false;
 		
@@ -103,7 +103,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		IPlayer spieler = new Oma("Oma Berta");
+		IPlayer spieler = new Granny("Oma Berta");
 		
 		boolean pruefe = false;
 		
@@ -242,10 +242,10 @@ public class ControllerTest {
 	@Test
 	public void leiteReizenTest() {
 		
-		Player spieler = new Oma("Hannelore");
+		Player spieler = new Granny("Hannelore");
 		tisch.setSpieler1(spieler);
-		tisch.setSpieler2(new Oma("Lara"));
-		tisch.setSpieler3(new Oma("Hoi"));
+		tisch.setSpieler2(new Granny("Lara"));
+		tisch.setSpieler3(new Granny("Hoi"));
 		tisch.positionInitialisieren();
 		IOutput ausgabe = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch, ausgabe);
@@ -362,8 +362,8 @@ public class ControllerTest {
 	@Test
 	public void reizen1Test1() {
 		
-		IPlayer spieler1 = new Oma("Hannelore");
-		IPlayer spieler2 = new Oma("Friedel");
+		IPlayer spieler1 = new Granny("Hannelore");
+		IPlayer spieler2 = new Granny("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -373,7 +373,7 @@ public class ControllerTest {
 	@Test
 	public void reizen1Test2() {
 		
-		IPlayer spieler1 = new Oma("Hannelore");
+		IPlayer spieler1 = new Granny("Hannelore");
 		IPlayer spieler2 = new RuleCompliantPlayer("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
@@ -385,8 +385,8 @@ public class ControllerTest {
 	@Test
 	public void reizen2Test1() {
 		
-		IPlayer spieler1 = new Oma("Hannelore");
-		IPlayer spieler2 = new Oma("Friedel");
+		IPlayer spieler1 = new Granny("Hannelore");
+		IPlayer spieler2 = new Granny("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -419,7 +419,7 @@ public class ControllerTest {
 	public void reizen2Test4() {
 		
 		IPlayer spieler1 = new HumanPlayerStub2("Hannelore");
-		IPlayer spieler2 = new Oma("Friedel");
+		IPlayer spieler2 = new Granny("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -429,7 +429,7 @@ public class ControllerTest {
 	@Test
 	public void reizen2Test5() {
 		
-		IPlayer spieler1 = new Oma("Hannelore");
+		IPlayer spieler1 = new Granny("Hannelore");
 		IPlayer spieler2 = new HumanPlayerStub2("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
@@ -442,10 +442,10 @@ public class ControllerTest {
 	public void entscheideRauberspielTest() {
 		
 		
-		tisch.setSpieler1(new Oma("Hildegard"));
-		tisch.setSpieler2(new Oma("Gräfin Johanita von Schwanenstein"));
+		tisch.setSpieler1(new Granny("Hildegard"));
+		tisch.setSpieler2(new Granny("Gräfin Johanita von Schwanenstein"));
 		
-		tisch.setSpieler3(new Oma("Zensursula"));
+		tisch.setSpieler3(new Granny("Zensursula"));
 		tisch.getSpieler1().setPosition(Position.VORHAND);
 		controller.entscheideraeuberspiel();
 		
@@ -467,7 +467,7 @@ public class ControllerTest {
 		sspieler.setBlatt(blatt);
 		sspieler.setAnfangsblatt(blatt);
 		tisch.setSpieler2(sspieler);
-		tisch.setSpieler3(new Oma("Zensursula"));
+		tisch.setSpieler3(new Granny("Zensursula"));
 		
 		Controller controller = new Controller(tisch, ausgabe);
 		
@@ -504,8 +504,8 @@ public class ControllerTest {
 			mensch.getBlatt().add(new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		}
 		controller2.getTisch().setSpieler1(mensch);
-		Player spieler2 = new Oma("Basti");
-		Player spieler3 = new Oma("ungluecklich");
+		Player spieler2 = new Granny("Basti");
+		Player spieler3 = new Granny("ungluecklich");
 		controller2.getTisch().setSpieler2(spieler2);
 		controller2.getTisch().setSpieler3(spieler3);
 		controller2.getTisch().setSechserskat(true);
@@ -551,9 +551,9 @@ public class ControllerTest {
 		Table tisch2 = new Table();
 		Controller controller = new Controller(tisch2, ausgabe);
 		
-		IPlayer spieler1 = new Oma("Erna");
-		IPlayer spieler2 = new Oma("Roy");
-		IPlayer spieler3 = new Oma("Marry");
+		IPlayer spieler1 = new Granny("Erna");
+		IPlayer spieler2 = new Granny("Roy");
+		IPlayer spieler3 = new Granny("Marry");
 		
 		spieler1.setIstAlleinspieler(true);
 		
@@ -617,7 +617,7 @@ public class ControllerTest {
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.BUBE));
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.NEUN));
 	
-		Player spieler1 = new Oma("Joy");
+		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
@@ -665,7 +665,7 @@ public class ControllerTest {
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.BUBE));
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.NEUN));
 	
-		Player spieler1 = new Oma("Joy");
+		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
@@ -712,7 +712,7 @@ public class ControllerTest {
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.BUBE));
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.NEUN));
 	
-		Player spieler1 = new Oma("Joy");
+		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
@@ -760,7 +760,7 @@ public class ControllerTest {
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.BUBE));
 		blatt.add(new Spielkarte(Farbe.KARO, Wert.NEUN));
 	
-		Player spieler1 = new Oma("Joy");
+		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
@@ -797,9 +797,9 @@ public class ControllerTest {
 		OutputStub ausgabe2 = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch2, ausgabe2);
 		
-		Player gewinner = new Oma("Gustav Gans");
-		Player s2 = new Oma("Benny");
-		Player s3 = new Oma("Daniel");
+		Player gewinner = new Granny("Gustav Gans");
+		Player s2 = new Granny("Benny");
+		Player s3 = new Granny("Daniel");
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		Spielkarte k1 = new Spielkarte(Farbe.HERZ, Wert.BUBE);
 		Spielkarte k2 = new Spielkarte(Farbe.HERZ, Wert.ASS);
@@ -822,7 +822,7 @@ public class ControllerTest {
 	@Test
 	public void reizagentTest() {
 		
-		Player spieler = new Oma("Tini");
+		Player spieler = new Granny("Tini");
 		tisch.setReizwert(23);
 		tisch.setReizagentWert(30);
 		assertTrue(controller.reizagent(spieler));
@@ -831,7 +831,7 @@ public class ControllerTest {
 	@Test
 	public void reizagentTest2() {
 		
-		Player spieler = new Oma("Tini");
+		Player spieler = new Granny("Tini");
 		tisch.setReizwert(30);
 		tisch.setReizagentWert(23);
 		assertFalse(controller.reizagent(spieler));
@@ -840,11 +840,11 @@ public class ControllerTest {
 	@Test
 	public void skartkartenBesitzerGebenTest() {
 		
-		IPlayer oma = new Oma("o1");
+		IPlayer oma = new Granny("o1");
 		controller.getTisch().setSpieler1(oma);
 		controller.getTisch().getSpieler1().setIstAlleinspieler(true);
-		controller.getTisch().setSpieler2(new Oma("o2"));
-		controller.getTisch().setSpieler3(new Oma("o3"));
+		controller.getTisch().setSpieler2(new Granny("o2"));
+		controller.getTisch().setSpieler3(new Granny("o3"));
 		controller.getTisch().setSechserskat(true);
 		controller.getTisch().erstelleDeck();
 		controller.getTisch().kartenAusteilen();
@@ -865,10 +865,10 @@ public class ControllerTest {
 	@Test
 	public void flagsSetzenTest1() {
 		
-		tisch.setSpieler1(new Oma("Erna"));
+		tisch.setSpieler1(new Granny("Erna"));
 		tisch.getSpieler1().setIstAlleinspieler(true);
-		tisch.setSpieler2(new Oma("Renate"));
-		tisch.setSpieler3(new Oma("Mochochocho"));
+		tisch.setSpieler2(new Granny("Renate"));
+		tisch.setSpieler3(new Granny("Mochochocho"));
 		tisch.setSpielart(new Nullspiel());
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
 		
@@ -882,10 +882,10 @@ public class ControllerTest {
 	@Test
 	public void flagsSetzenTest2() {
 		
-		tisch.setSpieler1(new Oma("Erna"));
+		tisch.setSpieler1(new Granny("Erna"));
 		tisch.getSpieler1().setIstAlleinspieler(true);
-		tisch.setSpieler2(new Oma("Renate"));
-		tisch.setSpieler3(new Oma("Mochochocho"));
+		tisch.setSpieler2(new Granny("Renate"));
+		tisch.setSpieler3(new Granny("Mochochocho"));
 		tisch.setSpielart(new Nullspiel());
 		tisch.setHandspiel(false);
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
@@ -900,10 +900,10 @@ public class ControllerTest {
 	@Test
 	public void flagsSetzenTest3() {
 		
-		tisch.setSpieler1(new Oma("Erna"));
+		tisch.setSpieler1(new Granny("Erna"));
 		tisch.getSpieler1().setIstAlleinspieler(true);
-		tisch.setSpieler2(new Oma("Renate"));
-		tisch.setSpieler3(new Oma("Mochochocho"));
+		tisch.setSpieler2(new Granny("Renate"));
+		tisch.setSpieler3(new Granny("Mochochocho"));
 		tisch.setSpielart(new Grandspiel());
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
 		
@@ -919,8 +919,8 @@ public class ControllerTest {
 		
 		tisch.setSpieler1(new HumanPlayerStub("Bert"));
 		tisch.getSpieler1().setIstAlleinspieler(true);
-		tisch.setSpieler2(new Oma("Renate"));
-		tisch.setSpieler3(new Oma("Mochochocho"));
+		tisch.setSpieler2(new Granny("Renate"));
+		tisch.setSpieler3(new Granny("Mochochocho"));
 		tisch.setSpielart(new Grandspiel());
 		tisch.setHandspiel(true);
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
@@ -936,9 +936,9 @@ public class ControllerTest {
 	public void ramschenTest() {
 		
 		Table tisch2 = new Table();
-		tisch2.setSpieler1(new Oma("Hilde"));
-		tisch2.setSpieler2(new Oma("Heide"));
-		tisch2.setSpieler3(new Oma("Harald"));
+		tisch2.setSpieler1(new Granny("Hilde"));
+		tisch2.setSpieler2(new Granny("Heide"));
+		tisch2.setSpieler3(new Granny("Harald"));
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -959,9 +959,9 @@ public class ControllerTest {
 	public void normalerSpielverlaufTest() {
 		
 		Table tisch2 = new Table();
-		tisch2.setSpieler1(new Oma("Hilde"));
-		tisch2.setSpieler2(new Oma("Heide"));
-		tisch2.setSpieler3(new Oma("Harald"));
+		tisch2.setSpieler1(new Granny("Hilde"));
+		tisch2.setSpieler2(new Granny("Heide"));
+		tisch2.setSpieler3(new Granny("Harald"));
 		tisch2.getSpieler1().setIstAlleinspieler(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
@@ -981,9 +981,9 @@ public class ControllerTest {
 	public void spielRaeuberskatTest() {
 		
 		Table tisch2 = new Table();
-		tisch2.setSpieler1(new Oma("Hilde"));
-		tisch2.setSpieler2(new Oma("Heide"));
-		tisch2.setSpieler3(new Oma("Harald"));
+		tisch2.setSpieler1(new Granny("Hilde"));
+		tisch2.setSpieler2(new Granny("Heide"));
+		tisch2.setSpieler3(new Granny("Harald"));
 		tisch2.getSpieler1().setIstAlleinspieler(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
@@ -1003,9 +1003,9 @@ public class ControllerTest {
 	public void spielRamschBockTest() {
 		
 		Table tisch2 = new Table();
-		tisch2.setSpieler1(new Oma("Hilde"));
-		tisch2.setSpieler2(new Oma("Heide"));
-		tisch2.setSpieler3(new Oma("Harald"));
+		tisch2.setSpieler1(new Granny("Hilde"));
+		tisch2.setSpieler2(new Granny("Heide"));
+		tisch2.setSpieler3(new Granny("Harald"));
 		tisch2.getSpieler1().setIstAlleinspieler(true);
 		tisch2.setSpaltarsch(true);
 		tisch2.setRamschrunden(0);
@@ -1027,9 +1027,9 @@ public class ControllerTest {
 	public void spielRamschBockTest2() {
 		
 		Table tisch2 = new Table();
-		tisch2.setSpieler1(new Oma("Hilde"));
-		tisch2.setSpieler2(new Oma("Heide"));
-		tisch2.setSpieler3(new Oma("Harald"));
+		tisch2.setSpieler1(new Granny("Hilde"));
+		tisch2.setSpieler2(new Granny("Heide"));
+		tisch2.setSpieler3(new Granny("Harald"));
 		tisch2.getSpieler1().setIstAlleinspieler(true);
 		tisch2.setSpaltarsch(true);
 		tisch2.setRamschrunden(1);
@@ -1073,9 +1073,9 @@ public class ControllerTest {
 	public void spielIntSkatTest() {
 		
 		Table tisch2 = new Table();
-		tisch2.setSpieler1(new Oma("Hilde"));
-		tisch2.setSpieler2(new Oma("Heide"));
-		tisch2.setSpieler3(new Oma("Harald"));
+		tisch2.setSpieler1(new Granny("Hilde"));
+		tisch2.setSpieler2(new Granny("Heide"));
+		tisch2.setSpieler3(new Granny("Harald"));
 		tisch2.getSpieler1().setIstAlleinspieler(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
@@ -1154,9 +1154,9 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest() {
 		
-		IPlayer spieler1 = new Oma("Gertrud");
-		IPlayer spieler2 = new Oma("Gertrud");
-		IPlayer spieler3 = new Oma("Gertrud");
+		IPlayer spieler1 = new Granny("Gertrud");
+		IPlayer spieler2 = new Granny("Gertrud");
+		IPlayer spieler3 = new Granny("Gertrud");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		controller.getTisch().setSpieler3(spieler3);
@@ -1167,9 +1167,9 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest2() {
 		
-		IPlayer spieler1 = new Oma("Gertrud");
-		IPlayer spieler2 = new Oma("Gertrud");
-		IPlayer spieler3 = new Oma("Hans");
+		IPlayer spieler1 = new Granny("Gertrud");
+		IPlayer spieler2 = new Granny("Gertrud");
+		IPlayer spieler3 = new Granny("Hans");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		controller.getTisch().setSpieler3(spieler3);
@@ -1180,9 +1180,9 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest3() {
 		
-		IPlayer spieler1 = new Oma("Gertrud");
-		IPlayer spieler2 = new Oma("Hans");
-		IPlayer spieler3 = new Oma("Gertrud");
+		IPlayer spieler1 = new Granny("Gertrud");
+		IPlayer spieler2 = new Granny("Hans");
+		IPlayer spieler3 = new Granny("Gertrud");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		controller.getTisch().setSpieler3(spieler3);
@@ -1193,9 +1193,9 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest4() {
 		
-		IPlayer spieler1 = new Oma("Hans");
-		IPlayer spieler2 = new Oma("Gertrud");
-		IPlayer spieler3 = new Oma("Gertrud");
+		IPlayer spieler1 = new Granny("Hans");
+		IPlayer spieler2 = new Granny("Gertrud");
+		IPlayer spieler3 = new Granny("Gertrud");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		controller.getTisch().setSpieler3(spieler3);

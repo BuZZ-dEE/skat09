@@ -12,7 +12,7 @@ import skat09.spielart.Nullspiel;
 import skat09.spielart.Ramsch;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spieler.HumanPlayer;
-import skat09.spieler.Oma;
+import skat09.spieler.Granny;
 import skat09.spieler.RuleCompliantPlayer;
 import skat09.spieler.SmartPlayer;
 import skat09.spielkarte.Spielkarte;
@@ -141,7 +141,7 @@ public class Controller implements Observer, IController {
 		// Eingabe o fuer Oma
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
-			IPlayer spieler2 = new Oma("Oma Karla");
+			IPlayer spieler2 = new Granny("Oma Karla");
 			tisch.setSpieler2(spieler2);
 		}
 		// Eingabe r fuer regelkonformer Spieler
@@ -162,7 +162,7 @@ public class Controller implements Observer, IController {
 
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
-			IPlayer spieler3 = new Oma("Oma Berta");
+			IPlayer spieler3 = new Granny("Oma Berta");
 			tisch.setSpieler3(spieler3);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
