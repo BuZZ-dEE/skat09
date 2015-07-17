@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import skat09.Messages;
 import skat09.Table;
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spieler.PlayerEnum;
 import skat09.spielkarte.Farbe;
@@ -201,7 +201,7 @@ public class GUIOutput extends Output {
 		warte();
 		String spielart = hfenster.getSpielart();
 		if (spielart.compareTo("Grand") == 0) {
-			spiel = new Grandspiel();
+			spiel = new GrandGame();
 		} else if (spielart.compareTo("Null") == 0) {
 			spiel = new NullGame();
 		} else {

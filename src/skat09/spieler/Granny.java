@@ -1,7 +1,7 @@
 package skat09.spieler;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpielart;
 
@@ -124,7 +124,7 @@ public class Granny extends Player {
 	 */
 	public ISpielart spielAnsagen() {
 
-		return new Grandspiel();
+		return new GrandGame();
 	}
 
 	@Override

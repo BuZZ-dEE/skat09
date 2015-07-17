@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import skat09.Table;
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Ramsch;
 import skat09.spieler.Granny;
@@ -1088,7 +1088,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
 		boolean ergebnis = false;
@@ -1117,7 +1117,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
 		boolean ergebnis = false;
@@ -1146,7 +1146,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
 		boolean ergebnis = false;
@@ -1176,7 +1176,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		spieler.setBlatt(blatt);
 		spieler.setAnfangsblatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
 		boolean ergebnis = false;
@@ -1209,7 +1209,7 @@ public class SmartPlayerTest {
 		spieler.getAllegespieltenkarten().add(spielkarte7);
 		spieler.setBlatt(blatt);
 		spieler.setAnfangsblatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
 		boolean ergebnis = false;
@@ -1244,7 +1244,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
 		boolean ergebnis = false;
@@ -1279,7 +1279,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
 		boolean ergebnis = false;
@@ -1314,7 +1314,7 @@ public class SmartPlayerTest {
 		spieler.setIstAlleinspieler(true);
 		spieler.setDeck(deck);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
 		
@@ -1342,7 +1342,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		spieler.setDeck(deck);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		IPlayer gegner = new Granny("gegner");
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
@@ -1381,7 +1381,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		spieler.setDeck(deck);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		IPlayer gegner = new Granny("gegner");
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
@@ -1420,7 +1420,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		spieler.setDeck(deck);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
 		
@@ -1449,7 +1449,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		spieler.setDeck(deck);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.ASS);
 		
@@ -1473,7 +1473,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.KOENIG);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.KOENIG);
@@ -1498,7 +1498,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		spieler.setBlatt(blatt);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.ACHT);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.ASS);
@@ -1790,7 +1790,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteNeunTest2() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.DAME);
 		
 		boolean erfolgreich = false;
@@ -1835,7 +1835,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechsteHoehereKarteKoenigTest2() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.ZEHN);
 		
 		boolean erfolgreich = false;
@@ -1880,7 +1880,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteZehnTest2() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.ASS);
 		
 		boolean erfolgreich = false;
@@ -2016,7 +2016,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteDameTest2() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.NEUN);
 		
 		boolean erfolgreich = false;
@@ -2061,7 +2061,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteZehnTest2() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
 		
 		boolean erfolgreich = false;
@@ -2106,7 +2106,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteAssTest2() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.ZEHN);
 		
 		boolean erfolgreich = false;
@@ -2338,7 +2338,7 @@ public class SmartPlayerTest {
 		
 		Spielkarte karte1 = new Spielkarte(Farbe.KARO, Wert.ZEHN);
 		Spielkarte karte2 = new Spielkarte(Farbe.KARO, Wert.DAME);
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		
 		assertEquals(karte1, 
 				spieler.hoechsteSpielbareKarteBestimmen(karte1, karte2));
@@ -2369,7 +2369,7 @@ public class SmartPlayerTest {
 	@Test
 	public void niedrigsteSpielbareKarteBestimmenTest1() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte1 = new Spielkarte(Farbe.KREUZ, Wert.ZEHN);
 		Spielkarte karte2 = new Spielkarte(Farbe.KREUZ, Wert.DAME);
 		
@@ -2380,7 +2380,7 @@ public class SmartPlayerTest {
 	@Test
 	public void niedrigsteSpielbareKarteBestimmenTest2() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte1 = new Spielkarte(Farbe.KARO, Wert.ACHT);
 		Spielkarte karte2 = new Spielkarte(Farbe.KREUZ, Wert.NEUN);
 		
@@ -2391,7 +2391,7 @@ public class SmartPlayerTest {
 	@Test
 	public void niedrigsteSpielbareKarteBestimmenTest3() {
 		
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		Spielkarte karte1 = new Spielkarte(Farbe.KARO, Wert.NEUN);
 		Spielkarte karte2 = new Spielkarte(Farbe.KREUZ, Wert.NEUN);
 		
@@ -2443,7 +2443,7 @@ public class SmartPlayerTest {
 		blatt.add(new Spielkarte(Farbe.HERZ, Wert.BUBE));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new Grandspiel().getSpielart(), 
+		assertEquals(new GrandGame().getSpielart(), 
 				spieler.spielAnsagen().getSpielart());
 	}
 	
@@ -2618,7 +2618,7 @@ public class SmartPlayerTest {
 		blatt.add(karte2);
 		spieler.setBlatt(blatt);
 		
-		assertEquals(2, spieler.ermittleSpitzen(new Grandspiel()));
+		assertEquals(2, spieler.ermittleSpitzen(new GrandGame()));
 	}
 	
 	@Test
@@ -2792,7 +2792,7 @@ public class SmartPlayerTest {
 		
 		spieler.setBlatt(blatt);
 		
-		Spielkarte[] spielerSpitzen = spieler.grandSpitzen(new Grandspiel());
+		Spielkarte[] spielerSpitzen = spieler.grandSpitzen(new GrandGame());
 		
 		boolean ergebnis = true;
 		for (int i = 0; i < 4; i++) {
@@ -2828,7 +2828,7 @@ public class SmartPlayerTest {
 		
 		spieler.setBlatt(blatt);
 		
-		Spielkarte[] spielerSpitzen = spieler.grandSpitzen(new Grandspiel());
+		Spielkarte[] spielerSpitzen = spieler.grandSpitzen(new GrandGame());
 		
 		Spielkarte[] spitzen = {karte1, null, null, null};
 		
@@ -2866,7 +2866,7 @@ public class SmartPlayerTest {
 		
 		spieler.setBlatt(blatt);
 		
-		Spielkarte[] spielerSpitzen = spieler.grandSpitzen(new Grandspiel());
+		Spielkarte[] spielerSpitzen = spieler.grandSpitzen(new GrandGame());
 		
 		Spielkarte[] spitzen = {null, null, null, null};
 		
@@ -2896,7 +2896,7 @@ public class SmartPlayerTest {
 		
 		spieler.setBlatt(blatt);
 		
-		Spielkarte[] spielerSpitzen = spieler.grandSpitzen(new Grandspiel());
+		Spielkarte[] spielerSpitzen = spieler.grandSpitzen(new GrandGame());
 		
 		Spielkarte[] spitzen = {null, null, karte3, null};
 		
@@ -2939,7 +2939,7 @@ public class SmartPlayerTest {
 		blatt.add(new Spielkarte(Farbe.KREUZ, Wert.ASS));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new Grandspiel().getSpielart(), 
+		assertEquals(new GrandGame().getSpielart(), 
 				spieler.bestimmeSpielart().getSpielart());
 	}
 	

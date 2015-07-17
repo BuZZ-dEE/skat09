@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -16,7 +16,7 @@ import skat09.spielkarte.Wert;
 
 public class GrandspielTest {
 
-	Grandspiel spiel;
+	GrandGame spiel;
 	Spielkarte karte1;
 	Spielkarte karte2;
 	Spielkarte karte3;
@@ -32,7 +32,7 @@ public class GrandspielTest {
 	
 	@Before
 	public void setUp() {
-		spiel = new Grandspiel();
+		spiel = new GrandGame();
 		karte1 = new Spielkarte(Farbe.HERZ, Wert.KOENIG);
 		karte2 = new Spielkarte(Farbe.HERZ, Wert.ACHT);
 		karte3 = new Spielkarte(Farbe.KARO, Wert.BUBE);

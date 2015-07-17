@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
@@ -1946,7 +1946,7 @@ public class SmartPlayer extends Player {
 
 		else if (buben >= 2 && kartenGroesserKoenig >= 4) {
 
-			zuReizendeSpielart = new Grandspiel();
+			zuReizendeSpielart = new GrandGame();
 		}
 
 		else if ((buben >= 2 && anzahlKartenVonFarbe >= 4)

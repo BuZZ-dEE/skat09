@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -272,7 +272,7 @@ public class OutputStub implements IOutput{
 
 	public ISpielart spielAnsagen() {
 		
-		return new Grandspiel();
+		return new GrandGame();
 	}
 
 

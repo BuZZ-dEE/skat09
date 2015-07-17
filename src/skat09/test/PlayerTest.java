@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spieler.Granny;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -121,7 +121,7 @@ public class PlayerTest{
 	
 	@Test
 	public void test1sortiereBlatt(){
-		final ISpielart spiel = new Grandspiel();
+		final ISpielart spiel = new GrandGame();
 		IPlayer spieler = new Granny("Hallo");
 		
 		spieler.setSpielart(spiel);
@@ -191,7 +191,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<Spielkarte>());
 		spieler.getBlatt().add(
 		new Spielkarte(Farbe.KREUZ, Wert.BUBE));
-		ISpielart spielart = new Grandspiel();
+		ISpielart spielart = new GrandGame();
 		spieler.setSpielart(spielart);
 		spieler.spitzenEinordnen();
 			test = true;
@@ -204,7 +204,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<Spielkarte>());
 		spieler.getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		spieler.spitzenEinordnen();
 		assertEquals(1, spieler.spitzenZahl());
 	}
@@ -220,7 +220,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit() {
 		spieler.setBlatt(new ArrayList<Spielkarte>());
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		spieler.getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		spieler.spitzenEinordnen();
@@ -230,7 +230,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit2() {
 		spieler.setBlatt(new ArrayList<Spielkarte>());
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		spieler.getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		spieler.getBlatt().add(
@@ -242,7 +242,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit3() {
 		spieler.setBlatt(new ArrayList<Spielkarte>());
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		spieler.getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		spieler.getBlatt().add(
@@ -256,7 +256,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit4() {
 		spieler.setBlatt(new ArrayList<Spielkarte>());
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		spieler.getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		spieler.getBlatt().add(
@@ -559,7 +559,7 @@ public class PlayerTest{
 	
 	@Test
 	public void testSpitzenOhne13() {
-		spieler.setSpielart(new Grandspiel());
+		spieler.setSpielart(new GrandGame());
 		spieler.setBlatt(new ArrayList<Spielkarte>());
 		spieler.spitzenEinordnen();
 		assertEquals(-4, spieler.spitzenOhne(0));

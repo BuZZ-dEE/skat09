@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import skat09.Table;
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.Spielart;
 import skat09.spieler.HumanPlayer;
 import skat09.spielkarte.Farbe;
@@ -88,7 +88,7 @@ public class HumanPlayerTest {
 
 		boolean ergebnis = false;
 
-		mensch.setSpielart(new Grandspiel());
+		mensch.setSpielart(new GrandGame());
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.HERZ, Wert.BUBE);
@@ -145,7 +145,7 @@ public class HumanPlayerTest {
 
 		boolean ergebnis = false;
 
-		ISpielart spielart = new Grandspiel();
+		ISpielart spielart = new GrandGame();
 		if (spielart.getSpielart().equals(mensch.spielAnsagen().getSpielart())) {
 
 			ergebnis = true;

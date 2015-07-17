@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Grandspiel;
+import skat09.spielart.GrandGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -609,7 +609,7 @@ abstract public class Player implements IPlayer {
 		
 		if (erg == 0) {
 
-			if (spielart instanceof Grandspiel) {
+			if (spielart instanceof GrandGame) {
 
 				erg = -4;
 			}
