@@ -14,7 +14,7 @@ import skat09.spielart.Spielartbezeichnung;
 import skat09.spieler.HumanPlayer;
 import skat09.spieler.Oma;
 import skat09.spieler.RegelkonformerSpieler;
-import skat09.spieler.SchlauerSpieler;
+import skat09.spieler.SmartPlayer;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
@@ -153,7 +153,7 @@ public class Controller implements Observer, IController {
 		// Eingabe s fuer schlauer Spieler
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {
 
-			ISpieler spieler2 = new SchlauerSpieler("Heinz");
+			ISpieler spieler2 = new SmartPlayer("Heinz");
 			tisch.setSpieler2(spieler2);
 		}
 
@@ -172,7 +172,7 @@ public class Controller implements Observer, IController {
 		}
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {
 
-			ISpieler spieler3 = new SchlauerSpieler("Wolfgang");
+			ISpieler spieler3 = new SmartPlayer("Wolfgang");
 			tisch.setSpieler3(spieler3);
 		}
 	}
@@ -551,9 +551,9 @@ public class Controller implements Observer, IController {
 
 		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
-			if (alleSpieler instanceof SchlauerSpieler) {
+			if (alleSpieler instanceof SmartPlayer) {
 				
-				((SchlauerSpieler) alleSpieler)
+				((SmartPlayer) alleSpieler)
 						.setDeck(new ArrayList<Spielkarte>((tisch.getDeck())));
 			}
 		}
@@ -571,14 +571,14 @@ public class Controller implements Observer, IController {
 						.blattSortieren(new Grandspiel());
 			}
 
-			if (alleSpieler instanceof SchlauerSpieler) {
+			if (alleSpieler instanceof SmartPlayer) {
 
-				((SchlauerSpieler) alleSpieler).setAnfangsblatt(alleSpieler
+				((SmartPlayer) alleSpieler).setAnfangsblatt(alleSpieler
 						.getBlatt());
 				if (tisch.getVariante() == SkatVariant.SKAT
 						|| tisch.getVariante() == SkatVariant.RAMSCHBOCK) {
 					
-					((SchlauerSpieler) alleSpieler).bestimmeMaxReizwert();
+					((SmartPlayer) alleSpieler).bestimmeMaxReizwert();
 				}
 			}
 		}
@@ -844,7 +844,7 @@ public class Controller implements Observer, IController {
 		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
-			if (alleSpieler instanceof SchlauerSpieler) {
+			if (alleSpieler instanceof SmartPlayer) {
 
 				if (alleSpieler.getIstAlleinspieler()) {
 

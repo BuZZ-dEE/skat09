@@ -20,7 +20,7 @@ import skat09.spieler.HumanPlayer;
 import skat09.spieler.Oma;
 import skat09.spieler.Position;
 import skat09.spieler.RegelkonformerSpieler;
-import skat09.spieler.SchlauerSpieler;
+import skat09.spieler.SmartPlayer;
 import skat09.spieler.Player;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -160,7 +160,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new SchlauerSpieler("Heinz");
+		ISpieler spieler = new SmartPlayer("Heinz");
 		
 		boolean pruefe = false;
 		
@@ -179,7 +179,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new SchlauerSpieler("Wolfgang");
+		ISpieler spieler = new SmartPlayer("Wolfgang");
 		
 		boolean pruefe = false;
 		
@@ -458,7 +458,7 @@ public class ControllerTest {
 	public void bereiteSpielvorTest() {
 		
 		tisch.setSpieler1(new HumanPlayer("Hildegard",controller));
-		SchlauerSpieler sspieler = new SchlauerSpieler("Gräfin Johanita von Schwanenstein");
+		SmartPlayer sspieler = new SmartPlayer("Gräfin Johanita von Schwanenstein");
 		ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
 		blatt.add(new Spielkarte(Farbe.HERZ, Wert.ACHT));
 		blatt.add(new Spielkarte(Farbe.HERZ, Wert.NEUN));
@@ -1116,8 +1116,8 @@ public class ControllerTest {
 	@Test
 	public void schlauerSpielerInitTest() {
 		
-		Player spieler1 = new SchlauerSpieler("Halo");
-		Player spieler2 = new SchlauerSpieler("Evin");
+		Player spieler1 = new SmartPlayer("Halo");
+		Player spieler2 = new SmartPlayer("Evin");
 		Player spieler3 = new RegelkonformerSpieler("Bernd");
 		
 		ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
@@ -1144,7 +1144,7 @@ public class ControllerTest {
 		tisch.setSpieler3(spieler3);
 		ArrayList<Spielkarte> skat2 = new ArrayList<Spielkarte>(Arrays.asList(skat));
 		
-		SchlauerSpieler ergebnis = (SchlauerSpieler) tisch.getSpieler1();
+		SmartPlayer ergebnis = (SmartPlayer) tisch.getSpieler1();
 		
 		controller.schlauerSpielerInit();
 		

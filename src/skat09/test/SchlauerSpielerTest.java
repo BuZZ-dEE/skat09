@@ -20,7 +20,7 @@ import skat09.spielart.Ramsch;
 import skat09.spieler.Oma;
 import skat09.spieler.Position;
 import skat09.spieler.RegelkonformerSpieler;
-import skat09.spieler.SchlauerSpieler;
+import skat09.spieler.SmartPlayer;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -29,7 +29,7 @@ import skat09.test.interfaces.ISpieler;
 
 public class SchlauerSpielerTest {
 
-	SchlauerSpieler spieler = new SchlauerSpieler("Max");
+	SmartPlayer spieler = new SmartPlayer("Max");
 	ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
 	Spielkarte spielkarte1;
 	Spielkarte spielkarte2;
@@ -57,7 +57,7 @@ public class SchlauerSpielerTest {
 	
 	@Test
 	public void testSchlauerSpieler() {
-		assertEquals("Max", new SchlauerSpieler("Max").getName());
+		assertEquals("Max", new SmartPlayer("Max").getName());
 	}
 	
 	@Test
