@@ -22,7 +22,7 @@ import skat09.spielart.Nullspiel;
 import skat09.spielart.Ramsch;
 import skat09.spielart.Spielart;
 import skat09.spieler.HumanPlayer;
-import skat09.spieler.Oma;
+import skat09.spieler.Granny;
 import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -43,8 +43,8 @@ public class TableTest {
 	Spielkarte spielkarte2;
 	Spielkarte spielkarte3;
 	Spielkarte spielkarte4;
-	IPlayer spieler1 = new Oma("Bert");
-	IPlayer spieler2 = new Oma("Ernie");
+	IPlayer spieler1 = new Granny("Bert");
+	IPlayer spieler2 = new Granny("Ernie");
 
 	Table tisch = new Table();
 	ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
@@ -1074,7 +1074,7 @@ public class TableTest {
 		
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 0, 2);
 		
-		Oma vergleich = new Oma("heino");
+		Granny vergleich = new Granny("heino");
 		vergleich.getSpiele().add(240);
 		
 		assertEquals(vergleich.getSpiele().get(0), ergebnis[2].getSpiele().get(0)); 
@@ -1091,7 +1091,7 @@ public class TableTest {
 		spieler[2].getStiche().add(new Spielkarte(Farbe.KARO, Wert.ASS));
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
 		
-		Oma vergleich = new Oma("heino");
+		Granny vergleich = new Granny("heino");
 		vergleich.getSpiele().add(-124);
 		
 		assertEquals(vergleich.getSpiele().get(0), ergebnis[2].getSpiele().get(0));
@@ -1108,7 +1108,7 @@ public class TableTest {
 		spieler[2].getStiche().add(new Spielkarte(Farbe.KARO, Wert.ASS));
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
 		
-		Oma vergleich = new Oma("heino");
+		Granny vergleich = new Granny("heino");
 		vergleich.getSpiele().add(-62);
 		
 		assertEquals(vergleich.getSpiele().get(0), ergebnis[2].getSpiele().get(0));

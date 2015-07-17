@@ -13,7 +13,7 @@ import skat09.test.interfaces.ISpielart;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public class Oma extends Player {
+public class Granny extends Player {
 
 	//
 	// Datenfelder
@@ -27,7 +27,7 @@ public class Oma extends Player {
 	 * Der Konstruktor der Klasse Oma
 	 * @param name Der Name der Oma
 	 */
-	public Oma(String name) {
+	public Granny(String name) {
 
 		super(name);
 	}
