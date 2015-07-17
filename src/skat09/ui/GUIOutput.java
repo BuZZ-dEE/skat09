@@ -11,7 +11,7 @@ import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
-import skat09.spieler.SpielerEnum;
+import skat09.spieler.PlayerEnum;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpielart;
@@ -90,26 +90,26 @@ public class GUIOutput extends Output {
 		String s = "";
 		if (nummer == 1) {
 
-			if (fenster.getMitspieler1() == SpielerEnum.OMA) {
+			if (fenster.getMitspieler1() == PlayerEnum.OMA) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.granny.abbr");
-			} else if (fenster.getMitspieler1() == SpielerEnum.REGELKONFORM) {
+			} else if (fenster.getMitspieler1() == PlayerEnum.REGELKONFORM) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.normal.abbr");
-			} else if (fenster.getMitspieler1() == SpielerEnum.INTELLIGENT) {
+			} else if (fenster.getMitspieler1() == PlayerEnum.INTELLIGENT) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.smart.abbr");
 			}
 		}
 		if (nummer == 2) {
 
-			if (fenster.getMitspieler2() == SpielerEnum.OMA) {
+			if (fenster.getMitspieler2() == PlayerEnum.OMA) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.granny.abbr");
-			} else if (fenster.getMitspieler2() == SpielerEnum.REGELKONFORM) {
+			} else if (fenster.getMitspieler2() == PlayerEnum.REGELKONFORM) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.normal.abbr");
-			} else if (fenster.getMitspieler2() == SpielerEnum.INTELLIGENT) {
+			} else if (fenster.getMitspieler2() == PlayerEnum.INTELLIGENT) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.smart.abbr");
 			}

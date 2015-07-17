@@ -6,7 +6,7 @@ package skat09.spieler;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 11.06.08
  */
-public enum SpielerEnum {
+public enum PlayerEnum {
 	/**
 	 * Halter des Spielertyps "Oma"
 	 */
