@@ -12,7 +12,7 @@ import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 
-public class FarbspielTest {
+public class SuitGameTest {
 	Farbe a = Farbe.HERZ;
 	SuitGame spiel = new SuitGame(a);
 	Farbe b = Farbe.PIK;
