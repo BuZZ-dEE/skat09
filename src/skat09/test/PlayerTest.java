@@ -20,7 +20,7 @@ import skat09.test.interfaces.IPlayer;
 import skat09.test.stub.NullspielStub2;
 
 
-public class SpielerTest{
+public class PlayerTest{
 
 	private IPlayer spieler;
 	ArrayList<Spielkarte> stiche = new ArrayList<Spielkarte>();
