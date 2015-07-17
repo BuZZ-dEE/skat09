@@ -17,7 +17,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
-import skat09.test.stub.NullspielStub2;
+import skat09.test.stub.NullGameStub2;
 
 
 public class PlayerTest{
@@ -567,7 +567,7 @@ public class PlayerTest{
 	
 	@Test
 	public void spielbarteKartenTest() {
-		spieler.setSpielart(new NullspielStub2());
+		spieler.setSpielart(new NullGameStub2());
 		
 		spieler.setBlatt(new ArrayList<Spielkarte>());
 		spieler.getBlatt().add(

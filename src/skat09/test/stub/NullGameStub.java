@@ -7,7 +7,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.INullGame;
 
 
-public class NullspielStub extends Spielart implements INullGame {
+public class NullGameStub extends Spielart implements INullGame {
 
 	private int aufrufe = 0;
 	
