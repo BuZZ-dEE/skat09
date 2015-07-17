@@ -19,7 +19,7 @@ import skat09.spielart.Nullspiel;
 import skat09.spielart.Ramsch;
 import skat09.spieler.Oma;
 import skat09.spieler.Position;
-import skat09.spieler.RegelkonformerSpieler;
+import skat09.spieler.RuleCompliantPlayer;
 import skat09.spieler.SmartPlayer;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -392,7 +392,7 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte8);
-		ISpieler mate = new RegelkonformerSpieler("mine");
+		ISpieler mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
 		spieler.getAllegespieltenkarten().add(spielkarte6);
 		spieler.getAllegespieltenkarten().add(spielkarte7);
@@ -429,7 +429,7 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte8);
-		ISpieler mate = new RegelkonformerSpieler("mine");
+		ISpieler mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
 		spieler.getAllegespieltenkarten().add(spielkarte6);
 		spieler.getAllegespieltenkarten().add(spielkarte7);
@@ -466,7 +466,7 @@ public class SchlauerSpielerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte8);
-		ISpieler mate = new RegelkonformerSpieler("mine");
+		ISpieler mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
 		spieler.getAllegespieltenkarten().add(spielkarte6);
 		spieler.getAllegespieltenkarten().add(spielkarte7);

@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Nullspiel;
-import skat09.spieler.RegelkonformerSpieler;
+import skat09.spieler.RuleCompliantPlayer;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -25,7 +25,7 @@ public class RegelkonformerSpielerTest {
 	Spielkarte spielkarte2;
 	Spielkarte spielkarte3;
 	Spielkarte spielkarte4;
-	RegelkonformerSpieler spieler = new RegelkonformerSpieler("Mimi");
+	RuleCompliantPlayer spieler = new RuleCompliantPlayer("Mimi");
 	Spielkarte[] gespielteKarten = new Spielkarte[3];
 	Farbspiel spiel = new Farbspiel(Farbe.HERZ);
 	
@@ -106,7 +106,7 @@ public class RegelkonformerSpielerTest {
 	
 	@Test
 	public void testRegelkonformerSpieler() {
-		assertEquals("Hans", new RegelkonformerSpieler("Hans").getName());
+		assertEquals("Hans", new RuleCompliantPlayer("Hans").getName());
 	}
 
 

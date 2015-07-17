@@ -19,7 +19,7 @@ import skat09.spielart.Nullspiel;
 import skat09.spieler.HumanPlayer;
 import skat09.spieler.Oma;
 import skat09.spieler.Position;
-import skat09.spieler.RegelkonformerSpieler;
+import skat09.spieler.RuleCompliantPlayer;
 import skat09.spieler.SmartPlayer;
 import skat09.spieler.Player;
 import skat09.spielkarte.Farbe;
@@ -122,7 +122,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new RegelkonformerSpieler("Hans");
+		ISpieler spieler = new RuleCompliantPlayer("Hans");
 		
 		boolean pruefe = false;
 		
@@ -141,7 +141,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new RegelkonformerSpieler("Franz");
+		ISpieler spieler = new RuleCompliantPlayer("Franz");
 		
 		boolean pruefe = false;
 		
@@ -262,8 +262,8 @@ public class ControllerTest {
 		
 		ISpieler spieler = new MenschlicherSpielerStub("Hannelore");
 		tisch.setSpieler1(spieler);
-		tisch.setSpieler2(new RegelkonformerSpieler("Lara"));
-		tisch.setSpieler3(new RegelkonformerSpieler("Hoi"));
+		tisch.setSpieler2(new RuleCompliantPlayer("Lara"));
+		tisch.setSpieler3(new RuleCompliantPlayer("Hoi"));
 		tisch.positionInitialisieren();
 		IOutput ausgabe = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch, ausgabe);
@@ -280,9 +280,9 @@ public class ControllerTest {
 		
 		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RegelkonformerSpieler("Mike");
+		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RegelkonformerSpieler("Sven");
+		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(20);
 		
@@ -294,9 +294,9 @@ public class ControllerTest {
 		
 		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RegelkonformerSpieler("Mike");
+		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RegelkonformerSpieler("Sven");
+		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(20);
 		
@@ -308,9 +308,9 @@ public class ControllerTest {
 		
 		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RegelkonformerSpieler("Mike");
+		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RegelkonformerSpieler("Sven");
+		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(0);
 		
@@ -322,9 +322,9 @@ public class ControllerTest {
 		
 		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RegelkonformerSpieler("Mike");
+		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RegelkonformerSpieler("Sven");
+		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(0);
 		
@@ -336,9 +336,9 @@ public class ControllerTest {
 		
 		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RegelkonformerSpieler("Mike");
+		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RegelkonformerSpieler("Sven");
+		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(0);
 		
@@ -350,9 +350,9 @@ public class ControllerTest {
 		
 		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RegelkonformerSpieler("Mike");
+		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RegelkonformerSpieler("Sven");
+		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(0);
 		
@@ -374,7 +374,7 @@ public class ControllerTest {
 	public void reizen1Test2() {
 		
 		ISpieler spieler1 = new Oma("Hannelore");
-		ISpieler spieler2 = new RegelkonformerSpieler("Friedel");
+		ISpieler spieler2 = new RuleCompliantPlayer("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -621,10 +621,10 @@ public class ControllerTest {
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
-		Player spieler2 = new RegelkonformerSpieler("Leon");
+		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setBlatt(blatt);
 		spieler2.setStiche(blatt);
-		Player spieler3 = new RegelkonformerSpieler("John Wayne");
+		Player spieler3 = new RuleCompliantPlayer("John Wayne");
 		spieler3.setBlatt(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
@@ -669,10 +669,10 @@ public class ControllerTest {
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
-		Player spieler2 = new RegelkonformerSpieler("Leon");
+		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setBlatt(blatt);
 		spieler2.setStiche(blatt);
-		Player spieler3 = new RegelkonformerSpieler("John Wayne");
+		Player spieler3 = new RuleCompliantPlayer("John Wayne");
 		spieler3.setBlatt(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
@@ -716,10 +716,10 @@ public class ControllerTest {
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
-		Player spieler2 = new RegelkonformerSpieler("Leon");
+		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setBlatt(blatt);
 		spieler2.setStiche(blatt);
-		Player spieler3 = new RegelkonformerSpieler("John Wayne");
+		Player spieler3 = new RuleCompliantPlayer("John Wayne");
 		spieler3.setBlatt(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
@@ -764,10 +764,10 @@ public class ControllerTest {
 		spieler1.setBlatt(blatt);
 		spieler1.setSpielart(new Grandspiel());
 		spieler1.setIstAlleinspieler(true);
-		Player spieler2 = new RegelkonformerSpieler("Leon");
+		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setBlatt(blatt);
 		spieler2.setStiche(blatt);
-		Player spieler3 = new RegelkonformerSpieler("John Wayne");
+		Player spieler3 = new RuleCompliantPlayer("John Wayne");
 		spieler3.setBlatt(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
@@ -1051,9 +1051,9 @@ public class ControllerTest {
 	public void spielRamschBockTest3() {
 		
 		Table tisch2 = new Table();
-		tisch2.setSpieler1(new RegelkonformerSpieler("Hilde"));
-		tisch2.setSpieler2(new RegelkonformerSpieler("Heide"));
-		tisch2.setSpieler3(new RegelkonformerSpieler("Harald"));
+		tisch2.setSpieler1(new RuleCompliantPlayer("Hilde"));
+		tisch2.setSpieler2(new RuleCompliantPlayer("Heide"));
+		tisch2.setSpieler3(new RuleCompliantPlayer("Harald"));
 		tisch2.getSpieler1().setIstAlleinspieler(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
@@ -1095,9 +1095,9 @@ public class ControllerTest {
 	public void spielIntSkatTest2() {
 		
 		Table tisch2 = new Table();
-		tisch2.setSpieler1(new RegelkonformerSpieler("Hilde"));
-		tisch2.setSpieler2(new RegelkonformerSpieler("Heide"));
-		tisch2.setSpieler3(new RegelkonformerSpieler("Harald"));
+		tisch2.setSpieler1(new RuleCompliantPlayer("Hilde"));
+		tisch2.setSpieler2(new RuleCompliantPlayer("Heide"));
+		tisch2.setSpieler3(new RuleCompliantPlayer("Harald"));
 		tisch2.getSpieler1().setIstAlleinspieler(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
@@ -1118,7 +1118,7 @@ public class ControllerTest {
 		
 		Player spieler1 = new SmartPlayer("Halo");
 		Player spieler2 = new SmartPlayer("Evin");
-		Player spieler3 = new RegelkonformerSpieler("Bernd");
+		Player spieler3 = new RuleCompliantPlayer("Bernd");
 		
 		ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
 		blatt.add(new Spielkarte(Farbe.HERZ, Wert.SIEBEN));
