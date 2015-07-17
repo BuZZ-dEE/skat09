@@ -3,7 +3,7 @@ package skat09.test.interfaces;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spieler.Position;
 import skat09.spielkarte.Spielkarte;
 
@@ -289,7 +289,7 @@ public interface IPlayer {
 	 * 
 	 * @return Farbspiel mit gesetzter Trumpffarbe
 	 */
-	abstract public Farbspiel farbe();
+	abstract public SuitGame farbe();
 
 	/**
 	 * F&uuml;gt einen neuen Eintrag zu Liste der Spiele dazu, wenn der Spieler

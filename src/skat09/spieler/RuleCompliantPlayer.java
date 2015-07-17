@@ -2,7 +2,7 @@ package skat09.spieler;
 
 
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Nullspiel;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpielart;
@@ -147,7 +147,7 @@ public class RuleCompliantPlayer extends Player {
 	}
 
 	@Override
-	public Farbspiel farbe() {
+	public SuitGame farbe() {
 		
 		return null;
 	}

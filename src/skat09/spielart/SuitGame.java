@@ -13,14 +13,14 @@ import skat09.spielkarte.Wert;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public class Farbspiel extends Spielart {
+public class SuitGame extends Spielart {
 
 	private Farbe trumpffarbe;
 
 	/**
 	 * Instanziert ein Farb - Spiel
 	 */
-	public Farbspiel(Farbe trumpffarbe) {
+	public SuitGame(Farbe trumpffarbe) {
 
 		this.trumpffarbe = trumpffarbe;
 		setSpielart(Spielartbezeichnung.FARBE);

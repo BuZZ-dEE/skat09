@@ -3,7 +3,7 @@ package skat09.ui;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.ISpielart;
@@ -76,7 +76,7 @@ abstract public class Output implements IOutput {
 	public abstract ISpielart spielAnsagen();
 
 	//@Override
-	public abstract Farbspiel farbe();
+	public abstract SuitGame farbe();
 
 	//@Override
 	public abstract Spielkarte spieleKarte(Spielkarte[] gespielteKarten,

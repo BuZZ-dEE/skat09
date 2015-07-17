@@ -3,7 +3,7 @@ package skat09.test.interfaces;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielkarte.Spielkarte;
 
 
@@ -146,7 +146,7 @@ public interface IOutput {
 	 * 
 	 * @return - das neue Farbspiel mit der gew&auml;hlten Trumpffarbe
 	 */
-	public abstract Farbspiel farbe();
+	public abstract SuitGame farbe();
 
 	/**
 	 * Zeigt dem Spieler seine Handkarten und die bisher in den Stich gespielten

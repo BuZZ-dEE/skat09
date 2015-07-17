@@ -8,7 +8,7 @@ import java.util.SortedSet;
 
 import skat09.Messages;
 import skat09.Table;
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spielart.Spielartbezeichnung;
@@ -360,7 +360,7 @@ public class CLIOutput extends Output {
 			rueckgabe = new Nullspiel();
 			break;
 		case 2:
-			rueckgabe = new Farbspiel(null);
+			rueckgabe = new SuitGame(null);
 			break;
 		default:
 			System.out.println(Messages.getI18n("game.type.input.wrong"));
@@ -372,9 +372,9 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public Farbspiel farbe() {
+	public SuitGame farbe() {
 
-		Farbspiel rueckgabe = null;
+		SuitGame rueckgabe = null;
 		int zaehler = 0;
 		int ergebnis = -1;
 
@@ -402,16 +402,16 @@ public class CLIOutput extends Output {
 		switch (ergebnis) {
 
 		case 0:
-			rueckgabe = new Farbspiel(Farbe.KARO);
+			rueckgabe = new SuitGame(Farbe.KARO);
 			break;
 		case 1:
-			rueckgabe = new Farbspiel(Farbe.HERZ);
+			rueckgabe = new SuitGame(Farbe.HERZ);
 			break;
 		case 2:
-			rueckgabe = new Farbspiel(Farbe.PIK);
+			rueckgabe = new SuitGame(Farbe.PIK);
 			break;
 		case 3:
-			rueckgabe = new Farbspiel(Farbe.KREUZ);
+			rueckgabe = new SuitGame(Farbe.KREUZ);
 			break;
 		default:
 			System.out.println(Messages.getI18n("game.color.input.wrong"));

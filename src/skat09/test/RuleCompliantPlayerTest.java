@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Nullspiel;
 import skat09.spieler.RuleCompliantPlayer;
 import skat09.spielkarte.Farbe;
@@ -27,7 +27,7 @@ public class RuleCompliantPlayerTest {
 	Spielkarte spielkarte4;
 	RuleCompliantPlayer spieler = new RuleCompliantPlayer("Mimi");
 	Spielkarte[] gespielteKarten = new Spielkarte[3];
-	Farbspiel spiel = new Farbspiel(Farbe.HERZ);
+	SuitGame spiel = new SuitGame(Farbe.HERZ);
 	
 	@Before
 	public void setUp() {

@@ -16,7 +16,7 @@ import org.junit.Test;
 import skat09.Controller;
 import skat09.SkatVariant;
 import skat09.Table;
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spielart.Ramsch;
@@ -96,14 +96,14 @@ public class TableTest {
 		tisch.setGespielteKarten(gespieltekarten);
 		tisch.getSpieler1().stichHinzufuegen(gespieltekarten);
 		tisch.setReizwert(18);
-		ISpielart spielart = new Farbspiel(Farbe.KARO);
+		ISpielart spielart = new SuitGame(Farbe.KARO);
 		tisch.setSpielart(spielart);
 		tisch.getSpieler1().setSpielart(spielart);
 	}
 
 	@After
 	public void after() {
-		Spielart spielart = new Farbspiel(Farbe.KARO);
+		Spielart spielart = new SuitGame(Farbe.KARO);
 		tisch.setSpielart(spielart);
 	}
 
@@ -298,7 +298,7 @@ public class TableTest {
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.ACHT);
 		gespielteKarten[1] = new Spielkarte(Farbe.KARO, Wert.ASS);
 		gespielteKarten[2] = new Spielkarte(Farbe.HERZ, Wert.SIEBEN);
-		ISpielart spielart = new Farbspiel(Farbe.HERZ);
+		ISpielart spielart = new SuitGame(Farbe.HERZ);
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
 		gespielteKarten[2].setBesitzer(spieler3);
@@ -337,7 +337,7 @@ public class TableTest {
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.ACHT);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.ASS);
 		gespielteKarten[2] = new Spielkarte(Farbe.HERZ, Wert.SIEBEN);
-		ISpielart spielart = new Farbspiel(Farbe.KREUZ);
+		ISpielart spielart = new SuitGame(Farbe.KREUZ);
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
 		gespielteKarten[2].setBesitzer(spieler3);
@@ -602,7 +602,7 @@ public class TableTest {
 	
 	@Test
 	public void ueberreizCheckTest4() {
-		Spielart spiel = new Farbspiel(Farbe.KARO);
+		Spielart spiel = new SuitGame(Farbe.KARO);
 		tisch.setSpielart(spiel);
 		tisch.setReizwert(23);
 		tisch.ermittleAlleinspieler().getBlatt().add(
@@ -619,7 +619,7 @@ public class TableTest {
 		tisch.setSchneider(false);
 		tisch.setSchwarz(false);
 		tisch.setOuvert(false);
-		Spielart spiel = new Farbspiel(Farbe.KARO);
+		Spielart spiel = new SuitGame(Farbe.KARO);
 		tisch.setSpielart(spiel);
 		tisch.setReizwert(23);
 		tisch.ermittleAlleinspieler().getBlatt().clear();
@@ -782,7 +782,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
-		ISpielart spielart = new Farbspiel(Farbe.KARO);
+		ISpielart spielart = new SuitGame(Farbe.KARO);
 		tisch.setSpielart(spielart);
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(27, tisch.wertePunkte(91));
@@ -838,7 +838,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Farbspiel(Farbe.KARO);
+		ISpielart spielart = new SuitGame(Farbe.KARO);
 		tisch.setSpielart(spielart);
 		tisch.setReizwert(48);
 		assertEquals(-108, tisch.wertePunkte(62));
@@ -865,7 +865,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Farbspiel(Farbe.KARO);
+		ISpielart spielart = new SuitGame(Farbe.KARO);
 		tisch.setSpielart(spielart);
 	assertEquals(18, tisch.punkteFarbspiel(62));
 	}
@@ -951,9 +951,9 @@ public class TableTest {
 	@Test
 	public void spielAuswertenTest3() {
 		
-		tisch.setSpielart(new Farbspiel(Farbe.KREUZ));
+		tisch.setSpielart(new SuitGame(Farbe.KREUZ));
 		tisch.ermittleAlleinspieler().getStiche().clear();
-		tisch.ermittleAlleinspieler().setSpielart(new Farbspiel(Farbe.KREUZ));
+		tisch.ermittleAlleinspieler().setSpielart(new SuitGame(Farbe.KREUZ));
 		Spielkarte karte = new Spielkarte(Farbe.HERZ, Wert.ZEHN);
 		tisch.ermittleAlleinspieler().getStiche().add(karte);
 		tisch.ermittleAlleinspieler().getStiche().add(karte);

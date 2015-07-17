@@ -2,7 +2,7 @@ package skat09.test.interfaces;
 
 import java.io.IOException;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielkarte.Spielkarte;
 
 
@@ -94,7 +94,7 @@ public interface IHumanPlayer {
 	 * 
 	 * @return Farbspiel mit gesetzter Trumpffarbe
 	 */
-	public abstract Farbspiel farbe();
+	public abstract SuitGame farbe();
 
 	/**
 	 * Benutzt der Spieler den Reizagenten, liefert diese Methode den maximalen

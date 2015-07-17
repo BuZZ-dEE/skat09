@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spielart.Ramsch;
@@ -493,7 +493,7 @@ public class Controller implements Observer, IController {
 
 		// Falls es sich um ein Farbspiel handelt wird eine Trumpffarbe
 		// ben&ouml;tigt.
-		if (spielart instanceof Farbspiel) {
+		if (spielart instanceof SuitGame) {
 
 			spielart = alleinspieler.farbe();
 		}
