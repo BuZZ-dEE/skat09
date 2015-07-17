@@ -10,7 +10,7 @@ import skat09.Messages;
 import skat09.Table;
 import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -357,7 +357,7 @@ public class CLIOutput extends Output {
 			rueckgabe = new Grandspiel();
 			break;
 		case 1:
-			rueckgabe = new Nullspiel();
+			rueckgabe = new NullGame();
 			break;
 		case 2:
 			rueckgabe = new SuitGame(null);

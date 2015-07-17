@@ -15,7 +15,7 @@ import org.junit.Test;
 import skat09.Table;
 import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spielart.Ramsch;
 import skat09.spieler.Granny;
 import skat09.spieler.Position;
@@ -128,7 +128,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		
 		assertEquals(spielkarte1, spieler.rauskommenNull(gespielteKarten));
@@ -156,7 +156,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		IPlayer mate = new Granny("ho");
 		mate.setPosition(Position.MITTELHAND);
@@ -194,7 +194,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		IPlayer mate = new Granny("ho");
 		mate.setPosition(Position.HINTERHAND);
@@ -231,7 +231,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		IPlayer mate = new Granny("ho");
 		mate.setPosition(Position.HINTERHAND);
@@ -269,7 +269,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.ASS);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.DAME);
@@ -299,7 +299,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
 		IPlayer gegner = new Granny("gegen");
@@ -332,7 +332,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
 		IPlayer gegner = new Granny("gegen");
@@ -366,7 +366,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.ASS);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.DAME);
@@ -400,7 +400,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		IPlayer gegnger = new Granny("gegner");
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
@@ -437,7 +437,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		IPlayer gegnger = new Granny("gegner");
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
@@ -474,7 +474,7 @@ public class SmartPlayerTest {
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte[] gespielteKarten = new Spielkarte[3];
 		IPlayer gegnger = new Granny("gegner");
 		gespielteKarten[0] = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
@@ -1805,7 +1805,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteNeunTest3() {
 		
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.ZEHN);
 		
 		boolean erfolgreich = false;
@@ -1850,7 +1850,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechsteHoehereKarteKoenigTest3() {
 		
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.ASS);
 		
 		boolean erfolgreich = false;
@@ -1895,7 +1895,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteZehnTest3() {
 		
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.DAME);
 		
 		boolean erfolgreich = false;
@@ -2031,7 +2031,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteDameTest3() {
 		
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.ZEHN);
 		
 		boolean erfolgreich = false;
@@ -2076,7 +2076,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteZehnTest3() {
 		
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.NEUN);
 		
 		boolean erfolgreich = false;
@@ -2121,7 +2121,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteAssTest3() {
 		
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
 		
 		boolean erfolgreich = false;
@@ -2349,7 +2349,7 @@ public class SmartPlayerTest {
 		
 		Spielkarte karte1 = new Spielkarte(Farbe.KARO, Wert.ZEHN);
 		Spielkarte karte2 = new Spielkarte(Farbe.KARO, Wert.DAME);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		
 		assertEquals(karte2, 
 				spieler.hoechsteSpielbareKarteBestimmen(karte1, karte2));
@@ -2360,7 +2360,7 @@ public class SmartPlayerTest {
 		
 		Spielkarte karte1 = new Spielkarte(Farbe.HERZ, Wert.DAME);
 		Spielkarte karte2 = new Spielkarte(Farbe.KARO, Wert.DAME);
-		spieler.setSpielart(new Nullspiel());
+		spieler.setSpielart(new NullGame());
 		
 		assertEquals(karte1, 
 				spieler.hoechsteSpielbareKarteBestimmen(karte1, karte2));
@@ -2919,7 +2919,7 @@ public class SmartPlayerTest {
 		blatt.add(new Spielkarte(Farbe.KREUZ, Wert.NEUN));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new Nullspiel().getSpielart(), 
+		assertEquals(new NullGame().getSpielart(), 
 				spieler.bestimmeSpielart().getSpielart());
 	}
 	

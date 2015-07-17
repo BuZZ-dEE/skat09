@@ -8,7 +8,7 @@ import java.util.Observer;
 
 import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spielart.Ramsch;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spieler.HumanPlayer;
@@ -701,7 +701,7 @@ public class Controller implements Observer, IController {
 
 		if (tisch.getHandspiel()) {
 
-			if (spielart instanceof Nullspiel) {
+			if (spielart instanceof NullGame) {
 
 				tisch.setSchneider(false);
 				tisch.setSchwarz(false);
@@ -722,7 +722,7 @@ public class Controller implements Observer, IController {
 			}
 		} else {
 
-			if (spielart instanceof Nullspiel) {
+			if (spielart instanceof NullGame) {
 
 				tisch.setSchneider(true);
 				tisch.setSchwarz(true);

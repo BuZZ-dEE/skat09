@@ -15,7 +15,7 @@ import skat09.SkatVariant;
 import skat09.Table;
 import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spieler.HumanPlayer;
 import skat09.spieler.Granny;
 import skat09.spieler.Position;
@@ -869,7 +869,7 @@ public class ControllerTest {
 		tisch.getSpieler1().setIstAlleinspieler(true);
 		tisch.setSpieler2(new Granny("Renate"));
 		tisch.setSpieler3(new Granny("Mochochocho"));
-		tisch.setSpielart(new Nullspiel());
+		tisch.setSpielart(new NullGame());
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
 		
 		boolean ergebnis = false;
@@ -886,7 +886,7 @@ public class ControllerTest {
 		tisch.getSpieler1().setIstAlleinspieler(true);
 		tisch.setSpieler2(new Granny("Renate"));
 		tisch.setSpieler3(new Granny("Mochochocho"));
-		tisch.setSpielart(new Nullspiel());
+		tisch.setSpielart(new NullGame());
 		tisch.setHandspiel(false);
 		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
 		

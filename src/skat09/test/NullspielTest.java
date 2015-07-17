@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -28,7 +28,7 @@ public class NullspielTest {
 	Spielkarte spielkarte9;
 	Spielkarte spielkarte10;
 	Spielkarte spielkarte11;
-	INullspiel spiel = new Nullspiel();
+	INullspiel spiel = new NullGame();
 	ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
 	Spielkarte[] gespielteKarten = new Spielkarte[3];
 	
@@ -55,7 +55,7 @@ public class NullspielTest {
 	
 	@Test
 	public void testNullspiel() {
-		assertEquals(Spielartbezeichnung.NULL, new Nullspiel().getSpielart());
+		assertEquals(Spielartbezeichnung.NULL, new NullGame().getSpielart());
 	}
 	
 	

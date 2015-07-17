@@ -14,12 +14,12 @@ import skat09.test.interfaces.INullspiel;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public class Nullspiel extends Spielart implements INullspiel {
+public class NullGame extends Spielart implements INullspiel {
 
 	/**
 	 * Instanziert ein Null - Spiel
 	 */
-	public Nullspiel() {
+	public NullGame() {
 		setSpielart(Spielartbezeichnung.NULL);
 	}
 

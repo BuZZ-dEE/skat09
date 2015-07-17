@@ -5,7 +5,7 @@ import java.util.Random;
 
 import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -1614,7 +1614,7 @@ public class SmartPlayer extends Player {
 
 		if (zuSpielendeSpielart == null) {
 
-			zuSpielendeSpielart = new Nullspiel();
+			zuSpielendeSpielart = new NullGame();
 		}
 
 		return zuSpielendeSpielart;
@@ -1941,7 +1941,7 @@ public class SmartPlayer extends Player {
 		// Auswertung
 		if (kartenKleiner10 >= 5) {
 
-			zuReizendeSpielart = new Nullspiel();
+			zuReizendeSpielart = new NullGame();
 		}
 
 		else if (buben >= 2 && kartenGroesserKoenig >= 4) {
