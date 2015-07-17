@@ -18,7 +18,7 @@ import skat09.test.interfaces.ISpieler;
  * @version 03.07.2009
  * 
  */
-public class MenschlicherSpieler extends Spieler implements ISpieler,
+public class HumanPlayer extends Spieler implements ISpieler,
 		IMenschlicherSpieler {
 
 	//
@@ -44,7 +44,7 @@ public class MenschlicherSpieler extends Spieler implements ISpieler,
 	 *            Der Controller, mit dem gespielt werden soll. Diesen braucht
 	 *            der Spieler, damit er Benutzereingaben abfragen kann.
 	 */
-	public MenschlicherSpieler(String name, IController controller) {
+	public HumanPlayer(String name, IController controller) {
 
 		super(name);
 		this.controller = controller;

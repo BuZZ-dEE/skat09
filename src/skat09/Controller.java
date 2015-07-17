@@ -11,7 +11,7 @@ import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spielart.Ramsch;
 import skat09.spielart.Spielartbezeichnung;
-import skat09.spieler.MenschlicherSpieler;
+import skat09.spieler.HumanPlayer;
 import skat09.spieler.Oma;
 import skat09.spieler.RegelkonformerSpieler;
 import skat09.spieler.SchlauerSpieler;
@@ -126,7 +126,7 @@ public class Controller implements Observer, IController {
 
 		String name = "";
 		name = ausgabe.name();
-		ISpieler spieler = new MenschlicherSpieler(name, this);
+		ISpieler spieler = new HumanPlayer(name, this);
 		tisch.setSpieler1(spieler);
 
 	}
@@ -565,9 +565,9 @@ public class Controller implements Observer, IController {
 		for (ISpieler alleSpieler : new ISpieler[] { tisch.getSpieler1(),
 				tisch.getSpieler2(), tisch.getSpieler3() }) {
 
-			if (alleSpieler instanceof MenschlicherSpieler) {
+			if (alleSpieler instanceof HumanPlayer) {
 
-				((MenschlicherSpieler) alleSpieler)
+				((HumanPlayer) alleSpieler)
 						.blattSortieren(new Grandspiel());
 			}
 

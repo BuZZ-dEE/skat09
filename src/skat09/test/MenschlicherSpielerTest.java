@@ -14,7 +14,7 @@ import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Spielart;
-import skat09.spieler.MenschlicherSpieler;
+import skat09.spieler.HumanPlayer;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
@@ -31,7 +31,7 @@ public class MenschlicherSpielerTest {
 	Table tisch = new Table();
 	IOutput ausgabe = new OutputStub(null,null,null);
 	IController controller = new ControllerStub(tisch, ausgabe);
-	MenschlicherSpieler mensch = new MenschlicherSpieler("Peter", controller);
+	HumanPlayer mensch = new HumanPlayer("Peter", controller);
 
 	@Before
 	public void setUp() throws Exception {
