@@ -10,7 +10,7 @@ import skat09.Messages;
 import skat09.Table;
 import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spieler.PlayerEnum;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -203,7 +203,7 @@ public class GUIOutput extends Output {
 		if (spielart.compareTo("Grand") == 0) {
 			spiel = new Grandspiel();
 		} else if (spielart.compareTo("Null") == 0) {
-			spiel = new Nullspiel();
+			spiel = new NullGame();
 		} else {
 // TODO why not spiel = new Farbspiel(spielart);
 			spiel = new SuitGame(null);

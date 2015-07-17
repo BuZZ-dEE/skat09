@@ -3,7 +3,7 @@ package skat09.spieler;
 
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpielart;
 
@@ -108,7 +108,7 @@ public class RuleCompliantPlayer extends Player {
 	 */
 	public ISpielart spielAnsagen() {
 
-		return new Nullspiel();
+		return new NullGame();
 	}
 
 	/**

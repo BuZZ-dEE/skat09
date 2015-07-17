@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spieler.RuleCompliantPlayer;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -139,7 +139,7 @@ public class RuleCompliantPlayerTest {
 	@Test
 	public void spielAnsagenTest() {
 		boolean test = false;
-		if (spieler.spielAnsagen() instanceof Nullspiel) {
+		if (spieler.spielAnsagen() instanceof NullGame) {
 			test = true;
 		}
 		assertTrue(test);

@@ -18,7 +18,7 @@ import skat09.SkatVariant;
 import skat09.Table;
 import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
-import skat09.spielart.Nullspiel;
+import skat09.spielart.NullGame;
 import skat09.spielart.Ramsch;
 import skat09.spielart.Spielart;
 import skat09.spieler.HumanPlayer;
@@ -271,7 +271,7 @@ public class TableTest {
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.ACHT);
 		gespielteKarten[1] = new Spielkarte(Farbe.KARO, Wert.BUBE);
 		gespielteKarten[2] = new Spielkarte(Farbe.HERZ, Wert.SIEBEN);
-		ISpielart spielart = new Nullspiel();
+		ISpielart spielart = new NullGame();
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
 		gespielteKarten[2].setBesitzer(spieler3);
@@ -285,7 +285,7 @@ public class TableTest {
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.ACHT);
 		gespielteKarten[1] = new Spielkarte(Farbe.KARO, Wert.BUBE);
 		gespielteKarten[2] = new Spielkarte(Farbe.KARO, Wert.KOENIG);
-		ISpielart spielart = new Nullspiel();
+		ISpielart spielart = new NullGame();
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
 		gespielteKarten[2].setBesitzer(spieler3);
@@ -324,7 +324,7 @@ public class TableTest {
 		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.ACHT);
 		gespielteKarten[1] = new Spielkarte(Farbe.PIK, Wert.BUBE);
 		gespielteKarten[2] = new Spielkarte(Farbe.HERZ, Wert.SIEBEN);
-		ISpielart spielart = new Nullspiel();
+		ISpielart spielart = new NullGame();
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
 		gespielteKarten[2].setBesitzer(spieler3);
@@ -761,7 +761,7 @@ public class TableTest {
 	@Test
 	public void wertePunkteTest1() {
 		tisch.setVariante(SkatVariant.RAEUBER);
-		Nullspiel spiel = new Nullspiel();
+		NullGame spiel = new NullGame();
 		tisch.setSpielart(spiel);
 		tisch.ermittleAlleinspieler().getStiche().clear();
 		assertEquals(23, tisch.wertePunkte(0));
@@ -887,7 +887,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Nullspiel();
+		ISpielart spielart = new NullGame();
 		tisch.setSpielart(spielart);
 		tisch.ermittleAlleinspieler().getStiche().clear();
 		assertEquals(23, tisch.punkteNullspiel());
@@ -899,7 +899,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Nullspiel();
+		ISpielart spielart = new NullGame();
 		tisch.setSpielart(spielart);
 		tisch.ermittleAlleinspieler().getStiche().clear();
 		tisch.setHandspiel(true);
@@ -912,7 +912,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Nullspiel();
+		ISpielart spielart = new NullGame();
 		tisch.setSpielart(spielart);
 		tisch.ermittleAlleinspieler().getStiche().clear();
 		tisch.setHandspiel(false);
@@ -926,7 +926,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getBlatt().add(
 				new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		ISpielart spielart = new Nullspiel();
+		ISpielart spielart = new NullGame();
 		tisch.setSpielart(spielart);
 		tisch.ermittleAlleinspieler().getStiche().clear();
 		tisch.setHandspiel(true);
@@ -943,7 +943,7 @@ public class TableTest {
 	@Test
 	public void spielAuswertenTest2() {
 		tisch.ermittleAlleinspieler().getStiche().clear();
-		ISpielart spielart = new Nullspiel();
+		ISpielart spielart = new NullGame();
 		tisch.setSpielart(spielart);
 		assertTrue(tisch.spielAuswerten());
 	}
