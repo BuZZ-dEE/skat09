@@ -16,7 +16,7 @@ import skat09.Table;
 import skat09.spielart.Farbspiel;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
-import skat09.spieler.MenschlicherSpieler;
+import skat09.spieler.HumanPlayer;
 import skat09.spieler.Oma;
 import skat09.spieler.Position;
 import skat09.spieler.RegelkonformerSpieler;
@@ -457,7 +457,7 @@ public class ControllerTest {
 	@Test
 	public void bereiteSpielvorTest() {
 		
-		tisch.setSpieler1(new MenschlicherSpieler("Hildegard",controller));
+		tisch.setSpieler1(new HumanPlayer("Hildegard",controller));
 		SchlauerSpieler sspieler = new SchlauerSpieler("Gräfin Johanita von Schwanenstein");
 		ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
 		blatt.add(new Spielkarte(Farbe.HERZ, Wert.ACHT));

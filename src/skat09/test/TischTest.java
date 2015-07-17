@@ -21,7 +21,7 @@ import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spielart.Ramsch;
 import skat09.spielart.Spielart;
-import skat09.spieler.MenschlicherSpieler;
+import skat09.spieler.HumanPlayer;
 import skat09.spieler.Oma;
 import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
@@ -51,7 +51,7 @@ public class TischTest {
 	ArrayList<Spielkarte> spitzen = new ArrayList<Spielkarte>();
 	CLIOutput ausgabe = new CLIOutput(tisch);
 	IController controller = new Controller(tisch, ausgabe);
-	ISpieler spieler3 = new MenschlicherSpieler("Hans", controller);
+	ISpieler spieler3 = new HumanPlayer("Hans", controller);
 	Spielkarte[] skat = new Spielkarte[3];
 
 	@Before
