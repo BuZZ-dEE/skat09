@@ -13,7 +13,7 @@ import skat09.spielart.Ramsch;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spieler.HumanPlayer;
 import skat09.spieler.Oma;
-import skat09.spieler.RegelkonformerSpieler;
+import skat09.spieler.RuleCompliantPlayer;
 import skat09.spieler.SmartPlayer;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IOutput;
@@ -147,7 +147,7 @@ public class Controller implements Observer, IController {
 		// Eingabe r fuer regelkonformer Spieler
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
 
-			ISpieler spieler2 = new RegelkonformerSpieler("Hans");
+			ISpieler spieler2 = new RuleCompliantPlayer("Hans");
 			tisch.setSpieler2(spieler2);
 		}
 		// Eingabe s fuer schlauer Spieler
@@ -167,7 +167,7 @@ public class Controller implements Observer, IController {
 		}
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
 
-			ISpieler spieler3 = new RegelkonformerSpieler("Franz");
+			ISpieler spieler3 = new RuleCompliantPlayer("Franz");
 			tisch.setSpieler3(spieler3);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {

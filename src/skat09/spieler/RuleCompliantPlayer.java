@@ -16,7 +16,7 @@ import skat09.test.interfaces.ISpielart;
  * @version 03.07.2009
  * 
  */
-public class RegelkonformerSpieler extends Player {
+public class RuleCompliantPlayer extends Player {
 
 	//
 	// Datenfelder
@@ -30,7 +30,7 @@ public class RegelkonformerSpieler extends Player {
 	 * Der Konstruktor der Klasse RegelkonformerSpieler
 	 * @param name Der Name des Spielers
 	 */
-	public RegelkonformerSpieler(String name) {
+	public RuleCompliantPlayer(String name) {
 
 		super(name);
 	}
