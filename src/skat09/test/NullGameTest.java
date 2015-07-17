@@ -15,7 +15,7 @@ import skat09.spielkarte.Wert;
 import skat09.test.interfaces.INullGame;
 
 
-public class NullspielTest {
+public class NullGameTest {
 
 	Spielkarte spielkarte1;
 	Spielkarte spielkarte2;
