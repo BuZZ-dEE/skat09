@@ -13,7 +13,7 @@ import skat09.spielkarte.Wert;
 import static org.junit.Assert.*;
 
 //import de.uniluebeck.skat09.*;
-public class OmaTest {
+public class GrannyTest {
 
 	private Granny oma = new Granny("Franz");
 	Spielkarte spielkarte1 = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
@@ -29,7 +29,7 @@ public class OmaTest {
 
 	ArrayList<Spielkarte> omablatt = new ArrayList<Spielkarte>();
 	
-	public OmaTest(){
+	public GrannyTest(){
 		omablatt.add(spielkarte1);
 		omablatt.add(spielkarte2);
 		omablatt.add(spielkarte3);
