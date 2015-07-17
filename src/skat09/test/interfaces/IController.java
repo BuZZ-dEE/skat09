@@ -77,7 +77,7 @@ public interface IController {
 	 *            - Spieler der sagen muss.
 	 * @return Spieler, der gewonnen hat oder null.
 	 */
-	public abstract ISpieler reizen2(ISpieler spieler1, ISpieler spieler2);
+	public abstract IPlayer reizen2(IPlayer spieler1, IPlayer spieler2);
 
 	/**
 	 * L&auml;sst den Reizagenten das Reizen durchf&uuml;hren oder den Spieler.
@@ -86,7 +86,7 @@ public interface IController {
 	 * @param reizwert
 	 * @return true, wenn spieler mitgeht
 	 */
-	public abstract boolean reizenOderReizagent(ISpieler spieler, int reizwert, 
+	public abstract boolean reizenOderReizagent(IPlayer spieler, int reizwert, 
 			boolean sagen);
 
 	/**
@@ -99,7 +99,7 @@ public interface IController {
 	 *            - Spieler der sagen muss.
 	 * @return Spieler, der gewonnen hat.
 	 */
-	public abstract ISpieler reizen1(ISpieler spieler1, ISpieler spieler2);
+	public abstract IPlayer reizen1(IPlayer spieler1, IPlayer spieler2);
 
 	/**
 	 * Setzt die Vorhand als Alleinspieler, falls die Variante R&auml;uberskat
@@ -148,7 +148,7 @@ public interface IController {
 	 *            - vorher ermittelter Gewinner des Stichs
 	 */
 	public abstract void stichAuswertung(Spielkarte[] gespielteKarten,
-			ISpieler gewinner);
+			IPlayer gewinner);
 
 	/**
 	 * Falls der Reizagent aktiviert wurde und der Spieler menschlich ist lasse
@@ -160,7 +160,7 @@ public interface IController {
 	 * @return false, wenn Spieler weg, true, wenn Spieler mitgeht, true,
 	 * falls der reizagent sagt, false, wenn er h&ouml;rt
 	 */
-	public abstract boolean reizagent(ISpieler spieler);
+	public abstract boolean reizagent(IPlayer spieler);
 
 	/**
 	 * gibt zur&uuml;ck, ob das Spiel beendet wird
@@ -181,7 +181,7 @@ public interface IController {
 	 * @param spielart
 	 *            - vom Alleinspieler angesagte Spielart
 	 */
-	public abstract void flagsSetzen(ISpieler alleinspieler, ISpielart spielart);
+	public abstract void flagsSetzen(IPlayer alleinspieler, ISpielart spielart);
 
 	/**
 	 * Falls ein Spieler eine Karte spielt, wird dies &uuml;ber die Ausgabe

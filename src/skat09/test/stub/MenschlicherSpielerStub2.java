@@ -8,10 +8,10 @@ import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
-public class MenschlicherSpielerStub2 implements ISpieler, IHumanPlayer {
+public class MenschlicherSpielerStub2 implements IPlayer, IHumanPlayer {
 
 	
 	private String name;
@@ -43,7 +43,7 @@ public class MenschlicherSpielerStub2 implements ISpieler, IHumanPlayer {
 	}
 
 
-	public boolean equals(ISpieler spieler) {
+	public boolean equals(IPlayer spieler) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -216,7 +216,7 @@ public class MenschlicherSpielerStub2 implements ISpieler, IHumanPlayer {
 		return null;
 	}
 
-	public ISpieler getMitspieler() {
+	public IPlayer getMitspieler() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -241,7 +241,7 @@ public class MenschlicherSpielerStub2 implements ISpieler, IHumanPlayer {
 		
 	}
 
-	public void setMitspieler(ISpieler mitspieler) {
+	public void setMitspieler(IPlayer mitspieler) {
 		// TODO Auto-generated method stub
 		
 	}

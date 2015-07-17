@@ -26,7 +26,7 @@ import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IOutput;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 import skat09.test.stub.OutputStub;
 import skat09.test.stub.MenschlicherSpielerStub;
 import skat09.test.stub.MenschlicherSpielerStub2;
@@ -84,7 +84,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new Oma("Oma Karla");
+		IPlayer spieler = new Oma("Oma Karla");
 		
 		boolean pruefe = false;
 		
@@ -103,7 +103,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new Oma("Oma Berta");
+		IPlayer spieler = new Oma("Oma Berta");
 		
 		boolean pruefe = false;
 		
@@ -122,7 +122,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new RuleCompliantPlayer("Hans");
+		IPlayer spieler = new RuleCompliantPlayer("Hans");
 		
 		boolean pruefe = false;
 		
@@ -141,7 +141,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new RuleCompliantPlayer("Franz");
+		IPlayer spieler = new RuleCompliantPlayer("Franz");
 		
 		boolean pruefe = false;
 		
@@ -160,7 +160,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new SmartPlayer("Heinz");
+		IPlayer spieler = new SmartPlayer("Heinz");
 		
 		boolean pruefe = false;
 		
@@ -179,7 +179,7 @@ public class ControllerTest {
 		Controller controller = new Controller(tisch,gegner1);
 		controller.waehleGegner();
 		
-		ISpieler spieler = new SmartPlayer("Wolfgang");
+		IPlayer spieler = new SmartPlayer("Wolfgang");
 		
 		boolean pruefe = false;
 		
@@ -260,7 +260,7 @@ public class ControllerTest {
 	@Test
 	public void leiteReizenTest2() {
 		
-		ISpieler spieler = new MenschlicherSpielerStub("Hannelore");
+		IPlayer spieler = new MenschlicherSpielerStub("Hannelore");
 		tisch.setSpieler1(spieler);
 		tisch.setSpieler2(new RuleCompliantPlayer("Lara"));
 		tisch.setSpieler3(new RuleCompliantPlayer("Hoi"));
@@ -278,11 +278,11 @@ public class ControllerTest {
 	@Test
 	public void reizenOderReizagent() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
+		IPlayer spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
+		IPlayer spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
+		IPlayer spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(20);
 		
@@ -292,11 +292,11 @@ public class ControllerTest {
 	@Test
 	public void reizenOderReizagent2() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
+		IPlayer spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
+		IPlayer spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
+		IPlayer spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(20);
 		
@@ -306,11 +306,11 @@ public class ControllerTest {
 	@Test
 	public void reizenOderReizagent3() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
+		IPlayer spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
+		IPlayer spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
+		IPlayer spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(0);
 		
@@ -320,11 +320,11 @@ public class ControllerTest {
 	@Test
 	public void reizenOderReizagent4() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
+		IPlayer spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
+		IPlayer spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
+		IPlayer spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(0);
 		
@@ -334,11 +334,11 @@ public class ControllerTest {
 	@Test
 	public void reizenOderReizagent5() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
+		IPlayer spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
+		IPlayer spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
+		IPlayer spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(0);
 		
@@ -348,11 +348,11 @@ public class ControllerTest {
 	@Test
 	public void reizenOderReizagent6() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub("Benn");
+		IPlayer spieler1 = new MenschlicherSpielerStub("Benn");
 		controller.getTisch().setSpieler1(spieler1);
-		ISpieler spieler2 = new RuleCompliantPlayer("Mike");
+		IPlayer spieler2 = new RuleCompliantPlayer("Mike");
 		controller.getTisch().setSpieler2(spieler2);
-		ISpieler spieler3 = new RuleCompliantPlayer("Sven");
+		IPlayer spieler3 = new RuleCompliantPlayer("Sven");
 		controller.getTisch().setSpieler3(spieler3);
 		controller.getTisch().setReizagentWert(0);
 		
@@ -362,8 +362,8 @@ public class ControllerTest {
 	@Test
 	public void reizen1Test1() {
 		
-		ISpieler spieler1 = new Oma("Hannelore");
-		ISpieler spieler2 = new Oma("Friedel");
+		IPlayer spieler1 = new Oma("Hannelore");
+		IPlayer spieler2 = new Oma("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -373,8 +373,8 @@ public class ControllerTest {
 	@Test
 	public void reizen1Test2() {
 		
-		ISpieler spieler1 = new Oma("Hannelore");
-		ISpieler spieler2 = new RuleCompliantPlayer("Friedel");
+		IPlayer spieler1 = new Oma("Hannelore");
+		IPlayer spieler2 = new RuleCompliantPlayer("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -385,8 +385,8 @@ public class ControllerTest {
 	@Test
 	public void reizen2Test1() {
 		
-		ISpieler spieler1 = new Oma("Hannelore");
-		ISpieler spieler2 = new Oma("Friedel");
+		IPlayer spieler1 = new Oma("Hannelore");
+		IPlayer spieler2 = new Oma("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -396,8 +396,8 @@ public class ControllerTest {
 	@Test
 	public void reizen2Test2() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub("Hannelore");
-		ISpieler spieler2 = new MenschlicherSpielerStub2("Friedel");
+		IPlayer spieler1 = new MenschlicherSpielerStub("Hannelore");
+		IPlayer spieler2 = new MenschlicherSpielerStub2("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -407,8 +407,8 @@ public class ControllerTest {
 	@Test
 	public void reizen2Test3() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub2("Hannelore");
-		ISpieler spieler2 = new MenschlicherSpielerStub("Friedel");
+		IPlayer spieler1 = new MenschlicherSpielerStub2("Hannelore");
+		IPlayer spieler2 = new MenschlicherSpielerStub("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -418,8 +418,8 @@ public class ControllerTest {
 	@Test
 	public void reizen2Test4() {
 		
-		ISpieler spieler1 = new MenschlicherSpielerStub2("Hannelore");
-		ISpieler spieler2 = new Oma("Friedel");
+		IPlayer spieler1 = new MenschlicherSpielerStub2("Hannelore");
+		IPlayer spieler2 = new Oma("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -429,8 +429,8 @@ public class ControllerTest {
 	@Test
 	public void reizen2Test5() {
 		
-		ISpieler spieler1 = new Oma("Hannelore");
-		ISpieler spieler2 = new MenschlicherSpielerStub2("Friedel");
+		IPlayer spieler1 = new Oma("Hannelore");
+		IPlayer spieler2 = new MenschlicherSpielerStub2("Friedel");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		
@@ -551,9 +551,9 @@ public class ControllerTest {
 		Table tisch2 = new Table();
 		Controller controller = new Controller(tisch2, ausgabe);
 		
-		ISpieler spieler1 = new Oma("Erna");
-		ISpieler spieler2 = new Oma("Roy");
-		ISpieler spieler3 = new Oma("Marry");
+		IPlayer spieler1 = new Oma("Erna");
+		IPlayer spieler2 = new Oma("Roy");
+		IPlayer spieler3 = new Oma("Marry");
 		
 		spieler1.setIstAlleinspieler(true);
 		
@@ -638,7 +638,7 @@ public class ControllerTest {
 				
 		boolean spieler3Aufgeraeumt = false;
 
-		ISpieler sp3 = controller.getTisch().getSpieler3();
+		IPlayer sp3 = controller.getTisch().getSpieler3();
 		if (sp3.getBlatt() == null && sp3.getIstAlleinspieler() == false &&
 				sp3.getStiche().size() == 0 && sp3.getAllegespieltenkarten().size() == 0) {
 			spieler3Aufgeraeumt = true;
@@ -733,7 +733,7 @@ public class ControllerTest {
 		
 		boolean spieler1Aufgeraeumt = false;
 		
-		ISpieler sp1 = controller.getTisch().getSpieler1();
+		IPlayer sp1 = controller.getTisch().getSpieler1();
 		if (sp1.getBlatt() == null && !sp1.getIstAlleinspieler() &&
 				sp1.getStiche().size() == 0 && sp1.getAllegespieltenkarten().size() == 0) {
 			spieler1Aufgeraeumt = true;
@@ -781,7 +781,7 @@ public class ControllerTest {
 		
 		boolean spieler2Aufgeraeumt = false;
 		
-		ISpieler sp2 = controller.getTisch().getSpieler2();
+		IPlayer sp2 = controller.getTisch().getSpieler2();
 		if (sp2.getBlatt() == null && sp2.getIstAlleinspieler() == false &&
 				sp2.getStiche().size() == 0 && sp2.getAllegespieltenkarten().size() == 0) {
 			spieler2Aufgeraeumt = true;
@@ -840,7 +840,7 @@ public class ControllerTest {
 	@Test
 	public void skartkartenBesitzerGebenTest() {
 		
-		ISpieler oma = new Oma("o1");
+		IPlayer oma = new Oma("o1");
 		controller.getTisch().setSpieler1(oma);
 		controller.getTisch().getSpieler1().setIstAlleinspieler(true);
 		controller.getTisch().setSpieler2(new Oma("o2"));
@@ -1154,9 +1154,9 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest() {
 		
-		ISpieler spieler1 = new Oma("Gertrud");
-		ISpieler spieler2 = new Oma("Gertrud");
-		ISpieler spieler3 = new Oma("Gertrud");
+		IPlayer spieler1 = new Oma("Gertrud");
+		IPlayer spieler2 = new Oma("Gertrud");
+		IPlayer spieler3 = new Oma("Gertrud");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		controller.getTisch().setSpieler3(spieler3);
@@ -1167,9 +1167,9 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest2() {
 		
-		ISpieler spieler1 = new Oma("Gertrud");
-		ISpieler spieler2 = new Oma("Gertrud");
-		ISpieler spieler3 = new Oma("Hans");
+		IPlayer spieler1 = new Oma("Gertrud");
+		IPlayer spieler2 = new Oma("Gertrud");
+		IPlayer spieler3 = new Oma("Hans");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		controller.getTisch().setSpieler3(spieler3);
@@ -1180,9 +1180,9 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest3() {
 		
-		ISpieler spieler1 = new Oma("Gertrud");
-		ISpieler spieler2 = new Oma("Hans");
-		ISpieler spieler3 = new Oma("Gertrud");
+		IPlayer spieler1 = new Oma("Gertrud");
+		IPlayer spieler2 = new Oma("Hans");
+		IPlayer spieler3 = new Oma("Gertrud");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		controller.getTisch().setSpieler3(spieler3);
@@ -1193,9 +1193,9 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest4() {
 		
-		ISpieler spieler1 = new Oma("Hans");
-		ISpieler spieler2 = new Oma("Gertrud");
-		ISpieler spieler3 = new Oma("Gertrud");
+		IPlayer spieler1 = new Oma("Hans");
+		IPlayer spieler2 = new Oma("Gertrud");
+		IPlayer spieler3 = new Oma("Gertrud");
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
 		controller.getTisch().setSpieler3(spieler3);

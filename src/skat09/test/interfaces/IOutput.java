@@ -160,7 +160,7 @@ public interface IOutput {
 	 * @throws IOException
 	 */
 	public abstract Spielkarte spieleKarte(Spielkarte[] gespielteKarten,
-			ISpieler spieler) throws IOException;
+			IPlayer spieler) throws IOException;
 
 	/**
 	 * Diese Methode gibt aus, welcher Spieler den Stich gewonnen hat.
@@ -168,7 +168,7 @@ public interface IOutput {
 	 * @param spieler
 	 *            - der Gewinner des Stichs
 	 */
-	public abstract void stichGewonnen(ISpieler spieler);
+	public abstract void stichGewonnen(IPlayer spieler);
 
 	/**
 	 * Gibt das Blatt des Spielers aus.
@@ -177,7 +177,7 @@ public interface IOutput {
 	 *            - spieler, dessen Blatt ausgegeben werden soll
 	 * @throws IOException
 	 */
-	public abstract void blattAusgeben(ISpieler spieler) throws IOException;
+	public abstract void blattAusgeben(IPlayer spieler) throws IOException;
 
 	/**
 	 * Diese Methoden gibt die im Skat liegende Karten aus.
@@ -192,7 +192,7 @@ public interface IOutput {
 	 * @param spieler
 	 *            - spieler der weg ist.
 	 */
-	public abstract void weg(ISpieler spieler);
+	public abstract void weg(IPlayer spieler);
 
 	/**
 	 * Diese Methode teilt dem Spieler mit, dass das Spiel beendet ist.
@@ -212,7 +212,7 @@ public interface IOutput {
 	 * @param gewinner
 	 *            - Spieler, der das Reizen zuvor gewonnen hat
 	 */
-	public abstract void hhVSgewinner(ISpieler gewinner);
+	public abstract void hhVSgewinner(IPlayer gewinner);
 
 	/**
 	 * L&auml;sst die Mittelhand gegen die Vorhand reizen.
@@ -285,7 +285,7 @@ public interface IOutput {
 	 * @param karte
 	 *            - Karte, die gespielt wird
 	 */
-	public abstract void spieltKarte(ISpieler spieler, Spielkarte karte);
+	public abstract void spieltKarte(IPlayer spieler, Spielkarte karte);
 
 	/**
 	 * Fragt den Spieler, wie hoch er reizen m&ouml;chte.

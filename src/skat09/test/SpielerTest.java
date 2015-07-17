@@ -16,13 +16,13 @@ import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 import skat09.test.stub.NullspielStub2;
 
 
 public class SpielerTest{
 
-	private ISpieler spieler;
+	private IPlayer spieler;
 	ArrayList<Spielkarte> stiche = new ArrayList<Spielkarte>();
 	
 	
@@ -122,7 +122,7 @@ public class SpielerTest{
 	@Test
 	public void test1sortiereBlatt(){
 		final ISpielart spiel = new Grandspiel();
-		ISpieler spieler = new Oma("Hallo");
+		IPlayer spieler = new Oma("Hallo");
 		
 		spieler.setSpielart(spiel);
 		ArrayList<Spielkarte> blattest = new ArrayList<Spielkarte>();
@@ -600,7 +600,7 @@ public class SpielerTest{
 	@Test
 	public void equalsTest() {
 		
-		ISpieler spieler2 = new Oma("Rainer Hohn");
+		IPlayer spieler2 = new Oma("Rainer Hohn");
 		assertTrue(spieler.equals(spieler2));
 	}
 	@Test

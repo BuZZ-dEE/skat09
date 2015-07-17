@@ -13,7 +13,7 @@ import skat09.spielkarte.Spielkarte;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public interface ISpieler {
+public interface IPlayer {
 
 	/**
 	 * Gibt den Namen des Spielers zur&uuml;ck.
@@ -64,7 +64,7 @@ public interface ISpieler {
 	 * 
 	 * @return Mitspieler des Spielers
 	 */
-	public abstract ISpieler getMitspieler();
+	public abstract IPlayer getMitspieler();
 
 	/**
 	 * Gibt die bisher gespielten Karten
@@ -137,7 +137,7 @@ public interface ISpieler {
 	 * @param mitspieler
 	 *            - Der Spieler, der Mitspieler ist.
 	 */
-	public abstract void setMitspieler(ISpieler mitspieler);
+	public abstract void setMitspieler(IPlayer mitspieler);
 
 	/**
 	 * Setzt die Liste mit den vom Spieler gespielten Spielen
@@ -344,7 +344,7 @@ public interface ISpieler {
 	 *            wird verglichen werden soll
 	 * @return true, falls die Spieler den gleichen Namen haben
 	 */
-	public abstract boolean equals(ISpieler spieler);
+	public abstract boolean equals(IPlayer spieler);
 
 	/**
 	 * Benutzt der Spieler den Reizagenten, liefert diese Methode den maximalen

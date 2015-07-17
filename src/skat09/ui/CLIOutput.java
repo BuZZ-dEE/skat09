@@ -16,7 +16,7 @@ import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 /**
  * Diese Klasse wird das Spiel f&uuml;r den menschlichen Spieler &uuml;ber die
@@ -117,7 +117,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void weg(ISpieler spieler) {
+	public void weg(IPlayer spieler) {
 
 		String name = spieler.getName();
 
@@ -420,7 +420,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void blattAusgeben(ISpieler spieler) {
+	public void blattAusgeben(IPlayer spieler) {
 
 		ArrayList<Spielkarte> blatt = spieler.getBlatt();
 
@@ -438,7 +438,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, ISpieler spieler) {
+	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, IPlayer spieler) {
 
 		Spielkarte ergebnis = null;
 		ArrayList<Spielkarte> blatt = spieler.getBlatt();
@@ -530,7 +530,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void stichGewonnen(ISpieler spieler) {
+	public void stichGewonnen(IPlayer spieler) {
 
 		System.out.println(">> "
 				+ Messages.getI18n("player.trick.won", spieler.getName()));
@@ -632,7 +632,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void hhVSgewinner(ISpieler gewinner) {
+	public void hhVSgewinner(IPlayer gewinner) {
 
 		String hinterhand = tisch.getHinterhand().getName();
 		System.out.println(Messages.getI18n("game.bidding.against", hinterhand,
@@ -683,7 +683,7 @@ public class CLIOutput extends Output {
 	 * 
 	 * @param spieler
 	 */
-	public void gewinntReizen(ISpieler spieler) {
+	public void gewinntReizen(IPlayer spieler) {
 
 		System.out.println(Messages.getI18n(
 				"player.win.bidding.middlehand.forehand", spieler.getName()));
@@ -760,7 +760,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(ISpieler spieler, Spielkarte karte) {
+	public void spieltKarte(IPlayer spieler, Spielkarte karte) {
 
 		System.out.println(Messages.getI18n("player.name.playing.card",
 				spieler.getName(), karte.toString()));
@@ -959,8 +959,8 @@ public class CLIOutput extends Output {
 				+ Messages.getI18n("game.statistic") + "**************");
 		System.out.println("");
 
-		ISpieler[] allPlayer = tisch.getAllPlayer();
-		for (ISpieler player : allPlayer) {
+		IPlayer[] allPlayer = tisch.getAllPlayer();
+		for (IPlayer player : allPlayer) {
 			statisticOut(tisch, player);
 		}
 	}
@@ -975,7 +975,7 @@ public class CLIOutput extends Output {
 	 * 
 	 * @author Sebastian Schlatow <ssc@openmailbox.org>
 	 */
-	private void statisticOut(Table table, ISpieler player) {
+	private void statisticOut(Table table, IPlayer player) {
 
 		System.out.println(player.getName() + ":");
 		System.out.print(Messages.getI18n("game.statistic.declarer.quantity")

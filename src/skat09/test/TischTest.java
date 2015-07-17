@@ -29,7 +29,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 import skat09.ui.CLIOutput;
 
 
@@ -43,15 +43,15 @@ public class TischTest {
 	Spielkarte spielkarte2;
 	Spielkarte spielkarte3;
 	Spielkarte spielkarte4;
-	ISpieler spieler1 = new Oma("Bert");
-	ISpieler spieler2 = new Oma("Ernie");
+	IPlayer spieler1 = new Oma("Bert");
+	IPlayer spieler2 = new Oma("Ernie");
 
 	Table tisch = new Table();
 	ArrayList<Spielkarte> deck = new ArrayList<Spielkarte>();
 	ArrayList<Spielkarte> spitzen = new ArrayList<Spielkarte>();
 	CLIOutput ausgabe = new CLIOutput(tisch);
 	IController controller = new Controller(tisch, ausgabe);
-	ISpieler spieler3 = new HumanPlayer("Hans", controller);
+	IPlayer spieler3 = new HumanPlayer("Hans", controller);
 	Spielkarte[] skat = new Spielkarte[3];
 
 	@Before
@@ -981,7 +981,7 @@ public class TischTest {
 	
 	@Test
 	public void spielAuswertenTest4() {
-		ISpieler tmp = tisch.getSpieler1();
+		IPlayer tmp = tisch.getSpieler1();
 		tisch.setSpieler1(spieler2);
 		tisch.setSpieler2(tmp);
 		tisch.ermittleAlleinspieler().getStiche().clear();
@@ -990,7 +990,7 @@ public class TischTest {
 	
 	@Test
 	public void spielAuswertenTest5() {
-		ISpieler tmp = tisch.getSpieler1();
+		IPlayer tmp = tisch.getSpieler1();
 		tisch.setSpieler1(spieler3);
 		tisch.setSpieler3(tmp);
 		tisch.ermittleAlleinspieler().getStiche().clear();
@@ -1030,12 +1030,12 @@ public class TischTest {
 		tisch.getSpieler3().getStiche().add(new Spielkarte(Farbe.KREUZ, Wert.BUBE));
 		tisch.getSpieler3().getStiche().add(new Spielkarte(Farbe.PIK, Wert.KOENIG));
 		
-		ISpieler[] spielerU = new ISpieler[3];
+		IPlayer[] spielerU = new IPlayer[3];
 		spielerU[0] = spieler1;
 		spielerU[1] = spieler2;
 		spielerU[2] = spieler3;
 	
-		ISpieler[] spieler = new ISpieler[3];
+		IPlayer[] spieler = new IPlayer[3];
 		spieler[0] = spieler2;
 		spieler[1] = spieler3;
 		spieler[2] = spieler1;
@@ -1046,7 +1046,7 @@ public class TischTest {
 	@Test
 	public void entscheideRamschTest() {
 		
-		ISpieler[] spieler = new ISpieler[3];
+		IPlayer[] spieler = new IPlayer[3];
 		spieler[0] = spieler1;
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
@@ -1072,7 +1072,7 @@ public class TischTest {
 		spieler[2].getStiche().add(new Spielkarte(Farbe.KREUZ, Wert.ZEHN));
 		spieler[2].getStiche().add(new Spielkarte(Farbe.KREUZ, Wert.ASS));
 		
-		ISpieler[] ergebnis = tisch.entscheideRamsch(spieler, 0, 2);
+		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 0, 2);
 		
 		Oma vergleich = new Oma("heino");
 		vergleich.getSpiele().add(240);
@@ -1083,13 +1083,13 @@ public class TischTest {
 	@Test
 	public void entscheideRamschTest2() {
 		
-		ISpieler[] spieler = new ISpieler[3];
+		IPlayer[] spieler = new IPlayer[3];
 		spieler[0] = spieler1;
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
 		spieler[0].getStiche().clear();
 		spieler[2].getStiche().add(new Spielkarte(Farbe.KARO, Wert.ASS));
-		ISpieler[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
+		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
 		
 		Oma vergleich = new Oma("heino");
 		vergleich.getSpiele().add(-124);
@@ -1100,13 +1100,13 @@ public class TischTest {
 	@Test
 	public void entscheideRamschTest3() {
 		
-		ISpieler[] spieler = new ISpieler[3];
+		IPlayer[] spieler = new IPlayer[3];
 		spieler[0] = spieler1;
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
 		spieler[0].getStiche().add(new Spielkarte(Farbe.HERZ, Wert.BUBE));
 		spieler[2].getStiche().add(new Spielkarte(Farbe.KARO, Wert.ASS));
-		ISpieler[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
+		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
 		
 		Oma vergleich = new Oma("heino");
 		vergleich.getSpiele().add(-62);

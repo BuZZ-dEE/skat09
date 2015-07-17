@@ -7,7 +7,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
-import skat09.test.interfaces.ISpieler;
+import skat09.test.interfaces.IPlayer;
 
 
 /**
@@ -18,7 +18,7 @@ import skat09.test.interfaces.ISpieler;
  * @version 03.07.2009
  * 
  */
-public class HumanPlayer extends Player implements ISpieler,
+public class HumanPlayer extends Player implements IPlayer,
 		IHumanPlayer {
 
 	//
