@@ -3,7 +3,7 @@ package skat09.spieler;
 import java.util.ArrayList;
 import java.util.Random;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spielart.Spielartbezeichnung;
@@ -1647,9 +1647,9 @@ public class SmartPlayer extends Player {
 	}
 
 	@Override
-	public Farbspiel farbe() {
+	public SuitGame farbe() {
 
-		Farbspiel farbe = new Farbspiel(ermittleTrumpffarbe());
+		SuitGame farbe = new SuitGame(ermittleTrumpffarbe());
 
 		return farbe;
 	}
@@ -1952,7 +1952,7 @@ public class SmartPlayer extends Player {
 		else if ((buben >= 2 && anzahlKartenVonFarbe >= 4)
 				|| (buben < 2 && anzahlKartenVonFarbe >= 6)) {
 
-			zuReizendeSpielart = new Farbspiel(langeFarbe.get(0).getFarbe());
+			zuReizendeSpielart = new SuitGame(langeFarbe.get(0).getFarbe());
 		}
 
 		else {

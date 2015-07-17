@@ -2,7 +2,7 @@ package skat09.spieler;
 
 import java.io.IOException;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;
@@ -179,7 +179,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	}
 
 	@Override
-	public Farbspiel farbe() {
+	public SuitGame farbe() {
 
 		return controller.getAusgabe().farbe();
 	}

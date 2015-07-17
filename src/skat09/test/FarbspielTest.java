@@ -6,7 +6,7 @@ import java.util.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -14,9 +14,9 @@ import skat09.spielkarte.Wert;
 
 public class FarbspielTest {
 	Farbe a = Farbe.HERZ;
-	Farbspiel spiel = new Farbspiel(a);
+	SuitGame spiel = new SuitGame(a);
 	Farbe b = Farbe.PIK;
-	Farbspiel spiel2 = new Farbspiel(b);
+	SuitGame spiel2 = new SuitGame(b);
 	Spielkarte karte1;
 	Spielkarte karte2;
 	Spielkarte karte3;
@@ -58,12 +58,12 @@ public class FarbspielTest {
 
 	@Test
 	public void FarbspielTest3() {
-		assertEquals(Farbe.KARO, new Farbspiel(Farbe.KARO).getTrumpffarbe());
+		assertEquals(Farbe.KARO, new SuitGame(Farbe.KARO).getTrumpffarbe());
 	}
 
 	@Test
 	public void FarbspielTest2() {
-		assertEquals(Spielartbezeichnung.FARBE, new Farbspiel(Farbe.KARO)
+		assertEquals(Spielartbezeichnung.FARBE, new SuitGame(Farbe.KARO)
 				.getSpielart());
 	}
 

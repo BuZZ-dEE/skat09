@@ -2,7 +2,7 @@ package skat09.test.stub;
 
 import java.util.ArrayList;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -49,9 +49,9 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public Farbspiel farbe() {
+	public SuitGame farbe() {
 		
-		return new Farbspiel(Farbe.KARO);
+		return new SuitGame(Farbe.KARO);
 	}
 
 	
@@ -181,7 +181,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	
 	public ISpielart spielAnsagen() {
 		
-		return new Farbspiel(null);
+		return new SuitGame(null);
 	}
 
 	

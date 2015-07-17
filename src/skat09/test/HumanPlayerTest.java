@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.Table;
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Spielart;
 import skat09.spieler.HumanPlayer;
@@ -156,7 +156,7 @@ public class HumanPlayerTest {
 	@Test
 	public void farbeTest() {
 
-		Farbspiel farbspiel = new Farbspiel(Farbe.PIK);
+		SuitGame farbspiel = new SuitGame(Farbe.PIK);
 		assertEquals(farbspiel.getTrumpffarbe(), mensch.farbe()
 				.getTrumpffarbe());
 	}

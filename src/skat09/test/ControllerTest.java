@@ -13,7 +13,7 @@ import org.junit.Test;
 import skat09.Controller;
 import skat09.SkatVariant;
 import skat09.Table;
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spieler.HumanPlayer;
@@ -514,7 +514,7 @@ public class ControllerTest {
 		skat[1] = new Spielkarte(Farbe.HERZ, Wert.SECHS);
 		skat[2] = new Spielkarte(Farbe.PIK, Wert.DAME);
 		controller2.getTisch().setSkat(skat);
-		controller2.getTisch().setSpielart(new Farbspiel(Farbe.KARO));
+		controller2.getTisch().setSpielart(new SuitGame(Farbe.KARO));
 
 		
 		//handspiel pruefen
@@ -526,7 +526,7 @@ public class ControllerTest {
 		//spielart pruefen
 		boolean spielart2 = false;
 		System.out.println(controller2.getTisch().getSpielart().toString());
-		if (controller2.getTisch().getSpielart().toString().equals((new Farbspiel(Farbe.KARO)).toString())) {
+		if (controller2.getTisch().getSpielart().toString().equals((new SuitGame(Farbe.KARO)).toString())) {
 			spielart2 = true;
 		}
 		
@@ -569,7 +569,7 @@ public class ControllerTest {
 		blatt1.add(new Spielkarte(Farbe.PIK, Wert.ZEHN));
 		spieler1.setStiche(blatt1);
 		spieler1.setBlatt(blatt1);
-		spieler1.setSpielart(new Farbspiel(Farbe.KREUZ));
+		spieler1.setSpielart(new SuitGame(Farbe.KREUZ));
 		spieler1.spitzenEinordnen();
 		
 		ArrayList<Spielkarte> blatt2 = new ArrayList<Spielkarte>(); 
@@ -589,7 +589,7 @@ public class ControllerTest {
 		tisch2.setSpieler1(spieler1);
 		tisch2.setSpieler2(spieler2);
 		tisch2.setSpieler3(spieler3);
-		tisch2.setSpielart(new Farbspiel(Farbe.KREUZ));
+		tisch2.setSpielart(new SuitGame(Farbe.KREUZ));
 		
 		controller.auswertung();
 		

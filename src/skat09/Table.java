@@ -6,7 +6,7 @@ import java.util.Observable;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
@@ -1712,7 +1712,7 @@ public class Table extends Observable {
 			zwierg = 24;
 		}
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE) {
-			Farbspiel spiel = (Farbspiel) spielart;
+			SuitGame spiel = (SuitGame) spielart;
 			zwierg = spiel.getTrumpffarbe().wert();
 		}
 		
@@ -1825,7 +1825,7 @@ public class Table extends Observable {
 	public int punkteFarbspiel(int augenzahl) {
 		int punkte = 0;
 		int grundwert = 0;
-		Farbspiel spiel = (Farbspiel) spielart;
+		SuitGame spiel = (SuitGame) spielart;
 		grundwert = spiel.getTrumpffarbe().wert();
 		grundwertliste.add(grundwert);
 		punkte = (Math.abs(ermittleAlleinspieler().spitzenZahl()) + berechneStufe(augenzahl))

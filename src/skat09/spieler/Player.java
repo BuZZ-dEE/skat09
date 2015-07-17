@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Spielkarte;
@@ -370,7 +370,7 @@ abstract public class Player implements IPlayer {
 	abstract public boolean schwarz();
 
 	//@Override
-	abstract public Farbspiel farbe();
+	abstract public SuitGame farbe();
 
 	//@Override
 	public ArrayList<Integer> neuerEintrag(int punkte) {
@@ -502,7 +502,7 @@ abstract public class Player implements IPlayer {
 	public void farbeneinordnen() {
 		
 		int kartenwert = 0;
-		Farbspiel spiel = (Farbspiel) spielart;
+		SuitGame spiel = (SuitGame) spielart;
 		ArrayList<Spielkarte> blatt = getBlatt();
 
 		for (int i = 0; i < blatt.size(); i++) {
@@ -614,7 +614,7 @@ abstract public class Player implements IPlayer {
 				erg = -4;
 			}
 			
-			if (spielart instanceof Farbspiel) {
+			if (spielart instanceof SuitGame) {
 
 				erg = -11;
 			}

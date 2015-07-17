@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.Spielkarte;
@@ -90,9 +90,9 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public Farbspiel farbe() {
+	public SuitGame farbe() {
 		
-		Farbspiel farbspiel = new Farbspiel(Farbe.PIK);
+		SuitGame farbspiel = new SuitGame(Farbe.PIK);
 		return farbspiel;
 	}
 

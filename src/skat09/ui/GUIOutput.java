@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 
 import skat09.Messages;
 import skat09.Table;
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spieler.PlayerEnum;
@@ -163,8 +163,8 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public Farbspiel farbe() {
-		Farbspiel spiel = null;
+	public SuitGame farbe() {
+		SuitGame spiel = null;
 		String farbe = hfenster.getFarbe();
 		spiel = farbeansagen(farbe);
 		return spiel;
@@ -206,7 +206,7 @@ public class GUIOutput extends Output {
 			spiel = new Nullspiel();
 		} else {
 // TODO why not spiel = new Farbspiel(spielart);
-			spiel = new Farbspiel(null);
+			spiel = new SuitGame(null);
 		}
 
 		return spiel;
@@ -407,16 +407,16 @@ public class GUIOutput extends Output {
 	 * @param s Der String, der die Farbe beinhaltet
 	 * @return Das gew&auml;hlte Farbspiel
 	 */
-	public Farbspiel farbeansagen(String s) {
-		Farbspiel spiel = null;
+	public SuitGame farbeansagen(String s) {
+		SuitGame spiel = null;
 		if (s.compareTo("Herz") == 0) {
-			spiel = new Farbspiel(Farbe.HERZ);
+			spiel = new SuitGame(Farbe.HERZ);
 		} else if (s.compareTo("Karo") == 0 || s.compareTo("Schellen") == 0) {
-			spiel = new Farbspiel(Farbe.KARO);
+			spiel = new SuitGame(Farbe.KARO);
 		} else if (s.compareTo("Pik") == 0 || s.compareTo("Gruen") == 0) {
-			spiel = new Farbspiel(Farbe.PIK);
+			spiel = new SuitGame(Farbe.PIK);
 		} else if (s.compareTo("Kreuz") == 0 || s.compareTo("Eichel") == 0) {
-			spiel = new Farbspiel(Farbe.KREUZ);
+			spiel = new SuitGame(Farbe.KREUZ);
 		} else {
 			System.out.println("Fehler in farbeansagen()");
 		}

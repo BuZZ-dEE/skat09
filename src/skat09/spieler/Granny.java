@@ -1,6 +1,6 @@
 package skat09.spieler;
 
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielkarte.Spielkarte;
 import skat09.test.interfaces.ISpielart;
@@ -128,7 +128,7 @@ public class Granny extends Player {
 	}
 
 	@Override
-	public Farbspiel farbe() {
+	public SuitGame farbe() {
 	
 		return null;
 	}

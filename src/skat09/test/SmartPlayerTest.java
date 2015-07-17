@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.Table;
-import skat09.spielart.Farbspiel;
+import skat09.spielart.SuitGame;
 import skat09.spielart.Grandspiel;
 import skat09.spielart.Nullspiel;
 import skat09.spielart.Ramsch;
@@ -37,7 +37,7 @@ public class SmartPlayerTest {
 	Spielkarte spielkarte4;
 	Spielkarte spielkarte5;
 	Spielkarte[] gespielteKarten = new Spielkarte[3];
-	Farbspiel spiel = new Farbspiel(Farbe.HERZ);
+	SuitGame spiel = new SuitGame(Farbe.HERZ);
 	@Before
 	public void setUp() {
 		spielkarte1 = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
@@ -1775,7 +1775,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteNeunTest1() {
 		
-		spieler.setSpielart(new Farbspiel(Farbe.PIK));
+		spieler.setSpielart(new SuitGame(Farbe.PIK));
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.DAME);
 		
 		boolean erfolgreich = false;
@@ -1820,7 +1820,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechsteHoehereKarteKoenigTest1() {
 		
-		spieler.setSpielart(new Farbspiel(Farbe.PIK));
+		spieler.setSpielart(new SuitGame(Farbe.PIK));
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.ZEHN);
 		
 		boolean erfolgreich = false;
@@ -1865,7 +1865,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteZehnTest1() {
 		
-		spieler.setSpielart(new Farbspiel(Farbe.PIK));
+		spieler.setSpielart(new SuitGame(Farbe.PIK));
 		Spielkarte karte = new Spielkarte(Farbe.PIK, Wert.ASS);
 		
 		boolean erfolgreich = false;
@@ -2001,7 +2001,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteDameTest1() {
 		
-		spieler.setSpielart(new Farbspiel(Farbe.KARO));
+		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.NEUN);
 		
 		boolean erfolgreich = false;
@@ -2046,7 +2046,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteZehnTest1() {
 		
-		spieler.setSpielart(new Farbspiel(Farbe.KARO));
+		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
 		
 		boolean erfolgreich = false;
@@ -2091,7 +2091,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteAssTest1() {
 		
-		spieler.setSpielart(new Farbspiel(Farbe.KARO));
+		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.ZEHN);
 		
 		boolean erfolgreich = false;
@@ -2489,7 +2489,7 @@ public class SmartPlayerTest {
 		blatt.add(new Spielkarte(Farbe.HERZ, Wert.ASS));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new Farbspiel(Farbe.HERZ).getSpielart(), 
+		assertEquals(new SuitGame(Farbe.HERZ).getSpielart(), 
 				spieler.farbe().getSpielart());
 	}
 	
@@ -2605,7 +2605,7 @@ public class SmartPlayerTest {
 		blatt.add(karte6);
 		spieler.setBlatt(blatt);
 		
-		assertEquals(6, spieler.ermittleSpitzen(new Farbspiel(Farbe.KARO)));
+		assertEquals(6, spieler.ermittleSpitzen(new SuitGame(Farbe.KARO)));
 	}
 	
 	@Test
@@ -2762,7 +2762,7 @@ public class SmartPlayerTest {
 		spitzen[8] = karte7;
 		spieler.setBlatt(blatt);
 		
-		Spielkarte[] spielerSpitzen = spieler.farbeSpitzen(new Farbspiel(Farbe.KARO));
+		Spielkarte[] spielerSpitzen = spieler.farbeSpitzen(new SuitGame(Farbe.KARO));
 		
 		assertArrayEquals(spitzen, spielerSpitzen);
 	}
@@ -2959,7 +2959,7 @@ public class SmartPlayerTest {
 		blatt.add(new Spielkarte(Farbe.KREUZ, Wert.SIEBEN));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new Farbspiel(Farbe.PIK).getSpielart(), 
+		assertEquals(new SuitGame(Farbe.PIK).getSpielart(), 
 				spieler.bestimmeSpielart().getSpielart());
 	}
 	
@@ -2979,7 +2979,7 @@ public class SmartPlayerTest {
 		blatt.add(new Spielkarte(Farbe.KREUZ, Wert.SIEBEN));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new Farbspiel(Farbe.PIK).getSpielart(), 
+		assertEquals(new SuitGame(Farbe.PIK).getSpielart(), 
 				spieler.bestimmeSpielart().getSpielart());
 	}
 	
