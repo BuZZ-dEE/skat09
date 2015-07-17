@@ -22,7 +22,7 @@ import skat09.test.interfaces.ISpielart;
  *         Bruhns
  * @version 03.07.2009
  */
-public class SchlauerSpieler extends Player {
+public class SmartPlayer extends Player {
 
 	//
 	// Datenfelder
@@ -44,7 +44,7 @@ public class SchlauerSpieler extends Player {
 	// Konstruktor
 	//
 
-	public SchlauerSpieler(String name) {
+	public SmartPlayer(String name) {
 
 		super(name);
 		maxReizwert = -1;
