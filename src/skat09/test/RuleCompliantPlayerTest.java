@@ -18,7 +18,7 @@ import skat09.spielkarte.Spielkarte;
 import skat09.spielkarte.Wert;
 
 
-public class RegelkonformerSpielerTest {
+public class RuleCompliantPlayerTest {
 	
 	ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
 	Spielkarte spielkarte1;
