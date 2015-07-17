@@ -26,7 +26,7 @@ import skat09.test.stub.ControllerStub;
 import skat09.test.stub.NullspielStub;
 
 
-public class MenschlicherSpielerTest {
+public class HumanPlayerTest {
 
 	Table tisch = new Table();
 	IOutput ausgabe = new OutputStub(null,null,null);
