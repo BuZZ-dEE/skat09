@@ -4,7 +4,7 @@ package skat09.spieler;
 
 import skat09.spielart.SuitGame;
 import skat09.spielart.NullGame;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.ISpielart;
 
 /**
@@ -48,9 +48,9 @@ public class RuleCompliantPlayer extends Player {
 	//
 
 	@Override
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten) {
+	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
 		
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 	
 		ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
 		
@@ -61,7 +61,7 @@ public class RuleCompliantPlayer extends Player {
 	 * Der regelkonforme Spieler ist nie Alleinspieler und dr&uuml;ckt deshalb auch
 	 * nie.
 	 */
-	public Spielkarte[] druecken(Spielkarte[] skat) {
+	public PlayingCard[] druecken(PlayingCard[] skat) {
 
 		return null;
 	}

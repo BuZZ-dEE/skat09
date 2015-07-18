@@ -8,7 +8,7 @@ import org.junit.Test;
 import skat09.spielart.GrandGame;
 import skat09.spieler.Granny;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import static org.junit.Assert.*;
 
@@ -16,18 +16,18 @@ import static org.junit.Assert.*;
 public class GrannyTest {
 
 	private Granny oma = new Granny("Franz");
-	Spielkarte spielkarte1 = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
-	Spielkarte spielkarte2 = new Spielkarte(Farbe.KARO, Wert.ACHT);
-	Spielkarte spielkarte3 = new Spielkarte(Farbe.KARO, Wert.NEUN);
-	Spielkarte spielkarte4 = new Spielkarte(Farbe.KARO, Wert.ZEHN);
-	Spielkarte spielkarte5 = new Spielkarte(Farbe.KARO, Wert.BUBE);
-	Spielkarte spielkarte6 = new Spielkarte(Farbe.KARO, Wert.DAME);
-	Spielkarte spielkarte7 = new Spielkarte(Farbe.KARO, Wert.KOENIG);
-	Spielkarte spielkarte8 = new Spielkarte(Farbe.KARO, Wert.ASS);
-	Spielkarte spielkarte9 = new Spielkarte(Farbe.HERZ, Wert.SIEBEN);
-	Spielkarte spielkarte10 = new Spielkarte(Farbe.HERZ, Wert.ACHT);
+	PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+	PlayingCard spielkarte2 = new PlayingCard(Farbe.KARO, Wert.ACHT);
+	PlayingCard spielkarte3 = new PlayingCard(Farbe.KARO, Wert.NEUN);
+	PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+	PlayingCard spielkarte5 = new PlayingCard(Farbe.KARO, Wert.BUBE);
+	PlayingCard spielkarte6 = new PlayingCard(Farbe.KARO, Wert.DAME);
+	PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.KOENIG);
+	PlayingCard spielkarte8 = new PlayingCard(Farbe.KARO, Wert.ASS);
+	PlayingCard spielkarte9 = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
+	PlayingCard spielkarte10 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
 
-	ArrayList<Spielkarte> omablatt = new ArrayList<Spielkarte>();
+	ArrayList<PlayingCard> omablatt = new ArrayList<PlayingCard>();
 	
 	public GrannyTest(){
 		omablatt.add(spielkarte1);
@@ -77,7 +77,7 @@ public class GrannyTest {
 	@Test
 	public void testdruecken(){
 		
-		Spielkarte[] temp = new Spielkarte[2];
+		PlayingCard[] temp = new PlayingCard[2];
 		temp[0] = oma.getBlatt().get(1);
 		temp[1] = oma.getBlatt().get(2);
 		assertEquals(null,oma.druecken(temp));

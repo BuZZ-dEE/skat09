@@ -3,7 +3,7 @@ package skat09.spielart;
 import java.util.ArrayList;
 
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 
 
@@ -120,7 +120,7 @@ public class SuitGame extends Spielart {
 //	}
 	
 	@Override
-	public boolean gespielteKartePruefen(ArrayList<Spielkarte> blatt, Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
+	public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 
 		boolean ergebnis = false;
 
@@ -152,7 +152,7 @@ public class SuitGame extends Spielart {
 	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	public boolean bubeOderTrumpfBedienen(ArrayList<Spielkarte> blatt, Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
+	public boolean bubeOderTrumpfBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 		
 		boolean ergebnis = true;
 		
@@ -181,9 +181,9 @@ public class SuitGame extends Spielart {
 	}
 
 	@Override
-	public Spielkarte hoehereKarte(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte hoehereKarte = null;
+		PlayingCard hoehereKarte = null;
 
 		if (karte1.getWert() == Wert.BUBE && karte2.getWert() == Wert.BUBE) {
 
@@ -228,9 +228,9 @@ public class SuitGame extends Spielart {
 	 * @param karte2 - die zweite Karte
 	 * @return Der Bube wird zur&uuml;ck geliefert.
 	 */
-	public Spielkarte hoehereKarteEinTrumpf(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard hoehereKarteEinTrumpf(PlayingCard karte1, PlayingCard karte2) {
 		
-		Spielkarte ergebnis;
+		PlayingCard ergebnis;
 		
 		if (karte1.getFarbe() == trumpffarbe) {
 
@@ -246,9 +246,9 @@ public class SuitGame extends Spielart {
 	}
 
 	@Override
-	public Spielkarte sortiereKarte(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard sortiereKarte(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte hoehereKarte = null;
+		PlayingCard hoehereKarte = null;
 
 		if (karte1.getWert() == Wert.BUBE && karte2.getWert() == Wert.BUBE) {
 

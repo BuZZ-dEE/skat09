@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import skat09.spielart.GrandGame;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 
 
@@ -22,19 +22,19 @@ public class SpielartTest {
 	// benoetigte Datenfelder
 	//
 
-	Spielkarte spielkarte1;
-	Spielkarte spielkarte2;
-	Spielkarte spielkarte3;
-	Spielkarte spielkarte4;
-	Spielkarte spielkarte5;
-	Spielkarte spielkarte6;
-	Spielkarte spielkarte7;
-	Spielkarte spielkarte8;
-	Spielkarte spielkarte9;
-	Spielkarte spielkarte10;
-	Spielkarte spielkarte11;
-	Spielkarte spielkarte12;
-	Spielkarte spielkarte13;
+	PlayingCard spielkarte1;
+	PlayingCard spielkarte2;
+	PlayingCard spielkarte3;
+	PlayingCard spielkarte4;
+	PlayingCard spielkarte5;
+	PlayingCard spielkarte6;
+	PlayingCard spielkarte7;
+	PlayingCard spielkarte8;
+	PlayingCard spielkarte9;
+	PlayingCard spielkarte10;
+	PlayingCard spielkarte11;
+	PlayingCard spielkarte12;
+	PlayingCard spielkarte13;
 	GrandGame spiel = new GrandGame();
 
 	// Bei diesem Test enthaelt das Blatt des Spielers noch einige Karten.
@@ -45,32 +45,32 @@ public class SpielartTest {
 	@Before
 	public void setUp() {
 
-		spielkarte1 = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
-		spielkarte2 = new Spielkarte(Farbe.HERZ, Wert.ACHT);
-		spielkarte3 = new Spielkarte(Farbe.PIK, Wert.NEUN);
-		spielkarte4 = new Spielkarte(Farbe.KREUZ, Wert.DAME);
-		spielkarte5 = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
-		spielkarte6 = new Spielkarte(Farbe.KREUZ, Wert.ZEHN);
-		spielkarte7 = new Spielkarte(Farbe.KREUZ, Wert.ASS);
-		spielkarte8 = new Spielkarte(Farbe.KARO, Wert.BUBE);
-		spielkarte9 = new Spielkarte(Farbe.HERZ, Wert.BUBE);
-		spielkarte10 = new Spielkarte(Farbe.PIK, Wert.BUBE);
-		spielkarte11 = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
-		spielkarte12 = new Spielkarte(Farbe.HERZ, Wert.SECHS);
-		spielkarte13 = new Spielkarte(Farbe.HERZ, Wert.SECHS);
+		spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
+		spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
+		spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
+		spielkarte5 = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
+		spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
+		spielkarte7 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		spielkarte8 = new PlayingCard(Farbe.KARO, Wert.BUBE);
+		spielkarte9 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
+		spielkarte10 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		spielkarte11 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		spielkarte12 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
+		spielkarte13 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
 	}
 	
 	@Test
 	public void farbeBedienenTest() {
 		
-		ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte9);
 		blatt.add(spielkarte11);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		blatt.add(spielkarte2);
-		Spielkarte[] gespielteKarten = new Spielkarte[3];
+		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = spielkarte13;
 		
 		assertTrue(spiel.farbeBedienen(blatt, gespielteKarten, spielkarte2));
@@ -79,14 +79,14 @@ public class SpielartTest {
 	@Test
 	public void farbeBedienenTest2() {
 		
-		ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte9);
 		blatt.add(spielkarte11);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		blatt.add(spielkarte2);
-		Spielkarte[] gespielteKarten = new Spielkarte[3];
+		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = spielkarte13;
 		
 		assertFalse(spiel.farbeBedienen(blatt, gespielteKarten, spielkarte10));

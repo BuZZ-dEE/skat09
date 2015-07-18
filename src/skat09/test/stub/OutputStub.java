@@ -7,7 +7,7 @@ import java.util.Observable;
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
@@ -72,7 +72,7 @@ public class OutputStub implements IOutput{
 
 	//Drueckt immer die erste Karte des Blattes
 	
-	public int druecken(ArrayList<Spielkarte> blatt, int nummer) {
+	public int druecken(ArrayList<PlayingCard> blatt, int nummer) {
 		
 		return 0; 
 	}
@@ -259,7 +259,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public void skatAusgeben(Spielkarte[] skat) throws IOException {
+	public void skatAusgeben(PlayingCard[] skat) throws IOException {
 		
 	}
 
@@ -299,15 +299,15 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, IPlayer spieler)
+	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		
-		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
 		return karte;
 	}
 
 	
-	public void spieltKarte(IPlayer spieler, Spielkarte karte) {
+	public void spieltKarte(IPlayer spieler, PlayingCard karte) {
 		
 		gespielteKartenZahl++;
 	}

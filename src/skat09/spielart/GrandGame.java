@@ -2,7 +2,7 @@ package skat09.spielart;
 
 import java.util.ArrayList;
 
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 
 
@@ -26,7 +26,7 @@ public class GrandGame extends Spielart {
 
 	
 	@Override
-	public boolean gespielteKartePruefen(ArrayList<Spielkarte> blatt, Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
+	public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 
 		boolean ergebnis = false;
 
@@ -58,7 +58,7 @@ public class GrandGame extends Spielart {
 	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	public boolean bubeBedienen(ArrayList<Spielkarte> blatt, Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
+	public boolean bubeBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 		
 		boolean ergebnis = true;
 		
@@ -87,9 +87,9 @@ public class GrandGame extends Spielart {
 	}
 
 	@Override
-	public Spielkarte hoehereKarte(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte hoehereKarte = null;
+		PlayingCard hoehereKarte = null;
 
 		if (karte1.getWert() == Wert.BUBE && karte2.getWert() == Wert.BUBE) {
 
@@ -118,9 +118,9 @@ public class GrandGame extends Spielart {
 	}
 
 	@Override
-	public Spielkarte sortiereKarte(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard sortiereKarte(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte hoehereKarte = null;
+		PlayingCard hoehereKarte = null;
 
 		if (karte1.getWert() == Wert.BUBE && karte2.getWert() == Wert.BUBE) {
 

@@ -2,7 +2,7 @@ package skat09.test.interfaces;
 
 import java.util.ArrayList;
 
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 
 /**
  * Das Interface INullspiel beinhaltet die Methodenr&uuml;mpfe f&uuml;r Nullspiel
@@ -19,8 +19,8 @@ public interface INullGame {
 	 * @param zuPruefendeKarte
 	 * @return boolean ob die gew&auml;hlte Karte g&uuml;ltig ist
 	 */
-	public abstract boolean gespielteKartePruefen(ArrayList<Spielkarte> blatt,
-			Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte);
+	public abstract boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 	
 	/**
 	 * pr&uuml;ft ob mit der gegeben Karte zu bedienen ist 
@@ -29,7 +29,7 @@ public interface INullGame {
 	 * @param zuPruefendeKarte
 	 * @return boolean
 	 */
-	public abstract boolean farbeBedienen(ArrayList<Spielkarte> blatt, Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte);
+	public abstract boolean farbeBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 
 	/**
 	 * ermittelt die h&ouml;here Karte
@@ -37,7 +37,7 @@ public interface INullGame {
 	 * @param karte2
 	 * @return die h&ouml;here Karte
 	 */
-	public abstract Spielkarte hoehereKarte(Spielkarte karte1, Spielkarte karte2);
+	public abstract PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2);
 
 	/**
 	 * sortiert Karten
@@ -45,15 +45,15 @@ public interface INullGame {
 	 * @param karte2
 	 * @return die h&ouml;here Karte
 	 */
-	public abstract Spielkarte sortiereKarte(Spielkarte karte1,
-			Spielkarte karte2);
+	public abstract PlayingCard sortiereKarte(PlayingCard karte1,
+			PlayingCard karte2);
 
 	/**
 	 * Bewertet die Karte
 	 * @param karte
 	 * @return int
 	 */
-	public abstract int karteBewerten(Spielkarte karte);
+	public abstract int karteBewerten(PlayingCard karte);
 
 	/**
 	 * gibt nen String aus

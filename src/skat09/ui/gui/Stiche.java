@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 
 import skat09.Messages;
 import skat09.Table;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 
 
 /**
@@ -102,7 +102,7 @@ public class Stiche extends JFrame {
 		int spalte = 0;
 		int reihe = 0;
 		GridBagConstraints c = new GridBagConstraints();
-		ArrayList<Spielkarte> karten = tisch.getSpieler1()
+		ArrayList<PlayingCard> karten = tisch.getSpieler1()
 				.getAllegespieltenkarten();
 
 		panel.removeAll();
@@ -111,7 +111,7 @@ public class Stiche extends JFrame {
 		c.gridx = 0;
 		c.gridy = 0;
 
-		for (Spielkarte karte : karten) {
+		for (PlayingCard karte : karten) {
 
 			Image image = null;
 
@@ -144,7 +144,7 @@ public class Stiche extends JFrame {
 		int spalte = 0;
 		int reihe = 0;
 		GridBagConstraints c = new GridBagConstraints();
-		ArrayList<Spielkarte> karten = tisch.getSpieler1()
+		ArrayList<PlayingCard> karten = tisch.getSpieler1()
 				.getAllegespieltenkarten();
 
 		panel.removeAll();

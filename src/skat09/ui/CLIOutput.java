@@ -13,7 +13,7 @@ import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
@@ -264,7 +264,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public int druecken(ArrayList<Spielkarte> blatt, int nummer) {
+	public int druecken(ArrayList<PlayingCard> blatt, int nummer) {
 
 		ISpielart spielart = new GrandGame();
 		int ergebnis = -1;
@@ -285,7 +285,7 @@ public class CLIOutput extends Output {
 		System.out.println(Messages.getI18n("game.deck.yours") + ":");
 		for (int i = 0; i < blatt.size(); i++) {
 
-			Spielkarte karte = blatt.get(i);
+			PlayingCard karte = blatt.get(i);
 			Farbe farbe = karte.getFarbe();
 			Wert wert = karte.getWert();
 			System.out.println(i + ": " + farbe + " " + wert); // TODO also
@@ -422,13 +422,13 @@ public class CLIOutput extends Output {
 	@Override
 	public void blattAusgeben(IPlayer spieler) {
 
-		ArrayList<Spielkarte> blatt = spieler.getBlatt();
+		ArrayList<PlayingCard> blatt = spieler.getBlatt();
 
 		System.out.println(Messages.getI18n("game.hand.card.yours"));
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			Spielkarte karte = blatt.get(i);
+			PlayingCard karte = blatt.get(i);
 			// Farbe farbe = karte.getFarbe();
 			// Wert wert = karte.getWert();
 			System.out.println(i + ": " + karte.toString());
@@ -438,10 +438,10 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, IPlayer spieler) {
+	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler) {
 
-		Spielkarte ergebnis = null;
-		ArrayList<Spielkarte> blatt = spieler.getBlatt();
+		PlayingCard ergebnis = null;
+		ArrayList<PlayingCard> blatt = spieler.getBlatt();
 		// gueltig wird true gesetzt, wenn eine gueltige Zahl von Konsole
 		// eingelesen wurde.
 		boolean gueltig = false;
@@ -547,7 +547,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void skatAusgeben(Spielkarte[] skat) {
+	public void skatAusgeben(PlayingCard[] skat) {
 
 		System.out.println(Messages.getI18n("game.skat.cards.in"));
 		System.out.println(Messages.getI18n("game.skat.cards",
@@ -602,7 +602,7 @@ public class CLIOutput extends Output {
 	public void spielBeendet() {
 		System.out.println(Messages.getI18n("game.over"));
 		System.out.println(Messages.getI18n("game.skat.in.was"));
-		Spielkarte[] skat = tisch.getSkat();
+		PlayingCard[] skat = tisch.getSkat();
 		System.out.println(Messages.getI18n("game.skat.card.first",
 				skat[0].toString()));
 		System.out.println(Messages.getI18n("game.skat.card.second",
@@ -760,7 +760,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(IPlayer spieler, Spielkarte karte) {
+	public void spieltKarte(IPlayer spieler, PlayingCard karte) {
 
 		System.out.println(Messages.getI18n("player.name.playing.card",
 				spieler.getName(), karte.toString()));
@@ -930,11 +930,11 @@ public class CLIOutput extends Output {
 	 * @param gespielteKarten
 	 *            Die Karten, die sich schon auf dem Tisch befinden
 	 */
-	public void hilfeSpielbar(Spielkarte[] gespielteKarten) {
-		ArrayList<Spielkarte> karten = tisch.gibMenschlicherSpieler()
+	public void hilfeSpielbar(PlayingCard[] gespielteKarten) {
+		ArrayList<PlayingCard> karten = tisch.gibMenschlicherSpieler()
 				.spielbareKarten(gespielteKarten);
 		System.out.println(Messages.getI18n("game.playable.cards"));
-		for (Spielkarte karte : karten) {
+		for (PlayingCard karte : karten) {
 			System.out.println(karte.toString());
 		}
 	}
@@ -943,10 +943,10 @@ public class CLIOutput extends Output {
 	 * Gibt die vergangenen Stiche aus;
 	 */
 	public void hilfeStiche() {
-		ArrayList<Spielkarte> karten = tisch.getSpieler1()
+		ArrayList<PlayingCard> karten = tisch.getSpieler1()
 				.getAllegespieltenkarten();
 		System.out.println(Messages.getI18n("game.tricks.last"));
-		for (Spielkarte karte : karten) {
+		for (PlayingCard karte : karten) {
 			System.out.println(karte.toString());
 		}
 	}

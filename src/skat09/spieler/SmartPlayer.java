@@ -8,7 +8,7 @@ import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
 
@@ -38,7 +38,7 @@ public class SmartPlayer extends Player {
 	ISpielart zuspielendeSpielart;
 
 	// Das Anfangsblatt
-	ArrayList<Spielkarte> anfangsBlatt;
+	ArrayList<PlayingCard> anfangsBlatt;
 
 	//
 	// Konstruktor
@@ -71,7 +71,7 @@ public class SmartPlayer extends Player {
 	 * 
 	 * @return das anfangsblatt, das der spieler bekommt, wenn ausgeteilt wurde
 	 */
-	public ArrayList<Spielkarte> getAnfangsBlatt() {
+	public ArrayList<PlayingCard> getAnfangsBlatt() {
 
 		return anfangsBlatt;
 	}
@@ -82,9 +82,9 @@ public class SmartPlayer extends Player {
 	 * @param blatt
 	 */
 	@SuppressWarnings("unchecked")
-	public void setAnfangsblatt(ArrayList<Spielkarte> blatt) {
+	public void setAnfangsblatt(ArrayList<PlayingCard> blatt) {
 
-		anfangsBlatt = (ArrayList<Spielkarte>) blatt.clone();
+		anfangsBlatt = (ArrayList<PlayingCard>) blatt.clone();
 	}
 
 	/**
@@ -102,9 +102,9 @@ public class SmartPlayer extends Player {
 	//
 
 	@Override
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten) {
+	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
@@ -139,9 +139,9 @@ public class SmartPlayer extends Player {
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Grands gespielt werden soll
 	 */
-	public Spielkarte grandSpielen(Spielkarte[] gespielteKarten) {
+	public PlayingCard grandSpielen(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (gespielteKarten[0] == null) {
 
@@ -168,9 +168,9 @@ public class SmartPlayer extends Player {
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Farbspiels gespielt werden soll
 	 */
-	public Spielkarte farbeSpielen(Spielkarte[] gespielteKarten) {
+	public PlayingCard farbeSpielen(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (gespielteKarten[0] == null) {
 
@@ -198,9 +198,9 @@ public class SmartPlayer extends Player {
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Nullspiels gespielt werden soll
 	 */
-	public Spielkarte nullSpielen(Spielkarte[] gespielteKarten) {
+	public PlayingCard nullSpielen(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (gespielteKarten[0] == null) {
 
@@ -228,9 +228,9 @@ public class SmartPlayer extends Player {
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Nullspiels gespielt werden soll
 	 */
-	public Spielkarte ramschSpielen(Spielkarte[] gespielteKarten) {
+	public PlayingCard ramschSpielen(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (gespielteKarten[0] == null) {
 
@@ -258,10 +258,10 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte rauskommenGrand(Spielkarte[] gespielteKarten) {
+	public PlayingCard rauskommenGrand(PlayingCard[] gespielteKarten) {
 
-		ArrayList<Spielkarte> farbe = new ArrayList<Spielkarte>();
-		Spielkarte ergebnis = null;
+		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
+		PlayingCard ergebnis = null;
 		Random zufallszahl = new Random();
 
 		if (istAlleinspieler) {
@@ -313,9 +313,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte alsZweiterKarteSpielenGrand(Spielkarte[] gespielteKarten) {
+	public PlayingCard alsZweiterKarteSpielenGrand(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (istAlleinspieler) {
 
@@ -360,9 +360,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte alsDritterKarteSpielenGrand(Spielkarte[] gespielteKarten) {
+	public PlayingCard alsDritterKarteSpielenGrand(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (istAlleinspieler) {
 
@@ -413,10 +413,10 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte rauskommen(Spielkarte[] gespielteKarten) {
+	public PlayingCard rauskommen(PlayingCard[] gespielteKarten) {
 
-		ArrayList<Spielkarte> farbe = new ArrayList<Spielkarte>();
-		Spielkarte ergebnis = null;
+		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
+		PlayingCard ergebnis = null;
 		Random zufallszahl = new Random();
 
 		if (istAlleinspieler) {
@@ -468,9 +468,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte alsZweiterKarteSpielen(Spielkarte[] gespielteKarten) {
+	public PlayingCard alsZweiterKarteSpielen(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (istAlleinspieler) {
 
@@ -514,9 +514,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte alsDritterKarteSpielen(Spielkarte[] gespielteKarten) {
+	public PlayingCard alsDritterKarteSpielen(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (istAlleinspieler) {
 
@@ -567,10 +567,10 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte rauskommenNull(Spielkarte[] gespielteKarten) {
+	public PlayingCard rauskommenNull(PlayingCard[] gespielteKarten) {
 
-		ArrayList<Spielkarte> farbe = new ArrayList<Spielkarte>();
-		Spielkarte ergebnis = null;
+		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
+		PlayingCard ergebnis = null;
 		Random zufallszahl = new Random();
 
 		if (istAlleinspieler) {
@@ -622,9 +622,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte alsZweiterKarteSpielenNull(Spielkarte[] gespielteKarten) {
+	public PlayingCard alsZweiterKarteSpielenNull(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (istAlleinspieler) {
 
@@ -655,9 +655,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte alsDritterKarteSpielenNull(Spielkarte[] gespielteKarten) {
+	public PlayingCard alsDritterKarteSpielenNull(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (istAlleinspieler) {
 
@@ -709,13 +709,13 @@ public class SmartPlayer extends Player {
 	 *            diesem Fall ist das Array aber leer
 	 * @return die Karte, die gespielt wird
 	 */
-	public Spielkarte alleinspielerRauskommenGrand(Spielkarte[] gespielteKarten) {
+	public PlayingCard alleinspielerRauskommenGrand(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 		Random zufall = new Random();
-		ArrayList<Spielkarte> buben = kartenEinesWertes(blatt, Wert.BUBE);
-		ArrayList<Spielkarte> asse = kartenEinesWertes(blatt, Wert.ASS);
-		ArrayList<Spielkarte> zehnen = kartenEinesWertes(blatt, Wert.ZEHN);
+		ArrayList<PlayingCard> buben = kartenEinesWertes(blatt, Wert.BUBE);
+		ArrayList<PlayingCard> asse = kartenEinesWertes(blatt, Wert.ASS);
+		ArrayList<PlayingCard> zehnen = kartenEinesWertes(blatt, Wert.ZEHN);
 
 		if (buben.size() > 2) {
 
@@ -730,7 +730,7 @@ public class SmartPlayer extends Player {
 
 		else if (!asse.isEmpty()) {
 
-			for (Spielkarte karte : asse) {
+			for (PlayingCard karte : asse) {
 
 				if (kartenEinerFarbe(anfangsBlatt, karte.getFarbe()).size() <= 4) {
 
@@ -744,7 +744,7 @@ public class SmartPlayer extends Player {
 
 		else if (!zehnen.isEmpty()) {
 
-			for (Spielkarte karte : zehnen) {
+			for (PlayingCard karte : zehnen) {
 
 				// if (kartenEinerFarbe(anfangsBlatt,
 				// karte.getFarbe()).size() <= 4
@@ -756,9 +756,9 @@ public class SmartPlayer extends Player {
 				// }
 
 				boolean enthalten = false;
-				Spielkarte hoehereKarte = naechstHoehereKarte(karte.getFarbe(),
+				PlayingCard hoehereKarte = naechstHoehereKarte(karte.getFarbe(),
 						karte);
-				for (Spielkarte karte2 : alleGespielteKarten) {
+				for (PlayingCard karte2 : alleGespielteKarten) {
 
 					if (karte2.equals(hoehereKarte)) {
 						enthalten = true;
@@ -795,15 +795,15 @@ public class SmartPlayer extends Player {
 	 *            - Zufallswert
 	 * @return der zufällig aus der Liste ausgewählte Bube
 	 */
-	public Spielkarte bubeSpielen(Spielkarte[] gespielteKarten,
-			ArrayList<Spielkarte> buben, Random zufall) {
+	public PlayingCard bubeSpielen(PlayingCard[] gespielteKarten,
+			ArrayList<PlayingCard> buben, Random zufall) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
-		for (Spielkarte karte : buben) {
+		for (PlayingCard karte : buben) {
 
-			if (karte.equals(new Spielkarte(Farbe.KREUZ, Wert.BUBE))
-					|| karte.equals(new Spielkarte(Farbe.PIK, Wert.BUBE))) {
+			if (karte.equals(new PlayingCard(Farbe.KREUZ, Wert.BUBE))
+					|| karte.equals(new PlayingCard(Farbe.PIK, Wert.BUBE))) {
 
 				ergebnis = buben.get(zufall.nextInt(buben.size()));
 				break;
@@ -824,10 +824,10 @@ public class SmartPlayer extends Player {
 	 *            diesem Fall ist in dem Array eine Karte
 	 * @return die Karte, die gespielt wird
 	 */
-	public Spielkarte alleinspieleralsZweiterKarteSpielenGrand(
-			Spielkarte[] gespielteKarten) {
+	public PlayingCard alleinspieleralsZweiterKarteSpielenGrand(
+			PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart
 				.hoehereKarte(
@@ -868,10 +868,10 @@ public class SmartPlayer extends Player {
 	 *            diesem Fall sind in dem Array zwei Karten
 	 * @return die Karte, die gespielt wird
 	 */
-	public Spielkarte alleinspieleralsDritterKarteSpielenGrand(
-			Spielkarte[] gespielteKarten) {
+	public PlayingCard alleinspieleralsDritterKarteSpielenGrand(
+			PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (((spielart.hoehereKarte(
 				hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
@@ -903,9 +903,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte rauskommenRamsch(Spielkarte[] gespielteKarten) {
+	public PlayingCard rauskommenRamsch(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
 
@@ -920,9 +920,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte alsZweiterKarteSpielenRamsch(Spielkarte[] gespielteKarten) {
+	public PlayingCard alsZweiterKarteSpielenRamsch(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
 
@@ -937,9 +937,9 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public Spielkarte alsDritterKarteSpielenRamsch(Spielkarte[] gespielteKarten) {
+	public PlayingCard alsDritterKarteSpielenRamsch(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
 
@@ -975,12 +975,12 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die gerade auf dem Tisch liegen
 	 * @return Ein Liste mit den m&oumlglichen spielbaren Karten.
 	 */
-	public ArrayList<Spielkarte> gegnerMoeglicheSpielbareKarten(
-			Spielkarte[] gespielteKarten) {
+	public ArrayList<PlayingCard> gegnerMoeglicheSpielbareKarten(
+			PlayingCard[] gespielteKarten) {
 
 		System.out.println("gegnermoeglicheSpielbareKarten");
-		ArrayList<Spielkarte> ergebnis = new ArrayList<Spielkarte>();
-		ArrayList<Spielkarte> mGK = moeglicheGegnerKarten(alleGespielteKarten,
+		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> mGK = moeglicheGegnerKarten(alleGespielteKarten,
 				gespielteKarten);
 
 		for (int i = 0; i < mGK.size(); i++) {
@@ -1004,11 +1004,11 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die gerade auf dem Tisch liegen
 	 * @return Eine Liste mit den Karten, die beide Gegner zusammen haben.
 	 */
-	public ArrayList<Spielkarte> moeglicheGegnerKarten(
-			ArrayList<Spielkarte> alleGespielteKarten,
-			Spielkarte[] gespieltenKarten) {
+	public ArrayList<PlayingCard> moeglicheGegnerKarten(
+			ArrayList<PlayingCard> alleGespielteKarten,
+			PlayingCard[] gespieltenKarten) {
 
-		ArrayList<Spielkarte> ergebnis = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
 
 		if (!deck.isEmpty()) {
 			ergebnis.addAll(deck);
@@ -1029,7 +1029,7 @@ public class SmartPlayer extends Player {
 		}
 
 		// TODO loeschen
-		for (Spielkarte karte : ergebnis) {
+		for (PlayingCard karte : ergebnis) {
 			System.out.println("moeglicheGegnerKarten" + karte.toString());
 		}
 
@@ -1077,7 +1077,7 @@ public class SmartPlayer extends Player {
 	 *            Zufallszahl generiert werden soll.
 	 * @return Die Zufallszahl
 	 */
-	public int zufallszahl(ArrayList<Spielkarte> kartenliste) {
+	public int zufallszahl(ArrayList<PlayingCard> kartenliste) {
 
 		int ergebnis = -1;
 		Random zufall = new Random();
@@ -1099,26 +1099,26 @@ public class SmartPlayer extends Player {
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst h&ouml;here Karte
 	 */
-	public Spielkarte naechstHoehereKarte(Farbe farbe, Spielkarte karte) {
+	public PlayingCard naechstHoehereKarte(Farbe farbe, PlayingCard karte) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		switch (karte.getWert()) {
 
 		case SECHS:
-			ergebnis = new Spielkarte(farbe, Wert.SIEBEN);
+			ergebnis = new PlayingCard(farbe, Wert.SIEBEN);
 			break;
 		case SIEBEN:
-			ergebnis = new Spielkarte(farbe, Wert.ACHT);
+			ergebnis = new PlayingCard(farbe, Wert.ACHT);
 			break;
 		case ACHT:
-			ergebnis = new Spielkarte(farbe, Wert.NEUN);
+			ergebnis = new PlayingCard(farbe, Wert.NEUN);
 			break;
 		case NEUN:
 			ergebnis = naechstHoehereKarteNeun(farbe);
 			break;
 		case DAME:
-			ergebnis = new Spielkarte(farbe, Wert.KOENIG);
+			ergebnis = new PlayingCard(farbe, Wert.KOENIG);
 			break;
 		case KOENIG:
 			ergebnis = naechstHoehereKarteKoenig(farbe);
@@ -1150,17 +1150,17 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public Spielkarte naechstHoehereKarteNeun(Farbe farbe) {
+	public PlayingCard naechstHoehereKarteNeun(Farbe farbe) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new Spielkarte(farbe, Wert.DAME);
+			ergebnis = new PlayingCard(farbe, Wert.DAME);
 		} else {
 
-			ergebnis = new Spielkarte(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
 		}
 
 		return ergebnis;
@@ -1175,17 +1175,17 @@ public class SmartPlayer extends Player {
 	 *            - Farbe von der die n&auml;chst niedrigere Karte verlangt wird
 	 * @return die n&aumlchst h&ouml;here Karte, in Abhängigkeit der Spielart
 	 */
-	public Spielkarte naechstHoehereKarteKoenig(Farbe farbe) {
+	public PlayingCard naechstHoehereKarteKoenig(Farbe farbe) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new Spielkarte(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
 		} else {
 
-			ergebnis = new Spielkarte(farbe, Wert.ASS);
+			ergebnis = new PlayingCard(farbe, Wert.ASS);
 		}
 
 		return ergebnis;
@@ -1201,17 +1201,17 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public Spielkarte naechstHoehereKarteZehn(Farbe farbe) {
+	public PlayingCard naechstHoehereKarteZehn(Farbe farbe) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new Spielkarte(farbe, Wert.ASS);
+			ergebnis = new PlayingCard(farbe, Wert.ASS);
 		} else {
 
-			ergebnis = new Spielkarte(farbe, Wert.DAME);
+			ergebnis = new PlayingCard(farbe, Wert.DAME);
 		}
 
 		return ergebnis;
@@ -1227,9 +1227,9 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public Spielkarte naechstHoehereKarteBube(Farbe farbe) {
+	public PlayingCard naechstHoehereKarteBube(Farbe farbe) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND
@@ -1240,7 +1240,7 @@ public class SmartPlayer extends Player {
 
 		else {
 
-			ergebnis = new Spielkarte(farbe, Wert.DAME);
+			ergebnis = new PlayingCard(farbe, Wert.DAME);
 		}
 
 		return ergebnis;
@@ -1257,9 +1257,9 @@ public class SmartPlayer extends Player {
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst niedrigere Karte
 	 */
-	public Spielkarte naechstNiedrigereKarte(Farbe farbe, Spielkarte karte) {
+	public PlayingCard naechstNiedrigereKarte(Farbe farbe, PlayingCard karte) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		switch (karte.getWert()) {
 
@@ -1267,19 +1267,19 @@ public class SmartPlayer extends Player {
 			ergebnis = null;
 			break;
 		case SIEBEN:
-			ergebnis = new Spielkarte(farbe, Wert.SECHS);
+			ergebnis = new PlayingCard(farbe, Wert.SECHS);
 			break;
 		case ACHT:
-			ergebnis = new Spielkarte(farbe, Wert.SIEBEN);
+			ergebnis = new PlayingCard(farbe, Wert.SIEBEN);
 			break;
 		case NEUN:
-			ergebnis = new Spielkarte(farbe, Wert.ACHT);
+			ergebnis = new PlayingCard(farbe, Wert.ACHT);
 			break;
 		case DAME:
 			ergebnis = naechstNiedrigereKarteDame(farbe);
 			break;
 		case KOENIG:
-			ergebnis = new Spielkarte(farbe, Wert.DAME);
+			ergebnis = new PlayingCard(farbe, Wert.DAME);
 			break;
 		case ZEHN:
 			ergebnis = naechstNiedrigereKarteZehn(farbe);
@@ -1308,17 +1308,17 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public Spielkarte naechstNiedrigereKarteDame(Farbe farbe) {
+	public PlayingCard naechstNiedrigereKarteDame(Farbe farbe) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new Spielkarte(farbe, Wert.NEUN);
+			ergebnis = new PlayingCard(farbe, Wert.NEUN);
 		} else {
 
-			ergebnis = new Spielkarte(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
 		}
 
 		return ergebnis;
@@ -1334,17 +1334,17 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public Spielkarte naechstNiedrigereKarteZehn(Farbe farbe) {
+	public PlayingCard naechstNiedrigereKarteZehn(Farbe farbe) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new Spielkarte(farbe, Wert.KOENIG);
+			ergebnis = new PlayingCard(farbe, Wert.KOENIG);
 		} else {
 
-			ergebnis = new Spielkarte(farbe, Wert.NEUN);
+			ergebnis = new PlayingCard(farbe, Wert.NEUN);
 		}
 
 		return ergebnis;
@@ -1359,17 +1359,17 @@ public class SmartPlayer extends Player {
 	 *            - Farbe der zu suchenden Karte"
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public Spielkarte naechstNiedrigereKarteAss(Farbe farbe) {
+	public PlayingCard naechstNiedrigereKarteAss(Farbe farbe) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new Spielkarte(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
 		} else {
 
-			ergebnis = new Spielkarte(farbe, Wert.KOENIG);
+			ergebnis = new PlayingCard(farbe, Wert.KOENIG);
 		}
 
 		return ergebnis;
@@ -1384,9 +1384,9 @@ public class SmartPlayer extends Player {
 	 *            - Farbe der zu suchenden Karte
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public Spielkarte naechstNiedrigereKarteBube(Farbe farbe) {
+	public PlayingCard naechstNiedrigereKarteBube(Farbe farbe) {
 		
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 		
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND
@@ -1395,7 +1395,7 @@ public class SmartPlayer extends Player {
 			ergebnis = null;
 		} else {
 
-			ergebnis = new Spielkarte(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
 		}
 		
 		return ergebnis;
@@ -1412,12 +1412,12 @@ public class SmartPlayer extends Player {
 	 *            - Der Wert einer Karte. z.B.: Ein Ass
 	 * @return Die ArrayList mit den Assen.
 	 */
-	public ArrayList<Spielkarte> kartenEinesWertes(ArrayList<Spielkarte> blatt,
+	public ArrayList<PlayingCard> kartenEinesWertes(ArrayList<PlayingCard> blatt,
 			Wert wert) {
 
-		ArrayList<Spielkarte> ergebnis = new ArrayList<Spielkarte>(4);
+		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>(4);
 
-		for (Spielkarte karte : blatt) {
+		for (PlayingCard karte : blatt) {
 
 			if (karte.getWert() == wert) {
 
@@ -1439,12 +1439,12 @@ public class SmartPlayer extends Player {
 	 *            - Die Farbe einer Karte. z.B.: Kreuz
 	 * @return Die ArrayList mit den Karten der Farbe Kreuz.
 	 */
-	public ArrayList<Spielkarte> kartenEinerFarbe(ArrayList<Spielkarte> blatt,
+	public ArrayList<PlayingCard> kartenEinerFarbe(ArrayList<PlayingCard> blatt,
 			Farbe farbe) {
 
-		ArrayList<Spielkarte> ergebnis = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
 
-		for (Spielkarte karte : blatt) {
+		for (PlayingCard karte : blatt) {
 
 			if (karte.getFarbe() == farbe && karte.getWert() != Wert.BUBE) {
 
@@ -1463,10 +1463,10 @@ public class SmartPlayer extends Player {
 	 *            - Eine Liste mit den m&ouml;glichen zu spielenden Karten.
 	 * @return Die h&ouml;chste spielbare Karte.
 	 */
-	public Spielkarte hoechsteSpielbareKarte(
-			ArrayList<Spielkarte> spielbareKarten) {
+	public PlayingCard hoechsteSpielbareKarte(
+			ArrayList<PlayingCard> spielbareKarten) {
 
-		Spielkarte ergebnis = spielbareKarten.get(0);
+		PlayingCard ergebnis = spielbareKarten.get(0);
 
 		for (int i = 1; i < spielbareKarten.size(); i++) {
 
@@ -1486,10 +1486,10 @@ public class SmartPlayer extends Player {
 	 *            - Eine Liste mit den m&ouml;glichen zu spielenden Karten.
 	 * @return Die niedrigste spielbare Karte.
 	 */
-	public Spielkarte niedrigsteSpielbareKarte(
-			ArrayList<Spielkarte> spielbareKarten) {
+	public PlayingCard niedrigsteSpielbareKarte(
+			ArrayList<PlayingCard> spielbareKarten) {
 
-		Spielkarte ergebnis = spielbareKarten.get(0);
+		PlayingCard ergebnis = spielbareKarten.get(0);
 
 		for (int i = 1; i < spielbareKarten.size(); i++) {
 
@@ -1511,10 +1511,10 @@ public class SmartPlayer extends Player {
 	 *            - Die zweite Karte.
 	 * @return - Die h&ouml;here von zwei Karten.
 	 */
-	public Spielkarte hoechsteSpielbareKarteBestimmen(Spielkarte karte1,
-			Spielkarte karte2) {
+	public PlayingCard hoechsteSpielbareKarteBestimmen(PlayingCard karte1,
+			PlayingCard karte2) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.karteBewerten(karte1) == spielart.karteBewerten(karte2)) {
 
@@ -1547,10 +1547,10 @@ public class SmartPlayer extends Player {
 	 *            - Die zweite Karte.
 	 * @return - Die niedrigere von zwei Karten.
 	 */
-	public Spielkarte niedrigsteSpielbareKarteBestimmen(Spielkarte karte1,
-			Spielkarte karte2) {
+	public PlayingCard niedrigsteSpielbareKarteBestimmen(PlayingCard karte1,
+			PlayingCard karte2) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 
 		if (spielart.karteBewerten(karte1) == spielart.karteBewerten(karte2)) {
 
@@ -1578,7 +1578,7 @@ public class SmartPlayer extends Player {
 
 	// Der SchlaueSpieler spielt hand und muss deshalb noch nicht druecken.
 	@Override
-	public Spielkarte[] druecken(Spielkarte[] skat) {
+	public PlayingCard[] druecken(PlayingCard[] skat) {
 		// Auto-generated method stub
 		return null;
 	}
@@ -1745,7 +1745,7 @@ public class SmartPlayer extends Player {
 	public int ermittleSpitzen(ISpielart zuReizendeSpielart) {
 
 		int ergebnis = 0;
-		Spielkarte[] spitzen;
+		PlayingCard[] spitzen;
 
 		if (zuReizendeSpielart.getSpielart() == Spielartbezeichnung.FARBE) {
 
@@ -1770,7 +1770,7 @@ public class SmartPlayer extends Player {
 	 *            - sortiertes Array mit den Karten einer Farbe
 	 * @return Anzahl der Spitzen
 	 */
-	public int spitzenZaehlen(Spielkarte[] spitzen) {
+	public int spitzenZaehlen(PlayingCard[] spitzen) {
 
 		int ergebnis = 0;
 
@@ -1795,7 +1795,7 @@ public class SmartPlayer extends Player {
 	 *            - Array, dass alle Karten einer Farbe enth&auml;lt
 	 * @return anzahl der Spitzen
 	 */
-	public int ohne(Spielkarte[] spitzen) {
+	public int ohne(PlayingCard[] spitzen) {
 
 		int ergebnis = 0;
 
@@ -1819,7 +1819,7 @@ public class SmartPlayer extends Player {
 	 *            - Array, dass alle Karten einer Farbe enth&auml;lt
 	 * @return anzahl der Spitzen
 	 */
-	public int mit(Spielkarte[] spitzen) {
+	public int mit(PlayingCard[] spitzen) {
 
 		int ergebnis = 0;
 
@@ -1843,11 +1843,11 @@ public class SmartPlayer extends Player {
 	 *            - das Farbspiel
 	 * @return Array, dass die Spitzen enth&auml;lt
 	 */
-	public Spielkarte[] farbeSpitzen(ISpielart zuReizendeSpielart) {
+	public PlayingCard[] farbeSpitzen(ISpielart zuReizendeSpielart) {
 
 		int kartenwert = 0;
-		Spielkarte[] spitzen = new Spielkarte[13];
-		ArrayList<Spielkarte> langeFarbe = ermittleKurzeLangeFarbe(true);
+		PlayingCard[] spitzen = new PlayingCard[13];
+		ArrayList<PlayingCard> langeFarbe = ermittleKurzeLangeFarbe(true);
 
 		for (int i = 0; i < blatt.size(); i++) {
 
@@ -1874,10 +1874,10 @@ public class SmartPlayer extends Player {
 	 *            - das Grandspiel
 	 * @return Array mit Spitzen
 	 */
-	public Spielkarte[] grandSpitzen(ISpielart zuReizendeSpielart) {
+	public PlayingCard[] grandSpitzen(ISpielart zuReizendeSpielart) {
 
 		int kartenwert = 0;
-		Spielkarte[] spitzen = new Spielkarte[4];
+		PlayingCard[] spitzen = new PlayingCard[4];
 
 		for (int i = 0; i < blatt.size(); i++) {
 
@@ -1912,12 +1912,12 @@ public class SmartPlayer extends Player {
 		int buben = 0;
 		int kartenGroesserKoenig = 0;
 
-		ArrayList<Spielkarte> langeFarbe = ermittleKurzeLangeFarbe(true);
+		ArrayList<PlayingCard> langeFarbe = ermittleKurzeLangeFarbe(true);
 
 		// Spielart auf die der Spieler reizt
 		ISpielart zuReizendeSpielart;
 
-		for (Spielkarte karte : blatt) {
+		for (PlayingCard karte : blatt) {
 
 			if (karte.getWert() == Wert.SIEBEN || karte.getWert() == Wert.ACHT
 					|| karte.getWert() == Wert.NEUN) {
@@ -1973,13 +1973,13 @@ public class SmartPlayer extends Player {
 	 * @return Die ArrayList von der Farbe mit den Karten, die am
 	 *         h&auml;ufigsten bzw. am wenigsten vorkommt.
 	 */
-	public ArrayList<Spielkarte> ermittleKurzeLangeFarbe(boolean lang) {
+	public ArrayList<PlayingCard> ermittleKurzeLangeFarbe(boolean lang) {
 
-		ArrayList<Spielkarte> karo = kartenEinerFarbe(blatt, Farbe.KARO);
-		ArrayList<Spielkarte> herz = kartenEinerFarbe(blatt, Farbe.HERZ);
-		ArrayList<Spielkarte> pik = kartenEinerFarbe(blatt, Farbe.PIK);
-		ArrayList<Spielkarte> kreuz = kartenEinerFarbe(blatt, Farbe.KREUZ);
-		ArrayList<Spielkarte> gewinner = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> karo = kartenEinerFarbe(blatt, Farbe.KARO);
+		ArrayList<PlayingCard> herz = kartenEinerFarbe(blatt, Farbe.HERZ);
+		ArrayList<PlayingCard> pik = kartenEinerFarbe(blatt, Farbe.PIK);
+		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(blatt, Farbe.KREUZ);
+		ArrayList<PlayingCard> gewinner = new ArrayList<PlayingCard>();
 
 		// Die übergegebene Variable lang ist true, d.h. man möchte die lange
 		// Farbe ermitteln
@@ -2013,11 +2013,11 @@ public class SmartPlayer extends Player {
 	 *            - Die Liste mit der Anzahl der Kreuz-Karten.
 	 * @return - Die Liste mit den wenigsten Karten von einer Farbe.
 	 */
-	public ArrayList<Spielkarte> ermittleKurzeFarbe(ArrayList<Spielkarte> karo,
-			ArrayList<Spielkarte> herz, ArrayList<Spielkarte> pik,
-			ArrayList<Spielkarte> kreuz) {
+	public ArrayList<PlayingCard> ermittleKurzeFarbe(ArrayList<PlayingCard> karo,
+			ArrayList<PlayingCard> herz, ArrayList<PlayingCard> pik,
+			ArrayList<PlayingCard> kreuz) {
 
-		ArrayList<Spielkarte> kurzeFarbe = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> kurzeFarbe = new ArrayList<PlayingCard>();
 
 		if ((karo.size() < herz.size())
 				&& (karo.size() != 0 && herz.size() != 0)) {
@@ -2061,11 +2061,11 @@ public class SmartPlayer extends Player {
 	 *            - Die Liste mit der Anzahl der Kreuz-Karten.
 	 * @return - Die Liste mit den meisten Karten von einer Farbe.
 	 */
-	public ArrayList<Spielkarte> ermittleLangeFarbe(ArrayList<Spielkarte> karo,
-			ArrayList<Spielkarte> herz, ArrayList<Spielkarte> pik,
-			ArrayList<Spielkarte> kreuz) {
+	public ArrayList<PlayingCard> ermittleLangeFarbe(ArrayList<PlayingCard> karo,
+			ArrayList<PlayingCard> herz, ArrayList<PlayingCard> pik,
+			ArrayList<PlayingCard> kreuz) {
 
-		ArrayList<Spielkarte> langeFarbe = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> langeFarbe = new ArrayList<PlayingCard>();
 
 		if (karo.size() > herz.size()) {
 
@@ -2099,7 +2099,7 @@ public class SmartPlayer extends Player {
 	public Farbe ermittleTrumpffarbe() {
 
 		Farbe ergebnis = null;
-		ArrayList<Spielkarte> gewinner = ermittleKurzeLangeFarbe(true);
+		ArrayList<PlayingCard> gewinner = ermittleKurzeLangeFarbe(true);
 
 		// Gewinner feststellen
 		switch (gewinner.get(0).getFarbe()) {
@@ -2129,7 +2129,7 @@ public class SmartPlayer extends Player {
 	 *            - Stiche, die der Spieler gewonnen hat
 	 * @return Augen des Spielers
 	 */
-	public int werteAugen(ArrayList<Spielkarte> stiche) {
+	public int werteAugen(ArrayList<PlayingCard> stiche) {
 
 		int erg = 0;
 
@@ -2171,7 +2171,7 @@ public class SmartPlayer extends Player {
 	 *            - Die Karte f&uml;r die der Augenwert bestimmt werden soll.
 	 * @return Die Augenzahl der &uml;bergebenen Karte.
 	 */
-	public int augenKarte(Spielkarte karte) {
+	public int augenKarte(PlayingCard karte) {
 
 		int ergebnis;
 

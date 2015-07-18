@@ -9,7 +9,7 @@ import java.util.Random;
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.Spielartbezeichnung;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
@@ -43,12 +43,12 @@ abstract public class Player implements IPlayer {
 	/**
 	 *  Handkarten des Spielers
 	 */
-	protected ArrayList<Spielkarte> blatt;
+	protected ArrayList<PlayingCard> blatt;
 
 	/**
 	 * enth&auml;lt vom Spieler gewonnene Stiche
 	 */
-	protected ArrayList<Spielkarte> stiche;
+	protected ArrayList<PlayingCard> stiche;
 
 	/**
 	 *  Flag = true >> Spieler ist Alleinspieler
@@ -73,32 +73,32 @@ abstract public class Player implements IPlayer {
 	/**
 	 * H&auml;lt die Karten nach der Skataufnahme
 	 */
-	protected ArrayList<Spielkarte> nachSkat;
+	protected ArrayList<PlayingCard> nachSkat;
 	
 	/**
 	 *  Damit der Spieler alle Karten kennt
 	 */
-	protected ArrayList<Spielkarte> deck;
+	protected ArrayList<PlayingCard> deck;
 	
 	/**
 	 * Merkt sich fuer den Alleinspieler, was im Skat lag.
 	 */
-	protected ArrayList<Spielkarte> skat;
+	protected ArrayList<PlayingCard> skat;
 
 	/**
 	 *  Spieler kann sich die gespielten Karten merken
 	 */
-	protected ArrayList<Spielkarte> alleGespielteKarten;
+	protected ArrayList<PlayingCard> alleGespielteKarten;
 
 	/**
 	 * Das restliche Blatt enth&auml;hlt die nicht spielbaren Karten
 	 */
-	private ArrayList<Spielkarte> restblatt = new ArrayList<Spielkarte>();
+	private ArrayList<PlayingCard> restblatt = new ArrayList<PlayingCard>();
 	
 	/**
 	 *  Spieler kann seine Truempfe in diesem Array speichern, um sie zu zaehlen
 	 */
-	private Spielkarte[] truempfe = new Spielkarte[12];
+	private PlayingCard[] truempfe = new PlayingCard[12];
 	
 	/**
 	 * Anzahl der Handspiele eines Spielers
@@ -116,8 +116,8 @@ abstract public class Player implements IPlayer {
 
 		spiele = new ArrayList<Integer>();
 		this.name = name;
-		stiche = new ArrayList<Spielkarte>();
-		alleGespielteKarten = new ArrayList<Spielkarte>();
+		stiche = new ArrayList<PlayingCard>();
+		alleGespielteKarten = new ArrayList<PlayingCard>();
 	}
 
 	//
@@ -137,13 +137,13 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	public ArrayList<Spielkarte> getBlatt() {
+	public ArrayList<PlayingCard> getBlatt() {
 
 		return blatt;
 	}
 
 	//@Override
-	public ArrayList<Spielkarte> getStiche() {
+	public ArrayList<PlayingCard> getStiche() {
 
 		return stiche;
 	}
@@ -166,17 +166,17 @@ abstract public class Player implements IPlayer {
 		return mitspieler;
 	}
 	
-	public ArrayList<Spielkarte> getSkat() {
+	public ArrayList<PlayingCard> getSkat() {
 		
 		return skat;
 	}
 	//@Override
-	public ArrayList<Spielkarte> getAllegespieltenkarten() {
+	public ArrayList<PlayingCard> getAllegespieltenkarten() {
 		return alleGespielteKarten;
 	}
 
 	//@Override
-	public ArrayList<Spielkarte> getRestblatt() {
+	public ArrayList<PlayingCard> getRestblatt() {
 
 		return restblatt;
 	}
@@ -216,7 +216,7 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	public void setBlatt(ArrayList<Spielkarte> blatt) {
+	public void setBlatt(ArrayList<PlayingCard> blatt) {
 
 		this.blatt = blatt;
 	}
@@ -240,7 +240,7 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	public void setStiche(ArrayList<Spielkarte> stiche) {
+	public void setStiche(ArrayList<PlayingCard> stiche) {
 
 		this.stiche = stiche;
 	}
@@ -251,23 +251,23 @@ abstract public class Player implements IPlayer {
 	}
 	
 	//@Override
-	public void setAlleGespieltenKarten(ArrayList<Spielkarte> karten) {
+	public void setAlleGespieltenKarten(ArrayList<PlayingCard> karten) {
 		this.alleGespielteKarten = karten;
 	}
 	
 	//@Override
-	public void setTruempfe(Spielkarte[] truempfe) {
+	public void setTruempfe(PlayingCard[] truempfe) {
 		this.truempfe = truempfe;
 	}
 	
 	//@Override
-	public void setDeck(ArrayList<Spielkarte> deck) {
+	public void setDeck(ArrayList<PlayingCard> deck) {
 		
 		this.deck = deck;
 	}
 	
 	//@Override
-	public void setSkat(ArrayList<Spielkarte> skat) {
+	public void setSkat(ArrayList<PlayingCard> skat) {
 		
 		this.skat = skat;
 	}
@@ -277,7 +277,7 @@ abstract public class Player implements IPlayer {
 	//
 
 	//@Override
-	public void stichHinzufuegen(Spielkarte[] stich) {
+	public void stichHinzufuegen(PlayingCard[] stich) {
 
 		for (int i = 0; i < stich.length; i++) {
 
@@ -291,7 +291,7 @@ abstract public class Player implements IPlayer {
 	 * 
 	 */
 	//@Override
-	public void gespielteKartenHinzufuegen(Spielkarte[] gespielteKarten) {
+	public void gespielteKartenHinzufuegen(PlayingCard[] gespielteKarten) {
 
 		for (int i = 0; i < gespielteKarten.length; i++) {
 
@@ -300,9 +300,9 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	public ArrayList<Spielkarte> spielbareKarten(Spielkarte[] gespielteKarten) {
+	public ArrayList<PlayingCard> spielbareKarten(PlayingCard[] gespielteKarten) {
 
-		ArrayList<Spielkarte> spielbareKarten = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> spielbareKarten = new ArrayList<PlayingCard>();
 
 		for (int i = 0; i < blatt.size(); i++) {
 
@@ -327,13 +327,13 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	abstract public Spielkarte spieleKarte(Spielkarte[] gespielteKarten)
+	abstract public PlayingCard spieleKarte(PlayingCard[] gespielteKarten)
 			throws IOException;
 	
 	//@Override
-	public Spielkarte zufaelligErlaubteKarteSpielen(Spielkarte[] gespielteKarten) {
+	public PlayingCard zufaelligErlaubteKarteSpielen(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 		Random zufall = new Random();
 		int zahl = zufall.nextInt(blatt.size());
 
@@ -348,7 +348,7 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	abstract public Spielkarte[] druecken(Spielkarte[] skat);
+	abstract public PlayingCard[] druecken(PlayingCard[] skat);
 
 	//
 	// Methoden zur Spielansage
@@ -388,9 +388,9 @@ abstract public class Player implements IPlayer {
 	//@Override
 	public void blattSortieren(final ISpielart spielart) {
 
-		Comparator<Spielkarte> comp = new Comparator<Spielkarte>() {
+		Comparator<PlayingCard> comp = new Comparator<PlayingCard>() {
 
-			public int compare(Spielkarte karte1, Spielkarte karte2) {
+			public int compare(PlayingCard karte1, PlayingCard karte2) {
 
 				int ergebnis;
 
@@ -436,9 +436,9 @@ abstract public class Player implements IPlayer {
 	public abstract int reizlimitFestlegen();
 	
 	//@Override
-	public Spielkarte[] spitzenEinordnen() {
+	public PlayingCard[] spitzenEinordnen() {
 
-		truempfe = new Spielkarte[12];
+		truempfe = new PlayingCard[12];
 
 		if (spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
@@ -458,7 +458,7 @@ abstract public class Player implements IPlayer {
 	public void bubeneinordnen() {
 		
 		int kartenwert = 0;
-		ArrayList<Spielkarte> blatt = getBlatt();
+		ArrayList<PlayingCard> blatt = getBlatt();
 
 		for (int i = 0; i < blatt.size(); i++) {
 			
@@ -503,7 +503,7 @@ abstract public class Player implements IPlayer {
 		
 		int kartenwert = 0;
 		SuitGame spiel = (SuitGame) spielart;
-		ArrayList<Spielkarte> blatt = getBlatt();
+		ArrayList<PlayingCard> blatt = getBlatt();
 
 		for (int i = 0; i < blatt.size(); i++) {
 

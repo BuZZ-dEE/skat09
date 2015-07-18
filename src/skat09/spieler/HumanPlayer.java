@@ -3,7 +3,7 @@ package skat09.spieler;
 import java.io.IOException;
 
 import skat09.spielart.SuitGame;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
@@ -88,12 +88,12 @@ public class HumanPlayer extends Player implements IPlayer,
 	}
 
 	@Override
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten) {
+	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
 
-		Spielkarte ergebnis = null;
+		PlayingCard ergebnis = null;
 		boolean fertig = false;
 
-		Spielkarte karte = null;
+		PlayingCard karte = null;
 		try {
 			karte = controller.getAusgabe().spieleKarte(gespielteKarten, this);
 		} catch (IOException e) {
@@ -122,9 +122,9 @@ public class HumanPlayer extends Player implements IPlayer,
 	}
 
 	@Override
-	public Spielkarte[] druecken(Spielkarte[] skat) {
+	public PlayingCard[] druecken(PlayingCard[] skat) {
 
-		Spielkarte[] gedrueckteKarten = new Spielkarte[3];
+		PlayingCard[] gedrueckteKarten = new PlayingCard[3];
 		int karte1;
 
 		boolean sechserskat = false;
@@ -132,7 +132,7 @@ public class HumanPlayer extends Player implements IPlayer,
 
 		blatt.add(skat[0]);
 		blatt.add(skat[1]);
-		if (skat[2] instanceof Spielkarte) {
+		if (skat[2] instanceof PlayingCard) {
 			blatt.add(skat[2]);
 			sechserskat = true;
 		}

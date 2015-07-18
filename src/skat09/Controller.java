@@ -15,7 +15,7 @@ import skat09.spieler.HumanPlayer;
 import skat09.spieler.Granny;
 import skat09.spieler.RuleCompliantPlayer;
 import skat09.spieler.SmartPlayer;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;
@@ -208,10 +208,10 @@ public class Controller implements Observer, IController {
 
 		s = ausgabe.getBlattwahl();
 		if (s.equals(Messages.getI18n("game.skat.deck.g"))) {
-			Spielkarte.setDeutsch(true);
+			PlayingCard.setDeutsch(true);
 		} else if (s.equals(Messages.getI18n("game.skat.deck.f"))) {
 
-			Spielkarte.setDeutsch(false);
+			PlayingCard.setDeutsch(false);
 		} else {
 			waehleSkatblatt();
 		}
@@ -406,7 +406,7 @@ public class Controller implements Observer, IController {
 		IPlayer spieler1 = tisch.getVorhand();
 		IPlayer spieler2 = null;
 		IPlayer spieler3 = null;
-		Spielkarte[] gespielteKarten;
+		PlayingCard[] gespielteKarten;
 
 		ausgabe.spielBeginnt();
 		int anzahlstiche = 10;
@@ -454,13 +454,13 @@ public class Controller implements Observer, IController {
 					&& spieler1.getName() == tisch.ermittleAlleinspieler()
 							.getName()) {
 				
-				Spielkarte[] leer = new Spielkarte[3];
+				PlayingCard[] leer = new PlayingCard[3];
 				tisch.setGespielteKarten(leer);
 				break;
 			}
 
 			// Tisch aufraeumen
-			Spielkarte[] leer = new Spielkarte[3];
+			PlayingCard[] leer = new PlayingCard[3];
 			tisch.setGespielteKarten(leer);
 		}
 	}
@@ -476,7 +476,7 @@ public class Controller implements Observer, IController {
 		tisch.setHandspiel(alleinspieler.handspiel());
 		alleinspieler.setHandspiele(alleinspieler.getHandspiele() + 1);
 		ISpielart spielart = null;
-		Spielkarte[] skat = null;
+		PlayingCard[] skat = null;
 
 		// Falls der Spieler kein Handspiel macht, muss er zwei Karten
 		// dr&uuml;cken.
@@ -554,7 +554,7 @@ public class Controller implements Observer, IController {
 			if (alleSpieler instanceof SmartPlayer) {
 				
 				((SmartPlayer) alleSpieler)
-						.setDeck(new ArrayList<Spielkarte>((tisch.getDeck())));
+						.setDeck(new ArrayList<PlayingCard>((tisch.getDeck())));
 			}
 		}
 
@@ -614,7 +614,7 @@ public class Controller implements Observer, IController {
 
 		spielEinpassen = false;
 
-		Spielkarte[] skat = new Spielkarte[3];
+		PlayingCard[] skat = new PlayingCard[3];
 		tisch.setSkat(skat);
 		tisch.setSpielart(null);
 		tisch.setReizwert(18);
@@ -636,18 +636,18 @@ public class Controller implements Observer, IController {
 			alleSpieler.setBlatt(null);
 			alleSpieler.setIstAlleinspieler(false);
 			alleSpieler.setSpielart(null);
-			alleSpieler.setStiche(new ArrayList<Spielkarte>());
-			alleSpieler.setAlleGespieltenKarten(new ArrayList<Spielkarte>());
+			alleSpieler.setStiche(new ArrayList<PlayingCard>());
+			alleSpieler.setAlleGespieltenKarten(new ArrayList<PlayingCard>());
 		}
 		ausgabe.guiAufraumen();
 	}
 
 	//@Override
-	public void stichAuswertung(Spielkarte[] gespielteKarten, IPlayer gewinner) {
+	public void stichAuswertung(PlayingCard[] gespielteKarten, IPlayer gewinner) {
 		ausgabe.tischLoeschen();
 		for (int i = 0; i < 3; i++) {
 
-			Spielkarte karte = gespielteKarten[i];
+			PlayingCard karte = gespielteKarten[i];
 			IPlayer besitzer = karte.getBesitzer();
 			ausgabe.spieltKarte(besitzer, karte);
 		}
@@ -687,7 +687,7 @@ public class Controller implements Observer, IController {
 	public void skatkartenBesitzergeben() {
 
 		IPlayer alleinspieler = tisch.ermittleAlleinspieler();
-		Spielkarte[] skat = tisch.getSkat();
+		PlayingCard[] skat = tisch.getSkat();
 		skat[0].setBesitzer(alleinspieler);
 		skat[1].setBesitzer(alleinspieler);
 		if (tisch.getSechserskat()) {
@@ -848,7 +848,7 @@ public class Controller implements Observer, IController {
 
 				if (alleSpieler.getIstAlleinspieler()) {
 
-					alleSpieler.setSkat(new ArrayList<Spielkarte>(Arrays
+					alleSpieler.setSkat(new ArrayList<PlayingCard>(Arrays
 							.asList(tisch.getSkat())));
 				}
 			}

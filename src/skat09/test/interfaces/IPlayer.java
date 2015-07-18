@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import skat09.spielart.SuitGame;
 import skat09.spieler.Position;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 
 /**
  * Das Interface ISpieler beinhaltet die Methodenr&uuml;mpfe f&uuml;r den Spieler
@@ -34,14 +34,14 @@ public interface IPlayer {
 	 * 
 	 * @return Blatt des Spielers
 	 */
-	public abstract ArrayList<Spielkarte> getBlatt();
+	public abstract ArrayList<PlayingCard> getBlatt();
 
 	/**
 	 * Gibt die vom Spieler gewonnenen Stiche zur&uuml;ck.
 	 * 
 	 * @return vom Spieler gewonnen Stiche
 	 */
-	public abstract ArrayList<Spielkarte> getStiche();
+	public abstract ArrayList<PlayingCard> getStiche();
 
 	/**
 	 * Gibt an, ob der Spieler Alleinspieler ist.
@@ -71,14 +71,14 @@ public interface IPlayer {
 	 * 
 	 * @return alle bisher gefallenen Karten
 	 */
-	public abstract ArrayList<Spielkarte> getAllegespieltenkarten();
+	public abstract ArrayList<PlayingCard> getAllegespieltenkarten();
 
 	/**
 	 * Liefert das Restblatt zur&uumlck.
 	 * 
 	 * @return das restblatt
 	 */
-	public abstract ArrayList<Spielkarte> getRestblatt();
+	public abstract ArrayList<PlayingCard> getRestblatt();
 
 	/**
 	 * Liefert die im Spieler gesetzte Spielart zur&uuml;ck.
@@ -121,7 +121,7 @@ public interface IPlayer {
 	 * @param blatt
 	 *            - neues Blatt
 	 */
-	public abstract void setBlatt(ArrayList<Spielkarte> blatt);
+	public abstract void setBlatt(ArrayList<PlayingCard> blatt);
 
 	/**
 	 * Setzt das Alleinspielerflag.
@@ -152,7 +152,7 @@ public interface IPlayer {
 	 * @param stiche
 	 *            - der vom Spieler gewonnene Stich
 	 */
-	public abstract void setStiche(ArrayList<Spielkarte> stiche);
+	public abstract void setStiche(ArrayList<PlayingCard> stiche);
 
 	/**
 	 * Setzt den Namen des Spielers. Wird ben&ouml;tigt, damit der Name
@@ -165,21 +165,21 @@ public interface IPlayer {
 	/**
 	 * 
 	 */
-	public abstract void setAlleGespieltenKarten(ArrayList<Spielkarte> karten);
+	public abstract void setAlleGespieltenKarten(ArrayList<PlayingCard> karten);
 
 	/**
 	 * Setzt die Truempfe Variable neu.
 	 * 
 	 * @param truempfe - die neuen Truempfe
 	 */
-	public abstract void setTruempfe(Spielkarte[] truempfe);
+	public abstract void setTruempfe(PlayingCard[] truempfe);
 
 	/**
 	 * Setzt das Deck im Spieler, damit der Spieler das Deck kennt.
 	 * 
 	 * @param deck - Das Deck.
 	 */
-	public abstract void setDeck(ArrayList<Spielkarte> deck);
+	public abstract void setDeck(ArrayList<PlayingCard> deck);
 
 	/**
 	 * Setzt den Skat im Spieler, damit der Spieler den Skat kennt. Dies soll nur
@@ -187,7 +187,7 @@ public interface IPlayer {
 	 * 
 	 * @param skat - Der Skat.
 	 */
-	public abstract void setSkat(ArrayList<Spielkarte> skat);
+	public abstract void setSkat(ArrayList<PlayingCard> skat);
 
 	/**
 	 * F&uuml;gt einen gewonnenen Stich zu den bisher gewonnenen Stichen hinzu.
@@ -195,7 +195,7 @@ public interface IPlayer {
 	 * @param stich
 	 *            - die drei am Tisch gewonnenen Karten
 	 */
-	public abstract void stichHinzufuegen(Spielkarte[] stich);
+	public abstract void stichHinzufuegen(PlayingCard[] stich);
 
 	/**
 	 * F&uuml;gt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
@@ -207,7 +207,7 @@ public interface IPlayer {
 	 * 
 	 * @param gespielteKarten - die in einer Runde gespielten Karten
 	 */
-	public abstract void gespielteKartenHinzufuegen(Spielkarte[] gespielteKarten);
+	public abstract void gespielteKartenHinzufuegen(PlayingCard[] gespielteKarten);
 
 	/**
 	 * Ermittelt die Karten, die der Spieler spielen darf.
@@ -216,8 +216,8 @@ public interface IPlayer {
 	 *            - Karten, die auf dem Tisch liegen.
 	 * @return Die Karten, die gespielt werden d&uuml;rfen.
 	 */
-	public abstract ArrayList<Spielkarte> spielbareKarten(
-			Spielkarte[] gespielteKarten);
+	public abstract ArrayList<PlayingCard> spielbareKarten(
+			PlayingCard[] gespielteKarten);
 
 	/**
 	 * Gibt die Karte zur&uuml;ck, die der Spieler auf den Tisch legen
@@ -228,7 +228,7 @@ public interface IPlayer {
 	 * @return die Karte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	abstract public Spielkarte spieleKarte(Spielkarte[] gespielteKarten)
+	abstract public PlayingCard spieleKarte(PlayingCard[] gespielteKarten)
 			throws IOException;
 
 	/**
@@ -237,15 +237,15 @@ public interface IPlayer {
 	 * @param gespielteKarten - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return - Spielkarte, die zufällig ausgewählt wurde.
 	 */
-	public abstract Spielkarte zufaelligErlaubteKarteSpielen(
-			Spielkarte[] gespielteKarten);
+	public abstract PlayingCard zufaelligErlaubteKarteSpielen(
+			PlayingCard[] gespielteKarten);
 
 	/**
 	 * Gibt die gedr&uuml;ckten Spielkarten zur&uuml;ck.
 	 * 
 	 * @return gedr&uuml;ckte Spielkarten
 	 */
-	abstract public Spielkarte[] druecken(Spielkarte[] skat);
+	abstract public PlayingCard[] druecken(PlayingCard[] skat);
 
 	/**
 	 * SpielAnsagen ermittelt, ob der Spieler ein Farb-, Grand-, oder Nullspiel
@@ -365,7 +365,7 @@ public interface IPlayer {
 	 * 
 	 * 
 	 */
-	public abstract Spielkarte[] spitzenEinordnen();
+	public abstract PlayingCard[] spitzenEinordnen();
 
 	/**
 	 * Legt jeden Buben, die der Alleinspieler auf der Hand h&auml;lt in ein

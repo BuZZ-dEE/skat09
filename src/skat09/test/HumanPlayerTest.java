@@ -16,7 +16,7 @@ import skat09.spielart.GrandGame;
 import skat09.spielart.Spielart;
 import skat09.spieler.HumanPlayer;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
@@ -36,7 +36,7 @@ public class HumanPlayerTest {
 	@Before
 	public void setUp() throws Exception {
 
-		mensch.setBlatt(new ArrayList<Spielkarte>());
+		mensch.setBlatt(new ArrayList<PlayingCard>());
 	}
 
 	@Test
@@ -66,19 +66,19 @@ public class HumanPlayerTest {
 	@Test
 	public void drueckenTest() {
 
-		Spielkarte[] skat = new Spielkarte[3];
-		skat[0] = new Spielkarte(Farbe.KREUZ, Wert.DAME);
-		skat[1] = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
-		skat[2] = new Spielkarte(Farbe.KREUZ, Wert.ASS);
+		PlayingCard[] skat = new PlayingCard[3];
+		skat[0] = new PlayingCard(Farbe.KREUZ, Wert.DAME);
+		skat[1] = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
+		skat[2] = new PlayingCard(Farbe.KREUZ, Wert.ASS);
 		assertArrayEquals(skat, mensch.druecken(skat));
 	}
 
 	@Test
 	public void drueckenTest2() {
 
-		Spielkarte[] skat = new Spielkarte[3];
-		skat[0] = new Spielkarte(Farbe.HERZ, Wert.ACHT);
-		skat[1] = new Spielkarte(Farbe.KARO, Wert.ACHT);
+		PlayingCard[] skat = new PlayingCard[3];
+		skat[0] = new PlayingCard(Farbe.HERZ, Wert.ACHT);
+		skat[1] = new PlayingCard(Farbe.KARO, Wert.ACHT);
 		skat[2] = null;
 		assertArrayEquals(skat, mensch.druecken(skat));
 	}
@@ -89,10 +89,10 @@ public class HumanPlayerTest {
 		boolean ergebnis = false;
 
 		mensch.setSpielart(new GrandGame());
-		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
-		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		gespielteKarten[0] = new Spielkarte(Farbe.HERZ, Wert.BUBE);
-		gespielteKarten[1] = new Spielkarte(Farbe.HERZ, Wert.NEUN);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard[] gespielteKarten = new PlayingCard[3];
+		gespielteKarten[0] = new PlayingCard(Farbe.HERZ, Wert.BUBE);
+		gespielteKarten[1] = new PlayingCard(Farbe.HERZ, Wert.NEUN);
 		if (karte.equals(mensch.spieleKarte(gespielteKarten))) {
 
 			ergebnis = true;
@@ -107,8 +107,8 @@ public class HumanPlayerTest {
 		boolean ergebnis = false;
 
 		mensch.setSpielart(nullspiel);
-		Spielkarte karte = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
-		Spielkarte[] gespielteKarten = new Spielkarte[3];
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
 		if (karte.equals(mensch.spieleKarte(gespielteKarten))) {
 				ergebnis = true;

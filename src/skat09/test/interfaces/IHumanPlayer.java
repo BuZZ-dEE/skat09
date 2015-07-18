@@ -3,7 +3,7 @@ package skat09.test.interfaces;
 import java.io.IOException;
 
 import skat09.spielart.SuitGame;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 
 
 /**
@@ -43,14 +43,14 @@ public interface IHumanPlayer {
 	 * @return die Karte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	public abstract Spielkarte spieleKarte(Spielkarte[] gespielteKarten);
+	public abstract PlayingCard spieleKarte(PlayingCard[] gespielteKarten);
 
 	/**
 	 * Gibt die gedr&uuml;ckten Spielkarten zur&uuml;ck.
 	 * 
 	 * @return gedr&uuml;ckte Spielkarten
 	 */
-	public abstract Spielkarte[] druecken(Spielkarte[] skat);
+	public abstract PlayingCard[] druecken(PlayingCard[] skat);
 
 	/**
 	 * Handspiel ermittelt, ob der Spieler ein Handspiel ansagt.

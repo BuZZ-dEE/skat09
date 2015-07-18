@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import skat09.spielart.SuitGame;
 import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
@@ -16,13 +16,13 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	
 	private String name;
 	private boolean istAlleinspieler;
-	private ArrayList<Spielkarte> blatt;
+	private ArrayList<PlayingCard> blatt;
 	
 	public HumanPlayerStub2(String name) {
 		
 		this.name = name;
 		this.istAlleinspieler = false;
-		this.blatt = new ArrayList<Spielkarte>();
+		this.blatt = new ArrayList<PlayingCard>();
 	}
 	
 	public boolean agent() {
@@ -37,7 +37,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public Spielkarte[] druecken(Spielkarte[] skat) {
+	public PlayingCard[] druecken(PlayingCard[] skat) {
 		
 		return skat;
 	}
@@ -55,7 +55,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public ArrayList<Spielkarte> getBlatt() {
+	public ArrayList<PlayingCard> getBlatt() {
 		
 		return blatt;
 	}
@@ -85,7 +85,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public ArrayList<Spielkarte> getStiche() {
+	public ArrayList<PlayingCard> getStiche() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -149,7 +149,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public void setBlatt(ArrayList<Spielkarte> blatt) {
+	public void setBlatt(ArrayList<PlayingCard> blatt) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -173,7 +173,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public void setStiche(ArrayList<Spielkarte> stiche) {
+	public void setStiche(ArrayList<PlayingCard> stiche) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -185,13 +185,13 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten) {
+	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	public void stichHinzufuegen(Spielkarte[] stich) {
+	public void stichHinzufuegen(PlayingCard[] stich) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -206,12 +206,12 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void gespielteKartenHinzufuegen(Spielkarte[] gespielteKarten) {
+	public void gespielteKartenHinzufuegen(PlayingCard[] gespielteKarten) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public ArrayList<Spielkarte> getAllegespieltenkarten() {
+	public ArrayList<PlayingCard> getAllegespieltenkarten() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -221,7 +221,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return null;
 	}
 
-	public ArrayList<Spielkarte> getRestblatt() {
+	public ArrayList<PlayingCard> getRestblatt() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -231,12 +231,12 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return null;
 	}
 
-	public void setAlleGespieltenKarten(ArrayList<Spielkarte> karten) {
+	public void setAlleGespieltenKarten(ArrayList<PlayingCard> karten) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void setDeck(ArrayList<Spielkarte> deck) {
+	public void setDeck(ArrayList<PlayingCard> deck) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -251,7 +251,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void setSkat(ArrayList<Spielkarte> skat) {
+	public void setSkat(ArrayList<PlayingCard> skat) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -261,17 +261,17 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void setTruempfe(Spielkarte[] truempfe) {
+	public void setTruempfe(PlayingCard[] truempfe) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public ArrayList<Spielkarte> spielbareKarten(Spielkarte[] gespielteKarten) {
+	public ArrayList<PlayingCard> spielbareKarten(PlayingCard[] gespielteKarten) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Spielkarte[] spitzenEinordnen() {
+	public PlayingCard[] spitzenEinordnen() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -291,7 +291,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return 0;
 	}
 
-	public Spielkarte zufaelligErlaubteKarteSpielen(Spielkarte[] gespielteKarten) {
+	public PlayingCard zufaelligErlaubteKarteSpielen(PlayingCard[] gespielteKarten) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -2,7 +2,7 @@ package skat09.spielart;
 
 import java.util.ArrayList;
 
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.INullGame;
 
@@ -25,8 +25,8 @@ public class NullGame extends Spielart implements INullGame {
 
 	
 	@Override
-	public boolean gespielteKartePruefen(ArrayList<Spielkarte> blatt,
-			Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
+	public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 
 		boolean ergebnis = false;
 
@@ -46,8 +46,8 @@ public class NullGame extends Spielart implements INullGame {
 
 	
 	@Override
-	public boolean farbeBedienen(ArrayList<Spielkarte> blatt,
-			Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
+	public boolean farbeBedienen(ArrayList<PlayingCard> blatt,
+			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 
 		boolean ergebnis = true;
 
@@ -75,9 +75,9 @@ public class NullGame extends Spielart implements INullGame {
 
 	
 	@Override
-	public Spielkarte hoehereKarte(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte hoehereKarte = null;
+		PlayingCard hoehereKarte = null;
 
 		if (karte1.getFarbe() == karte2.getFarbe()) {
 
@@ -93,9 +93,9 @@ public class NullGame extends Spielart implements INullGame {
 
 	
 	@Override
-	public Spielkarte sortiereKarte(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard sortiereKarte(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte hoehereKarte = null;
+		PlayingCard hoehereKarte = null;
 
 		if (karte1.getFarbe() == karte2.getFarbe()) {
 
@@ -114,7 +114,7 @@ public class NullGame extends Spielart implements INullGame {
 
 	
 	@Override
-	public int karteBewerten(Spielkarte karte) {
+	public int karteBewerten(PlayingCard karte) {
 
 		Wert wert = karte.getWert();
 		int ergebnis = -1;
