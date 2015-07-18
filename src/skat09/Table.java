@@ -1513,7 +1513,7 @@ public class Table extends Observable {
 			grundwertliste.add(24);
 			erg = punkteGrandspiel(augenzahl);
 		}
-		if (spielart.getSpielart() == GameVarietyName.FARBE) {
+		if (spielart.getSpielart() == GameVarietyName.SUIT) {
 			erg = punkteFarbspiel(augenzahl);
 		}
 		return erg;
@@ -1711,7 +1711,7 @@ public class Table extends Observable {
 		if (spielart.getSpielart() == GameVarietyName.GRAND) {
 			zwierg = 24;
 		}
-		if (spielart.getSpielart() == GameVarietyName.FARBE) {
+		if (spielart.getSpielart() == GameVarietyName.SUIT) {
 			SuitGame spiel = (SuitGame) spielart;
 			zwierg = spiel.getTrumpffarbe().wert();
 		}

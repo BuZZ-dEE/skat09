@@ -23,7 +23,7 @@ public class SuitGame extends GameVariety {
 	public SuitGame(Suit trumpffarbe) {
 
 		this.trumpffarbe = trumpffarbe;
-		setSpielart(GameVarietyName.FARBE);
+		setSpielart(GameVarietyName.SUIT);
 
 	}
 
