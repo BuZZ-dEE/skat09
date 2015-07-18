@@ -5,7 +5,7 @@ package skat09.spielkarte;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public enum Wert {
+public enum Value {
 	
 	/**
 	 * Halter des Farbwertes 6

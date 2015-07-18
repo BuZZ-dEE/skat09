@@ -9,7 +9,7 @@ import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.ISpielart;
 
 
@@ -713,9 +713,9 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 		Random zufall = new Random();
-		ArrayList<PlayingCard> buben = kartenEinesWertes(blatt, Wert.BUBE);
-		ArrayList<PlayingCard> asse = kartenEinesWertes(blatt, Wert.ASS);
-		ArrayList<PlayingCard> zehnen = kartenEinesWertes(blatt, Wert.ZEHN);
+		ArrayList<PlayingCard> buben = kartenEinesWertes(blatt, Value.BUBE);
+		ArrayList<PlayingCard> asse = kartenEinesWertes(blatt, Value.ASS);
+		ArrayList<PlayingCard> zehnen = kartenEinesWertes(blatt, Value.ZEHN);
 
 		if (buben.size() > 2) {
 
@@ -802,8 +802,8 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : buben) {
 
-			if (karte.equals(new PlayingCard(Farbe.KREUZ, Wert.BUBE))
-					|| karte.equals(new PlayingCard(Farbe.PIK, Wert.BUBE))) {
+			if (karte.equals(new PlayingCard(Farbe.KREUZ, Value.BUBE))
+					|| karte.equals(new PlayingCard(Farbe.PIK, Value.BUBE))) {
 
 				ergebnis = buben.get(zufall.nextInt(buben.size()));
 				break;
@@ -1106,19 +1106,19 @@ public class SmartPlayer extends Player {
 		switch (karte.getWert()) {
 
 		case SECHS:
-			ergebnis = new PlayingCard(farbe, Wert.SIEBEN);
+			ergebnis = new PlayingCard(farbe, Value.SIEBEN);
 			break;
 		case SIEBEN:
-			ergebnis = new PlayingCard(farbe, Wert.ACHT);
+			ergebnis = new PlayingCard(farbe, Value.ACHT);
 			break;
 		case ACHT:
-			ergebnis = new PlayingCard(farbe, Wert.NEUN);
+			ergebnis = new PlayingCard(farbe, Value.NEUN);
 			break;
 		case NEUN:
 			ergebnis = naechstHoehereKarteNeun(farbe);
 			break;
 		case DAME:
-			ergebnis = new PlayingCard(farbe, Wert.KOENIG);
+			ergebnis = new PlayingCard(farbe, Value.KOENIG);
 			break;
 		case KOENIG:
 			ergebnis = naechstHoehereKarteKoenig(farbe);
@@ -1157,10 +1157,10 @@ public class SmartPlayer extends Player {
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Wert.DAME);
+			ergebnis = new PlayingCard(farbe, Value.DAME);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Value.ZEHN);
 		}
 
 		return ergebnis;
@@ -1182,10 +1182,10 @@ public class SmartPlayer extends Player {
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Value.ZEHN);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Wert.ASS);
+			ergebnis = new PlayingCard(farbe, Value.ASS);
 		}
 
 		return ergebnis;
@@ -1208,10 +1208,10 @@ public class SmartPlayer extends Player {
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Wert.ASS);
+			ergebnis = new PlayingCard(farbe, Value.ASS);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Wert.DAME);
+			ergebnis = new PlayingCard(farbe, Value.DAME);
 		}
 
 		return ergebnis;
@@ -1240,7 +1240,7 @@ public class SmartPlayer extends Player {
 
 		else {
 
-			ergebnis = new PlayingCard(farbe, Wert.DAME);
+			ergebnis = new PlayingCard(farbe, Value.DAME);
 		}
 
 		return ergebnis;
@@ -1267,19 +1267,19 @@ public class SmartPlayer extends Player {
 			ergebnis = null;
 			break;
 		case SIEBEN:
-			ergebnis = new PlayingCard(farbe, Wert.SECHS);
+			ergebnis = new PlayingCard(farbe, Value.SECHS);
 			break;
 		case ACHT:
-			ergebnis = new PlayingCard(farbe, Wert.SIEBEN);
+			ergebnis = new PlayingCard(farbe, Value.SIEBEN);
 			break;
 		case NEUN:
-			ergebnis = new PlayingCard(farbe, Wert.ACHT);
+			ergebnis = new PlayingCard(farbe, Value.ACHT);
 			break;
 		case DAME:
 			ergebnis = naechstNiedrigereKarteDame(farbe);
 			break;
 		case KOENIG:
-			ergebnis = new PlayingCard(farbe, Wert.DAME);
+			ergebnis = new PlayingCard(farbe, Value.DAME);
 			break;
 		case ZEHN:
 			ergebnis = naechstNiedrigereKarteZehn(farbe);
@@ -1315,10 +1315,10 @@ public class SmartPlayer extends Player {
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Wert.NEUN);
+			ergebnis = new PlayingCard(farbe, Value.NEUN);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Value.ZEHN);
 		}
 
 		return ergebnis;
@@ -1341,10 +1341,10 @@ public class SmartPlayer extends Player {
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Wert.KOENIG);
+			ergebnis = new PlayingCard(farbe, Value.KOENIG);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Wert.NEUN);
+			ergebnis = new PlayingCard(farbe, Value.NEUN);
 		}
 
 		return ergebnis;
@@ -1366,10 +1366,10 @@ public class SmartPlayer extends Player {
 		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
 				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Value.ZEHN);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Wert.KOENIG);
+			ergebnis = new PlayingCard(farbe, Value.KOENIG);
 		}
 
 		return ergebnis;
@@ -1395,7 +1395,7 @@ public class SmartPlayer extends Player {
 			ergebnis = null;
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Wert.ZEHN);
+			ergebnis = new PlayingCard(farbe, Value.ZEHN);
 		}
 		
 		return ergebnis;
@@ -1413,7 +1413,7 @@ public class SmartPlayer extends Player {
 	 * @return Die ArrayList mit den Assen.
 	 */
 	public ArrayList<PlayingCard> kartenEinesWertes(ArrayList<PlayingCard> blatt,
-			Wert wert) {
+			Value wert) {
 
 		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>(4);
 
@@ -1446,7 +1446,7 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : blatt) {
 
-			if (karte.getFarbe() == farbe && karte.getWert() != Wert.BUBE) {
+			if (karte.getFarbe() == farbe && karte.getWert() != Value.BUBE) {
 
 				ergebnis.add(karte);
 			}
@@ -1851,7 +1851,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			if (blatt.get(i).getWert() == Wert.BUBE) {
+			if (blatt.get(i).getWert() == Value.BUBE) {
 
 				kartenwert = zuReizendeSpielart.karteBewerten(blatt.get(i));
 				spitzen[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
@@ -1881,7 +1881,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			if (blatt.get(i).getWert() == Wert.BUBE) {
+			if (blatt.get(i).getWert() == Value.BUBE) {
 
 				kartenwert = zuReizendeSpielart.karteBewerten(blatt.get(i));
 				spitzen[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
@@ -1919,18 +1919,18 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : blatt) {
 
-			if (karte.getWert() == Wert.SIEBEN || karte.getWert() == Wert.ACHT
-					|| karte.getWert() == Wert.NEUN) {
+			if (karte.getWert() == Value.SIEBEN || karte.getWert() == Value.ACHT
+					|| karte.getWert() == Value.NEUN) {
 
 				kartenKleiner10++;
 			}
 
-			if (karte.getWert() == Wert.BUBE) {
+			if (karte.getWert() == Value.BUBE) {
 
 				buben++;
 			}
 
-			if (karte.getWert() == Wert.ASS || karte.getWert() == Wert.ZEHN) {
+			if (karte.getWert() == Value.ASS || karte.getWert() == Value.ZEHN) {
 
 				kartenGroesserKoenig++;
 			}
@@ -2135,27 +2135,27 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < stiche.size(); i++) {
 
-			if (stiche.get(i).getWert() == Wert.ASS) {
+			if (stiche.get(i).getWert() == Value.ASS) {
 
 				erg += 11;
 
-			} else if (stiche.get(i).getWert() == Wert.ZEHN) {
+			} else if (stiche.get(i).getWert() == Value.ZEHN) {
 
 				erg += 10;
 
-			} else if (stiche.get(i).getWert() == Wert.BUBE) {
+			} else if (stiche.get(i).getWert() == Value.BUBE) {
 
 				erg += 2;
 
-			} else if (stiche.get(i).getWert() == Wert.DAME) {
+			} else if (stiche.get(i).getWert() == Value.DAME) {
 
 				erg += 3;
 
-			} else if (stiche.get(i).getWert() == Wert.KOENIG) {
+			} else if (stiche.get(i).getWert() == Value.KOENIG) {
 
 				erg += 4;
 
-			} else if (stiche.get(i).getWert() == Wert.SECHS) {
+			} else if (stiche.get(i).getWert() == Value.SECHS) {
 
 				erg += 6;
 			}

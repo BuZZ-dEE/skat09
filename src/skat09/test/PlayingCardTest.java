@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 
 /**
  * Testklasse fuer die Spielkarte
@@ -16,11 +16,11 @@ import skat09.spielkarte.Wert;
 
 public class PlayingCardTest {
 	
-	Wert wert1 = Wert.ACHT;
+	Value wert1 = Value.ACHT;
 	Farbe farbe1 = Farbe.HERZ;
 	PlayingCard karte1 = new PlayingCard(farbe1, wert1);
 	
-	Wert wert2 = Wert.DAME;
+	Value wert2 = Value.DAME;
 	Farbe farbe2 = Farbe.PIK;
 	PlayingCard karte2 = new PlayingCard(farbe2, wert2);
 	
@@ -31,7 +31,7 @@ public class PlayingCardTest {
 	 */
 	@Test
 	public void testSpielkarte1() {
-		assertEquals(Wert.ACHT, karte1.getWert() );
+		assertEquals(Value.ACHT, karte1.getWert() );
 	}
 	
 	/**
@@ -68,85 +68,85 @@ public class PlayingCardTest {
 	@Test
 	public void toStringTest2() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.ASS);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.ASS);
 		assertEquals("PIK ASS", karte.toString());
 		
 	}
 	
 	@Test
 	public void compareToTest() {
-		PlayingCard karte1 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard karte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
+		PlayingCard karte1 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard karte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
 		assertEquals(0, karte1.compareTo(karte2));
 	}
 	
 	@Test
 	public void compareToTest2() {
-		PlayingCard karte1 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard karte2 = new PlayingCard(Farbe.HERZ, Wert.NEUN);
+		PlayingCard karte1 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard karte2 = new PlayingCard(Farbe.HERZ, Value.NEUN);
 		assertEquals(Integer.MAX_VALUE, karte1.compareTo(karte2));
 	}
 	
 	@Test
 	public void deutFarbeTest() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.BUBE);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.BUBE);
 		assertEquals("SCHELLEN", karte.deutFarbe());
 	}
 	
 	@Test
 	public void deutFarbeTest2() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.BUBE);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.BUBE);
 		assertEquals("HERZ", karte.deutFarbe());
 	}
 	
 	@Test
 	public void deutFarbeTest3() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.BUBE);
 		assertEquals("GRUEN", karte.deutFarbe());
 	}
 	
 	@Test
 	public void deutFarbeTest4() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		assertEquals("EICHEL", karte.deutFarbe());
 	}
 	
 	@Test
 	public void deutWertTest() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.BUBE);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.BUBE);
 		assertEquals("UNTER", karte.deutWert());
 	}
 	
 	@Test
 	public void deutWertTest2() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.DAME);
 		assertEquals("OBER", karte.deutWert());
 	}
 	
 	@Test
 	public void deutWertTest3() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.ASS);
 		assertEquals("DAUS", karte.deutWert());
 	}
 	
 	@Test
 	public void deutWertTest4() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.NEUN);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.NEUN);
 		assertEquals("NEUN", karte.deutWert());
 	}
 	
 	@Test
 	public void dateiPfadTest() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.DAME);
 		karte.setDeutsch(true);
 		assertEquals("deutkarten/HERZ_OBER", karte.dateiPfad());
 	}
@@ -154,7 +154,7 @@ public class PlayingCardTest {
 	@Test
 	public void dateiPfadTest2() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.DAME);
 		karte.setDeutsch(false);
 		assertEquals("frankarten/HERZ_DAME", karte.dateiPfad());
 	}

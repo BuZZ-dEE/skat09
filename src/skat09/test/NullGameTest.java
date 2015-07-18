@@ -11,7 +11,7 @@ import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.INullGame;
 
 
@@ -35,17 +35,17 @@ public class NullGameTest {
 	@Before
 	public void setUp() {
 		
-		spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
-		spielkarte5 = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
-		spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
-		spielkarte7 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
-		spielkarte8 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		spielkarte9 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		spielkarte10 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		spielkarte11 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.DAME);
+		spielkarte5 = new PlayingCard(Farbe.KREUZ, Value.KOENIG);
+		spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.ZEHN);
+		spielkarte7 = new PlayingCard(Farbe.KREUZ, Value.ASS);
+		spielkarte8 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		spielkarte9 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		spielkarte10 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		spielkarte11 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte3);

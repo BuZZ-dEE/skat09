@@ -14,7 +14,7 @@ import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
 
@@ -287,7 +287,7 @@ public class CLIOutput extends Output {
 
 			PlayingCard karte = blatt.get(i);
 			Farbe farbe = karte.getFarbe();
-			Wert wert = karte.getWert();
+			Value wert = karte.getWert();
 			System.out.println(i + ": " + farbe + " " + wert); // TODO also
 																// translate
 		}

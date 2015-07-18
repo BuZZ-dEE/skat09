@@ -10,7 +10,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 
 public class SuitGameTest {
 	Farbe a = Farbe.HERZ;
@@ -34,15 +34,15 @@ public class SuitGameTest {
 
 	@Before
 	public void setUp() {
-		karte1 = new PlayingCard(Farbe.HERZ, Wert.KOENIG);
-		karte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		karte3 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		karte4 = new PlayingCard(Farbe.KARO, Wert.KOENIG);
-		karte5 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
-		karte6 = new PlayingCard(Farbe.KREUZ, Wert.NEUN);
-		karte7 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		karte8 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		karte9 = new PlayingCard(Farbe.KARO, Wert.NEUN);
+		karte1 = new PlayingCard(Farbe.HERZ, Value.KOENIG);
+		karte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		karte3 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		karte4 = new PlayingCard(Farbe.KARO, Value.KOENIG);
+		karte5 = new PlayingCard(Farbe.KREUZ, Value.ASS);
+		karte6 = new PlayingCard(Farbe.KREUZ, Value.NEUN);
+		karte7 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		karte8 = new PlayingCard(Farbe.PIK, Value.ASS);
+		karte9 = new PlayingCard(Farbe.KARO, Value.NEUN);
 		
 		
 		blatt.add(karte2);

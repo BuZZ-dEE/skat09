@@ -23,7 +23,7 @@ import skat09.spieler.RuleCompliantPlayer;
 import skat09.spieler.SmartPlayer;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -40,11 +40,11 @@ public class SmartPlayerTest {
 	SuitGame spiel = new SuitGame(Farbe.HERZ);
 	@Before
 	public void setUp() {
-		spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte3);
@@ -67,13 +67,13 @@ public class SmartPlayerTest {
 	
 	@Test
 	public void testalleinspielerRauskommenGrand() {
-		assertEquals(Wert.BUBE, spieler.alleinspielerRauskommenGrand(gespielteKarten).getWert());
+		assertEquals(Value.BUBE, spieler.alleinspielerRauskommenGrand(gespielteKarten).getWert());
 	}
 	
 	@Test
 	public void testWert() {
 		boolean flag = false;
-		ArrayList<PlayingCard> wert = spieler.kartenEinesWertes(blatt, Wert.BUBE);
+		ArrayList<PlayingCard> wert = spieler.kartenEinesWertes(blatt, Value.BUBE);
 		if (wert.size() == 2) {
 			flag = true;
 		}
@@ -83,9 +83,9 @@ public class SmartPlayerTest {
 	@Test
 	public void testWert2() {
 		boolean flag = false;
-		ArrayList<PlayingCard> wert = spieler.kartenEinesWertes(blatt, Wert.BUBE);
+		ArrayList<PlayingCard> wert = spieler.kartenEinesWertes(blatt, Value.BUBE);
 		for (PlayingCard karte : wert) {
-			if (karte.equals(new PlayingCard(Farbe.PIK, Wert.BUBE))) {
+			if (karte.equals(new PlayingCard(Farbe.PIK, Value.BUBE))) {
 				flag = true;
 			}
 		}
@@ -96,9 +96,9 @@ public class SmartPlayerTest {
 	@Test
 	public void testWert3() {
 		boolean flag = false;
-		ArrayList<PlayingCard> wert = spieler.kartenEinesWertes(blatt, Wert.BUBE);
+		ArrayList<PlayingCard> wert = spieler.kartenEinesWertes(blatt, Value.BUBE);
 		for (PlayingCard karte : wert) {
-			if (karte.equals(new PlayingCard(Farbe.KREUZ, Wert.BUBE))) {
+			if (karte.equals(new PlayingCard(Farbe.KREUZ, Value.BUBE))) {
 				flag = true;
 			}
 		}
@@ -108,13 +108,13 @@ public class SmartPlayerTest {
 	@Test
 	public void rauskommenNullTest() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -137,13 +137,13 @@ public class SmartPlayerTest {
 	@Test
 	public void rauskommenNullTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -175,13 +175,13 @@ public class SmartPlayerTest {
 	@Test
 	public void rauskommenNullTest4() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -212,13 +212,13 @@ public class SmartPlayerTest {
 	@Test
 	public void rauskommenNullTest5() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.KARO, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.KARO, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -249,13 +249,13 @@ public class SmartPlayerTest {
 	@Test
 	public void alsZweiterKarteSpielenNullTest1() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -271,8 +271,8 @@ public class SmartPlayerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Wert.ASS);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Value.ASS);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		
 		assertEquals(spielkarte1, spieler.alsZweiterKarteSpielenNull(gespielteKarten));
 	}
@@ -280,13 +280,13 @@ public class SmartPlayerTest {
 	@Test
 	public void alsZweiterKarteSpielenNullTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.KREUZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -304,7 +304,7 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		IPlayer gegner = new Granny("gegen");
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Value.ASS);
 		gespielteKarten[0].setBesitzer(mate);
 		
 		assertEquals(spielkarte2, spieler.alsZweiterKarteSpielenNull(gespielteKarten));
@@ -313,13 +313,13 @@ public class SmartPlayerTest {
 	@Test
 	public void alsZweiterKarteSpielenNullTest3() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.KREUZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -337,7 +337,7 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		IPlayer gegner = new Granny("gegen");
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Value.ASS);
 		gespielteKarten[0].setBesitzer(gegner);
 		
 		assertEquals(spielkarte2, spieler.alsZweiterKarteSpielenNull(gespielteKarten));
@@ -346,13 +346,13 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKartenSpielenNullTest1() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -368,8 +368,8 @@ public class SmartPlayerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setSpielart(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Wert.ASS);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Value.ASS);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		
 		assertEquals(spielkarte1, spieler.alsDritterKarteSpielenNull(gespielteKarten));
 	}
@@ -377,14 +377,14 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKartenSpielenNullTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ACHT);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		PlayingCard spielkarte8 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ACHT);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ACHT);
+		PlayingCard spielkarte8 = new PlayingCard(Farbe.HERZ, Value.ACHT);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -403,9 +403,9 @@ public class SmartPlayerTest {
 		spieler.setSpielart(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		IPlayer gegnger = new Granny("gegner");
-		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		gespielteKarten[0].setBesitzer(gegnger);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals(spielkarte5, spieler.alsDritterKarteSpielenNull(gespielteKarten));
@@ -414,14 +414,14 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKartenSpielenNullTest3() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte8 = new PlayingCard(Farbe.HERZ, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.KREUZ, Value.ASS);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte8 = new PlayingCard(Farbe.HERZ, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -440,9 +440,9 @@ public class SmartPlayerTest {
 		spieler.setSpielart(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		IPlayer gegnger = new Granny("gegner");
-		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
+		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Value.KOENIG);
 		gespielteKarten[0].setBesitzer(gegnger);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals(spielkarte5, spieler.alsDritterKarteSpielenNull(gespielteKarten));
@@ -451,14 +451,14 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKartenSpielenNullTest4() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte8 = new PlayingCard(Farbe.HERZ, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.KREUZ, Value.ASS);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte8 = new PlayingCard(Farbe.HERZ, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -477,9 +477,9 @@ public class SmartPlayerTest {
 		spieler.setSpielart(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		IPlayer gegnger = new Granny("gegner");
-		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
+		gespielteKarten[0] = new PlayingCard(Farbe.KREUZ, Value.KOENIG);
 		gespielteKarten[0].setBesitzer(mate);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.NEUN);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.NEUN);
 		gespielteKarten[1].setBesitzer(gegnger);
 		
 		assertEquals(spielkarte5, spieler.alsDritterKarteSpielenNull(gespielteKarten));
@@ -493,12 +493,12 @@ public class SmartPlayerTest {
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
 		spieler.setDeck(deck);
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -513,7 +513,7 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setIstAlleinspieler(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		gespielteKarten[0].setBesitzer(gegner);
 		
 		assertEquals( spielkarte1, spieler.alsZweiterKarteSpielenGrand(gespielteKarten));
@@ -527,12 +527,12 @@ public class SmartPlayerTest {
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
 		spieler.setDeck(deck);
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -545,7 +545,7 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.ZEHN);
 		gespielteKarten[0].setBesitzer(mate);
 		
 		assertEquals( spielkarte1, spieler.alsZweiterKarteSpielenGrand(gespielteKarten));
@@ -559,12 +559,12 @@ public class SmartPlayerTest {
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
 		spieler.setDeck(deck);
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -578,7 +578,7 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.ZEHN);
 		gespielteKarten[0].setBesitzer(gegner);
 		
 		assertEquals( spielkarte1, spieler.alsZweiterKarteSpielenGrand(gespielteKarten));
@@ -592,12 +592,12 @@ public class SmartPlayerTest {
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
 		spieler.setDeck(deck);
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ACHT);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -611,7 +611,7 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.ZEHN);
 		gespielteKarten[0].setBesitzer(gegner);
 		
 		assertEquals( spielkarte1, spieler.alsZweiterKarteSpielenGrand(gespielteKarten));
@@ -620,12 +620,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenGrandTest1() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -640,9 +640,9 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setIstAlleinspieler(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		gespielteKarten[0].setBesitzer(gegner);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals( spielkarte1, spieler.alsDritterKarteSpielenGrand(gespielteKarten));
@@ -651,12 +651,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenGrandTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -670,9 +670,9 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.KOENIG);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.KOENIG);
 		gespielteKarten[0].setBesitzer(mate);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(gegner);
 		
 		assertEquals( spielkarte1, spieler.alsDritterKarteSpielenGrand(gespielteKarten));
@@ -681,12 +681,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenGrandTest3() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -700,9 +700,9 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.KOENIG);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.KOENIG);
 		gespielteKarten[0].setBesitzer(gegner);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals( spielkarte1, spieler.alsDritterKarteSpielenGrand(gespielteKarten));
@@ -711,12 +711,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenGrandTest4() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -730,9 +730,9 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		spieler.setBlatt(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.KOENIG);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.KOENIG);
 		gespielteKarten[0].setBesitzer(gegner);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals( spielkarte1, spieler.alsDritterKarteSpielenGrand(gespielteKarten));
@@ -741,12 +741,12 @@ public class SmartPlayerTest {
 	@Test
 	public void rauskommenTest1() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -758,8 +758,8 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setIstAlleinspieler(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		
 		boolean erfolg = false;
 		if (!blatt.contains(spieler.rauskommen(gespielteKarten))) {
@@ -771,12 +771,12 @@ public class SmartPlayerTest {
 	@Test
 	public void rauskommenTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -804,12 +804,12 @@ public class SmartPlayerTest {
 	@Test
 	public void rauskommenTest3() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.KREUZ, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.KREUZ, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -837,12 +837,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsZweiterKarteSpielenTest1() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -854,7 +854,7 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setIstAlleinspieler(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		
 		
 		boolean erfolg = false;
@@ -867,12 +867,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsZweiterKarteSpielenTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -886,7 +886,7 @@ public class SmartPlayerTest {
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		gespielteKarten[0].setBesitzer(mate);
 		
 		assertEquals(spielkarte1, spieler.alsZweiterKarteSpielen(gespielteKarten));
@@ -895,12 +895,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsZweiterKarteSpielenTest3() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -914,7 +914,7 @@ public class SmartPlayerTest {
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		gespielteKarten[0].setBesitzer(gegner);
 		
 		assertEquals(spielkarte1, spieler.alsZweiterKarteSpielen(gespielteKarten));
@@ -923,12 +923,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsZweiterKarteSpielenTest4() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -942,9 +942,9 @@ public class SmartPlayerTest {
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.ZEHN);
 		gespielteKarten[0].setBesitzer(gegner);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals(spielkarte1, spieler.alsZweiterKarteSpielen(gespielteKarten));
@@ -953,12 +953,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenTest1() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -970,8 +970,8 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setIstAlleinspieler(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		
 		boolean erfolg = false;
 		if (!blatt.contains(spieler.alsDritterKarteSpielen(gespielteKarten))) {
@@ -983,12 +983,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1002,9 +1002,9 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
 		IPlayer wicht = new Granny("wicht");
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		gespielteKarten[0].setBesitzer(wicht);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals(spielkarte1, spieler.alsDritterKarteSpielen(gespielteKarten));
@@ -1013,12 +1013,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenTest3() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1032,9 +1032,9 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
 		IPlayer wicht = new Granny("wicht");
-		gespielteKarten[0] = new PlayingCard(Farbe.PIK, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.PIK, Value.SIEBEN);
 		gespielteKarten[0].setBesitzer(wicht);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals(spielkarte3, spieler.alsDritterKarteSpielen(gespielteKarten));
@@ -1043,12 +1043,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenTest4() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ACHT);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1062,9 +1062,9 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
 		IPlayer wicht = new Granny("wicht");
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.KOENIG);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.KOENIG);
 		gespielteKarten[0].setBesitzer(wicht);
-		gespielteKarten[1] = new PlayingCard(Farbe.KARO, Wert.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.KARO, Value.DAME);
 		gespielteKarten[1].setBesitzer(mate);
 		
 		assertEquals(spielkarte1, spieler.alsDritterKarteSpielen(gespielteKarten));
@@ -1073,12 +1073,12 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspielerRauskommenGrandTest() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1093,7 +1093,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = spieler.alleinspielerRauskommenGrand(gespielteKarten);
-		if (gespielt.getWert() == Wert.BUBE) {
+		if (gespielt.getWert() == Value.BUBE) {
 			
 			ergebnis = true;
 		}
@@ -1104,11 +1104,11 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspielerRauskommenGrandTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1122,7 +1122,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = spieler.alleinspielerRauskommenGrand(gespielteKarten);
-		if (gespielt.getWert() == Wert.BUBE) {
+		if (gespielt.getWert() == Value.BUBE) {
 			
 			ergebnis = true;
 		}
@@ -1133,11 +1133,11 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspielerRauskommenGrandTest3() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1151,7 +1151,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = spieler.alleinspielerRauskommenGrand(gespielteKarten);
-		if (gespielt.getWert() == Wert.BUBE) {
+		if (gespielt.getWert() == Value.BUBE) {
 			
 			ergebnis = true;
 		}
@@ -1162,11 +1162,11 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspielerRauskommenGrandTest4() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ASS);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ASS);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ASS);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1181,7 +1181,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = spieler.alleinspielerRauskommenGrand(gespielteKarten);
-		if (gespielt.getWert() == Wert.ASS) {
+		if (gespielt.getWert() == Value.ASS) {
 			
 			ergebnis = true;
 		}
@@ -1192,13 +1192,13 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspielerRauskommenGrandTest5() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KREUZ, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -1225,13 +1225,13 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspielerRauskommenGrandTest6() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ASS);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -1249,7 +1249,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = spieler.alleinspielerRauskommenGrand(gespielteKarten);
-		if (gespielt.getWert() == Wert.ZEHN) {
+		if (gespielt.getWert() == Value.ZEHN) {
 			
 			ergebnis = true;
 		}
@@ -1260,13 +1260,13 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspielerRauskommenGrandTest7() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.SIEBEN);
-		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Wert.ACHT);
-		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Wert.ACHT);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.SIEBEN);
+		PlayingCard spielkarte6 = new PlayingCard(Farbe.PIK, Value.ACHT);
+		PlayingCard spielkarte7 = new PlayingCard(Farbe.KARO, Value.ACHT);
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
 		blatt.add(spielkarte2);
@@ -1299,11 +1299,11 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1316,9 +1316,9 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		
-		assertEquals(Wert.BUBE, spieler.rauskommenGrand(gespielteKarten).getWert());
+		assertEquals(Value.BUBE, spieler.rauskommenGrand(gespielteKarten).getWert());
 	}
 	
 	@Test
@@ -1328,11 +1328,11 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1348,7 +1348,7 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		spieler.setMitspieler(mate);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		spieler.setPosition(Position.VORHAND);
 		mate.setPosition(Position.MITTELHAND);
 		gegner.setPosition(Position.HINTERHAND);
@@ -1367,11 +1367,11 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.NEUN);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.SIEBEN);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.KOENIG);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.NEUN);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1387,7 +1387,7 @@ public class SmartPlayerTest {
 		spieler.setMitspieler(mate);
 		spieler.setMitspieler(mate);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		spieler.setPosition(Position.VORHAND);
 		mate.setPosition(Position.MITTELHAND);
 		gegner.setPosition(Position.HINTERHAND);
@@ -1406,11 +1406,11 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1422,7 +1422,7 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		
 		assertEquals(spielkarte1, 
 				spieler.alleinspieleralsZweiterKarteSpielenGrand(gespielteKarten));
@@ -1435,11 +1435,11 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		tisch.erstelleDeck();
 		deck = tisch.getDeck();
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1451,7 +1451,7 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.ASS);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.ASS);
 		
 		assertEquals(spielkarte1, 
 				spieler.alleinspieleralsZweiterKarteSpielenGrand(gespielteKarten));
@@ -1460,11 +1460,11 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspieleralsDritterKarteSpielenGrandTest1() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1475,8 +1475,8 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.KOENIG);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.KOENIG);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.KOENIG);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.KOENIG);
 		
 		assertEquals(spielkarte1, 
 				spieler.alleinspieleralsDritterKarteSpielenGrand(gespielteKarten));	
@@ -1485,11 +1485,11 @@ public class SmartPlayerTest {
 	@Test
 	public void alleinspieleralsDritterKarteSpielenGrandTest2() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1500,8 +1500,8 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Wert.ASS);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.ACHT);
+		gespielteKarten[1] = new PlayingCard(Farbe.PIK, Value.ASS);
 		
 		assertEquals(spielkarte1, 
 				spieler.alleinspieleralsDritterKarteSpielenGrand(gespielteKarten));	
@@ -1510,11 +1510,11 @@ public class SmartPlayerTest {
 	@Test
 	public void rauskommenRamsch() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1533,11 +1533,11 @@ public class SmartPlayerTest {
 	@Test
 	public void alsZweiterKarteSpielenRamschTest() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1548,7 +1548,7 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new Ramsch());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.NEUN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.NEUN);
 		
 		assertEquals(spielkarte1, 
 				spieler.alsZweiterKarteSpielenRamsch(gespielteKarten));
@@ -1557,11 +1557,11 @@ public class SmartPlayerTest {
 	@Test
 	public void alsDritterKarteSpielenRamschTest() {
 		
-		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		PlayingCard spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard spielkarte5 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(spielkarte1);
@@ -1572,8 +1572,8 @@ public class SmartPlayerTest {
 		spieler.setBlatt(blatt);
 		spieler.setSpielart(new Ramsch());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		gespielteKarten[1] = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.NEUN);
+		gespielteKarten[1] = new PlayingCard(Farbe.KARO, Value.ZEHN);
 		
 		assertEquals(spielkarte1, 
 				spieler.alsDritterKarteSpielenRamsch(gespielteKarten));
@@ -1645,11 +1645,11 @@ public class SmartPlayerTest {
 	@Test
 	public void zufallszahlTest() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.ASS);
-		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
-		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Wert.NEUN);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.ASS);
+		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Value.SIEBEN);
+		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Value.NEUN);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(karte1);
@@ -1669,8 +1669,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteTest1() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.SECHS);
-		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.SECHS);
+		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		boolean ergebnis = false;
 		if (hkarte.equals(spieler.naechstHoehereKarte(Farbe.KARO, karte))) {
 			
@@ -1683,8 +1683,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteTest2() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Wert.ACHT);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Value.ACHT);
 		boolean ergebnis = false;
 		if (hkarte.equals(spieler.naechstHoehereKarte(Farbe.KARO, karte))) {
 			
@@ -1697,8 +1697,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteTest3() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Wert.NEUN);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.ACHT);
+		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Value.NEUN);
 		boolean ergebnis = false;
 		if (hkarte.equals(spieler.naechstHoehereKarte(Farbe.KARO, karte))) {
 			
@@ -1711,8 +1711,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteTest4() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Value.DAME);
 		boolean ergebnis = false;
 		if (hkarte.equals(spieler.naechstHoehereKarte(Farbe.KARO, karte))) {
 			
@@ -1725,8 +1725,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteTest5() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.DAME);
-		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Wert.KOENIG);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.DAME);
+		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Value.KOENIG);
 		boolean ergebnis = false;
 		if (hkarte.equals(spieler.naechstHoehereKarte(Farbe.KARO, karte))) {
 			
@@ -1739,8 +1739,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteTest6() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.KOENIG);
-		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.KOENIG);
+		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Value.ZEHN);
 		boolean ergebnis = false;
 		if (hkarte.equals(spieler.naechstHoehereKarte(Farbe.KARO, karte))) {
 			
@@ -1753,8 +1753,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteTest7() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard hkarte = new PlayingCard(Farbe.KARO, Value.ASS);
 		boolean ergebnis = false;
 		if (hkarte.equals(spieler.naechstHoehereKarte(Farbe.KARO, karte))) {
 			
@@ -1767,7 +1767,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstHoehereKarteTest8() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.ASS);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.ASS);
 		
 		assertEquals(null, spieler.naechstHoehereKarte(Farbe.KARO, karte));
 	}
@@ -1776,7 +1776,7 @@ public class SmartPlayerTest {
 	public void naechstHoehereKarteNeunTest1() {
 		
 		spieler.setSpielart(new SuitGame(Farbe.PIK));
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.DAME);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteNeun(Farbe.PIK))) {
@@ -1791,7 +1791,7 @@ public class SmartPlayerTest {
 	public void naechstHoehereKarteNeunTest2() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.DAME);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteNeun(Farbe.PIK))) {
@@ -1806,7 +1806,7 @@ public class SmartPlayerTest {
 	public void naechstHoehereKarteNeunTest3() {
 		
 		spieler.setSpielart(new NullGame());
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.ZEHN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteNeun(Farbe.PIK))) {
@@ -1821,7 +1821,7 @@ public class SmartPlayerTest {
 	public void naechsteHoehereKarteKoenigTest1() {
 		
 		spieler.setSpielart(new SuitGame(Farbe.PIK));
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.ZEHN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteKoenig(Farbe.PIK))) {
@@ -1836,7 +1836,7 @@ public class SmartPlayerTest {
 	public void naechsteHoehereKarteKoenigTest2() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.ZEHN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteKoenig(Farbe.PIK))) {
@@ -1851,7 +1851,7 @@ public class SmartPlayerTest {
 	public void naechsteHoehereKarteKoenigTest3() {
 		
 		spieler.setSpielart(new NullGame());
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.ASS);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.ASS);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteKoenig(Farbe.PIK))) {
@@ -1866,7 +1866,7 @@ public class SmartPlayerTest {
 	public void naechstHoehereKarteZehnTest1() {
 		
 		spieler.setSpielart(new SuitGame(Farbe.PIK));
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.ASS);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.ASS);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteZehn(Farbe.PIK))) {
@@ -1881,7 +1881,7 @@ public class SmartPlayerTest {
 	public void naechstHoehereKarteZehnTest2() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.ASS);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.ASS);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteZehn(Farbe.PIK))) {
@@ -1896,7 +1896,7 @@ public class SmartPlayerTest {
 	public void naechstHoehereKarteZehnTest3() {
 		
 		spieler.setSpielart(new NullGame());
-		PlayingCard karte = new PlayingCard(Farbe.PIK, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.PIK, Value.DAME);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstHoehereKarteZehn(Farbe.PIK))) {
@@ -1910,7 +1910,7 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteTest1() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.SECHS);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.SECHS);
 		
 		assertEquals(null, spieler.naechstNiedrigereKarte(Farbe.KARO, karte));
 	}
@@ -1918,8 +1918,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteTest2() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.SECHS);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.SECHS);
 		boolean ergebnis = false;
 		if (karte2.equals(spieler.naechstNiedrigereKarte(Farbe.KARO, karte))) {
 			ergebnis = true;
@@ -1930,8 +1930,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteTest3() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.ACHT);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
 		boolean ergebnis = false;
 		if (karte2.equals(spieler.naechstNiedrigereKarte(Farbe.KARO, karte))) {
 			ergebnis = true;
@@ -1942,8 +1942,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteTest4() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.ACHT);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.ACHT);
 		boolean ergebnis = false;
 		if (karte2.equals(spieler.naechstNiedrigereKarte(Farbe.KARO, karte))) {
 			ergebnis = true;
@@ -1954,8 +1954,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteTest5() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.DAME);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.NEUN);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.DAME);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.NEUN);
 		boolean ergebnis = false;
 		if (karte2.equals(spieler.naechstNiedrigereKarte(Farbe.KARO, karte))) {
 			ergebnis = true;
@@ -1966,8 +1966,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteTest6() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.KOENIG);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.KOENIG);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.DAME);
 		boolean ergebnis = false;
 		if (karte2.equals(spieler.naechstNiedrigereKarte(Farbe.KARO, karte))) {
 			ergebnis = true;
@@ -1978,8 +1978,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteTest7() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.KOENIG);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.KOENIG);
 		boolean ergebnis = false;
 		if (karte2.equals(spieler.naechstNiedrigereKarte(Farbe.KARO, karte))) {
 			ergebnis = true;
@@ -1990,8 +1990,8 @@ public class SmartPlayerTest {
 	@Test
 	public void naechstNiedrigereKarteTest8() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.ZEHN);
 		boolean ergebnis = false;
 		if (karte2.equals(spieler.naechstNiedrigereKarte(Farbe.KARO, karte))) {
 			ergebnis = true;
@@ -2002,7 +2002,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteDameTest1() {
 		
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.NEUN);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.NEUN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteDame(Farbe.KREUZ))) {
@@ -2017,7 +2017,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteDameTest2() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.NEUN);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.NEUN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteDame(Farbe.KREUZ))) {
@@ -2032,7 +2032,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteDameTest3() {
 		
 		spieler.setSpielart(new NullGame());
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.ZEHN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteDame(Farbe.KREUZ))) {
@@ -2047,7 +2047,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteZehnTest1() {
 		
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.KOENIG);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteZehn(Farbe.KREUZ))) {
@@ -2062,7 +2062,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteZehnTest2() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.KOENIG);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteZehn(Farbe.KREUZ))) {
@@ -2077,7 +2077,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteZehnTest3() {
 		
 		spieler.setSpielart(new NullGame());
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.NEUN);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.NEUN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteZehn(Farbe.KREUZ))) {
@@ -2092,7 +2092,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteAssTest1() {
 		
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.ZEHN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteAss(Farbe.KREUZ))) {
@@ -2107,7 +2107,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteAssTest2() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.ZEHN);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteAss(Farbe.KREUZ))) {
@@ -2122,7 +2122,7 @@ public class SmartPlayerTest {
 	public void naechstNiedrigereKarteAssTest3() {
 		
 		spieler.setSpielart(new NullGame());
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.KOENIG);
 		
 		boolean erfolgreich = false;
 		if (karte.equals(spieler.naechstNiedrigereKarteAss(Farbe.KREUZ))) {
@@ -2136,16 +2136,16 @@ public class SmartPlayerTest {
 	@Test
 	public void kartenEinesWertesTest1() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.ASS);
-		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
-		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Wert.NEUN);
-		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
-		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Wert.KOENIG);
-		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Wert.DAME);
-		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.ASS);
+		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Value.SIEBEN);
+		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Value.NEUN);
+		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Value.SECHS);
+		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Value.KOENIG);
+		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Value.DAME);
+		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		
@@ -2163,22 +2163,22 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> erwartet = new ArrayList<PlayingCard>();
 		erwartet.add(karte2);
 		erwartet.add(karte3);
-		assertEquals(erwartet, spieler.kartenEinesWertes(blatt, Wert.ASS));
+		assertEquals(erwartet, spieler.kartenEinesWertes(blatt, Value.ASS));
 	}
 	
 	@Test
 	public void kartenEinerFarbeTest1() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.ASS);
-		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
-		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Wert.NEUN);
-		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
-		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Wert.KOENIG);
-		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Wert.DAME);
-		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.ASS);
+		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Value.SIEBEN);
+		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Value.NEUN);
+		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Value.SECHS);
+		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Value.KOENIG);
+		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Value.DAME);
+		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(karte1);
@@ -2202,16 +2202,16 @@ public class SmartPlayerTest {
 	@Test
 	public void kartenEinerFarbeTest2() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.ASS);
-		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
-		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Wert.NEUN);
-		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
-		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Wert.KOENIG);
-		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Wert.DAME);
-		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.ASS);
+		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Value.SIEBEN);
+		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Value.NEUN);
+		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Value.SECHS);
+		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Value.KOENIG);
+		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Value.DAME);
+		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(karte1);
@@ -2237,16 +2237,16 @@ public class SmartPlayerTest {
 	@Test
 	public void kartenEinerFarbeTest3() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.ASS);
-		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
-		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Wert.NEUN);
-		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
-		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Wert.KOENIG);
-		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Wert.DAME);
-		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.ASS);
+		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Value.SIEBEN);
+		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Value.NEUN);
+		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Value.SECHS);
+		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Value.KOENIG);
+		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Value.DAME);
+		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(karte1);
@@ -2271,16 +2271,16 @@ public class SmartPlayerTest {
 	@Test
 	public void kartenEinerFarbeTest4() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.ASS);
-		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
-		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Wert.NEUN);
-		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
-		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Wert.KOENIG);
-		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Wert.DAME);
-		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.ASS);
+		PlayingCard karte4 = new PlayingCard(Farbe.HERZ, Value.SIEBEN);
+		PlayingCard karte5 = new PlayingCard(Farbe.HERZ, Value.NEUN);
+		PlayingCard karte6 = new PlayingCard(Farbe.HERZ, Value.SECHS);
+		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Value.KOENIG);
+		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Value.DAME);
+		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard karte10 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(karte1);
@@ -2305,14 +2305,14 @@ public class SmartPlayerTest {
 		
 		ArrayList<PlayingCard> spielbareKarten = new ArrayList<PlayingCard>();
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Value.ASS);
 		
 		spielbareKarten.add(karte1);
 		spielbareKarten.add(karte2);
-		spielbareKarten.add(new PlayingCard(Farbe.HERZ, Wert.NEUN));
-		spielbareKarten.add(new PlayingCard(Farbe.KARO, Wert.KOENIG));
-		spielbareKarten.add(new PlayingCard(Farbe.PIK, Wert.DAME));
+		spielbareKarten.add(new PlayingCard(Farbe.HERZ, Value.NEUN));
+		spielbareKarten.add(new PlayingCard(Farbe.KARO, Value.KOENIG));
+		spielbareKarten.add(new PlayingCard(Farbe.PIK, Value.DAME));
 		
 		assertEquals(karte1, spieler.hoechsteSpielbareKarte(spielbareKarten));
 	}
@@ -2322,13 +2322,13 @@ public class SmartPlayerTest {
 		
 		ArrayList<PlayingCard> spielbareKarten = new ArrayList<PlayingCard>();
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
 		
-		spielbareKarten.add(new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+		spielbareKarten.add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spielbareKarten.add(karte1);
-		spielbareKarten.add(new PlayingCard(Farbe.HERZ, Wert.NEUN));
-		spielbareKarten.add(new PlayingCard(Farbe.KARO, Wert.KOENIG));
-		spielbareKarten.add(new PlayingCard(Farbe.PIK, Wert.DAME));
+		spielbareKarten.add(new PlayingCard(Farbe.HERZ, Value.NEUN));
+		spielbareKarten.add(new PlayingCard(Farbe.KARO, Value.KOENIG));
+		spielbareKarten.add(new PlayingCard(Farbe.PIK, Value.DAME));
 		
 		assertEquals(karte1, spieler.niedrigsteSpielbareKarte(spielbareKarten));
 	}
@@ -2336,8 +2336,8 @@ public class SmartPlayerTest {
 	@Test
 	public void hoechsteSpielbareKarteBestimmenTest1() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.DAME);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.DAME);
 		spieler.setSpielart(new GrandGame());
 		
 		assertEquals(karte1, 
@@ -2347,8 +2347,8 @@ public class SmartPlayerTest {
 	@Test
 	public void hoechsteSpielbareKarteBestimmenTest2() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.DAME);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.ZEHN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.DAME);
 		spieler.setSpielart(new NullGame());
 		
 		assertEquals(karte2, 
@@ -2358,8 +2358,8 @@ public class SmartPlayerTest {
 	@Test
 	public void hoechsteSpielbareKarteBestimmenTest3() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.HERZ, Wert.DAME);
-		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Wert.DAME);
+		PlayingCard karte1 = new PlayingCard(Farbe.HERZ, Value.DAME);
+		PlayingCard karte2 = new PlayingCard(Farbe.KARO, Value.DAME);
 		spieler.setSpielart(new NullGame());
 		
 		assertEquals(karte1, 
@@ -2370,8 +2370,8 @@ public class SmartPlayerTest {
 	public void niedrigsteSpielbareKarteBestimmenTest1() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.ZEHN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Value.DAME);
 		
 		assertEquals(karte2, 
 				spieler.niedrigsteSpielbareKarteBestimmen(karte1, karte2));
@@ -2381,8 +2381,8 @@ public class SmartPlayerTest {
 	public void niedrigsteSpielbareKarteBestimmenTest2() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Wert.NEUN);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.ACHT);
+		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Value.NEUN);
 		
 		assertEquals(karte1, 
 				spieler.niedrigsteSpielbareKarteBestimmen(karte1, karte2));
@@ -2392,8 +2392,8 @@ public class SmartPlayerTest {
 	public void niedrigsteSpielbareKarteBestimmenTest3() {
 		
 		spieler.setSpielart(new GrandGame());
-		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Wert.NEUN);
-		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Wert.NEUN);
+		PlayingCard karte1 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Value.NEUN);
 		
 		assertEquals(karte1, 
 				spieler.niedrigsteSpielbareKarteBestimmen(karte1, karte2));
@@ -2434,13 +2434,13 @@ public class SmartPlayerTest {
 	public void spielAnsagenTest() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.BUBE));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(new GrandGame().getSpielart(), 
@@ -2485,8 +2485,8 @@ public class SmartPlayerTest {
 	public void farbeTest() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ASS));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ASS));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(new SuitGame(Farbe.HERZ).getSpielart(), 
@@ -2509,16 +2509,16 @@ public class SmartPlayerTest {
 	public void bestimmeMaxReizwert1() {
 	
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
 		spieler.setBlatt(blatt);
 		spieler.bestimmeMaxReizwert();
 		assertEquals(23, spieler.getMaxReizwert());
@@ -2528,16 +2528,16 @@ public class SmartPlayerTest {
 	public void bestimmeMaxReizwert2() {
 	
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ASS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ASS));
 		spieler.setBlatt(blatt);
 		spieler.bestimmeMaxReizwert();
 		assertEquals(24, spieler.getMaxReizwert());
@@ -2547,16 +2547,16 @@ public class SmartPlayerTest {
 	public void bestimmeMaxReizwert3() {
 	
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
 		spieler.setBlatt(blatt);
 		spieler.bestimmeMaxReizwert();
 		assertEquals(33, spieler.getMaxReizwert());
@@ -2566,8 +2566,8 @@ public class SmartPlayerTest {
 	public void maxReizwertFarbeTest() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.KOENIG));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.KOENIG));
 		spieler.setBlatt(blatt);
 		spieler.maxReizwertFarbe(1);
 		assertEquals(24, spieler.getMaxReizwert());
@@ -2591,12 +2591,12 @@ public class SmartPlayerTest {
 	public void ermittleSpitzenTest1() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		PlayingCard karte5 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte6 = new PlayingCard(Farbe.KARO, Wert.ZEHN);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		PlayingCard karte5 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte6 = new PlayingCard(Farbe.KARO, Value.ZEHN);
 		blatt.add(karte1);
 		blatt.add(karte2);
 		blatt.add(karte3);
@@ -2612,8 +2612,8 @@ public class SmartPlayerTest {
 	public void ermittleSpitzenTest2() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.BUBE);
 		blatt.add(karte1);
 		blatt.add(karte2);
 		spieler.setBlatt(blatt);
@@ -2624,18 +2624,18 @@ public class SmartPlayerTest {
 	@Test
 	public void spitzenZaehlenTest1() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		PlayingCard karte5 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard karte6 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Wert.KOENIG);
-		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Wert.DAME);
-		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard karte10 = new PlayingCard(Farbe.PIK, Wert.ACHT);
-		PlayingCard karte11 = new PlayingCard(Farbe.PIK, Wert.SIEBEN);
-		PlayingCard karte12 = new PlayingCard(Farbe.PIK, Wert.SECHS);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		PlayingCard karte5 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard karte6 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Value.KOENIG);
+		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Value.DAME);
+		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard karte10 = new PlayingCard(Farbe.PIK, Value.ACHT);
+		PlayingCard karte11 = new PlayingCard(Farbe.PIK, Value.SIEBEN);
+		PlayingCard karte12 = new PlayingCard(Farbe.PIK, Value.SECHS);
 	
 		PlayingCard[] spitzen = new PlayingCard[13];
 		spitzen[0] = karte1;
@@ -2658,7 +2658,7 @@ public class SmartPlayerTest {
 	public void spitzenZaehlenTest2() {
 		
 		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[4] = new PlayingCard(Farbe.HERZ, Wert.ASS);
+		spitzen[4] = new PlayingCard(Farbe.HERZ, Value.ASS);
 		
 		assertEquals(4, spieler.spitzenZaehlen(spitzen));
 	}
@@ -2666,7 +2666,7 @@ public class SmartPlayerTest {
 	public void ohneTest1() {
 		
 		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[12] = new PlayingCard(Farbe.PIK, Wert.SECHS);
+		spitzen[12] = new PlayingCard(Farbe.PIK, Value.SECHS);
 		assertEquals(12, spieler.ohne(spitzen));
 	}
 	
@@ -2674,25 +2674,25 @@ public class SmartPlayerTest {
 	public void ohneTest2() {
 		
 		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[3] = new PlayingCard(Farbe.KARO, Wert.BUBE);
+		spitzen[3] = new PlayingCard(Farbe.KARO, Value.BUBE);
 		assertEquals(3, spieler.ohne(spitzen));
 	}
 	
 	@Test
 	public void mitTest1() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		PlayingCard karte5 = new PlayingCard(Farbe.PIK, Wert.ASS);
-		PlayingCard karte6 = new PlayingCard(Farbe.PIK, Wert.ZEHN);
-		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Wert.KOENIG);
-		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Wert.DAME);
-		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		PlayingCard karte10 = new PlayingCard(Farbe.PIK, Wert.ACHT);
-		PlayingCard karte11 = new PlayingCard(Farbe.PIK, Wert.SIEBEN);
-		PlayingCard karte12 = new PlayingCard(Farbe.PIK, Wert.SECHS);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		PlayingCard karte5 = new PlayingCard(Farbe.PIK, Value.ASS);
+		PlayingCard karte6 = new PlayingCard(Farbe.PIK, Value.ZEHN);
+		PlayingCard karte7 = new PlayingCard(Farbe.PIK, Value.KOENIG);
+		PlayingCard karte8 = new PlayingCard(Farbe.PIK, Value.DAME);
+		PlayingCard karte9 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		PlayingCard karte10 = new PlayingCard(Farbe.PIK, Value.ACHT);
+		PlayingCard karte11 = new PlayingCard(Farbe.PIK, Value.SIEBEN);
+		PlayingCard karte12 = new PlayingCard(Farbe.PIK, Value.SECHS);
 	
 		PlayingCard[] spitzen = new PlayingCard[13];
 		spitzen[0] = karte1;
@@ -2714,9 +2714,9 @@ public class SmartPlayerTest {
 	@Test
 	public void mitTest2() {
 		
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.BUBE);
 
 		PlayingCard[] spitzen = new PlayingCard[13];
 		spitzen[0] = karte1;
@@ -2730,13 +2730,13 @@ public class SmartPlayerTest {
 	public void farbeSpitzenTest() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Wert.BUBE); 
-		PlayingCard karte5 = new PlayingCard(Farbe.KARO, Wert.ASS);
-		PlayingCard karte6 = new PlayingCard(Farbe.KARO, Wert.DAME);
-		PlayingCard karte7 = new PlayingCard(Farbe.KARO, Wert.NEUN);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Value.BUBE); 
+		PlayingCard karte5 = new PlayingCard(Farbe.KARO, Value.ASS);
+		PlayingCard karte6 = new PlayingCard(Farbe.KARO, Value.DAME);
+		PlayingCard karte7 = new PlayingCard(Farbe.KARO, Value.NEUN);
 		
 		blatt.add(karte1);
 		blatt.add(karte2);
@@ -2746,11 +2746,11 @@ public class SmartPlayerTest {
 		blatt.add(karte6);
 		blatt.add(karte7);
 		
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
 	
 		PlayingCard[] spitzen = new PlayingCard[13];
 		spitzen[0] = karte1;
@@ -2771,22 +2771,22 @@ public class SmartPlayerTest {
 	public void grandSpitzenTest1() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Wert.BUBE); 
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Value.BUBE); 
 	
 		blatt.add(karte1);
 		blatt.add(karte2);
 		blatt.add(karte3);
 		blatt.add(karte4);
 		
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
 	
 		PlayingCard[] spitzen = {karte1, karte2, karte3, karte4};
 		
@@ -2809,22 +2809,22 @@ public class SmartPlayerTest {
 	public void grandSpitzenTest2() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.SECHS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
-		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Wert.SECHS); 
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.SECHS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.SECHS);
+		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Value.SECHS); 
 	
 		blatt.add(karte1);
 		blatt.add(karte2);
 		blatt.add(karte3);
 		blatt.add(karte4);
 		
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
 		
 		spieler.setBlatt(blatt);
 		
@@ -2847,22 +2847,22 @@ public class SmartPlayerTest {
 	public void grandSpitzenTest3() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.SECHS);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.SECHS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
-		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Wert.SECHS); 
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.SECHS);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.SECHS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.SECHS);
+		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Value.SECHS); 
 	
 		blatt.add(karte1);
 		blatt.add(karte2);
 		blatt.add(karte3);
 		blatt.add(karte4);
 		
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
 		
 		spieler.setBlatt(blatt);
 		
@@ -2877,22 +2877,22 @@ public class SmartPlayerTest {
 	public void grandSpitzenTest4() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.SECHS);
-		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Wert.SECHS);
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Wert.SECHS); 
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.SECHS);
+		PlayingCard karte2 = new PlayingCard(Farbe.PIK, Value.SECHS);
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		PlayingCard karte4 = new PlayingCard(Farbe.KARO, Value.SECHS); 
 	
 		blatt.add(karte1);
 		blatt.add(karte2);
 		blatt.add(karte3);
 		blatt.add(karte4);
 		
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
 		
 		spieler.setBlatt(blatt);
 		
@@ -2907,16 +2907,16 @@ public class SmartPlayerTest {
 	public void bestimmeSpielartTest() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(new NullGame().getSpielart(), 
@@ -2927,16 +2927,16 @@ public class SmartPlayerTest {
 	public void bestimmeSpielartTest2() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ASS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ASS));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(new GrandGame().getSpielart(), 
@@ -2947,16 +2947,16 @@ public class SmartPlayerTest {
 	public void bestimmeSpielartTest3() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(new SuitGame(Farbe.PIK).getSpielart(), 
@@ -2967,16 +2967,16 @@ public class SmartPlayerTest {
 	public void bestimmeSpielartTest4() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SIEBEN));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(new SuitGame(Farbe.PIK).getSpielart(), 
@@ -2987,19 +2987,19 @@ public class SmartPlayerTest {
 	public void ermittleKurzeLangeFarbeTest() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.DAME));
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.DAME));
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.ASS);
 		blatt.add(karte1);
-		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Value.ZEHN);
 		blatt.add(karte2);
-		PlayingCard karte3 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
+		PlayingCard karte3 = new PlayingCard(Farbe.KREUZ, Value.DAME);
 		blatt.add(karte3);
-		PlayingCard karte4 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
+		PlayingCard karte4 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
 		blatt.add(karte4);
 		spieler.setBlatt(blatt);
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
@@ -3015,20 +3015,20 @@ public class SmartPlayerTest {
 	public void ermittleKurzeLangeFarbeTest2() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ASS));
-		PlayingCard karte5 = new PlayingCard(Farbe.PIK, Wert.DAME); 
+		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ASS));
+		PlayingCard karte5 = new PlayingCard(Farbe.PIK, Value.DAME); 
 		blatt.add(karte5);
-		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		PlayingCard karte1 = new PlayingCard(Farbe.KREUZ, Value.ASS);
 		blatt.add(karte1);
-		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
+		PlayingCard karte2 = new PlayingCard(Farbe.KREUZ, Value.ZEHN);
 		blatt.add(karte2);
-		PlayingCard karte3 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
+		PlayingCard karte3 = new PlayingCard(Farbe.KREUZ, Value.DAME);
 		blatt.add(karte3);
-		PlayingCard karte4 = new PlayingCard(Farbe.KREUZ, Wert.ACHT);
+		PlayingCard karte4 = new PlayingCard(Farbe.KREUZ, Value.ACHT);
 		blatt.add(karte4);
 		spieler.setBlatt(blatt);
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
@@ -3045,13 +3045,13 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		
 		assertEquals(karo, spieler.ermittleKurzeFarbe(karo, herz, pik, kreuz));
 	}
@@ -3064,14 +3064,14 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		
 		assertEquals(herz, spieler.ermittleKurzeFarbe(karo, herz, pik, kreuz));
 	}
@@ -3084,14 +3084,14 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		
 		assertEquals(pik, spieler.ermittleKurzeFarbe(karo, herz, pik, kreuz));
 	}
@@ -3104,13 +3104,13 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		
 		assertEquals(kreuz, spieler.ermittleKurzeFarbe(karo, herz, pik, kreuz));
 	}
@@ -3123,13 +3123,13 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		
 		assertEquals(karo, spieler.ermittleLangeFarbe(karo, herz, pik, kreuz));
 	}
@@ -3142,14 +3142,14 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		
 		assertEquals(herz, spieler.ermittleLangeFarbe(karo, herz, pik, kreuz));
 	}
@@ -3162,16 +3162,16 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		herz.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		pik.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		herz.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		pik.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		
 		assertEquals(pik, spieler.ermittleLangeFarbe(karo, herz, pik, kreuz));
 	}
@@ -3184,9 +3184,9 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
-		kreuz.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		karo.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
+		kreuz.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		
 		assertEquals(kreuz, spieler.ermittleLangeFarbe(karo, herz, pik, kreuz));
 	}
@@ -3195,16 +3195,16 @@ public class SmartPlayerTest {
 	public void ermittleTrumpffarbeTest1() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(Farbe.PIK, spieler.ermittleTrumpffarbe());
@@ -3214,16 +3214,16 @@ public class SmartPlayerTest {
 	public void ermittleTrumpffarbeTest2() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(Farbe.KREUZ, spieler.ermittleTrumpffarbe());
@@ -3233,16 +3233,16 @@ public class SmartPlayerTest {
 	public void ermittleTrumpffarbeTest3() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.SECHS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.SECHS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(Farbe.KARO, spieler.ermittleTrumpffarbe());
@@ -3252,16 +3252,16 @@ public class SmartPlayerTest {
 	public void ermittleTrumpffarbeTest4() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ASS));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Wert.SECHS));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.PIK, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KREUZ, Wert.SECHS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ASS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.HERZ, Value.SECHS));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.PIK, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KREUZ, Value.SECHS));
 		spieler.setBlatt(blatt);
 		
 		assertEquals(Farbe.HERZ, spieler.ermittleTrumpffarbe());
@@ -3272,14 +3272,14 @@ public class SmartPlayerTest {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.SECHS));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ACHT));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.NEUN));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ZEHN));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.BUBE));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.DAME));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.KOENIG));
-		blatt.add(new PlayingCard(Farbe.KARO, Wert.ASS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.SECHS));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ACHT));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.NEUN));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ZEHN));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.DAME));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.KOENIG));
+		blatt.add(new PlayingCard(Farbe.KARO, Value.ASS));
 		
 		assertEquals(36, spieler.werteAugen(blatt));
 	}
@@ -3287,7 +3287,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest1() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.SECHS);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.SECHS);
 		
 		assertEquals(6, spieler.augenKarte(karte));
 	}
@@ -3295,7 +3295,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest2() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.SIEBEN);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.SIEBEN);
 		
 		assertEquals(0, spieler.augenKarte(karte));
 	}
@@ -3303,7 +3303,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest3() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.ACHT);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.ACHT);
 		
 		assertEquals(0, spieler.augenKarte(karte));
 	}
@@ -3311,7 +3311,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest4() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.NEUN);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.NEUN);
 		
 		assertEquals(0, spieler.augenKarte(karte));
 	}
@@ -3319,7 +3319,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest5() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.ZEHN);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.ZEHN);
 		
 		assertEquals(10, spieler.augenKarte(karte));
 	}
@@ -3327,7 +3327,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest6() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.BUBE);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.BUBE);
 		
 		assertEquals(2, spieler.augenKarte(karte));
 	}
@@ -3335,7 +3335,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest7() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.DAME);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.DAME);
 		
 		assertEquals(3, spieler.augenKarte(karte));
 	}
@@ -3343,7 +3343,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest8() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.KOENIG);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.KOENIG);
 		
 		assertEquals(4, spieler.augenKarte(karte));
 	}
@@ -3351,7 +3351,7 @@ public class SmartPlayerTest {
 	@Test
 	public void augenKarteTest9() {
 		
-		PlayingCard karte = new PlayingCard(Farbe.HERZ, Wert.ASS);
+		PlayingCard karte = new PlayingCard(Farbe.HERZ, Value.ASS);
 		
 		assertEquals(11, spieler.augenKarte(karte));
 	}

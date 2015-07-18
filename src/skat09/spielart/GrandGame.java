@@ -3,7 +3,7 @@ package skat09.spielart;
 import java.util.ArrayList;
 
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 
 
 /**
@@ -36,7 +36,7 @@ public class GrandGame extends Spielart {
 			ergebnis = true;
 		}
 		
-		else if (gespielteKarten[0].getWert() == Wert.BUBE) {
+		else if (gespielteKarten[0].getWert() == Value.BUBE) {
 			
 			ergebnis = bubeBedienen(blatt, gespielteKarten, zuPruefendeKarte);
 		}
@@ -63,7 +63,7 @@ public class GrandGame extends Spielart {
 		boolean ergebnis = true;
 		
 		// Wenn Bube gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (zuPruefendeKarte.getWert() == Wert.BUBE) {
+		if (zuPruefendeKarte.getWert() == Value.BUBE) {
 
 			ergebnis = true;
 		}
@@ -75,7 +75,7 @@ public class GrandGame extends Spielart {
 			for (int i = 0; i < blatt.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (blatt.get(i).getWert() == Wert.BUBE) {
+				if (blatt.get(i).getWert() == Value.BUBE) {
 
 					ergebnis = false;
 					break;
@@ -91,13 +91,13 @@ public class GrandGame extends Spielart {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Wert.BUBE && karte2.getWert() == Wert.BUBE) {
+		if (karte1.getWert() == Value.BUBE && karte2.getWert() == Value.BUBE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 
 		}
 
-		else if (karte1.getWert() == Wert.BUBE || karte2.getWert() == Wert.BUBE) {
+		else if (karte1.getWert() == Value.BUBE || karte2.getWert() == Value.BUBE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 
@@ -122,13 +122,13 @@ public class GrandGame extends Spielart {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Wert.BUBE && karte2.getWert() == Wert.BUBE) {
+		if (karte1.getWert() == Value.BUBE && karte2.getWert() == Value.BUBE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 
 		}
 
-		else if (karte1.getWert() == Wert.BUBE || karte2.getWert() == Wert.BUBE) {
+		else if (karte1.getWert() == Value.BUBE || karte2.getWert() == Value.BUBE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 

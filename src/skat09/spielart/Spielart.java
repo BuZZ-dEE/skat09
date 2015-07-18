@@ -4,7 +4,7 @@ import java.util.*; //ArrayList
 
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.ISpielart;
 
 
@@ -54,7 +54,7 @@ abstract public class Spielart implements ISpielart {
 		boolean ergebnis = true;
 		
 		// Wenn die Farbe korrekt bedient wurde gib true zurueck.
-		if (gespielteKarten[0].getFarbe() == zuPruefendeKarte.getFarbe() && zuPruefendeKarte.getWert() != Wert.BUBE) {
+		if (gespielteKarten[0].getFarbe() == zuPruefendeKarte.getFarbe() && zuPruefendeKarte.getWert() != Value.BUBE) {
 
 			ergebnis = true;
 		}
@@ -64,7 +64,7 @@ abstract public class Spielart implements ISpielart {
 
 			for (int i = 0; i < blatt.size(); i++) {
 
-				if (blatt.get(i).getFarbe() == gespielteKarten[0].getFarbe() && blatt.get(i).getWert() != Wert.BUBE) {
+				if (blatt.get(i).getFarbe() == gespielteKarten[0].getFarbe() && blatt.get(i).getWert() != Value.BUBE) {
 
 					ergebnis = false;
 					break;
@@ -148,7 +148,7 @@ abstract public class Spielart implements ISpielart {
 
 		PlayingCard ergebnis;
 
-		if (karte1.getWert() == Wert.BUBE) {
+		if (karte1.getWert() == Value.BUBE) {
 
 			ergebnis = karte1;
 		}
@@ -182,7 +182,7 @@ abstract public class Spielart implements ISpielart {
 	//@Override
 	public int karteBewerten(PlayingCard karte) {
 
-		Wert wert = karte.getWert();
+		Value wert = karte.getWert();
 		int ergebnis = 0;
 
 		switch (wert) {

@@ -12,7 +12,7 @@ import org.junit.Test;
 import skat09.spielart.GrandGame;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 
 
 
@@ -45,19 +45,19 @@ public class SpielartTest {
 	@Before
 	public void setUp() {
 
-		spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
-		spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
-		spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
-		spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
-		spielkarte5 = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
-		spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
-		spielkarte7 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
-		spielkarte8 = new PlayingCard(Farbe.KARO, Wert.BUBE);
-		spielkarte9 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
-		spielkarte10 = new PlayingCard(Farbe.PIK, Wert.BUBE);
-		spielkarte11 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
-		spielkarte12 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
-		spielkarte13 = new PlayingCard(Farbe.HERZ, Wert.SECHS);
+		spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
+		spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
+		spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.DAME);
+		spielkarte5 = new PlayingCard(Farbe.KREUZ, Value.KOENIG);
+		spielkarte6 = new PlayingCard(Farbe.KREUZ, Value.ZEHN);
+		spielkarte7 = new PlayingCard(Farbe.KREUZ, Value.ASS);
+		spielkarte8 = new PlayingCard(Farbe.KARO, Value.BUBE);
+		spielkarte9 = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		spielkarte10 = new PlayingCard(Farbe.PIK, Value.BUBE);
+		spielkarte11 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		spielkarte12 = new PlayingCard(Farbe.HERZ, Value.SECHS);
+		spielkarte13 = new PlayingCard(Farbe.HERZ, Value.SECHS);
 	}
 	
 	@Test

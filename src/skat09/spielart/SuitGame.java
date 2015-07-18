@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 
 
 /**
@@ -130,7 +130,7 @@ public class SuitGame extends Spielart {
 			ergebnis = true;
 		}
 		
-		else if (gespielteKarten[0].getWert() == Wert.BUBE || gespielteKarten[0].getFarbe() == getTrumpffarbe()) {
+		else if (gespielteKarten[0].getWert() == Value.BUBE || gespielteKarten[0].getFarbe() == getTrumpffarbe()) {
 			
 			ergebnis = bubeOderTrumpfBedienen(blatt, gespielteKarten, zuPruefendeKarte);
 		}
@@ -157,7 +157,7 @@ public class SuitGame extends Spielart {
 		boolean ergebnis = true;
 		
 		// Wenn Bube oder Trumpf gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (zuPruefendeKarte.getWert() == Wert.BUBE || getTrumpffarbe() == zuPruefendeKarte.getFarbe()) {
+		if (zuPruefendeKarte.getWert() == Value.BUBE || getTrumpffarbe() == zuPruefendeKarte.getFarbe()) {
 
 			ergebnis = true;
 		}
@@ -169,7 +169,7 @@ public class SuitGame extends Spielart {
 			for (int i = 0; i < blatt.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (blatt.get(i).getWert() == Wert.BUBE || blatt.get(i).getFarbe() == getTrumpffarbe()) {
+				if (blatt.get(i).getWert() == Value.BUBE || blatt.get(i).getFarbe() == getTrumpffarbe()) {
 
 					ergebnis = false;
 					break;
@@ -185,12 +185,12 @@ public class SuitGame extends Spielart {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Wert.BUBE && karte2.getWert() == Wert.BUBE) {
+		if (karte1.getWert() == Value.BUBE && karte2.getWert() == Value.BUBE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 		}
 
-		else if (karte1.getWert() == Wert.BUBE || karte2.getWert() == Wert.BUBE) {
+		else if (karte1.getWert() == Value.BUBE || karte2.getWert() == Value.BUBE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 		}
@@ -250,12 +250,12 @@ public class SuitGame extends Spielart {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Wert.BUBE && karte2.getWert() == Wert.BUBE) {
+		if (karte1.getWert() == Value.BUBE && karte2.getWert() == Value.BUBE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 		}
 
-		else if (karte1.getWert() == Wert.BUBE || karte2.getWert() == Wert.BUBE) {
+		else if (karte1.getWert() == Value.BUBE || karte2.getWert() == Value.BUBE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 		}

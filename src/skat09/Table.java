@@ -11,7 +11,7 @@ import skat09.spielart.Spielartbezeichnung;
 import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
@@ -714,13 +714,13 @@ public class Table extends Observable {
 
 		for (Farbe farbe : Farbe.values()) {
 
-			for (Wert wert : Wert.values()) {
+			for (Value wert : Value.values()) {
 
 				karte = new PlayingCard(farbe, wert);
 				deck.add(karte);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
-				if ((karte.getWert() == Wert.SECHS) && (sechserskat == false)) {
+				if ((karte.getWert() == Value.SECHS) && (sechserskat == false)) {
 					deck.remove(karte);
 				}
 			}
@@ -1532,27 +1532,27 @@ public class Table extends Observable {
 
 		for (int i = 0; i < stiche.size(); i++) {
 
-			if (stiche.get(i).getWert() == Wert.ASS) {
+			if (stiche.get(i).getWert() == Value.ASS) {
 
 				erg += 11;
 
-			} else if (stiche.get(i).getWert() == Wert.ZEHN) {
+			} else if (stiche.get(i).getWert() == Value.ZEHN) {
 
 				erg += 10;
 
-			} else if (stiche.get(i).getWert() == Wert.BUBE) {
+			} else if (stiche.get(i).getWert() == Value.BUBE) {
 
 				erg += 2;
 
-			} else if (stiche.get(i).getWert() == Wert.DAME) {
+			} else if (stiche.get(i).getWert() == Value.DAME) {
 
 				erg += 3;
 
-			} else if (stiche.get(i).getWert() == Wert.KOENIG) {
+			} else if (stiche.get(i).getWert() == Value.KOENIG) {
 
 				erg += 4;
 
-			} else if (stiche.get(i).getWert() == Wert.SECHS) {
+			} else if (stiche.get(i).getWert() == Value.SECHS) {
 
 				erg += 6;
 			}
