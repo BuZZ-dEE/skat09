@@ -20,7 +20,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Ramsch;
-import skat09.spielart.Spielart;
+import skat09.spielart.GameVariety;
 import skat09.spieler.HumanPlayer;
 import skat09.spieler.Granny;
 import skat09.spieler.Position;
@@ -103,7 +103,7 @@ public class TableTest {
 
 	@After
 	public void after() {
-		Spielart spielart = new SuitGame(Suit.KARO);
+		GameVariety spielart = new SuitGame(Suit.KARO);
 		tisch.setSpielart(spielart);
 	}
 
@@ -602,7 +602,7 @@ public class TableTest {
 	
 	@Test
 	public void ueberreizCheckTest4() {
-		Spielart spiel = new SuitGame(Suit.KARO);
+		GameVariety spiel = new SuitGame(Suit.KARO);
 		tisch.setSpielart(spiel);
 		tisch.setReizwert(23);
 		tisch.ermittleAlleinspieler().getBlatt().add(
@@ -619,7 +619,7 @@ public class TableTest {
 		tisch.setSchneider(false);
 		tisch.setSchwarz(false);
 		tisch.setOuvert(false);
-		Spielart spiel = new SuitGame(Suit.KARO);
+		GameVariety spiel = new SuitGame(Suit.KARO);
 		tisch.setSpielart(spiel);
 		tisch.setReizwert(23);
 		tisch.ermittleAlleinspieler().getBlatt().clear();

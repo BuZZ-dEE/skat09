@@ -13,7 +13,7 @@ import skat09.spielkarte.Value;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public class SuitGame extends Spielart {
+public class SuitGame extends GameVariety {
 
 	private Suit trumpffarbe;
 

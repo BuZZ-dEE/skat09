@@ -14,7 +14,7 @@ import skat09.test.interfaces.INullGame;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public class NullGame extends Spielart implements INullGame {
+public class NullGame extends GameVariety implements INullGame {
 
 	/**
 	 * Instanziert ein Null - Spiel

@@ -2,12 +2,12 @@ package skat09.test.stub;
 
 import java.util.ArrayList;
 
-import skat09.spielart.Spielart;
+import skat09.spielart.GameVariety;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.INullGame;
 
 
-public class NullGameStub2 extends Spielart implements INullGame {
+public class NullGameStub2 extends GameVariety implements INullGame {
 
 	private int aufrufe = 0;
 	
