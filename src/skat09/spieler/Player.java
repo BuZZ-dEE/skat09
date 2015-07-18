@@ -445,7 +445,7 @@ abstract public class Player implements IPlayer {
 			bubeneinordnen();
 		}
 		
-		if (spielart.getSpielart() == GameVarietyName.FARBE) {
+		if (spielart.getSpielart() == GameVarietyName.SUIT) {
 
 			bubeneinordnen();
 			farbeneinordnen();

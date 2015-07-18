@@ -13,7 +13,7 @@ public enum GameVarietyName {
 	/**
 	 * Halter der Spielart "Farbspiel"
 	 */
-	FARBE,
+	SUIT,
 	/**
 	 * Halter der Spielart "Ramsch"
 	 */

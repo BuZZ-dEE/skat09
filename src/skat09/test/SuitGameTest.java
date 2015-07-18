@@ -63,7 +63,7 @@ public class SuitGameTest {
 
 	@Test
 	public void FarbspielTest2() {
-		assertEquals(GameVarietyName.FARBE, new SuitGame(Suit.KARO)
+		assertEquals(GameVarietyName.SUIT, new SuitGame(Suit.KARO)
 				.getSpielart());
 	}
 
