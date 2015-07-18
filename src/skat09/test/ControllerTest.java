@@ -22,7 +22,7 @@ import skat09.spieler.Position;
 import skat09.spieler.RuleCompliantPlayer;
 import skat09.spieler.SmartPlayer;
 import skat09.spieler.Player;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.IOutput;
@@ -460,10 +460,10 @@ public class ControllerTest {
 		tisch.setSpieler1(new HumanPlayer("Hildegard",controller));
 		SmartPlayer sspieler = new SmartPlayer("Gräfin Johanita von Schwanenstein");
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.NEUN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.ZEHN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.NEUN));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.BUBE));
 		sspieler.setBlatt(blatt);
 		sspieler.setAnfangsblatt(blatt);
 		tisch.setSpieler2(sspieler);
@@ -501,7 +501,7 @@ public class ControllerTest {
 		mensch.setIstAlleinspieler(true);
 		mensch.setBlatt(new ArrayList<PlayingCard>());
 		for (int i = 0; i < 10; i++) {
-			mensch.getBlatt().add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
+			mensch.getBlatt().add(new PlayingCard(Suit.KREUZ, Value.BUBE));
 		}
 		controller2.getTisch().setSpieler1(mensch);
 		Player spieler2 = new Granny("Basti");
@@ -510,11 +510,11 @@ public class ControllerTest {
 		controller2.getTisch().setSpieler3(spieler3);
 		controller2.getTisch().setSechserskat(true);
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Farbe.HERZ, Value.ACHT);
-		skat[1] = new PlayingCard(Farbe.HERZ, Value.SECHS);
-		skat[2] = new PlayingCard(Farbe.PIK, Value.DAME);
+		skat[0] = new PlayingCard(Suit.HERZ, Value.ACHT);
+		skat[1] = new PlayingCard(Suit.HERZ, Value.SECHS);
+		skat[2] = new PlayingCard(Suit.PIK, Value.DAME);
 		controller2.getTisch().setSkat(skat);
-		controller2.getTisch().setSpielart(new SuitGame(Farbe.KARO));
+		controller2.getTisch().setSpielart(new SuitGame(Suit.KARO));
 
 		
 		//handspiel pruefen
@@ -526,7 +526,7 @@ public class ControllerTest {
 		//spielart pruefen
 		boolean spielart2 = false;
 		System.out.println(controller2.getTisch().getSpielart().toString());
-		if (controller2.getTisch().getSpielart().toString().equals((new SuitGame(Farbe.KARO)).toString())) {
+		if (controller2.getTisch().getSpielart().toString().equals((new SuitGame(Suit.KARO)).toString())) {
 			spielart2 = true;
 		}
 		
@@ -558,38 +558,38 @@ public class ControllerTest {
 		spieler1.setIstAlleinspieler(true);
 		
 		ArrayList<PlayingCard> blatt1 = new ArrayList<PlayingCard>(); 
-		blatt1.add(new PlayingCard(Farbe.KREUZ, Value.BUBE));
-		blatt1.add(new PlayingCard(Farbe.KREUZ, Value.ASS));
-		blatt1.add(new PlayingCard(Farbe.KREUZ, Value.ZEHN));
-		blatt1.add(new PlayingCard(Farbe.KREUZ, Value.DAME));
-		blatt1.add(new PlayingCard(Farbe.KREUZ, Value.KOENIG));
-		blatt1.add(new PlayingCard(Farbe.KARO, Value.ASS));
-		blatt1.add(new PlayingCard(Farbe.KARO, Value.ZEHN));
-		blatt1.add(new PlayingCard(Farbe.PIK, Value.ASS));
-		blatt1.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
+		blatt1.add(new PlayingCard(Suit.KREUZ, Value.BUBE));
+		blatt1.add(new PlayingCard(Suit.KREUZ, Value.ASS));
+		blatt1.add(new PlayingCard(Suit.KREUZ, Value.ZEHN));
+		blatt1.add(new PlayingCard(Suit.KREUZ, Value.DAME));
+		blatt1.add(new PlayingCard(Suit.KREUZ, Value.KOENIG));
+		blatt1.add(new PlayingCard(Suit.KARO, Value.ASS));
+		blatt1.add(new PlayingCard(Suit.KARO, Value.ZEHN));
+		blatt1.add(new PlayingCard(Suit.PIK, Value.ASS));
+		blatt1.add(new PlayingCard(Suit.PIK, Value.ZEHN));
 		spieler1.setStiche(blatt1);
 		spieler1.setBlatt(blatt1);
-		spieler1.setSpielart(new SuitGame(Farbe.KREUZ));
+		spieler1.setSpielart(new SuitGame(Suit.KREUZ));
 		spieler1.spitzenEinordnen();
 		
 		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>(); 
-		blatt2.add(new PlayingCard(Farbe.PIK, Value.NEUN));
-		blatt2.add(new PlayingCard(Farbe.PIK, Value.SECHS));
-		blatt2.add(new PlayingCard(Farbe.PIK, Value.ZEHN));
-		blatt2.add(new PlayingCard(Farbe.PIK, Value.DAME));
+		blatt2.add(new PlayingCard(Suit.PIK, Value.NEUN));
+		blatt2.add(new PlayingCard(Suit.PIK, Value.SECHS));
+		blatt2.add(new PlayingCard(Suit.PIK, Value.ZEHN));
+		blatt2.add(new PlayingCard(Suit.PIK, Value.DAME));
 		spieler2.setStiche(blatt2);
 		
 		ArrayList<PlayingCard> blatt3 = new ArrayList<PlayingCard>(); 
-		blatt3.add(new PlayingCard(Farbe.HERZ, Value.NEUN));
-		blatt3.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
-		blatt3.add(new PlayingCard(Farbe.HERZ, Value.ZEHN));
-		blatt3.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
+		blatt3.add(new PlayingCard(Suit.HERZ, Value.NEUN));
+		blatt3.add(new PlayingCard(Suit.HERZ, Value.ACHT));
+		blatt3.add(new PlayingCard(Suit.HERZ, Value.ZEHN));
+		blatt3.add(new PlayingCard(Suit.HERZ, Value.SIEBEN));
 		spieler3.setStiche(blatt3);
 		
 		tisch2.setSpieler1(spieler1);
 		tisch2.setSpieler2(spieler2);
 		tisch2.setSpieler3(spieler3);
-		tisch2.setSpielart(new SuitGame(Farbe.KREUZ));
+		tisch2.setSpielart(new SuitGame(Suit.KREUZ));
 		
 		controller.auswertung();
 		
@@ -603,7 +603,7 @@ public class ControllerTest {
 		
 		
 		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		skatkarten[0] = new PlayingCard(Suit.HERZ, Value.BUBE);
 		controller.getTisch().setSkat(skatkarten);
 		controller.getTisch().setReizagentWert(120);
 		controller.getTisch().setReizwert(23);
@@ -613,9 +613,9 @@ public class ControllerTest {
 		controller.getTisch().setBockrunden(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Value.SECHS));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.NEUN));
+		blatt.add(new PlayingCard(Suit.KARO, Value.SECHS));
+		blatt.add(new PlayingCard(Suit.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.KARO, Value.NEUN));
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
@@ -651,7 +651,7 @@ public class ControllerTest {
 	public void aufraeumenTest2() {
 		
 		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		skatkarten[0] = new PlayingCard(Suit.HERZ, Value.BUBE);
 		controller.getTisch().setSkat(skatkarten);
 		controller.getTisch().setReizagentWert(120);
 		controller.getTisch().setReizwert(23);
@@ -661,9 +661,9 @@ public class ControllerTest {
 		controller.getTisch().setBockrunden(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Value.SECHS));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.NEUN));
+		blatt.add(new PlayingCard(Suit.KARO, Value.SECHS));
+		blatt.add(new PlayingCard(Suit.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.KARO, Value.NEUN));
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
@@ -698,7 +698,7 @@ public class ControllerTest {
 	public void aufraeumenTest3() {
 		
 		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		skatkarten[0] = new PlayingCard(Suit.HERZ, Value.BUBE);
 		controller.getTisch().setSkat(skatkarten);
 		controller.getTisch().setReizagentWert(120);
 		controller.getTisch().setReizwert(23);
@@ -708,9 +708,9 @@ public class ControllerTest {
 		controller.getTisch().setBockrunden(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Value.SECHS));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.NEUN));
+		blatt.add(new PlayingCard(Suit.KARO, Value.SECHS));
+		blatt.add(new PlayingCard(Suit.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.KARO, Value.NEUN));
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
@@ -746,7 +746,7 @@ public class ControllerTest {
 	public void aufraeumen4Test() {
 	
 		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(Farbe.HERZ, Value.BUBE);
+		skatkarten[0] = new PlayingCard(Suit.HERZ, Value.BUBE);
 		controller.getTisch().setSkat(skatkarten);
 		controller.getTisch().setReizagentWert(120);
 		controller.getTisch().setReizwert(23);
@@ -756,9 +756,9 @@ public class ControllerTest {
 		controller.getTisch().setBockrunden(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.KARO, Value.SECHS));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.BUBE));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.NEUN));
+		blatt.add(new PlayingCard(Suit.KARO, Value.SECHS));
+		blatt.add(new PlayingCard(Suit.KARO, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.KARO, Value.NEUN));
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setBlatt(blatt);
@@ -801,9 +801,9 @@ public class ControllerTest {
 		Player s2 = new Granny("Benny");
 		Player s3 = new Granny("Daniel");
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		PlayingCard k1 = new PlayingCard(Farbe.HERZ, Value.BUBE);
-		PlayingCard k2 = new PlayingCard(Farbe.HERZ, Value.ASS);
-		PlayingCard k3 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
+		PlayingCard k1 = new PlayingCard(Suit.HERZ, Value.BUBE);
+		PlayingCard k2 = new PlayingCard(Suit.HERZ, Value.ASS);
+		PlayingCard k3 = new PlayingCard(Suit.KARO, Value.SIEBEN);
 		k1.setBesitzer(gewinner);
 		k2.setBesitzer(s2);
 		k3.setBesitzer(s3);
@@ -1121,12 +1121,12 @@ public class ControllerTest {
 		Player spieler3 = new RuleCompliantPlayer("Bernd");
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.NEUN));
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.ZEHN));
-		blatt.add(new PlayingCard(Farbe.PIK, Value.SIEBEN));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.ASS));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.SIEBEN));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.NEUN));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.ZEHN));
+		blatt.add(new PlayingCard(Suit.PIK, Value.SIEBEN));
+		blatt.add(new PlayingCard(Suit.KARO, Value.ASS));
 		
 		spieler1.setBlatt(blatt);
 		spieler2.setBlatt(blatt);
@@ -1135,9 +1135,9 @@ public class ControllerTest {
 		spieler1.setIstAlleinspieler(true);
 		
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Farbe.HERZ, Value.ACHT);
-		skat[1] = new PlayingCard(Farbe.PIK, Value.ASS);
-		skat[2] = new PlayingCard(Farbe.KREUZ, Value.DAME);
+		skat[0] = new PlayingCard(Suit.HERZ, Value.ACHT);
+		skat[1] = new PlayingCard(Suit.PIK, Value.ASS);
+		skat[2] = new PlayingCard(Suit.KREUZ, Value.DAME);
 		tisch.setSkat(skat);
 		tisch.setSpieler1(spieler1);
 		tisch.setSpieler2(spieler2);

@@ -2,7 +2,7 @@ package skat09.spielart;
 
 import java.util.ArrayList;
 
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 
@@ -15,12 +15,12 @@ import skat09.spielkarte.Value;
  */
 public class SuitGame extends Spielart {
 
-	private Farbe trumpffarbe;
+	private Suit trumpffarbe;
 
 	/**
 	 * Instanziert ein Farb - Spiel
 	 */
-	public SuitGame(Farbe trumpffarbe) {
+	public SuitGame(Suit trumpffarbe) {
 
 		this.trumpffarbe = trumpffarbe;
 		setSpielart(Spielartbezeichnung.FARBE);
@@ -32,7 +32,7 @@ public class SuitGame extends Spielart {
 	 * 
 	 * @return trumpffarbe
 	 */
-	public Farbe getTrumpffarbe() {
+	public Suit getTrumpffarbe() {
 		return trumpffarbe;
 	}
 

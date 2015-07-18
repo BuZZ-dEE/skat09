@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import skat09.spielart.SuitGame;
 import skat09.spieler.Position;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
@@ -55,7 +55,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	
 	public SuitGame farbe() {
 		
-		return new SuitGame(Farbe.KARO);
+		return new SuitGame(Suit.KARO);
 	}
 
 	

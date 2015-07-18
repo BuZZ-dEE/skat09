@@ -13,7 +13,7 @@ import org.junit.Test;
 import skat09.spielart.SuitGame;
 import skat09.spielart.NullGame;
 import skat09.spieler.RuleCompliantPlayer;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 
@@ -27,14 +27,14 @@ public class RuleCompliantPlayerTest {
 	PlayingCard spielkarte4;
 	RuleCompliantPlayer spieler = new RuleCompliantPlayer("Mimi");
 	PlayingCard[] gespielteKarten = new PlayingCard[3];
-	SuitGame spiel = new SuitGame(Farbe.HERZ);
+	SuitGame spiel = new SuitGame(Suit.HERZ);
 	
 	@Before
 	public void setUp() {
-		spielkarte1 = new PlayingCard(Farbe.KARO, Value.SIEBEN);
-		spielkarte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
-		spielkarte3 = new PlayingCard(Farbe.PIK, Value.NEUN);
-		spielkarte4 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		spielkarte1 = new PlayingCard(Suit.KARO, Value.SIEBEN);
+		spielkarte2 = new PlayingCard(Suit.HERZ, Value.ACHT);
+		spielkarte3 = new PlayingCard(Suit.PIK, Value.NEUN);
+		spielkarte4 = new PlayingCard(Suit.KREUZ, Value.BUBE);
 		
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte3);
@@ -83,13 +83,13 @@ public class RuleCompliantPlayerTest {
 		boolean testErfolgreich = false;
 		
 		blatt.clear();
-		blatt.add(new PlayingCard(Farbe.HERZ, Value.ACHT));
-		blatt.add(new PlayingCard(Farbe.KARO, Value.ACHT));
+		blatt.add(new PlayingCard(Suit.HERZ, Value.ACHT));
+		blatt.add(new PlayingCard(Suit.KARO, Value.ACHT));
 		ArrayList<PlayingCard> altesBlatt = new ArrayList<PlayingCard>();
 		altesBlatt = (ArrayList<PlayingCard>) blatt.clone();
 		spieler.setBlatt(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.SIEBEN); 
+		gespielteKarten[0] = new PlayingCard(Suit.KARO, Value.SIEBEN); 
 		PlayingCard gespielteKarte = new PlayingCard(null,null);
 		gespielteKarte = spieler.spieleKarte(gespielteKarten);
 		blatt = spieler.getBlatt();

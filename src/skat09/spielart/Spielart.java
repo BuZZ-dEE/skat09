@@ -2,7 +2,7 @@ package skat09.spielart;
 
 import java.util.*; //ArrayList
 
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.ISpielart;
@@ -108,20 +108,20 @@ abstract public class Spielart implements ISpielart {
 		
 		PlayingCard ergebnis;
 		
-		if (karte1.getFarbe() == Farbe.KREUZ
-				&& karte2.getFarbe() != Farbe.KREUZ) {
+		if (karte1.getFarbe() == Suit.KREUZ
+				&& karte2.getFarbe() != Suit.KREUZ) {
 
 			ergebnis = karte1;
 		}
 
-		else if (karte1.getFarbe() == Farbe.PIK
-				&& karte2.getFarbe() != Farbe.KREUZ) {
+		else if (karte1.getFarbe() == Suit.PIK
+				&& karte2.getFarbe() != Suit.KREUZ) {
 
 			ergebnis = karte1;
 		}
 
-		else if (karte1.getFarbe() == Farbe.HERZ
-				&& (karte2.getFarbe() != Farbe.KREUZ && karte2.getFarbe() != Farbe.PIK)) {
+		else if (karte1.getFarbe() == Suit.HERZ
+				&& (karte2.getFarbe() != Suit.KREUZ && karte2.getFarbe() != Suit.PIK)) {
 
 			ergebnis = karte1;
 		}
@@ -223,7 +223,7 @@ abstract public class Spielart implements ISpielart {
 	//@Override
 	public int bubeBewerten(PlayingCard karte) {
 
-		Farbe farbe = karte.getFarbe();
+		Suit farbe = karte.getFarbe();
 		int ergebnis = 0;
 
 		switch (farbe) {

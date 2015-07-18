@@ -21,7 +21,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	/**
 	 * Feld f&uuml;r die Farbe
 	 */
-	private Farbe farbe;
+	private Suit farbe;
 	/**
 	 * Feld f&uuml;r den Wert
 	 */
@@ -40,7 +40,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * @param farbe Die Farbe der zu erzeugenden Karte
 	 * @param wert Der Wert der zu erzeugenden Karte
 	 */
-	public PlayingCard(Farbe farbe, Value wert) {
+	public PlayingCard(Suit farbe, Value wert) {
 		this.wert = wert;
 		this.farbe = farbe;
 		//deutsch = false;
@@ -51,7 +51,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return Farbe der Karte
 	 */
-	public Farbe getFarbe() {
+	public Suit getFarbe() {
 		return farbe;
 	}
 	
@@ -172,16 +172,16 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String deutFarbe() {
 		String deutfarbe = "";
-		if (farbe.equals(Farbe.PIK)) {
+		if (farbe.equals(Suit.PIK)) {
 			deutfarbe = "GRUEN";
 		}
-		if (farbe.equals(Farbe.HERZ)) {
+		if (farbe.equals(Suit.HERZ)) {
 			deutfarbe = ""+farbe;
 		}
-		if (farbe.equals(Farbe.KREUZ)) {
+		if (farbe.equals(Suit.KREUZ)) {
 			deutfarbe = "EICHEL";
 		}
-		if (farbe.equals(Farbe.KARO)) {
+		if (farbe.equals(Suit.KARO)) {
 			deutfarbe = "SCHELLEN";
 		}
 		return deutfarbe;

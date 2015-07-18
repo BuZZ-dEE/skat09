@@ -12,7 +12,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.ISpielart;
@@ -286,7 +286,7 @@ public class CLIOutput extends Output {
 		for (int i = 0; i < blatt.size(); i++) {
 
 			PlayingCard karte = blatt.get(i);
-			Farbe farbe = karte.getFarbe();
+			Suit farbe = karte.getFarbe();
 			Value wert = karte.getWert();
 			System.out.println(i + ": " + farbe + " " + wert); // TODO also
 																// translate
@@ -379,7 +379,7 @@ public class CLIOutput extends Output {
 		int ergebnis = -1;
 
 		System.out.println(Messages.getI18n("game.commandline.trump.choose"));
-		for (Enum<Farbe> farbe : Farbe.values()) {
+		for (Enum<Suit> farbe : Suit.values()) {
 
 			System.out.println(zaehler + ": " + farbe);
 			zaehler++;
@@ -402,16 +402,16 @@ public class CLIOutput extends Output {
 		switch (ergebnis) {
 
 		case 0:
-			rueckgabe = new SuitGame(Farbe.KARO);
+			rueckgabe = new SuitGame(Suit.KARO);
 			break;
 		case 1:
-			rueckgabe = new SuitGame(Farbe.HERZ);
+			rueckgabe = new SuitGame(Suit.HERZ);
 			break;
 		case 2:
-			rueckgabe = new SuitGame(Farbe.PIK);
+			rueckgabe = new SuitGame(Suit.PIK);
 			break;
 		case 3:
-			rueckgabe = new SuitGame(Farbe.KREUZ);
+			rueckgabe = new SuitGame(Suit.KREUZ);
 			break;
 		default:
 			System.out.println(Messages.getI18n("game.color.input.wrong"));

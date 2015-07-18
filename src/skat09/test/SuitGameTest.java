@@ -8,14 +8,14 @@ import org.junit.Test;
 
 import skat09.spielart.SuitGame;
 import skat09.spielart.Spielartbezeichnung;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 
 public class SuitGameTest {
-	Farbe a = Farbe.HERZ;
+	Suit a = Suit.HERZ;
 	SuitGame spiel = new SuitGame(a);
-	Farbe b = Farbe.PIK;
+	Suit b = Suit.PIK;
 	SuitGame spiel2 = new SuitGame(b);
 	PlayingCard karte1;
 	PlayingCard karte2;
@@ -34,15 +34,15 @@ public class SuitGameTest {
 
 	@Before
 	public void setUp() {
-		karte1 = new PlayingCard(Farbe.HERZ, Value.KOENIG);
-		karte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
-		karte3 = new PlayingCard(Farbe.KARO, Value.BUBE);
-		karte4 = new PlayingCard(Farbe.KARO, Value.KOENIG);
-		karte5 = new PlayingCard(Farbe.KREUZ, Value.ASS);
-		karte6 = new PlayingCard(Farbe.KREUZ, Value.NEUN);
-		karte7 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
-		karte8 = new PlayingCard(Farbe.PIK, Value.ASS);
-		karte9 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		karte1 = new PlayingCard(Suit.HERZ, Value.KOENIG);
+		karte2 = new PlayingCard(Suit.HERZ, Value.ACHT);
+		karte3 = new PlayingCard(Suit.KARO, Value.BUBE);
+		karte4 = new PlayingCard(Suit.KARO, Value.KOENIG);
+		karte5 = new PlayingCard(Suit.KREUZ, Value.ASS);
+		karte6 = new PlayingCard(Suit.KREUZ, Value.NEUN);
+		karte7 = new PlayingCard(Suit.KREUZ, Value.BUBE);
+		karte8 = new PlayingCard(Suit.PIK, Value.ASS);
+		karte9 = new PlayingCard(Suit.KARO, Value.NEUN);
 		
 		
 		blatt.add(karte2);
@@ -58,18 +58,18 @@ public class SuitGameTest {
 
 	@Test
 	public void FarbspielTest3() {
-		assertEquals(Farbe.KARO, new SuitGame(Farbe.KARO).getTrumpffarbe());
+		assertEquals(Suit.KARO, new SuitGame(Suit.KARO).getTrumpffarbe());
 	}
 
 	@Test
 	public void FarbspielTest2() {
-		assertEquals(Spielartbezeichnung.FARBE, new SuitGame(Farbe.KARO)
+		assertEquals(Spielartbezeichnung.FARBE, new SuitGame(Suit.KARO)
 				.getSpielart());
 	}
 
 	@Test
 	public void testgetTrumpfFarbe() {
-		assertEquals(Farbe.HERZ, spiel.getTrumpffarbe());
+		assertEquals(Suit.HERZ, spiel.getTrumpffarbe());
 	}
 
 	@Test

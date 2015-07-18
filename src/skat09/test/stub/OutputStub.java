@@ -6,7 +6,7 @@ import java.util.Observable;
 
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.IOutput;
@@ -92,7 +92,7 @@ public class OutputStub implements IOutput{
 	
 	public SuitGame farbe() {
 		
-		SuitGame farbspiel = new SuitGame(Farbe.PIK);
+		SuitGame farbspiel = new SuitGame(Suit.PIK);
 		return farbspiel;
 	}
 
@@ -302,7 +302,7 @@ public class OutputStub implements IOutput{
 	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.KREUZ, Value.BUBE);
 		return karte;
 	}
 
