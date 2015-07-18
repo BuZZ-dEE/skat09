@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import skat09.spielart.SuitGame;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IOutput;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -73,7 +73,7 @@ abstract public class Output implements IOutput {
 	public abstract boolean ouvert();
 
 	//@Override
-	public abstract ISpielart spielAnsagen();
+	public abstract IGameVariety spielAnsagen();
 
 	//@Override
 	public abstract SuitGame farbe();

@@ -85,7 +85,7 @@ public interface IPlayer {
 	 * 
 	 * @return die gesetzte Spielart
 	 */
-	public abstract ISpielart getSpielart();
+	public abstract IGameVariety getSpielart();
 	
 	/**
 	 * gibt die Handspiele zur&uuml;ck
@@ -105,7 +105,7 @@ public interface IPlayer {
 	 * @param spielart
 	 *            - die Spielart, die momentan gespielt wird
 	 */
-	public abstract void setSpielart(ISpielart spielart);
+	public abstract void setSpielart(IGameVariety spielart);
 
 	/**
 	 * Setzt die Position des Spielers neu.
@@ -253,7 +253,7 @@ public interface IPlayer {
 	 * 
 	 * @return die gew&uuml;nschte Spielart
 	 */
-	abstract public ISpielart spielAnsagen();
+	abstract public IGameVariety spielAnsagen();
 
 	/**
 	 * Handspiel ermittelt, ob der Spieler ein Handspiel ansagt.
@@ -326,7 +326,7 @@ public interface IPlayer {
 	 * @param spielart
 	 *            - spielart nach der sortiert werden soll
 	 */
-	public abstract void blattSortieren(final ISpielart spielart);
+	public abstract void blattSortieren(final IGameVariety spielart);
 
 	/**
 	 * Fragt den Spieler, ob er mit Reizagent spielen m&ouml;chte.

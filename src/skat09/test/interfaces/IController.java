@@ -181,7 +181,7 @@ public interface IController {
 	 * @param spielart
 	 *            - vom Alleinspieler angesagte Spielart
 	 */
-	public abstract void flagsSetzen(IPlayer alleinspieler, ISpielart spielart);
+	public abstract void flagsSetzen(IPlayer alleinspieler, IGameVariety spielart);
 
 	/**
 	 * Falls ein Spieler eine Karte spielt, wird dies &uuml;ber die Ausgabe

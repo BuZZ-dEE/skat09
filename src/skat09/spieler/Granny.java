@@ -3,7 +3,7 @@ package skat09.spieler;
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielkarte.PlayingCard;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 
 /**
  * Diese Klasse beschreibt das Verhalten des Computerspielers "Oma". Die Oma
@@ -122,7 +122,7 @@ public class Granny extends Player {
 	/**
 	 * Die Oma spielt immer Grand, wenn sie spielen muss.
 	 */
-	public ISpielart spielAnsagen() {
+	public IGameVariety spielAnsagen() {
 
 		return new GrandGame();
 	}

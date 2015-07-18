@@ -14,7 +14,7 @@ import skat09.spielart.NullGame;
 import skat09.spieler.PlayerEnum;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 import skat09.ui.gui.*;
 
@@ -195,8 +195,8 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public ISpielart spielAnsagen() {
-		ISpielart spiel = null;
+	public IGameVariety spielAnsagen() {
+		IGameVariety spiel = null;
 		hfenster.ansagen();
 		warte();
 		String spielart = hfenster.getSpielart();

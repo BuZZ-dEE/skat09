@@ -20,7 +20,7 @@ import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.stub.OutputStub;
 import skat09.test.stub.ControllerStub;
 import skat09.test.stub.NullGameStub;
@@ -145,7 +145,7 @@ public class HumanPlayerTest {
 
 		boolean ergebnis = false;
 
-		ISpielart spielart = new GrandGame();
+		IGameVariety spielart = new GrandGame();
 		if (spielart.getSpielart().equals(mensch.spielAnsagen().getSpielart())) {
 
 			ergebnis = true;

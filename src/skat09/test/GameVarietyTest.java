@@ -16,7 +16,7 @@ import skat09.spielkarte.Value;
 
 
 
-public class SpielartTest {
+public class GameVarietyTest {
 
 	//
 	// benoetigte Datenfelder

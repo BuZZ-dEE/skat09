@@ -10,7 +10,7 @@ import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 
 
 /**
@@ -35,7 +35,7 @@ public class SmartPlayer extends Player {
 	int maxReizwert;
 
 	// Spielart, die der Schlaue Spieler spielen wuerde
-	ISpielart zuspielendeSpielart;
+	IGameVariety zuspielendeSpielart;
 
 	// Das Anfangsblatt
 	ArrayList<PlayingCard> anfangsBlatt;
@@ -1608,9 +1608,9 @@ public class SmartPlayer extends Player {
 	}
 
 	@Override
-	public ISpielart spielAnsagen() {
+	public IGameVariety spielAnsagen() {
 
-		ISpielart zuSpielendeSpielart = bestimmeSpielart();
+		IGameVariety zuSpielendeSpielart = bestimmeSpielart();
 
 		if (zuSpielendeSpielart == null) {
 
@@ -1671,7 +1671,7 @@ public class SmartPlayer extends Player {
 
 	public void bestimmeMaxReizwert() {
 
-		ISpielart zuReizendeSpielart = bestimmeSpielart();
+		IGameVariety zuReizendeSpielart = bestimmeSpielart();
 		System.out.println(zuReizendeSpielart);
 
 		if (zuReizendeSpielart != null) {
@@ -1742,7 +1742,7 @@ public class SmartPlayer extends Player {
 	 *            - Spielart, f&uuml;r die die Spitzen ermittelt werden soll
 	 * @return Zahl der Spitzen
 	 */
-	public int ermittleSpitzen(ISpielart zuReizendeSpielart) {
+	public int ermittleSpitzen(IGameVariety zuReizendeSpielart) {
 
 		int ergebnis = 0;
 		PlayingCard[] spitzen;
@@ -1843,7 +1843,7 @@ public class SmartPlayer extends Player {
 	 *            - das Farbspiel
 	 * @return Array, dass die Spitzen enth&auml;lt
 	 */
-	public PlayingCard[] farbeSpitzen(ISpielart zuReizendeSpielart) {
+	public PlayingCard[] farbeSpitzen(IGameVariety zuReizendeSpielart) {
 
 		int kartenwert = 0;
 		PlayingCard[] spitzen = new PlayingCard[13];
@@ -1874,7 +1874,7 @@ public class SmartPlayer extends Player {
 	 *            - das Grandspiel
 	 * @return Array mit Spitzen
 	 */
-	public PlayingCard[] grandSpitzen(ISpielart zuReizendeSpielart) {
+	public PlayingCard[] grandSpitzen(IGameVariety zuReizendeSpielart) {
 
 		int kartenwert = 0;
 		PlayingCard[] spitzen = new PlayingCard[4];
@@ -1895,7 +1895,7 @@ public class SmartPlayer extends Player {
 	 * Diese Methode entscheidet, welche Spielart der schlaue Spieler mit seinen
 	 * Handkarten w&auml;len w&uuml;rde.
 	 */
-	public ISpielart bestimmeSpielart() {
+	public IGameVariety bestimmeSpielart() {
 
 		// Damit der Computerspieler ein Nullspiel macht, darf er
 		// keinen Buben auf der Hand haben und zudem muss er mindestens
@@ -1915,7 +1915,7 @@ public class SmartPlayer extends Player {
 		ArrayList<PlayingCard> langeFarbe = ermittleKurzeLangeFarbe(true);
 
 		// Spielart auf die der Spieler reizt
-		ISpielart zuReizendeSpielart;
+		IGameVariety zuReizendeSpielart;
 
 		for (PlayingCard karte : blatt) {
 

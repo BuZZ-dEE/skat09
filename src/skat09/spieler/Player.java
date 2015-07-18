@@ -11,7 +11,7 @@ import skat09.spielart.GrandGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -68,7 +68,7 @@ abstract public class Player implements IPlayer {
 	/**
 	 *  Spieler braucht die Spielart um die Karte zu pr&uuml;fen
 	 */
-	protected ISpielart spielart;
+	protected IGameVariety spielart;
 
 	/**
 	 * H&auml;lt die Karten nach der Skataufnahme
@@ -182,7 +182,7 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	public ISpielart getSpielart() {
+	public IGameVariety getSpielart() {
 
 		return this.spielart;
 	}
@@ -204,7 +204,7 @@ abstract public class Player implements IPlayer {
 
 
 	//@Override
-	public void setSpielart(ISpielart spielart) {
+	public void setSpielart(IGameVariety spielart) {
 
 		this.spielart = spielart;
 	}
@@ -355,7 +355,7 @@ abstract public class Player implements IPlayer {
 	//
 
 	//@Override
-	abstract public ISpielart spielAnsagen();
+	abstract public IGameVariety spielAnsagen();
 
 	//@Override
 	abstract public boolean handspiel();
@@ -386,7 +386,7 @@ abstract public class Player implements IPlayer {
 	abstract public boolean sagen(int alterWert);
 
 	//@Override
-	public void blattSortieren(final ISpielart spielart) {
+	public void blattSortieren(final IGameVariety spielart) {
 
 		Comparator<PlayingCard> comp = new Comparator<PlayingCard>() {
 

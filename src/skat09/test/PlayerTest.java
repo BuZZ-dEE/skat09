@@ -15,7 +15,7 @@ import skat09.spieler.Granny;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 import skat09.test.stub.NullGameStub2;
 
@@ -121,7 +121,7 @@ public class PlayerTest{
 	
 	@Test
 	public void test1sortiereBlatt(){
-		final ISpielart spiel = new GrandGame();
+		final IGameVariety spiel = new GrandGame();
 		IPlayer spieler = new Granny("Hallo");
 		
 		spieler.setSpielart(spiel);
@@ -191,7 +191,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.getBlatt().add(
 		new PlayingCard(Suit.KREUZ, Value.BUBE));
-		ISpielart spielart = new GrandGame();
+		IGameVariety spielart = new GrandGame();
 		spieler.setSpielart(spielart);
 		spieler.spitzenEinordnen();
 			test = true;
