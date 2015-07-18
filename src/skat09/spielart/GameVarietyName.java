@@ -1,6 +1,6 @@
 package skat09.spielart;
 
-public enum Spielartbezeichnung {
+public enum GameVarietyName {
 	
 	/**
 	 * Halter der Spielart "Grand"

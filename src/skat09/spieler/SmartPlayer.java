@@ -6,7 +6,7 @@ import java.util.Random;
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
@@ -106,22 +106,22 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.GRAND) {
 
 			ergebnis = grandSpielen(gespielteKarten);
 		}
 
-		else if (spielart.getSpielart() == Spielartbezeichnung.FARBE) {
+		else if (spielart.getSpielart() == GameVarietyName.FARBE) {
 
 			ergebnis = farbeSpielen(gespielteKarten);
 		}
 
-		else if (spielart.getSpielart() == Spielartbezeichnung.NULL) {
+		else if (spielart.getSpielart() == GameVarietyName.NULL) {
 
 			ergebnis = nullSpielen(gespielteKarten);
 		}
 
-		else if (spielart.getSpielart() == Spielartbezeichnung.RAMSCH) {
+		else if (spielart.getSpielart() == GameVarietyName.RAMSCH) {
 
 			ergebnis = ramschSpielen(gespielteKarten);
 		}
@@ -1154,8 +1154,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
-				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE
+				|| spielart.getSpielart() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.DAME);
 		} else {
@@ -1179,8 +1179,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
-				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE
+				|| spielart.getSpielart() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.ZEHN);
 		} else {
@@ -1205,8 +1205,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
-				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE
+				|| spielart.getSpielart() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.ASS);
 		} else {
@@ -1231,9 +1231,9 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
-				|| spielart.getSpielart() == Spielartbezeichnung.GRAND
-				|| spielart.getSpielart() == Spielartbezeichnung.RAMSCH) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE
+				|| spielart.getSpielart() == GameVarietyName.GRAND
+				|| spielart.getSpielart() == GameVarietyName.RAMSCH) {
 
 			ergebnis = null;
 		}
@@ -1312,8 +1312,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
-				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE
+				|| spielart.getSpielart() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.NEUN);
 		} else {
@@ -1338,8 +1338,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
-				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE
+				|| spielart.getSpielart() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.KOENIG);
 		} else {
@@ -1363,8 +1363,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
-				|| spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE
+				|| spielart.getSpielart() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.ZEHN);
 		} else {
@@ -1388,9 +1388,9 @@ public class SmartPlayer extends Player {
 		
 		PlayingCard ergebnis = null;
 		
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE
-				|| spielart.getSpielart() == Spielartbezeichnung.GRAND
-				|| spielart.getSpielart() == Spielartbezeichnung.RAMSCH) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE
+				|| spielart.getSpielart() == GameVarietyName.GRAND
+				|| spielart.getSpielart() == GameVarietyName.RAMSCH) {
 
 			ergebnis = null;
 		} else {
@@ -1747,13 +1747,13 @@ public class SmartPlayer extends Player {
 		int ergebnis = 0;
 		PlayingCard[] spitzen;
 
-		if (zuReizendeSpielart.getSpielart() == Spielartbezeichnung.FARBE) {
+		if (zuReizendeSpielart.getSpielart() == GameVarietyName.FARBE) {
 
 			spitzen = farbeSpitzen(zuReizendeSpielart);
 			ergebnis = spitzenZaehlen(spitzen);
 		}
 
-		else if (zuReizendeSpielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		else if (zuReizendeSpielart.getSpielart() == GameVarietyName.GRAND) {
 
 			spitzen = grandSpitzen(zuReizendeSpielart);
 			ergebnis = spitzenZaehlen(spitzen);

@@ -7,7 +7,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spieler.Position;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
@@ -905,7 +905,7 @@ public class Table extends Observable {
 	 */
 	public void mitspielerSetzen() {
 
-		if (spielart.getSpielart() != Spielartbezeichnung.RAMSCH) {
+		if (spielart.getSpielart() != GameVarietyName.RAMSCH) {
 
 			if (!spieler1.getIstAlleinspieler()) {
 
@@ -1234,7 +1234,7 @@ public class Table extends Observable {
 	 */
 	public boolean spielAuswerten() {
 		boolean gewonnen = false;
-		if (spielart.getSpielart() != Spielartbezeichnung.RAMSCH) {
+		if (spielart.getSpielart() != GameVarietyName.RAMSCH) {
 			ArrayList<PlayingCard> temp = new ArrayList<PlayingCard>();
 
 			temp = ermittleAlleinspieler().getStiche();
@@ -1505,15 +1505,15 @@ public class Table extends Observable {
 	}
 
 	public int punkteVarianten(int erg, int augenzahl) {
-		if (spielart.getSpielart() == Spielartbezeichnung.NULL) {
+		if (spielart.getSpielart() == GameVarietyName.NULL) {
 			grundwertliste.add(23);
 			erg = punkteNullspiel();
 		}
-		if (spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.GRAND) {
 			grundwertliste.add(24);
 			erg = punkteGrandspiel(augenzahl);
 		}
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE) {
 			erg = punkteFarbspiel(augenzahl);
 		}
 		return erg;
@@ -1633,11 +1633,11 @@ public class Table extends Observable {
 		// Gr&uuml;nde zu verlieren_
 		boolean verloren = false;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.NULL) {
+		if (spielart.getSpielart() == GameVarietyName.NULL) {
 			verloren = nullVerloren();
 		}
 
-		else if (spielart.getSpielart() != Spielartbezeichnung.NULL) {
+		else if (spielart.getSpielart() != GameVarietyName.NULL) {
 			verloren = anderesSpielVerloren(augenzahl);
 		}
 
@@ -1708,10 +1708,10 @@ public class Table extends Observable {
 		int erg = 0;
 		int stufe = 1;
 
-		if (spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.GRAND) {
 			zwierg = 24;
 		}
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE) {
 			SuitGame spiel = (SuitGame) spielart;
 			zwierg = spiel.getTrumpffarbe().wert();
 		}
@@ -1723,7 +1723,7 @@ public class Table extends Observable {
 		
 
 		if (((Math.abs(ermittleAlleinspieler().spitzenZahl()) + stufe) * zwierg) < reizwert
-				&& spielart.getSpielart() != Spielartbezeichnung.NULL) {
+				&& spielart.getSpielart() != GameVarietyName.NULL) {
 			
 			if (reizwert > punkte) {
 				setUeberreizt(true);

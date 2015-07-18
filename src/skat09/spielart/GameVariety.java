@@ -20,16 +20,16 @@ abstract public class GameVariety implements IGameVariety {
     /**
      * H&auml;t die Spielart
      */
-	private Spielartbezeichnung spielart;
+	private GameVarietyName spielart;
 	
 
 	//@Override
-	public Spielartbezeichnung getSpielart() {
+	public GameVarietyName getSpielart() {
 		return spielart;
 	}
 	
 	//@Override
-	public void setSpielart(Spielartbezeichnung art) {
+	public void setSpielart(GameVarietyName art) {
 		spielart = art;
 	}
 

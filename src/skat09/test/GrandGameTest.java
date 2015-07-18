@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.spielart.GrandGame;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
@@ -53,7 +53,7 @@ public class GrandGameTest {
 	
 	@Test
 	public void testGrandspiel() {
-		assertEquals(Spielartbezeichnung.GRAND, spiel.getSpielart());
+		assertEquals(GameVarietyName.GRAND, spiel.getSpielart());
 	}
 	
 	//

@@ -36,7 +36,7 @@ import javax.swing.KeyStroke;
 
 import skat09.Messages;
 import skat09.Table;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IPlayer;
 import skat09.ui.GUIOutput;
@@ -788,7 +788,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		infobox.removeAll();
 
 		if (gewonnen
-				&& tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
+				&& tisch.getSpielart().getSpielart() != GameVarietyName.RAMSCH) {
 			spiel.setText(""
 					+ Messages.getI18n(
 							"game.statistic.declarer.score.won",
@@ -799,7 +799,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 											.getSpiele().size() - 1), augen));
 		}
 		if (!gewonnen
-				&& tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
+				&& tisch.getSpielart().getSpielart() != GameVarietyName.RAMSCH) {
 			spiel.setText(""
 					+ Messages.getI18n(
 							"game.statistic.declarer.score.lost",
@@ -826,7 +826,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	public String ramschAuswertung(boolean gewonnen) {
 		String s = "";
 		if (gewonnen
-				&& tisch.getSpielart().getSpielart() == Spielartbezeichnung.RAMSCH) {
+				&& tisch.getSpielart().getSpielart() == GameVarietyName.RAMSCH) {
 			s = Messages.getI18n(
 					"game.statistic.player.human.score.won",
 					tisch.gibMenschlicherSpieler()
@@ -835,7 +835,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 									.size() - 1));
 		}
 		if (!gewonnen
-				&& tisch.getSpielart().getSpielart() == Spielartbezeichnung.RAMSCH) {
+				&& tisch.getSpielart().getSpielart() == GameVarietyName.RAMSCH) {
 			s = Messages.getI18n(
 					"game.statistic.player.human.score.lost",
 					tisch.gibMenschlicherSpieler()

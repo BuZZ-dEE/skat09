@@ -10,7 +10,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Ramsch;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spieler.HumanPlayer;
 import skat09.spieler.Granny;
 import skat09.spieler.RuleCompliantPlayer;
@@ -450,7 +450,7 @@ public class Controller implements Observer, IController {
 			// Stichauswertung ausgeben
 			stichAuswertung(gespielteKarten, spieler1);
 
-			if (tisch.getSpielart().getSpielart() == Spielartbezeichnung.NULL
+			if (tisch.getSpielart().getSpielart() == GameVarietyName.NULL
 					&& spieler1.getName() == tisch.ermittleAlleinspieler()
 							.getName()) {
 				
@@ -594,7 +594,7 @@ public class Controller implements Observer, IController {
 		int augen = 0;
 
 		ausgabe.spielBeendet();
-		if (tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
+		if (tisch.getSpielart().getSpielart() != GameVarietyName.RAMSCH) {
 			
 			augen = tisch.werteAugen(tisch.ermittleAlleinspieler().getStiche());
 			int punkte = tisch.wertePunkte(augen);
