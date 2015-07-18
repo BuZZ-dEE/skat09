@@ -25,7 +25,7 @@ import skat09.spielkarte.PlayingCard;
  *         Bruhns
  * @version 03.07.2009
  */
-public class Stiche extends JFrame {
+public class TricksFrame extends JFrame {
 
 	/**
 	 * 
@@ -53,7 +53,7 @@ public class Stiche extends JFrame {
 	 * @param tisch
 	 *            Der Tisch auf dem das Spiel gespielt wird
 	 */
-	public Stiche(Table tisch, boolean allestiche) {
+	public TricksFrame(Table tisch, boolean allestiche) {
 		super(Messages.getI18n("game.trick.past"));
 		this.tisch = tisch;
 		setSize(300, 200);
