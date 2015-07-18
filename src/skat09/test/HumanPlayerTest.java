@@ -11,9 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.Table;
-import skat09.spielart.SuitGame;
-import skat09.spielart.GrandGame;
-import skat09.spielart.GameVariety;
+import skat09.gamevariety.GameVariety;
+import skat09.gamevariety.GrandGame;
+import skat09.gamevariety.SuitGame;
 import skat09.spieler.HumanPlayer;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;

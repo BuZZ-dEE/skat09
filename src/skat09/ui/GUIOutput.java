@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 
 import skat09.Messages;
 import skat09.Table;
-import skat09.spielart.SuitGame;
-import skat09.spielart.GrandGame;
-import skat09.spielart.NullGame;
+import skat09.gamevariety.GrandGame;
+import skat09.gamevariety.NullGame;
+import skat09.gamevariety.SuitGame;
 import skat09.spieler.PlayerEnum;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;

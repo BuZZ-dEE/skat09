@@ -6,11 +6,11 @@ import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
-import skat09.spielart.SuitGame;
-import skat09.spielart.GrandGame;
-import skat09.spielart.NullGame;
-import skat09.spielart.Ramsch;
-import skat09.spielart.GameVarietyName;
+import skat09.gamevariety.GameVarietyName;
+import skat09.gamevariety.GrandGame;
+import skat09.gamevariety.NullGame;
+import skat09.gamevariety.Ramsch;
+import skat09.gamevariety.SuitGame;
 import skat09.spieler.HumanPlayer;
 import skat09.spieler.Granny;
 import skat09.spieler.RuleCompliantPlayer;

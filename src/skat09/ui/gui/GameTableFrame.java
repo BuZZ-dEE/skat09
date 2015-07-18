@@ -36,7 +36,7 @@ import javax.swing.KeyStroke;
 
 import skat09.Messages;
 import skat09.Table;
-import skat09.spielart.GameVarietyName;
+import skat09.gamevariety.GameVarietyName;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IPlayer;
 import skat09.ui.GUIOutput;

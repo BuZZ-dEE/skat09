@@ -2,7 +2,7 @@ package skat09.spieler;
 
 import java.io.IOException;
 
-import skat09.spielart.SuitGame;
+import skat09.gamevariety.SuitGame;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;

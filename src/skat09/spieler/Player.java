@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
-import skat09.spielart.SuitGame;
-import skat09.spielart.GrandGame;
-import skat09.spielart.GameVarietyName;
+import skat09.gamevariety.GameVarietyName;
+import skat09.gamevariety.GrandGame;
+import skat09.gamevariety.SuitGame;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.IGameVariety;

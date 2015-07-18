@@ -1,4 +1,4 @@
-package skat09.spielart;
+package skat09.gamevariety;
 
 import java.util.ArrayList;
 
