@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import skat09.gamevariety.SuitGame;
-import skat09.spieler.Position;
+import skat09.player.Position;
 import skat09.spielkarte.PlayingCard;
 
 /**

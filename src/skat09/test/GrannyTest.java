@@ -4,10 +4,11 @@ import java.util.ArrayList;
 //import java.util.Random;
 
 
+
 import org.junit.Test;
 
 import skat09.gamevariety.GrandGame;
-import skat09.spieler.Granny;
+import skat09.player.Granny;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;

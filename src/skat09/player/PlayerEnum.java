@@ -1,4 +1,4 @@
-package skat09.spieler;
+package skat09.player;
 
 /**
  * Diese Enum beinhaltet die m&ouml;glichen Computergegner
