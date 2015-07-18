@@ -3,7 +3,7 @@ package skat09.test.stub;
 import java.util.ArrayList;
 
 import skat09.gamevariety.GameVariety;
-import skat09.spielkarte.PlayingCard;
+import skat09.playingcard.PlayingCard;
 import skat09.test.interfaces.INullGame;
 
 

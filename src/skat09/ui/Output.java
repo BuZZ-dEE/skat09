@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import skat09.gamevariety.SuitGame;
-import skat09.spielkarte.PlayingCard;
+import skat09.playingcard.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;

@@ -13,9 +13,9 @@ import org.junit.Test;
 import skat09.gamevariety.NullGame;
 import skat09.gamevariety.SuitGame;
 import skat09.player.RuleCompliantPlayer;
-import skat09.spielkarte.Suit;
-import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Value;
+import skat09.playingcard.PlayingCard;
+import skat09.playingcard.Suit;
+import skat09.playingcard.Value;
 
 
 public class RuleCompliantPlayerTest {

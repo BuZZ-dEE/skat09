@@ -1,4 +1,4 @@
-package skat09.spielkarte;
+package skat09.playingcard;
 
 /**
  * Die Enum Farbe beinhaltet die m&ouml;glichen Farben einer Spielkarte.

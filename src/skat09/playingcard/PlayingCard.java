@@ -1,4 +1,4 @@
-package skat09.spielkarte;
+package skat09.playingcard;
 
 import java.awt.Image;
 import java.io.File;

@@ -1,4 +1,4 @@
-package skat09.spielkarte;
+package skat09.playingcard;
 /**
  * Die Enum Wert beinhaltet die Werte, die eine Spielkarte haben kann
  * 

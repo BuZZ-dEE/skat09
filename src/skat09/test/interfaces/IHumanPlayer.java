@@ -3,7 +3,7 @@ package skat09.test.interfaces;
 import java.io.IOException;
 
 import skat09.gamevariety.SuitGame;
-import skat09.spielkarte.PlayingCard;
+import skat09.playingcard.PlayingCard;
 
 
 /**
