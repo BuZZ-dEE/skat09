@@ -802,8 +802,8 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : buben) {
 
-			if (karte.equals(new PlayingCard(Suit.KREUZ, Value.BUBE))
-					|| karte.equals(new PlayingCard(Suit.PIK, Value.BUBE))) {
+			if (karte.equals(new PlayingCard(Suit.ACORNS, Value.BUBE))
+					|| karte.equals(new PlayingCard(Suit.LEAVES, Value.BUBE))) {
 
 				ergebnis = buben.get(zufall.nextInt(buben.size()));
 				break;
@@ -1975,10 +1975,10 @@ public class SmartPlayer extends Player {
 	 */
 	public ArrayList<PlayingCard> ermittleKurzeLangeFarbe(boolean lang) {
 
-		ArrayList<PlayingCard> karo = kartenEinerFarbe(blatt, Suit.KARO);
-		ArrayList<PlayingCard> herz = kartenEinerFarbe(blatt, Suit.HERZ);
-		ArrayList<PlayingCard> pik = kartenEinerFarbe(blatt, Suit.PIK);
-		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(blatt, Suit.KREUZ);
+		ArrayList<PlayingCard> karo = kartenEinerFarbe(blatt, Suit.BELLS);
+		ArrayList<PlayingCard> herz = kartenEinerFarbe(blatt, Suit.HEARTS);
+		ArrayList<PlayingCard> pik = kartenEinerFarbe(blatt, Suit.LEAVES);
+		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(blatt, Suit.ACORNS);
 		ArrayList<PlayingCard> gewinner = new ArrayList<PlayingCard>();
 
 		// Die übergegebene Variable lang ist true, d.h. man möchte die lange
@@ -2104,17 +2104,17 @@ public class SmartPlayer extends Player {
 		// Gewinner feststellen
 		switch (gewinner.get(0).getFarbe()) {
 
-		case KARO:
-			ergebnis = Suit.KARO;
+		case BELLS:
+			ergebnis = Suit.BELLS;
 			break;
-		case HERZ:
-			ergebnis = Suit.HERZ;
+		case HEARTS:
+			ergebnis = Suit.HEARTS;
 			break;
-		case PIK:
-			ergebnis = Suit.PIK;
+		case LEAVES:
+			ergebnis = Suit.LEAVES;
 			break;
-		case KREUZ:
-			ergebnis = Suit.KREUZ;
+		case ACORNS:
+			ergebnis = Suit.ACORNS;
 			break;
 		default:
 			System.err.println("Fehler in ermittleTrumpfarbe!");

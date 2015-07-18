@@ -67,9 +67,9 @@ public class HumanPlayerTest {
 	public void drueckenTest() {
 
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Suit.KREUZ, Value.DAME);
-		skat[1] = new PlayingCard(Suit.KREUZ, Value.KOENIG);
-		skat[2] = new PlayingCard(Suit.KREUZ, Value.ASS);
+		skat[0] = new PlayingCard(Suit.ACORNS, Value.DAME);
+		skat[1] = new PlayingCard(Suit.ACORNS, Value.KOENIG);
+		skat[2] = new PlayingCard(Suit.ACORNS, Value.ASS);
 		assertArrayEquals(skat, mensch.druecken(skat));
 	}
 
@@ -77,8 +77,8 @@ public class HumanPlayerTest {
 	public void drueckenTest2() {
 
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Suit.HERZ, Value.ACHT);
-		skat[1] = new PlayingCard(Suit.KARO, Value.ACHT);
+		skat[0] = new PlayingCard(Suit.HEARTS, Value.ACHT);
+		skat[1] = new PlayingCard(Suit.BELLS, Value.ACHT);
 		skat[2] = null;
 		assertArrayEquals(skat, mensch.druecken(skat));
 	}
@@ -89,10 +89,10 @@ public class HumanPlayerTest {
 		boolean ergebnis = false;
 
 		mensch.setSpielart(new GrandGame());
-		PlayingCard karte = new PlayingCard(Suit.KREUZ, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.BUBE);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.HERZ, Value.BUBE);
-		gespielteKarten[1] = new PlayingCard(Suit.HERZ, Value.NEUN);
+		gespielteKarten[0] = new PlayingCard(Suit.HEARTS, Value.BUBE);
+		gespielteKarten[1] = new PlayingCard(Suit.HEARTS, Value.NEUN);
 		if (karte.equals(mensch.spieleKarte(gespielteKarten))) {
 
 			ergebnis = true;
@@ -107,7 +107,7 @@ public class HumanPlayerTest {
 		boolean ergebnis = false;
 
 		mensch.setSpielart(nullspiel);
-		PlayingCard karte = new PlayingCard(Suit.KREUZ, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.BUBE);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
 		if (karte.equals(mensch.spieleKarte(gespielteKarten))) {
@@ -156,7 +156,7 @@ public class HumanPlayerTest {
 	@Test
 	public void farbeTest() {
 
-		SuitGame farbspiel = new SuitGame(Suit.PIK);
+		SuitGame farbspiel = new SuitGame(Suit.LEAVES);
 		assertEquals(farbspiel.getTrumpffarbe(), mensch.farbe()
 				.getTrumpffarbe());
 	}

@@ -97,20 +97,20 @@ abstract public class GameVariety implements IGameVariety {
 		
 		PlayingCard ergebnis;
 		
-		if (karte1.getFarbe() == Suit.KREUZ
-				&& karte2.getFarbe() != Suit.KREUZ) {
+		if (karte1.getFarbe() == Suit.ACORNS
+				&& karte2.getFarbe() != Suit.ACORNS) {
 
 			ergebnis = karte1;
 		}
 
-		else if (karte1.getFarbe() == Suit.PIK
-				&& karte2.getFarbe() != Suit.KREUZ) {
+		else if (karte1.getFarbe() == Suit.LEAVES
+				&& karte2.getFarbe() != Suit.ACORNS) {
 
 			ergebnis = karte1;
 		}
 
-		else if (karte1.getFarbe() == Suit.HERZ
-				&& (karte2.getFarbe() != Suit.KREUZ && karte2.getFarbe() != Suit.PIK)) {
+		else if (karte1.getFarbe() == Suit.HEARTS
+				&& (karte2.getFarbe() != Suit.ACORNS && karte2.getFarbe() != Suit.LEAVES)) {
 
 			ergebnis = karte1;
 		}
@@ -217,16 +217,16 @@ abstract public class GameVariety implements IGameVariety {
 
 		switch (farbe) {
 
-		case KARO:
+		case BELLS:
 			ergebnis = 14;
 			break;
-		case HERZ:
+		case HEARTS:
 			ergebnis = 15;
 			break;
-		case PIK:
+		case LEAVES:
 			ergebnis = 16;
 			break;
-		case KREUZ:
+		case ACORNS:
 			ergebnis = 17;
 			break;
 		default:

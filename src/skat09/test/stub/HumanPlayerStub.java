@@ -55,7 +55,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	
 	public SuitGame farbe() {
 		
-		return new SuitGame(Suit.KARO);
+		return new SuitGame(Suit.BELLS);
 	}
 
 	
