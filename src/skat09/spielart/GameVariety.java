@@ -15,7 +15,7 @@ import skat09.test.interfaces.ISpielart;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-abstract public class Spielart implements ISpielart {
+abstract public class GameVariety implements ISpielart {
 
     /**
      * H&auml;t die Spielart

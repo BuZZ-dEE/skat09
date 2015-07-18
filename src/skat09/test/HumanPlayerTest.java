@@ -13,7 +13,7 @@ import org.junit.Test;
 import skat09.Table;
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
-import skat09.spielart.Spielart;
+import skat09.spielart.GameVariety;
 import skat09.spieler.HumanPlayer;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
@@ -103,7 +103,7 @@ public class HumanPlayerTest {
 	@Test
 	public void spieleKarteTest2() {
 
-		Spielart nullspiel = new NullGameStub();
+		GameVariety nullspiel = new NullGameStub();
 		boolean ergebnis = false;
 
 		mensch.setSpielart(nullspiel);
