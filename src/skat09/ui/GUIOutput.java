@@ -11,7 +11,7 @@ import skat09.Table;
 import skat09.gamevariety.GrandGame;
 import skat09.gamevariety.NullGame;
 import skat09.gamevariety.SuitGame;
-import skat09.spieler.PlayerEnum;
+import skat09.player.PlayerEnum;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IGameVariety;

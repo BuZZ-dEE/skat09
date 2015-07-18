@@ -1,4 +1,4 @@
-package skat09.spieler;
+package skat09.player;
 
 import java.io.IOException;
 
