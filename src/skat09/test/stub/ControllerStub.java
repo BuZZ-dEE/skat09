@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Observable;
 
 import skat09.Table;
-import skat09.spielkarte.PlayingCard;
+import skat09.playingcard.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IGameVariety;

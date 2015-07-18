@@ -12,9 +12,9 @@ import skat09.gamevariety.GameVarietyName;
 import skat09.gamevariety.GrandGame;
 import skat09.gamevariety.NullGame;
 import skat09.gamevariety.SuitGame;
-import skat09.spielkarte.Suit;
-import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Value;
+import skat09.playingcard.PlayingCard;
+import skat09.playingcard.Suit;
+import skat09.playingcard.Value;
 import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 

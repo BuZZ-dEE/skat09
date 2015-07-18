@@ -15,7 +15,7 @@ import skat09.player.Granny;
 import skat09.player.HumanPlayer;
 import skat09.player.RuleCompliantPlayer;
 import skat09.player.SmartPlayer;
-import skat09.spielkarte.PlayingCard;
+import skat09.playingcard.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;

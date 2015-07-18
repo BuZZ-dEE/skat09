@@ -10,9 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.gamevariety.GrandGame;
-import skat09.spielkarte.Suit;
-import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Value;
+import skat09.playingcard.PlayingCard;
+import skat09.playingcard.Suit;
+import skat09.playingcard.Value;
 
 
 

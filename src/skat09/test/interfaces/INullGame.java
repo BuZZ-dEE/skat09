@@ -2,7 +2,7 @@ package skat09.test.interfaces;
 
 import java.util.ArrayList;
 
-import skat09.spielkarte.PlayingCard;
+import skat09.playingcard.PlayingCard;
 
 /**
  * Das Interface INullspiel beinhaltet die Methodenr&uuml;mpfe f&uuml;r Nullspiel

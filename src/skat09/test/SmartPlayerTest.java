@@ -21,9 +21,9 @@ import skat09.player.Granny;
 import skat09.player.Position;
 import skat09.player.RuleCompliantPlayer;
 import skat09.player.SmartPlayer;
-import skat09.spielkarte.Suit;
-import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Value;
+import skat09.playingcard.PlayingCard;
+import skat09.playingcard.Suit;
+import skat09.playingcard.Value;
 import skat09.test.interfaces.IPlayer;
 
 

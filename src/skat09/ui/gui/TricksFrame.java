@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 
 import skat09.Messages;
 import skat09.Table;
-import skat09.spielkarte.PlayingCard;
+import skat09.playingcard.PlayingCard;
 
 
 /**
