@@ -35,17 +35,17 @@ public class NullGameTest {
 	@Before
 	public void setUp() {
 		
-		spielkarte1 = new PlayingCard(Suit.BELLS, Value.SIEBEN);
-		spielkarte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
-		spielkarte3 = new PlayingCard(Suit.LEAVES, Value.NEUN);
-		spielkarte4 = new PlayingCard(Suit.ACORNS, Value.DAME);
-		spielkarte5 = new PlayingCard(Suit.ACORNS, Value.KOENIG);
-		spielkarte6 = new PlayingCard(Suit.ACORNS, Value.ZEHN);
-		spielkarte7 = new PlayingCard(Suit.ACORNS, Value.ASS);
-		spielkarte8 = new PlayingCard(Suit.BELLS, Value.BUBE);
-		spielkarte9 = new PlayingCard(Suit.HEARTS, Value.BUBE);
-		spielkarte10 = new PlayingCard(Suit.LEAVES, Value.BUBE);
-		spielkarte11 = new PlayingCard(Suit.ACORNS, Value.BUBE);
+		spielkarte1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
+		spielkarte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+		spielkarte3 = new PlayingCard(Suit.LEAVES, Value.NINE);
+		spielkarte4 = new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE);
+		spielkarte5 = new PlayingCard(Suit.ACORNS, Value.KING);
+		spielkarte6 = new PlayingCard(Suit.ACORNS, Value.TEN);
+		spielkarte7 = new PlayingCard(Suit.ACORNS, Value.DAUS);
+		spielkarte8 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+		spielkarte9 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		spielkarte10 = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
+		spielkarte11 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte3);

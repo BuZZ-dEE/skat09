@@ -36,7 +36,7 @@ public class GrandGame extends GameVariety {
 			ergebnis = true;
 		}
 		
-		else if (gespielteKarten[0].getWert() == Value.BUBE) {
+		else if (gespielteKarten[0].getWert() == Value.UNDER_KNAVE) {
 			
 			ergebnis = bubeBedienen(blatt, gespielteKarten, zuPruefendeKarte);
 		}
@@ -63,7 +63,7 @@ public class GrandGame extends GameVariety {
 		boolean ergebnis = true;
 		
 		// Wenn Bube gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (zuPruefendeKarte.getWert() == Value.BUBE) {
+		if (zuPruefendeKarte.getWert() == Value.UNDER_KNAVE) {
 
 			ergebnis = true;
 		}
@@ -75,7 +75,7 @@ public class GrandGame extends GameVariety {
 			for (int i = 0; i < blatt.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (blatt.get(i).getWert() == Value.BUBE) {
+				if (blatt.get(i).getWert() == Value.UNDER_KNAVE) {
 
 					ergebnis = false;
 					break;
@@ -91,13 +91,13 @@ public class GrandGame extends GameVariety {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Value.BUBE && karte2.getWert() == Value.BUBE) {
+		if (karte1.getWert() == Value.UNDER_KNAVE && karte2.getWert() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 
 		}
 
-		else if (karte1.getWert() == Value.BUBE || karte2.getWert() == Value.BUBE) {
+		else if (karte1.getWert() == Value.UNDER_KNAVE || karte2.getWert() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 
@@ -122,13 +122,13 @@ public class GrandGame extends GameVariety {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Value.BUBE && karte2.getWert() == Value.BUBE) {
+		if (karte1.getWert() == Value.UNDER_KNAVE && karte2.getWert() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 
 		}
 
-		else if (karte1.getWert() == Value.BUBE || karte2.getWert() == Value.BUBE) {
+		else if (karte1.getWert() == Value.UNDER_KNAVE || karte2.getWert() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 

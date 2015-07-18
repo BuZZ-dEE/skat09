@@ -720,7 +720,7 @@ public class Table extends Observable {
 				deck.add(karte);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
-				if ((karte.getWert() == Value.SECHS) && (sechserskat == false)) {
+				if ((karte.getWert() == Value.SIX) && (sechserskat == false)) {
 					deck.remove(karte);
 				}
 			}
@@ -1532,27 +1532,27 @@ public class Table extends Observable {
 
 		for (int i = 0; i < stiche.size(); i++) {
 
-			if (stiche.get(i).getWert() == Value.ASS) {
+			if (stiche.get(i).getWert() == Value.DAUS) {
 
 				erg += 11;
 
-			} else if (stiche.get(i).getWert() == Value.ZEHN) {
+			} else if (stiche.get(i).getWert() == Value.TEN) {
 
 				erg += 10;
 
-			} else if (stiche.get(i).getWert() == Value.BUBE) {
+			} else if (stiche.get(i).getWert() == Value.UNDER_KNAVE) {
 
 				erg += 2;
 
-			} else if (stiche.get(i).getWert() == Value.DAME) {
+			} else if (stiche.get(i).getWert() == Value.OVER_KNAVE) {
 
 				erg += 3;
 
-			} else if (stiche.get(i).getWert() == Value.KOENIG) {
+			} else if (stiche.get(i).getWert() == Value.KING) {
 
 				erg += 4;
 
-			} else if (stiche.get(i).getWert() == Value.SECHS) {
+			} else if (stiche.get(i).getWert() == Value.SIX) {
 
 				erg += 6;
 			}

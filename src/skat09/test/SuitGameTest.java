@@ -35,15 +35,15 @@ public class SuitGameTest {
 
 	@Before
 	public void setUp() {
-		karte1 = new PlayingCard(Suit.HEARTS, Value.KOENIG);
-		karte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
-		karte3 = new PlayingCard(Suit.BELLS, Value.BUBE);
-		karte4 = new PlayingCard(Suit.BELLS, Value.KOENIG);
-		karte5 = new PlayingCard(Suit.ACORNS, Value.ASS);
-		karte6 = new PlayingCard(Suit.ACORNS, Value.NEUN);
-		karte7 = new PlayingCard(Suit.ACORNS, Value.BUBE);
-		karte8 = new PlayingCard(Suit.LEAVES, Value.ASS);
-		karte9 = new PlayingCard(Suit.BELLS, Value.NEUN);
+		karte1 = new PlayingCard(Suit.HEARTS, Value.KING);
+		karte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+		karte3 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+		karte4 = new PlayingCard(Suit.BELLS, Value.KING);
+		karte5 = new PlayingCard(Suit.ACORNS, Value.DAUS);
+		karte6 = new PlayingCard(Suit.ACORNS, Value.NINE);
+		karte7 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		karte8 = new PlayingCard(Suit.LEAVES, Value.DAUS);
+		karte9 = new PlayingCard(Suit.BELLS, Value.NINE);
 		
 		
 		blatt.add(karte2);

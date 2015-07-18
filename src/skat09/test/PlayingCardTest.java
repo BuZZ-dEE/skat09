@@ -16,11 +16,11 @@ import skat09.playingcard.Value;
 
 public class PlayingCardTest {
 	
-	Value wert1 = Value.ACHT;
+	Value wert1 = Value.EIGHT;
 	Suit farbe1 = Suit.HEARTS;
 	PlayingCard karte1 = new PlayingCard(farbe1, wert1);
 	
-	Value wert2 = Value.DAME;
+	Value wert2 = Value.OVER_KNAVE;
 	Suit farbe2 = Suit.LEAVES;
 	PlayingCard karte2 = new PlayingCard(farbe2, wert2);
 	
@@ -31,7 +31,7 @@ public class PlayingCardTest {
 	 */
 	@Test
 	public void testSpielkarte1() {
-		assertEquals(Value.ACHT, karte1.getWert() );
+		assertEquals(Value.EIGHT, karte1.getWert() );
 	}
 	
 	/**
@@ -68,85 +68,85 @@ public class PlayingCardTest {
 	@Test
 	public void toStringTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.LEAVES, Value.ASS);
+		PlayingCard karte = new PlayingCard(Suit.LEAVES, Value.DAUS);
 		assertEquals("PIK ASS", karte.toString());
 		
 	}
 	
 	@Test
 	public void compareToTest() {
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.ACHT);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
+		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
 		assertEquals(0, karte1.compareTo(karte2));
 	}
 	
 	@Test
 	public void compareToTest2() {
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.ACHT);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.NEUN);
+		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.NINE);
 		assertEquals(Integer.MAX_VALUE, karte1.compareTo(karte2));
 	}
 	
 	@Test
 	public void deutFarbeTest() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
 		assertEquals("SCHELLEN", karte.deutFarbe());
 	}
 	
 	@Test
 	public void deutFarbeTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		assertEquals("HERZ", karte.deutFarbe());
 	}
 	
 	@Test
 	public void deutFarbeTest3() {
 		
-		PlayingCard karte = new PlayingCard(Suit.LEAVES, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
 		assertEquals("GRUEN", karte.deutFarbe());
 	}
 	
 	@Test
 	public void deutFarbeTest4() {
 		
-		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		assertEquals("EICHEL", karte.deutFarbe());
 	}
 	
 	@Test
 	public void deutWertTest() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
 		assertEquals("UNTER", karte.deutWert());
 	}
 	
 	@Test
 	public void deutWertTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.DAME);
+		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
 		assertEquals("OBER", karte.deutWert());
 	}
 	
 	@Test
 	public void deutWertTest3() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.ASS);
+		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.DAUS);
 		assertEquals("DAUS", karte.deutWert());
 	}
 	
 	@Test
 	public void deutWertTest4() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.NEUN);
+		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.NINE);
 		assertEquals("NEUN", karte.deutWert());
 	}
 	
 	@Test
 	public void dateiPfadTest() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.DAME);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		karte.setDeutsch(true);
 		assertEquals("deutkarten/HERZ_OBER", karte.dateiPfad());
 	}
@@ -154,7 +154,7 @@ public class PlayingCardTest {
 	@Test
 	public void dateiPfadTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.DAME);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		karte.setDeutsch(false);
 		assertEquals("frankarten/HERZ_DAME", karte.dateiPfad());
 	}
