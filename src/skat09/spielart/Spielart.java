@@ -3,7 +3,7 @@ package skat09.spielart;
 import java.util.*; //ArrayList
 
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.ISpielart;
 
@@ -17,9 +17,6 @@ import skat09.test.interfaces.ISpielart;
  */
 abstract public class Spielart implements ISpielart {
 
-	//
-	// Datenfelder
-	//
     /**
      * H&auml;t die Spielart
      */
@@ -48,11 +45,11 @@ abstract public class Spielart implements ISpielart {
 	//
 
 	//@Override
-	abstract public boolean gespielteKartePruefen(ArrayList<Spielkarte> blatt,
-			Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte);
+	abstract public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 	
 	//@Override
-	public boolean farbeBedienen(ArrayList<Spielkarte> blatt, Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
+	public boolean farbeBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 		
 		boolean ergebnis = true;
 		
@@ -79,19 +76,19 @@ abstract public class Spielart implements ISpielart {
 	}
 
 	//@Override
-	abstract public Spielkarte hoehereKarte(Spielkarte karte1, Spielkarte karte2);
+	abstract public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2);
 
 	//@Override
-	abstract public Spielkarte sortiereKarte(Spielkarte karte1,
-			Spielkarte karte2);
+	abstract public PlayingCard sortiereKarte(PlayingCard karte1,
+			PlayingCard karte2);
 
 	@Override
 	public abstract String toString();
 
 	//@Override
-	public Spielkarte hoehererBube(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard hoehererBube(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte ergebnis;
+		PlayingCard ergebnis;
 
 		if (bubeBewerten(karte1) < bubeBewerten(karte2)) {
 
@@ -107,9 +104,9 @@ abstract public class Spielart implements ISpielart {
 	}
 	
 	//@Override
-	public Spielkarte hoehereFarbe(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard hoehereFarbe(PlayingCard karte1, PlayingCard karte2) {
 		
-		Spielkarte ergebnis;
+		PlayingCard ergebnis;
 		
 		if (karte1.getFarbe() == Farbe.KREUZ
 				&& karte2.getFarbe() != Farbe.KREUZ) {
@@ -147,9 +144,9 @@ abstract public class Spielart implements ISpielart {
 	}
 	
 	//@Override
-	public Spielkarte hoehereKarteEinBube(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard hoehereKarteEinBube(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte ergebnis;
+		PlayingCard ergebnis;
 
 		if (karte1.getWert() == Wert.BUBE) {
 
@@ -165,9 +162,9 @@ abstract public class Spielart implements ISpielart {
 	}
 	
 	//@Override
-	public Spielkarte hoehereKarteFarbe(Spielkarte karte1, Spielkarte karte2) {
+	public PlayingCard hoehereKarteFarbe(PlayingCard karte1, PlayingCard karte2) {
 
-		Spielkarte ergebnis;
+		PlayingCard ergebnis;
 
 		if (karteBewerten(karte1) < karteBewerten(karte2)) {
 
@@ -183,7 +180,7 @@ abstract public class Spielart implements ISpielart {
 	}
 	
 	//@Override
-	public int karteBewerten(Spielkarte karte) {
+	public int karteBewerten(PlayingCard karte) {
 
 		Wert wert = karte.getWert();
 		int ergebnis = 0;
@@ -224,7 +221,7 @@ abstract public class Spielart implements ISpielart {
 	}
 
 	//@Override
-	public int bubeBewerten(Spielkarte karte) {
+	public int bubeBewerten(PlayingCard karte) {
 
 		Farbe farbe = karte.getFarbe();
 		int ergebnis = 0;

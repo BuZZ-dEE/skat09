@@ -16,7 +16,7 @@ import skat09.ui.gui.SvgImageProcessing;
  * @version 03.07.2009
  * 
  */
-public class Spielkarte implements Comparable<Spielkarte> {
+public class PlayingCard implements Comparable<PlayingCard> {
 
 	/**
 	 * Feld f&uuml;r die Farbe
@@ -40,7 +40,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	 * @param farbe Die Farbe der zu erzeugenden Karte
 	 * @param wert Der Wert der zu erzeugenden Karte
 	 */
-	public Spielkarte(Farbe farbe, Wert wert) {
+	public PlayingCard(Farbe farbe, Wert wert) {
 		this.wert = wert;
 		this.farbe = farbe;
 		//deutsch = false;
@@ -127,7 +127,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	 *            Karte mit der verglichen werden soll
 	 * @return true, falls die beiden Karten gleich sind
 	 */
-	public boolean equals(Spielkarte karte) {
+	public boolean equals(PlayingCard karte) {
 
 		boolean ergebnis;
 
@@ -155,7 +155,7 @@ public class Spielkarte implements Comparable<Spielkarte> {
 	 * @param karte - spielkarte, die mit dem aktuellen Objekt verglichen werden soll
 	 * @return 0 falls gleich, ansonsten negativen/positiven Wert
 	 */
-	public int compareTo(Spielkarte karte) {
+	public int compareTo(PlayingCard karte) {
 		
 		int ergebnis = Integer.MAX_VALUE;
 		

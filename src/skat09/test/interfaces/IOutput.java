@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import skat09.spielart.SuitGame;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 
 
 /**
@@ -110,7 +110,7 @@ public interface IOutput {
 	 *            - 1 fuer 1. Karte dr&uuml;cken, 2 fuer 2. Karte dr&uuml;cken
 	 * @return nummer der gedr&uuml;ckten Karte
 	 */
-	public abstract int druecken(ArrayList<Spielkarte> blatt, int nummer);
+	public abstract int druecken(ArrayList<PlayingCard> blatt, int nummer);
 
 	/**
 	 * Fragt den menschlichen Spieler, ob er schneider spielen m&ouml;chte.
@@ -159,7 +159,7 @@ public interface IOutput {
 	 * @return Spielkarte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	public abstract Spielkarte spieleKarte(Spielkarte[] gespielteKarten,
+	public abstract PlayingCard spieleKarte(PlayingCard[] gespielteKarten,
 			IPlayer spieler) throws IOException;
 
 	/**
@@ -184,7 +184,7 @@ public interface IOutput {
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void skatAusgeben(Spielkarte[] skat) throws IOException;
+	public abstract void skatAusgeben(PlayingCard[] skat) throws IOException;
 
 	/**
 	 * Teilt mit, dass ein Spieler weg ist.
@@ -285,7 +285,7 @@ public interface IOutput {
 	 * @param karte
 	 *            - Karte, die gespielt wird
 	 */
-	public abstract void spieltKarte(IPlayer spieler, Spielkarte karte);
+	public abstract void spieltKarte(IPlayer spieler, PlayingCard karte);
 
 	/**
 	 * Fragt den Spieler, wie hoch er reizen m&ouml;chte.

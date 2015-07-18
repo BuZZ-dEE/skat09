@@ -10,7 +10,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spieler.Position;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.IHumanPlayer;
 import skat09.test.interfaces.ISpielart;
@@ -52,15 +52,15 @@ public class Table extends Observable {
 	/**
 	 * Das gesamte Kartenspiel
 	 */
-	private ArrayList<Spielkarte> deck;
+	private ArrayList<PlayingCard> deck;
 	/**
 	 * Karten die auf dem Tisch liegen
 	 */
-	private Spielkarte[] gespielteKarten;
+	private PlayingCard[] gespielteKarten;
 	/**
 	 * Die Karten, die im Skat liegen
 	 */
-	private Spielkarte[] skat;
+	private PlayingCard[] skat;
 	/**
 	 * True, wenn Handspiel gespielt wird
 	 */
@@ -102,7 +102,7 @@ public class Table extends Observable {
 	/**
 	 * Die Tr&uuml;mpfe, mit denen der Alleinspieler spielt
 	 */
-	private Spielkarte[] truempfe = new Spielkarte[12];
+	private PlayingCard[] truempfe = new PlayingCard[12];
 	/**
 	 * True, wenn die Situation Spaltarsch aufgetreten ist
 	 */
@@ -187,9 +187,9 @@ public class Table extends Observable {
 		super();
 
 		anzahlSpiele = 0;
-		gespielteKarten = new Spielkarte[3];
-		skat = new Spielkarte[3];
-		deck = new ArrayList<Spielkarte>();
+		gespielteKarten = new PlayingCard[3];
+		skat = new PlayingCard[3];
+		deck = new ArrayList<PlayingCard>();
 		grundwertliste = new ArrayList<Integer>();
 		augenliste = new ArrayList<Integer>();
 		punkteliste = new ArrayList<Integer>();
@@ -268,7 +268,7 @@ public class Table extends Observable {
 	 * 
 	 * @return auf dem Tisch liegende Karten
 	 */
-	public Spielkarte[] getGespielteKarten() {
+	public PlayingCard[] getGespielteKarten() {
 
 		return gespielteKarten;
 	}
@@ -278,7 +278,7 @@ public class Table extends Observable {
 	 * 
 	 * @return deck des Tisches
 	 */
-	public ArrayList<Spielkarte> getDeck() {
+	public ArrayList<PlayingCard> getDeck() {
 
 		return deck;
 	}
@@ -299,7 +299,7 @@ public class Table extends Observable {
 	 * 
 	 * @return Skat vom Tisch
 	 */
-	public Spielkarte[] getSkat() {
+	public PlayingCard[] getSkat() {
 
 		return skat;
 	}
@@ -400,7 +400,7 @@ public class Table extends Observable {
 	 * 
 	 * @return truempfe
 	 */
-	public Spielkarte[] getTruempfe() {
+	public PlayingCard[] getTruempfe() {
 
 		return truempfe;
 	}
@@ -589,7 +589,7 @@ public class Table extends Observable {
 	 * @param gespielteKarten
 	 *            - ein Array, dass die drei gespielten Karten.
 	 */
-	public void setGespielteKarten(Spielkarte[] gespielteKarten) {
+	public void setGespielteKarten(PlayingCard[] gespielteKarten) {
 
 		this.gespielteKarten = gespielteKarten;
 		super.setChanged();
@@ -602,7 +602,7 @@ public class Table extends Observable {
 	 * @param skatkarten
 	 *            - die in den Skat gelegt werden sollen.
 	 */
-	public void setSkat(Spielkarte[] skatkarten) {
+	public void setSkat(PlayingCard[] skatkarten) {
 
 		skat = skatkarten;
 	}
@@ -693,7 +693,7 @@ public class Table extends Observable {
 	 * @param truempfe
 	 *            - die neuen truempfe
 	 */
-	public void setTruempfe(Spielkarte[] truempfe) {
+	public void setTruempfe(PlayingCard[] truempfe) {
 
 		this.truempfe = truempfe;
 	}
@@ -707,7 +707,7 @@ public class Table extends Observable {
 	 */
 	public void erstelleDeck() {
 
-		Spielkarte karte;
+		PlayingCard karte;
 		// Spielkarte.setBlatt(true);
 
 		deck.clear();
@@ -716,7 +716,7 @@ public class Table extends Observable {
 
 			for (Wert wert : Wert.values()) {
 
-				karte = new Spielkarte(farbe, wert);
+				karte = new PlayingCard(farbe, wert);
 				deck.add(karte);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
@@ -747,10 +747,10 @@ public class Table extends Observable {
 	 * @return Spieler, der den Stich gewonnen hat
 	 */
 	public IPlayer stichAuswerten(ISpielart spielart,
-			Spielkarte[] gespielteKarten) throws NullPointerException {
+			PlayingCard[] gespielteKarten) throws NullPointerException {
 
 		IPlayer stichGewinner = null;
-		Spielkarte hoechsteKarte = null;
+		PlayingCard hoechsteKarte = null;
 
 		hoechsteKarte = spielart.hoehereKarte(gespielteKarten[0],
 				gespielteKarten[1]);
@@ -771,7 +771,7 @@ public class Table extends Observable {
 	 * @param kartenAnzahl
 	 *            - Anzahl der Karten, die in das Blatt rein sollen
 	 */
-	private void kartenInsBlatt(ArrayList<Spielkarte> blatt, int kartenAnzahl) {
+	private void kartenInsBlatt(ArrayList<PlayingCard> blatt, int kartenAnzahl) {
 
 		for (int i = 0; i < kartenAnzahl; i++) {
 
@@ -786,9 +786,9 @@ public class Table extends Observable {
 	 */
 	public void kartenAusteilen() {
 		anzahlSpiele = anzahlSpiele + 1;
-		ArrayList<Spielkarte> blatt1 = new ArrayList<Spielkarte>();
-		ArrayList<Spielkarte> blatt2 = new ArrayList<Spielkarte>();
-		ArrayList<Spielkarte> blatt3 = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> blatt1 = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> blatt3 = new ArrayList<PlayingCard>();
 
 		// Das array speichert, wieviele Karten ein Spieler beim entsprechenden
 		// Schleifendurchlauf bekommt
@@ -833,16 +833,16 @@ public class Table extends Observable {
 	 */
 	public void kartenBesitzergeben() {
 
-		ArrayList<Spielkarte> blatt1 = spieler1.getBlatt();
-		for (Spielkarte karte : blatt1) {
+		ArrayList<PlayingCard> blatt1 = spieler1.getBlatt();
+		for (PlayingCard karte : blatt1) {
 			karte.setBesitzer(spieler1);
 		}
-		ArrayList<Spielkarte> blatt2 = spieler2.getBlatt();
-		for (Spielkarte karte : blatt2) {
+		ArrayList<PlayingCard> blatt2 = spieler2.getBlatt();
+		for (PlayingCard karte : blatt2) {
 			karte.setBesitzer(spieler2);
 		}
-		ArrayList<Spielkarte> blatt3 = spieler3.getBlatt();
-		for (Spielkarte karte : blatt3) {
+		ArrayList<PlayingCard> blatt3 = spieler3.getBlatt();
+		for (PlayingCard karte : blatt3) {
 			karte.setBesitzer(spieler3);
 		}
 	}
@@ -1235,7 +1235,7 @@ public class Table extends Observable {
 	public boolean spielAuswerten() {
 		boolean gewonnen = false;
 		if (spielart.getSpielart() != Spielartbezeichnung.RAMSCH) {
-			ArrayList<Spielkarte> temp = new ArrayList<Spielkarte>();
+			ArrayList<PlayingCard> temp = new ArrayList<PlayingCard>();
 
 			temp = ermittleAlleinspieler().getStiche();
 
@@ -1305,7 +1305,7 @@ public class Table extends Observable {
 
 		spieler = sortiereSpielerRamsch(spieler);
 
-		ArrayList<Spielkarte> skat = new ArrayList<Spielkarte>();
+		ArrayList<PlayingCard> skat = new ArrayList<PlayingCard>();
 		skat.add(this.skat[0]);
 		skat.add(this.skat[1]);
 		if (sechserskat) {
@@ -1526,7 +1526,7 @@ public class Table extends Observable {
 	 *            - Stiche, die der Spieler gewonnen hat
 	 * @return Augen des Spielers
 	 */
-	public int werteAugen(ArrayList<Spielkarte> stiche) {
+	public int werteAugen(ArrayList<PlayingCard> stiche) {
 
 		int erg = 0;
 

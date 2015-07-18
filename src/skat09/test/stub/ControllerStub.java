@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Observable;
 
 import skat09.Table;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
@@ -173,7 +173,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void stichAuswertung(Spielkarte[] gespielteKarten, IPlayer gewinner) {
+	public void stichAuswertung(PlayingCard[] gespielteKarten, IPlayer gewinner) {
 		// TODO Auto-generated method stub
 		
 	}

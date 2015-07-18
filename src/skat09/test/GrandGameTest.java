@@ -10,38 +10,38 @@ import org.junit.Test;
 import skat09.spielart.GrandGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 
 
 public class GrandGameTest {
 
 	GrandGame spiel;
-	Spielkarte karte1;
-	Spielkarte karte2;
-	Spielkarte karte3;
-	Spielkarte karte4;
-	Spielkarte karte5;
-	Spielkarte karte6;
-	Spielkarte karte7;
-	Spielkarte karte8;
-	Spielkarte karte9;
-	ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
-	ArrayList<Spielkarte> blatt2 = new ArrayList<Spielkarte>();
-	Spielkarte[] tischkarten = new Spielkarte[3];
+	PlayingCard karte1;
+	PlayingCard karte2;
+	PlayingCard karte3;
+	PlayingCard karte4;
+	PlayingCard karte5;
+	PlayingCard karte6;
+	PlayingCard karte7;
+	PlayingCard karte8;
+	PlayingCard karte9;
+	ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
+	ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>();
+	PlayingCard[] tischkarten = new PlayingCard[3];
 	
 	@Before
 	public void setUp() {
 		spiel = new GrandGame();
-		karte1 = new Spielkarte(Farbe.HERZ, Wert.KOENIG);
-		karte2 = new Spielkarte(Farbe.HERZ, Wert.ACHT);
-		karte3 = new Spielkarte(Farbe.KARO, Wert.BUBE);
-		karte4 = new Spielkarte(Farbe.KARO, Wert.KOENIG);
-		karte5 = new Spielkarte(Farbe.KREUZ, Wert.ASS);
-		karte6 = new Spielkarte(Farbe.KREUZ, Wert.NEUN);
-		karte7 = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
-		karte8 = new Spielkarte(Farbe.PIK, Wert.ACHT);
-		karte9 = new Spielkarte(Farbe.KARO, Wert.NEUN);
+		karte1 = new PlayingCard(Farbe.HERZ, Wert.KOENIG);
+		karte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
+		karte3 = new PlayingCard(Farbe.KARO, Wert.BUBE);
+		karte4 = new PlayingCard(Farbe.KARO, Wert.KOENIG);
+		karte5 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		karte6 = new PlayingCard(Farbe.KREUZ, Wert.NEUN);
+		karte7 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		karte8 = new PlayingCard(Farbe.PIK, Wert.ACHT);
+		karte9 = new PlayingCard(Farbe.KARO, Wert.NEUN);
 		
 		blatt.add(karte2);
 		blatt.add(karte6);

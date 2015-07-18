@@ -14,27 +14,27 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.NullGame;
 import skat09.spieler.RuleCompliantPlayer;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 
 
 public class RuleCompliantPlayerTest {
 	
-	ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
-	Spielkarte spielkarte1;
-	Spielkarte spielkarte2;
-	Spielkarte spielkarte3;
-	Spielkarte spielkarte4;
+	ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
+	PlayingCard spielkarte1;
+	PlayingCard spielkarte2;
+	PlayingCard spielkarte3;
+	PlayingCard spielkarte4;
 	RuleCompliantPlayer spieler = new RuleCompliantPlayer("Mimi");
-	Spielkarte[] gespielteKarten = new Spielkarte[3];
+	PlayingCard[] gespielteKarten = new PlayingCard[3];
 	SuitGame spiel = new SuitGame(Farbe.HERZ);
 	
 	@Before
 	public void setUp() {
-		spielkarte1 = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
-		spielkarte2 = new Spielkarte(Farbe.HERZ, Wert.ACHT);
-		spielkarte3 = new Spielkarte(Farbe.PIK, Wert.NEUN);
-		spielkarte4 = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
+		spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
+		spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
+		spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
 		
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte3);
@@ -83,14 +83,14 @@ public class RuleCompliantPlayerTest {
 		boolean testErfolgreich = false;
 		
 		blatt.clear();
-		blatt.add(new Spielkarte(Farbe.HERZ, Wert.ACHT));
-		blatt.add(new Spielkarte(Farbe.KARO, Wert.ACHT));
-		ArrayList<Spielkarte> altesBlatt = new ArrayList<Spielkarte>();
-		altesBlatt = (ArrayList<Spielkarte>) blatt.clone();
+		blatt.add(new PlayingCard(Farbe.HERZ, Wert.ACHT));
+		blatt.add(new PlayingCard(Farbe.KARO, Wert.ACHT));
+		ArrayList<PlayingCard> altesBlatt = new ArrayList<PlayingCard>();
+		altesBlatt = (ArrayList<PlayingCard>) blatt.clone();
 		spieler.setBlatt(blatt);
-		Spielkarte[] gespielteKarten = new Spielkarte[3];
-		gespielteKarten[0] = new Spielkarte(Farbe.KARO, Wert.SIEBEN); 
-		Spielkarte gespielteKarte = new Spielkarte(null,null);
+		PlayingCard[] gespielteKarten = new PlayingCard[3];
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.SIEBEN); 
+		PlayingCard gespielteKarte = new PlayingCard(null,null);
 		gespielteKarte = spieler.spieleKarte(gespielteKarten);
 		blatt = spieler.getBlatt();
 		
@@ -112,7 +112,7 @@ public class RuleCompliantPlayerTest {
 
 	@Test
 	public void drueckenTest() {
-		Spielkarte[] skat = new Spielkarte[2];
+		PlayingCard[] skat = new PlayingCard[2];
 		assertArrayEquals(null, spieler.druecken(skat));
 	}
 	

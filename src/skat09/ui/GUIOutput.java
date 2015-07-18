@@ -13,7 +13,7 @@ import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spieler.PlayerEnum;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
 import skat09.ui.gui.*;
@@ -152,7 +152,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public int druecken(ArrayList<Spielkarte> blatt, int nummer) {
+	public int druecken(ArrayList<PlayingCard> blatt, int nummer) {
 
 		hfenster.blattneu(tisch.gibMenschlicherSpieler());
 		hfenster.setZug(true);
@@ -213,7 +213,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten, IPlayer spieler)
+	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		hfenster.setGespielteKarten(gespielteKarten);
 		zeigegespielteKarten(gespielteKarten);
@@ -221,12 +221,12 @@ public class GUIOutput extends Output {
 		hfenster.setZug(true);
 		warte();
 		int kartennummer = hfenster.getGewaehlteKarte();
-		Spielkarte karte = spieler.getBlatt().remove(kartennummer);
+		PlayingCard karte = spieler.getBlatt().remove(kartennummer);
 		hfenster.setZug(false);
 		return karte;
 	}
 
-	private void zeigegespielteKarten(Spielkarte[] gespielteKarten) {
+	private void zeigegespielteKarten(PlayingCard[] gespielteKarten) {
 		hfenster.tischRaumen();
 		if (gespielteKarten[0] != null) {
 			hfenster.spieltKarte(gespielteKarten[0]);
@@ -251,7 +251,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void skatAusgeben(Spielkarte[] skat) throws IOException {
+	public void skatAusgeben(PlayingCard[] skat) throws IOException {
 		hfenster.skatAusgeben(skat);
 
 	}
@@ -368,7 +368,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(IPlayer spieler, Spielkarte karte) {
+	public void spieltKarte(IPlayer spieler, PlayingCard karte) {
 		if (tisch.gibMenschlicherSpieler().getName() == spieler.getName()) {
 			hfenster.menschSpieltKarte();
 		} else {

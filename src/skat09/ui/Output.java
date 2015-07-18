@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import skat09.spielart.SuitGame;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
@@ -60,7 +60,7 @@ abstract public class Output implements IOutput {
 	public abstract void spiel();
 
 	//@Override
-	public abstract int druecken(ArrayList<Spielkarte> blatt, int nummer);
+	public abstract int druecken(ArrayList<PlayingCard> blatt, int nummer);
 
 	//@Override
 	public abstract boolean schneider();
@@ -79,7 +79,7 @@ abstract public class Output implements IOutput {
 	public abstract SuitGame farbe();
 
 	//@Override
-	public abstract Spielkarte spieleKarte(Spielkarte[] gespielteKarten,
+	public abstract PlayingCard spieleKarte(PlayingCard[] gespielteKarten,
 			IPlayer spieler) throws IOException;
 
 	//@Override
@@ -89,7 +89,7 @@ abstract public class Output implements IOutput {
 	public abstract void blattAusgeben(IPlayer spieler) throws IOException;
 
 	//@Override
-	public abstract void skatAusgeben(Spielkarte[] skat) throws IOException;
+	public abstract void skatAusgeben(PlayingCard[] skat) throws IOException;
 
 	//@Override
 	public abstract void weg(IPlayer spieler);
@@ -137,7 +137,7 @@ abstract public class Output implements IOutput {
 	public abstract String einlesen();
 
 	//@Override
-	public abstract void spieltKarte(IPlayer spieler, Spielkarte karte);
+	public abstract void spieltKarte(IPlayer spieler, PlayingCard karte);
 
 	//@Override
 	public abstract int reizlimitFestlegen();

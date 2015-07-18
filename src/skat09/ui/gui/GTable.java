@@ -37,7 +37,7 @@ import javax.swing.KeyStroke;
 import skat09.Messages;
 import skat09.Table;
 import skat09.spielart.Spielartbezeichnung;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IPlayer;
 import skat09.ui.GUIOutput;
 
@@ -177,7 +177,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	/**
 	 * Beinhaltet die bereits gespielten Karten
 	 */
-	private Spielkarte[] gespielteKarten = null;
+	private PlayingCard[] gespielteKarten = null;
 	/**
 	 * Beinhaltet die gewonnenen Augen des Alleinspielers
 	 */
@@ -409,7 +409,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * @param gespielteKarten
 	 *            Die Karten, die bereits gespielt wurden.
 	 */
-	public void setGespielteKarten(Spielkarte[] gespielteKarten) {
+	public void setGespielteKarten(PlayingCard[] gespielteKarten) {
 		this.gespielteKarten = gespielteKarten;
 	}
 
@@ -542,7 +542,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 				+ ": "
 				+ spieler.getPosition().toString()));
 
-		for (Spielkarte karte : spieler.getBlatt()) {
+		for (PlayingCard karte : spieler.getBlatt()) {
 
 			Image image;
 			if (spielbarhilfe == true && spieler.getSpielart() != null
@@ -579,7 +579,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 *            Die im Skat liegenden Karten
 	 * @throws IOException
 	 */
-	public void skatAusgeben(Spielkarte[] skat) throws IOException {
+	public void skatAusgeben(PlayingCard[] skat) throws IOException {
 
 		// for (int i = 0; i < 2; i++) {
 		int skatLength = tisch.getSkat().length;
@@ -607,7 +607,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * 
 	 */
 	public void skataufTisch() {
-		Spielkarte[] skat = tisch.getSkat();
+		PlayingCard[] skat = tisch.getSkat();
 		int skatLength = skat.length;
 		aufTisch.removeAll();
 		JButton button = new JButton(Messages.getI18n("game.skat_seen"));
@@ -1019,7 +1019,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 				Messages.getI18n("game.type.grand"),
 				Messages.getI18n("game.type.null") };
 
-		if (Spielkarte.getDeutsch()) {
+		if (PlayingCard.getDeutsch()) {
 			spielart[0] = Messages.getI18n("game.type.german.schellen");
 			spielart[1] = Messages.getI18n("game.type.german.herz");
 			spielart[2] = Messages.getI18n("game.type.german.gruen");
@@ -1066,7 +1066,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 			s = s + "Hand";
 		}
 		String spielart = tisch.getSpielart().toString();
-		if (Spielkarte.getDeutsch()) {
+		if (PlayingCard.getDeutsch()) {
 			if (spielart.compareTo("KARO") == 0) {
 				spielart = "Schellen";
 			}
@@ -1125,7 +1125,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * @param karte
 	 *            Die Karte, die der Gegner gespielt hat.
 	 */
-	public void spieltKarte(Spielkarte karte) {
+	public void spieltKarte(PlayingCard karte) {
 		Image image = null;
 
 		image = new ImageIcon(karte.getCardPath()).getImage();
@@ -1420,7 +1420,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 
 		if (spieler.getIstAlleinspieler() && tisch.getOuvert()) {
 			for (int i = 0; i < spieler.getBlatt().size(); i++) {
-				Spielkarte karte = spieler.getBlatt().get(i);
+				PlayingCard karte = spieler.getBlatt().get(i);
 				Image image;
 
 				image = new ImageIcon(karte.getCardPath()).getImage();

@@ -3,7 +3,7 @@ package skat09.test.interfaces;
 import java.io.IOException;
 import java.util.Observable;
 
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 
 
 /**
@@ -147,7 +147,7 @@ public interface IController {
 	 * @param gewinner
 	 *            - vorher ermittelter Gewinner des Stichs
 	 */
-	public abstract void stichAuswertung(Spielkarte[] gespielteKarten,
+	public abstract void stichAuswertung(PlayingCard[] gespielteKarten,
 			IPlayer gewinner);
 
 	/**

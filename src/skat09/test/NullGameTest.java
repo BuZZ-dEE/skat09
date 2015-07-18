@@ -10,42 +10,42 @@ import org.junit.Test;
 import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Farbe;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Wert;
 import skat09.test.interfaces.INullGame;
 
 
 public class NullGameTest {
 
-	Spielkarte spielkarte1;
-	Spielkarte spielkarte2;
-	Spielkarte spielkarte3;
-	Spielkarte spielkarte4;
-	Spielkarte spielkarte5;
-	Spielkarte spielkarte6;
-	Spielkarte spielkarte7;
-	Spielkarte spielkarte8;
-	Spielkarte spielkarte9;
-	Spielkarte spielkarte10;
-	Spielkarte spielkarte11;
+	PlayingCard spielkarte1;
+	PlayingCard spielkarte2;
+	PlayingCard spielkarte3;
+	PlayingCard spielkarte4;
+	PlayingCard spielkarte5;
+	PlayingCard spielkarte6;
+	PlayingCard spielkarte7;
+	PlayingCard spielkarte8;
+	PlayingCard spielkarte9;
+	PlayingCard spielkarte10;
+	PlayingCard spielkarte11;
 	INullGame spiel = new NullGame();
-	ArrayList<Spielkarte> blatt = new ArrayList<Spielkarte>();
-	Spielkarte[] gespielteKarten = new Spielkarte[3];
+	ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
+	PlayingCard[] gespielteKarten = new PlayingCard[3];
 	
 	@Before
 	public void setUp() {
 		
-		spielkarte1 = new Spielkarte(Farbe.KARO, Wert.SIEBEN);
-		spielkarte2 = new Spielkarte(Farbe.HERZ, Wert.ACHT);
-		spielkarte3 = new Spielkarte(Farbe.PIK, Wert.NEUN);
-		spielkarte4 = new Spielkarte(Farbe.KREUZ, Wert.DAME);
-		spielkarte5 = new Spielkarte(Farbe.KREUZ, Wert.KOENIG);
-		spielkarte6 = new Spielkarte(Farbe.KREUZ, Wert.ZEHN);
-		spielkarte7 = new Spielkarte(Farbe.KREUZ, Wert.ASS);
-		spielkarte8 = new Spielkarte(Farbe.KARO, Wert.BUBE);
-		spielkarte9 = new Spielkarte(Farbe.HERZ, Wert.BUBE);
-		spielkarte10 = new Spielkarte(Farbe.PIK, Wert.BUBE);
-		spielkarte11 = new Spielkarte(Farbe.KREUZ, Wert.BUBE);
+		spielkarte1 = new PlayingCard(Farbe.KARO, Wert.SIEBEN);
+		spielkarte2 = new PlayingCard(Farbe.HERZ, Wert.ACHT);
+		spielkarte3 = new PlayingCard(Farbe.PIK, Wert.NEUN);
+		spielkarte4 = new PlayingCard(Farbe.KREUZ, Wert.DAME);
+		spielkarte5 = new PlayingCard(Farbe.KREUZ, Wert.KOENIG);
+		spielkarte6 = new PlayingCard(Farbe.KREUZ, Wert.ZEHN);
+		spielkarte7 = new PlayingCard(Farbe.KREUZ, Wert.ASS);
+		spielkarte8 = new PlayingCard(Farbe.KARO, Wert.BUBE);
+		spielkarte9 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
+		spielkarte10 = new PlayingCard(Farbe.PIK, Wert.BUBE);
+		spielkarte11 = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
 		
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte3);

@@ -2,7 +2,7 @@ package skat09.spieler;
 
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.ISpielart;
 
 /**
@@ -51,7 +51,7 @@ public class Granny extends Player {
 	 *            bereits gespielte Karten
 	 * @return Spielkarte, die die Oma spielt
 	 */
-	public Spielkarte spieleKarte(Spielkarte[] gespielteKarten) {
+	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
 
 		int index = blatt.size() - 1;
 
@@ -82,7 +82,7 @@ public class Granny extends Player {
 	/**
 	 * Die Oma kommt spielt nie, deshalb kann Sie auch nicht dr&uuml;cken.
 	 */
-	public Spielkarte[] druecken(Spielkarte[] skat) {
+	public PlayingCard[] druecken(PlayingCard[] skat) {
 
 		return null;
 	}

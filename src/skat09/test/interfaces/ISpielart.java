@@ -3,7 +3,7 @@ package skat09.test.interfaces;
 import java.util.ArrayList;
 
 import skat09.spielart.Spielartbezeichnung;
-import skat09.spielkarte.Spielkarte;
+import skat09.spielkarte.PlayingCard;
 
 
 /**
@@ -36,8 +36,8 @@ public interface ISpielart {
 	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	abstract public boolean gespielteKartePruefen(ArrayList<Spielkarte> blatt,
-			Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte);
+	abstract public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 
 	/**
 	 * Wenn die zuerst gespielte Karte eine Farbe war, die nicht Trumpf ist wird 
@@ -48,8 +48,8 @@ public interface ISpielart {
 	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	public abstract boolean farbeBedienen(ArrayList<Spielkarte> blatt,
-			Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte);
+	public abstract boolean farbeBedienen(ArrayList<PlayingCard> blatt,
+			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 
 	/**
 	 * Vergleicht 2 Spielkarten und gibt die hoeherwertige Karte zurueck. Wenn
@@ -60,7 +60,7 @@ public interface ISpielart {
 	 * @param karte2
 	 * @return Spielkarte , die hoeherwertig ist
 	 */
-	abstract public Spielkarte hoehereKarte(Spielkarte karte1, Spielkarte karte2);
+	abstract public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2);
 
 	/**
 	 * Vergleicht 2 Spielkarten und gibt die hoeherwertige Karte zurueck. Diese
@@ -70,8 +70,8 @@ public interface ISpielart {
 	 * @param karte2
 	 * @return Spielkarte , die hoeherwertig ist
 	 */
-	abstract public Spielkarte sortiereKarte(Spielkarte karte1,
-			Spielkarte karte2);
+	abstract public PlayingCard sortiereKarte(PlayingCard karte1,
+			PlayingCard karte2);
 
 	/**
 	 * Gibt den Namen der Spielart zur&uuml;ck.
@@ -85,7 +85,7 @@ public interface ISpielart {
 	 * @param karte2 - der zweite Bube
 	 * @return Der h&ouml;here Bube von 2 Karten.
 	 */
-	public abstract Spielkarte hoehererBube(Spielkarte karte1, Spielkarte karte2);
+	public abstract PlayingCard hoehererBube(PlayingCard karte1, PlayingCard karte2);
 
 	/**
 	 * Ermittelt von 2 Karten die Karte mit der ho&uml;herwertigeren Farbe und
@@ -96,7 +96,7 @@ public interface ISpielart {
 	 * @param karte2 - Die zweite Karte.
 	 * @return Die Karte mit der ho&uml;heren Farbe.
 	 */
-	public abstract Spielkarte hoehereFarbe(Spielkarte karte1, Spielkarte karte2);
+	public abstract PlayingCard hoehereFarbe(PlayingCard karte1, PlayingCard karte2);
 
 	/**
 	 * Liefert von 2 Karten die h&ouml;here zur&uuml;ck, wobei eine Karte davon ein Bube ist.
@@ -106,8 +106,8 @@ public interface ISpielart {
 	 * @param karte2 - die zweite Karte
 	 * @return Der Bube wird zurück geliefert.
 	 */
-	public abstract Spielkarte hoehereKarteEinBube(Spielkarte karte1,
-			Spielkarte karte2);
+	public abstract PlayingCard hoehereKarteEinBube(PlayingCard karte1,
+			PlayingCard karte2);
 
 	/**
 	 * Liefert von 2 Karten, welche die gleiche Farbe haben, die h&ouml;here zurück.
@@ -116,8 +116,8 @@ public interface ISpielart {
 	 * @param karte2 - die zweite Karte
 	 * @return Die ho&uml;here Karte.
 	 */
-	public abstract Spielkarte hoehereKarteFarbe(Spielkarte karte1,
-			Spielkarte karte2);
+	public abstract PlayingCard hoehereKarteFarbe(PlayingCard karte1,
+			PlayingCard karte2);
 
 	/**
 	 * Ordnet einer Karte einen Zahlenwert zu. Die geschieht in der Wertigkeit der Karten
@@ -126,7 +126,7 @@ public interface ISpielart {
 	 * @param karte - Die Karte der ein Zahlenwert zugeordnet werden soll.
 	 * @return Der Zahlenwert der jeweiligen Karte.
 	 */
-	public abstract int karteBewerten(Spielkarte karte);
+	public abstract int karteBewerten(PlayingCard karte);
 
 	/**
 	 * Ordnet einem Buben einen Zahlenwert zu. Die geschieht in der Wertigkeit der Buben
@@ -135,6 +135,6 @@ public interface ISpielart {
 	 * @param karte - Bube, der einen Zahlenwert zugeordnet bekommen soll.
 	 * @return Der Zahlenwert des jeweiligen Bubens.
 	 */
-	public abstract int bubeBewerten(Spielkarte karte);
+	public abstract int bubeBewerten(PlayingCard karte);
 
 }
