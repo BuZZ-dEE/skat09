@@ -2,7 +2,7 @@ package skat09.test.interfaces;
 
 import java.util.ArrayList;
 
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spielkarte.PlayingCard;
 
 
@@ -19,13 +19,13 @@ public interface IGameVariety {
 	 * 
 	 * @return aktuelle Spielart
 	 */
-	public abstract Spielartbezeichnung getSpielart();
+	public abstract GameVarietyName getSpielart();
 
 	/**
 	 * Setzt die Spielartbezeichnung der Spielart
 	 * @param art Die Spielartbezeichnung
 	 */
-	public abstract void setSpielart(Spielartbezeichnung art);
+	public abstract void setSpielart(GameVarietyName art);
 
 	/**
 	 * Prueft in Abh&auml;ngigkeit von der zuerst gespielten Karten, ob eine Karte

@@ -11,7 +11,7 @@ import skat09.Table;
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
@@ -342,7 +342,7 @@ public class CLIOutput extends Output {
 		IGameVariety rueckgabe = null;
 
 		System.out.println(Messages.getI18n("game.type.number.choose"));
-		for (Enum<Spielartbezeichnung> spielartbezeichnung : Spielartbezeichnung
+		for (Enum<GameVarietyName> spielartbezeichnung : GameVarietyName
 				.values()) {
 
 			System.out.println(zaehler + ": " + spielartbezeichnung);
@@ -557,7 +557,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void auswertung(boolean gewonnen) {
-		if (tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
+		if (tisch.getSpielart().getSpielart() != GameVarietyName.RAMSCH) {
 			if (gewonnen == true) {
 				System.out.println(Messages.getI18n("player.won", tisch
 						.ermittleAlleinspieler().getName()));
@@ -691,7 +691,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void trumpf() {
-		if (tisch.getSpielart().getSpielart() != Spielartbezeichnung.RAMSCH) {
+		if (tisch.getSpielart().getSpielart() != GameVarietyName.RAMSCH) {
 			System.out.println(Messages.getI18n("player.name.playing.game",
 					tisch.ermittleAlleinspieler().getName(), tisch
 							.getSpielart().toString()));

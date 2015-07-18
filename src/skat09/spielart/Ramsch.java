@@ -17,7 +17,7 @@ public class Ramsch extends GameVariety {
 	 * Instanziert ein Ramsch - Spiel
 	 */
 	public Ramsch() {
-		setSpielart(Spielartbezeichnung.RAMSCH);
+		setSpielart(GameVarietyName.RAMSCH);
 	}
 
 	@Override

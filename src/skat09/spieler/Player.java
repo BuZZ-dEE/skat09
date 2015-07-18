@@ -8,7 +8,7 @@ import java.util.Random;
 
 import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.IGameVariety;
@@ -440,12 +440,12 @@ abstract public class Player implements IPlayer {
 
 		truempfe = new PlayingCard[12];
 
-		if (spielart.getSpielart() == Spielartbezeichnung.GRAND) {
+		if (spielart.getSpielart() == GameVarietyName.GRAND) {
 
 			bubeneinordnen();
 		}
 		
-		if (spielart.getSpielart() == Spielartbezeichnung.FARBE) {
+		if (spielart.getSpielart() == GameVarietyName.FARBE) {
 
 			bubeneinordnen();
 			farbeneinordnen();

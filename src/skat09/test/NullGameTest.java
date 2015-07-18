@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.spielart.NullGame;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
@@ -55,7 +55,7 @@ public class NullGameTest {
 	
 	@Test
 	public void testNullspiel() {
-		assertEquals(Spielartbezeichnung.NULL, new NullGame().getSpielart());
+		assertEquals(GameVarietyName.NULL, new NullGame().getSpielart());
 	}
 	
 	

@@ -20,7 +20,7 @@ public class GrandGame extends GameVariety {
 	 */
 	public GrandGame() {
 
-		setSpielart(Spielartbezeichnung.GRAND);
+		setSpielart(GameVarietyName.GRAND);
 	}
 
 

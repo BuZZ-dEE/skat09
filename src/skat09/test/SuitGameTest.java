@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import skat09.spielart.SuitGame;
-import skat09.spielart.Spielartbezeichnung;
+import skat09.spielart.GameVarietyName;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
@@ -63,7 +63,7 @@ public class SuitGameTest {
 
 	@Test
 	public void FarbspielTest2() {
-		assertEquals(Spielartbezeichnung.FARBE, new SuitGame(Suit.KARO)
+		assertEquals(GameVarietyName.FARBE, new SuitGame(Suit.KARO)
 				.getSpielart());
 	}
 
