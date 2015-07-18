@@ -223,7 +223,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 	 * Das Fenster Stiche wird gezeigt, falls der Benutzer die Hilfe
 	 * "Vergangene Stiche anzeigen" ausgew&auml;hlt hat
 	 */
-	private Stiche stichfenster;
+	private TricksFrame stichfenster;
 
 	/**
 	 * Der Konstruktor des HFensters, der das Fenster erstellt und die
@@ -1280,7 +1280,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 			if (!stichehilfe) {
 				cbMenuItem3.setSelected(false);
 				letzterStichhilfe = false;
-				stichfenster = new Stiche(tisch, true);
+				stichfenster = new TricksFrame(tisch, true);
 				stichehilfe = true;
 			} else {
 				stichfenster.schliessen();
@@ -1294,7 +1294,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 			if (!letzterStichhilfe) {
 				cbMenuItem2.setSelected(false);
 				stichehilfe = false;
-				stichfenster = new Stiche(tisch, false);
+				stichfenster = new TricksFrame(tisch, false);
 				letzterStichhilfe = true;
 			} else {
 				stichfenster.schliessen();
