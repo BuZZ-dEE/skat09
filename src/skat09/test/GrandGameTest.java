@@ -33,15 +33,15 @@ public class GrandGameTest {
 	@Before
 	public void setUp() {
 		spiel = new GrandGame();
-		karte1 = new PlayingCard(Suit.HERZ, Value.KOENIG);
-		karte2 = new PlayingCard(Suit.HERZ, Value.ACHT);
-		karte3 = new PlayingCard(Suit.KARO, Value.BUBE);
-		karte4 = new PlayingCard(Suit.KARO, Value.KOENIG);
-		karte5 = new PlayingCard(Suit.KREUZ, Value.ASS);
-		karte6 = new PlayingCard(Suit.KREUZ, Value.NEUN);
-		karte7 = new PlayingCard(Suit.KREUZ, Value.BUBE);
-		karte8 = new PlayingCard(Suit.PIK, Value.ACHT);
-		karte9 = new PlayingCard(Suit.KARO, Value.NEUN);
+		karte1 = new PlayingCard(Suit.HEARTS, Value.KOENIG);
+		karte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
+		karte3 = new PlayingCard(Suit.BELLS, Value.BUBE);
+		karte4 = new PlayingCard(Suit.BELLS, Value.KOENIG);
+		karte5 = new PlayingCard(Suit.ACORNS, Value.ASS);
+		karte6 = new PlayingCard(Suit.ACORNS, Value.NEUN);
+		karte7 = new PlayingCard(Suit.ACORNS, Value.BUBE);
+		karte8 = new PlayingCard(Suit.LEAVES, Value.ACHT);
+		karte9 = new PlayingCard(Suit.BELLS, Value.NEUN);
 		
 		blatt.add(karte2);
 		blatt.add(karte6);

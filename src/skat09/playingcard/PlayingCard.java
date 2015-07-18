@@ -172,16 +172,16 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String deutFarbe() {
 		String deutfarbe = "";
-		if (farbe.equals(Suit.PIK)) {
+		if (farbe.equals(Suit.LEAVES)) {
 			deutfarbe = "GRUEN";
 		}
-		if (farbe.equals(Suit.HERZ)) {
+		if (farbe.equals(Suit.HEARTS)) {
 			deutfarbe = ""+farbe;
 		}
-		if (farbe.equals(Suit.KREUZ)) {
+		if (farbe.equals(Suit.ACORNS)) {
 			deutfarbe = "EICHEL";
 		}
-		if (farbe.equals(Suit.KARO)) {
+		if (farbe.equals(Suit.BELLS)) {
 			deutfarbe = "SCHELLEN";
 		}
 		return deutfarbe;

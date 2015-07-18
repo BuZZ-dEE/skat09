@@ -402,16 +402,16 @@ public class CLIOutput extends Output {
 		switch (ergebnis) {
 
 		case 0:
-			rueckgabe = new SuitGame(Suit.KARO);
+			rueckgabe = new SuitGame(Suit.BELLS);
 			break;
 		case 1:
-			rueckgabe = new SuitGame(Suit.HERZ);
+			rueckgabe = new SuitGame(Suit.HEARTS);
 			break;
 		case 2:
-			rueckgabe = new SuitGame(Suit.PIK);
+			rueckgabe = new SuitGame(Suit.LEAVES);
 			break;
 		case 3:
-			rueckgabe = new SuitGame(Suit.KREUZ);
+			rueckgabe = new SuitGame(Suit.ACORNS);
 			break;
 		default:
 			System.out.println(Messages.getI18n("game.color.input.wrong"));

@@ -14,9 +14,9 @@ import skat09.playingcard.Suit;
 import skat09.playingcard.Value;
 
 public class SuitGameTest {
-	Suit a = Suit.HERZ;
+	Suit a = Suit.HEARTS;
 	SuitGame spiel = new SuitGame(a);
-	Suit b = Suit.PIK;
+	Suit b = Suit.LEAVES;
 	SuitGame spiel2 = new SuitGame(b);
 	PlayingCard karte1;
 	PlayingCard karte2;
@@ -35,15 +35,15 @@ public class SuitGameTest {
 
 	@Before
 	public void setUp() {
-		karte1 = new PlayingCard(Suit.HERZ, Value.KOENIG);
-		karte2 = new PlayingCard(Suit.HERZ, Value.ACHT);
-		karte3 = new PlayingCard(Suit.KARO, Value.BUBE);
-		karte4 = new PlayingCard(Suit.KARO, Value.KOENIG);
-		karte5 = new PlayingCard(Suit.KREUZ, Value.ASS);
-		karte6 = new PlayingCard(Suit.KREUZ, Value.NEUN);
-		karte7 = new PlayingCard(Suit.KREUZ, Value.BUBE);
-		karte8 = new PlayingCard(Suit.PIK, Value.ASS);
-		karte9 = new PlayingCard(Suit.KARO, Value.NEUN);
+		karte1 = new PlayingCard(Suit.HEARTS, Value.KOENIG);
+		karte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
+		karte3 = new PlayingCard(Suit.BELLS, Value.BUBE);
+		karte4 = new PlayingCard(Suit.BELLS, Value.KOENIG);
+		karte5 = new PlayingCard(Suit.ACORNS, Value.ASS);
+		karte6 = new PlayingCard(Suit.ACORNS, Value.NEUN);
+		karte7 = new PlayingCard(Suit.ACORNS, Value.BUBE);
+		karte8 = new PlayingCard(Suit.LEAVES, Value.ASS);
+		karte9 = new PlayingCard(Suit.BELLS, Value.NEUN);
 		
 		
 		blatt.add(karte2);
@@ -59,18 +59,18 @@ public class SuitGameTest {
 
 	@Test
 	public void FarbspielTest3() {
-		assertEquals(Suit.KARO, new SuitGame(Suit.KARO).getTrumpffarbe());
+		assertEquals(Suit.BELLS, new SuitGame(Suit.BELLS).getTrumpffarbe());
 	}
 
 	@Test
 	public void FarbspielTest2() {
-		assertEquals(GameVarietyName.SUIT, new SuitGame(Suit.KARO)
+		assertEquals(GameVarietyName.SUIT, new SuitGame(Suit.BELLS)
 				.getSpielart());
 	}
 
 	@Test
 	public void testgetTrumpfFarbe() {
-		assertEquals(Suit.HERZ, spiel.getTrumpffarbe());
+		assertEquals(Suit.HEARTS, spiel.getTrumpffarbe());
 	}
 
 	@Test

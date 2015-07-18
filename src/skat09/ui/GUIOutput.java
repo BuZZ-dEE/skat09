@@ -410,13 +410,13 @@ public class GUIOutput extends Output {
 	public SuitGame farbeansagen(String s) {
 		SuitGame spiel = null;
 		if (s.compareTo("Herz") == 0) {
-			spiel = new SuitGame(Suit.HERZ);
+			spiel = new SuitGame(Suit.HEARTS);
 		} else if (s.compareTo("Karo") == 0 || s.compareTo("Schellen") == 0) {
-			spiel = new SuitGame(Suit.KARO);
+			spiel = new SuitGame(Suit.BELLS);
 		} else if (s.compareTo("Pik") == 0 || s.compareTo("Gruen") == 0) {
-			spiel = new SuitGame(Suit.PIK);
+			spiel = new SuitGame(Suit.LEAVES);
 		} else if (s.compareTo("Kreuz") == 0 || s.compareTo("Eichel") == 0) {
-			spiel = new SuitGame(Suit.KREUZ);
+			spiel = new SuitGame(Suit.ACORNS);
 		} else {
 			System.out.println("Fehler in farbeansagen()");
 		}

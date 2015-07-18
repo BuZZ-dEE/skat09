@@ -92,7 +92,7 @@ public class OutputStub implements IOutput{
 	
 	public SuitGame farbe() {
 		
-		SuitGame farbspiel = new SuitGame(Suit.PIK);
+		SuitGame farbspiel = new SuitGame(Suit.LEAVES);
 		return farbspiel;
 	}
 
@@ -302,7 +302,7 @@ public class OutputStub implements IOutput{
 	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		
-		PlayingCard karte = new PlayingCard(Suit.KREUZ, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.BUBE);
 		return karte;
 	}
 

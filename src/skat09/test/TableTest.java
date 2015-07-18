@@ -57,10 +57,10 @@ public class TableTest {
 	@Before
 	public void setUp() {
 		
-		spielkarte1 = new PlayingCard(Suit.KARO, Value.SIEBEN);
-		spielkarte2 = new PlayingCard(Suit.HERZ, Value.ACHT);
-		spielkarte3 = new PlayingCard(Suit.PIK, Value.NEUN);
-		spielkarte4 = new PlayingCard(Suit.KREUZ, Value.DAME);
+		spielkarte1 = new PlayingCard(Suit.BELLS, Value.SIEBEN);
+		spielkarte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
+		spielkarte3 = new PlayingCard(Suit.LEAVES, Value.NEUN);
+		spielkarte4 = new PlayingCard(Suit.ACORNS, Value.DAME);
 		spieler1.setPosition(Position.VORHAND);
 		spieler2.setPosition(Position.MITTELHAND);
 		spieler3.setPosition(Position.HINTERHAND);
@@ -90,20 +90,20 @@ public class TableTest {
 		}
 
 		PlayingCard[] gespieltekarten = tisch.getGespielteKarten();
-		gespieltekarten[0] = new PlayingCard(Suit.HERZ, Value.ASS);
-		gespieltekarten[1] = new PlayingCard(Suit.KREUZ, Value.BUBE);
-		gespieltekarten[2] = new PlayingCard(Suit.KARO, Value.NEUN);
+		gespieltekarten[0] = new PlayingCard(Suit.HEARTS, Value.ASS);
+		gespieltekarten[1] = new PlayingCard(Suit.ACORNS, Value.BUBE);
+		gespieltekarten[2] = new PlayingCard(Suit.BELLS, Value.NEUN);
 		tisch.setGespielteKarten(gespieltekarten);
 		tisch.getSpieler1().stichHinzufuegen(gespieltekarten);
 		tisch.setReizwert(18);
-		IGameVariety spielart = new SuitGame(Suit.KARO);
+		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
 		tisch.getSpieler1().setSpielart(spielart);
 	}
 
 	@After
 	public void after() {
-		GameVariety spielart = new SuitGame(Suit.KARO);
+		GameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
 	}
 
@@ -207,8 +207,8 @@ public class TableTest {
 	@Test
 	public void getSkatTest() {
 		PlayingCard[] skat = new PlayingCard[2];
-		skat[0] = new PlayingCard(Suit.HERZ, Value.ASS);
-		skat[1] = new PlayingCard(Suit.HERZ, Value.ACHT);
+		skat[0] = new PlayingCard(Suit.HEARTS, Value.ASS);
+		skat[1] = new PlayingCard(Suit.HEARTS, Value.ACHT);
 		tisch.setSkat(skat);
 		
 		assertArrayEquals(skat, tisch.getSkat());
@@ -268,9 +268,9 @@ public class TableTest {
 	@Test
 	public void stichAuswertenTest1() {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.KARO, Value.ACHT);
-		gespielteKarten[1] = new PlayingCard(Suit.KARO, Value.BUBE);
-		gespielteKarten[2] = new PlayingCard(Suit.HERZ, Value.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.ACHT);
+		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.BUBE);
+		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
 		IGameVariety spielart = new NullGame();
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
@@ -282,9 +282,9 @@ public class TableTest {
 	@Test
 	public void stichAuswertenTest2() {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.KARO, Value.ACHT);
-		gespielteKarten[1] = new PlayingCard(Suit.KARO, Value.BUBE);
-		gespielteKarten[2] = new PlayingCard(Suit.KARO, Value.KOENIG);
+		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.ACHT);
+		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.BUBE);
+		gespielteKarten[2] = new PlayingCard(Suit.BELLS, Value.KOENIG);
 		IGameVariety spielart = new NullGame();
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
@@ -295,10 +295,10 @@ public class TableTest {
 	@Test
 	public void stichAuswertenTest3() {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.KARO, Value.ACHT);
-		gespielteKarten[1] = new PlayingCard(Suit.KARO, Value.ASS);
-		gespielteKarten[2] = new PlayingCard(Suit.HERZ, Value.SIEBEN);
-		IGameVariety spielart = new SuitGame(Suit.HERZ);
+		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.ACHT);
+		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.ASS);
+		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
+		IGameVariety spielart = new SuitGame(Suit.HEARTS);
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
 		gespielteKarten[2].setBesitzer(spieler3);
@@ -308,9 +308,9 @@ public class TableTest {
 	@Test
 	public void stichAuswertenTest4() {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.PIK, Value.BUBE);
-		gespielteKarten[1] = new PlayingCard(Suit.KARO, Value.BUBE);
-		gespielteKarten[2] = new PlayingCard(Suit.HERZ, Value.BUBE);
+		gespielteKarten[0] = new PlayingCard(Suit.LEAVES, Value.BUBE);
+		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.BUBE);
+		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.BUBE);
 		IGameVariety spielart = new GrandGame();
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
@@ -321,9 +321,9 @@ public class TableTest {
 	@Test
 	public void stichAuswertenTest5() {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.KARO, Value.ACHT);
-		gespielteKarten[1] = new PlayingCard(Suit.PIK, Value.BUBE);
-		gespielteKarten[2] = new PlayingCard(Suit.HERZ, Value.SIEBEN);
+		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.ACHT);
+		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.BUBE);
+		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
 		IGameVariety spielart = new NullGame();
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
@@ -334,10 +334,10 @@ public class TableTest {
 	@Test
 	public void stichAuswertenTest6() {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.KARO, Value.ACHT);
-		gespielteKarten[1] = new PlayingCard(Suit.PIK, Value.ASS);
-		gespielteKarten[2] = new PlayingCard(Suit.HERZ, Value.SIEBEN);
-		IGameVariety spielart = new SuitGame(Suit.KREUZ);
+		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.ACHT);
+		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.ASS);
+		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
+		IGameVariety spielart = new SuitGame(Suit.ACORNS);
 		gespielteKarten[0].setBesitzer(spieler1);
 		gespielteKarten[1].setBesitzer(spieler2);
 		gespielteKarten[2].setBesitzer(spieler3);
@@ -595,18 +595,18 @@ public class TableTest {
 	public void ueberreizCheckTest() {
 		
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(0, tisch.ueberreizCheck(18));
 	}
 	
 	@Test
 	public void ueberreizCheckTest4() {
-		GameVariety spiel = new SuitGame(Suit.KARO);
+		GameVariety spiel = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spiel);
 		tisch.setReizwert(23);
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		tisch.ueberreizCheck(18);
 		assertEquals(true, tisch.istUeberreizt());
@@ -619,12 +619,12 @@ public class TableTest {
 		tisch.setSchneider(false);
 		tisch.setSchwarz(false);
 		tisch.setOuvert(false);
-		GameVariety spiel = new SuitGame(Suit.KARO);
+		GameVariety spiel = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spiel);
 		tisch.setReizwert(23);
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		
 		assertEquals(-54, tisch.ueberreizCheck(18));
@@ -635,7 +635,7 @@ public class TableTest {
 		
 		tisch.setSpielart(new GrandGame());
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(0, tisch.ueberreizCheck(18));
 	}
@@ -649,7 +649,7 @@ public class TableTest {
 		tisch.setOuvert(true);
 		tisch.setSpielart(new GrandGame());
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(0, tisch.ueberreizCheck(18));
 	}
@@ -772,7 +772,7 @@ public class TableTest {
 		tisch.setVariante(SkatVariant.SKAT);
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(18, tisch.wertePunkte(62));
 	}
@@ -781,8 +781,8 @@ public class TableTest {
 	public void wertePunkteTest2() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
-		IGameVariety spielart = new SuitGame(Suit.KARO);
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
+		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(27, tisch.wertePunkte(91));
@@ -792,7 +792,7 @@ public class TableTest {
 	public void wertePunkteTest3() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(27, tisch.wertePunkte(120));
 	}
@@ -801,7 +801,7 @@ public class TableTest {
 	public void wertePunkteTest4() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		tisch.ermittleAlleinspieler().setStiche(deck);
 		tisch.ermittleAlleinspieler().getStiche().remove(31);
@@ -813,7 +813,7 @@ public class TableTest {
 	public void wertePunkteTest5() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
 		tisch.setSpielart(spielart);
@@ -824,7 +824,7 @@ public class TableTest {
 	public void wertePunkteTest6() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
 		tisch.setSpielart(spielart);
@@ -836,9 +836,9 @@ public class TableTest {
 		tisch.setVariante(SkatVariant.SKAT);
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		IGameVariety spielart = new SuitGame(Suit.KARO);
+		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
 		tisch.setReizwert(48);
 		assertEquals(-108, tisch.wertePunkte(62));
@@ -851,7 +851,7 @@ public class TableTest {
 		tisch.setVariante(SkatVariant.RAMSCHBOCK);
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		tisch.ermittleAlleinspieler().setStiche(deck);
 		tisch.ermittleAlleinspieler().getStiche().remove(31);
@@ -863,9 +863,9 @@ public class TableTest {
 	public void punkteFarbspielTest() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		IGameVariety spielart = new SuitGame(Suit.KARO);
+		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
 	assertEquals(18, tisch.punkteFarbspiel(62));
 	}
@@ -874,7 +874,7 @@ public class TableTest {
 	public void punkteGrandspielTest() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
 		tisch.setSpielart(spielart);
@@ -885,7 +885,7 @@ public class TableTest {
 	public void punkteNullspielTest() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
@@ -897,7 +897,7 @@ public class TableTest {
 	public void punkteNullspielTest2() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
@@ -910,7 +910,7 @@ public class TableTest {
 	public void punkteNullspielTest3() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
@@ -924,7 +924,7 @@ public class TableTest {
 	public void punkteNullspielTest4() {
 		tisch.ermittleAlleinspieler().getBlatt().clear();
 		tisch.ermittleAlleinspieler().getBlatt().add(
-				new PlayingCard(Suit.KREUZ, Value.BUBE));
+				new PlayingCard(Suit.ACORNS, Value.BUBE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
@@ -951,10 +951,10 @@ public class TableTest {
 	@Test
 	public void spielAuswertenTest3() {
 		
-		tisch.setSpielart(new SuitGame(Suit.KREUZ));
+		tisch.setSpielart(new SuitGame(Suit.ACORNS));
 		tisch.ermittleAlleinspieler().getStiche().clear();
-		tisch.ermittleAlleinspieler().setSpielart(new SuitGame(Suit.KREUZ));
-		PlayingCard karte = new PlayingCard(Suit.HERZ, Value.ZEHN);
+		tisch.ermittleAlleinspieler().setSpielart(new SuitGame(Suit.ACORNS));
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.ZEHN);
 		tisch.ermittleAlleinspieler().getStiche().add(karte);
 		tisch.ermittleAlleinspieler().getStiche().add(karte);
 		tisch.ermittleAlleinspieler().getStiche().add(karte);
@@ -966,9 +966,9 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getStiche().add(karte);
 		tisch.ermittleAlleinspieler().getStiche().add(karte);
 		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		PlayingCard karte2 = new PlayingCard(Suit.KREUZ, Value.BUBE);
+		PlayingCard karte2 = new PlayingCard(Suit.ACORNS, Value.BUBE);
 		tisch.ermittleAlleinspieler().getStiche().add(karte2);
-		PlayingCard karte3 = new PlayingCard(Suit.HERZ, Value.KOENIG);
+		PlayingCard karte3 = new PlayingCard(Suit.HEARTS, Value.KOENIG);
 		tisch.ermittleAlleinspieler().getStiche().add(karte3);
 		tisch.ermittleAlleinspieler().getStiche().add(karte3);
 		tisch.ermittleAlleinspieler().getBlatt().add(karte2);
@@ -1004,16 +1004,16 @@ public class TableTest {
 		tisch.setBock(true);
 		tisch.setSechserskat(true);
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Suit.HERZ, Value.SIEBEN);
-		skat[1] = new PlayingCard(Suit.HERZ, Value.ZEHN);
-		skat[2] = new PlayingCard(Suit.PIK, Value.ACHT);
+		skat[0] = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
+		skat[1] = new PlayingCard(Suit.HEARTS, Value.ZEHN);
+		skat[2] = new PlayingCard(Suit.LEAVES, Value.ACHT);
 		tisch.setSkat(skat);
 		spieler1.getStiche().clear();
 		spieler2.getStiche().clear();
 		spieler3.getStiche().clear();
-		spieler1.getStiche().add(new PlayingCard(Suit.KREUZ, Value.ASS));
-		spieler1.getStiche().add(new PlayingCard(Suit.KREUZ, Value.KOENIG));
-		spieler2.getStiche().add(new PlayingCard(Suit.KREUZ, Value.SECHS));
+		spieler1.getStiche().add(new PlayingCard(Suit.ACORNS, Value.ASS));
+		spieler1.getStiche().add(new PlayingCard(Suit.ACORNS, Value.KOENIG));
+		spieler2.getStiche().add(new PlayingCard(Suit.ACORNS, Value.SECHS));
 		assertTrue(tisch.spielAuswerten());
 	}
 	
@@ -1021,14 +1021,14 @@ public class TableTest {
 	public void sortiereSpielerRamschTest() {
 		
 		tisch.getSpieler1().getStiche().clear();
-		tisch.getSpieler1().getStiche().add(new PlayingCard(Suit.KREUZ, Value.ASS));
-		tisch.getSpieler1().getStiche().add(new PlayingCard(Suit.KREUZ, Value.KOENIG));
+		tisch.getSpieler1().getStiche().add(new PlayingCard(Suit.ACORNS, Value.ASS));
+		tisch.getSpieler1().getStiche().add(new PlayingCard(Suit.ACORNS, Value.KOENIG));
 		tisch.getSpieler2().getStiche().clear();
-		tisch.getSpieler2().getStiche().add(new PlayingCard(Suit.KREUZ, Value.SIEBEN));
-		tisch.getSpieler2().getStiche().add(new PlayingCard(Suit.KREUZ, Value.ACHT));
+		tisch.getSpieler2().getStiche().add(new PlayingCard(Suit.ACORNS, Value.SIEBEN));
+		tisch.getSpieler2().getStiche().add(new PlayingCard(Suit.ACORNS, Value.ACHT));
 		tisch.getSpieler3().getStiche().clear();
-		tisch.getSpieler3().getStiche().add(new PlayingCard(Suit.KREUZ, Value.BUBE));
-		tisch.getSpieler3().getStiche().add(new PlayingCard(Suit.PIK, Value.KOENIG));
+		tisch.getSpieler3().getStiche().add(new PlayingCard(Suit.ACORNS, Value.BUBE));
+		tisch.getSpieler3().getStiche().add(new PlayingCard(Suit.LEAVES, Value.KOENIG));
 		
 		IPlayer[] spielerU = new IPlayer[3];
 		spielerU[0] = spieler1;
@@ -1051,26 +1051,26 @@ public class TableTest {
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
 		spieler[2].getStiche().clear();
-		spieler[2].getStiche().add(new PlayingCard(Suit.KARO, Value.BUBE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KARO, Value.DAME));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KARO, Value.KOENIG));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KARO, Value.ZEHN));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KARO, Value.ASS));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HERZ, Value.BUBE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HERZ, Value.DAME));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HERZ, Value.KOENIG));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HERZ, Value.ZEHN));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HERZ, Value.ASS));
-		spieler[2].getStiche().add(new PlayingCard(Suit.PIK, Value.BUBE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.PIK, Value.DAME));
-		spieler[2].getStiche().add(new PlayingCard(Suit.PIK, Value.KOENIG));
-		spieler[2].getStiche().add(new PlayingCard(Suit.PIK, Value.ZEHN));
-		spieler[2].getStiche().add(new PlayingCard(Suit.PIK, Value.ASS));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KREUZ, Value.BUBE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KREUZ, Value.DAME));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KREUZ, Value.KOENIG));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KREUZ, Value.ZEHN));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KREUZ, Value.ASS));
+		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.BUBE));
+		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.DAME));
+		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.KOENIG));
+		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.ZEHN));
+		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.ASS));
+		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.BUBE));
+		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.DAME));
+		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.KOENIG));
+		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.ZEHN));
+		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.ASS));
+		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.BUBE));
+		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.DAME));
+		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.KOENIG));
+		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.ZEHN));
+		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.ASS));
+		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.BUBE));
+		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.DAME));
+		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.KOENIG));
+		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.ZEHN));
+		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.ASS));
 		
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 0, 2);
 		
@@ -1088,7 +1088,7 @@ public class TableTest {
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
 		spieler[0].getStiche().clear();
-		spieler[2].getStiche().add(new PlayingCard(Suit.KARO, Value.ASS));
+		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.ASS));
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
 		
 		Granny vergleich = new Granny("heino");
@@ -1104,8 +1104,8 @@ public class TableTest {
 		spieler[0] = spieler1;
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
-		spieler[0].getStiche().add(new PlayingCard(Suit.HERZ, Value.BUBE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.KARO, Value.ASS));
+		spieler[0].getStiche().add(new PlayingCard(Suit.HEARTS, Value.BUBE));
+		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.ASS));
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
 		
 		Granny vergleich = new Granny("heino");

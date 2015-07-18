@@ -45,19 +45,19 @@ public class GameVarietyTest {
 	@Before
 	public void setUp() {
 
-		spielkarte1 = new PlayingCard(Suit.KARO, Value.SIEBEN);
-		spielkarte2 = new PlayingCard(Suit.HERZ, Value.ACHT);
-		spielkarte3 = new PlayingCard(Suit.PIK, Value.NEUN);
-		spielkarte4 = new PlayingCard(Suit.KREUZ, Value.DAME);
-		spielkarte5 = new PlayingCard(Suit.KREUZ, Value.KOENIG);
-		spielkarte6 = new PlayingCard(Suit.KREUZ, Value.ZEHN);
-		spielkarte7 = new PlayingCard(Suit.KREUZ, Value.ASS);
-		spielkarte8 = new PlayingCard(Suit.KARO, Value.BUBE);
-		spielkarte9 = new PlayingCard(Suit.HERZ, Value.BUBE);
-		spielkarte10 = new PlayingCard(Suit.PIK, Value.BUBE);
-		spielkarte11 = new PlayingCard(Suit.KREUZ, Value.BUBE);
-		spielkarte12 = new PlayingCard(Suit.HERZ, Value.SECHS);
-		spielkarte13 = new PlayingCard(Suit.HERZ, Value.SECHS);
+		spielkarte1 = new PlayingCard(Suit.BELLS, Value.SIEBEN);
+		spielkarte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
+		spielkarte3 = new PlayingCard(Suit.LEAVES, Value.NEUN);
+		spielkarte4 = new PlayingCard(Suit.ACORNS, Value.DAME);
+		spielkarte5 = new PlayingCard(Suit.ACORNS, Value.KOENIG);
+		spielkarte6 = new PlayingCard(Suit.ACORNS, Value.ZEHN);
+		spielkarte7 = new PlayingCard(Suit.ACORNS, Value.ASS);
+		spielkarte8 = new PlayingCard(Suit.BELLS, Value.BUBE);
+		spielkarte9 = new PlayingCard(Suit.HEARTS, Value.BUBE);
+		spielkarte10 = new PlayingCard(Suit.LEAVES, Value.BUBE);
+		spielkarte11 = new PlayingCard(Suit.ACORNS, Value.BUBE);
+		spielkarte12 = new PlayingCard(Suit.HEARTS, Value.SECHS);
+		spielkarte13 = new PlayingCard(Suit.HEARTS, Value.SECHS);
 	}
 	
 	@Test
