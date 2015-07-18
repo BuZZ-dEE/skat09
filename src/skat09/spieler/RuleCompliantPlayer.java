@@ -5,7 +5,7 @@ package skat09.spieler;
 import skat09.spielart.SuitGame;
 import skat09.spielart.NullGame;
 import skat09.spielkarte.PlayingCard;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 
 /**
  * Die Klasse regelkonformer Spieler erzeugt einen Computerspieler, der sich an
@@ -106,7 +106,7 @@ public class RuleCompliantPlayer extends Player {
 	 * Der regelkonforme Spieler ist immer weg und sagt deshalb auch kein Spiel
 	 * an.
 	 */
-	public ISpielart spielAnsagen() {
+	public IGameVariety spielAnsagen() {
 
 		return new NullGame();
 	}

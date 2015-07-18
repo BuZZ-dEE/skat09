@@ -12,7 +12,7 @@ import skat09.spielkarte.PlayingCard;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-public interface ISpielart {
+public interface IGameVariety {
 
 	/**
 	 * gibt die aktuelle Spielart zurueck.

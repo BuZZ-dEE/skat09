@@ -11,7 +11,7 @@ import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -270,7 +270,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public ISpielart spielAnsagen() {
+	public IGameVariety spielAnsagen() {
 		
 		return new GrandGame();
 	}

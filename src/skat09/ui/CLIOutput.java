@@ -15,7 +15,7 @@ import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 /**
@@ -266,7 +266,7 @@ public class CLIOutput extends Output {
 	@Override
 	public int druecken(ArrayList<PlayingCard> blatt, int nummer) {
 
-		ISpielart spielart = new GrandGame();
+		IGameVariety spielart = new GrandGame();
 		int ergebnis = -1;
 
 		if (nummer == 1) {
@@ -335,11 +335,11 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public ISpielart spielAnsagen() {
+	public IGameVariety spielAnsagen() {
 
 		int zaehler = 0;
 		int ergebnis = -1;
-		ISpielart rueckgabe = null;
+		IGameVariety rueckgabe = null;
 
 		System.out.println(Messages.getI18n("game.type.number.choose"));
 		for (Enum<Spielartbezeichnung> spielartbezeichnung : Spielartbezeichnung

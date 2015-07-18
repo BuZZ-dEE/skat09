@@ -5,7 +5,7 @@ import java.util.*; //ArrayList
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 
 
 /**
@@ -15,7 +15,7 @@ import skat09.test.interfaces.ISpielart;
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
  */
-abstract public class GameVariety implements ISpielart {
+abstract public class GameVariety implements IGameVariety {
 
     /**
      * H&auml;t die Spielart

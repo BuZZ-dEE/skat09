@@ -19,7 +19,7 @@ import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -475,7 +475,7 @@ public class Controller implements Observer, IController {
 
 		tisch.setHandspiel(alleinspieler.handspiel());
 		alleinspieler.setHandspiele(alleinspieler.getHandspiele() + 1);
-		ISpielart spielart = null;
+		IGameVariety spielart = null;
 		PlayingCard[] skat = null;
 
 		// Falls der Spieler kein Handspiel macht, muss er zwei Karten
@@ -697,7 +697,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void flagsSetzen(IPlayer alleinspieler, ISpielart spielart) {
+	public void flagsSetzen(IPlayer alleinspieler, IGameVariety spielart) {
 
 		if (tisch.getHandspiel()) {
 
@@ -769,7 +769,7 @@ public class Controller implements Observer, IController {
 
 	//@Override
 	public void ramschen() throws NullPointerException, IOException {
-		ISpielart spielart = new Ramsch();
+		IGameVariety spielart = new Ramsch();
 		tisch.setSpielart(spielart);
 		tisch.getSpieler1().setSpielart(spielart);
 		tisch.getSpieler2().setSpielart(spielart);

@@ -7,7 +7,7 @@ import skat09.spieler.Position;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IHumanPlayer;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -31,7 +31,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return ergebnis;
 	}
 
-	public void blattSortieren(ISpielart spielart) {
+	public void blattSortieren(IGameVariety spielart) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -167,7 +167,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public void setSpielart(ISpielart spielart) {
+	public void setSpielart(IGameVariety spielart) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -179,7 +179,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public ISpielart spielAnsagen() {
+	public IGameVariety spielAnsagen() {
 		
 		return new SuitGame(null);
 	}
@@ -226,7 +226,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return null;
 	}
 
-	public ISpielart getSpielart() {
+	public IGameVariety getSpielart() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -86,7 +86,7 @@ public interface IHumanPlayer {
 	 * 
 	 * @return die gew&uuml;nschte Spielart
 	 */
-	public abstract ISpielart spielAnsagen();
+	public abstract IGameVariety spielAnsagen();
 
 	/**
 	 * Liefert ein Farbspiel mit korrekt gesetzten Trumpffarbe zur&uuml;ck,

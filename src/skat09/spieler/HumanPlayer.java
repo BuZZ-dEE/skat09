@@ -6,7 +6,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.IHumanPlayer;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -173,7 +173,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	}
 
 	@Override
-	public ISpielart spielAnsagen() {
+	public IGameVariety spielAnsagen() {
 
 		return controller.getAusgabe().spielAnsagen();
 	}

@@ -13,7 +13,7 @@ import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.IHumanPlayer;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -48,7 +48,7 @@ public class Table extends Observable {
 	/**
 	 * Die aktuell gespielte Spielart
 	 */
-	private ISpielart spielart;
+	private IGameVariety spielart;
 	/**
 	 * Das gesamte Kartenspiel
 	 */
@@ -319,7 +319,7 @@ public class Table extends Observable {
 	 * 
 	 * @return spielart der aktuellen Runde
 	 */
-	public ISpielart getSpielart() {
+	public IGameVariety getSpielart() {
 
 		return spielart;
 	}
@@ -613,7 +613,7 @@ public class Table extends Observable {
 	 * @param spielart
 	 *            f&uuml;r die akutelle Runde
 	 */
-	public void setSpielart(ISpielart spielart) {
+	public void setSpielart(IGameVariety spielart) {
 
 		this.spielart = spielart;
 	}
@@ -746,7 +746,7 @@ public class Table extends Observable {
 	 *            - &uuml;bergibt die Spielart
 	 * @return Spieler, der den Stich gewonnen hat
 	 */
-	public IPlayer stichAuswerten(ISpielart spielart,
+	public IPlayer stichAuswerten(IGameVariety spielart,
 			PlayingCard[] gespielteKarten) throws NullPointerException {
 
 		IPlayer stichGewinner = null;

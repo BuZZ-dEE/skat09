@@ -7,7 +7,7 @@ import skat09.Table;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
-import skat09.test.interfaces.ISpielart;
+import skat09.test.interfaces.IGameVariety;
 import skat09.test.interfaces.IPlayer;
 
 
@@ -65,7 +65,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void flagsSetzen(IPlayer alleinspieler, ISpielart spielart) {
+	public void flagsSetzen(IPlayer alleinspieler, IGameVariety spielart) {
 		// TODO Auto-generated method stub
 		
 	}

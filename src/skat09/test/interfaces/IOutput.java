@@ -138,7 +138,7 @@ public interface IOutput {
 	 * 
 	 * @return Spielart - die vom Spieler angesagte Spielart
 	 */
-	public abstract ISpielart spielAnsagen();
+	public abstract IGameVariety spielAnsagen();
 
 	/**
 	 * Diese Methode fragt den Spieler nach der Trumpffarbe, die er spielen
