@@ -1439,7 +1439,7 @@ public class GTable extends JFrame implements ActionListener, MouseListener,
 				Image image = null;
 
 				image = new ImageIcon(
-						Fenster.getFileUrl("img/kartenruecken.png")).getImage();
+						SetupFrame.getFileUrl("img/kartenruecken.png")).getImage();
 
 				JLabel label = new JLabel(new ImageIcon(
 						image.getScaledInstance(70, 110, 1)));
