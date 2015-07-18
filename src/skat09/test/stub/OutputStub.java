@@ -8,7 +8,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.test.interfaces.ISpielart;
@@ -302,7 +302,7 @@ public class OutputStub implements IOutput{
 	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		
-		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Wert.BUBE);
+		PlayingCard karte = new PlayingCard(Farbe.KREUZ, Value.BUBE);
 		return karte;
 	}
 

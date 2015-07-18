@@ -10,7 +10,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
 
@@ -462,7 +462,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < blatt.size(); i++) {
 			
-			if (blatt.get(i).getWert() == Wert.BUBE) {
+			if (blatt.get(i).getWert() == Value.BUBE) {
 
 				kartenwert = spielart.karteBewerten(blatt.get(i));
 				truempfe[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
@@ -507,7 +507,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			if (blatt.get(i).getWert() != Wert.BUBE && blatt.get(i).getFarbe() == spiel.getTrumpffarbe()) {
+			if (blatt.get(i).getWert() != Value.BUBE && blatt.get(i).getFarbe() == spiel.getTrumpffarbe()) {
 
 				kartenwert = spielart.karteBewerten(blatt.get(i));
 				truempfe[farbeeinordnenhilf(kartenwert)] = blatt.get(i);

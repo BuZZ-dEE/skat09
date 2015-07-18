@@ -14,7 +14,7 @@ import skat09.spielart.GrandGame;
 import skat09.spieler.Granny;
 import skat09.spielkarte.Farbe;
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
 import skat09.test.stub.NullGameStub2;
@@ -42,9 +42,9 @@ public class PlayerTest{
 
 	@Test
 	public void stichHinzufuegenTest() {
-		PlayingCard karte1 = new PlayingCard(Farbe.HERZ,Wert.KOENIG);
-		PlayingCard karte2 =	new PlayingCard(Farbe.KARO,Wert.SIEBEN);
-		PlayingCard karte3 =	new PlayingCard(Farbe.KREUZ,Wert.ZEHN);
+		PlayingCard karte1 = new PlayingCard(Farbe.HERZ,Value.KOENIG);
+		PlayingCard karte2 =	new PlayingCard(Farbe.KARO,Value.SIEBEN);
+		PlayingCard karte3 =	new PlayingCard(Farbe.KREUZ,Value.ZEHN);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = karte1;
 		gespielteKarten[1] = karte2;
@@ -56,9 +56,9 @@ public class PlayerTest{
 	
 	@Test
 	public void stichHinzufuegenTest2() {
-		PlayingCard karte1 = new PlayingCard(Farbe.HERZ,Wert.KOENIG);
-		PlayingCard karte2 =	new PlayingCard(Farbe.KARO,Wert.SIEBEN);
-		PlayingCard karte3 =	new PlayingCard(Farbe.KREUZ,Wert.ZEHN);
+		PlayingCard karte1 = new PlayingCard(Farbe.HERZ,Value.KOENIG);
+		PlayingCard karte2 =	new PlayingCard(Farbe.KARO,Value.SIEBEN);
+		PlayingCard karte3 =	new PlayingCard(Farbe.KREUZ,Value.ZEHN);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = karte1;
 		gespielteKarten[1] = karte2;
@@ -70,9 +70,9 @@ public class PlayerTest{
 	
 	@Test
 	public void stichHinzufuegenTest3() {
-		PlayingCard karte1 = new PlayingCard(Farbe.HERZ,Wert.KOENIG);
-		PlayingCard karte2 =	new PlayingCard(Farbe.KARO,Wert.SIEBEN);
-		PlayingCard karte3 =	new PlayingCard(Farbe.KREUZ,Wert.ZEHN);
+		PlayingCard karte1 = new PlayingCard(Farbe.HERZ,Value.KOENIG);
+		PlayingCard karte2 =	new PlayingCard(Farbe.KARO,Value.SIEBEN);
+		PlayingCard karte3 =	new PlayingCard(Farbe.KREUZ,Value.ZEHN);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = karte1;
 		gespielteKarten[1] = karte2;
@@ -83,9 +83,9 @@ public class PlayerTest{
 	
 	@Test
 	public void stichHinzufuegenTest4() {
-		PlayingCard karte1 = new PlayingCard(Farbe.HERZ,Wert.KOENIG);
-		PlayingCard karte2 =	new PlayingCard(Farbe.KARO,Wert.SIEBEN);
-		PlayingCard karte3 =	new PlayingCard(Farbe.KREUZ,Wert.ZEHN);
+		PlayingCard karte1 = new PlayingCard(Farbe.HERZ,Value.KOENIG);
+		PlayingCard karte2 =	new PlayingCard(Farbe.KARO,Value.SIEBEN);
+		PlayingCard karte3 =	new PlayingCard(Farbe.KREUZ,Value.ZEHN);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = karte1;
 		gespielteKarten[1] = karte2;
@@ -126,31 +126,31 @@ public class PlayerTest{
 		
 		spieler.setSpielart(spiel);
 		ArrayList<PlayingCard> blattest = new ArrayList<PlayingCard>();
-		blattest.add(new PlayingCard(Farbe.HERZ,Wert.KOENIG));
-		blattest.add(new PlayingCard(Farbe.KARO,Wert.SIEBEN));
-		blattest.add(new PlayingCard(Farbe.KREUZ,Wert.ZEHN));
-		blattest.add(new PlayingCard(Farbe.PIK,Wert.ACHT));
-		blattest.add(new PlayingCard(Farbe.PIK,Wert.KOENIG));
-		blattest.add(new PlayingCard(Farbe.HERZ,Wert.ASS));
-		blattest.add(new PlayingCard(Farbe.HERZ,Wert.DAME));
-		blattest.add(new PlayingCard(Farbe.PIK,Wert.ZEHN));
-		blattest.add(new PlayingCard(Farbe.PIK,Wert.ASS));
-		blattest.add(new PlayingCard(Farbe.KREUZ,Wert.BUBE));
+		blattest.add(new PlayingCard(Farbe.HERZ,Value.KOENIG));
+		blattest.add(new PlayingCard(Farbe.KARO,Value.SIEBEN));
+		blattest.add(new PlayingCard(Farbe.KREUZ,Value.ZEHN));
+		blattest.add(new PlayingCard(Farbe.PIK,Value.ACHT));
+		blattest.add(new PlayingCard(Farbe.PIK,Value.KOENIG));
+		blattest.add(new PlayingCard(Farbe.HERZ,Value.ASS));
+		blattest.add(new PlayingCard(Farbe.HERZ,Value.DAME));
+		blattest.add(new PlayingCard(Farbe.PIK,Value.ZEHN));
+		blattest.add(new PlayingCard(Farbe.PIK,Value.ASS));
+		blattest.add(new PlayingCard(Farbe.KREUZ,Value.BUBE));
 		
 		spieler.setBlatt(blattest);
 		
 		ArrayList<PlayingCard> testproof = new ArrayList<PlayingCard>();
 		
-		testproof.add(new PlayingCard(Farbe.KARO,Wert.SIEBEN));
-		testproof.add(new PlayingCard(Farbe.HERZ,Wert.DAME));
-		testproof.add(new PlayingCard(Farbe.HERZ,Wert.KOENIG));
-		testproof.add(new PlayingCard(Farbe.HERZ,Wert.ASS));
-		testproof.add(new PlayingCard(Farbe.PIK,Wert.ACHT));
-		testproof.add(new PlayingCard(Farbe.PIK,Wert.KOENIG));
-		testproof.add(new PlayingCard(Farbe.PIK,Wert.ZEHN));
-		testproof.add(new PlayingCard(Farbe.PIK,Wert.ASS));
-		testproof.add(new PlayingCard(Farbe.KREUZ,Wert.ZEHN));
-		testproof.add(new PlayingCard(Farbe.KREUZ,Wert.BUBE));
+		testproof.add(new PlayingCard(Farbe.KARO,Value.SIEBEN));
+		testproof.add(new PlayingCard(Farbe.HERZ,Value.DAME));
+		testproof.add(new PlayingCard(Farbe.HERZ,Value.KOENIG));
+		testproof.add(new PlayingCard(Farbe.HERZ,Value.ASS));
+		testproof.add(new PlayingCard(Farbe.PIK,Value.ACHT));
+		testproof.add(new PlayingCard(Farbe.PIK,Value.KOENIG));
+		testproof.add(new PlayingCard(Farbe.PIK,Value.ZEHN));
+		testproof.add(new PlayingCard(Farbe.PIK,Value.ASS));
+		testproof.add(new PlayingCard(Farbe.KREUZ,Value.ZEHN));
+		testproof.add(new PlayingCard(Farbe.KREUZ,Value.BUBE));
 		
 		spieler.blattSortieren(spiel);
 		boolean vergleiche = true;
@@ -167,9 +167,9 @@ public class PlayerTest{
 	public void gespielteKartenHinzufuegenTest() {
 		
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.DAME);
-		gespielteKarten[1] = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		gespielteKarten[2] = new PlayingCard(Farbe.PIK, Wert.ASS);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.KARO, Value.ACHT);
+		gespielteKarten[2] = new PlayingCard(Farbe.PIK, Value.ASS);
 		spieler.gespielteKartenHinzufuegen(gespielteKarten);
 		assertEquals(gespielteKarten[0], spieler.getAllegespieltenkarten().get(0));
 	}
@@ -178,9 +178,9 @@ public class PlayerTest{
 	public void gespielteKartenHinzufuegenTest2() {
 		
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Wert.DAME);
-		gespielteKarten[1] = new PlayingCard(Farbe.KARO, Wert.ACHT);
-		gespielteKarten[2] = new PlayingCard(Farbe.PIK, Wert.ASS);
+		gespielteKarten[0] = new PlayingCard(Farbe.KARO, Value.DAME);
+		gespielteKarten[1] = new PlayingCard(Farbe.KARO, Value.ACHT);
+		gespielteKarten[2] = new PlayingCard(Farbe.PIK, Value.ASS);
 		spieler.gespielteKartenHinzufuegen(gespielteKarten);
 		assertEquals(gespielteKarten[2], spieler.getAllegespieltenkarten().get(2));
 	}
@@ -190,7 +190,7 @@ public class PlayerTest{
 		boolean test = false;
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.getBlatt().add(
-		new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+		new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		ISpielart spielart = new GrandGame();
 		spieler.setSpielart(spielart);
 		spieler.spitzenEinordnen();
@@ -203,7 +203,7 @@ public class PlayerTest{
 	public void testSpitzenZahl() {
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.setSpielart(new GrandGame());
 		spieler.spitzenEinordnen();
 		assertEquals(1, spieler.spitzenZahl());
@@ -222,7 +222,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new GrandGame());
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.spitzenEinordnen();
 		assertEquals(1, spieler.spitzenMit(1));
 	}
@@ -232,9 +232,9 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new GrandGame());
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.spitzenEinordnen();
 		assertEquals(2, spieler.spitzenMit(2));
 	}
@@ -244,11 +244,11 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new GrandGame());
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.spitzenEinordnen();
 		assertEquals(3, spieler.spitzenMit(3));
 	}
@@ -258,13 +258,13 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new GrandGame());
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.spitzenEinordnen();
 		assertEquals(4, spieler.spitzenMit(4));
 	}
@@ -274,15 +274,15 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.spitzenEinordnen();
 		assertEquals(5, spieler.spitzenMit(5));
 	}
@@ -292,17 +292,17 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ZEHN));
+				new PlayingCard(Farbe.KARO, Value.ZEHN));
 		spieler.spitzenEinordnen();
 		assertEquals(6, spieler.spitzenMit(6));
 	}
@@ -312,19 +312,19 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ZEHN));
+				new PlayingCard(Farbe.KARO, Value.ZEHN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.KOENIG));
+				new PlayingCard(Farbe.KARO, Value.KOENIG));
 		spieler.spitzenEinordnen();
 		assertEquals(7, spieler.spitzenMit(7));
 	}
@@ -334,21 +334,21 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ZEHN));
+				new PlayingCard(Farbe.KARO, Value.ZEHN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.KOENIG));
+				new PlayingCard(Farbe.KARO, Value.KOENIG));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.DAME));
+				new PlayingCard(Farbe.KARO, Value.DAME));
 		spieler.spitzenEinordnen();
 		assertEquals(8, spieler.spitzenMit(8));
 	}
@@ -358,23 +358,23 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ZEHN));
+				new PlayingCard(Farbe.KARO, Value.ZEHN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.KOENIG));
+				new PlayingCard(Farbe.KARO, Value.KOENIG));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.DAME));
+				new PlayingCard(Farbe.KARO, Value.DAME));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.NEUN));
+				new PlayingCard(Farbe.KARO, Value.NEUN));
 		spieler.spitzenEinordnen();
 		assertEquals(9, spieler.spitzenMit(9));
 	}
@@ -384,25 +384,25 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ZEHN));
+				new PlayingCard(Farbe.KARO, Value.ZEHN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.KOENIG));
+				new PlayingCard(Farbe.KARO, Value.KOENIG));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.DAME));
+				new PlayingCard(Farbe.KARO, Value.DAME));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.NEUN));
+				new PlayingCard(Farbe.KARO, Value.NEUN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ACHT));
+				new PlayingCard(Farbe.KARO, Value.ACHT));
 		spieler.spitzenEinordnen();
 		assertEquals(10, spieler.spitzenMit(10));
 	}
@@ -412,27 +412,27 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ZEHN));
+				new PlayingCard(Farbe.KARO, Value.ZEHN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.KOENIG));
+				new PlayingCard(Farbe.KARO, Value.KOENIG));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.DAME));
+				new PlayingCard(Farbe.KARO, Value.DAME));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.NEUN));
+				new PlayingCard(Farbe.KARO, Value.NEUN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ACHT));
+				new PlayingCard(Farbe.KARO, Value.ACHT));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.SIEBEN));
+				new PlayingCard(Farbe.KARO, Value.SIEBEN));
 		spieler.spitzenEinordnen();
 		assertEquals(11, spieler.spitzenMit(11));
 	}
@@ -442,7 +442,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
+				new PlayingCard(Farbe.PIK, Value.BUBE));
 		spieler.spitzenEinordnen();
 		assertEquals(-1, spieler.spitzenOhne(0));
 	}
@@ -452,7 +452,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.BUBE));
+				new PlayingCard(Farbe.HERZ, Value.BUBE));
 		spieler.spitzenEinordnen();
 		assertEquals(-2, spieler.spitzenOhne(0));
 	}
@@ -462,7 +462,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.spitzenEinordnen();
 		assertEquals(-3, spieler.spitzenOhne(0));
 	}
@@ -472,7 +472,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.spitzenEinordnen();
 		assertEquals(-4, spieler.spitzenOhne(0));
 	}
@@ -482,7 +482,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ZEHN));
+				new PlayingCard(Farbe.KARO, Value.ZEHN));
 		spieler.spitzenEinordnen();
 		assertEquals(-5, spieler.spitzenOhne(0));
 	}
@@ -492,7 +492,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.KOENIG));
+				new PlayingCard(Farbe.KARO, Value.KOENIG));
 		spieler.spitzenEinordnen();
 		assertEquals(-6, spieler.spitzenOhne(0));
 	}
@@ -502,7 +502,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.DAME));
+				new PlayingCard(Farbe.KARO, Value.DAME));
 		spieler.spitzenEinordnen();
 		assertEquals(-7, spieler.spitzenOhne(0));
 	}
@@ -512,7 +512,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.NEUN));
+				new PlayingCard(Farbe.KARO, Value.NEUN));
 		spieler.spitzenEinordnen();
 		assertEquals(-8, spieler.spitzenOhne(0));
 	}
@@ -522,7 +522,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ACHT));
+				new PlayingCard(Farbe.KARO, Value.ACHT));
 		spieler.spitzenEinordnen();
 		assertEquals(-9, spieler.spitzenOhne(0));
 	}
@@ -532,7 +532,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.SIEBEN));
+				new PlayingCard(Farbe.KARO, Value.SIEBEN));
 		spieler.spitzenEinordnen();
 		assertEquals(-10, spieler.spitzenOhne(0));
 	}
@@ -542,7 +542,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.DAME));
+				new PlayingCard(Farbe.HERZ, Value.DAME));
 		spieler.spitzenEinordnen();
 		assertEquals(-11, spieler.spitzenOhne(0));
 	}
@@ -552,7 +552,7 @@ public class PlayerTest{
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.setSpielart(new SuitGame(Farbe.KARO));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.HERZ, Wert.DAME));
+				new PlayingCard(Farbe.HERZ, Value.DAME));
 		spieler.spitzenEinordnen();
 		assertEquals(-11, spieler.spitzenOhne(0));
 	} 
@@ -571,25 +571,25 @@ public class PlayerTest{
 		
 		spieler.setBlatt(new ArrayList<PlayingCard>());
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KREUZ, Wert.BUBE));
+				new PlayingCard(Farbe.KREUZ, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.PIK, Wert.BUBE));
-		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Wert.BUBE);
+				new PlayingCard(Farbe.PIK, Value.BUBE));
+		PlayingCard karte3 = new PlayingCard(Farbe.HERZ, Value.BUBE);
 		spieler.getBlatt().add(karte3);
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.BUBE));
+				new PlayingCard(Farbe.KARO, Value.BUBE));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ASS));
+				new PlayingCard(Farbe.KARO, Value.ASS));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ZEHN));
+				new PlayingCard(Farbe.KARO, Value.ZEHN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.KOENIG));
+				new PlayingCard(Farbe.KARO, Value.KOENIG));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.DAME));
+				new PlayingCard(Farbe.KARO, Value.DAME));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.NEUN));
+				new PlayingCard(Farbe.KARO, Value.NEUN));
 		spieler.getBlatt().add(
-				new PlayingCard(Farbe.KARO, Wert.ACHT));
+				new PlayingCard(Farbe.KARO, Value.ACHT));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		ArrayList<PlayingCard> erwartet = new ArrayList<PlayingCard>();
 		erwartet.add(karte3);

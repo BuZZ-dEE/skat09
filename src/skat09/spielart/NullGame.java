@@ -3,7 +3,7 @@ package skat09.spielart;
 import java.util.ArrayList;
 
 import skat09.spielkarte.PlayingCard;
-import skat09.spielkarte.Wert;
+import skat09.spielkarte.Value;
 import skat09.test.interfaces.INullGame;
 
 
@@ -116,37 +116,37 @@ public class NullGame extends Spielart implements INullGame {
 	@Override
 	public int karteBewerten(PlayingCard karte) {
 
-		Wert wert = karte.getWert();
+		Value wert = karte.getWert();
 		int ergebnis = -1;
 
 		switch (wert) {
 
 		case SECHS:
-			ergebnis = Wert.SECHS.ordinal();
+			ergebnis = Value.SECHS.ordinal();
 			break;
 		case SIEBEN:
-			ergebnis = Wert.SIEBEN.ordinal();
+			ergebnis = Value.SIEBEN.ordinal();
 			break;
 		case ACHT:
-			ergebnis = Wert.ACHT.ordinal();
+			ergebnis = Value.ACHT.ordinal();
 			break;
 		case NEUN:
-			ergebnis = Wert.NEUN.ordinal();
+			ergebnis = Value.NEUN.ordinal();
 			break;
 		case ZEHN:
-			ergebnis = Wert.ZEHN.ordinal();
+			ergebnis = Value.ZEHN.ordinal();
 			break;
 		case BUBE:
-			ergebnis = Wert.BUBE.ordinal();
+			ergebnis = Value.BUBE.ordinal();
 			break;
 		case DAME:
-			ergebnis = Wert.DAME.ordinal();
+			ergebnis = Value.DAME.ordinal();
 			break;
 		case KOENIG:
-			ergebnis = Wert.KOENIG.ordinal();
+			ergebnis = Value.KOENIG.ordinal();
 			break;
 		case ASS:
-			ergebnis = Wert.ASS.ordinal();
+			ergebnis = Value.ASS.ordinal();
 			break;
 		// default:
 		// ergebnis = -1;

@@ -25,7 +25,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	/**
 	 * Feld f&uuml;r den Wert
 	 */
-	private Wert wert;
+	private Value wert;
 	/**
 	 * Feld f&uuml;r den Besitzer
 	 */
@@ -40,7 +40,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * @param farbe Die Farbe der zu erzeugenden Karte
 	 * @param wert Der Wert der zu erzeugenden Karte
 	 */
-	public PlayingCard(Farbe farbe, Wert wert) {
+	public PlayingCard(Farbe farbe, Value wert) {
 		this.wert = wert;
 		this.farbe = farbe;
 		//deutsch = false;
@@ -69,7 +69,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return wert der Karte
 	 */
-	public Wert getWert() {
+	public Value getWert() {
 		return wert;
 	}
 
@@ -193,11 +193,11 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String deutWert() {
 		String deutwert ="";
-		if (wert == Wert.BUBE) {
+		if (wert == Value.BUBE) {
 			deutwert = "UNTER";
-		} else if (wert == Wert.DAME) {
+		} else if (wert == Value.DAME) {
 			deutwert = "OBER";
-		} else if (wert == Wert.ASS) {
+		} else if (wert == Value.ASS) {
 			deutwert = "DAUS";
 		} else {
 			deutwert = "" + wert;
