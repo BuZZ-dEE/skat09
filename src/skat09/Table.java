@@ -6,8 +6,8 @@ import java.util.Observable;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import skat09.spielart.SuitGame;
-import skat09.spielart.GameVarietyName;
+import skat09.gamevariety.GameVarietyName;
+import skat09.gamevariety.SuitGame;
 import skat09.spieler.Position;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;

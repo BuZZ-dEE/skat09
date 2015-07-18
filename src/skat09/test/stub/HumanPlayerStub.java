@@ -2,7 +2,7 @@ package skat09.test.stub;
 
 import java.util.ArrayList;
 
-import skat09.spielart.SuitGame;
+import skat09.gamevariety.SuitGame;
 import skat09.spieler.Position;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;

@@ -3,7 +3,7 @@ package skat09.ui;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import skat09.spielart.SuitGame;
+import skat09.gamevariety.SuitGame;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IGameVariety;

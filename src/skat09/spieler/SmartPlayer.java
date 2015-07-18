@@ -3,10 +3,10 @@ package skat09.spieler;
 import java.util.ArrayList;
 import java.util.Random;
 
-import skat09.spielart.SuitGame;
-import skat09.spielart.GrandGame;
-import skat09.spielart.NullGame;
-import skat09.spielart.GameVarietyName;
+import skat09.gamevariety.GameVarietyName;
+import skat09.gamevariety.GrandGame;
+import skat09.gamevariety.NullGame;
+import skat09.gamevariety.SuitGame;
 import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
