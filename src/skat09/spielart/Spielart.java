@@ -21,28 +21,17 @@ abstract public class Spielart implements ISpielart {
      * H&auml;t die Spielart
      */
 	private Spielartbezeichnung spielart;
-
-	//
-	// get-Methoden
-	//
+	
 
 	//@Override
 	public Spielartbezeichnung getSpielart() {
 		return spielart;
 	}
-
-	//
-	// set-Methoden
-	//
-
+	
 	//@Override
 	public void setSpielart(Spielartbezeichnung art) {
 		spielart = art;
 	}
-
-	//
-	// weitere Methoden
-	//
 
 	//@Override
 	abstract public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
