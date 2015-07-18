@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import skat09.spielart.GrandGame;
 import skat09.spielart.Spielartbezeichnung;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 
@@ -33,15 +33,15 @@ public class GrandGameTest {
 	@Before
 	public void setUp() {
 		spiel = new GrandGame();
-		karte1 = new PlayingCard(Farbe.HERZ, Value.KOENIG);
-		karte2 = new PlayingCard(Farbe.HERZ, Value.ACHT);
-		karte3 = new PlayingCard(Farbe.KARO, Value.BUBE);
-		karte4 = new PlayingCard(Farbe.KARO, Value.KOENIG);
-		karte5 = new PlayingCard(Farbe.KREUZ, Value.ASS);
-		karte6 = new PlayingCard(Farbe.KREUZ, Value.NEUN);
-		karte7 = new PlayingCard(Farbe.KREUZ, Value.BUBE);
-		karte8 = new PlayingCard(Farbe.PIK, Value.ACHT);
-		karte9 = new PlayingCard(Farbe.KARO, Value.NEUN);
+		karte1 = new PlayingCard(Suit.HERZ, Value.KOENIG);
+		karte2 = new PlayingCard(Suit.HERZ, Value.ACHT);
+		karte3 = new PlayingCard(Suit.KARO, Value.BUBE);
+		karte4 = new PlayingCard(Suit.KARO, Value.KOENIG);
+		karte5 = new PlayingCard(Suit.KREUZ, Value.ASS);
+		karte6 = new PlayingCard(Suit.KREUZ, Value.NEUN);
+		karte7 = new PlayingCard(Suit.KREUZ, Value.BUBE);
+		karte8 = new PlayingCard(Suit.PIK, Value.ACHT);
+		karte9 = new PlayingCard(Suit.KARO, Value.NEUN);
 		
 		blatt.add(karte2);
 		blatt.add(karte6);

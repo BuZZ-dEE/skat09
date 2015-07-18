@@ -7,7 +7,7 @@ package skat09.spielkarte;
  * @version 03.07.2009
  *
  */
-public enum Farbe {
+public enum Suit {
 	
 	/**
 	 * Halter der Farbe Karo
@@ -44,7 +44,7 @@ public enum Farbe {
 	 * Der Konstruktor der Enum Farbe
 	 * @param ordnungswert Der Ordnungswert, den eine Farbe haben soll
 	 */
-	private Farbe(int ordnungswert) {
+	private Suit(int ordnungswert) {
 
 		this.ordnungswert = ordnungswert;
 	}

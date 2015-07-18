@@ -12,7 +12,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spieler.PlayerEnum;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.test.interfaces.ISpielart;
 import skat09.test.interfaces.IPlayer;
@@ -410,13 +410,13 @@ public class GUIOutput extends Output {
 	public SuitGame farbeansagen(String s) {
 		SuitGame spiel = null;
 		if (s.compareTo("Herz") == 0) {
-			spiel = new SuitGame(Farbe.HERZ);
+			spiel = new SuitGame(Suit.HERZ);
 		} else if (s.compareTo("Karo") == 0 || s.compareTo("Schellen") == 0) {
-			spiel = new SuitGame(Farbe.KARO);
+			spiel = new SuitGame(Suit.KARO);
 		} else if (s.compareTo("Pik") == 0 || s.compareTo("Gruen") == 0) {
-			spiel = new SuitGame(Farbe.PIK);
+			spiel = new SuitGame(Suit.PIK);
 		} else if (s.compareTo("Kreuz") == 0 || s.compareTo("Eichel") == 0) {
-			spiel = new SuitGame(Farbe.KREUZ);
+			spiel = new SuitGame(Suit.KREUZ);
 		} else {
 			System.out.println("Fehler in farbeansagen()");
 		}

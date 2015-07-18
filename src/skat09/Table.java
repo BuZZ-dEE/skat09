@@ -9,7 +9,7 @@ import java.util.TreeSet;
 import skat09.spielart.SuitGame;
 import skat09.spielart.Spielartbezeichnung;
 import skat09.spieler.Position;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.IHumanPlayer;
@@ -712,7 +712,7 @@ public class Table extends Observable {
 
 		deck.clear();
 
-		for (Farbe farbe : Farbe.values()) {
+		for (Suit farbe : Suit.values()) {
 
 			for (Value wert : Value.values()) {
 

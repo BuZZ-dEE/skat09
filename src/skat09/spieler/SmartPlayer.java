@@ -7,7 +7,7 @@ import skat09.spielart.SuitGame;
 import skat09.spielart.GrandGame;
 import skat09.spielart.NullGame;
 import skat09.spielart.Spielartbezeichnung;
-import skat09.spielkarte.Farbe;
+import skat09.spielkarte.Suit;
 import skat09.spielkarte.PlayingCard;
 import skat09.spielkarte.Value;
 import skat09.test.interfaces.ISpielart;
@@ -802,8 +802,8 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : buben) {
 
-			if (karte.equals(new PlayingCard(Farbe.KREUZ, Value.BUBE))
-					|| karte.equals(new PlayingCard(Farbe.PIK, Value.BUBE))) {
+			if (karte.equals(new PlayingCard(Suit.KREUZ, Value.BUBE))
+					|| karte.equals(new PlayingCard(Suit.PIK, Value.BUBE))) {
 
 				ergebnis = buben.get(zufall.nextInt(buben.size()));
 				break;
@@ -1099,7 +1099,7 @@ public class SmartPlayer extends Player {
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst h&ouml;here Karte
 	 */
-	public PlayingCard naechstHoehereKarte(Farbe farbe, PlayingCard karte) {
+	public PlayingCard naechstHoehereKarte(Suit farbe, PlayingCard karte) {
 
 		PlayingCard ergebnis = null;
 
@@ -1150,7 +1150,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteNeun(Farbe farbe) {
+	public PlayingCard naechstHoehereKarteNeun(Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
@@ -1175,7 +1175,7 @@ public class SmartPlayer extends Player {
 	 *            - Farbe von der die n&auml;chst niedrigere Karte verlangt wird
 	 * @return die n&aumlchst h&ouml;here Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstHoehereKarteKoenig(Farbe farbe) {
+	public PlayingCard naechstHoehereKarteKoenig(Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
@@ -1201,7 +1201,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteZehn(Farbe farbe) {
+	public PlayingCard naechstHoehereKarteZehn(Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
@@ -1227,7 +1227,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteBube(Farbe farbe) {
+	public PlayingCard naechstHoehereKarteBube(Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
@@ -1257,7 +1257,7 @@ public class SmartPlayer extends Player {
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst niedrigere Karte
 	 */
-	public PlayingCard naechstNiedrigereKarte(Farbe farbe, PlayingCard karte) {
+	public PlayingCard naechstNiedrigereKarte(Suit farbe, PlayingCard karte) {
 
 		PlayingCard ergebnis = null;
 
@@ -1308,7 +1308,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteDame(Farbe farbe) {
+	public PlayingCard naechstNiedrigereKarteDame(Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
@@ -1334,7 +1334,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteZehn(Farbe farbe) {
+	public PlayingCard naechstNiedrigereKarteZehn(Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
@@ -1359,7 +1359,7 @@ public class SmartPlayer extends Player {
 	 *            - Farbe der zu suchenden Karte"
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteAss(Farbe farbe) {
+	public PlayingCard naechstNiedrigereKarteAss(Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
@@ -1384,7 +1384,7 @@ public class SmartPlayer extends Player {
 	 *            - Farbe der zu suchenden Karte
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteBube(Farbe farbe) {
+	public PlayingCard naechstNiedrigereKarteBube(Suit farbe) {
 		
 		PlayingCard ergebnis = null;
 		
@@ -1440,7 +1440,7 @@ public class SmartPlayer extends Player {
 	 * @return Die ArrayList mit den Karten der Farbe Kreuz.
 	 */
 	public ArrayList<PlayingCard> kartenEinerFarbe(ArrayList<PlayingCard> blatt,
-			Farbe farbe) {
+			Suit farbe) {
 
 		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
 
@@ -1708,7 +1708,7 @@ public class SmartPlayer extends Player {
 	 */
 	public void maxReizwertFarbe(int ermittelteSpitzen) {
 
-		Farbe farbe = ermittleTrumpffarbe();
+		Suit farbe = ermittleTrumpffarbe();
 
 		maxReizwert = (ermittelteSpitzen + 1) * farbe.wert();
 	}
@@ -1975,10 +1975,10 @@ public class SmartPlayer extends Player {
 	 */
 	public ArrayList<PlayingCard> ermittleKurzeLangeFarbe(boolean lang) {
 
-		ArrayList<PlayingCard> karo = kartenEinerFarbe(blatt, Farbe.KARO);
-		ArrayList<PlayingCard> herz = kartenEinerFarbe(blatt, Farbe.HERZ);
-		ArrayList<PlayingCard> pik = kartenEinerFarbe(blatt, Farbe.PIK);
-		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(blatt, Farbe.KREUZ);
+		ArrayList<PlayingCard> karo = kartenEinerFarbe(blatt, Suit.KARO);
+		ArrayList<PlayingCard> herz = kartenEinerFarbe(blatt, Suit.HERZ);
+		ArrayList<PlayingCard> pik = kartenEinerFarbe(blatt, Suit.PIK);
+		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(blatt, Suit.KREUZ);
 		ArrayList<PlayingCard> gewinner = new ArrayList<PlayingCard>();
 
 		// Die übergegebene Variable lang ist true, d.h. man möchte die lange
@@ -2096,25 +2096,25 @@ public class SmartPlayer extends Player {
 	 * 
 	 * @return Farbe, die am h&auml;ufigsten Vorkommt.
 	 */
-	public Farbe ermittleTrumpffarbe() {
+	public Suit ermittleTrumpffarbe() {
 
-		Farbe ergebnis = null;
+		Suit ergebnis = null;
 		ArrayList<PlayingCard> gewinner = ermittleKurzeLangeFarbe(true);
 
 		// Gewinner feststellen
 		switch (gewinner.get(0).getFarbe()) {
 
 		case KARO:
-			ergebnis = Farbe.KARO;
+			ergebnis = Suit.KARO;
 			break;
 		case HERZ:
-			ergebnis = Farbe.HERZ;
+			ergebnis = Suit.HERZ;
 			break;
 		case PIK:
-			ergebnis = Farbe.PIK;
+			ergebnis = Suit.PIK;
 			break;
 		case KREUZ:
-			ergebnis = Farbe.KREUZ;
+			ergebnis = Suit.KREUZ;
 			break;
 		default:
 			System.err.println("Fehler in ermittleTrumpfarbe!");
