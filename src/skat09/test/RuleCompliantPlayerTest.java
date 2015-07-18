@@ -31,10 +31,10 @@ public class RuleCompliantPlayerTest {
 	
 	@Before
 	public void setUp() {
-		spielkarte1 = new PlayingCard(Suit.BELLS, Value.SIEBEN);
-		spielkarte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
-		spielkarte3 = new PlayingCard(Suit.LEAVES, Value.NEUN);
-		spielkarte4 = new PlayingCard(Suit.ACORNS, Value.BUBE);
+		spielkarte1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
+		spielkarte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+		spielkarte3 = new PlayingCard(Suit.LEAVES, Value.NINE);
+		spielkarte4 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte3);
@@ -83,13 +83,13 @@ public class RuleCompliantPlayerTest {
 		boolean testErfolgreich = false;
 		
 		blatt.clear();
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.ACHT));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.ACHT));
+		blatt.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
+		blatt.add(new PlayingCard(Suit.BELLS, Value.EIGHT));
 		ArrayList<PlayingCard> altesBlatt = new ArrayList<PlayingCard>();
 		altesBlatt = (ArrayList<PlayingCard>) blatt.clone();
 		spieler.setBlatt(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SIEBEN); 
+		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN); 
 		PlayingCard gespielteKarte = new PlayingCard(null,null);
 		gespielteKarte = spieler.spieleKarte(gespielteKarten);
 		blatt = spieler.getBlatt();

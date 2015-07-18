@@ -31,7 +31,7 @@ public class Ramsch extends GameVariety {
 			ergebnis = true;
 		}
 		
-		else if (gespielteKarten[0].getWert() == Value.BUBE) {
+		else if (gespielteKarten[0].getWert() == Value.UNDER_KNAVE) {
 			
 			ergebnis = bubeBedienen(blatt, gespielteKarten, zuPruefendeKarte);
 		}
@@ -58,7 +58,7 @@ public class Ramsch extends GameVariety {
 		boolean ergebnis = true;
 		
 		// Wenn Bube gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (zuPruefendeKarte.getWert() == Value.BUBE) {
+		if (zuPruefendeKarte.getWert() == Value.UNDER_KNAVE) {
 
 			ergebnis = true;
 		}
@@ -70,7 +70,7 @@ public class Ramsch extends GameVariety {
 			for (int i = 0; i < blatt.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (blatt.get(i).getWert() == Value.BUBE) {
+				if (blatt.get(i).getWert() == Value.UNDER_KNAVE) {
 
 					ergebnis = false;
 					break;
@@ -86,13 +86,13 @@ public class Ramsch extends GameVariety {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Value.BUBE && karte2.getWert() == Value.BUBE) {
+		if (karte1.getWert() == Value.UNDER_KNAVE && karte2.getWert() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 
 		}
 
-		else if (karte1.getWert() == Value.BUBE || karte2.getWert() == Value.BUBE) {
+		else if (karte1.getWert() == Value.UNDER_KNAVE || karte2.getWert() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 
@@ -116,13 +116,13 @@ public class Ramsch extends GameVariety {
 	public PlayingCard sortiereKarte(PlayingCard karte1, PlayingCard karte2) {
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Value.BUBE && karte2.getWert() == Value.BUBE) {
+		if (karte1.getWert() == Value.UNDER_KNAVE && karte2.getWert() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 
 		}
 
-		else if (karte1.getWert() == Value.BUBE || karte2.getWert() == Value.BUBE) {
+		else if (karte1.getWert() == Value.UNDER_KNAVE || karte2.getWert() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 
@@ -160,31 +160,31 @@ public class Ramsch extends GameVariety {
 		int ergebnis = 0;
 
 		switch (wert) {
-		case SECHS:
+		case SIX:
 			ergebnis = 7;
 			break;
-		case SIEBEN:
+		case SEVEN:
 			ergebnis = 7;
 			break;
-		case ACHT:
+		case EIGHT:
 			ergebnis = 8;
 			break;
-		case NEUN:
+		case NINE:
 			ergebnis = 9;
 			break;
-		case ZEHN:
+		case TEN:
 			ergebnis = 10;
 			break;	
-		case DAME:
+		case OVER_KNAVE:
 			ergebnis = 11;
 			break;
-		case KOENIG:
+		case KING:
 			ergebnis = 12;
 			break;
-		case ASS:
+		case DAUS:
 			ergebnis = 13;
 			break;
-		case BUBE:
+		case UNDER_KNAVE:
 			ergebnis = bubeBewerten(karte);
 			break;
 //		default:

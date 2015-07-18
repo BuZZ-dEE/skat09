@@ -43,7 +43,7 @@ abstract public class GameVariety implements IGameVariety {
 		boolean ergebnis = true;
 		
 		// Wenn die Farbe korrekt bedient wurde gib true zurueck.
-		if (gespielteKarten[0].getFarbe() == zuPruefendeKarte.getFarbe() && zuPruefendeKarte.getWert() != Value.BUBE) {
+		if (gespielteKarten[0].getFarbe() == zuPruefendeKarte.getFarbe() && zuPruefendeKarte.getWert() != Value.UNDER_KNAVE) {
 
 			ergebnis = true;
 		}
@@ -53,7 +53,7 @@ abstract public class GameVariety implements IGameVariety {
 
 			for (int i = 0; i < blatt.size(); i++) {
 
-				if (blatt.get(i).getFarbe() == gespielteKarten[0].getFarbe() && blatt.get(i).getWert() != Value.BUBE) {
+				if (blatt.get(i).getFarbe() == gespielteKarten[0].getFarbe() && blatt.get(i).getWert() != Value.UNDER_KNAVE) {
 
 					ergebnis = false;
 					break;
@@ -137,7 +137,7 @@ abstract public class GameVariety implements IGameVariety {
 
 		PlayingCard ergebnis;
 
-		if (karte1.getWert() == Value.BUBE) {
+		if (karte1.getWert() == Value.UNDER_KNAVE) {
 
 			ergebnis = karte1;
 		}
@@ -175,31 +175,31 @@ abstract public class GameVariety implements IGameVariety {
 		int ergebnis = 0;
 
 		switch (wert) {
-		case SECHS:
+		case SIX:
 			ergebnis = 6;
 			break;
-		case SIEBEN:
+		case SEVEN:
 			ergebnis = 7;
 			break;
-		case ACHT:
+		case EIGHT:
 			ergebnis = 8;
 			break;
-		case NEUN:
+		case NINE:
 			ergebnis = 9;
 			break;
-		case DAME:
+		case OVER_KNAVE:
 			ergebnis = 10;
 			break;
-		case KOENIG:
+		case KING:
 			ergebnis = 11;
 			break;
-		case ZEHN:
+		case TEN:
 			ergebnis = 12;
 			break;
-		case ASS:
+		case DAUS:
 			ergebnis = 13;
 			break;
-		case BUBE:
+		case UNDER_KNAVE:
 			ergebnis = bubeBewerten(karte);
 			break;
 		default:

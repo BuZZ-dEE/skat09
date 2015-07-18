@@ -193,11 +193,11 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String deutWert() {
 		String deutwert ="";
-		if (wert == Value.BUBE) {
+		if (wert == Value.UNDER_KNAVE) {
 			deutwert = "UNTER";
-		} else if (wert == Value.DAME) {
+		} else if (wert == Value.OVER_KNAVE) {
 			deutwert = "OBER";
-		} else if (wert == Value.ASS) {
+		} else if (wert == Value.DAUS) {
 			deutwert = "DAUS";
 		} else {
 			deutwert = "" + wert;

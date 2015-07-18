@@ -19,16 +19,16 @@ import static org.junit.Assert.*;
 public class GrannyTest {
 
 	private Granny oma = new Granny("Franz");
-	PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.SIEBEN);
-	PlayingCard spielkarte2 = new PlayingCard(Suit.BELLS, Value.ACHT);
-	PlayingCard spielkarte3 = new PlayingCard(Suit.BELLS, Value.NEUN);
-	PlayingCard spielkarte4 = new PlayingCard(Suit.BELLS, Value.ZEHN);
-	PlayingCard spielkarte5 = new PlayingCard(Suit.BELLS, Value.BUBE);
-	PlayingCard spielkarte6 = new PlayingCard(Suit.BELLS, Value.DAME);
-	PlayingCard spielkarte7 = new PlayingCard(Suit.BELLS, Value.KOENIG);
-	PlayingCard spielkarte8 = new PlayingCard(Suit.BELLS, Value.ASS);
-	PlayingCard spielkarte9 = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
-	PlayingCard spielkarte10 = new PlayingCard(Suit.HEARTS, Value.ACHT);
+	PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
+	PlayingCard spielkarte2 = new PlayingCard(Suit.BELLS, Value.EIGHT);
+	PlayingCard spielkarte3 = new PlayingCard(Suit.BELLS, Value.NINE);
+	PlayingCard spielkarte4 = new PlayingCard(Suit.BELLS, Value.TEN);
+	PlayingCard spielkarte5 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+	PlayingCard spielkarte6 = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
+	PlayingCard spielkarte7 = new PlayingCard(Suit.BELLS, Value.KING);
+	PlayingCard spielkarte8 = new PlayingCard(Suit.BELLS, Value.DAUS);
+	PlayingCard spielkarte9 = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+	PlayingCard spielkarte10 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
 
 	ArrayList<PlayingCard> omablatt = new ArrayList<PlayingCard>();
 	

@@ -20,12 +20,12 @@ public class RamschTest {
 	public void gespielteKartePruefen() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.ACHT));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.NEUN));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.DAME));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.NINE));
+		blatt.add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		PlayingCard zuPruefendeKarte = new PlayingCard(Suit.ACORNS, Value.ASS);
+		PlayingCard zuPruefendeKarte = new PlayingCard(Suit.ACORNS, Value.DAUS);
 		assertTrue(ramsch.gespielteKartePruefen(blatt, gespielteKarten, zuPruefendeKarte));
 	}
 	
@@ -33,13 +33,13 @@ public class RamschTest {
 	public void gespielteKartePruefen2() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.ACHT));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.NEUN));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.DAME));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.NINE));
+		blatt.add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.BUBE);
-		PlayingCard zuPruefendeKarte = new PlayingCard(Suit.ACORNS, Value.ASS);
+		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard zuPruefendeKarte = new PlayingCard(Suit.ACORNS, Value.DAUS);
 		assertFalse(ramsch.gespielteKartePruefen(blatt, gespielteKarten, zuPruefendeKarte));
 	}
 	
@@ -47,13 +47,13 @@ public class RamschTest {
 	public void gespielteKartePruefen3() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.ACHT));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.NEUN));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.DAME));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.NINE));
+		blatt.add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.BUBE);
-		PlayingCard zuPruefendeKarte = new PlayingCard(Suit.HEARTS, Value.BUBE);
+		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard zuPruefendeKarte = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		assertTrue(ramsch.gespielteKartePruefen(blatt, gespielteKarten, zuPruefendeKarte));
 	}
 	
@@ -61,13 +61,13 @@ public class RamschTest {
 	public void gespielteKartePruefen4() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.ACHT));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.NEUN));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.DAME));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.NINE));
+		blatt.add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.SIEBEN);
-		PlayingCard zuPruefendeKarte = new PlayingCard(Suit.ACORNS, Value.ASS);
+		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.SEVEN);
+		PlayingCard zuPruefendeKarte = new PlayingCard(Suit.ACORNS, Value.DAUS);
 		assertTrue(ramsch.gespielteKartePruefen(blatt, gespielteKarten, zuPruefendeKarte));
 	}
 	
@@ -75,10 +75,10 @@ public class RamschTest {
 	public void bubeBedienenTest() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.ACHT));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.NEUN));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.NINE));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.BUBE);
+		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		assertTrue(ramsch.bubeBedienen(blatt, gespielteKarten, pruefen));
 	}
 
@@ -86,12 +86,12 @@ public class RamschTest {
 	public void bubeBedienenTest2() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.ACHT));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.NEUN));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.DAME));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.NINE));
+		blatt.add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.BUBE);
-		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.ASS);
+		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.DAUS);
 		assertTrue(ramsch.bubeBedienen(blatt, gespielteKarten, pruefen));
 	}
 	
@@ -99,61 +99,61 @@ public class RamschTest {
 	public void bubeBedienenTest3() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.ACHT));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.NEUN));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.DAME));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.BUBE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.NINE));
+		blatt.add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
+		blatt.add(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.BUBE);
-		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.ASS);
+		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.DAUS);
 		assertFalse(ramsch.bubeBedienen(blatt, gespielteKarten, pruefen));
 	}
 	
 	@Test
 	public void hoehereKarteTest() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.BUBE);
-		PlayingCard karte2 = new PlayingCard(Suit.BELLS, Value.BUBE);
+		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		PlayingCard karte2 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
 		assertEquals(karte1, ramsch.hoehereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void hoehereKarteTest2() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.BUBE);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.ACHT);
+		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
 		assertEquals(karte1, ramsch.hoehereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void hoehereKarteTest3() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.BUBE);
+		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		assertEquals(karte2, ramsch.hoehereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void hoehereKarteTest4() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.DAME);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.KOENIG);
+		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
+		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.KING);
 		assertEquals(karte2, ramsch.hoehereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void hoehereKarteTest5() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.LEAVES, Value.ZEHN);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.BUBE);
+		PlayingCard karte1 = new PlayingCard(Suit.LEAVES, Value.TEN);
+		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		assertEquals(karte2, ramsch.hoehereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void hoehereKarteTest6() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.SECHS);
+		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.SIX);
 		assertEquals(karte1, ramsch.hoehereKarte(karte1, karte2));
 	}
 	
@@ -162,56 +162,56 @@ public class RamschTest {
 	@Test
 	public void hoehereKarteTest7() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.BELLS, Value.NEUN);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.DAME);
+		PlayingCard karte1 = new PlayingCard(Suit.BELLS, Value.NINE);
+		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		assertEquals(karte1, ramsch.hoehereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void sortiereKarteTest() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.ACORNS, Value.BUBE);
-		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.BUBE);
+		PlayingCard karte1 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
 		assertEquals(karte1, ramsch.sortiereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void sortiereKarte2Test() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.ACORNS, Value.BUBE);
-		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.ASS);
+		PlayingCard karte1 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.DAUS);
 		assertEquals(karte1, ramsch.sortiereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void sortiereKarte3Test() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.ACORNS, Value.NEUN);
-		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.BUBE);
+		PlayingCard karte1 = new PlayingCard(Suit.ACORNS, Value.NINE);
+		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
 		assertEquals(karte2, ramsch.sortiereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void sortiereKarte4Test() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.ACORNS, Value.ZEHN);
-		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.ASS);
+		PlayingCard karte1 = new PlayingCard(Suit.ACORNS, Value.TEN);
+		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.DAUS);
 		assertEquals(karte1, ramsch.sortiereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void sortiereKarte5Test() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.BELLS, Value.BUBE);
-		PlayingCard karte2 = new PlayingCard(Suit.BELLS, Value.ASS);
+		PlayingCard karte1 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+		PlayingCard karte2 = new PlayingCard(Suit.BELLS, Value.DAUS);
 		assertEquals(karte1, ramsch.sortiereKarte(karte1, karte2));
 	}
 	
 	@Test
 	public void sortiereKarte6Test() {
 		
-		PlayingCard karte1 = new PlayingCard(Suit.LEAVES, Value.ZEHN);
-		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.ASS);
+		PlayingCard karte1 = new PlayingCard(Suit.LEAVES, Value.TEN);
+		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.DAUS);
 		assertEquals(karte2, ramsch.sortiereKarte(karte1, karte2));
 	}
 	
@@ -224,56 +224,56 @@ public class RamschTest {
 	@Test
 	public void karteBewertenTest() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.SIEBEN);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.SEVEN);
 		assertEquals(7, ramsch.karteBewerten(karte));
 	}
 	
 	@Test
 	public void karteBewertenTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.ACHT);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.EIGHT);
 		assertEquals(8, ramsch.karteBewerten(karte));
 	}
 	
 	@Test
 	public void karteBewertenTest3() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.NEUN);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.NINE);
 		assertEquals(9, ramsch.karteBewerten(karte));
 	}
 	
 	@Test
 	public void karteBewertenTest4() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.ZEHN);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.TEN);
 		assertEquals(10, ramsch.karteBewerten(karte));
 	}
 	
 	@Test
 	public void karteBewertenTest5() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.DAME);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		assertEquals(11, ramsch.karteBewerten(karte));
 	}
 	
 	@Test
 	public void karteBewertenTest6() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.KOENIG);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.KING);
 		assertEquals(12, ramsch.karteBewerten(karte));
 	}
 	
 	@Test
 	public void karteBewertenTest7() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.ASS);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.DAUS);
 		assertEquals(13, ramsch.karteBewerten(karte));
 	}
 	
 	@Test
 	public void karteBewertenTest8() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		assertEquals(15, ramsch.karteBewerten(karte));
 	}
 }

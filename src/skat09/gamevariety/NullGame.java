@@ -121,32 +121,32 @@ public class NullGame extends GameVariety implements INullGame {
 
 		switch (wert) {
 
-		case SECHS:
-			ergebnis = Value.SECHS.ordinal();
+		case SIX:
+			ergebnis = Value.SIX.ordinal();
 			break;
-		case SIEBEN:
-			ergebnis = Value.SIEBEN.ordinal();
+		case SEVEN:
+			ergebnis = Value.SEVEN.ordinal();
 			break;
-		case ACHT:
-			ergebnis = Value.ACHT.ordinal();
+		case EIGHT:
+			ergebnis = Value.EIGHT.ordinal();
 			break;
-		case NEUN:
-			ergebnis = Value.NEUN.ordinal();
+		case NINE:
+			ergebnis = Value.NINE.ordinal();
 			break;
-		case ZEHN:
-			ergebnis = Value.ZEHN.ordinal();
+		case TEN:
+			ergebnis = Value.TEN.ordinal();
 			break;
-		case BUBE:
-			ergebnis = Value.BUBE.ordinal();
+		case UNDER_KNAVE:
+			ergebnis = Value.UNDER_KNAVE.ordinal();
 			break;
-		case DAME:
-			ergebnis = Value.DAME.ordinal();
+		case OVER_KNAVE:
+			ergebnis = Value.OVER_KNAVE.ordinal();
 			break;
-		case KOENIG:
-			ergebnis = Value.KOENIG.ordinal();
+		case KING:
+			ergebnis = Value.KING.ordinal();
 			break;
-		case ASS:
-			ergebnis = Value.ASS.ordinal();
+		case DAUS:
+			ergebnis = Value.DAUS.ordinal();
 			break;
 		// default:
 		// ergebnis = -1;

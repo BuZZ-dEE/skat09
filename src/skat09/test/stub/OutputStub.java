@@ -302,7 +302,7 @@ public class OutputStub implements IOutput{
 	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		
-		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.BUBE);
+		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		return karte;
 	}
 
