@@ -45,7 +45,7 @@ import skat09.ui.GUIOutput;
  *         Bruhns
  * @version 03.07.2009
  */
-public class Fenster extends JFrame implements ActionListener, KeyListener {
+public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 	/**
 	 * 
 	 */
@@ -162,7 +162,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 *            Die aktuelle GUIAusgabe wird &uuml;bergeben, damit sie
 	 *            released werden kann.
 	 */
-	public Fenster(GUIOutput ausgabe) {
+	public SetupFrame(GUIOutput ausgabe) {
 		super(Messages.getI18n("application.name"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -423,7 +423,7 @@ public class Fenster extends JFrame implements ActionListener, KeyListener {
 	 */
 	public static URL getFileUrl(String path) {
 
-		return Fenster.class.getClassLoader().getResource(path);
+		return SetupFrame.class.getClassLoader().getResource(path);
 	}
 
 	/**
