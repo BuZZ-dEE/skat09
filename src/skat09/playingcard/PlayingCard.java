@@ -108,7 +108,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	public String toString() {
 		String string = "";
 		if (deutsch == false) {
-		string = farbe + " " + wert;
+			string = farbe + " " + wert;
 		} else {
 			String deutfarbe = deutFarbe();
 			String deutwert = deutWert();
@@ -173,16 +173,16 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	public String deutFarbe() {
 		String deutfarbe = "";
 		if (farbe.equals(Suit.LEAVES)) {
-			deutfarbe = "GRUEN";
+			deutfarbe = "LEAVES";
 		}
 		if (farbe.equals(Suit.HEARTS)) {
 			deutfarbe = ""+farbe;
 		}
 		if (farbe.equals(Suit.ACORNS)) {
-			deutfarbe = "EICHEL";
+			deutfarbe = "ACORNS";
 		}
 		if (farbe.equals(Suit.BELLS)) {
-			deutfarbe = "SCHELLEN";
+			deutfarbe = "BELLS";
 		}
 		return deutfarbe;
 	}
@@ -194,9 +194,9 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	public String deutWert() {
 		String deutwert ="";
 		if (wert == Value.UNDER_KNAVE) {
-			deutwert = "UNTER";
+			deutwert = "UNDER_KNAVE";
 		} else if (wert == Value.OVER_KNAVE) {
-			deutwert = "OBER";
+			deutwert = "OVER_KNAVE";
 		} else if (wert == Value.DAUS) {
 			deutwert = "DAUS";
 		} else {
