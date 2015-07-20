@@ -148,7 +148,7 @@ public class PlayingCardTest {
 		
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		karte.setDeutsch(true);
-		assertEquals("germancards/HERZ_OBER", karte.dateiPfad());
+		assertEquals("germancards/HEARTS_OVER_KNAVE", karte.dateiPfad());
 	}
 	
 	@Test
@@ -156,6 +156,6 @@ public class PlayingCardTest {
 		
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		karte.setDeutsch(false);
-		assertEquals("frankarten/HEARTS_OVER_KNAVE", karte.dateiPfad());
+		assertEquals("frenchcards/HEARTS_OVER_KNAVE", karte.dateiPfad());
 	}
 }
