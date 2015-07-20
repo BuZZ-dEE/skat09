@@ -8,13 +8,6 @@ package skat09.playingcard;
 public enum Value {
 	
 	/**
-	 * Under knave (Unter) == Jack (Junge / Bube)
-	 * Over knave (Ober) == Queen (Dame)
-	 * King == King (König)
-	 * Daus (Daus) == Ace (Ass)
-	 */
-	
-	/**
 	 * Halter des Farbwertes 6
 	 */
 	SIX,
@@ -36,18 +29,22 @@ public enum Value {
 	TEN,
 	/**
 	 * Halter des Farbwertes Bube
+	 * Under knave (Unter) == Jack (Junge / Bube)
 	 */
 	UNDER_KNAVE,
 	/**
 	 * Halter des Farbwertes Dame
+	 * Over knave (Ober) == Queen (Dame)
 	 */
 	OVER_KNAVE,
 	/**
-	 * Halter des Farbwertes K&ouml;nig
+	 * Halter des Farbwertes König
+	 * King == King (König)
 	 */
 	KING,
 	/**
 	 * Halter des Farbwertes Ass
+	 * Daus (Daus) == Ace (Ass)
 	 */
 	DAUS
 }
