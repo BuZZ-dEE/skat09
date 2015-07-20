@@ -102,17 +102,20 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	}
 
 	/**
-	 * Gibt die Eigenschaften einer Karte als String aus.
-	 * @return Eigenschaften der Karte
+	 * Get card name.
+	 * 
+	 * @return the card name as string
+	 * 
+	 * @version 20.07.2015 22:42:38
 	 */
 	public String toString() {
 		String string = "";
 		if (deutsch == true) {
 			string = farbe + " " + wert;
 		} else {
-			String deutfarbe = frenchSuit();
-			String deutwert = frenchValue();
-			string = deutfarbe + " " + deutwert;
+			String frenchSuit = frenchSuit();
+			String frenchValue = frenchValue();
+			string = frenchSuit + " " + frenchValue;
 		}
 		
 		
