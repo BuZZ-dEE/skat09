@@ -10,13 +10,13 @@ public enum PlayerEnum {
 	/**
 	 * Halter des Spielertyps "Oma"
 	 */
-	OMA,
+	GRANNY,
 	/**
 	 * Halter des Spielertyps "regelkonformer Spieler"
 	 */
-	REGELKONFORM,
+	RULECOMPLIANT,
 	/**
 	 * Halter des Spielertyps "schlauer Spieler"
 	 */
-	INTELLIGENT
+	SMART
 }

@@ -90,26 +90,26 @@ public class GUIOutput extends Output {
 		String s = "";
 		if (nummer == 1) {
 
-			if (fenster.getMitspieler1() == PlayerEnum.OMA) {
+			if (fenster.getMitspieler1() == PlayerEnum.GRANNY) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.granny.abbr");
-			} else if (fenster.getMitspieler1() == PlayerEnum.REGELKONFORM) {
+			} else if (fenster.getMitspieler1() == PlayerEnum.RULECOMPLIANT) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.normal.abbr");
-			} else if (fenster.getMitspieler1() == PlayerEnum.INTELLIGENT) {
+			} else if (fenster.getMitspieler1() == PlayerEnum.SMART) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.smart.abbr");
 			}
 		}
 		if (nummer == 2) {
 
-			if (fenster.getMitspieler2() == PlayerEnum.OMA) {
+			if (fenster.getMitspieler2() == PlayerEnum.GRANNY) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.granny.abbr");
-			} else if (fenster.getMitspieler2() == PlayerEnum.REGELKONFORM) {
+			} else if (fenster.getMitspieler2() == PlayerEnum.RULECOMPLIANT) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.normal.abbr");
-			} else if (fenster.getMitspieler2() == PlayerEnum.INTELLIGENT) {
+			} else if (fenster.getMitspieler2() == PlayerEnum.SMART) {
 
 				s = Messages.getI18n("game.commandline.adversary.type.smart.abbr");
 			}
