@@ -8,28 +8,21 @@ package skat09.playingcard;
  *
  */
 public enum Suit {
-	
-	/**
-	 * Acorns == Clubs
-	 * Spades == Leaves
-	 * Hearts == Hearts
-	 * Bells == Diamonds
-	 */
 	 
 	/**
-	 * Halter der Farbe Karo
+	 *  Bells / Diamonds / Karo
 	 */
 	BELLS(9),
 	/**
-	 * Halter der Farbe Herz
+	 * Hearts / Herz
 	 */
 	HEARTS(10),
 	/**
-	 * Halter der Farbe Pik
+	 * Spades / Leaves / Pik
 	 */
 	LEAVES(11),
 	/**
-	 * Halter der Farbe Kreuz
+	 * Acorns / Clubs / Kreuz
 	 */
 	ACORNS(12);
 

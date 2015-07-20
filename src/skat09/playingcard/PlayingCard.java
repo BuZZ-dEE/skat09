@@ -107,11 +107,11 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String toString() {
 		String string = "";
-		if (deutsch == false) {
+		if (deutsch == true) {
 			string = farbe + " " + wert;
 		} else {
-			String deutfarbe = deutFarbe();
-			String deutwert = deutWert();
+			String deutfarbe = frenchSuit();
+			String deutwert = frenchValue();
 			string = deutfarbe + " " + deutwert;
 		}
 		
@@ -167,42 +167,48 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	}
 	
 	/**
-	 * Wandelt franz&ouml;sische Farbe in deutsche Farbe um.
-	 * @return Die Methode gibt den deutschen Begriff f&uuml;r die Kartenfarbe wieder.
+	 * Change german suit to french pendant.
+	 * 
+	 * @return the french name for current suit.
+	 * 
+	 * @version 20.07.2015 22:20:23
 	 */
-	public String deutFarbe() {
-		String deutfarbe = "";
+	public String frenchSuit() {
+		String frenchSuit = "";
 		if (farbe.equals(Suit.LEAVES)) {
-			deutfarbe = "LEAVES";
+			frenchSuit = "SPADES";
 		}
 		if (farbe.equals(Suit.HEARTS)) {
-			deutfarbe = ""+farbe;
+			frenchSuit = ""+farbe;
 		}
 		if (farbe.equals(Suit.ACORNS)) {
-			deutfarbe = "ACORNS";
+			frenchSuit = "CLUBS";
 		}
 		if (farbe.equals(Suit.BELLS)) {
-			deutfarbe = "BELLS";
+			frenchSuit = "DIAMONDS";
 		}
-		return deutfarbe;
+		return frenchSuit;
 	}
 	
 	/**
-	 * Gibt den deutschen Wert einer Spielkarte zur&uuml;ck.
-	 * @return Den deutschen Wert einer Spielkarte als String
+	 * Change german value to french pendant.
+	 * 
+	 * @return the french suit value for current german.
+	 * 
+	 * @version 20.07.2015 22:21:36
 	 */
-	public String deutWert() {
-		String deutwert ="";
+	public String frenchValue() {
+		String frenchValue ="";
 		if (wert == Value.UNDER_KNAVE) {
-			deutwert = "UNDER_KNAVE";
+			frenchValue = "JACK";
 		} else if (wert == Value.OVER_KNAVE) {
-			deutwert = "OVER_KNAVE";
+			frenchValue = "QUEEN";
 		} else if (wert == Value.DAUS) {
-			deutwert = "DAUS";
+			frenchValue = "ACE";
 		} else {
-			deutwert = "" + wert;
+			frenchValue = "" + wert;
 		}
-		return deutwert;
+		return frenchValue;
 	}
 	
 	/**
@@ -213,9 +219,9 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	public String dateiPfad() {
 		String dateipfad = "";
 		if (deutsch) {
-			dateipfad += "deutkarten/";
+			dateipfad += "germancards/";
 		} else {
-			dateipfad += "frankarten/";
+			dateipfad += "frenchcards/";
 //			dateipfad += "svg/";
 		}
 		String neuerString = this.toString().replace(' ', '_');
