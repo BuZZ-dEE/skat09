@@ -69,7 +69,7 @@ public class PlayingCardTest {
 	public void toStringTest2() {
 		
 		PlayingCard karte = new PlayingCard(Suit.LEAVES, Value.DAUS);
-		assertEquals("PIK ASS", karte.toString());
+		assertEquals("LEAVES DAUS", karte.toString());
 		
 	}
 	
@@ -88,59 +88,59 @@ public class PlayingCardTest {
 	}
 	
 	@Test
-	public void deutFarbeTest() {
+	public void frenchSuitTest() {
 		
 		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		assertEquals("SCHELLEN", karte.deutFarbe());
+		assertEquals("DIAMONDS", karte.frenchSuit());
 	}
 	
 	@Test
-	public void deutFarbeTest2() {
+	public void frenchSuitTest2() {
 		
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		assertEquals("HERZ", karte.deutFarbe());
+		assertEquals("HEARTS", karte.frenchSuit());
 	}
 	
 	@Test
-	public void deutFarbeTest3() {
+	public void frenchSuitTest3() {
 		
 		PlayingCard karte = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
-		assertEquals("GRUEN", karte.deutFarbe());
+		assertEquals("SPADES", karte.frenchSuit());
 	}
 	
 	@Test
-	public void deutFarbeTest4() {
+	public void frenchSuitTest4() {
 		
 		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		assertEquals("EICHEL", karte.deutFarbe());
+		assertEquals("CLUBS", karte.frenchSuit());
 	}
 	
 	@Test
-	public void deutWertTest() {
+	public void frenchValueTest() {
 		
 		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		assertEquals("UNTER", karte.deutWert());
+		assertEquals("JACK", karte.frenchValue());
 	}
 	
 	@Test
-	public void deutWertTest2() {
+	public void frenchValueTest2() {
 		
 		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
-		assertEquals("OBER", karte.deutWert());
+		assertEquals("QUEEN", karte.frenchValue());
 	}
 	
 	@Test
-	public void deutWertTest3() {
+	public void frenchValueTest3() {
 		
 		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.DAUS);
-		assertEquals("DAUS", karte.deutWert());
+		assertEquals("ACE", karte.frenchValue());
 	}
 	
 	@Test
-	public void deutWertTest4() {
+	public void frenchValueTest4() {
 		
 		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.NINE);
-		assertEquals("NEUN", karte.deutWert());
+		assertEquals("NINE", karte.frenchValue());
 	}
 	
 	@Test
@@ -148,7 +148,7 @@ public class PlayingCardTest {
 		
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		karte.setDeutsch(true);
-		assertEquals("deutkarten/HERZ_OBER", karte.dateiPfad());
+		assertEquals("germancards/HERZ_OBER", karte.dateiPfad());
 	}
 	
 	@Test
@@ -156,6 +156,6 @@ public class PlayingCardTest {
 		
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		karte.setDeutsch(false);
-		assertEquals("frankarten/HERZ_DAME", karte.dateiPfad());
+		assertEquals("frankarten/HEARTS_OVER_KNAVE", karte.dateiPfad());
 	}
 }
