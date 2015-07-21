@@ -61,7 +61,7 @@ public class PlayingCardTest {
 	
 	@Test
 	public void toStringTest() {
-		String text = "HERZ ACHT";
+		String text = "HEARTS EIGHT";
 		assertEquals(text, karte1.toString());
 	}
 	
@@ -156,6 +156,6 @@ public class PlayingCardTest {
 		
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
 		karte.setDeutsch(false);
-		assertEquals("frenchcards/HEARTS_OVER_KNAVE", karte.dateiPfad());
+		assertEquals("frenchcards/HEARTS_QUEEN", karte.dateiPfad());
 	}
 }
