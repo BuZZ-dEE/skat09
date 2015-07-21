@@ -31,7 +31,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import skat09.Messages;
-import skat09.spieler.PlayerEnum;
+import skat09.player.PlayerEnum;
 import skat09.tools.Configuration;
 import skat09.ui.GUIOutput;
 
@@ -549,20 +549,20 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 		int index;
 		index = gegner1.getSelectedIndex();
 		if (index == 0) {
-			mitspieler1 = PlayerEnum.OMA;
+			mitspieler1 = PlayerEnum.GRANNY;
 		} else if (index == 1) {
-			mitspieler1 = PlayerEnum.REGELKONFORM;
+			mitspieler1 = PlayerEnum.RULECOMPLIANT;
 		} else {
-			mitspieler1 = PlayerEnum.INTELLIGENT;
+			mitspieler1 = PlayerEnum.SMART;
 		}
 
 		index = gegner2.getSelectedIndex();
 		if (index == 0) {
-			mitspieler2 = PlayerEnum.OMA;
+			mitspieler2 = PlayerEnum.GRANNY;
 		} else if (index == 1) {
-			mitspieler2 = PlayerEnum.REGELKONFORM;
+			mitspieler2 = PlayerEnum.RULECOMPLIANT;
 		} else {
-			mitspieler2 = PlayerEnum.INTELLIGENT;
+			mitspieler2 = PlayerEnum.SMART;
 		}
 
 		index = skatvariante.getSelectedIndex();
