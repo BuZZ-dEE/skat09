@@ -30,9 +30,7 @@ import skat09.test.interfaces.IPlayer;
  */
 
 public class Table extends Observable {
-
-	// Datenfelder
-
+	
 	/**
 	 * Der erste Spieler am Tisch
 	 */
