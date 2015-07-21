@@ -28,9 +28,9 @@ public class Skat09 {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		Table tisch = new Table();
+		Table table = new Table();
 		String s = null;
-		IOutput ausgabe;
+		IOutput output;
 		
 		try {
 			s = args[0];
@@ -39,14 +39,14 @@ public class Skat09 {
 		}
 
 		if (s.compareTo("-nogui") == 0) {
-			ausgabe = new CLIOutput(tisch);
+			output = new CLIOutput(table);
 		} else {
 			OSValidator.setOperatingSystemProperties();
-			ausgabe = new GUIOutput(tisch);
+			output = new GUIOutput(table);
 		}
 
-		IController controller = new Controller(tisch, ausgabe);
-		if (ausgabe instanceof GUIOutput) {
+		IController controller = new Controller(table, output);
+		if (output instanceof GUIOutput) {
 			controller.warte();
 		}
 		controller.spiel();
