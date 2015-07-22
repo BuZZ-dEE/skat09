@@ -427,13 +427,6 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 	}
 
 	/**
-	 * dient zum Beenden des Spieles
-	 */
-	public void actionPerformed(ActionEvent arg0) {
-		beenden();
-	}
-
-	/**
 	 * Gibt die Art des 1. Mitspielers zur&uuml;ck
 	 * 
 	 * @return mitspieler1
@@ -503,43 +496,6 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 	}
 
 	/**
-	 * Die Methode beschreibt das Verhalten beim Dr&uuml;cken einer Taste, wenn
-	 * der Fokus auf der Komponente ist.
-	 */
-	public void keyPressed(KeyEvent arg0) {
-
-	}
-
-	/**
-	 * Die Methode beschreibt das Verhalten beim Loslassen einer Taste, wenn der
-	 * Fokus auf der Komponente ist.
-	 */
-	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			if (e.getComponent().getName().compareTo("sechser") == 0) {
-				JCheckBox box = (JCheckBox) e.getComponent();
-				if (box.isSelected() == true) {
-					box.setSelected(false);
-				} else {
-					box.setSelected(true);
-				}
-			}
-			if (e.getComponent().getName().compareTo("ok") == 0) {
-				beenden();
-			}
-		}
-
-	}
-
-	/**
-	 * Die Methode beschreibt das Verhalten beim Tippen einer Taste, wenn der
-	 * Fokus auf der Komponente ist.
-	 */
-	public void keyTyped(KeyEvent arg0) {
-
-	}
-
-	/**
 	 * beendet das Spiel
 	 */
 	public void beenden() {
@@ -588,5 +544,53 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 		ausgabe.setRelease(true);
 
 		setVisible(false);
+	}
+	
+	/**
+	 * Die Methode beschreibt das Verhalten beim Dr&uuml;cken einer Taste, wenn
+	 * der Fokus auf der Komponente ist.
+	 */
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+
+	}
+
+	/**
+	 * Die Methode beschreibt das Verhalten beim Loslassen einer Taste, wenn der
+	 * Fokus auf der Komponente ist.
+	 */
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if (e.getComponent().getName().compareTo("sechser") == 0) {
+				JCheckBox box = (JCheckBox) e.getComponent();
+				if (box.isSelected() == true) {
+					box.setSelected(false);
+				} else {
+					box.setSelected(true);
+				}
+			}
+			if (e.getComponent().getName().compareTo("ok") == 0) {
+				beenden();
+			}
+		}
+
+	}
+
+	/**
+	 * Die Methode beschreibt das Verhalten beim Tippen einer Taste, wenn der
+	 * Fokus auf der Komponente ist.
+	 */
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+
+	}
+	
+	/**
+	 * dient zum Beenden des Spieles
+	 */
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		beenden();
 	}
 }
