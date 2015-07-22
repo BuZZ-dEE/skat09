@@ -143,7 +143,7 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 		useSetupButton.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override public void handle(ActionEvent e) {
-				label.setText("Accepted");
+				quit();
 			}
 		});
 
@@ -151,7 +151,9 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 
 			@Override
 			public void handle(KeyEvent event) {
-				// TODO Auto-generated method stub
+				if (event.getEventType() == KeyEvent.KEY_RELEASED) {
+					keyReleased(event);
+				}
 				
 			}
 		});
