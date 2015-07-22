@@ -40,7 +40,7 @@ public class GUIOutput extends Output {
 	/**
 	 * Das Einstellungsfenster des Spiels
 	 */
-	private SetupFrame fenster;
+	private SetupStage fenster;
 
 	/**
 	 * Der Konstruktor der Klasse GUIAusgabe
@@ -52,7 +52,8 @@ public class GUIOutput extends Output {
 
 		this.tisch = tisch;
 
-		fenster = new SetupFrame(this);
+//		fenster = new SetupFrame(this);
+		fenster = new SetupStage(this);
 
 	}
 

@@ -1,7 +1,15 @@
 package skat09;
 
 import java.io.IOException;
+import java.util.List;
 
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.tools.OSValidator;
@@ -16,7 +24,7 @@ import skat09.ui.GUIOutput;
  *         Bruhns
  * @version 03.07.2009
  */
-public class Skat09 {
+public class Skat09 extends Application {
 
 	/**
 	 * Die Mainmethode f&uuml;hrt das Programm aus.
@@ -25,18 +33,46 @@ public class Skat09 {
 	 *            &Uuml;bergegebene Parameter
 	 * @throws IOException
 	 * 
+	 * @version 23.07.2015 00:04:57
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 * 
 	 */
 	public static void main(String[] args) throws IOException {
+		launch(args);
+	}
+    
+	/**
+	 * The JavaFx application start.
+	 * 
+	 * @since 23.07.2015 00:05:21
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 */
+	@Override
+	public void start(Stage primaryStage) throws Exception {
 
 		Table table = new Table();
-		String s = null;
+		String s = "";
 		IOutput output;
 		
-		try {
-			s = args[0];
-		} catch (ArrayIndexOutOfBoundsException e) {
-			s = "";
-		}
+        primaryStage.setTitle("Skat09 JavaFx Title");
+        
+        final Parameters params = getParameters();
+        final List<String> parameters = params.getRaw();
+        final String imageUrl = !parameters.isEmpty() ? parameters.get(0) : "";
+        
+        if (imageUrl != null) {
+        	s = imageUrl;
+        }
+        
+        primaryStage.show();
+		
+//		try {
+//			s = parameters.get(0);
+//		} catch (ArrayIndexOutOfBoundsException e) {
+//			s = "";
+//		}
 
 		if (s.compareTo("-nogui") == 0) {
 			output = new CLIOutput(table);

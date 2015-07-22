@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -18,6 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -92,7 +95,7 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 		
 //        Scene scene = new Scene(new Group(new Text(25, 25, "Hello World!"))); 
 
-        setTitle("application.name"); 
+        setTitle(Messages.getI18n("application.name")); 
 //        stage.setScene(scene); 
 //        stage.sizeToScene(); 
 //        stage.show();
@@ -128,15 +131,21 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 	private void init() {
 		
 //		getContentPane().add(new Toolbar(), BorderLayout.NORTH);
-		setupPane.setLayout(new FlowLayout());
+//		setupPane.setLayout(new FlowLayout());
+		setupPane.getChildren().add(new FlowPane());
 		optionsPane = new Pane();
-		optionsPane.setLayout(new GridBagLayout());
+		GridPane gridPane = new GridPane();
+		
+//		optionsPane.setLayout(new GridBagLayout());
+		optionsPane.getChildren().add(gridPane);
+		
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
+		
 		logoPane = new Pane();
-//		logo();
-//		erstelleOptions();
-//		setzteOptionen();
+		logo();
+		erstelleOptions();
+		setzteOptionen();
 
 		useSetupButton = new Button(Messages.getI18n("application.ok"));
 //		useSetupButton.setName("ok");
@@ -160,14 +169,35 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 		c.gridx = 0;
 		c.gridy = 6;
 		c.gridwidth = 2;
-		optionsPane.add(useSetupButton, c);
+//		optionsPane.add(useSetupButton, c);
+		optionsPane.getChildren().add(useSetupButton);
 
 		setupPane.getChildren().add(optionsPane);
 		setupPane.getChildren().add(logoPane);
-		add(setupPane);
 		
-		pack();
-		setVisible(true);
+//		add(setupPane);
+//		pack();
+//		setVisible(true);
+		
+		Scene scene = new Scene(setupPane);
+        setScene(scene);
+        setTitle("Layout Sample");
+        show();
+	}
+
+	private void setzteOptionen() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void erstelleOptions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void logo() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
