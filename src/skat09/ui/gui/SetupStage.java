@@ -6,6 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -17,6 +21,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
@@ -194,10 +199,99 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 		// TODO Auto-generated method stub
 		
 	}
-
-	private void logo() {
-		// TODO Auto-generated method stub
+	
+	/**
+	 * l&auml;dt das Logo und gibt es aus
+	 */
+	public void logo() {
 		
+//		new ImageIcon(getFileUrl("img/bild.jpeg"))
+		Image image = new Image(getClass().getResourceAsStream("img/bild.jpeg"));
+		imageFrameLabel = new Label();
+		imageFrameLabel.setGraphic(new ImageView(image));
+		// bilderrahmen.setPreferredSize(new Dimension(200, 400));
+		logoPane.getChildren().add(imageFrameLabel);
+	}
+
+	/**
+	 * gibt den Link an, an dem sich die ben&oetigten Mediendateien befinden und
+	 * erlaubt es, diese auch innerhalb einer Jar-Datei anzusprechen
+	 * 
+	 * @param path
+	 * @return the File URL
+	 */
+	public static URL getFileUrl(String path) {
+
+		return SetupStage.class.getClassLoader().getResource(path);
+	}
+
+	/**
+	 * Gibt die Art des 1. Mitspielers zur&uuml;ck
+	 * 
+	 * @return mitspieler1
+	 */
+	public PlayerEnum getMitspieler1() {
+		
+		return player1;
+	}
+
+	/**
+	 * Gibt die Art des 2. Mitspielers zur&uuml;ck
+	 * 
+	 * @return mitspieler2
+	 */
+	public PlayerEnum getMitspieler2() {
+		
+		return player2;
+	}
+
+	/**
+	 * dient zur Abfrage der gew&auml;hlten Skatvariante
+	 * 
+	 * @return Die Skatvariante
+	 */
+	public int getSkatWahl() {
+		int erg = variant;
+		variant = 0;
+		return erg;
+	}
+
+	/**
+	 * dient zur Abfrage des gew&auml;hlten Spielernamens
+	 * 
+	 * @return Der Spielername
+	 */
+	public String getName() {
+		return playerName;
+	}
+
+	/**
+	 * Setzt die gew&auml;hlte Spielblattwahl
+	 * 
+	 * @param isGermanDeck
+	 *            - Spielblattwahl
+	 * 
+	 */
+	public void setDeutsch(boolean isGermanDeck) {
+		this.isGermanDeck = isGermanDeck;
+	}
+
+	/**
+	 * dient zur Abfrage der gew&auml;hlten Spielblattvariante
+	 * 
+	 * @return die gew&auml;hlte Spielblattvariante
+	 */
+	public boolean getDeutsch() {
+		return isGermanDeck;
+	}
+
+	/**
+	 * dient zur Abfrage ob SechserSkat gespielt werden soll
+	 * 
+	 * @return ob Sechserskat gew&auml;hlt wurde
+	 */
+	public boolean getSechserkat() {
+		return isSixskat;
 	}
 
 	@Override

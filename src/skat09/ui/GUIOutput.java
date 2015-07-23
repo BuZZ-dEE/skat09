@@ -81,7 +81,8 @@ public class GUIOutput extends Output {
 	@Override
 	public String name() {
 
-		return fenster.getName();
+//		return fenster.getName();
+		return fenster.getTitle();
 
 	}
 
