@@ -6,15 +6,18 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import skat09.test.interfaces.IOutput;
 import skat09.test.interfaces.IController;
 import skat09.tools.OSValidator;
 import skat09.ui.CLIOutput;
 import skat09.ui.GUIOutput;
+import skat09.ui.gui.SetupStage;
 
 /**
  * Die Main Klasse dient dem Programmstart, sowie dem Initialisieren der
@@ -55,30 +58,19 @@ public class Skat09 extends Application {
 		Table table = new Table();
 		String s = "";
 		IOutput output;
-		
-        primaryStage.setTitle("Skat09 JavaFx Title");
-        
         final Parameters params = getParameters();
         final List<String> parameters = params.getRaw();
         final String imageUrl = !parameters.isEmpty() ? parameters.get(0) : "";
         
         if (imageUrl != null) {
         	s = imageUrl;
-        }
-        
-        primaryStage.show();
-		
-//		try {
-//			s = parameters.get(0);
-//		} catch (ArrayIndexOutOfBoundsException e) {
-//			s = "";
-//		}
+        }      
 
 		if (s.compareTo("-nogui") == 0) {
 			output = new CLIOutput(table);
 		} else {
 			OSValidator.setOperatingSystemProperties();
-			output = new GUIOutput(table);
+			output = new GUIOutput(primaryStage, table);
 		}
 
 		IController controller = new Controller(table, output);

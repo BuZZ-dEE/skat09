@@ -6,6 +6,7 @@ import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import javafx.stage.Stage;
 import skat09.Messages;
 import skat09.Table;
 import skat09.gamevariety.GrandGame;
@@ -48,12 +49,13 @@ public class GUIOutput extends Output {
 	 * @param tisch
 	 *           Der Tisch, auf dem gespielt wird
 	 */
-	public GUIOutput(Table tisch) {
+	public GUIOutput(Stage stage, Table tisch) {
 
 		this.tisch = tisch;
 
 //		fenster = new SetupFrame(this);
 		fenster = new SetupStage(this);
+//		fenster = stage;
 
 	}
 
