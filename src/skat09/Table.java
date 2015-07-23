@@ -1711,7 +1711,7 @@ public class Table extends Observable {
 		}
 		if (spielart.getSpielart() == GameVarietyName.SUIT) {
 			SuitGame spiel = (SuitGame) spielart;
-			zwierg = spiel.getTrumpffarbe().wert();
+			zwierg = spiel.getTrumpffarbe().value();
 		}
 		
 		if (punkte < 0) {
@@ -1824,7 +1824,7 @@ public class Table extends Observable {
 		int punkte = 0;
 		int grundwert = 0;
 		SuitGame spiel = (SuitGame) spielart;
-		grundwert = spiel.getTrumpffarbe().wert();
+		grundwert = spiel.getTrumpffarbe().value();
 		grundwertliste.add(grundwert);
 		punkte = (Math.abs(ermittleAlleinspieler().spitzenZahl()) + berechneStufe(augenzahl))
 				* grundwert;
