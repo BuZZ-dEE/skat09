@@ -1710,7 +1710,7 @@ public class SmartPlayer extends Player {
 
 		Suit farbe = ermittleTrumpffarbe();
 
-		maxReizwert = (ermittelteSpitzen + 1) * farbe.wert();
+		maxReizwert = (ermittelteSpitzen + 1) * farbe.value();
 	}
 
 	/**

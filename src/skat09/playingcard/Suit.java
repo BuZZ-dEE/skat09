@@ -29,24 +29,24 @@ public enum Suit {
 	/**
 	 * Der Wert, den ein Element aus der Enum haben kann
 	 */
-	private int ordnungswert;
+	private int suitValue;
 
 	/**
 	 * Gibt den Ordnungswert eines Elements zur&uuml;ck
 	 * @return Den Wert eines Elements
 	 */
-	public int wert() {
+	public int value() {
 
-		return ordnungswert;
+		return suitValue;
 	}
 
 	/**
 	 * Der Konstruktor der Enum Farbe
-	 * @param ordnungswert Der Ordnungswert, den eine Farbe haben soll
+	 * @param suitValue Der Ordnungswert, den eine Farbe haben soll
 	 */
-	private Suit(int ordnungswert) {
+	private Suit(int suitValue) {
 
-		this.ordnungswert = ordnungswert;
+		this.suitValue = suitValue;
 	}
 
 }
