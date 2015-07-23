@@ -52,7 +52,7 @@ public class NullGame extends GameVariety implements INullGame {
 		boolean ergebnis = true;
 
 		// Wenn die Farbe korrekt bedient wurde gib true zurueck.
-		if (gespielteKarten[0].getFarbe() == zuPruefendeKarte.getFarbe()) {
+		if (gespielteKarten[0].getSuit() == zuPruefendeKarte.getSuit()) {
 
 			ergebnis = true;
 		}
@@ -62,7 +62,7 @@ public class NullGame extends GameVariety implements INullGame {
 
 			for (int i = 0; i < blatt.size(); i++) {
 
-				if (blatt.get(i).getFarbe() == gespielteKarten[0].getFarbe()) {
+				if (blatt.get(i).getSuit() == gespielteKarten[0].getSuit()) {
 
 					ergebnis = false;
 					break;
@@ -79,7 +79,7 @@ public class NullGame extends GameVariety implements INullGame {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getFarbe() == karte2.getFarbe()) {
+		if (karte1.getSuit() == karte2.getSuit()) {
 
 			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
 		}
@@ -97,7 +97,7 @@ public class NullGame extends GameVariety implements INullGame {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getFarbe() == karte2.getFarbe()) {
+		if (karte1.getSuit() == karte2.getSuit()) {
 
 			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
 
@@ -116,7 +116,7 @@ public class NullGame extends GameVariety implements INullGame {
 	@Override
 	public int karteBewerten(PlayingCard karte) {
 
-		Value wert = karte.getWert();
+		Value wert = karte.getValue();
 		int ergebnis = -1;
 
 		switch (wert) {

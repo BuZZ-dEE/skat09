@@ -1019,7 +1019,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 				Messages.getI18n("game.type.grand"),
 				Messages.getI18n("game.type.null") };
 
-		if (PlayingCard.getDeutsch()) {
+		if (PlayingCard.isGermanDeck()) {
 			spielart[0] = Messages.getI18n("game.type.german.schellen");
 			spielart[1] = Messages.getI18n("game.type.german.herz");
 			spielart[2] = Messages.getI18n("game.type.german.gruen");
@@ -1066,7 +1066,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 			s = s + "Hand";
 		}
 		String spielart = tisch.getSpielart().toString();
-		if (PlayingCard.getDeutsch()) {
+		if (PlayingCard.isGermanDeck()) {
 			if (spielart.compareTo("KARO") == 0) {
 				spielart = "Schellen";
 			}

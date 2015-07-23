@@ -209,10 +209,10 @@ public class Controller implements Observer, IController {
 
 		s = output.getBlattwahl();
 		if (s.equals(Messages.getI18n("game.skat.deck.g"))) {
-			PlayingCard.setDeutsch(true);
+			PlayingCard.setGermanDeck(true);
 		} else if (s.equals(Messages.getI18n("game.skat.deck.f"))) {
 
-			PlayingCard.setDeutsch(false);
+			PlayingCard.setGermanDeck(false);
 		} else {
 			waehleSkatblatt();
 		}
@@ -649,7 +649,7 @@ public class Controller implements Observer, IController {
 		for (int i = 0; i < 3; i++) {
 
 			PlayingCard karte = gespielteKarten[i];
-			IPlayer besitzer = karte.getBesitzer();
+			IPlayer besitzer = karte.getOwner();
 			output.spieltKarte(besitzer, karte);
 		}
 		output.leerzeile();
@@ -689,10 +689,10 @@ public class Controller implements Observer, IController {
 
 		IPlayer alleinspieler = table.ermittleAlleinspieler();
 		PlayingCard[] skat = table.getSkat();
-		skat[0].setBesitzer(alleinspieler);
-		skat[1].setBesitzer(alleinspieler);
+		skat[0].setOwner(alleinspieler);
+		skat[1].setOwner(alleinspieler);
 		if (table.getSechserskat()) {
-			skat[2].setBesitzer(alleinspieler);
+			skat[2].setOwner(alleinspieler);
 		}
 		table.setSkat(skat);
 	}

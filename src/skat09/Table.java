@@ -718,7 +718,7 @@ public class Table extends Observable {
 				deck.add(karte);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
-				if ((karte.getWert() == Value.SIX) && (sechserskat == false)) {
+				if ((karte.getValue() == Value.SIX) && (sechserskat == false)) {
 					deck.remove(karte);
 				}
 			}
@@ -756,7 +756,7 @@ public class Table extends Observable {
 		hoechsteKarte = spielart
 				.hoehereKarte(hoechsteKarte, gespielteKarten[2]);
 
-		stichGewinner = hoechsteKarte.getBesitzer();
+		stichGewinner = hoechsteKarte.getOwner();
 
 		return stichGewinner;
 	}
@@ -833,15 +833,15 @@ public class Table extends Observable {
 
 		ArrayList<PlayingCard> blatt1 = spieler1.getBlatt();
 		for (PlayingCard karte : blatt1) {
-			karte.setBesitzer(spieler1);
+			karte.setOwner(spieler1);
 		}
 		ArrayList<PlayingCard> blatt2 = spieler2.getBlatt();
 		for (PlayingCard karte : blatt2) {
-			karte.setBesitzer(spieler2);
+			karte.setOwner(spieler2);
 		}
 		ArrayList<PlayingCard> blatt3 = spieler3.getBlatt();
 		for (PlayingCard karte : blatt3) {
-			karte.setBesitzer(spieler3);
+			karte.setOwner(spieler3);
 		}
 	}
 
@@ -1530,27 +1530,27 @@ public class Table extends Observable {
 
 		for (int i = 0; i < stiche.size(); i++) {
 
-			if (stiche.get(i).getWert() == Value.DAUS) {
+			if (stiche.get(i).getValue() == Value.DAUS) {
 
 				erg += 11;
 
-			} else if (stiche.get(i).getWert() == Value.TEN) {
+			} else if (stiche.get(i).getValue() == Value.TEN) {
 
 				erg += 10;
 
-			} else if (stiche.get(i).getWert() == Value.UNDER_KNAVE) {
+			} else if (stiche.get(i).getValue() == Value.UNDER_KNAVE) {
 
 				erg += 2;
 
-			} else if (stiche.get(i).getWert() == Value.OVER_KNAVE) {
+			} else if (stiche.get(i).getValue() == Value.OVER_KNAVE) {
 
 				erg += 3;
 
-			} else if (stiche.get(i).getWert() == Value.KING) {
+			} else if (stiche.get(i).getValue() == Value.KING) {
 
 				erg += 4;
 
-			} else if (stiche.get(i).getWert() == Value.SIX) {
+			} else if (stiche.get(i).getValue() == Value.SIX) {
 
 				erg += 6;
 			}

@@ -21,28 +21,28 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	/**
 	 * Feld f&uuml;r die Farbe
 	 */
-	private Suit farbe;
+	private Suit suit;
 	/**
 	 * Feld f&uuml;r den Wert
 	 */
-	private Value wert;
+	private Value value;
 	/**
 	 * Feld f&uuml;r den Besitzer
 	 */
-	private IPlayer besitzer;
+	private IPlayer owner;
 	/**
 	 * Feld das angibt, ob deutsches oder franz&ouml;sisches Blatt benutzt wird
 	 */
-	private static boolean deutsch;
+	private static boolean germanDeck;
 	
 	/**
 	 * Konstruktor der Klasse Spielkarte. Setzt die Farbe und den Wert der Karte
-	 * @param farbe Die Farbe der zu erzeugenden Karte
-	 * @param wert Der Wert der zu erzeugenden Karte
+	 * @param suit Die Farbe der zu erzeugenden Karte
+	 * @param value Der Wert der zu erzeugenden Karte
 	 */
-	public PlayingCard(Suit farbe, Value wert) {
-		this.wert = wert;
-		this.farbe = farbe;
+	public PlayingCard(Suit suit, Value value) {
+		this.value = value;
+		this.suit = suit;
 		//deutsch = false;
 	}
 
@@ -51,8 +51,8 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return Farbe der Karte
 	 */
-	public Suit getFarbe() {
-		return farbe;
+	public Suit getSuit() {
+		return suit;
 	}
 	
 	/**
@@ -60,8 +60,8 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return true, falls die Karte in deutscher Sprache ist
 	 */
-	public static boolean getDeutsch() {
-		return deutsch;
+	public static boolean isGermanDeck() {
+		return germanDeck;
 	}
 
 	/**
@@ -69,36 +69,36 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return wert der Karte
 	 */
-	public Value getWert() {
-		return wert;
+	public Value getValue() {
+		return value;
 	}
 
 	/**
 	 * Gibt den Besitzer zur&uuml;
 	 * @return der Besitzer der Karte
 	 */
-	public IPlayer getBesitzer() {
-		return besitzer;
+	public IPlayer getOwner() {
+		return owner;
 	}
 
 	/**
 	 * Setzt den Besitzer einer Karte neu.
 	 * 
-	 * @param besitzer
+	 * @param owner
 	 *            - der zuk&uuml;nfitge Besitzer der Karte
 	 */
-	public void setBesitzer(IPlayer besitzer) {
-		this.besitzer = besitzer;
+	public void setOwner(IPlayer owner) {
+		this.owner = owner;
 	}
 	
 	/**
 	 * Setzt die Variable deutsch neu.
 	 * 
-	 * @param blatt - boolean Wert, der angibt, ob es sich um eine deutsche Karte 
+	 * @param deck - boolean Wert, der angibt, ob es sich um eine deutsche Karte 
 	 * handelt.
 	 */
-	public static void setDeutsch(boolean blatt) {
-		deutsch = blatt;
+	public static void setGermanDeck(boolean deck) {
+		germanDeck = deck;
 	}
 
 	/**
@@ -110,8 +110,8 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String toString() {
 		String string = "";
-		if (deutsch == true) {
-			string = farbe + " " + wert;
+		if (germanDeck == true) {
+			string = suit + " " + value;
 		} else {
 			String frenchSuit = frenchSuit();
 			String frenchValue = frenchValue();
@@ -126,26 +126,26 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * equals vergleich die Spielkarte mit einer &uuml;bergebenen Spielkarte und
 	 * stellt fest, ob die Datenfelder der beiden Karten gleich sind.
 	 * 
-	 * @param karte
+	 * @param card
 	 *            Karte mit der verglichen werden soll
 	 * @return true, falls die beiden Karten gleich sind
 	 */
-	public boolean equals(PlayingCard karte) {
+	public boolean equals(PlayingCard card) {
 
-		boolean ergebnis;
+		boolean result;
 
-		if (this.farbe.ordinal() == karte.getFarbe().ordinal()
-				&& this.wert.ordinal() == karte.getWert().ordinal()) {
+		if (this.suit.ordinal() == card.getSuit().ordinal()
+				&& this.value.ordinal() == card.getValue().ordinal()) {
 
-			ergebnis = true;
+			result = true;
 		}
 
 		else {
 
-			ergebnis = false;
+			result = false;
 		}
 
-		return ergebnis;
+		return result;
 	}
 	
 	/**
@@ -155,18 +155,18 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * Gleichheit zweier Karten implementiert, sie kann (noch) nicht
 	 * zur Sortierung verwendet werden!
 	 * 
-	 * @param karte - spielkarte, die mit dem aktuellen Objekt verglichen werden soll
+	 * @param card - spielkarte, die mit dem aktuellen Objekt verglichen werden soll
 	 * @return 0 falls gleich, ansonsten negativen/positiven Wert
 	 */
-	public int compareTo(PlayingCard karte) {
+	public int compareTo(PlayingCard card) {
 		
-		int ergebnis = Integer.MAX_VALUE;
+		int result = Integer.MAX_VALUE;
 		
-		if (wert == karte.getWert() && farbe == karte.getFarbe()) {
+		if (value == card.getValue() && suit == card.getSuit()) {
 			
-			ergebnis = 0;
+			result = 0;
 		}
-		return ergebnis;
+		return result;
 	}
 	
 	/**
@@ -178,16 +178,16 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String frenchSuit() {
 		String frenchSuit = "";
-		if (farbe.equals(Suit.LEAVES)) {
+		if (suit.equals(Suit.LEAVES)) {
 			frenchSuit = "SPADES";
 		}
-		if (farbe.equals(Suit.HEARTS)) {
-			frenchSuit = ""+farbe;
+		if (suit.equals(Suit.HEARTS)) {
+			frenchSuit = ""+suit;
 		}
-		if (farbe.equals(Suit.ACORNS)) {
+		if (suit.equals(Suit.ACORNS)) {
 			frenchSuit = "CLUBS";
 		}
-		if (farbe.equals(Suit.BELLS)) {
+		if (suit.equals(Suit.BELLS)) {
 			frenchSuit = "DIAMONDS";
 		}
 		return frenchSuit;
@@ -202,14 +202,14 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String frenchValue() {
 		String frenchValue ="";
-		if (wert == Value.UNDER_KNAVE) {
+		if (value == Value.UNDER_KNAVE) {
 			frenchValue = "JACK";
-		} else if (wert == Value.OVER_KNAVE) {
+		} else if (value == Value.OVER_KNAVE) {
 			frenchValue = "QUEEN";
-		} else if (wert == Value.DAUS) {
+		} else if (value == Value.DAUS) {
 			frenchValue = "ACE";
 		} else {
-			frenchValue = "" + wert;
+			frenchValue = "" + value;
 		}
 		return frenchValue;
 	}
@@ -219,17 +219,17 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return Den Dateipfad einer Karte
 	 */
-	public String dateiPfad() {
-		String dateipfad = "";
-		if (deutsch) {
-			dateipfad += "germancards/";
+	public String filePath() {
+		String filePath = "";
+		if (germanDeck) {
+			filePath += "germancards/";
 		} else {
-			dateipfad += "frenchcards/";
+			filePath += "frenchcards/";
 //			dateipfad += "svg/";
 		}
-		String neuerString = this.toString().replace(' ', '_');
-		dateipfad += neuerString;
-		return dateipfad;
+		String cardFilename = this.toString().replace(' ', '_');
+		filePath += cardFilename;
+		return filePath;
 	}
 	
 	/**
@@ -242,7 +242,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * @author Sebastian Schlatow <ssc@openmailbox.org>
 	 */
 	public URL getCardPath() {
-		return this.getClass().getClassLoader().getResource("img/" + dateiPfad() + ".png");
+		return this.getClass().getClassLoader().getResource("img/" + filePath() + ".png");
 	}
 	
 	/**
@@ -257,7 +257,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	public Image getCardImage() {
 		File svgFile;
 		try {
-			svgFile = new File(this.getClass().getClassLoader().getResource("img/" + dateiPfad() + ".svg").toURI());
+			svgFile = new File(this.getClass().getClassLoader().getResource("img/" + filePath() + ".svg").toURI());
 			try {
 				return SvgImageProcessing.rasterize(svgFile);
 			} catch (IOException e) {

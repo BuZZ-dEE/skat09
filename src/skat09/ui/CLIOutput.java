@@ -286,8 +286,8 @@ public class CLIOutput extends Output {
 		for (int i = 0; i < blatt.size(); i++) {
 
 			PlayingCard karte = blatt.get(i);
-			Suit farbe = karte.getFarbe();
-			Value wert = karte.getWert();
+			Suit farbe = karte.getSuit();
+			Value wert = karte.getValue();
 			System.out.println(i + ": " + farbe + " " + wert); // TODO also
 																// translate
 		}
@@ -474,7 +474,7 @@ public class CLIOutput extends Output {
 					System.out.println(i
 							+ ": "
 							+ Messages.getI18n("player.card.played",
-									gespielteKarten[i].getBesitzer().getName(),
+									gespielteKarten[i].getOwner().getName(),
 									gespielteKarten[i].toString()));
 				}
 			}
