@@ -31,7 +31,7 @@ public class PlayingCardTest {
 	 */
 	@Test
 	public void testSpielkarte1() {
-		assertEquals(Value.EIGHT, karte1.getWert() );
+		assertEquals(Value.EIGHT, karte1.getValue() );
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class PlayingCardTest {
 	 */
 	@Test
 	public void testSpielkarte2() {
-		assertEquals(Suit.HEARTS, karte1.getFarbe() );
+		assertEquals(Suit.HEARTS, karte1.getSuit() );
 	}
 	
 	/**
@@ -147,15 +147,15 @@ public class PlayingCardTest {
 	public void dateiPfadTest() {
 		
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
-		karte.setDeutsch(true);
-		assertEquals("germancards/HEARTS_OVER_KNAVE", karte.dateiPfad());
+		karte.setGermanDeck(true);
+		assertEquals("germancards/HEARTS_OVER_KNAVE", karte.filePath());
 	}
 	
 	@Test
 	public void dateiPfadTest2() {
 		
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
-		karte.setDeutsch(false);
-		assertEquals("frenchcards/HEARTS_QUEEN", karte.dateiPfad());
+		karte.setGermanDeck(false);
+		assertEquals("frenchcards/HEARTS_QUEEN", karte.filePath());
 	}
 }

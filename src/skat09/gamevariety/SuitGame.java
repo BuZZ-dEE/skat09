@@ -130,7 +130,7 @@ public class SuitGame extends GameVariety {
 			ergebnis = true;
 		}
 		
-		else if (gespielteKarten[0].getWert() == Value.UNDER_KNAVE || gespielteKarten[0].getFarbe() == getTrumpffarbe()) {
+		else if (gespielteKarten[0].getValue() == Value.UNDER_KNAVE || gespielteKarten[0].getSuit() == getTrumpffarbe()) {
 			
 			ergebnis = bubeOderTrumpfBedienen(blatt, gespielteKarten, zuPruefendeKarte);
 		}
@@ -157,7 +157,7 @@ public class SuitGame extends GameVariety {
 		boolean ergebnis = true;
 		
 		// Wenn Bube oder Trumpf gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (zuPruefendeKarte.getWert() == Value.UNDER_KNAVE || getTrumpffarbe() == zuPruefendeKarte.getFarbe()) {
+		if (zuPruefendeKarte.getValue() == Value.UNDER_KNAVE || getTrumpffarbe() == zuPruefendeKarte.getSuit()) {
 
 			ergebnis = true;
 		}
@@ -169,7 +169,7 @@ public class SuitGame extends GameVariety {
 			for (int i = 0; i < blatt.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (blatt.get(i).getWert() == Value.UNDER_KNAVE || blatt.get(i).getFarbe() == getTrumpffarbe()) {
+				if (blatt.get(i).getValue() == Value.UNDER_KNAVE || blatt.get(i).getSuit() == getTrumpffarbe()) {
 
 					ergebnis = false;
 					break;
@@ -185,29 +185,29 @@ public class SuitGame extends GameVariety {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Value.UNDER_KNAVE && karte2.getWert() == Value.UNDER_KNAVE) {
+		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 		}
 
-		else if (karte1.getWert() == Value.UNDER_KNAVE || karte2.getWert() == Value.UNDER_KNAVE) {
+		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 		}
 
-		else if (karte1.getFarbe() == trumpffarbe
-				&& karte2.getFarbe() == trumpffarbe) {
+		else if (karte1.getSuit() == trumpffarbe
+				&& karte2.getSuit() == trumpffarbe) {
 
 			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
 		}
 
-		else if (karte1.getFarbe() == trumpffarbe
-				|| karte2.getFarbe() == trumpffarbe) {
+		else if (karte1.getSuit() == trumpffarbe
+				|| karte2.getSuit() == trumpffarbe) {
 
 			hoehereKarte = hoehereKarteEinTrumpf(karte1, karte2);
 		}
 
-		else if (karte1.getFarbe() == karte2.getFarbe()) {
+		else if (karte1.getSuit() == karte2.getSuit()) {
 
 			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
 		}
@@ -232,7 +232,7 @@ public class SuitGame extends GameVariety {
 		
 		PlayingCard ergebnis;
 		
-		if (karte1.getFarbe() == trumpffarbe) {
+		if (karte1.getSuit() == trumpffarbe) {
 
 			ergebnis = karte1;
 		}
@@ -250,31 +250,31 @@ public class SuitGame extends GameVariety {
 
 		PlayingCard hoehereKarte = null;
 
-		if (karte1.getWert() == Value.UNDER_KNAVE && karte2.getWert() == Value.UNDER_KNAVE) {
+		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehererBube(karte1, karte2);
 		}
 
-		else if (karte1.getWert() == Value.UNDER_KNAVE || karte2.getWert() == Value.UNDER_KNAVE) {
+		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
 
 			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
 		}
 
-		else if (karte1.getFarbe() == trumpffarbe
-				&& karte2.getFarbe() == trumpffarbe) {
+		else if (karte1.getSuit() == trumpffarbe
+				&& karte2.getSuit() == trumpffarbe) {
 
 			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
 
 		}
 
-		else if (karte1.getFarbe() == trumpffarbe
-				|| karte2.getFarbe() == trumpffarbe) {
+		else if (karte1.getSuit() == trumpffarbe
+				|| karte2.getSuit() == trumpffarbe) {
 
 			hoehereKarte = hoehereKarteEinTrumpf(karte1, karte2);
 
 		}
 
-		else if (karte1.getFarbe() == karte2.getFarbe()) {
+		else if (karte1.getSuit() == karte2.getSuit()) {
 
 			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
 

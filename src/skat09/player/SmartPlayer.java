@@ -324,7 +324,7 @@ public class SmartPlayer extends Player {
 
 		else {
 
-			if (gespielteKarten[0].getBesitzer().equals(mitspieler)) {
+			if (gespielteKarten[0].getOwner().equals(mitspieler)) {
 
 				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
 			}
@@ -372,7 +372,7 @@ public class SmartPlayer extends Player {
 		else {
 
 			if (spielart.hoehereKarte(gespielteKarten[0], gespielteKarten[1])
-					.getBesitzer().equals(mitspieler)) {
+					.getOwner().equals(mitspieler)) {
 
 				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
 			}
@@ -479,7 +479,7 @@ public class SmartPlayer extends Player {
 
 		else {
 
-			if (gespielteKarten[0].getBesitzer().equals(mitspieler)) {
+			if (gespielteKarten[0].getOwner().equals(mitspieler)) {
 
 				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
 			}
@@ -526,7 +526,7 @@ public class SmartPlayer extends Player {
 		else {
 
 			if (spielart.hoehereKarte(gespielteKarten[0], gespielteKarten[1])
-					.getBesitzer().equals(mitspieler)) {
+					.getOwner().equals(mitspieler)) {
 
 				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
 			}
@@ -633,7 +633,7 @@ public class SmartPlayer extends Player {
 
 		else {
 
-			if (gespielteKarten[0].getBesitzer().equals(mitspieler)) {
+			if (gespielteKarten[0].getOwner().equals(mitspieler)) {
 
 				ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
 			}
@@ -667,7 +667,7 @@ public class SmartPlayer extends Player {
 		else {
 
 			if (spielart.hoehereKarte(gespielteKarten[0], gespielteKarten[1])
-					.getBesitzer().equals(mitspieler)) {
+					.getOwner().equals(mitspieler)) {
 
 				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
 			}
@@ -732,7 +732,7 @@ public class SmartPlayer extends Player {
 
 			for (PlayingCard karte : asse) {
 
-				if (kartenEinerFarbe(anfangsBlatt, karte.getFarbe()).size() <= 4) {
+				if (kartenEinerFarbe(anfangsBlatt, karte.getSuit()).size() <= 4) {
 
 					ergebnis = asse.get(zufall.nextInt(asse.size()));
 					break;
@@ -756,7 +756,7 @@ public class SmartPlayer extends Player {
 				// }
 
 				boolean enthalten = false;
-				PlayingCard hoehereKarte = naechstHoehereKarte(karte.getFarbe(),
+				PlayingCard hoehereKarte = naechstHoehereKarte(karte.getSuit(),
 						karte);
 				for (PlayingCard karte2 : alleGespielteKarten) {
 
@@ -765,7 +765,7 @@ public class SmartPlayer extends Player {
 					}
 				}
 
-				if (kartenEinerFarbe(anfangsBlatt, karte.getFarbe()).size() <= 4
+				if (kartenEinerFarbe(anfangsBlatt, karte.getSuit()).size() <= 4
 						&& enthalten) {
 
 					ergebnis = zehnen.get(zufall.nextInt(zehnen.size()));
@@ -1103,7 +1103,7 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		switch (karte.getWert()) {
+		switch (karte.getValue()) {
 
 		case SIX:
 			ergebnis = new PlayingCard(farbe, Value.SEVEN);
@@ -1261,7 +1261,7 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		switch (karte.getWert()) {
+		switch (karte.getValue()) {
 
 		case SIX:
 			ergebnis = null;
@@ -1419,7 +1419,7 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : blatt) {
 
-			if (karte.getWert() == wert) {
+			if (karte.getValue() == wert) {
 
 				ergebnis.add(karte);
 			}
@@ -1446,7 +1446,7 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : blatt) {
 
-			if (karte.getFarbe() == farbe && karte.getWert() != Value.UNDER_KNAVE) {
+			if (karte.getSuit() == farbe && karte.getValue() != Value.UNDER_KNAVE) {
 
 				ergebnis.add(karte);
 			}
@@ -1851,13 +1851,13 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			if (blatt.get(i).getWert() == Value.UNDER_KNAVE) {
+			if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
 
 				kartenwert = zuReizendeSpielart.karteBewerten(blatt.get(i));
 				spitzen[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
 			}
 
-			else if (blatt.get(i).getFarbe() == langeFarbe.get(0).getFarbe()) {
+			else if (blatt.get(i).getSuit() == langeFarbe.get(0).getSuit()) {
 
 				kartenwert = zuReizendeSpielart.karteBewerten(blatt.get(i));
 				spitzen[farbeeinordnenhilf(kartenwert)] = blatt.get(i);
@@ -1881,7 +1881,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			if (blatt.get(i).getWert() == Value.UNDER_KNAVE) {
+			if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
 
 				kartenwert = zuReizendeSpielart.karteBewerten(blatt.get(i));
 				spitzen[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
@@ -1919,18 +1919,18 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : blatt) {
 
-			if (karte.getWert() == Value.SEVEN || karte.getWert() == Value.EIGHT
-					|| karte.getWert() == Value.NINE) {
+			if (karte.getValue() == Value.SEVEN || karte.getValue() == Value.EIGHT
+					|| karte.getValue() == Value.NINE) {
 
 				kartenKleiner10++;
 			}
 
-			if (karte.getWert() == Value.UNDER_KNAVE) {
+			if (karte.getValue() == Value.UNDER_KNAVE) {
 
 				buben++;
 			}
 
-			if (karte.getWert() == Value.DAUS || karte.getWert() == Value.TEN) {
+			if (karte.getValue() == Value.DAUS || karte.getValue() == Value.TEN) {
 
 				kartenGroesserKoenig++;
 			}
@@ -1952,7 +1952,7 @@ public class SmartPlayer extends Player {
 		else if ((buben >= 2 && anzahlKartenVonFarbe >= 4)
 				|| (buben < 2 && anzahlKartenVonFarbe >= 6)) {
 
-			zuReizendeSpielart = new SuitGame(langeFarbe.get(0).getFarbe());
+			zuReizendeSpielart = new SuitGame(langeFarbe.get(0).getSuit());
 		}
 
 		else {
@@ -2102,7 +2102,7 @@ public class SmartPlayer extends Player {
 		ArrayList<PlayingCard> gewinner = ermittleKurzeLangeFarbe(true);
 
 		// Gewinner feststellen
-		switch (gewinner.get(0).getFarbe()) {
+		switch (gewinner.get(0).getSuit()) {
 
 		case BELLS:
 			ergebnis = Suit.BELLS;
@@ -2135,27 +2135,27 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < stiche.size(); i++) {
 
-			if (stiche.get(i).getWert() == Value.DAUS) {
+			if (stiche.get(i).getValue() == Value.DAUS) {
 
 				erg += 11;
 
-			} else if (stiche.get(i).getWert() == Value.TEN) {
+			} else if (stiche.get(i).getValue() == Value.TEN) {
 
 				erg += 10;
 
-			} else if (stiche.get(i).getWert() == Value.UNDER_KNAVE) {
+			} else if (stiche.get(i).getValue() == Value.UNDER_KNAVE) {
 
 				erg += 2;
 
-			} else if (stiche.get(i).getWert() == Value.OVER_KNAVE) {
+			} else if (stiche.get(i).getValue() == Value.OVER_KNAVE) {
 
 				erg += 3;
 
-			} else if (stiche.get(i).getWert() == Value.KING) {
+			} else if (stiche.get(i).getValue() == Value.KING) {
 
 				erg += 4;
 
-			} else if (stiche.get(i).getWert() == Value.SIX) {
+			} else if (stiche.get(i).getValue() == Value.SIX) {
 
 				erg += 6;
 			}
@@ -2175,7 +2175,7 @@ public class SmartPlayer extends Player {
 
 		int ergebnis;
 
-		switch (karte.getWert()) {
+		switch (karte.getValue()) {
 		case SIX:
 			ergebnis = 6;
 			break;

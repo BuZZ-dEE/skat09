@@ -272,9 +272,9 @@ public class TableTest {
 		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
 		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
 		IGameVariety spielart = new NullGame();
-		gespielteKarten[0].setBesitzer(spieler1);
-		gespielteKarten[1].setBesitzer(spieler2);
-		gespielteKarten[2].setBesitzer(spieler3);
+		gespielteKarten[0].setOwner(spieler1);
+		gespielteKarten[1].setOwner(spieler2);
+		gespielteKarten[2].setOwner(spieler3);
 		assertEquals(spieler2, tisch.stichAuswerten(spielart, gespielteKarten));
 		
 	}
@@ -286,9 +286,9 @@ public class TableTest {
 		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
 		gespielteKarten[2] = new PlayingCard(Suit.BELLS, Value.KING);
 		IGameVariety spielart = new NullGame();
-		gespielteKarten[0].setBesitzer(spieler1);
-		gespielteKarten[1].setBesitzer(spieler2);
-		gespielteKarten[2].setBesitzer(spieler3);
+		gespielteKarten[0].setOwner(spieler1);
+		gespielteKarten[1].setOwner(spieler2);
+		gespielteKarten[2].setOwner(spieler3);
 		assertEquals(spieler3, tisch.stichAuswerten(spielart, gespielteKarten));
 	}
 	
@@ -299,9 +299,9 @@ public class TableTest {
 		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.DAUS);
 		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
 		IGameVariety spielart = new SuitGame(Suit.HEARTS);
-		gespielteKarten[0].setBesitzer(spieler1);
-		gespielteKarten[1].setBesitzer(spieler2);
-		gespielteKarten[2].setBesitzer(spieler3);
+		gespielteKarten[0].setOwner(spieler1);
+		gespielteKarten[1].setOwner(spieler2);
+		gespielteKarten[2].setOwner(spieler3);
 		assertEquals(spieler3, tisch.stichAuswerten(spielart, gespielteKarten));
 	}
 	
@@ -312,9 +312,9 @@ public class TableTest {
 		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
 		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		IGameVariety spielart = new GrandGame();
-		gespielteKarten[0].setBesitzer(spieler1);
-		gespielteKarten[1].setBesitzer(spieler2);
-		gespielteKarten[2].setBesitzer(spieler3);
+		gespielteKarten[0].setOwner(spieler1);
+		gespielteKarten[1].setOwner(spieler2);
+		gespielteKarten[2].setOwner(spieler3);
 		assertEquals(spieler1, tisch.stichAuswerten(spielart, gespielteKarten));
 	}
 	
@@ -325,9 +325,9 @@ public class TableTest {
 		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
 		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
 		IGameVariety spielart = new NullGame();
-		gespielteKarten[0].setBesitzer(spieler1);
-		gespielteKarten[1].setBesitzer(spieler2);
-		gespielteKarten[2].setBesitzer(spieler3);
+		gespielteKarten[0].setOwner(spieler1);
+		gespielteKarten[1].setOwner(spieler2);
+		gespielteKarten[2].setOwner(spieler3);
 		assertEquals(spieler1, tisch.stichAuswerten(spielart, gespielteKarten));
 	}
 	
@@ -338,9 +338,9 @@ public class TableTest {
 		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.DAUS);
 		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
 		IGameVariety spielart = new SuitGame(Suit.ACORNS);
-		gespielteKarten[0].setBesitzer(spieler1);
-		gespielteKarten[1].setBesitzer(spieler2);
-		gespielteKarten[2].setBesitzer(spieler3);
+		gespielteKarten[0].setOwner(spieler1);
+		gespielteKarten[1].setOwner(spieler2);
+		gespielteKarten[2].setOwner(spieler3);
 		assertEquals(spieler1, tisch.stichAuswerten(spielart, gespielteKarten));
 	}
 	
@@ -703,7 +703,7 @@ public class TableTest {
 		boolean test = false;
 		tisch.kartenBesitzergeben();
 		for (int i= 0; i<tisch.getSpieler1().getBlatt().size(); i++){
-			if (tisch.getSpieler1().getBlatt().get(i).getBesitzer().equals(tisch.getSpieler1())) {
+			if (tisch.getSpieler1().getBlatt().get(i).getOwner().equals(tisch.getSpieler1())) {
 				test = true;
 			}
 		}
@@ -716,7 +716,7 @@ public class TableTest {
 		boolean test = false;
 		tisch.kartenBesitzergeben();
 		for (int i= 0; i<tisch.getSpieler3().getBlatt().size(); i++){
-			if (tisch.getSpieler3().getBlatt().get(i).getBesitzer().equals(tisch.getSpieler3())) {
+			if (tisch.getSpieler3().getBlatt().get(i).getOwner().equals(tisch.getSpieler3())) {
 				test = true;
 			}
 		}

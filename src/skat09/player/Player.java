@@ -446,7 +446,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < blatt.size(); i++) {
 			
-			if (blatt.get(i).getWert() == Value.UNDER_KNAVE) {
+			if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
 
 				kartenwert = spielart.karteBewerten(blatt.get(i));
 				truempfe[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
@@ -491,7 +491,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			if (blatt.get(i).getWert() != Value.UNDER_KNAVE && blatt.get(i).getFarbe() == spiel.getTrumpffarbe()) {
+			if (blatt.get(i).getValue() != Value.UNDER_KNAVE && blatt.get(i).getSuit() == spiel.getTrumpffarbe()) {
 
 				kartenwert = spielart.karteBewerten(blatt.get(i));
 				truempfe[farbeeinordnenhilf(kartenwert)] = blatt.get(i);
