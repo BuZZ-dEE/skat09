@@ -227,7 +227,7 @@ public class ControllerTest {
 		OutputStub wahl1 = new OutputStub(null,null,"f");
 		Controller controller = new Controller(tisch,wahl1);
 		controller.waehleSkatblatt();
-		assertFalse(PlayingCard.getDeutsch());
+		assertFalse(PlayingCard.isGermanDeck());
 		}
 	
 	@Test
@@ -236,7 +236,7 @@ public class ControllerTest {
 		OutputStub wahl1 = new OutputStub(null,null,"d");
 		Controller controller = new Controller(tisch,wahl1);
 		controller.waehleSkatblatt();
-		assertTrue(PlayingCard.getDeutsch());
+		assertTrue(PlayingCard.isGermanDeck());
 		}
 	
 	@Test
@@ -474,17 +474,17 @@ public class ControllerTest {
 		controller.bereiteSpielvor();
 			boolean hatnamen = true;
 		for (PlayingCard karte : tisch.getSpieler1().getBlatt()) {
-			if (karte.getBesitzer() == null) {
+			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
 				}
 		for (PlayingCard karte : tisch.getSpieler2().getBlatt()) {
-			if (karte.getBesitzer() == null) {
+			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
 				}
 		for (PlayingCard karte : tisch.getSpieler3().getBlatt()) {
-			if (karte.getBesitzer() == null) {
+			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
 				}
@@ -804,9 +804,9 @@ public class ControllerTest {
 		PlayingCard k1 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		PlayingCard k2 = new PlayingCard(Suit.HEARTS, Value.DAUS);
 		PlayingCard k3 = new PlayingCard(Suit.BELLS, Value.SEVEN);
-		k1.setBesitzer(gewinner);
-		k2.setBesitzer(s2);
-		k3.setBesitzer(s3);
+		k1.setOwner(gewinner);
+		k2.setOwner(s2);
+		k3.setOwner(s3);
 		gespielteKarten[0] = k1;
 		gespielteKarten[1] = k2;
 		gespielteKarten[2] = k3;
@@ -854,8 +854,8 @@ public class ControllerTest {
 		
 		PlayingCard[] skat = controller.getTisch().getSkat();
 		boolean initErfolgreich = false;
-		if(skat[0].getBesitzer().equals(oma) && skat[1].getBesitzer().equals(oma) && 
-				skat[2].getBesitzer().equals(oma)) {
+		if(skat[0].getOwner().equals(oma) && skat[1].getOwner().equals(oma) && 
+				skat[2].getOwner().equals(oma)) {
 
 			initErfolgreich = true;
 		}

@@ -43,7 +43,7 @@ abstract public class GameVariety implements IGameVariety {
 		boolean ergebnis = true;
 		
 		// Wenn die Farbe korrekt bedient wurde gib true zurueck.
-		if (gespielteKarten[0].getFarbe() == zuPruefendeKarte.getFarbe() && zuPruefendeKarte.getWert() != Value.UNDER_KNAVE) {
+		if (gespielteKarten[0].getSuit() == zuPruefendeKarte.getSuit() && zuPruefendeKarte.getValue() != Value.UNDER_KNAVE) {
 
 			ergebnis = true;
 		}
@@ -53,7 +53,7 @@ abstract public class GameVariety implements IGameVariety {
 
 			for (int i = 0; i < blatt.size(); i++) {
 
-				if (blatt.get(i).getFarbe() == gespielteKarten[0].getFarbe() && blatt.get(i).getWert() != Value.UNDER_KNAVE) {
+				if (blatt.get(i).getSuit() == gespielteKarten[0].getSuit() && blatt.get(i).getValue() != Value.UNDER_KNAVE) {
 
 					ergebnis = false;
 					break;
@@ -97,20 +97,20 @@ abstract public class GameVariety implements IGameVariety {
 		
 		PlayingCard ergebnis;
 		
-		if (karte1.getFarbe() == Suit.ACORNS
-				&& karte2.getFarbe() != Suit.ACORNS) {
+		if (karte1.getSuit() == Suit.ACORNS
+				&& karte2.getSuit() != Suit.ACORNS) {
 
 			ergebnis = karte1;
 		}
 
-		else if (karte1.getFarbe() == Suit.LEAVES
-				&& karte2.getFarbe() != Suit.ACORNS) {
+		else if (karte1.getSuit() == Suit.LEAVES
+				&& karte2.getSuit() != Suit.ACORNS) {
 
 			ergebnis = karte1;
 		}
 
-		else if (karte1.getFarbe() == Suit.HEARTS
-				&& (karte2.getFarbe() != Suit.ACORNS && karte2.getFarbe() != Suit.LEAVES)) {
+		else if (karte1.getSuit() == Suit.HEARTS
+				&& (karte2.getSuit() != Suit.ACORNS && karte2.getSuit() != Suit.LEAVES)) {
 
 			ergebnis = karte1;
 		}
@@ -137,7 +137,7 @@ abstract public class GameVariety implements IGameVariety {
 
 		PlayingCard ergebnis;
 
-		if (karte1.getWert() == Value.UNDER_KNAVE) {
+		if (karte1.getValue() == Value.UNDER_KNAVE) {
 
 			ergebnis = karte1;
 		}
@@ -171,7 +171,7 @@ abstract public class GameVariety implements IGameVariety {
 	//@Override
 	public int karteBewerten(PlayingCard karte) {
 
-		Value wert = karte.getWert();
+		Value wert = karte.getValue();
 		int ergebnis = 0;
 
 		switch (wert) {
@@ -212,7 +212,7 @@ abstract public class GameVariety implements IGameVariety {
 	//@Override
 	public int bubeBewerten(PlayingCard karte) {
 
-		Suit farbe = karte.getFarbe();
+		Suit farbe = karte.getSuit();
 		int ergebnis = 0;
 
 		switch (farbe) {
