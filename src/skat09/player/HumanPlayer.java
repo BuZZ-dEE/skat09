@@ -20,20 +20,12 @@ import skat09.test.interfaces.IPlayer;
  */
 public class HumanPlayer extends Player implements IPlayer,
 		IHumanPlayer {
-
-	//
-	// Datenfelder
-	//
-
+	
 	/**
 	 * Controller zur direkten Kommunikation mit der TUI/GUI
 	 */
 	IController controller;
-
-	//
-	// Konstruktor
-	//
-
+	
 	/**
 	 * Der Konstruktor der Klasse MenschlicherSpieler bekommt einen Namen und
 	 * den Controller &uuml;bergeben
@@ -49,18 +41,7 @@ public class HumanPlayer extends Player implements IPlayer,
 		super(name);
 		this.controller = controller;
 	}
-
-	//
-	// get-Methoden
-	//
-
-	//
-	// set-Methoden
-	//
-
-	//
-	// weitere Methoden
-	//
+	
 
 	/**
 	 * Die Methode simuliert das h&ouml;ren des menschlichen Spielers.
