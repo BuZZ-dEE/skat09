@@ -25,10 +25,7 @@ import skat09.test.interfaces.IPlayer;
  */
 
 abstract public class Player implements IPlayer {
-
-	//
-	// Datenfelder
-	//
+	
 
 	/**
 	 *  Name des Spielers
@@ -119,10 +116,7 @@ abstract public class Player implements IPlayer {
 		stiche = new ArrayList<PlayingCard>();
 		alleGespielteKarten = new ArrayList<PlayingCard>();
 	}
-
-	//
-	// get-Methoden
-	//
+	
 
 	//@Override
 	public String getName() {
@@ -191,11 +185,7 @@ abstract public class Player implements IPlayer {
 	public int getHandspiele() {
 		return handspiele;
 	}
-
-	//
-	// set-Methoden
-	//
-
+	
 	//@Override
 	public void setHandspiele(int handspiele) {
 		this.handspiele = handspiele;
@@ -271,10 +261,7 @@ abstract public class Player implements IPlayer {
 		
 		this.skat = skat;
 	}
-
-	//
-	// weitere Methoden
-	//
+	
 
 	//@Override
 	public void stichHinzufuegen(PlayingCard[] stich) {
@@ -349,10 +336,7 @@ abstract public class Player implements IPlayer {
 
 	//@Override
 	abstract public PlayingCard[] druecken(PlayingCard[] skat);
-
-	//
-	// Methoden zur Spielansage
-	//
+	
 
 	//@Override
 	abstract public IGameVariety spielAnsagen();

@@ -14,15 +14,7 @@ import skat09.test.interfaces.IGameVariety;
  * @version 03.07.2009
  */
 public class Granny extends Player {
-
-	//
-	// Datenfelder
-	//
-
-	//
-	// Konstruktor
-	//
-
+	
 	/**
 	 * Der Konstruktor der Klasse Oma
 	 * @param name Der Name der Oma
@@ -31,18 +23,6 @@ public class Granny extends Player {
 
 		super(name);
 	}
-
-	//
-	// get-Methoden
-	//
-
-	//
-	// set-Methoden
-	//
-
-	//
-	// weitere Methoden
-	//
 
 	/**
 	 * Die Oma spielt immer die oberste Karte aus ihrem Blatt.
