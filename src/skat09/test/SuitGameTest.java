@@ -59,7 +59,7 @@ public class SuitGameTest {
 
 	@Test
 	public void FarbspielTest3() {
-		assertEquals(Suit.BELLS, new SuitGame(Suit.BELLS).getTrumpffarbe());
+		assertEquals(Suit.BELLS, new SuitGame(Suit.BELLS).getTrumpSuit());
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class SuitGameTest {
 
 	@Test
 	public void testgetTrumpfFarbe() {
-		assertEquals(Suit.HEARTS, spiel.getTrumpffarbe());
+		assertEquals(Suit.HEARTS, spiel.getTrumpSuit());
 	}
 
 	@Test

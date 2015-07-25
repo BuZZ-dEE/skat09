@@ -491,7 +491,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			if (blatt.get(i).getValue() != Value.UNDER_KNAVE && blatt.get(i).getSuit() == spiel.getTrumpffarbe()) {
+			if (blatt.get(i).getValue() != Value.UNDER_KNAVE && blatt.get(i).getSuit() == spiel.getTrumpSuit()) {
 
 				kartenwert = spielart.evaluateCard(blatt.get(i));
 				truempfe[farbeeinordnenhilf(kartenwert)] = blatt.get(i);

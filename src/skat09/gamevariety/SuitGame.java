@@ -15,14 +15,14 @@ import skat09.playingcard.Value;
  */
 public class SuitGame extends GameVariety {
 
-	private Suit trumpffarbe;
+	private Suit trumpSuit;
 
 	/**
 	 * Instanziert ein Farb - Spiel
 	 */
-	public SuitGame(Suit trumpffarbe) {
+	public SuitGame(Suit trumpSuit) {
 
-		this.trumpffarbe = trumpffarbe;
+		this.trumpSuit = trumpSuit;
 		setGameVariety(GameVarietyName.SUIT);
 
 	}
@@ -32,266 +32,161 @@ public class SuitGame extends GameVariety {
 	 * 
 	 * @return trumpffarbe
 	 */
-	public Suit getTrumpffarbe() {
-		return trumpffarbe;
+	public Suit getTrumpSuit() {
+		return trumpSuit;
 	}
-
-//	/**
-//	 * Prueft in Abhaengigkeit von den vorher gespielten Karten, ob eine Karte
-//	 * zu dem Zeitpunkt gespielt werden darf.
-//	 * 
-//	 * @return true, wenn Karte gespielt werden darf
-//	 * @param blatt
-//	 * @param gespielteKarten
-//	 * @param zuPruefendeKarte
-//	 */
-//	public boolean gespielteKartePruefen(ArrayList<Spielkarte> blatt, Spielkarte[] gespielteKarten, Spielkarte zuPruefendeKarte) {
-//
-//		boolean ergebnis = false;
-//
-//		if (gespielteKarten[0] == null) {
-//
-//			ergebnis = true;
-//		} else if (gespielteKarten[0].getWert() == Wert.BUBE || gespielteKarten[0].getFarbe() == getTrumpffarbe()) {
-//			
-//			// Wenn Bube gespielt wurde und korrekt bedient wurde gib true zurueck.
-//			if (zuPruefendeKarte.getWert() == Wert.BUBE || getTrumpffarbe() == zuPruefendeKarte.getFarbe()) {
-//
-//				ergebnis = true;
-//			}
-//			// Wenn nicht bedient wurde, schaue, ob bedient werden konnte.
-//			else {
-//
-//				boolean hatBube = false;
-//				boolean hatTrumpf = false;
-//
-//				for (int i = 0; i < blatt.size(); i++) {
-//
-//					// Nach Buben suchen
-//					if (blatt.get(i).getWert() == Wert.BUBE) {
-//
-//						hatBube = true;
-//					}
-//
-//					// Nach Trumpfkarten suchen
-//					else if (blatt.get(i).getFarbe() == getTrumpffarbe()) {
-//
-//						hatTrumpf = true;
-//					}
-//				}
-//				
-//				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-//				if (hatBube || hatTrumpf) {
-//
-//					ergebnis = false;
-//				} else {
-//
-//					ergebnis = true;
-//				}
-//			}
-//		}
-//
-//		else if (gespielteKarten[0].getFarbe() == zuPruefendeKarte.getFarbe()) {
-//
-//			ergebnis = true;
-//		} else {
-//
-//			boolean hatFarbe = false;
-//
-//			// nachsehen, ob der Spieler die Farbe bedienen konnte.
-//			for (int i = 0; i < blatt.size(); i++) {
-//
-//				if (blatt.get(i).getFarbe() == gespielteKarten[0].getFarbe()) {
-//
-//					hatFarbe = true;
-//				}
-//			}
-//
-//			if (hatFarbe) {
-//
-//				ergebnis = false;
-//			} else {
-//
-//				ergebnis = true;
-//			}
-//
-//		}
-//		return ergebnis;
-//	}
 	
 	@Override
-	public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	public boolean checkedPlayedCards(ArrayList<PlayingCard> deck, PlayingCard[] playedCards, PlayingCard cardToCheck) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
 		// Wenn noch keine Karte gespielt wurde, darf die Karte gespielt werden.
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
-			ergebnis = true;
+			result = true;
+		} else if (playedCards[0].getValue() == Value.UNDER_KNAVE || playedCards[0].getSuit() == getTrumpSuit()) {
+			
+			result = followingUnderKnaveOrTrump(deck, playedCards, cardToCheck);
+		} else {
+			
+			result = followingSuit(deck, playedCards, cardToCheck);
 		}
 		
-		else if (gespielteKarten[0].getValue() == Value.UNDER_KNAVE || gespielteKarten[0].getSuit() == getTrumpffarbe()) {
-			
-			ergebnis = bubeOderTrumpfBedienen(blatt, gespielteKarten, zuPruefendeKarte);
-		}
-
-		else {
-			
-			ergebnis = followingSuit(blatt, gespielteKarten, zuPruefendeKarte);
-		}
-		
-		return ergebnis;
+		return result;
 	}
 	
 	/**
 	 * Wenn die zuerst gespielte Karte ein Bube oder Trumpf war wird gepr&uuml;ft,
 	 * ob der Spieler noch Buben oder Trumpf hat.
 	 * 
-	 * @param blatt - Das Blatt des Spielers, der eine Karte spielen m&ouml;chte.
-	 * @param gespielteKarten - Die Karten, die schon gespielt wurden.
-	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
+	 * @param deck - Das Blatt des Spielers, der eine Karte spielen m&ouml;chte.
+	 * @param playedCards - Die Karten, die schon gespielt wurden.
+	 * @param cardToCheck - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	public boolean bubeOderTrumpfBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	public boolean followingUnderKnaveOrTrump(ArrayList<PlayingCard> deck, PlayingCard[] playedCards, PlayingCard cardToCheck) {
 		
-		boolean ergebnis = true;
+		boolean result = true;
 		
 		// Wenn Bube oder Trumpf gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (zuPruefendeKarte.getValue() == Value.UNDER_KNAVE || getTrumpffarbe() == zuPruefendeKarte.getSuit()) {
+		if (cardToCheck.getValue() == Value.UNDER_KNAVE || getTrumpSuit() == cardToCheck.getSuit()) {
 
-			ergebnis = true;
-		}
-		
-		// Wenn nicht bedient wurde, schaue, ob bedient werden konnte.
-		else {
+			result = true;
+		} else { // Wenn nicht bedient wurde, schaue, ob bedient werden konnte.
 
 			// Nach Buben oder Trumpf suchen
-			for (int i = 0; i < blatt.size(); i++) {
+			for (int i = 0; i < deck.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (blatt.get(i).getValue() == Value.UNDER_KNAVE || blatt.get(i).getSuit() == getTrumpffarbe()) {
+				if (deck.get(i).getValue() == Value.UNDER_KNAVE || deck.get(i).getSuit() == getTrumpSuit()) {
 
-					ergebnis = false;
+					result = false;
 					break;
 				}
 			}
 		}
 		
-		return ergebnis;
+		return result;
 	}
 
 	@Override
-	public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCard(PlayingCard card1, PlayingCard card2) {
 
-		PlayingCard hoehereKarte = null;
+		PlayingCard highestCard = null;
 
-		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
+		if (card1.getValue() == Value.UNDER_KNAVE && card2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = higherUnderKnave(karte1, karte2);
+			highestCard = higherUnderKnave(card1, card2);
+			
+		} else if (card1.getValue() == Value.UNDER_KNAVE || card2.getValue() == Value.UNDER_KNAVE) {
+
+			highestCard = higherCardOneUnderKnave(card1, card2);
+			
+		} else if (card1.getSuit() == trumpSuit
+				&& card2.getSuit() == trumpSuit) {
+
+			highestCard = higherCardSuit(card1, card2);
+			
+		} else if (card1.getSuit() == trumpSuit
+				|| card2.getSuit() == trumpSuit) {
+
+			highestCard = higherCardOneTrump(card1, card2);
+			
+		} else if (card1.getSuit() == card2.getSuit()) {
+
+			highestCard = higherCardSuit(card1, card2);
+			
+		} else {
+
+			highestCard = card1;
 		}
 
-		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
-
-			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
-		}
-
-		else if (karte1.getSuit() == trumpffarbe
-				&& karte2.getSuit() == trumpffarbe) {
-
-			hoehereKarte = higherCardSuit(karte1, karte2);
-		}
-
-		else if (karte1.getSuit() == trumpffarbe
-				|| karte2.getSuit() == trumpffarbe) {
-
-			hoehereKarte = hoehereKarteEinTrumpf(karte1, karte2);
-		}
-
-		else if (karte1.getSuit() == karte2.getSuit()) {
-
-			hoehereKarte = higherCardSuit(karte1, karte2);
-		}
-
-		else {
-
-			hoehereKarte = karte1;
-		}
-
-		return hoehereKarte;
+		return highestCard;
 	}
 	
 	/**
 	 * Liefert von 2 Karten die h&ouml;here zur&uuml;ck, wobei eine Karte davon Trumpf ist.
 	 * Die andere Karte ist nicht Trumpf und auch kein Bube.
 	 * 
-	 * @param karte1 - die erste Karte
-	 * @param karte2 - die zweite Karte
+	 * @param card1 - die erste Karte
+	 * @param card2 - die zweite Karte
 	 * @return Der Bube wird zur&uuml;ck geliefert.
 	 */
-	public PlayingCard hoehereKarteEinTrumpf(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCardOneTrump(PlayingCard card1, PlayingCard card2) {
 		
-		PlayingCard ergebnis;
+		PlayingCard result;
 		
-		if (karte1.getSuit() == trumpffarbe) {
+		if (card1.getSuit() == trumpSuit) {
 
-			ergebnis = karte1;
-		}
+			result = card1;
+		} else {
 
-		else {
-
-			ergebnis = karte2;
+			result = card2;
 		}
 		
-		return ergebnis;
+		return result;
 	}
 
 	@Override
-	public PlayingCard sortCard(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard sortCard(PlayingCard card1, PlayingCard card2) {
 
-		PlayingCard hoehereKarte = null;
+		PlayingCard highestCard = null;
 
-		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
+		if (card1.getValue() == Value.UNDER_KNAVE && card2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = higherUnderKnave(karte1, karte2);
-		}
-
-		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
-
-			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
-		}
-
-		else if (karte1.getSuit() == trumpffarbe
-				&& karte2.getSuit() == trumpffarbe) {
-
-			hoehereKarte = higherCardSuit(karte1, karte2);
-
-		}
-
-		else if (karte1.getSuit() == trumpffarbe
-				|| karte2.getSuit() == trumpffarbe) {
-
-			hoehereKarte = hoehereKarteEinTrumpf(karte1, karte2);
-
-		}
-
-		else if (karte1.getSuit() == karte2.getSuit()) {
-
-			hoehereKarte = higherCardSuit(karte1, karte2);
-
-		}
-
-		else {
+			highestCard = higherUnderKnave(card1, card2);
 			
-			hoehereKarte = higherSuit(karte1, karte2);
+		} else if (card1.getValue() == Value.UNDER_KNAVE || card2.getValue() == Value.UNDER_KNAVE) {
+
+			highestCard = higherCardOneUnderKnave(card1, card2);
+			
+		} else if (card1.getSuit() == trumpSuit
+				&& card2.getSuit() == trumpSuit) {
+
+			highestCard = higherCardSuit(card1, card2);
+
+		} else if (card1.getSuit() == trumpSuit
+				|| card2.getSuit() == trumpSuit) {
+
+			highestCard = higherCardOneTrump(card1, card2);
+
+		} else if (card1.getSuit() == card2.getSuit()) {
+
+			highestCard = higherCardSuit(card1, card2);
+
+		} else {
+			
+			highestCard = higherSuit(card1, card2);
 		}
 		
-		return hoehereKarte;
+		return highestCard;
 
 	}
 	
 	@Override
 	public String toString() {
-		return trumpffarbe.toString();
+		return trumpSuit.toString();
 	}
 
 }
