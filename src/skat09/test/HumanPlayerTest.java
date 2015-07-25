@@ -157,8 +157,8 @@ public class HumanPlayerTest {
 	public void farbeTest() {
 
 		SuitGame farbspiel = new SuitGame(Suit.LEAVES);
-		assertEquals(farbspiel.getTrumpffarbe(), mensch.farbe()
-				.getTrumpffarbe());
+		assertEquals(farbspiel.getTrumpSuit(), mensch.farbe()
+				.getTrumpSuit());
 	}
 
 	@Test
