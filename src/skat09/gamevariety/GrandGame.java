@@ -34,14 +34,10 @@ public class GrandGame extends GameVariety {
 		if (playedCards[0] == null) {
 
 			result = true;
-		}
-		
-		else if (playedCards[0].getValue() == Value.UNDER_KNAVE) {
+		} else if (playedCards[0].getValue() == Value.UNDER_KNAVE) {
 			
 			result = followingUnderKnave(deck, playedCards, cardTocheck);
-		}
-
-		else {
+		} else {
 			
 			result = followingSuit(deck, playedCards, cardTocheck);
 		}
