@@ -84,7 +84,7 @@ public class HumanPlayer extends Player implements IPlayer,
 
 		while (!fertig) {
 
-			if (spielart.gespielteKartePruefen(blatt, gespielteKarten, karte)) {
+			if (spielart.checkedPlayedCards(blatt, gespielteKarten, karte)) {
 				ergebnis = karte;
 				fertig = true;
 			} else {

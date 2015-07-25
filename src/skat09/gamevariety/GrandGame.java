@@ -20,13 +20,13 @@ public class GrandGame extends GameVariety {
 	 */
 	public GrandGame() {
 
-		setSpielart(GameVarietyName.GRAND);
+		setGameVariety(GameVarietyName.GRAND);
 	}
 
 
 	
 	@Override
-	public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 
 		boolean ergebnis = false;
 
@@ -43,7 +43,7 @@ public class GrandGame extends GameVariety {
 
 		else {
 			
-			ergebnis = farbeBedienen(blatt, gespielteKarten, zuPruefendeKarte);
+			ergebnis = followingSuit(blatt, gespielteKarten, zuPruefendeKarte);
 		}
 		
 		return ergebnis;
@@ -87,25 +87,25 @@ public class GrandGame extends GameVariety {
 	}
 
 	@Override
-	public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2) {
 
 		PlayingCard hoehereKarte = null;
 
 		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = hoehererBube(karte1, karte2);
+			hoehereKarte = higherUnderKnave(karte1, karte2);
 
 		}
 
 		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
+			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
 
 		}
 
 		else if (karte1.getSuit() == karte2.getSuit()) {
 
-			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
+			hoehereKarte = higherCardSuit(karte1, karte2);
 
 		}
 
@@ -118,31 +118,31 @@ public class GrandGame extends GameVariety {
 	}
 
 	@Override
-	public PlayingCard sortiereKarte(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard sortCard(PlayingCard karte1, PlayingCard karte2) {
 
 		PlayingCard hoehereKarte = null;
 
 		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = hoehererBube(karte1, karte2);
+			hoehereKarte = higherUnderKnave(karte1, karte2);
 
 		}
 
 		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
+			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
 
 		}
 
 		else if (karte1.getSuit() == karte2.getSuit()) {
 
-			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
+			hoehereKarte = higherCardSuit(karte1, karte2);
 
 		}
 
 		else {
 			
-			hoehereKarte = hoehereFarbe(karte1, karte2);
+			hoehereKarte = higherSuit(karte1, karte2);
 		}
 
 		return hoehereKarte;

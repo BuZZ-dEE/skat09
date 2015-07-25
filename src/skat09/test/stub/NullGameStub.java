@@ -12,7 +12,7 @@ public class NullGameStub extends GameVariety implements INullGame {
 	private int aufrufe = 0;
 	
 	@Override
-	public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+	public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt,
 			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 		
 		boolean ergebnis = false;
@@ -25,19 +25,19 @@ public class NullGameStub extends GameVariety implements INullGame {
 	}
 
 	@Override
-	public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int karteBewerten(PlayingCard karte) {
+	public int evaluateCard(PlayingCard karte) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public PlayingCard sortiereKarte(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard sortCard(PlayingCard karte1, PlayingCard karte2) {
 		// TODO Auto-generated method stub
 		return null;
 	}

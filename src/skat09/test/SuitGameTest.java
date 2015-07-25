@@ -65,7 +65,7 @@ public class SuitGameTest {
 	@Test
 	public void FarbspielTest2() {
 		assertEquals(GameVarietyName.SUIT, new SuitGame(Suit.BELLS)
-				.getSpielart());
+				.getGameVariety());
 	}
 
 	@Test
@@ -75,237 +75,237 @@ public class SuitGameTest {
 
 	@Test
 	public void testGespielteKartepruefen() {
-		assertEquals(true, spiel.gespielteKartePruefen(blatt, tischkarten, karte2));		
+		assertEquals(true, spiel.checkedPlayedCards(blatt, tischkarten, karte2));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen2() {
-		assertEquals(false, spiel.gespielteKartePruefen(blatt, tischkarten, karte6));		
+		assertEquals(false, spiel.checkedPlayedCards(blatt, tischkarten, karte6));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen3() {
-		assertEquals(true, spiel.gespielteKartePruefen(blatt2, tischkarten, karte4));		
+		assertEquals(true, spiel.checkedPlayedCards(blatt2, tischkarten, karte4));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen4() {
-		assertEquals(true , spiel.gespielteKartePruefen(blatt2, tischkarten, karte5));		
+		assertEquals(true , spiel.checkedPlayedCards(blatt2, tischkarten, karte5));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen5() {
 		tischkarten[0] = karte1;
-		assertEquals(true, spiel.gespielteKartePruefen(blatt2, tischkarten, karte4));		
+		assertEquals(true, spiel.checkedPlayedCards(blatt2, tischkarten, karte4));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen6() {
 		tischkarten[0] = karte1;
-		assertEquals(false, spiel.gespielteKartePruefen(blatt, tischkarten, karte6));		
+		assertEquals(false, spiel.checkedPlayedCards(blatt, tischkarten, karte6));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen7() {
 		tischkarten[0] = karte1;
-		assertEquals(true, spiel.gespielteKartePruefen(blatt, tischkarten, karte2));		
+		assertEquals(true, spiel.checkedPlayedCards(blatt, tischkarten, karte2));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen8() {
 		tischkarten[0] = karte6;
-		assertEquals(false, spiel.gespielteKartePruefen(blatt2, tischkarten, karte4));		
+		assertEquals(false, spiel.checkedPlayedCards(blatt2, tischkarten, karte4));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen9() {
 		tischkarten[0] = karte6;
-		assertEquals(true, spiel.gespielteKartePruefen(blatt2, tischkarten, karte5));		
+		assertEquals(true, spiel.checkedPlayedCards(blatt2, tischkarten, karte5));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen10() {
 		tischkarten[0] = null;
-		assertEquals(true, spiel.gespielteKartePruefen(blatt2, tischkarten, karte5));		
+		assertEquals(true, spiel.checkedPlayedCards(blatt2, tischkarten, karte5));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen11() {
 		tischkarten[0] = karte3;
-		assertEquals(false, spiel.gespielteKartePruefen(blatt3, tischkarten, karte6));		
+		assertEquals(false, spiel.checkedPlayedCards(blatt3, tischkarten, karte6));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen12() {
 		tischkarten[0] = karte4;
-		assertEquals(true, spiel.gespielteKartePruefen(blatt3, tischkarten, karte6));		
+		assertEquals(true, spiel.checkedPlayedCards(blatt3, tischkarten, karte6));		
 	}
 	
 	@Test
 	public void testGespielteKartepruefen13() {
 		tischkarten[0] = karte4;
 		blatt.add(karte3);
-		assertEquals(true, spiel.gespielteKartePruefen(blatt, tischkarten, karte2));		
+		assertEquals(true, spiel.checkedPlayedCards(blatt, tischkarten, karte2));		
 	}
 	
 	@Test
 	public void testHoehereKarte(){
-		assertEquals(karte1, spiel.hoehereKarte(karte1, karte2));
+		assertEquals(karte1, spiel.higherCard(karte1, karte2));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte2(){
-		assertEquals(karte3, spiel.hoehereKarte(karte1, karte3));
+		assertEquals(karte3, spiel.higherCard(karte1, karte3));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte3(){
-		assertEquals(karte1, spiel.hoehereKarte(karte1, karte4));
+		assertEquals(karte1, spiel.higherCard(karte1, karte4));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte4(){
-		assertEquals(karte6, spiel.hoehereKarte(karte6, karte4));
+		assertEquals(karte6, spiel.higherCard(karte6, karte4));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte5(){
-		assertEquals(karte7, spiel.hoehereKarte(karte3, karte7));
+		assertEquals(karte7, spiel.higherCard(karte3, karte7));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte6(){
-		assertEquals(karte7, spiel.hoehereKarte(karte7, karte3));
+		assertEquals(karte7, spiel.higherCard(karte7, karte3));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte8(){
-		assertEquals(karte3, spiel.hoehereKarte(karte3, karte1));
+		assertEquals(karte3, spiel.higherCard(karte3, karte1));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte9(){
-		assertEquals(karte1, spiel.hoehereKarte(karte2, karte1));
+		assertEquals(karte1, spiel.higherCard(karte2, karte1));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte10(){
-		assertEquals(karte1, spiel.hoehereKarte(karte4, karte1));
+		assertEquals(karte1, spiel.higherCard(karte4, karte1));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte11(){
-		assertEquals(karte5, spiel.hoehereKarte(karte5, karte6));
+		assertEquals(karte5, spiel.higherCard(karte5, karte6));
 		
 	}
 	
 	@Test
 	public void testHoehereKarte12(){
-		assertEquals(karte5, spiel.hoehereKarte(karte6, karte5));
+		assertEquals(karte5, spiel.higherCard(karte6, karte5));
 		
 	}
 	
 	@Test
 	public void testSortiereKarte(){
-		assertEquals(karte2, spiel.sortiereKarte(karte5, karte2));
+		assertEquals(karte2, spiel.sortCard(karte5, karte2));
 	}
 	
 	@Test
 	public void testSortiereKarte2(){
-		assertEquals(karte7, spiel.sortiereKarte(karte3, karte7));
+		assertEquals(karte7, spiel.sortCard(karte3, karte7));
 	}
 	
 	@Test
 	public void testSortiereKarte3(){
-		assertEquals(karte3, spiel.sortiereKarte(karte3, karte2));
+		assertEquals(karte3, spiel.sortCard(karte3, karte2));
 	}
 	
 	@Test
 	public void testSortiereKarte4(){
-		assertEquals(karte3, spiel.sortiereKarte(karte3, karte5));
+		assertEquals(karte3, spiel.sortCard(karte3, karte5));
 	}
 	
 	@Test
 	public void testSortiereKarte5(){
-		assertEquals(karte1, spiel.sortiereKarte(karte1, karte2));
+		assertEquals(karte1, spiel.sortCard(karte1, karte2));
 	}
 	
 	@Test
 	public void testSortiereKarte6(){
-		assertEquals(karte5, spiel.sortiereKarte(karte5, karte4));
+		assertEquals(karte5, spiel.sortCard(karte5, karte4));
 	}
 	
 	@Test
 	public void testSortiereKarte7(){
-		assertEquals(karte7, spiel.sortiereKarte(karte7, karte3));
+		assertEquals(karte7, spiel.sortCard(karte7, karte3));
 	}
 	
 	@Test
 	public void testSortiereKarte8(){
-		assertEquals(karte3, spiel.sortiereKarte(karte5, karte3));
+		assertEquals(karte3, spiel.sortCard(karte5, karte3));
 	}
 	
 	@Test
 	public void testSortiereKarte9(){
-		assertEquals(karte3, spiel.sortiereKarte(karte2, karte3));
+		assertEquals(karte3, spiel.sortCard(karte2, karte3));
 	}
 
 	@Test
 	public void testSortiereKarte10(){
-		assertEquals(karte1, spiel.sortiereKarte(karte2, karte1));
+		assertEquals(karte1, spiel.sortCard(karte2, karte1));
 	}
 	
 	@Test
 	public void testSortiereKarte11(){
-		assertEquals(karte2, spiel.sortiereKarte(karte2, karte5));
+		assertEquals(karte2, spiel.sortCard(karte2, karte5));
 	}
 	
 	@Test
 	public void testSortiereKarte12(){
-		assertEquals(karte5, spiel.sortiereKarte(karte5, karte6));
+		assertEquals(karte5, spiel.sortCard(karte5, karte6));
 	}
 	
 	@Test
 	public void testSortiereKarte13(){
-		assertEquals(karte5, spiel.sortiereKarte(karte6, karte5));
+		assertEquals(karte5, spiel.sortCard(karte6, karte5));
 	}
 	
 	@Test
 	public void testSortiereKarte14(){
-		assertEquals(karte8, spiel.sortiereKarte(karte8, karte4));
+		assertEquals(karte8, spiel.sortCard(karte8, karte4));
 	}
 	
 	@Test
 	public void testSortiereKarte15(){
-		assertEquals(karte8, spiel.sortiereKarte(karte4, karte8));
+		assertEquals(karte8, spiel.sortCard(karte4, karte8));
 	}
 	
 	@Test
 	public void testSortiereKarte16(){
-		assertEquals(karte2, spiel2.sortiereKarte(karte4, karte2));
+		assertEquals(karte2, spiel2.sortCard(karte4, karte2));
 	}
 	
 	@Test
 	public void testSortiereKarte17(){
-		assertEquals(karte2, spiel2.sortiereKarte(karte2, karte4));
+		assertEquals(karte2, spiel2.sortCard(karte2, karte4));
 	}
 	
 	@Test
 	public void testSortiereKarte18(){
-		assertEquals(karte4, spiel.sortiereKarte(karte9, karte4));
+		assertEquals(karte4, spiel.sortCard(karte9, karte4));
 	}
 	
 	@Test
 	public void testSortiereKarte19(){
-		assertEquals(karte4, spiel.sortiereKarte(karte4, karte9));
+		assertEquals(karte4, spiel.sortCard(karte4, karte9));
 	}
 }

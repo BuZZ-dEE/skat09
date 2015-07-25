@@ -146,7 +146,7 @@ public class HumanPlayerTest {
 		boolean ergebnis = false;
 
 		IGameVariety spielart = new GrandGame();
-		if (spielart.getSpielart().equals(mensch.spielAnsagen().getSpielart())) {
+		if (spielart.getGameVariety().equals(mensch.spielAnsagen().getGameVariety())) {
 
 			ergebnis = true;
 		}

@@ -20,12 +20,12 @@ public class NullGame extends GameVariety implements INullGame {
 	 * Instanziert ein Null - Spiel
 	 */
 	public NullGame() {
-		setSpielart(GameVarietyName.NULL);
+		setGameVariety(GameVarietyName.NULL);
 	}
 
 	
 	@Override
-	public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+	public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt,
 			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 
 		boolean ergebnis = false;
@@ -38,7 +38,7 @@ public class NullGame extends GameVariety implements INullGame {
 
 		else {
 
-			ergebnis = farbeBedienen(blatt, gespielteKarten, zuPruefendeKarte);
+			ergebnis = followingSuit(blatt, gespielteKarten, zuPruefendeKarte);
 		}
 
 		return ergebnis;
@@ -46,7 +46,7 @@ public class NullGame extends GameVariety implements INullGame {
 
 	
 	@Override
-	public boolean farbeBedienen(ArrayList<PlayingCard> blatt,
+	public boolean followingSuit(ArrayList<PlayingCard> blatt,
 			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 
 		boolean ergebnis = true;
@@ -75,13 +75,13 @@ public class NullGame extends GameVariety implements INullGame {
 
 	
 	@Override
-	public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2) {
 
 		PlayingCard hoehereKarte = null;
 
 		if (karte1.getSuit() == karte2.getSuit()) {
 
-			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
+			hoehereKarte = higherCardSuit(karte1, karte2);
 		}
 
 		else {
@@ -93,19 +93,19 @@ public class NullGame extends GameVariety implements INullGame {
 
 	
 	@Override
-	public PlayingCard sortiereKarte(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard sortCard(PlayingCard karte1, PlayingCard karte2) {
 
 		PlayingCard hoehereKarte = null;
 
 		if (karte1.getSuit() == karte2.getSuit()) {
 
-			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
+			hoehereKarte = higherCardSuit(karte1, karte2);
 
 		}
 
 		else {
 
-			hoehereKarte = hoehereFarbe(karte1, karte2);
+			hoehereKarte = higherSuit(karte1, karte2);
 		}
 
 		return hoehereKarte;
@@ -114,7 +114,7 @@ public class NullGame extends GameVariety implements INullGame {
 
 	
 	@Override
-	public int karteBewerten(PlayingCard karte) {
+	public int evaluateCard(PlayingCard karte) {
 
 		Value wert = karte.getValue();
 		int ergebnis = -1;
