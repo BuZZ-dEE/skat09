@@ -25,134 +25,126 @@ public class NullGame extends GameVariety implements INullGame {
 
 	
 	@Override
-	public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt,
-			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	public boolean checkedPlayedCards(ArrayList<PlayingCard> deck,
+			PlayingCard[] playedCards, PlayingCard cardToCheck) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
 		// Wenn noch keine Karte gespielt wurde, darf die Karte gespielt werden.
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
-			ergebnis = true;
+			result = true;
+		} else {
+
+			result = followingSuit(deck, playedCards, cardToCheck);
 		}
 
-		else {
-
-			ergebnis = followingSuit(blatt, gespielteKarten, zuPruefendeKarte);
-		}
-
-		return ergebnis;
+		return result;
 	}
 
 	
 	@Override
-	public boolean followingSuit(ArrayList<PlayingCard> blatt,
-			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	public boolean followingSuit(ArrayList<PlayingCard> deck,
+			PlayingCard[] playedCards, PlayingCard cardToCheck) {
 
-		boolean ergebnis = true;
+		boolean result = true;
 
 		// Wenn die Farbe korrekt bedient wurde gib true zurueck.
-		if (gespielteKarten[0].getSuit() == zuPruefendeKarte.getSuit()) {
+		if (playedCards[0].getSuit() == cardToCheck.getSuit()) {
 
-			ergebnis = true;
-		}
+			result = true;
+		} else { // nachsehen, ob der Spieler die Farbe bedienen konnte.
 
-		// nachsehen, ob der Spieler die Farbe bedienen konnte.
-		else {
+			for (int i = 0; i < deck.size(); i++) {
 
-			for (int i = 0; i < blatt.size(); i++) {
+				if (deck.get(i).getSuit() == playedCards[0].getSuit()) {
 
-				if (blatt.get(i).getSuit() == gespielteKarten[0].getSuit()) {
-
-					ergebnis = false;
+					result = false;
 					break;
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	
 	@Override
-	public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCard(PlayingCard card1, PlayingCard card2) {
 
-		PlayingCard hoehereKarte = null;
+		PlayingCard highestCard = null;
 
-		if (karte1.getSuit() == karte2.getSuit()) {
+		if (card1.getSuit() == card2.getSuit()) {
 
-			hoehereKarte = higherCardSuit(karte1, karte2);
+			highestCard = higherCardSuit(card1, card2);
+		} else {
+
+			highestCard = card1;
 		}
-
-		else {
-
-			hoehereKarte = karte1;
-		}
-		return hoehereKarte;
+		
+		return highestCard;
 	}
 
 	
 	@Override
-	public PlayingCard sortCard(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard sortCard(PlayingCard card1, PlayingCard card2) {
 
-		PlayingCard hoehereKarte = null;
+		PlayingCard highestCard = null;
 
-		if (karte1.getSuit() == karte2.getSuit()) {
+		if (card1.getSuit() == card2.getSuit()) {
 
-			hoehereKarte = higherCardSuit(karte1, karte2);
+			highestCard = higherCardSuit(card1, card2);
 
+		} else {
+
+			highestCard = higherSuit(card1, card2);
 		}
 
-		else {
-
-			hoehereKarte = higherSuit(karte1, karte2);
-		}
-
-		return hoehereKarte;
+		return highestCard;
 	}
 
 
 	
 	@Override
-	public int evaluateCard(PlayingCard karte) {
+	public int evaluateCard(PlayingCard card) {
 
-		Value wert = karte.getValue();
-		int ergebnis = -1;
+		Value value = card.getValue();
+		int result = -1;
 
-		switch (wert) {
+		switch (value) {
 
 		case SIX:
-			ergebnis = Value.SIX.ordinal();
+			result = Value.SIX.ordinal();
 			break;
 		case SEVEN:
-			ergebnis = Value.SEVEN.ordinal();
+			result = Value.SEVEN.ordinal();
 			break;
 		case EIGHT:
-			ergebnis = Value.EIGHT.ordinal();
+			result = Value.EIGHT.ordinal();
 			break;
 		case NINE:
-			ergebnis = Value.NINE.ordinal();
+			result = Value.NINE.ordinal();
 			break;
 		case TEN:
-			ergebnis = Value.TEN.ordinal();
+			result = Value.TEN.ordinal();
 			break;
 		case UNDER_KNAVE:
-			ergebnis = Value.UNDER_KNAVE.ordinal();
+			result = Value.UNDER_KNAVE.ordinal();
 			break;
 		case OVER_KNAVE:
-			ergebnis = Value.OVER_KNAVE.ordinal();
+			result = Value.OVER_KNAVE.ordinal();
 			break;
 		case KING:
-			ergebnis = Value.KING.ordinal();
+			result = Value.KING.ordinal();
 			break;
 		case DAUS:
-			ergebnis = Value.DAUS.ordinal();
+			result = Value.DAUS.ordinal();
 			break;
 		// default:
 		// ergebnis = -1;
 		//
 		}
-		return ergebnis;
+		return result;
 	}
 
 
