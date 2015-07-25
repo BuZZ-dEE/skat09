@@ -26,126 +26,114 @@ public class GrandGame extends GameVariety {
 
 	
 	@Override
-	public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	public boolean checkedPlayedCards(ArrayList<PlayingCard> deck, PlayingCard[] playedCards, PlayingCard cardTocheck) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
 		// Wenn noch keine Karte gespielt wurde, darf die Karte gespielt werden.
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
-			ergebnis = true;
+			result = true;
 		}
 		
-		else if (gespielteKarten[0].getValue() == Value.UNDER_KNAVE) {
+		else if (playedCards[0].getValue() == Value.UNDER_KNAVE) {
 			
-			ergebnis = bubeBedienen(blatt, gespielteKarten, zuPruefendeKarte);
+			result = followingUnderKnave(deck, playedCards, cardTocheck);
 		}
 
 		else {
 			
-			ergebnis = followingSuit(blatt, gespielteKarten, zuPruefendeKarte);
+			result = followingSuit(deck, playedCards, cardTocheck);
 		}
 		
-		return ergebnis;
+		return result;
 	}
 	
 	/**
 	 * Wenn die zuerst gespielte Karte ein Bube war wird gepr&uuml;ft,
 	 * ob der Spieler noch Buben hat.
 	 * 
-	 * @param blatt - Das Blatt des Spielers, der eine Karte spielen m&ouml;chte.
-	 * @param gespielteKarten - Die Karten, die schon gespielt wurden.
-	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
+	 * @param deck - Das Blatt des Spielers, der eine Karte spielen m&ouml;chte.
+	 * @param playedCards - Die Karten, die schon gespielt wurden.
+	 * @param cardToCheck - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	public boolean bubeBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	public boolean followingUnderKnave(ArrayList<PlayingCard> deck, PlayingCard[] playedCards, PlayingCard cardToCheck) {
 		
-		boolean ergebnis = true;
+		boolean result = true;
 		
 		// Wenn Bube gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (zuPruefendeKarte.getValue() == Value.UNDER_KNAVE) {
+		if (cardToCheck.getValue() == Value.UNDER_KNAVE) {
 
-			ergebnis = true;
+			result = true;
 		}
 		
 		// Wenn nicht bedient wurde, schaue, ob bedient werden konnte.
 		else {
 
 			// Nach Buben oder Trumpf suchen
-			for (int i = 0; i < blatt.size(); i++) {
+			for (int i = 0; i < deck.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
+				if (deck.get(i).getValue() == Value.UNDER_KNAVE) {
 
-					ergebnis = false;
+					result = false;
 					break;
 				}
 			}
 		}
 		
-		return ergebnis;
+		return result;
 	}
 
 	@Override
-	public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCard(PlayingCard card1, PlayingCard card2) {
 
-		PlayingCard hoehereKarte = null;
+		PlayingCard highestCard = null;
 
-		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
+		if (card1.getValue() == Value.UNDER_KNAVE && card2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = higherUnderKnave(karte1, karte2);
-
-		}
-
-		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
-
-			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
-
-		}
-
-		else if (karte1.getSuit() == karte2.getSuit()) {
-
-			hoehereKarte = higherCardSuit(karte1, karte2);
-
-		}
-
-		else {
-
-			hoehereKarte = karte1;
-		}
-
-		return hoehereKarte;
-	}
-
-	@Override
-	public PlayingCard sortCard(PlayingCard karte1, PlayingCard karte2) {
-
-		PlayingCard hoehereKarte = null;
-
-		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
-
-			hoehereKarte = higherUnderKnave(karte1, karte2);
-
-		}
-
-		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
-
-			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
-
-		}
-
-		else if (karte1.getSuit() == karte2.getSuit()) {
-
-			hoehereKarte = higherCardSuit(karte1, karte2);
-
-		}
-
-		else {
+			highestCard = higherUnderKnave(card1, card2);
 			
-			hoehereKarte = higherSuit(karte1, karte2);
+		} else if (card1.getValue() == Value.UNDER_KNAVE || card2.getValue() == Value.UNDER_KNAVE) {
+
+			highestCard = higherCardOneUnderKnave(card1, card2);
+			
+		} else if (card1.getSuit() == card2.getSuit()) {
+
+			highestCard = higherCardSuit(card1, card2);
+			
+		} else {
+
+			highestCard = card1;
 		}
 
-		return hoehereKarte;
+		return highestCard;
+	}
+
+	@Override
+	public PlayingCard sortCard(PlayingCard card1, PlayingCard card2) {
+
+		PlayingCard highestCard = null;
+
+		if (card1.getValue() == Value.UNDER_KNAVE && card2.getValue() == Value.UNDER_KNAVE) {
+
+			highestCard = higherUnderKnave(card1, card2);
+
+		} else if (card1.getValue() == Value.UNDER_KNAVE || card2.getValue() == Value.UNDER_KNAVE) {
+
+			highestCard = higherCardOneUnderKnave(card1, card2);
+
+		} else if (card1.getSuit() == card2.getSuit()) {
+
+			highestCard = higherCardSuit(card1, card2);
+
+		} else {
+			
+			highestCard = higherSuit(card1, card2);
+		}
+
+		return highestCard;
 
 	}
 
