@@ -451,7 +451,7 @@ public class Controller implements Observer, IController {
 			// Stichauswertung ausgeben
 			stichAuswertung(gespielteKarten, spieler1);
 
-			if (table.getSpielart().getSpielart() == GameVarietyName.NULL
+			if (table.getSpielart().getGameVariety() == GameVarietyName.NULL
 					&& spieler1.getName() == table.ermittleAlleinspieler()
 							.getName()) {
 				
@@ -595,7 +595,7 @@ public class Controller implements Observer, IController {
 		int augen = 0;
 
 		output.spielBeendet();
-		if (table.getSpielart().getSpielart() != GameVarietyName.RAMSCH) {
+		if (table.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
 			
 			augen = table.werteAugen(table.ermittleAlleinspieler().getStiche());
 			int punkte = table.wertePunkte(augen);

@@ -73,7 +73,7 @@ public class GameVarietyTest {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = spielkarte13;
 		
-		assertTrue(spiel.farbeBedienen(blatt, gespielteKarten, spielkarte2));
+		assertTrue(spiel.followingSuit(blatt, gespielteKarten, spielkarte2));
 	}
 	
 	@Test
@@ -89,176 +89,176 @@ public class GameVarietyTest {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = spielkarte13;
 		
-		assertFalse(spiel.farbeBedienen(blatt, gespielteKarten, spielkarte10));
+		assertFalse(spiel.followingSuit(blatt, gespielteKarten, spielkarte10));
 	}
 	
 	@Test
 	public void hoehererBubeTest1() {
 		
-		assertEquals(spielkarte11, spiel.hoehererBube(spielkarte11, spielkarte9));
+		assertEquals(spielkarte11, spiel.higherUnderKnave(spielkarte11, spielkarte9));
 	}
 	
 	@Test
 	public void hoehererBubeTest2() {
 		
-		assertEquals(spielkarte10, spiel.hoehererBube(spielkarte8, spielkarte10));
+		assertEquals(spielkarte10, spiel.higherUnderKnave(spielkarte8, spielkarte10));
 	}
 	
 	@Test
 	public void hoehererBubeTest3() {
 		
-		assertEquals(spielkarte9, spiel.hoehererBube(spielkarte8, spielkarte9));
+		assertEquals(spielkarte9, spiel.higherUnderKnave(spielkarte8, spielkarte9));
 	}
 	
 	@Test
 	public void hoehererBubeTest4() {
 		
-		assertEquals(spielkarte8, spiel.hoehererBube(spielkarte8, spielkarte1));
+		assertEquals(spielkarte8, spiel.higherUnderKnave(spielkarte8, spielkarte1));
 	}
 	
 	@Test
 	public void hoehereFarbeTest1() {
 		
-		assertEquals(spielkarte11, spiel.hoehereFarbe(spielkarte11, spielkarte12));
+		assertEquals(spielkarte11, spiel.higherSuit(spielkarte11, spielkarte12));
 	}
 	
 	@Test
 	public void hoehereFarbeTest2() {
 		
-		assertEquals(spielkarte11, spiel.hoehereFarbe(spielkarte12, spielkarte11));
+		assertEquals(spielkarte11, spiel.higherSuit(spielkarte12, spielkarte11));
 	}
 	
 	@Test
 	public void hoehereFarbeTest3() {
 		
-		assertEquals(spielkarte3, spiel.hoehereFarbe(spielkarte3, spielkarte2));
+		assertEquals(spielkarte3, spiel.higherSuit(spielkarte3, spielkarte2));
 	}
 	
 	@Test
 	public void hoehereFarbeTest4() {
 		
-		assertEquals(spielkarte3, spiel.hoehereFarbe(spielkarte1, spielkarte3));
+		assertEquals(spielkarte3, spiel.higherSuit(spielkarte1, spielkarte3));
 	}
 	
 	@Test
 	public void hoehereFarbeTest5() {
 		
-		assertEquals(spielkarte13, spiel.hoehereFarbe(spielkarte13, spielkarte9));
+		assertEquals(spielkarte13, spiel.higherSuit(spielkarte13, spielkarte9));
 	}
 	
 	@Test
 	public void hoehereFarbeTest6() {
 		
-		assertEquals(spielkarte7, spiel.hoehereFarbe(spielkarte1, spielkarte7));
+		assertEquals(spielkarte7, spiel.higherSuit(spielkarte1, spielkarte7));
 	}
 	
 	@Test
 	public void hoehereKarteEinBubeTest1() {
 		
 		assertEquals(spielkarte9, 
-				spiel.hoehereKarteEinBube(spielkarte9, spielkarte12));
+				spiel.higherCardOneUnderKnave(spielkarte9, spielkarte12));
 	}
 	
 	@Test
 	public void hoehereKarteEinBubeTest2() {
 		
 		assertEquals(spielkarte7, 
-				spiel.hoehereKarteEinBube(spielkarte13, spielkarte7));
+				spiel.higherCardOneUnderKnave(spielkarte13, spielkarte7));
 	}
 	
 	@Test
 	public void hoehereKarteFarbeTest() {
 		
-		assertEquals(spielkarte5, spiel.hoehereKarteFarbe(spielkarte2, spielkarte5));
+		assertEquals(spielkarte5, spiel.higherCardSuit(spielkarte2, spielkarte5));
 	}
 	
 	@Test
 	public void hoehereKarteFarbeTest2() {
 		
-		assertEquals(spielkarte12, spiel.hoehereKarteFarbe(spielkarte12, spielkarte13));
+		assertEquals(spielkarte12, spiel.higherCardSuit(spielkarte12, spielkarte13));
 	}
 
 	@Test
 	public void testKarteBewerten() {
-		assertEquals(7, spiel.karteBewerten(spielkarte1));
+		assertEquals(7, spiel.evaluateCard(spielkarte1));
 	}
 	
 	@Test
 	public void testKarteBewerten2() {
-		assertEquals(8, spiel.karteBewerten(spielkarte2));
+		assertEquals(8, spiel.evaluateCard(spielkarte2));
 	}
 	
 	@Test
 	public void testKarteBewerten3() {
-		assertEquals(9, spiel.karteBewerten(spielkarte3));
+		assertEquals(9, spiel.evaluateCard(spielkarte3));
 	}
 	
 	@Test
 	public void testKarteBewerten4() {
-		assertEquals(10, spiel.karteBewerten(spielkarte4));
+		assertEquals(10, spiel.evaluateCard(spielkarte4));
 	}
 	
 	@Test
 	public void testKarteBewerten5() {
-		assertEquals(11, spiel.karteBewerten(spielkarte5));
+		assertEquals(11, spiel.evaluateCard(spielkarte5));
 	}
 	
 	@Test
 	public void testKarteBewerten6() {
-		assertEquals(12, spiel.karteBewerten(spielkarte6));
+		assertEquals(12, spiel.evaluateCard(spielkarte6));
 	}
 	
 	@Test
 	public void testKarteBewerten7() {
-		assertEquals(13, spiel.karteBewerten(spielkarte7));
+		assertEquals(13, spiel.evaluateCard(spielkarte7));
 	}
 	
 	@Test
 	public void testKarteBewerten8() {
-		assertEquals(14, spiel.karteBewerten(spielkarte8));
+		assertEquals(14, spiel.evaluateCard(spielkarte8));
 	}
 	
 	@Test
 	public void testKarteBewerten9() {
-		assertEquals(15, spiel.karteBewerten(spielkarte9));
+		assertEquals(15, spiel.evaluateCard(spielkarte9));
 	}
 	
 	@Test
 	public void testKarteBewerten10() {
-		assertEquals(16, spiel.karteBewerten(spielkarte10));
+		assertEquals(16, spiel.evaluateCard(spielkarte10));
 	}
 	
 	@Test
 	public void testKarteBewerten11() {
-		assertEquals(17, spiel.karteBewerten(spielkarte11));
+		assertEquals(17, spiel.evaluateCard(spielkarte11));
 	}
 	
 	@Test
 	public void testKarteBewerten12() {
-		assertEquals(6, spiel.karteBewerten(spielkarte12));
+		assertEquals(6, spiel.evaluateCard(spielkarte12));
 	}
 	
 	@Test
 	public void testBubeBewerten1() {
 		
-		assertEquals(14, spiel.bubeBewerten(spielkarte8));
+		assertEquals(14, spiel.evaluateUnderKnave(spielkarte8));
 	}
 	
 	@Test
 	public void testBubeBewerten2() {
 		
-		assertEquals(15, spiel.bubeBewerten(spielkarte9));
+		assertEquals(15, spiel.evaluateUnderKnave(spielkarte9));
 	}
 	
 	@Test
 	public void testBubeBewerten3() {
 		
-		assertEquals(16, spiel.bubeBewerten(spielkarte10));
+		assertEquals(16, spiel.evaluateUnderKnave(spielkarte10));
 	}
 
 	@Test
 	public void testBubeBewerten4() {
 		
-		assertEquals(17, spiel.bubeBewerten(spielkarte11));
+		assertEquals(17, spiel.evaluateUnderKnave(spielkarte11));
 	}
 }

@@ -750,11 +750,11 @@ public class Table extends Observable {
 		IPlayer stichGewinner = null;
 		PlayingCard hoechsteKarte = null;
 
-		hoechsteKarte = spielart.hoehereKarte(gespielteKarten[0],
+		hoechsteKarte = spielart.higherCard(gespielteKarten[0],
 				gespielteKarten[1]);
 
 		hoechsteKarte = spielart
-				.hoehereKarte(hoechsteKarte, gespielteKarten[2]);
+				.higherCard(hoechsteKarte, gespielteKarten[2]);
 
 		stichGewinner = hoechsteKarte.getOwner();
 
@@ -903,7 +903,7 @@ public class Table extends Observable {
 	 */
 	public void mitspielerSetzen() {
 
-		if (spielart.getSpielart() != GameVarietyName.RAMSCH) {
+		if (spielart.getGameVariety() != GameVarietyName.RAMSCH) {
 
 			if (!spieler1.getIstAlleinspieler()) {
 
@@ -1232,7 +1232,7 @@ public class Table extends Observable {
 	 */
 	public boolean spielAuswerten() {
 		boolean gewonnen = false;
-		if (spielart.getSpielart() != GameVarietyName.RAMSCH) {
+		if (spielart.getGameVariety() != GameVarietyName.RAMSCH) {
 			ArrayList<PlayingCard> temp = new ArrayList<PlayingCard>();
 
 			temp = ermittleAlleinspieler().getStiche();
@@ -1503,15 +1503,15 @@ public class Table extends Observable {
 	}
 
 	public int punkteVarianten(int erg, int augenzahl) {
-		if (spielart.getSpielart() == GameVarietyName.NULL) {
+		if (spielart.getGameVariety() == GameVarietyName.NULL) {
 			grundwertliste.add(23);
 			erg = punkteNullspiel();
 		}
-		if (spielart.getSpielart() == GameVarietyName.GRAND) {
+		if (spielart.getGameVariety() == GameVarietyName.GRAND) {
 			grundwertliste.add(24);
 			erg = punkteGrandspiel(augenzahl);
 		}
-		if (spielart.getSpielart() == GameVarietyName.SUIT) {
+		if (spielart.getGameVariety() == GameVarietyName.SUIT) {
 			erg = punkteFarbspiel(augenzahl);
 		}
 		return erg;
@@ -1631,11 +1631,11 @@ public class Table extends Observable {
 		// Gr&uuml;nde zu verlieren_
 		boolean verloren = false;
 
-		if (spielart.getSpielart() == GameVarietyName.NULL) {
+		if (spielart.getGameVariety() == GameVarietyName.NULL) {
 			verloren = nullVerloren();
 		}
 
-		else if (spielart.getSpielart() != GameVarietyName.NULL) {
+		else if (spielart.getGameVariety() != GameVarietyName.NULL) {
 			verloren = anderesSpielVerloren(augenzahl);
 		}
 
@@ -1706,10 +1706,10 @@ public class Table extends Observable {
 		int erg = 0;
 		int stufe = 1;
 
-		if (spielart.getSpielart() == GameVarietyName.GRAND) {
+		if (spielart.getGameVariety() == GameVarietyName.GRAND) {
 			zwierg = 24;
 		}
-		if (spielart.getSpielart() == GameVarietyName.SUIT) {
+		if (spielart.getGameVariety() == GameVarietyName.SUIT) {
 			SuitGame spiel = (SuitGame) spielart;
 			zwierg = spiel.getTrumpffarbe().value();
 		}
@@ -1721,7 +1721,7 @@ public class Table extends Observable {
 		
 
 		if (((Math.abs(ermittleAlleinspieler().spitzenZahl()) + stufe) * zwierg) < reizwert
-				&& spielart.getSpielart() != GameVarietyName.NULL) {
+				&& spielart.getGameVariety() != GameVarietyName.NULL) {
 			
 			if (reizwert > punkte) {
 				setUeberreizt(true);
