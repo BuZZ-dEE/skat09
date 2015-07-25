@@ -79,7 +79,7 @@ public class RamschTest {
 		blatt.add(new PlayingCard(Suit.LEAVES, Value.NINE));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		assertTrue(ramsch.bubeBedienen(blatt, gespielteKarten, pruefen));
+		assertTrue(ramsch.followingUnderKnave(blatt, gespielteKarten, pruefen));
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class RamschTest {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.DAUS);
-		assertTrue(ramsch.bubeBedienen(blatt, gespielteKarten, pruefen));
+		assertTrue(ramsch.followingUnderKnave(blatt, gespielteKarten, pruefen));
 	}
 	
 	@Test
@@ -106,7 +106,7 @@ public class RamschTest {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		PlayingCard pruefen = new PlayingCard(Suit.HEARTS, Value.DAUS);
-		assertFalse(ramsch.bubeBedienen(blatt, gespielteKarten, pruefen));
+		assertFalse(ramsch.followingUnderKnave(blatt, gespielteKarten, pruefen));
 	}
 	
 	@Test
