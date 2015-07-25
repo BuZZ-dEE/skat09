@@ -29,10 +29,7 @@ import skat09.test.interfaces.IPlayer;
  * @version 03.07.2009
  */
 public class CLIOutput extends Output {
-
-	//
-	// Datenfelder
-	//
+	
 	/**
 	 * Der Tisch, auf dem gespielt wird
 	 */
@@ -54,9 +51,8 @@ public class CLIOutput extends Output {
 	 */
 	private boolean hilfespielbar = false;
 
-	//
-	// Konstruktor
-	//
+	
+	
 	/**
 	 * Der Konstruktor der Klasse CLIAusgabe
 	 * 
