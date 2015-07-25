@@ -17,11 +17,11 @@ public class Ramsch extends GameVariety {
 	 * Instanziert ein Ramsch - Spiel
 	 */
 	public Ramsch() {
-		setSpielart(GameVarietyName.RAMSCH);
+		setGameVariety(GameVarietyName.RAMSCH);
 	}
 
 	@Override
-	public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+	public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt,
 			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
 		boolean ergebnis = false;
 
@@ -38,7 +38,7 @@ public class Ramsch extends GameVariety {
 
 		else {
 			
-			ergebnis = farbeBedienen(blatt, gespielteKarten, zuPruefendeKarte);
+			ergebnis = followingSuit(blatt, gespielteKarten, zuPruefendeKarte);
 		}
 		
 		return ergebnis;
@@ -82,25 +82,25 @@ public class Ramsch extends GameVariety {
 	}
 
 	@Override
-	public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2) {
 
 		PlayingCard hoehereKarte = null;
 
 		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = hoehererBube(karte1, karte2);
+			hoehereKarte = higherUnderKnave(karte1, karte2);
 
 		}
 
 		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
+			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
 
 		}
 
 		else if (karte1.getSuit() == karte2.getSuit()) {
 
-			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
+			hoehereKarte = higherCardSuit(karte1, karte2);
 
 		}
 
@@ -113,30 +113,30 @@ public class Ramsch extends GameVariety {
 	}
 
 	@Override
-	public PlayingCard sortiereKarte(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard sortCard(PlayingCard karte1, PlayingCard karte2) {
 		PlayingCard hoehereKarte = null;
 
 		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = hoehererBube(karte1, karte2);
+			hoehereKarte = higherUnderKnave(karte1, karte2);
 
 		}
 
 		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = hoehereKarteEinBube(karte1, karte2);
+			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
 
 		}
 
 		else if (karte1.getSuit() == karte2.getSuit()) {
 
-			hoehereKarte = hoehereKarteFarbe(karte1, karte2);
+			hoehereKarte = higherCardSuit(karte1, karte2);
 
 		}
 
 		else {
 			
-			hoehereKarte = hoehereFarbe(karte1, karte2);
+			hoehereKarte = higherSuit(karte1, karte2);
 		}
 
 		return hoehereKarte;
@@ -154,7 +154,7 @@ public class Ramsch extends GameVariety {
 	 * @param karte - Die Karte der ein Zahlenwert zugeordnet werden soll.
 	 * @return Der Zahlenwert der jeweiligen Karte.
 	 */
-	public int karteBewerten(PlayingCard karte) {
+	public int evaluateCard(PlayingCard karte) {
 
 		Value wert = karte.getValue();
 		int ergebnis = 0;
@@ -185,7 +185,7 @@ public class Ramsch extends GameVariety {
 			ergebnis = 13;
 			break;
 		case UNDER_KNAVE:
-			ergebnis = bubeBewerten(karte);
+			ergebnis = evaluateUnderKnave(karte);
 			break;
 //		default:
 //			ergebnis = -1;

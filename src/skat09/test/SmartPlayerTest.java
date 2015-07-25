@@ -1606,7 +1606,7 @@ public class SmartPlayerTest {
 		for (int k = 0; k < deck.size(); k++) {
 			
 			if(spieler.getSpielart().
-					gespielteKartePruefen(deck, gespielteKarten, deck.get(k))) {
+					checkedPlayedCards(deck, gespielteKarten, deck.get(k))) {
 				
 				ergebnisKarten.add(deck.get(k));
 			}
@@ -2443,8 +2443,8 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new GrandGame().getSpielart(), 
-				spieler.spielAnsagen().getSpielart());
+		assertEquals(new GrandGame().getGameVariety(), 
+				spieler.spielAnsagen().getGameVariety());
 	}
 	
 	@Test
@@ -2489,8 +2489,8 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.HEARTS, Value.DAUS));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new SuitGame(Suit.HEARTS).getSpielart(), 
-				spieler.farbe().getSpielart());
+		assertEquals(new SuitGame(Suit.HEARTS).getGameVariety(), 
+				spieler.farbe().getGameVariety());
 	}
 	
 	@Test
@@ -2919,8 +2919,8 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.NINE));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new NullGame().getSpielart(), 
-				spieler.bestimmeSpielart().getSpielart());
+		assertEquals(new NullGame().getGameVariety(), 
+				spieler.bestimmeSpielart().getGameVariety());
 	}
 	
 	@Test
@@ -2939,8 +2939,8 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.DAUS));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new GrandGame().getSpielart(), 
-				spieler.bestimmeSpielart().getSpielart());
+		assertEquals(new GrandGame().getGameVariety(), 
+				spieler.bestimmeSpielart().getGameVariety());
 	}
 	
 	@Test
@@ -2959,8 +2959,8 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new SuitGame(Suit.LEAVES).getSpielart(), 
-				spieler.bestimmeSpielart().getSpielart());
+		assertEquals(new SuitGame(Suit.LEAVES).getGameVariety(), 
+				spieler.bestimmeSpielart().getGameVariety());
 	}
 	
 	@Test
@@ -2979,8 +2979,8 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
 		spieler.setBlatt(blatt);
 		
-		assertEquals(new SuitGame(Suit.LEAVES).getSpielart(), 
-				spieler.bestimmeSpielart().getSpielart());
+		assertEquals(new SuitGame(Suit.LEAVES).getGameVariety(), 
+				spieler.bestimmeSpielart().getGameVariety());
 	}
 	
 	@Test

@@ -1,6 +1,6 @@
 package skat09.gamevariety;
 
-import java.util.*; //ArrayList
+import java.util.ArrayList;
 
 import skat09.playingcard.PlayingCard;
 import skat09.playingcard.Suit;
@@ -16,224 +16,221 @@ import skat09.test.interfaces.IGameVariety;
  * @version 03.07.2009
  */
 abstract public class GameVariety implements IGameVariety {
-
-    /**
-     * H&auml;t die Spielart
-     */
-	private GameVarietyName spielart;
+	
+	private GameVarietyName gameVarietyName;
 	
 
-	//@Override
-	public GameVarietyName getSpielart() {
-		return spielart;
+	@Override
+	public GameVarietyName getGameVariety() {
+		return gameVarietyName;
 	}
 	
-	//@Override
-	public void setSpielart(GameVarietyName art) {
-		spielart = art;
+	@Override
+	public void setGameVariety(GameVarietyName gameVarietyName) {
+		this.gameVarietyName = gameVarietyName;
 	}
 
-	//@Override
-	abstract public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
-			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
+	@Override
+	abstract public boolean checkedPlayedCards(ArrayList<PlayingCard> deck,
+			PlayingCard[] playedCards, PlayingCard cardToCheck);
 	
-	//@Override
-	public boolean farbeBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	@Override
+	public boolean followingSuit(ArrayList<PlayingCard> deck, PlayingCard[] playedCards, PlayingCard cardToCheck) {
 		
-		boolean ergebnis = true;
+		boolean result = true;
 		
-		// Wenn die Farbe korrekt bedient wurde gib true zurueck.
-		if (gespielteKarten[0].getSuit() == zuPruefendeKarte.getSuit() && zuPruefendeKarte.getValue() != Value.UNDER_KNAVE) {
+		// If suit follow is okay return true
+		if (playedCards[0].getSuit() == cardToCheck.getSuit() && cardToCheck.getValue() != Value.UNDER_KNAVE) {
 
-			ergebnis = true;
+			result = true;
 		}
 		
-		// nachsehen, ob der Spieler die Farbe bedienen konnte.
+		// Check if player could follow the suit
 		else {
 
-			for (int i = 0; i < blatt.size(); i++) {
+			for (int i = 0; i < deck.size(); i++) {
 
-				if (blatt.get(i).getSuit() == gespielteKarten[0].getSuit() && blatt.get(i).getValue() != Value.UNDER_KNAVE) {
+				if (deck.get(i).getSuit() == playedCards[0].getSuit() && deck.get(i).getValue() != Value.UNDER_KNAVE) {
 
-					ergebnis = false;
+					result = false;
 					break;
 				}
 			}
 		}
 		
-		return ergebnis;
+		return result;
 	}
 
-	//@Override
-	abstract public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2);
+	@Override
+	abstract public PlayingCard higherCard(PlayingCard card1, PlayingCard card2);
 
-	//@Override
-	abstract public PlayingCard sortiereKarte(PlayingCard karte1,
-			PlayingCard karte2);
+	@Override
+	abstract public PlayingCard sortCard(PlayingCard card1,
+			PlayingCard card2);
 
 	@Override
 	public abstract String toString();
 
-	//@Override
-	public PlayingCard hoehererBube(PlayingCard karte1, PlayingCard karte2) {
+	@Override
+	public PlayingCard higherUnderKnave(PlayingCard card11, PlayingCard card2) {
 
-		PlayingCard ergebnis;
+		PlayingCard result;
 
-		if (bubeBewerten(karte1) < bubeBewerten(karte2)) {
+		if (evaluateUnderKnave(card11) < evaluateUnderKnave(card2)) {
 
-			ergebnis = karte2;
+			result = card2;
 		}
 
 		else {
 
-			ergebnis = karte1;
+			result = card11;
 		}
 
-		return ergebnis;
+		return result;
 	}
 	
-	//@Override
-	public PlayingCard hoehereFarbe(PlayingCard karte1, PlayingCard karte2) {
+	@Override
+	public PlayingCard higherSuit(PlayingCard card1, PlayingCard card2) {
 		
-		PlayingCard ergebnis;
+		PlayingCard result;
 		
-		if (karte1.getSuit() == Suit.ACORNS
-				&& karte2.getSuit() != Suit.ACORNS) {
+		if (card1.getSuit() == Suit.ACORNS
+				&& card2.getSuit() != Suit.ACORNS) {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
-		else if (karte1.getSuit() == Suit.LEAVES
-				&& karte2.getSuit() != Suit.ACORNS) {
+		else if (card1.getSuit() == Suit.LEAVES
+				&& card2.getSuit() != Suit.ACORNS) {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
-		else if (karte1.getSuit() == Suit.HEARTS
-				&& (karte2.getSuit() != Suit.ACORNS && karte2.getSuit() != Suit.LEAVES)) {
+		else if (card1.getSuit() == Suit.HEARTS
+				&& (card2.getSuit() != Suit.ACORNS && card2.getSuit() != Suit.LEAVES)) {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
-		// else if (karte1.getFarbe() == Farbe.KARO
-		// && (karte2.getFarbe() != Farbe.KREUZ
-		// && karte2.getFarbe() != Farbe.PIK && karte2.getFarbe() !=
-		// Farbe.HERZ)) {
-		//
-		// ergebnis = karte1;
-		// }
+//		 else if (card1.getSuit() == Suit.BELLS
+//		 && (card2.getSuit() != Suit.ACORNS
+//		 && card2.getSuit() != Suit.LEAVES && card2.getSuit() !=
+//		 Suit.HEARTS)) {
+//		
+//		 result = card1;
+//		 }
 
 		else {
 			
-			ergebnis = karte2;
+			result = card2;
 		}
 
 		
-		return ergebnis;
+		return result;
 	}
 	
-	//@Override
-	public PlayingCard hoehereKarteEinBube(PlayingCard karte1, PlayingCard karte2) {
+	@Override
+	public PlayingCard higherCardOneUnderKnave(PlayingCard card1, PlayingCard card2) {
 
-		PlayingCard ergebnis;
+		PlayingCard result;
 
-		if (karte1.getValue() == Value.UNDER_KNAVE) {
+		if (card1.getValue() == Value.UNDER_KNAVE) {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
 		else {
 
-			ergebnis = karte2;
+			result = card2;
 		}
 
-		return ergebnis;
+		return result;
 	}
 	
-	//@Override
-	public PlayingCard hoehereKarteFarbe(PlayingCard karte1, PlayingCard karte2) {
+	@Override
+	public PlayingCard higherCardSuit(PlayingCard card1, PlayingCard card2) {
 
-		PlayingCard ergebnis;
+		PlayingCard result;
 
-		if (karteBewerten(karte1) < karteBewerten(karte2)) {
+		if (evaluateCard(card1) < evaluateCard(card2)) {
 
-			ergebnis = karte2;
+			result = card2;
 		}
 
 		else {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
-		return ergebnis;
+		return result;
 	}
 	
-	//@Override
-	public int karteBewerten(PlayingCard karte) {
+	@Override
+	public int evaluateCard(PlayingCard card) {
 
-		Value wert = karte.getValue();
-		int ergebnis = 0;
+		Value value = card.getValue();
+		int result = 0;
 
-		switch (wert) {
+		switch (value) {
 		case SIX:
-			ergebnis = 6;
+			result = 6;
 			break;
 		case SEVEN:
-			ergebnis = 7;
+			result = 7;
 			break;
 		case EIGHT:
-			ergebnis = 8;
+			result = 8;
 			break;
 		case NINE:
-			ergebnis = 9;
+			result = 9;
 			break;
 		case OVER_KNAVE:
-			ergebnis = 10;
+			result = 10;
 			break;
 		case KING:
-			ergebnis = 11;
+			result = 11;
 			break;
 		case TEN:
-			ergebnis = 12;
+			result = 12;
 			break;
 		case DAUS:
-			ergebnis = 13;
+			result = 13;
 			break;
 		case UNDER_KNAVE:
-			ergebnis = bubeBewerten(karte);
+			result = evaluateUnderKnave(card);
 			break;
 		default:
-			ergebnis = -1;
+			result = -1;
 
 		}
-		return ergebnis;
+		return result;
 	}
 
-	//@Override
-	public int bubeBewerten(PlayingCard karte) {
+	@Override
+	public int evaluateUnderKnave(PlayingCard card) {
 
-		Suit farbe = karte.getSuit();
-		int ergebnis = 0;
+		Suit suit = card.getSuit();
+		int result = 0;
 
-		switch (farbe) {
+		switch (suit) {
 
 		case BELLS:
-			ergebnis = 14;
+			result = 14;
 			break;
 		case HEARTS:
-			ergebnis = 15;
+			result = 15;
 			break;
 		case LEAVES:
-			ergebnis = 16;
+			result = 16;
 			break;
 		case ACORNS:
-			ergebnis = 17;
+			result = 17;
 			break;
 		default:
-			ergebnis = -1;
+			result = -1;
 
 		}
-		return ergebnis;
+		return result;
 	}
 
 }

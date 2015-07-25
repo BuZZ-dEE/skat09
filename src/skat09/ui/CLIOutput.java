@@ -557,7 +557,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void auswertung(boolean gewonnen) {
-		if (tisch.getSpielart().getSpielart() != GameVarietyName.RAMSCH) {
+		if (tisch.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
 			if (gewonnen == true) {
 				System.out.println(Messages.getI18n("player.won", tisch
 						.ermittleAlleinspieler().getName()));
@@ -691,7 +691,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void trumpf() {
-		if (tisch.getSpielart().getSpielart() != GameVarietyName.RAMSCH) {
+		if (tisch.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
 			System.out.println(Messages.getI18n("player.name.playing.game",
 					tisch.ermittleAlleinspieler().getName(), tisch
 							.getSpielart().toString()));

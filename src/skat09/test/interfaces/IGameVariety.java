@@ -19,13 +19,13 @@ public interface IGameVariety {
 	 * 
 	 * @return aktuelle Spielart
 	 */
-	public abstract GameVarietyName getSpielart();
+	public abstract GameVarietyName getGameVariety();
 
 	/**
 	 * Setzt die Spielartbezeichnung der Spielart
 	 * @param art Die Spielartbezeichnung
 	 */
-	public abstract void setSpielart(GameVarietyName art);
+	public abstract void setGameVariety(GameVarietyName art);
 
 	/**
 	 * Prueft in Abh&auml;ngigkeit von der zuerst gespielten Karten, ob eine Karte
@@ -36,7 +36,7 @@ public interface IGameVariety {
 	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	abstract public boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+	abstract public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt,
 			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 
 	/**
@@ -48,7 +48,7 @@ public interface IGameVariety {
 	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	public abstract boolean farbeBedienen(ArrayList<PlayingCard> blatt,
+	public abstract boolean followingSuit(ArrayList<PlayingCard> blatt,
 			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 
 	/**
@@ -60,7 +60,7 @@ public interface IGameVariety {
 	 * @param karte2
 	 * @return Spielkarte , die hoeherwertig ist
 	 */
-	abstract public PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2);
+	abstract public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2);
 
 	/**
 	 * Vergleicht 2 Spielkarten und gibt die hoeherwertige Karte zurueck. Diese
@@ -70,7 +70,7 @@ public interface IGameVariety {
 	 * @param karte2
 	 * @return Spielkarte , die hoeherwertig ist
 	 */
-	abstract public PlayingCard sortiereKarte(PlayingCard karte1,
+	abstract public PlayingCard sortCard(PlayingCard karte1,
 			PlayingCard karte2);
 
 	/**
@@ -85,7 +85,7 @@ public interface IGameVariety {
 	 * @param karte2 - der zweite Bube
 	 * @return Der h&ouml;here Bube von 2 Karten.
 	 */
-	public abstract PlayingCard hoehererBube(PlayingCard karte1, PlayingCard karte2);
+	public abstract PlayingCard higherUnderKnave(PlayingCard karte1, PlayingCard karte2);
 
 	/**
 	 * Ermittelt von 2 Karten die Karte mit der ho&uml;herwertigeren Farbe und
@@ -96,7 +96,7 @@ public interface IGameVariety {
 	 * @param karte2 - Die zweite Karte.
 	 * @return Die Karte mit der ho&uml;heren Farbe.
 	 */
-	public abstract PlayingCard hoehereFarbe(PlayingCard karte1, PlayingCard karte2);
+	public abstract PlayingCard higherSuit(PlayingCard karte1, PlayingCard karte2);
 
 	/**
 	 * Liefert von 2 Karten die h&ouml;here zur&uuml;ck, wobei eine Karte davon ein Bube ist.
@@ -106,7 +106,7 @@ public interface IGameVariety {
 	 * @param karte2 - die zweite Karte
 	 * @return Der Bube wird zurück geliefert.
 	 */
-	public abstract PlayingCard hoehereKarteEinBube(PlayingCard karte1,
+	public abstract PlayingCard higherCardOneUnderKnave(PlayingCard karte1,
 			PlayingCard karte2);
 
 	/**
@@ -116,7 +116,7 @@ public interface IGameVariety {
 	 * @param karte2 - die zweite Karte
 	 * @return Die ho&uml;here Karte.
 	 */
-	public abstract PlayingCard hoehereKarteFarbe(PlayingCard karte1,
+	public abstract PlayingCard higherCardSuit(PlayingCard karte1,
 			PlayingCard karte2);
 
 	/**
@@ -126,7 +126,7 @@ public interface IGameVariety {
 	 * @param karte - Die Karte der ein Zahlenwert zugeordnet werden soll.
 	 * @return Der Zahlenwert der jeweiligen Karte.
 	 */
-	public abstract int karteBewerten(PlayingCard karte);
+	public abstract int evaluateCard(PlayingCard karte);
 
 	/**
 	 * Ordnet einem Buben einen Zahlenwert zu. Die geschieht in der Wertigkeit der Buben
@@ -135,6 +135,6 @@ public interface IGameVariety {
 	 * @param karte - Bube, der einen Zahlenwert zugeordnet bekommen soll.
 	 * @return Der Zahlenwert des jeweiligen Bubens.
 	 */
-	public abstract int bubeBewerten(PlayingCard karte);
+	public abstract int evaluateUnderKnave(PlayingCard karte);
 
 }

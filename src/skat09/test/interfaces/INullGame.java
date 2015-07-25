@@ -19,7 +19,7 @@ public interface INullGame {
 	 * @param zuPruefendeKarte
 	 * @return boolean ob die gew&auml;hlte Karte g&uuml;ltig ist
 	 */
-	public abstract boolean gespielteKartePruefen(ArrayList<PlayingCard> blatt,
+	public abstract boolean checkedPlayedCards(ArrayList<PlayingCard> blatt,
 			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 	
 	/**
@@ -29,7 +29,7 @@ public interface INullGame {
 	 * @param zuPruefendeKarte
 	 * @return boolean
 	 */
-	public abstract boolean farbeBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
+	public abstract boolean followingSuit(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 
 	/**
 	 * ermittelt die h&ouml;here Karte
@@ -37,7 +37,7 @@ public interface INullGame {
 	 * @param karte2
 	 * @return die h&ouml;here Karte
 	 */
-	public abstract PlayingCard hoehereKarte(PlayingCard karte1, PlayingCard karte2);
+	public abstract PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2);
 
 	/**
 	 * sortiert Karten
@@ -45,7 +45,7 @@ public interface INullGame {
 	 * @param karte2
 	 * @return die h&ouml;here Karte
 	 */
-	public abstract PlayingCard sortiereKarte(PlayingCard karte1,
+	public abstract PlayingCard sortCard(PlayingCard karte1,
 			PlayingCard karte2);
 
 	/**
@@ -53,7 +53,7 @@ public interface INullGame {
 	 * @param karte
 	 * @return int
 	 */
-	public abstract int karteBewerten(PlayingCard karte);
+	public abstract int evaluateCard(PlayingCard karte);
 
 	/**
 	 * gibt nen String aus

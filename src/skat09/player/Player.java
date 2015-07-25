@@ -293,7 +293,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < blatt.size(); i++) {
 
-			if (spielart.gespielteKartePruefen(blatt, gespielteKarten, blatt.get(i))) {
+			if (spielart.checkedPlayedCards(blatt, gespielteKarten, blatt.get(i))) {
 
 				spielbareKarten.add(blatt.get(i));
 			}
@@ -324,7 +324,7 @@ abstract public class Player implements IPlayer {
 		Random zufall = new Random();
 		int zahl = zufall.nextInt(blatt.size());
 
-		while (!spielart.gespielteKartePruefen(blatt, gespielteKarten, blatt
+		while (!spielart.checkedPlayedCards(blatt, gespielteKarten, blatt
 				.get(zahl))) {
 
 			zahl = zufall.nextInt(blatt.size());
@@ -378,7 +378,7 @@ abstract public class Player implements IPlayer {
 
 				int ergebnis;
 
-				if (karte1.equals(spielart.sortiereKarte(karte1, karte2))) {
+				if (karte1.equals(spielart.sortCard(karte1, karte2))) {
 
 					ergebnis = 1;
 				}
@@ -424,12 +424,12 @@ abstract public class Player implements IPlayer {
 
 		truempfe = new PlayingCard[12];
 
-		if (spielart.getSpielart() == GameVarietyName.GRAND) {
+		if (spielart.getGameVariety() == GameVarietyName.GRAND) {
 
 			bubeneinordnen();
 		}
 		
-		if (spielart.getSpielart() == GameVarietyName.SUIT) {
+		if (spielart.getGameVariety() == GameVarietyName.SUIT) {
 
 			bubeneinordnen();
 			farbeneinordnen();
@@ -448,7 +448,7 @@ abstract public class Player implements IPlayer {
 			
 			if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
 
-				kartenwert = spielart.karteBewerten(blatt.get(i));
+				kartenwert = spielart.evaluateCard(blatt.get(i));
 				truempfe[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
 			}
 		}
@@ -493,7 +493,7 @@ abstract public class Player implements IPlayer {
 
 			if (blatt.get(i).getValue() != Value.UNDER_KNAVE && blatt.get(i).getSuit() == spiel.getTrumpffarbe()) {
 
-				kartenwert = spielart.karteBewerten(blatt.get(i));
+				kartenwert = spielart.evaluateCard(blatt.get(i));
 				truempfe[farbeeinordnenhilf(kartenwert)] = blatt.get(i);
 			}
 		}
