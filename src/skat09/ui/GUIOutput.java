@@ -166,7 +166,7 @@ public class GUIOutput extends Output {
 	public SuitGame farbe() {
 		SuitGame spiel = null;
 		String farbe = hfenster.getFarbe();
-		spiel = farbeansagen(farbe);
+		spiel = declareSuitGame(farbe);
 		return spiel;
 	}
 
@@ -407,20 +407,25 @@ public class GUIOutput extends Output {
 	 * @param s Der String, der die Farbe beinhaltet
 	 * @return Das gew&auml;hlte Farbspiel
 	 */
-	public SuitGame farbeansagen(String s) {
-		SuitGame spiel = null;
-		if (s.compareTo("Herz") == 0) {
-			spiel = new SuitGame(Suit.HEARTS);
-		} else if (s.compareTo("Karo") == 0 || s.compareTo("Schellen") == 0) {
-			spiel = new SuitGame(Suit.BELLS);
-		} else if (s.compareTo("Pik") == 0 || s.compareTo("Gruen") == 0) {
-			spiel = new SuitGame(Suit.LEAVES);
-		} else if (s.compareTo("Kreuz") == 0 || s.compareTo("Eichel") == 0) {
-			spiel = new SuitGame(Suit.ACORNS);
+	public SuitGame declareSuitGame(String s) {
+		SuitGame suitGame = null;
+		
+		if (s.compareTo(Messages.getI18n("game.type.german.herz")) == 0) {
+			suitGame = new SuitGame(Suit.HEARTS);
+		} else if (s.compareTo(Messages.getI18n("game.type.diamonds")) == 0
+				|| s.compareTo(Messages.getI18n("game.type.german.schellen")) == 0) {
+			suitGame = new SuitGame(Suit.BELLS);
+		} else if (s.compareTo(Messages.getI18n("game.type.spades")) == 0
+				|| s.compareTo(Messages.getI18n("game.type.german.gruen")) == 0) {
+			suitGame = new SuitGame(Suit.LEAVES);
+		} else if (s.compareTo(Messages.getI18n("game.type.clubs")) == 0
+				|| s.compareTo(Messages.getI18n("game.type.german.eichel")) == 0) {
+			suitGame = new SuitGame(Suit.ACORNS);
 		} else {
 			System.out.println("Fehler in farbeansagen()");
 		}
-		return spiel;
+		
+		return suitGame;
 	}
 
 	@Override
