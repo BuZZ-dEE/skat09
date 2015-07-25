@@ -13,133 +13,112 @@ import skat09.playingcard.Value;
  * @version 03.07.2009
  */
 public class Ramsch extends GameVariety {
-	/**
-	 * Instanziert ein Ramsch - Spiel
-	 */
+	
 	public Ramsch() {
 		setGameVariety(GameVarietyName.RAMSCH);
 	}
 
 	@Override
-	public boolean checkedPlayedCards(ArrayList<PlayingCard> blatt,
-			PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
-		boolean ergebnis = false;
+	public boolean checkedPlayedCards(ArrayList<PlayingCard> deck,
+			PlayingCard[] playedCards, PlayingCard cardToCheck) {
+		boolean result = false;
 
 		// Wenn noch keine Karte gespielt wurde, darf die Karte gespielt werden.
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
-			ergebnis = true;
+			result = true;
+		} else if (playedCards[0].getValue() == Value.UNDER_KNAVE) {
+			
+			result = followingUnderKnave(deck, playedCards, cardToCheck);
+		} else {
+			
+			result = followingSuit(deck, playedCards, cardToCheck);
 		}
 		
-		else if (gespielteKarten[0].getValue() == Value.UNDER_KNAVE) {
-			
-			ergebnis = bubeBedienen(blatt, gespielteKarten, zuPruefendeKarte);
-		}
-
-		else {
-			
-			ergebnis = followingSuit(blatt, gespielteKarten, zuPruefendeKarte);
-		}
-		
-		return ergebnis;
+		return result;
 	}
 	
 	/**
 	 * Wenn die zuerst gespielte Karte ein Bube war wird gepr&uuml;ft,
 	 * ob der Spieler noch Buben hat.
 	 * 
-	 * @param blatt - Das Blatt des Spielers, der eine Karte spielen m&ouml;chte.
-	 * @param gespielteKarten - Die Karten, die schon gespielt wurden.
-	 * @param zuPruefendeKarte - Die Karte, die der Spieler spielen m&ouml;chte.
+	 * @param deck - Das Blatt des Spielers, der eine Karte spielen m&ouml;chte.
+	 * @param playedCards - Die Karten, die schon gespielt wurden.
+	 * @param cardToCheck - Die Karte, die der Spieler spielen m&ouml;chte.
 	 * @return true, wenn Karte gespielt werden darf
 	 */
-	public boolean bubeBedienen(ArrayList<PlayingCard> blatt, PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte) {
+	public boolean followingUnderKnave(ArrayList<PlayingCard> deck, PlayingCard[] playedCards, PlayingCard cardToCheck) {
 		
-		boolean ergebnis = true;
+		boolean result = true;
 		
 		// Wenn Bube gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (zuPruefendeKarte.getValue() == Value.UNDER_KNAVE) {
+		if (cardToCheck.getValue() == Value.UNDER_KNAVE) {
 
-			ergebnis = true;
-		}
-		
-		// Wenn nicht bedient wurde, schaue, ob bedient werden konnte.
-		else {
+			result = true;
+		} else { // Wenn nicht bedient wurde, schaue, ob bedient werden konnte.
 
 			// Nach Buben oder Trumpf suchen
-			for (int i = 0; i < blatt.size(); i++) {
+			for (int i = 0; i < deck.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
+				if (deck.get(i).getValue() == Value.UNDER_KNAVE) {
 
-					ergebnis = false;
+					result = false;
 					break;
 				}
 			}
 		}
 		
-		return ergebnis;
+		return result;
 	}
 
 	@Override
-	public PlayingCard higherCard(PlayingCard karte1, PlayingCard karte2) {
+	public PlayingCard higherCard(PlayingCard card1, PlayingCard card2) {
 
-		PlayingCard hoehereKarte = null;
+		PlayingCard highestCard = null;
 
-		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
+		if (card1.getValue() == Value.UNDER_KNAVE && card2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = higherUnderKnave(karte1, karte2);
+			highestCard = higherUnderKnave(card1, card2);
 
+		} else if (card1.getValue() == Value.UNDER_KNAVE || card2.getValue() == Value.UNDER_KNAVE) {
+
+			highestCard = higherCardOneUnderKnave(card1, card2);
+
+		} else if (card1.getSuit() == card2.getSuit()) {
+
+			highestCard = higherCardSuit(card1, card2);
+
+		} else {
+
+			highestCard = card1;
 		}
 
-		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
-
-			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
-
-		}
-
-		else if (karte1.getSuit() == karte2.getSuit()) {
-
-			hoehereKarte = higherCardSuit(karte1, karte2);
-
-		}
-
-		else {
-
-			hoehereKarte = karte1;
-		}
-
-		return hoehereKarte;
+		return highestCard;
 	}
 
 	@Override
-	public PlayingCard sortCard(PlayingCard karte1, PlayingCard karte2) {
-		PlayingCard hoehereKarte = null;
+	public PlayingCard sortCard(PlayingCard card1, PlayingCard card2) {
+		PlayingCard highestCard = null;
 
-		if (karte1.getValue() == Value.UNDER_KNAVE && karte2.getValue() == Value.UNDER_KNAVE) {
+		if (card1.getValue() == Value.UNDER_KNAVE && card2.getValue() == Value.UNDER_KNAVE) {
 
-			hoehereKarte = higherUnderKnave(karte1, karte2);
+			highestCard = higherUnderKnave(card1, card2);
 
-		}
+		} else if (card1.getValue() == Value.UNDER_KNAVE || card2.getValue() == Value.UNDER_KNAVE) {
 
-		else if (karte1.getValue() == Value.UNDER_KNAVE || karte2.getValue() == Value.UNDER_KNAVE) {
+			highestCard = higherCardOneUnderKnave(card1, card2);
 
-			hoehereKarte = higherCardOneUnderKnave(karte1, karte2);
+		} else if (card1.getSuit() == card2.getSuit()) {
 
-		}
+			highestCard = higherCardSuit(card1, card2);
 
-		else if (karte1.getSuit() == karte2.getSuit()) {
-
-			hoehereKarte = higherCardSuit(karte1, karte2);
-
-		}
-
-		else {
+		} else {
 			
-			hoehereKarte = higherSuit(karte1, karte2);
+			highestCard = higherSuit(card1, card2);
 		}
 
-		return hoehereKarte;
+		return highestCard;
 	}
 
 	@Override
@@ -151,47 +130,47 @@ public class Ramsch extends GameVariety {
 	 * Ordnet einer Karte einen Zahlenwert zu. Die geschieht in der Wertigkeit der Karten
 	 * f&uuml;r die jeweilige Spielart.
 	 * 
-	 * @param karte - Die Karte der ein Zahlenwert zugeordnet werden soll.
+	 * @param card - Die Karte der ein Zahlenwert zugeordnet werden soll.
 	 * @return Der Zahlenwert der jeweiligen Karte.
 	 */
-	public int evaluateCard(PlayingCard karte) {
+	public int evaluateCard(PlayingCard card) {
 
-		Value wert = karte.getValue();
-		int ergebnis = 0;
+		Value value = card.getValue();
+		int result = 0;
 
-		switch (wert) {
+		switch (value) {
 		case SIX:
-			ergebnis = 7;
+			result = 7;
 			break;
 		case SEVEN:
-			ergebnis = 7;
+			result = 7;
 			break;
 		case EIGHT:
-			ergebnis = 8;
+			result = 8;
 			break;
 		case NINE:
-			ergebnis = 9;
+			result = 9;
 			break;
 		case TEN:
-			ergebnis = 10;
+			result = 10;
 			break;	
 		case OVER_KNAVE:
-			ergebnis = 11;
+			result = 11;
 			break;
 		case KING:
-			ergebnis = 12;
+			result = 12;
 			break;
 		case DAUS:
-			ergebnis = 13;
+			result = 13;
 			break;
 		case UNDER_KNAVE:
-			ergebnis = evaluateUnderKnave(karte);
+			result = evaluateUnderKnave(card);
 			break;
 //		default:
 //			ergebnis = -1;
 
 		}
-		return ergebnis;
+		return result;
 	}
 
 }
