@@ -48,11 +48,11 @@ public class RuleCompliantPlayer extends Player {
 	//
 
 	@Override
-	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
+	public PlayingCard playCard(PlayingCard[] gespielteKarten) {
 		
 		PlayingCard ergebnis = null;
 	
-		ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+		ergebnis = playRamdonAllowedCard(gespielteKarten);
 		
 		return ergebnis;
 	}
@@ -70,7 +70,7 @@ public class RuleCompliantPlayer extends Player {
 	 * Der regelkonforme Spieler ist nie Alleinspieler und kann deshalb nie
 	 * handspiel ansagen.
 	 */
-	public boolean handspiel() {
+	public boolean handgame() {
 
 		return true;
 	}
@@ -106,7 +106,7 @@ public class RuleCompliantPlayer extends Player {
 	 * Der regelkonforme Spieler ist immer weg und sagt deshalb auch kein Spiel
 	 * an.
 	 */
-	public IGameVariety spielAnsagen() {
+	public IGameVariety declareGame() {
 
 		return new NullGame();
 	}
@@ -147,7 +147,7 @@ public class RuleCompliantPlayer extends Player {
 	}
 
 	@Override
-	public SuitGame farbe() {
+	public SuitGame suit() {
 		
 		return null;
 	}

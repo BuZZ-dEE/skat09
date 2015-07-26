@@ -31,11 +31,11 @@ public class Granny extends Player {
 	 *            bereits gespielte Karten
 	 * @return Spielkarte, die die Oma spielt
 	 */
-	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
+	public PlayingCard playCard(PlayingCard[] gespielteKarten) {
 
-		int index = blatt.size() - 1;
+		int index = hand.size() - 1;
 
-		return blatt.remove(index);
+		return hand.remove(index);
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class Granny extends Player {
 	/**
 	 * Wenn die Oma beim Raeuberskat spielt, spielt sie Hand.
 	 */
-	public boolean handspiel() {
+	public boolean handgame() {
 
 		return true;
 	}
@@ -102,13 +102,13 @@ public class Granny extends Player {
 	/**
 	 * Die Oma spielt immer Grand, wenn sie spielen muss.
 	 */
-	public IGameVariety spielAnsagen() {
+	public IGameVariety declareGame() {
 
 		return new GrandGame();
 	}
 
 	@Override
-	public SuitGame farbe() {
+	public SuitGame suit() {
 	
 		return null;
 	}

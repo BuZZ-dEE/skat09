@@ -43,7 +43,7 @@ public interface IHumanPlayer {
 	 * @return die Karte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	public abstract PlayingCard spieleKarte(PlayingCard[] gespielteKarten);
+	public abstract PlayingCard playCard(PlayingCard[] gespielteKarten);
 
 	/**
 	 * Gibt die gedr&uuml;ckten Spielkarten zur&uuml;ck.
@@ -57,7 +57,7 @@ public interface IHumanPlayer {
 	 * 
 	 * @return true, falls der Spieler ein Handspiel w&uuml;nscht
 	 */
-	public abstract boolean handspiel();
+	public abstract boolean handgame();
 
 	/**
 	 * Ouvert ermittelt, ob der Spieler mit offenen Karten spielen will.
@@ -86,7 +86,7 @@ public interface IHumanPlayer {
 	 * 
 	 * @return die gew&uuml;nschte Spielart
 	 */
-	public abstract IGameVariety spielAnsagen();
+	public abstract IGameVariety declareGame();
 
 	/**
 	 * Liefert ein Farbspiel mit korrekt gesetzten Trumpffarbe zur&uuml;ck,
@@ -94,7 +94,7 @@ public interface IHumanPlayer {
 	 * 
 	 * @return Farbspiel mit gesetzter Trumpffarbe
 	 */
-	public abstract SuitGame farbe();
+	public abstract SuitGame suit();
 
 	/**
 	 * Benutzt der Spieler den Reizagenten, liefert diese Methode den maximalen

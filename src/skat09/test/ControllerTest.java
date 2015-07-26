@@ -449,7 +449,7 @@ public class ControllerTest {
 		tisch.getSpieler1().setPosition(Position.VORHAND);
 		controller.entscheideraeuberspiel();
 		
-		assertTrue(tisch.getVorhand().getIstAlleinspieler());
+		assertTrue(tisch.getVorhand().isDeclarer());
 		
 
 	}
@@ -464,7 +464,7 @@ public class ControllerTest {
 		blatt.add(new PlayingCard(Suit.HEARTS, Value.NINE));
 		blatt.add(new PlayingCard(Suit.HEARTS, Value.TEN));
 		blatt.add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		sspieler.setBlatt(blatt);
+		sspieler.setHand(blatt);
 		sspieler.setAnfangsblatt(blatt);
 		tisch.setSpieler2(sspieler);
 		tisch.setSpieler3(new Granny("Zensursula"));
@@ -473,17 +473,17 @@ public class ControllerTest {
 		
 		controller.bereiteSpielvor();
 			boolean hatnamen = true;
-		for (PlayingCard karte : tisch.getSpieler1().getBlatt()) {
+		for (PlayingCard karte : tisch.getSpieler1().getHand()) {
 			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
 				}
-		for (PlayingCard karte : tisch.getSpieler2().getBlatt()) {
+		for (PlayingCard karte : tisch.getSpieler2().getHand()) {
 			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
 				}
-		for (PlayingCard karte : tisch.getSpieler3().getBlatt()) {
+		for (PlayingCard karte : tisch.getSpieler3().getHand()) {
 			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
@@ -498,10 +498,10 @@ public class ControllerTest {
 		OutputStub ausgabe2 = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(tisch2, ausgabe2);
 		HumanPlayerStub mensch = new HumanPlayerStub("Bernd");
-		mensch.setIstAlleinspieler(true);
-		mensch.setBlatt(new ArrayList<PlayingCard>());
+		mensch.setIsDeclarer(true);
+		mensch.setHand(new ArrayList<PlayingCard>());
 		for (int i = 0; i < 10; i++) {
-			mensch.getBlatt().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+			mensch.getHand().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		}
 		controller2.getTisch().setSpieler1(mensch);
 		Player spieler2 = new Granny("Basti");
@@ -555,7 +555,7 @@ public class ControllerTest {
 		IPlayer spieler2 = new Granny("Roy");
 		IPlayer spieler3 = new Granny("Marry");
 		
-		spieler1.setIstAlleinspieler(true);
+		spieler1.setIsDeclarer(true);
 		
 		ArrayList<PlayingCard> blatt1 = new ArrayList<PlayingCard>(); 
 		blatt1.add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
@@ -568,7 +568,7 @@ public class ControllerTest {
 		blatt1.add(new PlayingCard(Suit.LEAVES, Value.DAUS));
 		blatt1.add(new PlayingCard(Suit.LEAVES, Value.TEN));
 		spieler1.setStiche(blatt1);
-		spieler1.setBlatt(blatt1);
+		spieler1.setHand(blatt1);
 		spieler1.setSpielart(new SuitGame(Suit.ACORNS));
 		spieler1.spitzenEinordnen();
 		
@@ -618,14 +618,14 @@ public class ControllerTest {
 		blatt.add(new PlayingCard(Suit.BELLS, Value.NINE));
 	
 		Player spieler1 = new Granny("Joy");
-		spieler1.setBlatt(blatt);
+		spieler1.setHand(blatt);
 		spieler1.setSpielart(new GrandGame());
-		spieler1.setIstAlleinspieler(true);
+		spieler1.setIsDeclarer(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
-		spieler2.setBlatt(blatt);
+		spieler2.setHand(blatt);
 		spieler2.setStiche(blatt);
 		Player spieler3 = new RuleCompliantPlayer("John Wayne");
-		spieler3.setBlatt(blatt);
+		spieler3.setHand(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
 		controller.getTisch().setSpieler1(spieler1);
@@ -639,8 +639,8 @@ public class ControllerTest {
 		boolean spieler3Aufgeraeumt = false;
 
 		IPlayer sp3 = controller.getTisch().getSpieler3();
-		if (sp3.getBlatt() == null && sp3.getIstAlleinspieler() == false &&
-				sp3.getStiche().size() == 0 && sp3.getAllegespieltenkarten().size() == 0) {
+		if (sp3.getHand() == null && sp3.isDeclarer() == false &&
+				sp3.getTricks().size() == 0 && sp3.getAllPlayedCards().size() == 0) {
 			spieler3Aufgeraeumt = true;
 		}
 		
@@ -666,14 +666,14 @@ public class ControllerTest {
 		blatt.add(new PlayingCard(Suit.BELLS, Value.NINE));
 	
 		Player spieler1 = new Granny("Joy");
-		spieler1.setBlatt(blatt);
+		spieler1.setHand(blatt);
 		spieler1.setSpielart(new GrandGame());
-		spieler1.setIstAlleinspieler(true);
+		spieler1.setIsDeclarer(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
-		spieler2.setBlatt(blatt);
+		spieler2.setHand(blatt);
 		spieler2.setStiche(blatt);
 		Player spieler3 = new RuleCompliantPlayer("John Wayne");
-		spieler3.setBlatt(blatt);
+		spieler3.setHand(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
 		controller.getTisch().setSpieler1(spieler1);
@@ -713,14 +713,14 @@ public class ControllerTest {
 		blatt.add(new PlayingCard(Suit.BELLS, Value.NINE));
 	
 		Player spieler1 = new Granny("Joy");
-		spieler1.setBlatt(blatt);
+		spieler1.setHand(blatt);
 		spieler1.setSpielart(new GrandGame());
-		spieler1.setIstAlleinspieler(true);
+		spieler1.setIsDeclarer(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
-		spieler2.setBlatt(blatt);
+		spieler2.setHand(blatt);
 		spieler2.setStiche(blatt);
 		Player spieler3 = new RuleCompliantPlayer("John Wayne");
-		spieler3.setBlatt(blatt);
+		spieler3.setHand(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
 		controller.getTisch().setSpieler1(spieler1);
@@ -734,8 +734,8 @@ public class ControllerTest {
 		boolean spieler1Aufgeraeumt = false;
 		
 		IPlayer sp1 = controller.getTisch().getSpieler1();
-		if (sp1.getBlatt() == null && !sp1.getIstAlleinspieler() &&
-				sp1.getStiche().size() == 0 && sp1.getAllegespieltenkarten().size() == 0) {
+		if (sp1.getHand() == null && !sp1.isDeclarer() &&
+				sp1.getTricks().size() == 0 && sp1.getAllPlayedCards().size() == 0) {
 			spieler1Aufgeraeumt = true;
 		}
 		
@@ -761,14 +761,14 @@ public class ControllerTest {
 		blatt.add(new PlayingCard(Suit.BELLS, Value.NINE));
 	
 		Player spieler1 = new Granny("Joy");
-		spieler1.setBlatt(blatt);
+		spieler1.setHand(blatt);
 		spieler1.setSpielart(new GrandGame());
-		spieler1.setIstAlleinspieler(true);
+		spieler1.setIsDeclarer(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
-		spieler2.setBlatt(blatt);
+		spieler2.setHand(blatt);
 		spieler2.setStiche(blatt);
 		Player spieler3 = new RuleCompliantPlayer("John Wayne");
-		spieler3.setBlatt(blatt);
+		spieler3.setHand(blatt);
 		spieler3.setAlleGespieltenKarten(blatt);
 		
 		controller.getTisch().setSpieler1(spieler1);
@@ -782,8 +782,8 @@ public class ControllerTest {
 		boolean spieler2Aufgeraeumt = false;
 		
 		IPlayer sp2 = controller.getTisch().getSpieler2();
-		if (sp2.getBlatt() == null && sp2.getIstAlleinspieler() == false &&
-				sp2.getStiche().size() == 0 && sp2.getAllegespieltenkarten().size() == 0) {
+		if (sp2.getHand() == null && sp2.isDeclarer() == false &&
+				sp2.getTricks().size() == 0 && sp2.getAllPlayedCards().size() == 0) {
 			spieler2Aufgeraeumt = true;
 		}
 		
@@ -842,7 +842,7 @@ public class ControllerTest {
 		
 		IPlayer oma = new Granny("o1");
 		controller.getTisch().setSpieler1(oma);
-		controller.getTisch().getSpieler1().setIstAlleinspieler(true);
+		controller.getTisch().getSpieler1().setIsDeclarer(true);
 		controller.getTisch().setSpieler2(new Granny("o2"));
 		controller.getTisch().setSpieler3(new Granny("o3"));
 		controller.getTisch().setSechserskat(true);
@@ -866,7 +866,7 @@ public class ControllerTest {
 	public void flagsSetzenTest1() {
 		
 		tisch.setSpieler1(new Granny("Erna"));
-		tisch.getSpieler1().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(true);
 		tisch.setSpieler2(new Granny("Renate"));
 		tisch.setSpieler3(new Granny("Mochochocho"));
 		tisch.setSpielart(new NullGame());
@@ -883,7 +883,7 @@ public class ControllerTest {
 	public void flagsSetzenTest2() {
 		
 		tisch.setSpieler1(new Granny("Erna"));
-		tisch.getSpieler1().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(true);
 		tisch.setSpieler2(new Granny("Renate"));
 		tisch.setSpieler3(new Granny("Mochochocho"));
 		tisch.setSpielart(new NullGame());
@@ -901,7 +901,7 @@ public class ControllerTest {
 	public void flagsSetzenTest3() {
 		
 		tisch.setSpieler1(new Granny("Erna"));
-		tisch.getSpieler1().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(true);
 		tisch.setSpieler2(new Granny("Renate"));
 		tisch.setSpieler3(new Granny("Mochochocho"));
 		tisch.setSpielart(new GrandGame());
@@ -918,7 +918,7 @@ public class ControllerTest {
 	public void flagsSetzenTest4() {
 		
 		tisch.setSpieler1(new HumanPlayerStub("Bert"));
-		tisch.getSpieler1().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(true);
 		tisch.setSpieler2(new Granny("Renate"));
 		tisch.setSpieler3(new Granny("Mochochocho"));
 		tisch.setSpielart(new GrandGame());
@@ -962,7 +962,7 @@ public class ControllerTest {
 		tisch2.setSpieler1(new Granny("Hilde"));
 		tisch2.setSpieler2(new Granny("Heide"));
 		tisch2.setSpieler3(new Granny("Harald"));
-		tisch2.getSpieler1().setIstAlleinspieler(true);
+		tisch2.getSpieler1().setIsDeclarer(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -984,7 +984,7 @@ public class ControllerTest {
 		tisch2.setSpieler1(new Granny("Hilde"));
 		tisch2.setSpieler2(new Granny("Heide"));
 		tisch2.setSpieler3(new Granny("Harald"));
-		tisch2.getSpieler1().setIstAlleinspieler(true);
+		tisch2.getSpieler1().setIsDeclarer(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -1006,7 +1006,7 @@ public class ControllerTest {
 		tisch2.setSpieler1(new Granny("Hilde"));
 		tisch2.setSpieler2(new Granny("Heide"));
 		tisch2.setSpieler3(new Granny("Harald"));
-		tisch2.getSpieler1().setIstAlleinspieler(true);
+		tisch2.getSpieler1().setIsDeclarer(true);
 		tisch2.setSpaltarsch(true);
 		tisch2.setRamschrunden(0);
 		tisch2.positionInitialisieren();
@@ -1030,7 +1030,7 @@ public class ControllerTest {
 		tisch2.setSpieler1(new Granny("Hilde"));
 		tisch2.setSpieler2(new Granny("Heide"));
 		tisch2.setSpieler3(new Granny("Harald"));
-		tisch2.getSpieler1().setIstAlleinspieler(true);
+		tisch2.getSpieler1().setIsDeclarer(true);
 		tisch2.setSpaltarsch(true);
 		tisch2.setRamschrunden(1);
 		tisch2.positionInitialisieren();
@@ -1054,7 +1054,7 @@ public class ControllerTest {
 		tisch2.setSpieler1(new RuleCompliantPlayer("Hilde"));
 		tisch2.setSpieler2(new RuleCompliantPlayer("Heide"));
 		tisch2.setSpieler3(new RuleCompliantPlayer("Harald"));
-		tisch2.getSpieler1().setIstAlleinspieler(true);
+		tisch2.getSpieler1().setIsDeclarer(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -1076,7 +1076,7 @@ public class ControllerTest {
 		tisch2.setSpieler1(new Granny("Hilde"));
 		tisch2.setSpieler2(new Granny("Heide"));
 		tisch2.setSpieler3(new Granny("Harald"));
-		tisch2.getSpieler1().setIstAlleinspieler(true);
+		tisch2.getSpieler1().setIsDeclarer(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -1098,7 +1098,7 @@ public class ControllerTest {
 		tisch2.setSpieler1(new RuleCompliantPlayer("Hilde"));
 		tisch2.setSpieler2(new RuleCompliantPlayer("Heide"));
 		tisch2.setSpieler3(new RuleCompliantPlayer("Harald"));
-		tisch2.getSpieler1().setIstAlleinspieler(true);
+		tisch2.getSpieler1().setIsDeclarer(true);
 		tisch2.positionInitialisieren();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -1128,11 +1128,11 @@ public class ControllerTest {
 		blatt.add(new PlayingCard(Suit.LEAVES, Value.SEVEN));
 		blatt.add(new PlayingCard(Suit.BELLS, Value.DAUS));
 		
-		spieler1.setBlatt(blatt);
-		spieler2.setBlatt(blatt);
-		spieler3.setBlatt(blatt);
+		spieler1.setHand(blatt);
+		spieler2.setHand(blatt);
+		spieler3.setHand(blatt);
 		
-		spieler1.setIstAlleinspieler(true);
+		spieler1.setIsDeclarer(true);
 		
 		PlayingCard[] skat = new PlayingCard[3];
 		skat[0] = new PlayingCard(Suit.HEARTS, Value.EIGHT);
