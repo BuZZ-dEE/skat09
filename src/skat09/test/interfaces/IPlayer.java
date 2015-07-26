@@ -34,21 +34,21 @@ public interface IPlayer {
 	 * 
 	 * @return Blatt des Spielers
 	 */
-	public abstract ArrayList<PlayingCard> getBlatt();
+	public abstract ArrayList<PlayingCard> getHand();
 
 	/**
 	 * Gibt die vom Spieler gewonnenen Stiche zur&uuml;ck.
 	 * 
 	 * @return vom Spieler gewonnen Stiche
 	 */
-	public abstract ArrayList<PlayingCard> getStiche();
+	public abstract ArrayList<PlayingCard> getTricks();
 
 	/**
 	 * Gibt an, ob der Spieler Alleinspieler ist.
 	 * 
 	 * @return true, wenn Spieler Alleinspieler ist
 	 */
-	public abstract boolean getIstAlleinspieler();
+	public abstract boolean isDeclarer();
 
 	/**
 	 * Liefert alle bisher vom Spieler gespielten Spiele in einer ArrayList
@@ -56,7 +56,7 @@ public interface IPlayer {
 	 * 
 	 * @return alle vom Spieler bisher gespielten Spiele
 	 */
-	public abstract ArrayList<Integer> getSpiele();
+	public abstract ArrayList<Integer> getGames();
 
 	/**
 	 * Gibt den Mitspieler eines Spielers zur&uuml;ck, sofern dieser nicht der
@@ -64,40 +64,40 @@ public interface IPlayer {
 	 * 
 	 * @return Mitspieler des Spielers
 	 */
-	public abstract IPlayer getMitspieler();
+	public abstract IPlayer getTeammate();
 
 	/**
 	 * Gibt die bisher gespielten Karten
 	 * 
 	 * @return alle bisher gefallenen Karten
 	 */
-	public abstract ArrayList<PlayingCard> getAllegespieltenkarten();
+	public abstract ArrayList<PlayingCard> getAllPlayedCards();
 
 	/**
 	 * Liefert das Restblatt zur&uumlck.
 	 * 
 	 * @return das restblatt
 	 */
-	public abstract ArrayList<PlayingCard> getRestblatt();
+	public abstract ArrayList<PlayingCard> getRestHand();
 
 	/**
 	 * Liefert die im Spieler gesetzte Spielart zur&uuml;ck.
 	 * 
 	 * @return die gesetzte Spielart
 	 */
-	public abstract IGameVariety getSpielart();
+	public abstract IGameVariety getGameVariety();
 	
 	/**
 	 * gibt die Handspiele zur&uuml;ck
 	 * @return the handspiel
 	 */
-	public int getHandspiele();
+	public int getHandGames();
 	
 	/**
 	 * Setzt die Handspiele
 	 * @param handspiele
 	 */
-	public void setHandspiele(int handspiele);
+	public void setHandGames(int handspiele);
 
 	/**
 	 * Setzt die Spielart im Spieler.
@@ -121,7 +121,7 @@ public interface IPlayer {
 	 * @param blatt
 	 *            - neues Blatt
 	 */
-	public abstract void setBlatt(ArrayList<PlayingCard> blatt);
+	public abstract void setHand(ArrayList<PlayingCard> blatt);
 
 	/**
 	 * Setzt das Alleinspielerflag.
@@ -129,7 +129,7 @@ public interface IPlayer {
 	 * @param istAlleinspieler
 	 *            - true, wenn Spieler Alleinspieler ist
 	 */
-	public abstract void setIstAlleinspieler(boolean istAlleinspieler);
+	public abstract void setIsDeclarer(boolean istAlleinspieler);
 
 	/**
 	 * Setzt das Mitspielerflag.
@@ -195,7 +195,7 @@ public interface IPlayer {
 	 * @param stich
 	 *            - die drei am Tisch gewonnenen Karten
 	 */
-	public abstract void stichHinzufuegen(PlayingCard[] stich);
+	public abstract void addTrick(PlayingCard[] stich);
 
 	/**
 	 * F&uuml;gt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
@@ -207,7 +207,7 @@ public interface IPlayer {
 	 * 
 	 * @param gespielteKarten - die in einer Runde gespielten Karten
 	 */
-	public abstract void gespielteKartenHinzufuegen(PlayingCard[] gespielteKarten);
+	public abstract void addPlayedCards(PlayingCard[] gespielteKarten);
 
 	/**
 	 * Ermittelt die Karten, die der Spieler spielen darf.
@@ -216,7 +216,7 @@ public interface IPlayer {
 	 *            - Karten, die auf dem Tisch liegen.
 	 * @return Die Karten, die gespielt werden d&uuml;rfen.
 	 */
-	public abstract ArrayList<PlayingCard> spielbareKarten(
+	public abstract ArrayList<PlayingCard> playableCards(
 			PlayingCard[] gespielteKarten);
 
 	/**
@@ -228,7 +228,7 @@ public interface IPlayer {
 	 * @return die Karte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	abstract public PlayingCard spieleKarte(PlayingCard[] gespielteKarten)
+	abstract public PlayingCard playCard(PlayingCard[] gespielteKarten)
 			throws IOException;
 
 	/**
@@ -237,7 +237,7 @@ public interface IPlayer {
 	 * @param gespielteKarten - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return - Spielkarte, die zufällig ausgewählt wurde.
 	 */
-	public abstract PlayingCard zufaelligErlaubteKarteSpielen(
+	public abstract PlayingCard playRamdonAllowedCard(
 			PlayingCard[] gespielteKarten);
 
 	/**
@@ -253,14 +253,14 @@ public interface IPlayer {
 	 * 
 	 * @return die gew&uuml;nschte Spielart
 	 */
-	abstract public IGameVariety spielAnsagen();
+	abstract public IGameVariety declareGame();
 
 	/**
 	 * Handspiel ermittelt, ob der Spieler ein Handspiel ansagt.
 	 * 
 	 * @return true, falls der Spieler ein Handspiel w&uuml;nscht
 	 */
-	abstract public boolean handspiel();
+	abstract public boolean handgame();
 
 	/**
 	 * Ouvert ermittelt, ob der Spieler mit offenen Karten spielen will.
@@ -289,7 +289,7 @@ public interface IPlayer {
 	 * 
 	 * @return Farbspiel mit gesetzter Trumpffarbe
 	 */
-	abstract public SuitGame farbe();
+	abstract public SuitGame suit();
 
 	/**
 	 * F&uuml;gt einen neuen Eintrag zu Liste der Spiele dazu, wenn der Spieler
@@ -299,7 +299,7 @@ public interface IPlayer {
 	 *            - punkte, die der Spieler erreicht hat
 	 * @return die neue Liste
 	 */
-	public abstract ArrayList<Integer> neuerEintrag(int punkte);
+	public abstract ArrayList<Integer> addPoints(int punkte);
 
 	/**
 	 * Diese Methode simuliert das h&ouml;ren eines Spielers.
@@ -326,7 +326,7 @@ public interface IPlayer {
 	 * @param spielart
 	 *            - spielart nach der sortiert werden soll
 	 */
-	public abstract void blattSortieren(final IGameVariety spielart);
+	public abstract void sortHand(final IGameVariety spielart);
 
 	/**
 	 * Fragt den Spieler, ob er mit Reizagent spielen m&ouml;chte.

@@ -221,7 +221,7 @@ public class GUIOutput extends Output {
 		hfenster.setZug(true);
 		warte();
 		int kartennummer = hfenster.getGewaehlteKarte();
-		PlayingCard karte = spieler.getBlatt().remove(kartennummer);
+		PlayingCard karte = spieler.getHand().remove(kartennummer);
 		hfenster.setZug(false);
 		return karte;
 	}

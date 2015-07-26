@@ -67,17 +67,17 @@ public class TableTest {
 		tisch.setSpieler1(spieler1);
 		tisch.setSpieler2(spieler2);
 		tisch.setSpieler3(spieler3);
-		tisch.getSpieler1().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(true);
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
-		tisch.getSpieler1().getBlatt().clear();
-		tisch.getSpieler1().getBlatt().add(spielkarte1);
-		tisch.getSpieler1().getBlatt().add(spielkarte2);
-		tisch.getSpieler1().getBlatt().add(spielkarte3);
-	    tisch.getSpieler2().getBlatt().clear();
-	    tisch.getSpieler2().getBlatt().add(spielkarte4);
-	    tisch.getSpieler3().getBlatt().clear();
-	    tisch.getSpieler3().getBlatt().add(spielkarte3);
+		tisch.getSpieler1().getHand().clear();
+		tisch.getSpieler1().getHand().add(spielkarte1);
+		tisch.getSpieler1().getHand().add(spielkarte2);
+		tisch.getSpieler1().getHand().add(spielkarte3);
+	    tisch.getSpieler2().getHand().clear();
+	    tisch.getSpieler2().getHand().add(spielkarte4);
+	    tisch.getSpieler3().getHand().clear();
+	    tisch.getSpieler3().getHand().add(spielkarte3);
 	    skat[0] = null;
 	    skat[1] = null;
 	    tisch.setSkat(skat);
@@ -94,7 +94,7 @@ public class TableTest {
 		gespieltekarten[1] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		gespieltekarten[2] = new PlayingCard(Suit.BELLS, Value.NINE);
 		tisch.setGespielteKarten(gespieltekarten);
-		tisch.getSpieler1().stichHinzufuegen(gespieltekarten);
+		tisch.getSpieler1().addTrick(gespieltekarten);
 		tisch.setReizwert(18);
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
@@ -349,7 +349,7 @@ public class TableTest {
 		boolean test = false;
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
-		if(tisch.getSpieler1().getBlatt().size() == 10){
+		if(tisch.getSpieler1().getHand().size() == 10){
 			test = true;
 		}
 		assertTrue(test);
@@ -359,14 +359,14 @@ public class TableTest {
 	public void kartenAusteilenTest2() {
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
-		assertEquals(10, tisch.getSpieler2().getBlatt().size());
+		assertEquals(10, tisch.getSpieler2().getHand().size());
 	}
 
 	@Test
 	public void kartenAusteilenTest3() {
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
-		assertEquals(10, tisch.getSpieler3().getBlatt().size());
+		assertEquals(10, tisch.getSpieler3().getHand().size());
 	}
 
 	@Test
@@ -386,8 +386,8 @@ public class TableTest {
 	
 	@Test
 	public void getProzentAlleinTest() {
-		tisch.getSpieler1().getSpiele().clear();
-		tisch.getSpieler1().getSpiele().add(18);
+		tisch.getSpieler1().getGames().clear();
+		tisch.getSpieler1().getGames().add(18);
 		//tisch.addAnzahlSpiele();
 		
 		assertEquals(100, tisch.getProzentAllein(spieler1));
@@ -395,8 +395,8 @@ public class TableTest {
 	
 	@Test
 	public void getAnzahlAlleinTest() {
-		tisch.getSpieler1().getSpiele().clear();
-		tisch.getSpieler1().getSpiele().add(18);
+		tisch.getSpieler1().getGames().clear();
+		tisch.getSpieler1().getGames().add(18);
 		//tisch.addAnzahlSpiele();
 		
 		assertEquals(1, tisch.getAnzahlAllein(spieler1));
@@ -404,8 +404,8 @@ public class TableTest {
 	
 	@Test
 	public void anzahlGewinneTest() {
-		tisch.getSpieler1().getSpiele().clear();
-		tisch.getSpieler1().getSpiele().add(18);
+		tisch.getSpieler1().getGames().clear();
+		tisch.getSpieler1().getGames().add(18);
 		assertEquals(1, tisch.anzahlderGewinne(spieler1));
 	}
 
@@ -416,15 +416,15 @@ public class TableTest {
 
 	@Test
 	public void ermittleAlleinspielerTest2() {
-		tisch.getSpieler1().setIstAlleinspieler(false);
-		tisch.getSpieler2().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(false);
+		tisch.getSpieler2().setIsDeclarer(true);
 		assertEquals(spieler2, tisch.ermittleAlleinspieler());
 	}
 	
 	@Test
 	public void ermittleAlleinspielerTest3() {
-		tisch.getSpieler1().setIstAlleinspieler(false);
-		tisch.getSpieler3().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(false);
+		tisch.getSpieler3().setIsDeclarer(true);
 		assertEquals(spieler3, tisch.ermittleAlleinspieler());
 	}
 	
@@ -528,7 +528,7 @@ public class TableTest {
 
 	@Test
 	public void berechneStufeTest3() {
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertEquals(3, tisch.berechneStufe(0));
 	}
 
@@ -594,7 +594,7 @@ public class TableTest {
 	@Test
 	public void ueberreizCheckTest() {
 		
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(0, tisch.ueberreizCheck(18));
@@ -605,7 +605,7 @@ public class TableTest {
 		GameVariety spiel = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spiel);
 		tisch.setReizwert(23);
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		tisch.ueberreizCheck(18);
@@ -622,8 +622,8 @@ public class TableTest {
 		GameVariety spiel = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spiel);
 		tisch.setReizwert(23);
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		
@@ -634,7 +634,7 @@ public class TableTest {
 	public void ueberreizCheckTest2() {
 		
 		tisch.setSpielart(new GrandGame());
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(0, tisch.ueberreizCheck(18));
@@ -648,7 +648,7 @@ public class TableTest {
 		tisch.setHandspiel(true);
 		tisch.setOuvert(true);
 		tisch.setSpielart(new GrandGame());
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(0, tisch.ueberreizCheck(18));
@@ -693,8 +693,8 @@ public class TableTest {
 	
 	@Test
 	public void getAktuellePunkteTest() {
-		tisch.getSpieler1().getSpiele().clear();
-		tisch.getSpieler1().getSpiele().add(18);
+		tisch.getSpieler1().getGames().clear();
+		tisch.getSpieler1().getGames().add(18);
 		assertEquals(18, tisch.getAktuellePunkte(tisch.getSpieler1()));
 	}
 	
@@ -702,8 +702,8 @@ public class TableTest {
 	public void kartenbesitzerGebenTest() {
 		boolean test = false;
 		tisch.kartenBesitzergeben();
-		for (int i= 0; i<tisch.getSpieler1().getBlatt().size(); i++){
-			if (tisch.getSpieler1().getBlatt().get(i).getOwner().equals(tisch.getSpieler1())) {
+		for (int i= 0; i<tisch.getSpieler1().getHand().size(); i++){
+			if (tisch.getSpieler1().getHand().get(i).getOwner().equals(tisch.getSpieler1())) {
 				test = true;
 			}
 		}
@@ -715,8 +715,8 @@ public class TableTest {
 	public void kartenbesitzerGebenTest2() {
 		boolean test = false;
 		tisch.kartenBesitzergeben();
-		for (int i= 0; i<tisch.getSpieler3().getBlatt().size(); i++){
-			if (tisch.getSpieler3().getBlatt().get(i).getOwner().equals(tisch.getSpieler3())) {
+		for (int i= 0; i<tisch.getSpieler3().getHand().size(); i++){
+			if (tisch.getSpieler3().getHand().get(i).getOwner().equals(tisch.getSpieler3())) {
 				test = true;
 			}
 		}
@@ -763,15 +763,15 @@ public class TableTest {
 		tisch.setVariante(SkatVariant.RAEUBER);
 		NullGame spiel = new NullGame();
 		tisch.setSpielart(spiel);
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertEquals(23, tisch.wertePunkte(0));
 	}
 	
 	@Test
 	public void wertePunkteTest() {
 		tisch.setVariante(SkatVariant.SKAT);
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(18, tisch.wertePunkte(62));
@@ -779,8 +779,8 @@ public class TableTest {
 	
 	@Test
 	public void wertePunkteTest2() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
@@ -790,8 +790,8 @@ public class TableTest {
 	
 	@Test
 	public void wertePunkteTest3() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		assertEquals(27, tisch.wertePunkte(120));
@@ -799,20 +799,20 @@ public class TableTest {
 	
 	@Test
 	public void wertePunkteTest4() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		tisch.ermittleAlleinspieler().setStiche(deck);
-		tisch.ermittleAlleinspieler().getStiche().remove(31);
-		tisch.ermittleAlleinspieler().getStiche().remove(30);
+		tisch.ermittleAlleinspieler().getTricks().remove(31);
+		tisch.ermittleAlleinspieler().getTricks().remove(30);
 		assertEquals(27, tisch.wertePunkte(144));
 	}
 	
 	@Test
 	public void wertePunkteTest5() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
@@ -822,8 +822,8 @@ public class TableTest {
 	
 	@Test
 	public void wertePunkteTest6() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
@@ -834,8 +834,8 @@ public class TableTest {
 	@Test
 	public void wertePunkteTest7() {
 		tisch.setVariante(SkatVariant.SKAT);
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
@@ -849,20 +849,20 @@ public class TableTest {
 		
 		tisch.setBock(true);
 		tisch.setVariante(SkatVariant.RAMSCHBOCK);
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		tisch.ermittleAlleinspieler().setStiche(deck);
-		tisch.ermittleAlleinspieler().getStiche().remove(31);
-		tisch.ermittleAlleinspieler().getStiche().remove(30);
+		tisch.ermittleAlleinspieler().getTricks().remove(31);
+		tisch.ermittleAlleinspieler().getTricks().remove(30);
 		assertEquals(54, tisch.wertePunkte(144));
 	}
 	
 	@Test
 	public void punkteFarbspielTest() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
@@ -872,8 +872,8 @@ public class TableTest {
 	
 	@Test
 	public void punkteGrandspielTest() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
@@ -883,38 +883,38 @@ public class TableTest {
 	
 	@Test
 	public void punkteNullspielTest() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertEquals(23, tisch.punkteNullspiel());
 	}
 	
 	@Test
 	public void punkteNullspielTest2() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		tisch.setHandspiel(true);
 		assertEquals(35, tisch.punkteNullspiel());
 	}
 	
 	@Test
 	public void punkteNullspielTest3() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		tisch.setHandspiel(false);
 		tisch.setOuvert(true);
 		assertEquals(46, tisch.punkteNullspiel());
@@ -922,13 +922,13 @@ public class TableTest {
 	
 	@Test
 	public void punkteNullspielTest4() {
-		tisch.ermittleAlleinspieler().getBlatt().clear();
-		tisch.ermittleAlleinspieler().getBlatt().add(
+		tisch.ermittleAlleinspieler().getHand().clear();
+		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		tisch.setHandspiel(true);
 		tisch.setOuvert(true);
 		assertEquals(59, tisch.punkteNullspiel());
@@ -936,13 +936,13 @@ public class TableTest {
 	
 	@Test
 	public void spielAuswertenTest() {
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertFalse(tisch.spielAuswerten());
 	}
 	
 	@Test
 	public void spielAuswertenTest2() {
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		IGameVariety spielart = new NullGame();
 		tisch.setSpielart(spielart);
 		assertTrue(tisch.spielAuswerten());
@@ -952,26 +952,26 @@ public class TableTest {
 	public void spielAuswertenTest3() {
 		
 		tisch.setSpielart(new SuitGame(Suit.ACORNS));
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		tisch.ermittleAlleinspieler().setSpielart(new SuitGame(Suit.ACORNS));
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.TEN);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
-		tisch.ermittleAlleinspieler().getStiche().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
+		tisch.ermittleAlleinspieler().getTricks().add(karte);
 		PlayingCard karte2 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		tisch.ermittleAlleinspieler().getStiche().add(karte2);
+		tisch.ermittleAlleinspieler().getTricks().add(karte2);
 		PlayingCard karte3 = new PlayingCard(Suit.HEARTS, Value.KING);
-		tisch.ermittleAlleinspieler().getStiche().add(karte3);
-		tisch.ermittleAlleinspieler().getStiche().add(karte3);
-		tisch.ermittleAlleinspieler().getBlatt().add(karte2);
+		tisch.ermittleAlleinspieler().getTricks().add(karte3);
+		tisch.ermittleAlleinspieler().getTricks().add(karte3);
+		tisch.ermittleAlleinspieler().getHand().add(karte2);
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		
 		tisch.setHandspiel(true);
@@ -984,7 +984,7 @@ public class TableTest {
 		IPlayer tmp = tisch.getSpieler1();
 		tisch.setSpieler1(spieler2);
 		tisch.setSpieler2(tmp);
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertFalse(tisch.spielAuswerten());
 	}
 	
@@ -993,7 +993,7 @@ public class TableTest {
 		IPlayer tmp = tisch.getSpieler1();
 		tisch.setSpieler1(spieler3);
 		tisch.setSpieler3(tmp);
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertFalse(tisch.spielAuswerten());
 	}
 	
@@ -1008,27 +1008,27 @@ public class TableTest {
 		skat[1] = new PlayingCard(Suit.HEARTS, Value.TEN);
 		skat[2] = new PlayingCard(Suit.LEAVES, Value.EIGHT);
 		tisch.setSkat(skat);
-		spieler1.getStiche().clear();
-		spieler2.getStiche().clear();
-		spieler3.getStiche().clear();
-		spieler1.getStiche().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
-		spieler1.getStiche().add(new PlayingCard(Suit.ACORNS, Value.KING));
-		spieler2.getStiche().add(new PlayingCard(Suit.ACORNS, Value.SIX));
+		spieler1.getTricks().clear();
+		spieler2.getTricks().clear();
+		spieler3.getTricks().clear();
+		spieler1.getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
+		spieler1.getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
+		spieler2.getTricks().add(new PlayingCard(Suit.ACORNS, Value.SIX));
 		assertTrue(tisch.spielAuswerten());
 	}
 	
 	@Test
 	public void sortiereSpielerRamschTest() {
 		
-		tisch.getSpieler1().getStiche().clear();
-		tisch.getSpieler1().getStiche().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
-		tisch.getSpieler1().getStiche().add(new PlayingCard(Suit.ACORNS, Value.KING));
-		tisch.getSpieler2().getStiche().clear();
-		tisch.getSpieler2().getStiche().add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
-		tisch.getSpieler2().getStiche().add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
-		tisch.getSpieler3().getStiche().clear();
-		tisch.getSpieler3().getStiche().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getSpieler3().getStiche().add(new PlayingCard(Suit.LEAVES, Value.KING));
+		tisch.getSpieler1().getTricks().clear();
+		tisch.getSpieler1().getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
+		tisch.getSpieler1().getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
+		tisch.getSpieler2().getTricks().clear();
+		tisch.getSpieler2().getTricks().add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
+		tisch.getSpieler2().getTricks().add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
+		tisch.getSpieler3().getTricks().clear();
+		tisch.getSpieler3().getTricks().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+		tisch.getSpieler3().getTricks().add(new PlayingCard(Suit.LEAVES, Value.KING));
 		
 		IPlayer[] spielerU = new IPlayer[3];
 		spielerU[0] = spieler1;
@@ -1050,34 +1050,34 @@ public class TableTest {
 		spieler[0] = spieler1;
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
-		spieler[2].getStiche().clear();
-		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.KING));
-		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.KING));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.TEN));
-		spieler[2].getStiche().add(new PlayingCard(Suit.HEARTS, Value.DAUS));
-		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.KING));
-		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.TEN));
-		spieler[2].getStiche().add(new PlayingCard(Suit.LEAVES, Value.DAUS));
-		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.KING));
-		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.TEN));
-		spieler[2].getStiche().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
+		spieler[2].getTricks().clear();
+		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.KING));
+		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.TEN));
+		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.DAUS));
+		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.KING));
+		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.TEN));
+		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.DAUS));
+		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.KING));
+		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.TEN));
+		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.DAUS));
+		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
+		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.TEN));
+		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
 		
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 0, 2);
 		
 		Granny vergleich = new Granny("heino");
-		vergleich.getSpiele().add(240);
+		vergleich.getGames().add(240);
 		
-		assertEquals(vergleich.getSpiele().get(0), ergebnis[2].getSpiele().get(0)); 
+		assertEquals(vergleich.getGames().get(0), ergebnis[2].getGames().get(0)); 
 	}
 	
 	@Test
@@ -1087,14 +1087,14 @@ public class TableTest {
 		spieler[0] = spieler1;
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
-		spieler[0].getStiche().clear();
-		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.DAUS));
+		spieler[0].getTricks().clear();
+		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.DAUS));
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
 		
 		Granny vergleich = new Granny("heino");
-		vergleich.getSpiele().add(-124);
+		vergleich.getGames().add(-124);
 		
-		assertEquals(vergleich.getSpiele().get(0), ergebnis[2].getSpiele().get(0));
+		assertEquals(vergleich.getGames().get(0), ergebnis[2].getGames().get(0));
 	}
 	
 	@Test
@@ -1104,14 +1104,14 @@ public class TableTest {
 		spieler[0] = spieler1;
 		spieler[1] = spieler2;
 		spieler[2] = spieler3;
-		spieler[0].getStiche().add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler[2].getStiche().add(new PlayingCard(Suit.BELLS, Value.DAUS));
+		spieler[0].getTricks().add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.DAUS));
 		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
 		
 		Granny vergleich = new Granny("heino");
-		vergleich.getSpiele().add(-62);
+		vergleich.getGames().add(-62);
 		
-		assertEquals(vergleich.getSpiele().get(0), ergebnis[2].getSpiele().get(0));
+		assertEquals(vergleich.getGames().get(0), ergebnis[2].getGames().get(0));
 	}
 	
 	@Test
@@ -1124,14 +1124,14 @@ public class TableTest {
 	@Test
 	public void ermittleMitspielerTest1() {
 		
-		tisch.getSpieler1().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(true);
 		assertEquals(spieler3, tisch.ermittleMitspieler(spieler2));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest2() {
 		
-		tisch.getSpieler1().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(true);
 		assertEquals(spieler2, tisch.ermittleMitspieler(spieler3));
 	}
 	
@@ -1139,94 +1139,94 @@ public class TableTest {
 	@Test
 	public void ermittleMitspielerTest3() {
 		
-		tisch.getSpieler1().setIstAlleinspieler(false);
-		tisch.getSpieler2().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(false);
+		tisch.getSpieler2().setIsDeclarer(true);
 		assertEquals(spieler1, tisch.ermittleMitspieler(spieler3));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest4() {
 		
-		tisch.getSpieler1().setIstAlleinspieler(false);
-		tisch.getSpieler2().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(false);
+		tisch.getSpieler2().setIsDeclarer(true);
 		assertEquals(spieler3, tisch.ermittleMitspieler(spieler1));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest5() {
 		
-		tisch.getSpieler1().setIstAlleinspieler(false);
-		tisch.getSpieler3().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(false);
+		tisch.getSpieler3().setIsDeclarer(true);
 		assertEquals(spieler1, tisch.ermittleMitspieler(spieler2));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest6() {
 		
-		tisch.getSpieler1().setIstAlleinspieler(false);
-		tisch.getSpieler3().setIstAlleinspieler(true);
+		tisch.getSpieler1().setIsDeclarer(false);
+		tisch.getSpieler3().setIsDeclarer(true);
 		assertEquals(spieler2, tisch.ermittleMitspieler(spieler1));
 	}
 	
 	@Test
 	public void mitspielerSetzenTest1() {
 		tisch.mitspielerSetzen();
-		assertEquals(null, tisch.getSpieler1().getMitspieler());
+		assertEquals(null, tisch.getSpieler1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest2() {
 		tisch.mitspielerSetzen();
-		assertEquals(spieler3, tisch.getSpieler2().getMitspieler());
+		assertEquals(spieler3, tisch.getSpieler2().getTeammate());
 	}
 	
 	@Test 
 	public void mitspielerSetzenTest3() {
 		tisch.mitspielerSetzen();
-		assertEquals(spieler2, tisch.getSpieler3().getMitspieler());
+		assertEquals(spieler2, tisch.getSpieler3().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest4() {
 		
-		spieler1.setIstAlleinspieler(false);
-		spieler2.setIstAlleinspieler(true);
+		spieler1.setIsDeclarer(false);
+		spieler2.setIsDeclarer(true);
 		tisch.mitspielerSetzen();
-		assertEquals(spieler3, tisch.getSpieler1().getMitspieler());
+		assertEquals(spieler3, tisch.getSpieler1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest5() {
 		tisch.setSpielart(new Ramsch());
 		tisch.mitspielerSetzen();
-		assertEquals(null, tisch.getSpieler1().getMitspieler());
+		assertEquals(null, tisch.getSpieler1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest6() {
 		tisch.setSpielart(new Ramsch());
 		tisch.mitspielerSetzen();
-		assertEquals(null, tisch.getSpieler2().getMitspieler());
+		assertEquals(null, tisch.getSpieler2().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest7() {
 		tisch.setSpielart(new Ramsch());
 		tisch.mitspielerSetzen();
-		assertEquals(null, tisch.getSpieler3().getMitspieler());
+		assertEquals(null, tisch.getSpieler3().getTeammate());
 	}
 	
 	@Test
 	public void nullVerlorenTest() {
 		
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertFalse(tisch.nullVerloren());
 	}
 	
 	@Test
 	public void nullVerlorenTest2() {
 		
-		tisch.ermittleAlleinspieler().getStiche().clear();
+		tisch.ermittleAlleinspieler().getTricks().clear();
 		ArrayList<PlayingCard> stiche = new ArrayList<PlayingCard>();
 		stiche.add(spielkarte1);
 		stiche.add(spielkarte2);
@@ -1254,16 +1254,16 @@ public class TableTest {
 		tisch.setSechserskat(false);
 		tisch.setSchwarz(true);
 		tisch.erstelleDeck();
-		spieler1.getStiche().clear();
+		spieler1.getTricks().clear();
 		for (PlayingCard karte : tisch.getDeck()) {
 			
-			spieler1.getStiche().add(karte);
+			spieler1.getTricks().add(karte);
 		}
 		for (int i = 0; i < 2; i++) {
 			
-			spieler1.getStiche().remove(0);
+			spieler1.getTricks().remove(0);
 		}
-		System.out.println(spieler1.getStiche().size());
+		System.out.println(spieler1.getTricks().size());
 		assertTrue(tisch.anderesSpielVerloren(100));
 	}
 	
@@ -1273,7 +1273,7 @@ public class TableTest {
 		tisch.setSchneider(false);
 		tisch.setSchwarz(false);
 		tisch.setOuvert(true);
-		spieler1.getStiche().clear();
+		spieler1.getTricks().clear();
 		assertTrue(tisch.anderesSpielVerloren(61));
 	}
 	

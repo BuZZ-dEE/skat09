@@ -69,7 +69,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	}
 
 	@Override
-	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
+	public PlayingCard playCard(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 		boolean fertig = false;
@@ -84,13 +84,13 @@ public class HumanPlayer extends Player implements IPlayer,
 
 		while (!fertig) {
 
-			if (spielart.checkedPlayedCards(blatt, gespielteKarten, karte)) {
+			if (gameVariety.checkedPlayedCards(hand, gespielteKarten, karte)) {
 				ergebnis = karte;
 				fertig = true;
 			} else {
 				controller.getAusgabe().andereKarte();
-				blatt.add(karte);
-				blattSortieren(spielart);
+				hand.add(karte);
+				sortHand(gameVariety);
 				try {
 					karte = controller.getAusgabe().spieleKarte(
 							gespielteKarten, this);
@@ -111,16 +111,16 @@ public class HumanPlayer extends Player implements IPlayer,
 		boolean sechserskat = false;
 		// Skat dem Spielerblatt hinzufuegen
 
-		blatt.add(skat[0]);
-		blatt.add(skat[1]);
+		hand.add(skat[0]);
+		hand.add(skat[1]);
 		if (skat[2] instanceof PlayingCard) {
-			blatt.add(skat[2]);
+			hand.add(skat[2]);
 			sechserskat = true;
 		}
 
 		for (int i = 0; i < gedrueckteKarten.length; i++) {
-			karte1 = controller.getAusgabe().druecken(blatt, i + 1);
-			gedrueckteKarten[i] = blatt.remove(karte1);
+			karte1 = controller.getAusgabe().druecken(hand, i + 1);
+			gedrueckteKarten[i] = hand.remove(karte1);
 			if (i == 1 && !sechserskat) {
 				gedrueckteKarten[i + 1] = null;
 				break;
@@ -130,7 +130,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	}
 
 	@Override
-	public boolean handspiel() {
+	public boolean handgame() {
 
 		return controller.getAusgabe().handspiel();
 	}
@@ -154,13 +154,13 @@ public class HumanPlayer extends Player implements IPlayer,
 	}
 
 	@Override
-	public IGameVariety spielAnsagen() {
+	public IGameVariety declareGame() {
 
 		return controller.getAusgabe().spielAnsagen();
 	}
 
 	@Override
-	public SuitGame farbe() {
+	public SuitGame suit() {
 
 		return controller.getAusgabe().farbe();
 	}

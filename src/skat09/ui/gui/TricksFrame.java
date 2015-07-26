@@ -103,7 +103,7 @@ public class TricksFrame extends JFrame {
 		int reihe = 0;
 		GridBagConstraints c = new GridBagConstraints();
 		ArrayList<PlayingCard> karten = tisch.getSpieler1()
-				.getAllegespieltenkarten();
+				.getAllPlayedCards();
 
 		panel.removeAll();
 		panel.setSize(new Dimension(300, 200));
@@ -145,7 +145,7 @@ public class TricksFrame extends JFrame {
 		int reihe = 0;
 		GridBagConstraints c = new GridBagConstraints();
 		ArrayList<PlayingCard> karten = tisch.getSpieler1()
-				.getAllegespieltenkarten();
+				.getAllPlayedCards();
 
 		panel.removeAll();
 		panel.setSize(new Dimension(300, 200));

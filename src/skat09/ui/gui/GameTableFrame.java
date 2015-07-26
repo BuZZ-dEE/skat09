@@ -542,12 +542,12 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 				+ ": "
 				+ spieler.getPosition().toString()));
 
-		for (PlayingCard karte : spieler.getBlatt()) {
+		for (PlayingCard karte : spieler.getHand()) {
 
 			Image image;
-			if (spielbarhilfe == true && spieler.getSpielart() != null
+			if (spielbarhilfe == true && spieler.getGameVariety() != null
 					&& gespielteKarten != null
-					&& spieler.spielbareKarten(gespielteKarten).contains(karte)) {
+					&& spieler.playableCards(gespielteKarten).contains(karte)) {
 
 				image = new ImageIcon(karte.getCardPath()).getImage();
 
@@ -690,10 +690,10 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		punkte = new JLabel(tisch.getAktuellePunkte(spieler1) + "");
 		punkte1 = new JLabel(tisch.getAktuellePunkte(spieler2) + "");
 		punkte2 = new JLabel(tisch.getAktuellePunkte(spieler3) + "");
-		setzeStats(punkt, 0, 1 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(punkte, 1, 1 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(punkte1, 2, 1 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(punkte2, 3, 1 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(punkt, 0, 1 + tisch.getSpieler1().getGames().size());
+		setzeStats(punkte, 1, 1 + tisch.getSpieler1().getGames().size());
+		setzeStats(punkte1, 2, 1 + tisch.getSpieler1().getGames().size());
+		setzeStats(punkte2, 3, 1 + tisch.getSpieler1().getGames().size());
 		pack();
 		auswertung2(gewonnen);
 		flagsLoeschen();
@@ -738,26 +738,26 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		JLabel augenzahl;
 		String s = "";
 
-		for (int i = 0; i < tisch.getSpieler1().getSpiele().size(); i++) {
+		for (int i = 0; i < tisch.getSpieler1().getGames().size(); i++) {
 
-			if (tisch.getSpieler1().getSpiele().get(i) != 0
+			if (tisch.getSpieler1().getGames().get(i) != 0
 					&& tisch.getUeber().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
-			punkte = new JLabel(tisch.getSpieler1().getSpiele().get(i) + s);
-			if (tisch.getSpieler2().getSpiele().get(i) != 0
+			punkte = new JLabel(tisch.getSpieler1().getGames().get(i) + s);
+			if (tisch.getSpieler2().getGames().get(i) != 0
 					&& tisch.getUeber().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
-			punkte1 = new JLabel(tisch.getSpieler2().getSpiele().get(i) + s);
-			if (tisch.getSpieler3().getSpiele().get(i) != 0
+			punkte1 = new JLabel(tisch.getSpieler2().getGames().get(i) + s);
+			if (tisch.getSpieler3().getGames().get(i) != 0
 					&& tisch.getUeber().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
-			punkte2 = new JLabel(tisch.getSpieler3().getSpiele().get(i) + s);
+			punkte2 = new JLabel(tisch.getSpieler3().getGames().get(i) + s);
 			grundw = new JLabel(tisch.getGrundwertListe().get(i) + "");
 			augenzahl = new JLabel(tisch.getAugenListe().get(i) + "");
 
@@ -794,9 +794,9 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 							"game.statistic.declarer.score.won",
 							tisch.ermittleAlleinspieler().getName(),
 							tisch.ermittleAlleinspieler()
-									.getSpiele()
+									.getGames()
 									.get(tisch.ermittleAlleinspieler()
-											.getSpiele().size() - 1), augen));
+											.getGames().size() - 1), augen));
 		}
 		if (!gewonnen
 				&& tisch.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
@@ -805,9 +805,9 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 							"game.statistic.declarer.score.lost",
 							tisch.ermittleAlleinspieler().getName(),
 							tisch.ermittleAlleinspieler()
-									.getSpiele()
+									.getGames()
 									.get(tisch.ermittleAlleinspieler()
-											.getSpiele().size() - 1), augen));
+											.getGames().size() - 1), augen));
 		}
 		spiel.setText(ramschAuswertung(gewonnen));
 
@@ -830,8 +830,8 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 			s = Messages.getI18n(
 					"game.statistic.player.human.score.won",
 					tisch.gibMenschlicherSpieler()
-							.getSpiele()
-							.get(tisch.gibMenschlicherSpieler().getSpiele()
+							.getGames()
+							.get(tisch.gibMenschlicherSpieler().getGames()
 									.size() - 1));
 		}
 		if (!gewonnen
@@ -839,8 +839,8 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 			s = Messages.getI18n(
 					"game.statistic.player.human.score.lost",
 					tisch.gibMenschlicherSpieler()
-							.getSpiele()
-							.get(tisch.gibMenschlicherSpieler().getSpiele()
+							.getGames()
+							.get(tisch.gibMenschlicherSpieler().getGames()
 									.size() - 1));
 		}
 		return s;
@@ -1418,9 +1418,9 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		// zeichnen
 		int offset = 35;
 
-		if (spieler.getIstAlleinspieler() && tisch.getOuvert()) {
-			for (int i = 0; i < spieler.getBlatt().size(); i++) {
-				PlayingCard karte = spieler.getBlatt().get(i);
+		if (spieler.isDeclarer() && tisch.getOuvert()) {
+			for (int i = 0; i < spieler.getHand().size(); i++) {
+				PlayingCard karte = spieler.getHand().get(i);
 				Image image;
 
 				image = new ImageIcon(karte.getCardPath()).getImage();
@@ -1435,7 +1435,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 			}
 		} else {
 
-			for (int i = 0; i < spieler.getBlatt().size(); i++) {
+			for (int i = 0; i < spieler.getHand().size(); i++) {
 				Image image = null;
 
 				image = new ImageIcon(
@@ -1695,21 +1695,21 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 				Messages.getI18n("game.statistic.declarer.won.count") + ":");
 		JLabel hand = new JLabel(Messages.getI18n("game.hand.games") + ":");
 
-		setzeStats(auswert, 0, 2 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(gewinne, 0, 3 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(hand, 0, 4 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(auswert, 0, 2 + tisch.getSpieler1().getGames().size());
+		setzeStats(gewinne, 0, 3 + tisch.getSpieler1().getGames().size());
+		setzeStats(hand, 0, 4 + tisch.getSpieler1().getGames().size());
 
-		setzeStats(auswert1, 1, 2 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(gewinne1, 1, 3 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(hand1, 1, 4 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(auswert1, 1, 2 + tisch.getSpieler1().getGames().size());
+		setzeStats(gewinne1, 1, 3 + tisch.getSpieler1().getGames().size());
+		setzeStats(hand1, 1, 4 + tisch.getSpieler1().getGames().size());
 
-		setzeStats(auswert2, 2, 2 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(gewinne2, 2, 3 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(hand2, 2, 4 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(auswert2, 2, 2 + tisch.getSpieler1().getGames().size());
+		setzeStats(gewinne2, 2, 3 + tisch.getSpieler1().getGames().size());
+		setzeStats(hand2, 2, 4 + tisch.getSpieler1().getGames().size());
 
-		setzeStats(auswert3, 3, 2 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(gewinne3, 3, 3 + tisch.getSpieler1().getSpiele().size());
-		setzeStats(hand3, 3, 4 + tisch.getSpieler1().getSpiele().size());
+		setzeStats(auswert3, 3, 2 + tisch.getSpieler1().getGames().size());
+		setzeStats(gewinne3, 3, 3 + tisch.getSpieler1().getGames().size());
+		setzeStats(hand3, 3, 4 + tisch.getSpieler1().getGames().size());
 
 		pack();
 		rechteSeite.repaint();
@@ -1733,7 +1733,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		s[1] = tisch.anzahlderGewinne(spieler) + "/"
 				+ tisch.getAnzahlAllein(spieler);
 		// Handspiele
-		s[2] = spieler.getHandspiele() + "/" + tisch.getAnzahlAllein(spieler);
+		s[2] = spieler.getHandGames() + "/" + tisch.getAnzahlAllein(spieler);
 
 		return s;
 	}

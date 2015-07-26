@@ -48,7 +48,7 @@ public class SmartPlayer extends Player {
 
 		super(name);
 		maxReizwert = -1;
-		spielart = null;
+		gameVariety = null;
 	}
 
 	//
@@ -102,31 +102,31 @@ public class SmartPlayer extends Player {
 	//
 
 	@Override
-	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten) {
+	public PlayingCard playCard(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
 			ergebnis = grandSpielen(gespielteKarten);
 		}
 
-		else if (spielart.getGameVariety() == GameVarietyName.SUIT) {
+		else if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
 
 			ergebnis = farbeSpielen(gespielteKarten);
 		}
 
-		else if (spielart.getGameVariety() == GameVarietyName.NULL) {
+		else if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
 
 			ergebnis = nullSpielen(gespielteKarten);
 		}
 
-		else if (spielart.getGameVariety() == GameVarietyName.RAMSCH) {
+		else if (gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
 
 			ergebnis = ramschSpielen(gespielteKarten);
 		}
 
-		blatt.remove(ergebnis);
+		hand.remove(ergebnis);
 
 		return ergebnis;
 	}
@@ -264,20 +264,20 @@ public class SmartPlayer extends Player {
 		PlayingCard ergebnis = null;
 		Random zufallszahl = new Random();
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
 			ergebnis = alleinspielerRauskommenGrand(gespielteKarten);
 		}
 
 		else {
 
-			if (mitspieler.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
+			if (teammate.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
 
 				farbe = ermittleKurzeLangeFarbe(false);
 
 				if (farbe.isEmpty()) {
 
-					ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+					ergebnis = playRamdonAllowedCard(gespielteKarten);
 				}
 
 				else {
@@ -286,13 +286,13 @@ public class SmartPlayer extends Player {
 				}
 			}
 
-			else if (mitspieler.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
+			else if (teammate.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
 
 				farbe = ermittleKurzeLangeFarbe(true);
 
 				if (farbe.isEmpty()) {
 
-					ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+					ergebnis = playRamdonAllowedCard(gespielteKarten);
 				}
 
 				else {
@@ -317,33 +317,33 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
 			ergebnis = alleinspieleralsZweiterKarteSpielenGrand(gespielteKarten);
 		}
 
 		else {
 
-			if (gespielteKarten[0].getOwner().equals(mitspieler)) {
+			if (gespielteKarten[0].getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 			}
 
 			else {
 
-				if (spielart
+				if (gameVariety
 						.higherCard(
 								gespielteKarten[0],
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
 						.equals(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))) {
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
 
-					ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 
 				}
 			}
@@ -364,40 +364,40 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
 			ergebnis = alleinspieleralsDritterKarteSpielenGrand(gespielteKarten);
 		}
 
 		else {
 
-			if (spielart.higherCard(gespielteKarten[0], gespielteKarten[1])
-					.getOwner().equals(mitspieler)) {
+			if (gameVariety.higherCard(gespielteKarten[0], gespielteKarten[1])
+					.getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 			}
 
 			else {
 
-				if (spielart
+				if (gameVariety
 						.higherCard(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 								gespielteKarten[0])
 						.equals(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))
-						&& spielart
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+						&& gameVariety
 								.higherCard(
-										hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+										hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 										gespielteKarten[1])
 								.equals(
-										hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))) {
+										hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
 
-					ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 			}
 		}
@@ -419,20 +419,20 @@ public class SmartPlayer extends Player {
 		PlayingCard ergebnis = null;
 		Random zufallszahl = new Random();
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
-			ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+			ergebnis = playRamdonAllowedCard(gespielteKarten);
 		}
 
 		else {
 
-			if (mitspieler.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
+			if (teammate.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
 
 				farbe = ermittleKurzeLangeFarbe(false);
 
 				if (farbe.isEmpty()) {
 
-					ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+					ergebnis = playRamdonAllowedCard(gespielteKarten);
 				}
 
 				else {
@@ -441,13 +441,13 @@ public class SmartPlayer extends Player {
 				}
 			}
 
-			else if (mitspieler.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
+			else if (teammate.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
 
 				farbe = ermittleKurzeLangeFarbe(true);
 
 				if (farbe.isEmpty()) {
 
-					ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+					ergebnis = playRamdonAllowedCard(gespielteKarten);
 				}
 
 				else {
@@ -472,33 +472,33 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
-			ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+			ergebnis = playRamdonAllowedCard(gespielteKarten);
 		}
 
 		else {
 
-			if (gespielteKarten[0].getOwner().equals(mitspieler)) {
+			if (gespielteKarten[0].getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 			}
 
 			else {
 
-				if (spielart
+				if (gameVariety
 						.higherCard(
 								gespielteKarten[0],
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
 						.equals(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))) {
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
 
-					ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 			}
 		}
@@ -518,40 +518,40 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
-			ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+			ergebnis = playRamdonAllowedCard(gespielteKarten);
 		}
 
 		else {
 
-			if (spielart.higherCard(gespielteKarten[0], gespielteKarten[1])
-					.getOwner().equals(mitspieler)) {
+			if (gameVariety.higherCard(gespielteKarten[0], gespielteKarten[1])
+					.getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 			}
 
 			else {
 
-				if (spielart
+				if (gameVariety
 						.higherCard(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 								gespielteKarten[0])
 						.equals(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))
-						&& spielart
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+						&& gameVariety
 								.higherCard(
-										hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+										hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 										gespielteKarten[1])
 								.equals(
-										hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))) {
+										hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
 
-					ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 			}
 		}
@@ -573,20 +573,20 @@ public class SmartPlayer extends Player {
 		PlayingCard ergebnis = null;
 		Random zufallszahl = new Random();
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
-			ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 		}
 
 		else {
 
-			if (mitspieler.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
+			if (teammate.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
 
 				farbe = ermittleKurzeLangeFarbe(false);
 
 				if (farbe.isEmpty()) {
 
-					ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+					ergebnis = playRamdonAllowedCard(gespielteKarten);
 				}
 
 				else {
@@ -595,13 +595,13 @@ public class SmartPlayer extends Player {
 				}
 			}
 
-			else if (mitspieler.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
+			else if (teammate.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
 
 				farbe = ermittleKurzeLangeFarbe(true);
 
 				if (farbe.isEmpty()) {
 
-					ergebnis = zufaelligErlaubteKarteSpielen(gespielteKarten);
+					ergebnis = playRamdonAllowedCard(gespielteKarten);
 				}
 
 				else {
@@ -626,21 +626,21 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
-			ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 		}
 
 		else {
 
-			if (gespielteKarten[0].getOwner().equals(mitspieler)) {
+			if (gespielteKarten[0].getOwner().equals(teammate)) {
 
-				ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+				ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 			}
 
 			else {
 
-				ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+				ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 			}
 		}
 
@@ -659,40 +659,40 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (istAlleinspieler) {
+		if (isDeclarer) {
 
-			ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 		}
 
 		else {
 
-			if (spielart.higherCard(gespielteKarten[0], gespielteKarten[1])
-					.getOwner().equals(mitspieler)) {
+			if (gameVariety.higherCard(gespielteKarten[0], gespielteKarten[1])
+					.getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 			}
 
 			else {
 
-				if (spielart
+				if (gameVariety
 						.higherCard(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 								gespielteKarten[0])
 						.equals(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))
-						&& spielart
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+						&& gameVariety
 								.higherCard(
-										hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+										hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 										gespielteKarten[1])
 								.equals(
-										hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))) {
+										hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
 
-					ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 				}
 			}
 		}
@@ -713,9 +713,9 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 		Random zufall = new Random();
-		ArrayList<PlayingCard> buben = kartenEinesWertes(blatt, Value.UNDER_KNAVE);
-		ArrayList<PlayingCard> asse = kartenEinesWertes(blatt, Value.DAUS);
-		ArrayList<PlayingCard> zehnen = kartenEinesWertes(blatt, Value.TEN);
+		ArrayList<PlayingCard> buben = kartenEinesWertes(hand, Value.UNDER_KNAVE);
+		ArrayList<PlayingCard> asse = kartenEinesWertes(hand, Value.DAUS);
+		ArrayList<PlayingCard> zehnen = kartenEinesWertes(hand, Value.TEN);
 
 		if (buben.size() > 2) {
 
@@ -758,7 +758,7 @@ public class SmartPlayer extends Player {
 				boolean enthalten = false;
 				PlayingCard hoehereKarte = naechstHoehereKarte(karte.getSuit(),
 						karte);
-				for (PlayingCard karte2 : alleGespielteKarten) {
+				for (PlayingCard karte2 : allPlayedCards) {
 
 					if (karte2.equals(hoehereKarte)) {
 						enthalten = true;
@@ -776,7 +776,7 @@ public class SmartPlayer extends Player {
 
 		if (ergebnis == null) {
 
-			ergebnis = blatt.get(zufall.nextInt(blatt.size()));
+			ergebnis = hand.get(zufall.nextInt(hand.size()));
 		}
 
 		return ergebnis;
@@ -829,26 +829,26 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart
+		if (gameVariety
 				.higherCard(
 						gespielteKarten[0],
-						hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))
+						hoechsteSpielbareKarte(playableCards(gespielteKarten)))
 				.equals(
-						hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))
+						hoechsteSpielbareKarte(playableCards(gespielteKarten)))
 
-				&& spielart
+				&& gameVariety
 						.higherCard(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 								hoechsteSpielbareKarte(gegnerMoeglicheSpielbareKarten(gespielteKarten)))
 						.equals(
-								hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))) {
+								hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
 
-			ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+			ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 		}
 
 		else {
 
-			ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 		}
 
 		// TODO loeschen
@@ -873,23 +873,23 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (((spielart.higherCard(
-				hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+		if (((gameVariety.higherCard(
+				hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 				gespielteKarten[0])
-				.equals(hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)))) && spielart
+				.equals(hoechsteSpielbareKarte(playableCards(gespielteKarten)))) && gameVariety
 				.higherCard(
-						hoechsteSpielbareKarte(spielbareKarten(gespielteKarten)),
+						hoechsteSpielbareKarte(playableCards(gespielteKarten)),
 						gespielteKarten[1])
 				.equals(
-						hoechsteSpielbareKarte(spielbareKarten(gespielteKarten))))
+						hoechsteSpielbareKarte(playableCards(gespielteKarten))))
 				&& ((augenKarte(gespielteKarten[0]) > 3) && (augenKarte(gespielteKarten[1]) > 3))) {
 
-			ergebnis = hoechsteSpielbareKarte(spielbareKarten(gespielteKarten));
+			ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
 		}
 
 		else {
 
-			ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 		}
 
 		return ergebnis;
@@ -907,7 +907,7 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+		ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 
 		return ergebnis;
 	}
@@ -924,7 +924,7 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+		ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 
 		return ergebnis;
 	}
@@ -941,7 +941,7 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		ergebnis = niedrigsteSpielbareKarte(spielbareKarten(gespielteKarten));
+		ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
 
 		return ergebnis;
 	}
@@ -980,12 +980,12 @@ public class SmartPlayer extends Player {
 
 		System.out.println("gegnermoeglicheSpielbareKarten");
 		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> mGK = moeglicheGegnerKarten(alleGespielteKarten,
+		ArrayList<PlayingCard> mGK = moeglicheGegnerKarten(allPlayedCards,
 				gespielteKarten);
 
 		for (int i = 0; i < mGK.size(); i++) {
 
-			if (spielart
+			if (gameVariety
 					.checkedPlayedCards(mGK, gespielteKarten, mGK.get(i))) {
 
 				ergebnis.add(mGK.get(i));
@@ -1013,8 +1013,8 @@ public class SmartPlayer extends Player {
 		if (!deck.isEmpty()) {
 			ergebnis.addAll(deck);
 		}
-		if (blatt != null && !blatt.isEmpty()) {
-			ergebnis.removeAll(blatt);
+		if (hand != null && !hand.isEmpty()) {
+			ergebnis.removeAll(hand);
 		}
 		if (alleGespielteKarten != null && !alleGespielteKarten.isEmpty()) {
 			ergebnis.removeAll(alleGespielteKarten);
@@ -1154,8 +1154,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getGameVariety() == GameVarietyName.SUIT
-				|| spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
+				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.OVER_KNAVE);
 		} else {
@@ -1179,8 +1179,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getGameVariety() == GameVarietyName.SUIT
-				|| spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
+				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.TEN);
 		} else {
@@ -1205,8 +1205,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getGameVariety() == GameVarietyName.SUIT
-				|| spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
+				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.DAUS);
 		} else {
@@ -1231,9 +1231,9 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getGameVariety() == GameVarietyName.SUIT
-				|| spielart.getGameVariety() == GameVarietyName.GRAND
-				|| spielart.getGameVariety() == GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
+				|| gameVariety.getGameVariety() == GameVarietyName.GRAND
+				|| gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
 
 			ergebnis = null;
 		}
@@ -1312,8 +1312,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getGameVariety() == GameVarietyName.SUIT
-				|| spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
+				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.NINE);
 		} else {
@@ -1338,8 +1338,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getGameVariety() == GameVarietyName.SUIT
-				|| spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
+				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.KING);
 		} else {
@@ -1363,8 +1363,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.getGameVariety() == GameVarietyName.SUIT
-				|| spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
+				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.TEN);
 		} else {
@@ -1388,9 +1388,9 @@ public class SmartPlayer extends Player {
 		
 		PlayingCard ergebnis = null;
 		
-		if (spielart.getGameVariety() == GameVarietyName.SUIT
-				|| spielart.getGameVariety() == GameVarietyName.GRAND
-				|| spielart.getGameVariety() == GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
+				|| gameVariety.getGameVariety() == GameVarietyName.GRAND
+				|| gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
 
 			ergebnis = null;
 		} else {
@@ -1516,18 +1516,18 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.evaluateCard(karte1) == spielart.evaluateCard(karte2)) {
+		if (gameVariety.evaluateCard(karte1) == gameVariety.evaluateCard(karte2)) {
 
 			ergebnis = karte1;
 		}
 
-		else if (spielart.evaluateCard(karte1) < spielart
+		else if (gameVariety.evaluateCard(karte1) < gameVariety
 				.evaluateCard(karte2)) {
 
 			ergebnis = karte2;
 		}
 
-		else if (spielart.evaluateCard(karte1) > spielart
+		else if (gameVariety.evaluateCard(karte1) > gameVariety
 				.evaluateCard(karte2)) {
 
 			ergebnis = karte1;
@@ -1552,18 +1552,18 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (spielart.evaluateCard(karte1) == spielart.evaluateCard(karte2)) {
+		if (gameVariety.evaluateCard(karte1) == gameVariety.evaluateCard(karte2)) {
 
 			ergebnis = karte1;
 		}
 
-		else if (spielart.evaluateCard(karte1) < spielart
+		else if (gameVariety.evaluateCard(karte1) < gameVariety
 				.evaluateCard(karte2)) {
 
 			ergebnis = karte1;
 		}
 
-		else if (spielart.evaluateCard(karte1) > spielart
+		else if (gameVariety.evaluateCard(karte1) > gameVariety
 				.evaluateCard(karte2)) {
 
 			ergebnis = karte2;
@@ -1584,7 +1584,7 @@ public class SmartPlayer extends Player {
 	}
 
 	@Override
-	public boolean handspiel() {
+	public boolean handgame() {
 		// Auto-generated method stub
 		return true;
 	}
@@ -1608,7 +1608,7 @@ public class SmartPlayer extends Player {
 	}
 
 	@Override
-	public IGameVariety spielAnsagen() {
+	public IGameVariety declareGame() {
 
 		IGameVariety zuSpielendeSpielart = bestimmeSpielart();
 
@@ -1647,7 +1647,7 @@ public class SmartPlayer extends Player {
 	}
 
 	@Override
-	public SuitGame farbe() {
+	public SuitGame suit() {
 
 		SuitGame farbe = new SuitGame(ermittleTrumpffarbe());
 
@@ -1849,18 +1849,18 @@ public class SmartPlayer extends Player {
 		PlayingCard[] spitzen = new PlayingCard[13];
 		ArrayList<PlayingCard> langeFarbe = ermittleKurzeLangeFarbe(true);
 
-		for (int i = 0; i < blatt.size(); i++) {
+		for (int i = 0; i < hand.size(); i++) {
 
-			if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
+			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
 
-				kartenwert = zuReizendeSpielart.evaluateCard(blatt.get(i));
-				spitzen[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
+				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
+				spitzen[bubeneinordnenhilf(kartenwert)] = hand.get(i);
 			}
 
-			else if (blatt.get(i).getSuit() == langeFarbe.get(0).getSuit()) {
+			else if (hand.get(i).getSuit() == langeFarbe.get(0).getSuit()) {
 
-				kartenwert = zuReizendeSpielart.evaluateCard(blatt.get(i));
-				spitzen[farbeeinordnenhilf(kartenwert)] = blatt.get(i);
+				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
+				spitzen[farbeeinordnenhilf(kartenwert)] = hand.get(i);
 			}
 		}
 
@@ -1879,12 +1879,12 @@ public class SmartPlayer extends Player {
 		int kartenwert = 0;
 		PlayingCard[] spitzen = new PlayingCard[4];
 
-		for (int i = 0; i < blatt.size(); i++) {
+		for (int i = 0; i < hand.size(); i++) {
 
-			if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
+			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
 
-				kartenwert = zuReizendeSpielart.evaluateCard(blatt.get(i));
-				spitzen[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
+				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
+				spitzen[bubeneinordnenhilf(kartenwert)] = hand.get(i);
 			}
 		}
 
@@ -1917,7 +1917,7 @@ public class SmartPlayer extends Player {
 		// Spielart auf die der Spieler reizt
 		IGameVariety zuReizendeSpielart;
 
-		for (PlayingCard karte : blatt) {
+		for (PlayingCard karte : hand) {
 
 			if (karte.getValue() == Value.SEVEN || karte.getValue() == Value.EIGHT
 					|| karte.getValue() == Value.NINE) {
@@ -1975,10 +1975,10 @@ public class SmartPlayer extends Player {
 	 */
 	public ArrayList<PlayingCard> ermittleKurzeLangeFarbe(boolean lang) {
 
-		ArrayList<PlayingCard> karo = kartenEinerFarbe(blatt, Suit.BELLS);
-		ArrayList<PlayingCard> herz = kartenEinerFarbe(blatt, Suit.HEARTS);
-		ArrayList<PlayingCard> pik = kartenEinerFarbe(blatt, Suit.LEAVES);
-		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(blatt, Suit.ACORNS);
+		ArrayList<PlayingCard> karo = kartenEinerFarbe(hand, Suit.BELLS);
+		ArrayList<PlayingCard> herz = kartenEinerFarbe(hand, Suit.HEARTS);
+		ArrayList<PlayingCard> pik = kartenEinerFarbe(hand, Suit.LEAVES);
+		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(hand, Suit.ACORNS);
 		ArrayList<PlayingCard> gewinner = new ArrayList<PlayingCard>();
 
 		// Die übergegebene Variable lang ist true, d.h. man möchte die lange

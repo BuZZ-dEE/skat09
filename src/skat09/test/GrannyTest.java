@@ -43,7 +43,7 @@ public class GrannyTest {
 		omablatt.add(spielkarte8);
 		omablatt.add(spielkarte9);
 		omablatt.add(spielkarte10);
-		oma.setBlatt(omablatt);
+		oma.setHand(omablatt);
 		
 	}
 
@@ -56,7 +56,7 @@ public class GrannyTest {
 	public void testeGibKarte(){
 		boolean temp = true;
 	for (int i=0; i<10; i++){
-		if (!omablatt.get(omablatt.size()-1).equals(oma.spieleKarte(null))){
+		if (!omablatt.get(omablatt.size()-1).equals(oma.playCard(null))){
 			temp = false;
 		}
 	}
@@ -81,8 +81,8 @@ public class GrannyTest {
 	public void testdruecken(){
 		
 		PlayingCard[] temp = new PlayingCard[2];
-		temp[0] = oma.getBlatt().get(1);
-		temp[1] = oma.getBlatt().get(2);
+		temp[0] = oma.getHand().get(1);
+		temp[1] = oma.getHand().get(2);
 		assertEquals(null,oma.druecken(temp));
 		
 	}
@@ -90,7 +90,7 @@ public class GrannyTest {
 	@Test
 	public void testhandspiel(){
 		
-		assertTrue(oma.handspiel());
+		assertTrue(oma.handgame());
 	}
 	
 	@Test
@@ -112,7 +112,7 @@ public class GrannyTest {
 	@Test
 	public void testSpielAnsagen(){
 		boolean test = false;
-		if (oma.spielAnsagen() instanceof GrandGame) {
+		if (oma.declareGame() instanceof GrandGame) {
 			test = true;
 		}
 		assertEquals(true, test);
@@ -121,6 +121,6 @@ public class GrannyTest {
 	@Test
 	public void testFarbe(){
 		
-		assertEquals(null, oma.farbe());
+		assertEquals(null, oma.suit());
 	}
 }
