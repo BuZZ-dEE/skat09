@@ -1,25 +1,21 @@
 package skat09.ui.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.net.URL;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -27,10 +23,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import skat09.Messages;
 import skat09.player.PlayerEnum;
+import skat09.tools.Configuration;
 import skat09.ui.GUIOutput;
 
 /**
@@ -41,14 +37,14 @@ import skat09.ui.GUIOutput;
  * @author Sebastian Schlatow <ssc@openmailbox.org>
  *
  */
-public class SetupStage extends Stage implements EventHandler<Event> {
+public class SetupPane extends Pane implements EventHandler<Event> {
 	
 	private Pane setupPane;
 	private Pane optionsPane;
 	private Pane logoPane;
 	private ComboBox<String> adversary1;
 	private ComboBox<String> adversary2;
-	private Text name;
+	private TextField name;
 	private ComboBox<String> skatVariant;
 	private ComboBox<String> deck;
 	private Label nameLabel;
@@ -61,6 +57,7 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 	private CheckBox sixskat;
 	private Label imageFrameLabel;
 	private String playerName = "";
+	private Stage stage;
 	/**
 	 * Je nach Eingabe wird der zur Eingabe in Gegnerwahl der passende ENUM-Wert
 	 * gehalten
@@ -96,22 +93,23 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 	 *            Die aktuelle GUIAusgabe wird &uuml;bergeben, damit sie
 	 *            released werden kann.
 	 */
-	public SetupStage(GUIOutput output) {
+	public SetupPane(GUIOutput output, Stage stage) {
 		
 //        Scene scene = new Scene(new Group(new Text(25, 25, "Hello World!"))); 
-
-        setTitle(Messages.getI18n("application.name")); 
+		this.stage = stage;
+		this.stage.setTitle(Messages.getI18n("application.name")); 
 //        stage.setScene(scene); 
 //        stage.sizeToScene(); 
 //        stage.show();
 
 		this.output = output;
+		this.setupPane = new Pane();
 		
 		init();
 
 		try {
 			ClassLoader cl = this.getClass().getClassLoader();
-			getIcons().add(new Image(cl.getResource("res/test.png").openStream()));
+			this.stage.getIcons().add(new Image(cl.getResource("res/test.png").openStream()));
 		} catch (Exception whoJackedMyIcon) {
 			System.out.println("Could not load program icon.");
 		}
@@ -121,9 +119,9 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 		int top = (int) ((screenSize.height - this.getHeight()) / 2);
 		int left = (int) ((screenSize.width - this.getWidth()) / 2);
 //		setLocation(left, top);
-		setX(left);
-		setY(top);
-		setResizable(false);
+		this.stage.setX(left);
+		this.stage.setY(top);
+		this.stage.setResizable(false);
 	}
 	
 	/**
@@ -185,19 +183,186 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 //		setVisible(true);
 		
 		Scene scene = new Scene(setupPane);
-        setScene(scene);
-        setTitle("Layout Sample");
-        show();
+		this.stage.setScene(scene);
+		this.stage.setTitle("Layout Sample");
+		this.stage.show();
 	}
 
 	private void setzteOptionen() {
-		// TODO Auto-generated method stub
 		
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+//		optionsPane.getChildren().add(nameLabel, c);
+//		c.gridx = 1;
+//		optionsPane.getChildren().add(name, c);
+//
+//		c.gridx = 0;
+//		c.gridy = 1;
+//		optionsPane.getChildren().add(adversary1Label, c);
+//		c.gridx = 1;
+//		optionsPane.getChildren().add(adversary1, c);
+//
+//		c.gridx = 0;
+//		c.gridy = 2;
+//		optionsPane.getChildren().add(adversary2Label, c);
+//		c.gridx = 1;
+//		optionsPane.getChildren().add(adversary2, c);
+//
+//		c.gridx = 0;
+//		c.gridy = 3;
+//		optionsPane.getChildren().add(variantLabel, c);
+//		c.gridx = 1;
+//		optionsPane.getChildren().add(variant, c);
+//
+//		c.gridx = 0;
+//		c.gridy = 4;
+//		optionsPane.getChildren().add(sixskatLabel, c);
+//		c.gridx = 1;
+//		optionsPane.getChildren().add(sixskat, c);
+//
+//		c.gridx = 0;
+//		c.gridy = 5;
+//		optionsPane.getChildren().add(deckLabel, c);
+//		c.gridx = 1;
+//		optionsPane.getChildren().add(deck, c);
+		
+		
+		
+		optionsPane.getChildren().add(nameLabel);
+		c.gridx = 1;
+		optionsPane.getChildren().add(name);
+
+		c.gridx = 0;
+		c.gridy = 1;
+		optionsPane.getChildren().add(adversary1Label);
+		c.gridx = 1;
+		optionsPane.getChildren().add(adversary1);
+
+		c.gridx = 0;
+		c.gridy = 2;
+		optionsPane.getChildren().add(adversary2Label);
+		c.gridx = 1;
+		optionsPane.getChildren().add(adversary2);
+
+		c.gridx = 0;
+		c.gridy = 3;
+		optionsPane.getChildren().add(variantLabel);
+		c.gridx = 1;
+		optionsPane.getChildren().add(skatVariant);
+
+		c.gridx = 0;
+		c.gridy = 4;
+		optionsPane.getChildren().add(sixskatLabel);
+		c.gridx = 1;
+		optionsPane.getChildren().add(sixskat);
+
+		c.gridx = 0;
+		c.gridy = 5;
+		optionsPane.getChildren().add(deckLabel);
+		c.gridx = 1;
+		optionsPane.getChildren().add(deck);
 	}
 
 	private void erstelleOptions() {
-		// TODO Auto-generated method stub
 		
+		// Beschriftungen der ComboBoxes
+		String[] adversary = { Messages.getI18n("player.granny"),
+				Messages.getI18n("player.rule.compliant"),
+				Messages.getI18n("player.smart") };
+		String[] variant = { Messages.getI18n("game.skat.international"),
+				Messages.getI18n("game.skat.raeuber"),
+				Messages.getI18n("game.skat.ramschbock") };
+		String[] decks = { Messages.getI18n("game.skat.sheet.german"),
+				Messages.getI18n("game.skat.sheet.french") };
+
+		// Namen der Items
+		nameLabel = new Label(Messages.getI18n("player.name") + ":");
+		adversary1Label = new Label(Messages.getI18n("player.adversary.first") + ":");
+		adversary2Label = new Label(
+				Messages.getI18n("player.adversary.second") + ":");
+		variantLabel = new Label(Messages.getI18n("game.skat.variant") + ":");
+		sixskatLabel = new Label(Messages.getI18n("game.skat.variant.six") + ":");
+		deckLabel = new Label(Messages.getI18n("game.sheet.choice") + ":");
+
+		// Textfeld
+		name = new TextField(Configuration.getInstance().getDefaultName());
+		name.textProperty().addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				
+				Configuration.getInstance().setDefaultName(newValue);
+			}
+		});
+		nameLabel.setLabelFor(name);
+
+		// ComboBox mit Label:
+		adversary1 = new ComboBox<String>();
+		adversary1.getItems().addAll(adversary);
+		adversary1.getSelectionModel().select(1);
+		adversary1Label.setLabelFor(adversary1);
+
+		// Combobox adversary2 mit Label:
+		adversary2 = new ComboBox<String>();
+		adversary2.getItems().addAll(adversary);
+		adversary2.getSelectionModel().select(1);
+		adversary2Label.setLabelFor(adversary2);
+
+		// Combobox Skatvariante mit Label
+		skatVariant = new ComboBox<String>();
+		skatVariant.getItems().addAll(variant);
+		skatVariant.getSelectionModel().select(0);
+		variantLabel.setLabelFor(skatVariant);
+
+		// ComboBox Blattwahl mit Label
+		deck = new ComboBox<String>();
+		deck.getItems().addAll(decks);
+		
+		if (Configuration.getInstance().getDeck().equalsIgnoreCase("de")) {
+			deck.getSelectionModel().select(0);
+		} else if (Configuration.getInstance().getDeck().equalsIgnoreCase("fr")) {
+			deck.getSelectionModel().select(1);
+		}
+		
+		deck.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				
+				if (deck.getSelectionModel().getSelectedIndex() == 0) {
+					Configuration.getInstance().setDeck("de");
+				} else if (deck.getSelectionModel().getSelectedIndex() == 1) {
+					Configuration.getInstance().setDeck("fr");
+				}
+			}
+		});
+		
+		if (Configuration.getInstance().getDeck().equalsIgnoreCase("de")) {
+			deck.getSelectionModel().select(0);
+		} else if (Configuration.getInstance().getDeck().equalsIgnoreCase("fr")) {
+			deck.getSelectionModel().select(1);
+		} else {
+			deck.getSelectionModel().select(1);
+		}
+		deckLabel.setLabelFor(deck);
+
+		// Checkbox Sechserskat mit Label
+		sixskat = new CheckBox();
+//		sixskat.setName("sechser");
+		sixskatLabel.setLabelFor(sixskat);
+		sixskat.setFocusTraversable(true);
+		sixskat.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getEventType() == KeyEvent.KEY_RELEASED) {
+					keyReleased(event);
+				}
+				
+			}
+		});
 	}
 	
 	/**
@@ -206,7 +371,11 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 	public void logo() {
 		
 //		new ImageIcon(getFileUrl("img/bild.jpeg"))
-		Image image = new Image(getClass().getResourceAsStream("img/bild.jpeg"));
+		
+//		ClassLoader cl = this.getClass().getClassLoader();
+//		this.stage.getIcons().add(new Image(cl.getResource("res/test.png").openStream()));
+		
+		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("img/bild.jpeg"));
 		imageFrameLabel = new Label();
 		imageFrameLabel.setGraphic(new ImageView(image));
 		// bilderrahmen.setPreferredSize(new Dimension(200, 400));
@@ -222,7 +391,7 @@ public class SetupStage extends Stage implements EventHandler<Event> {
 	 */
 	public static URL getFileUrl(String path) {
 
-		return SetupStage.class.getClassLoader().getResource(path);
+		return SetupPane.class.getClassLoader().getResource(path);
 	}
 
 	/**

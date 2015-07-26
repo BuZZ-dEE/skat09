@@ -41,7 +41,7 @@ public class GUIOutput extends Output {
 	/**
 	 * Das Einstellungsfenster des Spiels
 	 */
-	private SetupStage fenster;
+	private SetupPane fenster;
 
 	/**
 	 * Der Konstruktor der Klasse GUIAusgabe
@@ -54,7 +54,7 @@ public class GUIOutput extends Output {
 		this.tisch = tisch;
 
 //		fenster = new SetupFrame(this);
-		fenster = new SetupStage(this);
+		fenster = new SetupPane(this, stage);
 //		fenster = stage;
 
 	}
@@ -83,9 +83,7 @@ public class GUIOutput extends Output {
 	@Override
 	public String name() {
 
-//		return fenster.getName();
-		return fenster.getTitle();
-
+		return fenster.getName();
 	}
 
 	@Override
