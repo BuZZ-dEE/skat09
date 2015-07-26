@@ -51,7 +51,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		gespielteKarten[0] = spielkarte1;
 		
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(spiel);
 	}
 	
@@ -121,10 +121,10 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setIstAlleinspieler(true);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.setIsDeclarer(true);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -150,9 +150,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -188,9 +188,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -225,9 +225,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -262,10 +262,10 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setIstAlleinspieler(true);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.setIsDeclarer(true);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -293,9 +293,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -326,9 +326,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -359,10 +359,10 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setIstAlleinspieler(true);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.setIsDeclarer(true);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -394,9 +394,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte8);
 		IPlayer mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -431,9 +431,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte8);
 		IPlayer mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -468,9 +468,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte8);
 		IPlayer mate = new RuleCompliantPlayer("mine");
 		spieler.setMitspieler(mate);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -510,8 +510,8 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
-		spieler.setBlatt(blatt);
-		spieler.setIstAlleinspieler(true);
+		spieler.setHand(blatt);
+		spieler.setIsDeclarer(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
 		gespielteKarten[0].setOwner(gegner);
@@ -543,7 +543,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte6);
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.TEN);
 		gespielteKarten[0].setOwner(mate);
@@ -576,7 +576,7 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.TEN);
 		gespielteKarten[0].setOwner(gegner);
@@ -609,7 +609,7 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.TEN);
 		gespielteKarten[0].setOwner(gegner);
@@ -637,8 +637,8 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
-		spieler.setBlatt(blatt);
-		spieler.setIstAlleinspieler(true);
+		spieler.setHand(blatt);
+		spieler.setIsDeclarer(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
 		gespielteKarten[0].setOwner(gegner);
@@ -668,7 +668,7 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.KING);
 		gespielteKarten[0].setOwner(mate);
@@ -698,7 +698,7 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.KING);
 		gespielteKarten[0].setOwner(gegner);
@@ -728,7 +728,7 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.KING);
 		gespielteKarten[0].setOwner(gegner);
@@ -755,8 +755,8 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
-		spieler.setIstAlleinspieler(true);
+		spieler.setHand(blatt);
+		spieler.setIsDeclarer(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
 		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE);
@@ -785,7 +785,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setPosition(Position.VORHAND);
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
@@ -818,7 +818,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setPosition(Position.VORHAND);
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
@@ -851,8 +851,8 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
-		spieler.setIstAlleinspieler(true);
+		spieler.setHand(blatt);
+		spieler.setIsDeclarer(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
 		
@@ -881,7 +881,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
@@ -909,7 +909,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
@@ -937,7 +937,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		IPlayer mate = new Granny("mate");
 		IPlayer gegner = new Granny("gegner");
 		spieler.setMitspieler(mate);
@@ -967,8 +967,8 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
-		spieler.setIstAlleinspieler(true);
+		spieler.setHand(blatt);
+		spieler.setIsDeclarer(true);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
 		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE);
@@ -997,7 +997,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
@@ -1027,7 +1027,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
@@ -1057,7 +1057,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		IPlayer mate = new Granny("mate");
 		spieler.setMitspieler(mate);
@@ -1087,7 +1087,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
@@ -1116,7 +1116,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
@@ -1145,7 +1145,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
@@ -1174,7 +1174,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
@@ -1205,9 +1205,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
@@ -1238,9 +1238,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -1273,9 +1273,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.getAllegespieltenkarten().add(spielkarte6);
-		spieler.getAllegespieltenkarten().add(spielkarte7);
-		spieler.setBlatt(blatt);
+		spieler.getAllPlayedCards().add(spielkarte6);
+		spieler.getAllPlayedCards().add(spielkarte7);
+		spieler.setHand(blatt);
 		spieler.setAnfangsblatt(blatt);
 		spieler.getAnfangsBlatt().add(spielkarte6);
 		spieler.getAnfangsBlatt().add(spielkarte7);
@@ -1311,9 +1311,9 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setIstAlleinspieler(true);
+		spieler.setIsDeclarer(true);
 		spieler.setDeck(deck);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
@@ -1341,7 +1341,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		spieler.setDeck(deck);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		IPlayer gegner = new Granny("gegner");
 		IPlayer mate = new Granny("mate");
@@ -1380,7 +1380,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		spieler.setDeck(deck);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		IPlayer gegner = new Granny("gegner");
 		IPlayer mate = new Granny("mate");
@@ -1419,7 +1419,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		spieler.setDeck(deck);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
@@ -1448,7 +1448,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
 		spieler.setDeck(deck);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.DAUS);
@@ -1472,7 +1472,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.KING);
@@ -1497,7 +1497,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new GrandGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
@@ -1522,7 +1522,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new Ramsch());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
@@ -1545,7 +1545,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new Ramsch());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.NINE);
@@ -1569,7 +1569,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte3);
 		blatt.add(spielkarte4);
 		blatt.add(spielkarte5);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(new Ramsch());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.NINE);
@@ -1588,10 +1588,10 @@ public class SmartPlayerTest {
 		//Collections.shuffle(deck);
 		deck.addAll(tisch.getDeck());
 		spieler.setDeck(deck);
-		spieler.setIstAlleinspieler(true);
-		spieler.setBlatt(new ArrayList<PlayingCard>());
+		spieler.setIsDeclarer(true);
+		spieler.setHand(new ArrayList<PlayingCard>());
 		for (int j = 0; j < 6; j++) {
-			spieler.getBlatt().add(deck.remove(0));
+			spieler.getHand().add(deck.remove(0));
 		}
 		ArrayList<PlayingCard> alleGespielteKarten = new ArrayList<PlayingCard>();
 		for (int i = 0; i < 12; i++) {
@@ -1605,7 +1605,7 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> ergebnisKarten = new ArrayList<PlayingCard>();
 		for (int k = 0; k < deck.size(); k++) {
 			
-			if(spieler.getSpielart().
+			if(spieler.getGameVariety().
 					checkedPlayedCards(deck, gespielteKarten, deck.get(k))) {
 				
 				ergebnisKarten.add(deck.get(k));
@@ -1624,10 +1624,10 @@ public class SmartPlayerTest {
 		Collections.shuffle(deck);
 		deck.addAll(tisch.getDeck());
 		spieler.setDeck(deck);
-		spieler.setIstAlleinspieler(true);
-		spieler.setBlatt(new ArrayList<PlayingCard>());
+		spieler.setIsDeclarer(true);
+		spieler.setHand(new ArrayList<PlayingCard>());
 		for (int j = 0; j < 6; j++) {
-			spieler.getBlatt().add(deck.remove(0));
+			spieler.getHand().add(deck.remove(0));
 		}
 		ArrayList<PlayingCard> alleGespielteKarten = new ArrayList<PlayingCard>();
 		for (int i = 0; i < 12; i++) {
@@ -2409,7 +2409,7 @@ public class SmartPlayerTest {
 	@Test
 	public void handspielTest() {
 		
-		assertTrue(spieler.handspiel());
+		assertTrue(spieler.handgame());
 	}
 	
 	@Test
@@ -2441,10 +2441,10 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.DAUS));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.TEN));
 		blatt.add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(new GrandGame().getGameVariety(), 
-				spieler.spielAnsagen().getGameVariety());
+				spieler.declareGame().getGameVariety());
 	}
 	
 	@Test
@@ -2487,10 +2487,10 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
 		blatt.add(new PlayingCard(Suit.HEARTS, Value.DAUS));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(new SuitGame(Suit.HEARTS).getGameVariety(), 
-				spieler.farbe().getGameVariety());
+				spieler.suit().getGameVariety());
 	}
 	
 	@Test
@@ -2519,7 +2519,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.NINE));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.bestimmeMaxReizwert();
 		assertEquals(23, spieler.getMaxReizwert());
 	}
@@ -2538,7 +2538,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.TEN));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.DAUS));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.bestimmeMaxReizwert();
 		assertEquals(24, spieler.getMaxReizwert());
 	}
@@ -2557,7 +2557,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.NINE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.bestimmeMaxReizwert();
 		assertEquals(33, spieler.getMaxReizwert());
 	}
@@ -2568,7 +2568,7 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.KING));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.maxReizwertFarbe(1);
 		assertEquals(24, spieler.getMaxReizwert());
 	}
@@ -2603,7 +2603,7 @@ public class SmartPlayerTest {
 		blatt.add(karte4);
 		blatt.add(karte5);
 		blatt.add(karte6);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(6, spieler.ermittleSpitzen(new SuitGame(Suit.BELLS)));
 	}
@@ -2616,7 +2616,7 @@ public class SmartPlayerTest {
 		PlayingCard karte2 = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
 		blatt.add(karte1);
 		blatt.add(karte2);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(2, spieler.ermittleSpitzen(new GrandGame()));
 	}
@@ -2760,7 +2760,7 @@ public class SmartPlayerTest {
 		spitzen[4] = karte5;
 		spitzen[7] = karte6;
 		spitzen[8] = karte7;
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		PlayingCard[] spielerSpitzen = spieler.farbeSpitzen(new SuitGame(Suit.BELLS));
 		
@@ -2790,7 +2790,7 @@ public class SmartPlayerTest {
 	
 		PlayingCard[] spitzen = {karte1, karte2, karte3, karte4};
 		
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		PlayingCard[] spielerSpitzen = spieler.grandSpitzen(new GrandGame());
 		
@@ -2826,7 +2826,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
 		
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		PlayingCard[] spielerSpitzen = spieler.grandSpitzen(new GrandGame());
 		
@@ -2864,7 +2864,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
 		
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		PlayingCard[] spielerSpitzen = spieler.grandSpitzen(new GrandGame());
 		
@@ -2894,7 +2894,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
 		
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		PlayingCard[] spielerSpitzen = spieler.grandSpitzen(new GrandGame());
 		
@@ -2917,7 +2917,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.NINE));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(new NullGame().getGameVariety(), 
 				spieler.bestimmeSpielart().getGameVariety());
@@ -2937,7 +2937,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.TEN));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.DAUS));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(new GrandGame().getGameVariety(), 
 				spieler.bestimmeSpielart().getGameVariety());
@@ -2957,7 +2957,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.NINE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(new SuitGame(Suit.LEAVES).getGameVariety(), 
 				spieler.bestimmeSpielart().getGameVariety());
@@ -2977,7 +2977,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.NINE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(new SuitGame(Suit.LEAVES).getGameVariety(), 
 				spieler.bestimmeSpielart().getGameVariety());
@@ -3001,7 +3001,7 @@ public class SmartPlayerTest {
 		blatt.add(karte3);
 		PlayingCard karte4 = new PlayingCard(Suit.ACORNS, Value.EIGHT);
 		blatt.add(karte4);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
 		kreuz.add(karte1);
 		kreuz.add(karte2);
@@ -3030,7 +3030,7 @@ public class SmartPlayerTest {
 		blatt.add(karte3);
 		PlayingCard karte4 = new PlayingCard(Suit.ACORNS, Value.EIGHT);
 		blatt.add(karte4);
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		pik.add(karte5);
 		
@@ -3205,7 +3205,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SIX));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(Suit.LEAVES, spieler.ermittleTrumpffarbe());
 	}
@@ -3224,7 +3224,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SIX));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(Suit.ACORNS, spieler.ermittleTrumpffarbe());
 	}
@@ -3243,7 +3243,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SIX));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(Suit.BELLS, spieler.ermittleTrumpffarbe());
 	}
@@ -3262,7 +3262,7 @@ public class SmartPlayerTest {
 		blatt.add(new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		blatt.add(new PlayingCard(Suit.ACORNS, Value.SIX));
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		
 		assertEquals(Suit.HEARTS, spieler.ermittleTrumpffarbe());
 	}

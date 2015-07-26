@@ -275,7 +275,7 @@ public class CLIOutput extends Output {
 		}
 
 		// Karten sortieren
-		tisch.gibMenschlicherSpieler().blattSortieren(spielart);
+		tisch.gibMenschlicherSpieler().sortHand(spielart);
 
 		// Alle Karten auflisten
 		System.out.println(Messages.getI18n("game.deck.yours") + ":");
@@ -418,7 +418,7 @@ public class CLIOutput extends Output {
 	@Override
 	public void blattAusgeben(IPlayer spieler) {
 
-		ArrayList<PlayingCard> blatt = spieler.getBlatt();
+		ArrayList<PlayingCard> blatt = spieler.getHand();
 
 		System.out.println(Messages.getI18n("game.hand.card.yours"));
 
@@ -437,7 +437,7 @@ public class CLIOutput extends Output {
 	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler) {
 
 		PlayingCard ergebnis = null;
-		ArrayList<PlayingCard> blatt = spieler.getBlatt();
+		ArrayList<PlayingCard> blatt = spieler.getHand();
 		// gueltig wird true gesetzt, wenn eine gueltige Zahl von Konsole
 		// eingelesen wurde.
 		boolean gueltig = false;
@@ -560,8 +560,8 @@ public class CLIOutput extends Output {
 				System.out.println(Messages.getI18n(
 						"player.win.score",
 						tisch.ermittleAlleinspieler()
-								.getSpiele()
-								.get(tisch.ermittleAlleinspieler().getSpiele()
+								.getGames()
+								.get(tisch.ermittleAlleinspieler().getGames()
 										.size() - 1)));
 			} else {
 				System.out.println(Messages.getI18n("player.loose", tisch
@@ -569,8 +569,8 @@ public class CLIOutput extends Output {
 				System.out.println(Messages.getI18n(
 						"player.looser.score",
 						tisch.ermittleAlleinspieler()
-								.getSpiele()
-								.get(tisch.ermittleAlleinspieler().getSpiele()
+								.getGames()
+								.get(tisch.ermittleAlleinspieler().getGames()
 										.size() - 1)));
 			}
 		} else {
@@ -579,16 +579,16 @@ public class CLIOutput extends Output {
 				System.out.println(Messages.getI18n(
 						"player.winner.score",
 						tisch.gibMenschlicherSpieler()
-								.getSpiele()
-								.get(tisch.gibMenschlicherSpieler().getSpiele()
+								.getGames()
+								.get(tisch.gibMenschlicherSpieler().getGames()
 										.size() - 1)));
 			} else {
 				System.out.println(Messages.getI18n("player.looser"));
 				System.out.println(Messages.getI18n(
 						"player.looser.score",
 						tisch.gibMenschlicherSpieler()
-								.getSpiele()
-								.get(tisch.gibMenschlicherSpieler().getSpiele()
+								.getGames()
+								.get(tisch.gibMenschlicherSpieler().getGames()
 										.size() - 1)));
 			}
 		}
@@ -819,11 +819,11 @@ public class CLIOutput extends Output {
 		System.out.println(tisch.getSpieler1().getName() + "     "
 				+ tisch.getSpieler2().getName() + "     "
 				+ tisch.getSpieler3().getName());
-		for (int i = 0; i < tisch.getSpieler1().getSpiele().size(); i++) {
-			System.out.println(tisch.getSpieler1().getSpiele().get(i) + "     "
-					+ tisch.getSpieler2().getSpiele().get(i)
+		for (int i = 0; i < tisch.getSpieler1().getGames().size(); i++) {
+			System.out.println(tisch.getSpieler1().getGames().get(i) + "     "
+					+ tisch.getSpieler2().getGames().get(i)
 					+ "               "
-					+ tisch.getSpieler3().getSpiele().get(i));
+					+ tisch.getSpieler3().getGames().get(i));
 		}
 		System.out.println("******** ****** ********");
 	}
@@ -928,7 +928,7 @@ public class CLIOutput extends Output {
 	 */
 	public void hilfeSpielbar(PlayingCard[] gespielteKarten) {
 		ArrayList<PlayingCard> karten = tisch.gibMenschlicherSpieler()
-				.spielbareKarten(gespielteKarten);
+				.playableCards(gespielteKarten);
 		System.out.println(Messages.getI18n("game.playable.cards"));
 		for (PlayingCard karte : karten) {
 			System.out.println(karte.toString());
@@ -940,7 +940,7 @@ public class CLIOutput extends Output {
 	 */
 	public void hilfeStiche() {
 		ArrayList<PlayingCard> karten = tisch.getSpieler1()
-				.getAllegespieltenkarten();
+				.getAllPlayedCards();
 		System.out.println(Messages.getI18n("game.tricks.last"));
 		for (PlayingCard karte : karten) {
 			System.out.println(karte.toString());
@@ -983,12 +983,12 @@ public class CLIOutput extends Output {
 				.getI18n("game.statistic.declarer.quantity.won") + "   ");
 		System.out.println(Messages.getI18n(
 				"game.statistic.declarer.quantity.won.result",
-				table.anzahlderGewinne(player), player.getSpiele().size()));
+				table.anzahlderGewinne(player), player.getGames().size()));
 		System.out.print(Messages.getI18n(
 				"game.statistic.declarer.quantity.hand", player.getName())
 				+ "   ");
 		System.out.println(Messages.getI18n(
 				"game.statistic.declarer.quantity.hand.result",
-				player.getHandspiele(), player.getSpiele().size()));
+				player.getHandGames(), player.getGames().size()));
 	}
 }

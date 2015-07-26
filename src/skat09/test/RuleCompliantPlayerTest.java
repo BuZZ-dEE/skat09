@@ -40,7 +40,7 @@ public class RuleCompliantPlayerTest {
 		blatt.add(spielkarte3);
 		gespielteKarten[0] = spielkarte1;
 		
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		spieler.setSpielart(spiel);
 	}
 
@@ -87,12 +87,12 @@ public class RuleCompliantPlayerTest {
 		blatt.add(new PlayingCard(Suit.BELLS, Value.EIGHT));
 		ArrayList<PlayingCard> altesBlatt = new ArrayList<PlayingCard>();
 		altesBlatt = (ArrayList<PlayingCard>) blatt.clone();
-		spieler.setBlatt(blatt);
+		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN); 
 		PlayingCard gespielteKarte = new PlayingCard(null,null);
-		gespielteKarte = spieler.spieleKarte(gespielteKarten);
-		blatt = spieler.getBlatt();
+		gespielteKarte = spieler.playCard(gespielteKarten);
+		blatt = spieler.getHand();
 		
 		if(altesBlatt.contains(gespielteKarte)) {
 			
@@ -118,7 +118,7 @@ public class RuleCompliantPlayerTest {
 	
 	@Test
 	public void handspielTest() {
-		assertTrue(spieler.handspiel());
+		assertTrue(spieler.handgame());
 	}
 	
 	@Test
@@ -139,7 +139,7 @@ public class RuleCompliantPlayerTest {
 	@Test
 	public void spielAnsagenTest() {
 		boolean test = false;
-		if (spieler.spielAnsagen() instanceof NullGame) {
+		if (spieler.declareGame() instanceof NullGame) {
 			test = true;
 		}
 		assertTrue(test);
@@ -177,6 +177,6 @@ public class RuleCompliantPlayerTest {
 	
 	@Test
 	public void farbeTest() {
-		assertEquals(null, spieler.farbe());
+		assertEquals(null, spieler.suit());
 	}
 }

@@ -28,93 +28,93 @@ abstract public class Player implements IPlayer {
 	
 
 	/**
-	 *  Name des Spielers
+	 *  Name of the player
 	 */
 	protected String name;
 
 	/**
-	 *  Position des Spielers am Tisch
+	 *  The players position on the table.
 	 */
 	protected Position position;
 
 	/**
-	 *  Handkarten des Spielers
+	 * The Players hand cards.
 	 */
-	protected ArrayList<PlayingCard> blatt;
+	protected ArrayList<PlayingCard> hand;
 
 	/**
-	 * enth&auml;lt vom Spieler gewonnene Stiche
+	 * The players won tricks.
 	 */
-	protected ArrayList<PlayingCard> stiche;
+	protected ArrayList<PlayingCard> tricks;
 
 	/**
-	 *  Flag = true >> Spieler ist Alleinspieler
+	 *  Represents the declarer state for a player.
 	 */
-	protected boolean istAlleinspieler;
+	protected boolean isDeclarer;
 
 	/**
-	 *  Ein Spieler kennt seinen Mitspieler, wenn er einen hat.
+	 *  A player knows his teammate if he has one.
 	 */
-	protected IPlayer mitspieler;
+	protected IPlayer teammate;
 
 	/**
-	 *  Liste der gespielten Spiele, enth&auml;lt Punkte
+	 *  List of the played games.
 	 */
-	protected ArrayList<Integer> spiele;
+	protected ArrayList<Integer> games;
 
 	/**
-	 *  Spieler braucht die Spielart um die Karte zu pr&uuml;fen
+	 *  Player needs to know the game variet for card checking
 	 */
-	protected IGameVariety spielart;
+	protected IGameVariety gameVariety;
 
 	/**
-	 * H&auml;lt die Karten nach der Skataufnahme
+	 * Holds the cards after taking the skat.
 	 */
 	protected ArrayList<PlayingCard> nachSkat;
 	
 	/**
-	 *  Damit der Spieler alle Karten kennt
+	 *  For player knowing all cards.
 	 */
 	protected ArrayList<PlayingCard> deck;
 	
 	/**
-	 * Merkt sich fuer den Alleinspieler, was im Skat lag.
+	 * Holds the skat for declarer.
 	 */
 	protected ArrayList<PlayingCard> skat;
 
 	/**
-	 *  Spieler kann sich die gespielten Karten merken
+	 *  Player can remember the played cards.
 	 */
-	protected ArrayList<PlayingCard> alleGespielteKarten;
+	protected ArrayList<PlayingCard> allPlayedCards;
 
 	/**
-	 * Das restliche Blatt enth&auml;hlt die nicht spielbaren Karten
+	 * The rest hand hold the not playable cards.
 	 */
-	private ArrayList<PlayingCard> restblatt = new ArrayList<PlayingCard>();
+	private ArrayList<PlayingCard> restHand = new ArrayList<PlayingCard>();
 	
 	/**
 	 *  Spieler kann seine Truempfe in diesem Array speichern, um sie zu zaehlen
 	 */
-	private PlayingCard[] truempfe = new PlayingCard[12];
+	private PlayingCard[] trumps = new PlayingCard[12];
 	
 	/**
-	 * Anzahl der Handspiele eines Spielers
+	 * Sum of the players played hand games.
 	 */
-	private int handspiele = 0;
+	private int handGames = 0;
 
 	/**
-	 * Erzeugt ein neues Spielerobjekt.
+	 * Create a new player object.
 	 * 
 	 * @param name
-	 *            - name des Spielers
+	 *            - name of the player
 	 * 
 	 */
 	public Player(String name) {
 
-		spiele = new ArrayList<Integer>();
+		games = new ArrayList<Integer>();
 		this.name = name;
-		stiche = new ArrayList<PlayingCard>();
-		alleGespielteKarten = new ArrayList<PlayingCard>();
+		tricks = new ArrayList<PlayingCard>();
+		allPlayedCards = new ArrayList<PlayingCard>();
 	}
 	
 
@@ -131,33 +131,33 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	public ArrayList<PlayingCard> getBlatt() {
+	public ArrayList<PlayingCard> getHand() {
 
-		return blatt;
+		return hand;
 	}
 
 	//@Override
-	public ArrayList<PlayingCard> getStiche() {
+	public ArrayList<PlayingCard> getTricks() {
 
-		return stiche;
+		return tricks;
 	}
 
 	//@Override
-	public boolean getIstAlleinspieler() {
+	public boolean isDeclarer() {
 
-		return istAlleinspieler;
+		return isDeclarer;
 	}
 
 	//@Override
-	public ArrayList<Integer> getSpiele() {
+	public ArrayList<Integer> getGames() {
 
-		return spiele;
+		return games;
 	}
 
 	//@Override
-	public IPlayer getMitspieler() {
+	public IPlayer getTeammate() {
 
-		return mitspieler;
+		return teammate;
 	}
 	
 	public ArrayList<PlayingCard> getSkat() {
@@ -165,38 +165,38 @@ abstract public class Player implements IPlayer {
 		return skat;
 	}
 	//@Override
-	public ArrayList<PlayingCard> getAllegespieltenkarten() {
-		return alleGespielteKarten;
+	public ArrayList<PlayingCard> getAllPlayedCards() {
+		return allPlayedCards;
 	}
 
 	//@Override
-	public ArrayList<PlayingCard> getRestblatt() {
+	public ArrayList<PlayingCard> getRestHand() {
 
-		return restblatt;
+		return restHand;
 	}
 
 	//@Override
-	public IGameVariety getSpielart() {
+	public IGameVariety getGameVariety() {
 
-		return this.spielart;
-	}
-	
-	//@Override
-	public int getHandspiele() {
-		return handspiele;
+		return this.gameVariety;
 	}
 	
 	//@Override
-	public void setHandspiele(int handspiele) {
-		this.handspiele = handspiele;
+	public int getHandGames() {
+		return handGames;
+	}
+	
+	//@Override
+	public void setHandGames(int handGames) {
+		this.handGames = handGames;
 	}
 
 
 
 	//@Override
-	public void setSpielart(IGameVariety spielart) {
+	public void setSpielart(IGameVariety gameVariety) {
 
-		this.spielart = spielart;
+		this.gameVariety = gameVariety;
 	}
 
 	//@Override
@@ -206,33 +206,33 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	public void setBlatt(ArrayList<PlayingCard> blatt) {
+	public void setHand(ArrayList<PlayingCard> hand) {
 
-		this.blatt = blatt;
+		this.hand = hand;
 	}
 
 	//@Override
-	public void setIstAlleinspieler(boolean istAlleinspieler) {
+	public void setIsDeclarer(boolean isDeclarer) {
 
-		this.istAlleinspieler = istAlleinspieler;
+		this.isDeclarer = isDeclarer;
 	}
 
 	//@Override
-	public void setMitspieler(IPlayer mitspieler) {
+	public void setMitspieler(IPlayer teammate) {
 
-		this.mitspieler = mitspieler;
+		this.teammate = teammate;
 	}
 	
 	//@Override
-	public void setSpiele(ArrayList<Integer> spiele) {
-		this.spiele = spiele;
+	public void setSpiele(ArrayList<Integer> games) {
+		this.games = games;
 
 	}
 
 	//@Override
-	public void setStiche(ArrayList<PlayingCard> stiche) {
+	public void setStiche(ArrayList<PlayingCard> tricks) {
 
-		this.stiche = stiche;
+		this.tricks = tricks;
 	}
 
 	//@Override
@@ -241,13 +241,13 @@ abstract public class Player implements IPlayer {
 	}
 	
 	//@Override
-	public void setAlleGespieltenKarten(ArrayList<PlayingCard> karten) {
-		this.alleGespielteKarten = karten;
+	public void setAlleGespieltenKarten(ArrayList<PlayingCard> cards) {
+		this.allPlayedCards = cards;
 	}
 	
 	//@Override
-	public void setTruempfe(PlayingCard[] truempfe) {
-		this.truempfe = truempfe;
+	public void setTruempfe(PlayingCard[] trumps) {
+		this.trumps = trumps;
 	}
 	
 	//@Override
@@ -264,43 +264,41 @@ abstract public class Player implements IPlayer {
 	
 
 	//@Override
-	public void stichHinzufuegen(PlayingCard[] stich) {
+	public void addTrick(PlayingCard[] trick) {
 
-		for (int i = 0; i < stich.length; i++) {
+		for (int i = 0; i < trick.length; i++) {
 
-			stiche.add(stich[i]);
+			tricks.add(trick[i]);
 		}
 	}
 
 	/**
 	 * F&uuml;gt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
-	 * @param gespielteKarten
+	 * @param playedCards
 	 * 
 	 */
 	//@Override
-	public void gespielteKartenHinzufuegen(PlayingCard[] gespielteKarten) {
+	public void addPlayedCards(PlayingCard[] playedCards) {
 
-		for (int i = 0; i < gespielteKarten.length; i++) {
+		for (int i = 0; i < playedCards.length; i++) {
 
-			alleGespielteKarten.add(gespielteKarten[i]);
+			allPlayedCards.add(playedCards[i]);
 		}
 	}
 
 	//@Override
-	public ArrayList<PlayingCard> spielbareKarten(PlayingCard[] gespielteKarten) {
+	public ArrayList<PlayingCard> playableCards(PlayingCard[] playableCards) {
 
-		ArrayList<PlayingCard> spielbareKarten = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> cardsToPlay = new ArrayList<PlayingCard>();
 
-		for (int i = 0; i < blatt.size(); i++) {
+		for (int i = 0; i < hand.size(); i++) {
 
-			if (spielart.checkedPlayedCards(blatt, gespielteKarten, blatt.get(i))) {
+			if (gameVariety.checkedPlayedCards(hand, playableCards, hand.get(i))) {
 
-				spielbareKarten.add(blatt.get(i));
-			}
-			
-			else {
+				cardsToPlay.add(hand.get(i));
+			} else {
 				
-				restblatt.add(blatt.get(i));
+				restHand.add(hand.get(i));
 			}
 		}
 		
@@ -310,28 +308,28 @@ abstract public class Player implements IPlayer {
 //			spielbareKarten.addAll(blatt);
 //		}
 		
-		return spielbareKarten;
+		return cardsToPlay;
 	}
 
 	//@Override
-	abstract public PlayingCard spieleKarte(PlayingCard[] gespielteKarten)
+	abstract public PlayingCard playCard(PlayingCard[] playedCards)
 			throws IOException;
 	
 	//@Override
-	public PlayingCard zufaelligErlaubteKarteSpielen(PlayingCard[] gespielteKarten) {
+	public PlayingCard playRamdonAllowedCard(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
-		Random zufall = new Random();
-		int zahl = zufall.nextInt(blatt.size());
+		PlayingCard result = null;
+		Random random = new Random();
+		int zahl = random.nextInt(hand.size());
 
-		while (!spielart.checkedPlayedCards(blatt, gespielteKarten, blatt
+		while (!gameVariety.checkedPlayedCards(hand, playedCards, hand
 				.get(zahl))) {
 
-			zahl = zufall.nextInt(blatt.size());
+			zahl = random.nextInt(hand.size());
 		}
-		ergebnis = blatt.remove(zahl);
+		result = hand.remove(zahl);
 
-		return ergebnis;
+		return result;
 	}
 
 	//@Override
@@ -339,10 +337,10 @@ abstract public class Player implements IPlayer {
 	
 
 	//@Override
-	abstract public IGameVariety spielAnsagen();
+	abstract public IGameVariety declareGame();
 
 	//@Override
-	abstract public boolean handspiel();
+	abstract public boolean handgame();
 
 	//@Override
 	abstract public boolean ouvert();
@@ -354,13 +352,13 @@ abstract public class Player implements IPlayer {
 	abstract public boolean schwarz();
 
 	//@Override
-	abstract public SuitGame farbe();
+	abstract public SuitGame suit();
 
 	//@Override
-	public ArrayList<Integer> neuerEintrag(int punkte) {
+	public ArrayList<Integer> addPoints(int points) {
 
-		spiele.add(punkte);
-		return spiele;
+		games.add(points);
+		return games;
 	}
 
 	//@Override
@@ -370,34 +368,31 @@ abstract public class Player implements IPlayer {
 	abstract public boolean sagen(int alterWert);
 
 	//@Override
-	public void blattSortieren(final IGameVariety spielart) {
+	public void sortHand(final IGameVariety gameVariety) {
 
 		Comparator<PlayingCard> comp = new Comparator<PlayingCard>() {
 
-			public int compare(PlayingCard karte1, PlayingCard karte2) {
+			public int compare(PlayingCard card1, PlayingCard card2) {
 
-				int ergebnis;
+				int result;
 
-				if (karte1.equals(spielart.sortCard(karte1, karte2))) {
+				if (card1.equals(gameVariety.sortCard(card1, card2))) {
 
-					ergebnis = 1;
-				}
+					result = 1;
+					
+				} else if (card1.equals(card2)) {
 
-				else if (karte1.equals(karte2)) {
+					result = 0;
+					
+				} else {
 
-					ergebnis = 0;
-				}
-
-				else {
-
-					ergebnis = -1;
-				}
-
-				return ergebnis;
+					result = -1;
+					
+				} return result;
 			}
 		};
 		
-		Collections.sort(blatt, comp);
+		Collections.sort(hand, comp);
 	}
 
 	//@Override
@@ -422,34 +417,34 @@ abstract public class Player implements IPlayer {
 	//@Override
 	public PlayingCard[] spitzenEinordnen() {
 
-		truempfe = new PlayingCard[12];
+		trumps = new PlayingCard[12];
 
-		if (spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
 			bubeneinordnen();
 		}
 		
-		if (spielart.getGameVariety() == GameVarietyName.SUIT) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
 
 			bubeneinordnen();
 			farbeneinordnen();
 		}
 		
-		return this.truempfe;
+		return this.trumps;
 	}
 	
 	//@Override
 	public void bubeneinordnen() {
 		
 		int kartenwert = 0;
-		ArrayList<PlayingCard> blatt = getBlatt();
+		ArrayList<PlayingCard> blatt = getHand();
 
 		for (int i = 0; i < blatt.size(); i++) {
 			
 			if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
 
-				kartenwert = spielart.evaluateCard(blatt.get(i));
-				truempfe[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
+				kartenwert = gameVariety.evaluateCard(blatt.get(i));
+				trumps[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
 			}
 		}
 	}
@@ -486,15 +481,15 @@ abstract public class Player implements IPlayer {
 	public void farbeneinordnen() {
 		
 		int kartenwert = 0;
-		SuitGame spiel = (SuitGame) spielart;
-		ArrayList<PlayingCard> blatt = getBlatt();
+		SuitGame spiel = (SuitGame) gameVariety;
+		ArrayList<PlayingCard> blatt = getHand();
 
 		for (int i = 0; i < blatt.size(); i++) {
 
 			if (blatt.get(i).getValue() != Value.UNDER_KNAVE && blatt.get(i).getSuit() == spiel.getTrumpSuit()) {
 
-				kartenwert = spielart.evaluateCard(blatt.get(i));
-				truempfe[farbeeinordnenhilf(kartenwert)] = blatt.get(i);
+				kartenwert = gameVariety.evaluateCard(blatt.get(i));
+				trumps[farbeeinordnenhilf(kartenwert)] = blatt.get(i);
 			}
 		}
 	}
@@ -552,7 +547,7 @@ abstract public class Player implements IPlayer {
 		
 		int erg = 0;
 
-		if (truempfe[0] != null) {
+		if (trumps[0] != null) {
 			
 			erg = spitzenMit(erg);
 		}
@@ -568,9 +563,9 @@ abstract public class Player implements IPlayer {
 	//@Override
 	public int spitzenMit(int erg) {
 
-		for (int i = 0; i < truempfe.length; i++) {
+		for (int i = 0; i < trumps.length; i++) {
 
-			if (truempfe[i] == null) {
+			if (trumps[i] == null) {
 
 				erg = i;
 				break;
@@ -582,9 +577,9 @@ abstract public class Player implements IPlayer {
 	//@Override
 	public int spitzenOhne(int erg) {
 
-		for (int i = 0; i < truempfe.length; i++) {
+		for (int i = 0; i < trumps.length; i++) {
 			
-			if (truempfe[i] != null) {
+			if (trumps[i] != null) {
 				
 				erg = -i;
 				break;
@@ -593,12 +588,12 @@ abstract public class Player implements IPlayer {
 		
 		if (erg == 0) {
 
-			if (spielart instanceof GrandGame) {
+			if (gameVariety instanceof GrandGame) {
 
 				erg = -4;
 			}
 			
-			if (spielart instanceof SuitGame) {
+			if (gameVariety instanceof SuitGame) {
 
 				erg = -11;
 			}

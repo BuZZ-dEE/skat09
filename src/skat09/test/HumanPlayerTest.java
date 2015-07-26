@@ -36,7 +36,7 @@ public class HumanPlayerTest {
 	@Before
 	public void setUp() throws Exception {
 
-		mensch.setBlatt(new ArrayList<PlayingCard>());
+		mensch.setHand(new ArrayList<PlayingCard>());
 	}
 
 	@Test
@@ -93,7 +93,7 @@ public class HumanPlayerTest {
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		gespielteKarten[1] = new PlayingCard(Suit.HEARTS, Value.NINE);
-		if (karte.equals(mensch.spieleKarte(gespielteKarten))) {
+		if (karte.equals(mensch.playCard(gespielteKarten))) {
 
 			ergebnis = true;
 		}
@@ -110,7 +110,7 @@ public class HumanPlayerTest {
 		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
-		if (karte.equals(mensch.spieleKarte(gespielteKarten))) {
+		if (karte.equals(mensch.playCard(gespielteKarten))) {
 				ergebnis = true;
 		}
 		assertTrue(ergebnis);
@@ -119,7 +119,7 @@ public class HumanPlayerTest {
 	@Test
 	public void handspielTest() {
 
-		assertFalse(mensch.handspiel());
+		assertFalse(mensch.handgame());
 	}
 
 	@Test
@@ -146,7 +146,7 @@ public class HumanPlayerTest {
 		boolean ergebnis = false;
 
 		IGameVariety spielart = new GrandGame();
-		if (spielart.getGameVariety().equals(mensch.spielAnsagen().getGameVariety())) {
+		if (spielart.getGameVariety().equals(mensch.declareGame().getGameVariety())) {
 
 			ergebnis = true;
 		}
@@ -157,7 +157,7 @@ public class HumanPlayerTest {
 	public void farbeTest() {
 
 		SuitGame farbspiel = new SuitGame(Suit.LEAVES);
-		assertEquals(farbspiel.getTrumpSuit(), mensch.farbe()
+		assertEquals(farbspiel.getTrumpSuit(), mensch.suit()
 				.getTrumpSuit());
 	}
 

@@ -814,9 +814,9 @@ public class Table extends Observable {
 			}
 		}
 		// Den Spielern die Blaetter ueberreichen.
-		spieler1.setBlatt(blatt1);
-		spieler2.setBlatt(blatt2);
-		spieler3.setBlatt(blatt3);
+		spieler1.setHand(blatt1);
+		spieler2.setHand(blatt2);
+		spieler3.setHand(blatt3);
 	}
 
 	/**
@@ -831,15 +831,15 @@ public class Table extends Observable {
 	 */
 	public void kartenBesitzergeben() {
 
-		ArrayList<PlayingCard> blatt1 = spieler1.getBlatt();
+		ArrayList<PlayingCard> blatt1 = spieler1.getHand();
 		for (PlayingCard karte : blatt1) {
 			karte.setOwner(spieler1);
 		}
-		ArrayList<PlayingCard> blatt2 = spieler2.getBlatt();
+		ArrayList<PlayingCard> blatt2 = spieler2.getHand();
 		for (PlayingCard karte : blatt2) {
 			karte.setOwner(spieler2);
 		}
-		ArrayList<PlayingCard> blatt3 = spieler3.getBlatt();
+		ArrayList<PlayingCard> blatt3 = spieler3.getHand();
 		for (PlayingCard karte : blatt3) {
 			karte.setOwner(spieler3);
 		}
@@ -854,17 +854,17 @@ public class Table extends Observable {
 
 		IPlayer alleinSpieler = null;
 
-		if (spieler1.getIstAlleinspieler()) {
+		if (spieler1.isDeclarer()) {
 
 			alleinSpieler = spieler1;
 		}
 
-		else if (spieler2.getIstAlleinspieler()) {
+		else if (spieler2.isDeclarer()) {
 
 			alleinSpieler = spieler2;
 		}
 
-		else if (spieler3.getIstAlleinspieler()) {
+		else if (spieler3.isDeclarer()) {
 
 			alleinSpieler = spieler3;
 		}
@@ -905,7 +905,7 @@ public class Table extends Observable {
 
 		if (spielart.getGameVariety() != GameVarietyName.RAMSCH) {
 
-			if (!spieler1.getIstAlleinspieler()) {
+			if (!spieler1.isDeclarer()) {
 
 				spieler1.setMitspieler(ermittleMitspieler(spieler1));
 			}
@@ -915,7 +915,7 @@ public class Table extends Observable {
 				spieler1.setMitspieler(null);
 			}
 
-			if (!spieler2.getIstAlleinspieler()) {
+			if (!spieler2.isDeclarer()) {
 
 				spieler2.setMitspieler(ermittleMitspieler(spieler2));
 			}
@@ -925,7 +925,7 @@ public class Table extends Observable {
 				spieler2.setMitspieler(null);
 			}
 
-			if (!spieler3.getIstAlleinspieler()) {
+			if (!spieler3.isDeclarer()) {
 
 				spieler3.setMitspieler(ermittleMitspieler(spieler3));
 			}
@@ -1235,7 +1235,7 @@ public class Table extends Observable {
 		if (spielart.getGameVariety() != GameVarietyName.RAMSCH) {
 			ArrayList<PlayingCard> temp = new ArrayList<PlayingCard>();
 
-			temp = ermittleAlleinspieler().getStiche();
+			temp = ermittleAlleinspieler().getTricks();
 
 			int augen = werteAugen(temp);
 
@@ -1253,22 +1253,22 @@ public class Table extends Observable {
 				bockrunden = 3;
 			}
 
-			if (spieler1.getIstAlleinspieler() == true) {
-				spieler1.neuerEintrag(punkte);
+			if (spieler1.isDeclarer() == true) {
+				spieler1.addPoints(punkte);
 			} else {
-				spieler1.neuerEintrag(0);
+				spieler1.addPoints(0);
 			}
 
-			if (spieler2.getIstAlleinspieler() == true) {
-				spieler2.neuerEintrag(punkte);
+			if (spieler2.isDeclarer() == true) {
+				spieler2.addPoints(punkte);
 			} else {
-				spieler2.neuerEintrag(0);
+				spieler2.addPoints(0);
 			}
 
-			if (spieler3.getIstAlleinspieler() == true) {
-				spieler3.neuerEintrag(punkte);
+			if (spieler3.isDeclarer() == true) {
+				spieler3.addPoints(punkte);
 			} else {
-				spieler3.neuerEintrag(0);
+				spieler3.addPoints(0);
 			}
 		} else {
 			gewonnen = ramschAuswertung();
@@ -1315,21 +1315,21 @@ public class Table extends Observable {
 
 		for (int i = 0; i < spieler.length; i++) {
 			if (spieler[i].getName() == spieler1.getName()) {
-				spieler1.setSpiele(spieler[i].getSpiele());
+				spieler1.setSpiele(spieler[i].getGames());
 			}
 			if (spieler[i].getName() == spieler2.getName()) {
-				spieler2.setSpiele(spieler[i].getSpiele());
+				spieler2.setSpiele(spieler[i].getGames());
 			}
 			if (spieler[i].getName() == spieler3.getName()) {
-				spieler3.setSpiele(spieler[i].getSpiele());
+				spieler3.setSpiele(spieler[i].getGames());
 			}
 		}
 		// gibMenschlicherSpieler().getSpiele().add(0);
-		int l = gibMenschlicherSpieler().getSpiele().size();
+		int l = gibMenschlicherSpieler().getGames().size();
 		// Hat der menschliche Spieler 0 oder mehr Punkte, gilt dies als
 		// gewonnen.
 
-		if (gibMenschlicherSpieler().getSpiele().get(l - 1) >= 0) {
+		if (gibMenschlicherSpieler().getGames().get(l - 1) >= 0) {
 			gewonnen = true;
 		}
 
@@ -1350,8 +1350,8 @@ public class Table extends Observable {
 		// niedrigste Augenzahl
 		for (int i = 0; i < spieler.length; i++) {
 			for (int j = 0; j < spieler.length - 1; j++) {
-				if (werteAugen(spieler[j].getStiche()) > werteAugen(spieler[j + 1]
-						.getStiche())) {
+				if (werteAugen(spieler[j].getTricks()) > werteAugen(spieler[j + 1]
+						.getTricks())) {
 					IPlayer a = spieler[j];
 					spieler[j] = spieler[j + 1];
 					spieler[j + 1] = a;
@@ -1377,34 +1377,34 @@ public class Table extends Observable {
 			int bock) {
 		grundwertliste.add(0);
 		// Ist ein Durchmarsch gelungen?
-		if (werteAugen(spieler[2].getStiche()) == maximaleaugen) {
-			spieler[2].getSpiele().add(maximaleaugen * bock);
+		if (werteAugen(spieler[2].getTricks()) == maximaleaugen) {
+			spieler[2].getGames().add(maximaleaugen * bock);
 			augenliste.add(maximaleaugen);
 			punkteliste.add(maximaleaugen * bock);
-			spieler[1].getSpiele().add(0);
-			spieler[0].getSpiele().add(0);
+			spieler[1].getGames().add(0);
+			spieler[0].getGames().add(0);
 			// Ist ansonsten ein anderer Spieler Jungfrau geblieben? Dann werden
 			// die Augen doppelt gezaehlt.
-		} else if (werteAugen(spieler[0].getStiche()) == 0) {
-			spieler[2].getSpiele().add(
-					-((werteAugen(spieler[2].getStiche()) + skataugen) * 2)
+		} else if (werteAugen(spieler[0].getTricks()) == 0) {
+			spieler[2].getGames().add(
+					-((werteAugen(spieler[2].getTricks()) + skataugen) * 2)
 							* bock);
-			augenliste.add((werteAugen(spieler[2].getStiche()) + skataugen));
+			augenliste.add((werteAugen(spieler[2].getTricks()) + skataugen));
 			punkteliste
-					.add(-((werteAugen(spieler[2].getStiche()) + skataugen) * 2)
+					.add(-((werteAugen(spieler[2].getTricks()) + skataugen) * 2)
 							* bock);
-			spieler[1].getSpiele().add(0);
-			spieler[0].getSpiele().add(0);
+			spieler[1].getGames().add(0);
+			spieler[0].getGames().add(0);
 			// Ansonsten bekommt der Spieler mit den meisten Augen so viele
 			// Minuspunkte, wie er Augen erspielt hat und Augen im Skat lagen.
 		} else {
-			spieler[2].getSpiele().add(
-					-((werteAugen(spieler[2].getStiche()) + skataugen)) * bock);
-			augenliste.add((werteAugen(spieler[2].getStiche()) + skataugen));
-			punkteliste.add(-(werteAugen(spieler[2].getStiche()) + skataugen)
+			spieler[2].getGames().add(
+					-((werteAugen(spieler[2].getTricks()) + skataugen)) * bock);
+			augenliste.add((werteAugen(spieler[2].getTricks()) + skataugen));
+			punkteliste.add(-(werteAugen(spieler[2].getTricks()) + skataugen)
 					* bock);
-			spieler[1].getSpiele().add(0);
-			spieler[0].getSpiele().add(0);
+			spieler[1].getGames().add(0);
+			spieler[0].getGames().add(0);
 		}
 		return spieler;
 	}
@@ -1420,9 +1420,9 @@ public class Table extends Observable {
 
 		int ergebnis = 0;
 
-		for (int i = 0; i < spieler.getSpiele().size(); i++) {
+		for (int i = 0; i < spieler.getGames().size(); i++) {
 
-			ergebnis += spieler.getSpiele().get(i);
+			ergebnis += spieler.getGames().get(i);
 		}
 		return ergebnis;
 	}
@@ -1437,13 +1437,13 @@ public class Table extends Observable {
 	 */
 	public int getProzentAllein(IPlayer spieler) {
 		int erg = 0;
-		for (int i = 0; i < spieler.getSpiele().size(); i++) {
-			if (spieler.getSpiele().get(i) != 0) {
+		for (int i = 0; i < spieler.getGames().size(); i++) {
+			if (spieler.getGames().get(i) != 0) {
 				erg = erg + 1;
 			}
 
 		}
-		return ((100 * erg) / spieler.getSpiele().size());
+		return ((100 * erg) / spieler.getGames().size());
 	}
 
 	/**
@@ -1455,8 +1455,8 @@ public class Table extends Observable {
 	 */
 	public int getAnzahlAllein(IPlayer spieler) {
 		int erg = 0;
-		for (int i = 0; i < spieler.getSpiele().size(); i++) {
-			if (spieler.getSpiele().get(i) != 0) {
+		for (int i = 0; i < spieler.getGames().size(); i++) {
+			if (spieler.getGames().get(i) != 0) {
 				erg = erg + 1;
 			}
 
@@ -1581,9 +1581,9 @@ public class Table extends Observable {
 		}
 
 		// Schwarz gespielt?
-		if ((augenzahl == maximaleaugen && ermittleAlleinspieler().getStiche()
+		if ((augenzahl == maximaleaugen && ermittleAlleinspieler().getTricks()
 				.size() == allestiche)
-				|| (augenzahl == 0 && ermittleAlleinspieler().getStiche()
+				|| (augenzahl == 0 && ermittleAlleinspieler().getTricks()
 						.size() == 0)) {
 			stufe = stufe + 1;
 		}
@@ -1651,7 +1651,7 @@ public class Table extends Observable {
 
 		boolean verloren = false;
 
-		if (ermittleAlleinspieler().getStiche().size() > 0) {
+		if (ermittleAlleinspieler().getTricks().size() > 0) {
 			verloren = true;
 		}
 
@@ -1679,12 +1679,12 @@ public class Table extends Observable {
 		}
 
 		else if (schwarz
-				&& ermittleAlleinspieler().getStiche().size() < allestiche) {
+				&& ermittleAlleinspieler().getTricks().size() < allestiche) {
 			verloren = true;
 		}
 
 		else if (ouvert
-				&& ermittleAlleinspieler().getStiche().size() < allestiche) {
+				&& ermittleAlleinspieler().getTricks().size() < allestiche) {
 			verloren = true;
 		}
 
@@ -1770,9 +1770,9 @@ public class Table extends Observable {
 
 		int ergebnis = 0;
 
-		for (int i = 0; i < spieler.getSpiele().size(); i++) {
+		for (int i = 0; i < spieler.getGames().size(); i++) {
 
-			if (spieler.getSpiele().get(i) > 0) {
+			if (spieler.getGames().get(i) > 0) {
 
 				ergebnis++;
 			}
