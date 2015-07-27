@@ -1,8 +1,5 @@
 package skat09.ui.gui;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.Toolkit;
 import java.net.URL;
 
 import javafx.beans.value.ChangeListener;
@@ -10,6 +7,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -20,9 +19,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import skat09.Messages;
 import skat09.player.PlayerEnum;
@@ -39,7 +40,7 @@ import skat09.ui.GUIOutput;
  */
 public class SetupPane extends Pane implements EventHandler<Event> {
 	
-	private Pane setupPane;
+	private BorderPane setupPane;
 	private Pane optionsPane;
 	private Pane logoPane;
 	private ComboBox<String> adversary1;
@@ -98,12 +99,9 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 //        Scene scene = new Scene(new Group(new Text(25, 25, "Hello World!"))); 
 		this.stage = stage;
 		this.stage.setTitle(Messages.getI18n("application.name")); 
-//        stage.setScene(scene); 
-//        stage.sizeToScene(); 
-//        stage.show();
 
 		this.output = output;
-		this.setupPane = new Pane();
+		this.setupPane = new BorderPane();
 		
 		init();
 
@@ -113,15 +111,15 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 		} catch (Exception whoJackedMyIcon) {
 			System.out.println("Could not load program icon.");
 		}
-
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-		int top = (int) ((screenSize.height - this.getHeight()) / 2);
-		int left = (int) ((screenSize.width - this.getWidth()) / 2);
-//		setLocation(left, top);
+		
+		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+		int top = (int) ((primaryScreenBounds.getHeight() - this.getHeight()) / 2);
+		int left = (int) ((primaryScreenBounds.getWidth() - this.getWidth()) / 2);
+		
 		this.stage.setX(left);
 		this.stage.setY(top);
 		this.stage.setResizable(false);
+		this.stage.show();
 	}
 	
 	/**
@@ -134,22 +132,40 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 	private void init() {
 		
 //		getContentPane().add(new Toolbar(), BorderLayout.NORTH);
-//		setupPane.setLayout(new FlowLayout());
 		setupPane.getChildren().add(new FlowPane());
 		optionsPane = new Pane();
-		GridPane gridPane = new GridPane();
-		
-//		optionsPane.setLayout(new GridBagLayout());
-		optionsPane.getChildren().add(gridPane);
-		
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		
-		logoPane = new Pane();
-		logo();
-		erstelleOptions();
-		setzteOptionen();
 
+		GridPane gridPane = new GridPane();
+		gridPane.setPadding(new Insets(10, 10, 10, 10));
+		gridPane.setVgap(5);
+		gridPane.setHgap(5);
+//		//Defining the Name text field
+//		final TextField name = new TextField();
+//		name.setPromptText("Enter your name.");
+//		name.setPrefColumnCount(10);
+//		name.getText();
+//		GridPane.setConstraints(name, 0, 0);
+//		gridPane.getChildren().add(name);
+//		//Defining the Last Name text field
+//		final TextField lastName = new TextField();
+//		lastName.setPromptText("Enter your last name.");
+//		GridPane.setConstraints(lastName, 0, 1);
+//		gridPane.getChildren().add(lastName);
+//		//Defining the Comment text field
+//		final TextField comment = new TextField();
+//		comment.setPrefColumnCount(15);
+//		comment.setPromptText("Enter your comment.");
+//		GridPane.setConstraints(comment, 0, 2);
+//		gridPane.getChildren().add(comment);
+//		//Defining the Submit button
+//		Button submit = new Button("Submit");
+//		GridPane.setConstraints(submit, 1, 0);
+//		gridPane.getChildren().add(submit);
+//		//Defining the Clear button
+//		Button clear = new Button("Clear");
+//		GridPane.setConstraints(clear, 1, 1);
+//		gridPane.getChildren().add(clear);
+		
 		useSetupButton = new Button(Messages.getI18n("application.ok"));
 //		useSetupButton.setName("ok");
 		useSetupButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -168,104 +184,68 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 				}
 				
 			}
-		});
-		c.gridx = 0;
-		c.gridy = 6;
-		c.gridwidth = 2;
-//		optionsPane.add(useSetupButton, c);
-		optionsPane.getChildren().add(useSetupButton);
-
-		setupPane.getChildren().add(optionsPane);
-		setupPane.getChildren().add(logoPane);
+		});		
 		
-//		add(setupPane);
-//		pack();
-//		setVisible(true);
+		logoPane = new Pane();
+		logo();
+		createOptions(gridPane);
+		setOptions(gridPane);
+		
+		GridPane.setConstraints(useSetupButton, 0, 6);
+		gridPane.getChildren().add(useSetupButton);
+		
+		optionsPane.getChildren().add(gridPane);
+		
+//		optionsPane.getChildren().add(useSetupButton);
+
+		setupPane.setLeft(optionsPane);
+		setupPane.setRight(logoPane);
 		
 		Scene scene = new Scene(setupPane);
 		this.stage.setScene(scene);
-		this.stage.setTitle("Layout Sample");
 		this.stage.show();
 	}
 
-	private void setzteOptionen() {
+	private void setOptions(GridPane gridPane) {
 		
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;
-		c.gridy = 0;
-//		optionsPane.getChildren().add(nameLabel, c);
-//		c.gridx = 1;
-//		optionsPane.getChildren().add(name, c);
-//
-//		c.gridx = 0;
-//		c.gridy = 1;
-//		optionsPane.getChildren().add(adversary1Label, c);
-//		c.gridx = 1;
-//		optionsPane.getChildren().add(adversary1, c);
-//
-//		c.gridx = 0;
-//		c.gridy = 2;
-//		optionsPane.getChildren().add(adversary2Label, c);
-//		c.gridx = 1;
-//		optionsPane.getChildren().add(adversary2, c);
-//
-//		c.gridx = 0;
-//		c.gridy = 3;
-//		optionsPane.getChildren().add(variantLabel, c);
-//		c.gridx = 1;
-//		optionsPane.getChildren().add(variant, c);
-//
-//		c.gridx = 0;
-//		c.gridy = 4;
-//		optionsPane.getChildren().add(sixskatLabel, c);
-//		c.gridx = 1;
-//		optionsPane.getChildren().add(sixskat, c);
-//
-//		c.gridx = 0;
-//		c.gridy = 5;
-//		optionsPane.getChildren().add(deckLabel, c);
-//		c.gridx = 1;
-//		optionsPane.getChildren().add(deck, c);
+		GridPane.setConstraints(name, 0, 0);
+		gridPane.getChildren().add(nameLabel);
 		
+		GridPane.setConstraints(name, 1, 0);
+		gridPane.getChildren().add(name);
 		
+		GridPane.setConstraints(adversary1Label, 0, 1);
+		gridPane.getChildren().add(adversary1Label);
 		
-		optionsPane.getChildren().add(nameLabel);
-		c.gridx = 1;
-		optionsPane.getChildren().add(name);
-
-		c.gridx = 0;
-		c.gridy = 1;
-		optionsPane.getChildren().add(adversary1Label);
-		c.gridx = 1;
-		optionsPane.getChildren().add(adversary1);
-
-		c.gridx = 0;
-		c.gridy = 2;
-		optionsPane.getChildren().add(adversary2Label);
-		c.gridx = 1;
-		optionsPane.getChildren().add(adversary2);
-
-		c.gridx = 0;
-		c.gridy = 3;
-		optionsPane.getChildren().add(variantLabel);
-		c.gridx = 1;
-		optionsPane.getChildren().add(skatVariant);
-
-		c.gridx = 0;
-		c.gridy = 4;
-		optionsPane.getChildren().add(sixskatLabel);
-		c.gridx = 1;
-		optionsPane.getChildren().add(sixskat);
-
-		c.gridx = 0;
-		c.gridy = 5;
-		optionsPane.getChildren().add(deckLabel);
-		c.gridx = 1;
-		optionsPane.getChildren().add(deck);
+		GridPane.setConstraints(adversary1, 1, 1);
+		gridPane.getChildren().add(adversary1);
+		
+		GridPane.setConstraints(adversary2Label, 0, 2);
+		gridPane.getChildren().add(adversary2Label);
+		
+		GridPane.setConstraints(adversary2, 1, 2);
+		gridPane.getChildren().add(adversary2);
+		
+		GridPane.setConstraints(variantLabel, 0, 3);
+		gridPane.getChildren().add(variantLabel);
+		
+		GridPane.setConstraints(skatVariant, 1, 3);
+		gridPane.getChildren().add(skatVariant);
+		
+		GridPane.setConstraints(sixskatLabel, 0, 4);
+		gridPane.getChildren().add(sixskatLabel);
+		
+		GridPane.setConstraints(sixskat, 1, 4);
+		gridPane.getChildren().add(sixskat);
+		
+		GridPane.setConstraints(deckLabel, 0, 5);
+		gridPane.getChildren().add(deckLabel);
+		
+		GridPane.setConstraints(deck, 1, 5);
+		gridPane.getChildren().add(deck);
 	}
 
-	private void erstelleOptions() {
+	private void createOptions(GridPane gridPane) {
 		
 		// Beschriftungen der ComboBoxes
 		String[] adversary = { Messages.getI18n("player.granny"),
@@ -366,14 +346,9 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 	}
 	
 	/**
-	 * l&auml;dt das Logo und gibt es aus
+	 * Load the game logo into pane.
 	 */
 	public void logo() {
-		
-//		new ImageIcon(getFileUrl("img/bild.jpeg"))
-		
-//		ClassLoader cl = this.getClass().getClassLoader();
-//		this.stage.getIcons().add(new Image(cl.getResource("res/test.png").openStream()));
 		
 		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("img/bild.jpeg"));
 		imageFrameLabel = new Label();
@@ -498,6 +473,6 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 	}
 	
 	private void quit() {
-		
+		System.out.println("ok button clicked,");
 	}
 }
