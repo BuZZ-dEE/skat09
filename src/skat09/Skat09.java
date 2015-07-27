@@ -68,7 +68,7 @@ public class Skat09 extends Application {
 		if (output instanceof GUIOutput) {
 			controller.warte();
 		}
-		controller.spiel();
+//		controller.spiel();
 		
 		
 		

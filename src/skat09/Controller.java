@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import skat09.gamevariety.GameVarietyName;
 import skat09.gamevariety.GrandGame;
 import skat09.gamevariety.NullGame;
@@ -749,14 +752,36 @@ public class Controller implements Observer, IController {
 
 	//@Override
 	public void warte() {
-		while (!output.getRelease()) {
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		output.setRelease(false);
+//		while (!output.getRelease()) {
+//			try {
+//				Thread.sleep(500);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		output.setRelease(false);
+		
+		
+        Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+            	while (!output.getRelease()) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                    	e.printStackTrace();
+                    }
+            	}
+                return null;
+            }
+        };
+        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+            	output.setRelease(false);
+            }
+        });
+        new Thread(sleeper).start();
 	}
 
 	//@Override
