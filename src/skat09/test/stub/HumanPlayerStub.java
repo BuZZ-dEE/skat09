@@ -124,7 +124,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public int reizlimitFestlegen() {
+	public int setBidLimit() {
 		
 		return 30;
 	}

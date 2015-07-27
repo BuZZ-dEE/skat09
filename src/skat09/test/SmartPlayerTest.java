@@ -2502,7 +2502,7 @@ public class SmartPlayerTest {
 	@Test
 	public void reizlimitFestlegenTest() {
 		
-		assertEquals(0, spieler.reizlimitFestlegen());
+		assertEquals(0, spieler.setBidLimit());
 	}
 	
 	@Test

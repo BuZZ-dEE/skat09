@@ -412,7 +412,7 @@ abstract public class Player implements IPlayer {
 	}
 
 	//@Override
-	public abstract int reizlimitFestlegen();
+	public abstract int setBidLimit();
 	
 	//@Override
 	public PlayingCard[] spitzenEinordnen() {

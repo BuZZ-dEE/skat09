@@ -164,7 +164,7 @@ public class HumanPlayerTest {
 	@Test
 	public void reizlimitFestlegen() {
 
-		assertEquals(23, mensch.reizlimitFestlegen());
+		assertEquals(23, mensch.setBidLimit());
 	}
 
 	@Test

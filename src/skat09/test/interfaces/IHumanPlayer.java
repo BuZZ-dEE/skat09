@@ -102,7 +102,7 @@ public interface IHumanPlayer {
 	 * 
 	 * @return maximaler Reizwert
 	 */
-	public abstract int reizlimitFestlegen();
+	public abstract int setBidLimit();
 
 	/**
 	 * Fragt den Spieler, ob er mit Reizagent spielen m&ouml;chte.

@@ -166,7 +166,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	}
 
 	@Override
-	public int reizlimitFestlegen() {
+	public int setBidLimit() {
 		int erg = controller.getAusgabe().reizlimitFestlegen();
 		while (erg == -1) {
 			erg = controller.getAusgabe().reizlimitFestlegen();

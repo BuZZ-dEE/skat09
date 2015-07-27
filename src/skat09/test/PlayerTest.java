@@ -116,7 +116,7 @@ public class PlayerTest{
 	
 	@Test
 	public void reizlimitTest() {
-		assertEquals(0, spieler.reizlimitFestlegen());
+		assertEquals(0, spieler.setBidLimit());
 	}
 	
 	@Test
