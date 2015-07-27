@@ -276,24 +276,29 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 				Configuration.getInstance().setDefaultName(newValue);
 			}
 		});
+		name.setPrefColumnCount(10);
 		nameLabel.setLabelFor(name);
-
+		Double columnWidth = name.getMaxWidth();
+		
 		// ComboBox mit Label:
 		adversary1 = new ComboBox<String>();
 		adversary1.getItems().addAll(adversary);
 		adversary1.getSelectionModel().select(1);
+		adversary1.setPrefWidth(columnWidth);
 		adversary1Label.setLabelFor(adversary1);
 
 		// Combobox adversary2 mit Label:
 		adversary2 = new ComboBox<String>();
 		adversary2.getItems().addAll(adversary);
 		adversary2.getSelectionModel().select(1);
+		adversary2.setPrefWidth(columnWidth);
 		adversary2Label.setLabelFor(adversary2);
 
 		// Combobox Skatvariante mit Label
 		skatVariant = new ComboBox<String>();
 		skatVariant.getItems().addAll(variant);
 		skatVariant.getSelectionModel().select(0);
+		skatVariant.setPrefWidth(columnWidth);
 		variantLabel.setLabelFor(skatVariant);
 
 		// ComboBox Blattwahl mit Label
@@ -326,6 +331,7 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 		} else {
 			deck.getSelectionModel().select(1);
 		}
+		deck.setPrefWidth(columnWidth);
 		deckLabel.setLabelFor(deck);
 
 		// Checkbox Sechserskat mit Label
@@ -472,7 +478,60 @@ public class SetupPane extends Pane implements EventHandler<Event> {
 
 	}
 	
+	/**
+	 * Quit the game.
+	 * 
+	 * @version 27.07.2015 22:58:19
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 */
 	private void quit() {
 		System.out.println("ok button clicked,");
+		
+		output.hauptfensterOeffnen();
+
+		playerName = name.getText();
+		int index;
+		index = adversary1.getSelectionModel().getSelectedIndex();
+		if (index == 0) {
+			player1 = PlayerEnum.GRANNY;
+		} else if (index == 1) {
+			player1 = PlayerEnum.RULECOMPLIANT;
+		} else {
+			player1 = PlayerEnum.SMART;
+		}
+
+		index = adversary2.getSelectionModel().getSelectedIndex();
+		if (index == 0) {
+			player2 = PlayerEnum.GRANNY;
+		} else if (index == 1) {
+			player2 = PlayerEnum.RULECOMPLIANT;
+		} else {
+			player2 = PlayerEnum.SMART;
+		}
+
+		index = skatVariant.getSelectionModel().getSelectedIndex();
+		if (index == 0) {
+			variant = 1;
+		} else if (index == 1) {
+			variant = 0;
+		} else {
+			variant = 2;
+		}
+
+		index = deck.getSelectionModel().getSelectedIndex();
+		if (index == 0) {
+			isGermanDeck = true;
+		} else {
+			isGermanDeck = false;
+		}
+
+		if (sixskat.isSelected()) {
+			isSixskat = true;
+		}
+
+		output.setRelease(true);
+
+		setVisible(false);
 	}
 }
