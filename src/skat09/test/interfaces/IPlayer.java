@@ -352,7 +352,7 @@ public interface IPlayer {
 	 * 
 	 * @return maximaler Reizwert
 	 */
-	public abstract int reizlimitFestlegen();
+	public abstract int setBidLimit();
 
 	/**
 	 * Diese Methode speichert die Tr&uuml;mpfe des &uuml;bergebenen Spielers im

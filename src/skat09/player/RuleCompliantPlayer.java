@@ -159,7 +159,7 @@ public class RuleCompliantPlayer extends Player {
 	}
 
 	@Override
-	public int reizlimitFestlegen() {
+	public int setBidLimit() {
 		
 		return 0;
 	}
