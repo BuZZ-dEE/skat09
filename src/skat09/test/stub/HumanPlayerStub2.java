@@ -120,7 +120,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public int reizlimitFestlegen() {
+	public int setBidLimit() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

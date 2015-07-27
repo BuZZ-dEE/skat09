@@ -1664,7 +1664,7 @@ public class SmartPlayer extends Player {
 	@Override
 	// Agent wird nich benutzt, demnach muss auch kein
 	// Reizlimit festgelegt werden.
-	public int reizlimitFestlegen() {
+	public int setBidLimit() {
 
 		return 0;
 	}

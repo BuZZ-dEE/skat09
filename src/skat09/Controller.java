@@ -241,7 +241,7 @@ public class Controller implements Observer, IController {
 		int reizlimit = -1;
 		if (reizagent) {
 
-			reizlimit = mensch.reizlimitFestlegen();
+			reizlimit = mensch.setBidLimit();
 		}
 		table.setReizagentWert(reizlimit);
 		// Gewinner des Reizens zwischen Mittelhand und Vorhand
