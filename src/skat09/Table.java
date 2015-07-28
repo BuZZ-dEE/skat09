@@ -907,38 +907,38 @@ public class Table extends Observable {
 
 			if (!spieler1.isDeclarer()) {
 
-				spieler1.setMitspieler(ermittleMitspieler(spieler1));
+				spieler1.setTeammate(ermittleMitspieler(spieler1));
 			}
 
 			else {
 
-				spieler1.setMitspieler(null);
+				spieler1.setTeammate(null);
 			}
 
 			if (!spieler2.isDeclarer()) {
 
-				spieler2.setMitspieler(ermittleMitspieler(spieler2));
+				spieler2.setTeammate(ermittleMitspieler(spieler2));
 			}
 
 			else {
 
-				spieler2.setMitspieler(null);
+				spieler2.setTeammate(null);
 			}
 
 			if (!spieler3.isDeclarer()) {
 
-				spieler3.setMitspieler(ermittleMitspieler(spieler3));
+				spieler3.setTeammate(ermittleMitspieler(spieler3));
 			}
 
 			else {
 
-				spieler3.setMitspieler(null);
+				spieler3.setTeammate(null);
 			}
 		} else {
 
-			spieler1.setMitspieler(null);
-			spieler2.setMitspieler(null);
-			spieler3.setMitspieler(null);
+			spieler1.setTeammate(null);
+			spieler2.setTeammate(null);
+			spieler3.setTeammate(null);
 		}
 	}
 
@@ -1315,13 +1315,13 @@ public class Table extends Observable {
 
 		for (int i = 0; i < spieler.length; i++) {
 			if (spieler[i].getName() == spieler1.getName()) {
-				spieler1.setSpiele(spieler[i].getGames());
+				spieler1.setGames(spieler[i].getGames());
 			}
 			if (spieler[i].getName() == spieler2.getName()) {
-				spieler2.setSpiele(spieler[i].getGames());
+				spieler2.setGames(spieler[i].getGames());
 			}
 			if (spieler[i].getName() == spieler3.getName()) {
-				spieler3.setSpiele(spieler[i].getGames());
+				spieler3.setGames(spieler[i].getGames());
 			}
 		}
 		// gibMenschlicherSpieler().getSpiele().add(0);

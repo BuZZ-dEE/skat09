@@ -98,7 +98,7 @@ public class TableTest {
 		tisch.setReizwert(18);
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
-		tisch.getSpieler1().setSpielart(spielart);
+		tisch.getSpieler1().setGameVariety(spielart);
 	}
 
 	@After
@@ -571,7 +571,7 @@ public class TableTest {
 
 	@Test
 	public void checkverlorenTest3() {
-		tisch.ermittleAlleinspieler().setStiche(deck);
+		tisch.ermittleAlleinspieler().setTricks(deck);
 		assertEquals(false, tisch.checkVerloren(120));
 	}
 
@@ -587,7 +587,7 @@ public class TableTest {
 
 	@Test
 	public void checkverlorenTest6() {
-		tisch.ermittleAlleinspieler().setStiche(null);
+		tisch.ermittleAlleinspieler().setTricks(null);
 		assertEquals(true, tisch.checkVerloren(0));
 	}
 
@@ -803,7 +803,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		tisch.ermittleAlleinspieler().setStiche(deck);
+		tisch.ermittleAlleinspieler().setTricks(deck);
 		tisch.ermittleAlleinspieler().getTricks().remove(31);
 		tisch.ermittleAlleinspieler().getTricks().remove(30);
 		assertEquals(27, tisch.wertePunkte(144));
@@ -853,7 +853,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		tisch.ermittleAlleinspieler().setStiche(deck);
+		tisch.ermittleAlleinspieler().setTricks(deck);
 		tisch.ermittleAlleinspieler().getTricks().remove(31);
 		tisch.ermittleAlleinspieler().getTricks().remove(30);
 		assertEquals(54, tisch.wertePunkte(144));
@@ -953,7 +953,7 @@ public class TableTest {
 		
 		tisch.setSpielart(new SuitGame(Suit.ACORNS));
 		tisch.ermittleAlleinspieler().getTricks().clear();
-		tisch.ermittleAlleinspieler().setSpielart(new SuitGame(Suit.ACORNS));
+		tisch.ermittleAlleinspieler().setGameVariety(new SuitGame(Suit.ACORNS));
 		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.TEN);
 		tisch.ermittleAlleinspieler().getTricks().add(karte);
 		tisch.ermittleAlleinspieler().getTricks().add(karte);
@@ -1231,7 +1231,7 @@ public class TableTest {
 		stiche.add(spielkarte1);
 		stiche.add(spielkarte2);
 		stiche.add(spielkarte3);
-		tisch.ermittleAlleinspieler().setStiche(stiche);
+		tisch.ermittleAlleinspieler().setTricks(stiche);
 		assertTrue(tisch.nullVerloren());
 	}
 	
