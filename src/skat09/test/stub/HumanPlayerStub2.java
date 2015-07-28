@@ -167,13 +167,13 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public void setSpielart(IGameVariety spielart) {
+	public void setGameVariety(IGameVariety spielart) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
-	public void setStiche(ArrayList<PlayingCard> stiche) {
+	public void setTricks(ArrayList<PlayingCard> stiche) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -231,7 +231,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return null;
 	}
 
-	public void setAlleGespieltenKarten(ArrayList<PlayingCard> karten) {
+	public void setAllPlayedCards(ArrayList<PlayingCard> karten) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -241,7 +241,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void setMitspieler(IPlayer mitspieler) {
+	public void setTeammate(IPlayer mitspieler) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -256,12 +256,12 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void setSpiele(ArrayList<Integer> spiele) {
+	public void setGames(ArrayList<Integer> spiele) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void setTruempfe(PlayingCard[] truempfe) {
+	public void setTrumps(PlayingCard[] truempfe) {
 		// TODO Auto-generated method stub
 		
 	}

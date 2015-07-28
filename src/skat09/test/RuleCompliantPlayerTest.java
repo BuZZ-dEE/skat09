@@ -41,7 +41,7 @@ public class RuleCompliantPlayerTest {
 		gespielteKarten[0] = spielkarte1;
 		
 		spieler.setHand(blatt);
-		spieler.setSpielart(spiel);
+		spieler.setGameVariety(spiel);
 	}
 
 //	@Test

@@ -88,7 +88,7 @@ public class HumanPlayerTest {
 
 		boolean ergebnis = false;
 
-		mensch.setSpielart(new GrandGame());
+		mensch.setGameVariety(new GrandGame());
 		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
@@ -106,7 +106,7 @@ public class HumanPlayerTest {
 		GameVariety nullspiel = new NullGameStub();
 		boolean ergebnis = false;
 
-		mensch.setSpielart(nullspiel);
+		mensch.setGameVariety(nullspiel);
 		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		

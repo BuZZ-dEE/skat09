@@ -105,7 +105,7 @@ public interface IPlayer {
 	 * @param spielart
 	 *            - die Spielart, die momentan gespielt wird
 	 */
-	public abstract void setSpielart(IGameVariety spielart);
+	public abstract void setGameVariety(IGameVariety spielart);
 
 	/**
 	 * Setzt die Position des Spielers neu.
@@ -137,14 +137,14 @@ public interface IPlayer {
 	 * @param mitspieler
 	 *            - Der Spieler, der Mitspieler ist.
 	 */
-	public abstract void setMitspieler(IPlayer mitspieler);
+	public abstract void setTeammate(IPlayer mitspieler);
 
 	/**
 	 * Setzt die Liste mit den vom Spieler gespielten Spielen
 	 * 
 	 * @param spiele
 	 */
-	public abstract void setSpiele(ArrayList<Integer> spiele);
+	public abstract void setGames(ArrayList<Integer> spiele);
 
 	/**
 	 * F&uuml;gt der Stichliste einen gewonnenen Stich hinzu.
@@ -152,7 +152,7 @@ public interface IPlayer {
 	 * @param stiche
 	 *            - der vom Spieler gewonnene Stich
 	 */
-	public abstract void setStiche(ArrayList<PlayingCard> stiche);
+	public abstract void setTricks(ArrayList<PlayingCard> stiche);
 
 	/**
 	 * Setzt den Namen des Spielers. Wird ben&ouml;tigt, damit der Name
@@ -165,14 +165,14 @@ public interface IPlayer {
 	/**
 	 * 
 	 */
-	public abstract void setAlleGespieltenKarten(ArrayList<PlayingCard> karten);
+	public abstract void setAllPlayedCards(ArrayList<PlayingCard> karten);
 
 	/**
 	 * Setzt die Truempfe Variable neu.
 	 * 
 	 * @param truempfe - die neuen Truempfe
 	 */
-	public abstract void setTruempfe(PlayingCard[] truempfe);
+	public abstract void setTrumps(PlayingCard[] truempfe);
 
 	/**
 	 * Setzt das Deck im Spieler, damit der Spieler das Deck kennt.

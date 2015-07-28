@@ -118,43 +118,43 @@ abstract public class Player implements IPlayer {
 	}
 	
 
-	//@Override
+	@Override
 	public String getName() {
 
 		return name;
 	}
 
-	//@Override
+	@Override
 	public Position getPosition() {
 
 		return position;
 	}
 
-	//@Override
+	@Override
 	public ArrayList<PlayingCard> getHand() {
 
 		return hand;
 	}
 
-	//@Override
+	@Override
 	public ArrayList<PlayingCard> getTricks() {
 
 		return tricks;
 	}
 
-	//@Override
+	@Override
 	public boolean isDeclarer() {
 
 		return isDeclarer;
 	}
 
-	//@Override
+	@Override
 	public ArrayList<Integer> getGames() {
 
 		return games;
 	}
 
-	//@Override
+	@Override
 	public IPlayer getTeammate() {
 
 		return teammate;
@@ -164,106 +164,107 @@ abstract public class Player implements IPlayer {
 		
 		return skat;
 	}
-	//@Override
+	
+	@Override
 	public ArrayList<PlayingCard> getAllPlayedCards() {
 		return allPlayedCards;
 	}
 
-	//@Override
+	@Override
 	public ArrayList<PlayingCard> getRestHand() {
 
 		return restHand;
 	}
 
-	//@Override
+	@Override
 	public IGameVariety getGameVariety() {
 
 		return this.gameVariety;
 	}
 	
-	//@Override
+	@Override
 	public int getHandGames() {
 		return handGames;
 	}
 	
-	//@Override
+	@Override
 	public void setHandGames(int handGames) {
 		this.handGames = handGames;
 	}
 
 
 
-	//@Override
-	public void setSpielart(IGameVariety gameVariety) {
+	@Override
+	public void setGameVariety(IGameVariety gameVariety) {
 
 		this.gameVariety = gameVariety;
 	}
 
-	//@Override
+	@Override
 	public void setPosition(Position position) {
 
 		this.position = position;
 	}
 
-	//@Override
+	@Override
 	public void setHand(ArrayList<PlayingCard> hand) {
 
 		this.hand = hand;
 	}
 
-	//@Override
+	@Override
 	public void setIsDeclarer(boolean isDeclarer) {
 
 		this.isDeclarer = isDeclarer;
 	}
 
-	//@Override
-	public void setMitspieler(IPlayer teammate) {
+	@Override
+	public void setTeammate(IPlayer teammate) {
 
 		this.teammate = teammate;
 	}
 	
-	//@Override
-	public void setSpiele(ArrayList<Integer> games) {
+	@Override
+	public void setGames(ArrayList<Integer> games) {
 		this.games = games;
 
 	}
 
-	//@Override
-	public void setStiche(ArrayList<PlayingCard> tricks) {
+	@Override
+	public void setTricks(ArrayList<PlayingCard> tricks) {
 
 		this.tricks = tricks;
 	}
 
-	//@Override
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 	
-	//@Override
-	public void setAlleGespieltenKarten(ArrayList<PlayingCard> cards) {
+	@Override
+	public void setAllPlayedCards(ArrayList<PlayingCard> cards) {
 		this.allPlayedCards = cards;
 	}
 	
-	//@Override
-	public void setTruempfe(PlayingCard[] trumps) {
+	@Override
+	public void setTrumps(PlayingCard[] trumps) {
 		this.trumps = trumps;
 	}
 	
-	//@Override
+	@Override
 	public void setDeck(ArrayList<PlayingCard> deck) {
 		
 		this.deck = deck;
 	}
 	
-	//@Override
+	@Override
 	public void setSkat(ArrayList<PlayingCard> skat) {
 		
 		this.skat = skat;
 	}
 	
 
-	//@Override
+	@Override
 	public void addTrick(PlayingCard[] trick) {
 
 		for (int i = 0; i < trick.length; i++) {
@@ -277,7 +278,7 @@ abstract public class Player implements IPlayer {
 	 * @param playedCards
 	 * 
 	 */
-	//@Override
+	@Override
 	public void addPlayedCards(PlayingCard[] playedCards) {
 
 		for (int i = 0; i < playedCards.length; i++) {
@@ -286,7 +287,7 @@ abstract public class Player implements IPlayer {
 		}
 	}
 
-	//@Override
+	@Override
 	public ArrayList<PlayingCard> playableCards(PlayingCard[] playableCards) {
 
 		ArrayList<PlayingCard> cardsToPlay = new ArrayList<PlayingCard>();
@@ -311,11 +312,11 @@ abstract public class Player implements IPlayer {
 		return cardsToPlay;
 	}
 
-	//@Override
+	@Override
 	abstract public PlayingCard playCard(PlayingCard[] playedCards)
 			throws IOException;
 	
-	//@Override
+	@Override
 	public PlayingCard playRamdonAllowedCard(PlayingCard[] playedCards) {
 
 		PlayingCard result = null;
@@ -332,42 +333,42 @@ abstract public class Player implements IPlayer {
 		return result;
 	}
 
-	//@Override
+	@Override
 	abstract public PlayingCard[] druecken(PlayingCard[] skat);
 	
 
-	//@Override
+	@Override
 	abstract public IGameVariety declareGame();
 
-	//@Override
+	@Override
 	abstract public boolean handgame();
 
-	//@Override
+	@Override
 	abstract public boolean ouvert();
 
-	//@Override
+	@Override
 	abstract public boolean schneider();
 
-	//@Override
+	@Override
 	abstract public boolean schwarz();
 
-	//@Override
+	@Override
 	abstract public SuitGame suit();
 
-	//@Override
+	@Override
 	public ArrayList<Integer> addPoints(int points) {
 
 		games.add(points);
 		return games;
 	}
 
-	//@Override
+	@Override
 	abstract public boolean hoeren(int reizwert);
 
-	//@Override
+	@Override
 	abstract public boolean sagen(int alterWert);
 
-	//@Override
+	@Override
 	public void sortHand(final IGameVariety gameVariety) {
 
 		Comparator<PlayingCard> comp = new Comparator<PlayingCard>() {
@@ -395,10 +396,10 @@ abstract public class Player implements IPlayer {
 		Collections.sort(hand, comp);
 	}
 
-	//@Override
+	@Override
 	public abstract boolean agent();
 
-	//@Override
+	@Override
 	public boolean equals(IPlayer spieler) {
 
 		boolean erg = false;
@@ -411,10 +412,10 @@ abstract public class Player implements IPlayer {
 		return erg;
 	}
 
-	//@Override
+	@Override
 	public abstract int setBidLimit();
 	
-	//@Override
+	@Override
 	public PlayingCard[] spitzenEinordnen() {
 
 		trumps = new PlayingCard[12];
@@ -433,7 +434,7 @@ abstract public class Player implements IPlayer {
 		return this.trumps;
 	}
 	
-	//@Override
+	@Override
 	public void bubeneinordnen() {
 		
 		int kartenwert = 0;
@@ -449,7 +450,7 @@ abstract public class Player implements IPlayer {
 		}
 	}
 
-	//@Override
+	@Override
 	public int bubeneinordnenhilf(int bubenwert) {
 		
 		int erg = -1;
@@ -477,7 +478,7 @@ abstract public class Player implements IPlayer {
 		return erg;
 	}
 
-	//@Override
+	@Override
 	public void farbeneinordnen() {
 		
 		int kartenwert = 0;
@@ -494,7 +495,7 @@ abstract public class Player implements IPlayer {
 		}
 	}
 
-	//@Override
+	@Override
 	public int farbeeinordnenhilf(int i) {
 		
 		int erg = -1;
@@ -542,7 +543,7 @@ abstract public class Player implements IPlayer {
 		return erg;
 	}
 	
-	//@Override
+	@Override
 	public int spitzenZahl() {
 		
 		int erg = 0;
@@ -560,7 +561,7 @@ abstract public class Player implements IPlayer {
 		return erg;
 	}
 	
-	//@Override
+	@Override
 	public int spitzenMit(int erg) {
 
 		for (int i = 0; i < trumps.length; i++) {
@@ -574,7 +575,7 @@ abstract public class Player implements IPlayer {
 		return erg;
 	}
 	
-	//@Override
+	@Override
 	public int spitzenOhne(int erg) {
 
 		for (int i = 0; i < trumps.length; i++) {
