@@ -504,9 +504,9 @@ public class Controller implements Observer, IController {
 		// Spielart ist ermittelt und wird am Tisch sowie bei den Spielern
 		// gesetzt.
 		table.setSpielart(spielart);
-		table.getSpieler1().setSpielart(spielart);
-		table.getSpieler2().setSpielart(spielart);
-		table.getSpieler3().setSpielart(spielart);
+		table.getSpieler1().setGameVariety(spielart);
+		table.getSpieler2().setGameVariety(spielart);
+		table.getSpieler3().setGameVariety(spielart);
 
 		// Sortieren der Spielerbl&auml;tter nachdem Spielart nun bekannt ist.
 		// Dies geschieht nur für die menschlichen Spieler.
@@ -639,9 +639,9 @@ public class Controller implements Observer, IController {
 
 			alleSpieler.setHand(null);
 			alleSpieler.setIsDeclarer(false);
-			alleSpieler.setSpielart(null);
-			alleSpieler.setStiche(new ArrayList<PlayingCard>());
-			alleSpieler.setAlleGespieltenKarten(new ArrayList<PlayingCard>());
+			alleSpieler.setGameVariety(null);
+			alleSpieler.setTricks(new ArrayList<PlayingCard>());
+			alleSpieler.setAllPlayedCards(new ArrayList<PlayingCard>());
 		}
 		output.guiAufraumen();
 	}
@@ -797,9 +797,9 @@ public class Controller implements Observer, IController {
 	public void ramschen() throws NullPointerException, IOException {
 		IGameVariety spielart = new Ramsch();
 		table.setSpielart(spielart);
-		table.getSpieler1().setSpielart(spielart);
-		table.getSpieler2().setSpielart(spielart);
-		table.getSpieler3().setSpielart(spielart);
+		table.getSpieler1().setGameVariety(spielart);
+		table.getSpieler2().setGameVariety(spielart);
+		table.getSpieler3().setGameVariety(spielart);
 
 		// Sortieren der Spielerbl&auml;tter nachdem Spielart nun bekannt ist.
 		table.getSpieler1().sortHand(spielart);

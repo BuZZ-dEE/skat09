@@ -567,9 +567,9 @@ public class ControllerTest {
 		blatt1.add(new PlayingCard(Suit.BELLS, Value.TEN));
 		blatt1.add(new PlayingCard(Suit.LEAVES, Value.DAUS));
 		blatt1.add(new PlayingCard(Suit.LEAVES, Value.TEN));
-		spieler1.setStiche(blatt1);
+		spieler1.setTricks(blatt1);
 		spieler1.setHand(blatt1);
-		spieler1.setSpielart(new SuitGame(Suit.ACORNS));
+		spieler1.setGameVariety(new SuitGame(Suit.ACORNS));
 		spieler1.spitzenEinordnen();
 		
 		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>(); 
@@ -577,14 +577,14 @@ public class ControllerTest {
 		blatt2.add(new PlayingCard(Suit.LEAVES, Value.SIX));
 		blatt2.add(new PlayingCard(Suit.LEAVES, Value.TEN));
 		blatt2.add(new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE));
-		spieler2.setStiche(blatt2);
+		spieler2.setTricks(blatt2);
 		
 		ArrayList<PlayingCard> blatt3 = new ArrayList<PlayingCard>(); 
 		blatt3.add(new PlayingCard(Suit.HEARTS, Value.NINE));
 		blatt3.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
 		blatt3.add(new PlayingCard(Suit.HEARTS, Value.TEN));
 		blatt3.add(new PlayingCard(Suit.HEARTS, Value.SEVEN));
-		spieler3.setStiche(blatt3);
+		spieler3.setTricks(blatt3);
 		
 		tisch2.setSpieler1(spieler1);
 		tisch2.setSpieler2(spieler2);
@@ -619,14 +619,14 @@ public class ControllerTest {
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setHand(blatt);
-		spieler1.setSpielart(new GrandGame());
+		spieler1.setGameVariety(new GrandGame());
 		spieler1.setIsDeclarer(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setHand(blatt);
-		spieler2.setStiche(blatt);
+		spieler2.setTricks(blatt);
 		Player spieler3 = new RuleCompliantPlayer("John Wayne");
 		spieler3.setHand(blatt);
-		spieler3.setAlleGespieltenKarten(blatt);
+		spieler3.setAllPlayedCards(blatt);
 		
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
@@ -667,14 +667,14 @@ public class ControllerTest {
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setHand(blatt);
-		spieler1.setSpielart(new GrandGame());
+		spieler1.setGameVariety(new GrandGame());
 		spieler1.setIsDeclarer(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setHand(blatt);
-		spieler2.setStiche(blatt);
+		spieler2.setTricks(blatt);
 		Player spieler3 = new RuleCompliantPlayer("John Wayne");
 		spieler3.setHand(blatt);
-		spieler3.setAlleGespieltenKarten(blatt);
+		spieler3.setAllPlayedCards(blatt);
 		
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
@@ -714,14 +714,14 @@ public class ControllerTest {
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setHand(blatt);
-		spieler1.setSpielart(new GrandGame());
+		spieler1.setGameVariety(new GrandGame());
 		spieler1.setIsDeclarer(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setHand(blatt);
-		spieler2.setStiche(blatt);
+		spieler2.setTricks(blatt);
 		Player spieler3 = new RuleCompliantPlayer("John Wayne");
 		spieler3.setHand(blatt);
-		spieler3.setAlleGespieltenKarten(blatt);
+		spieler3.setAllPlayedCards(blatt);
 		
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);
@@ -762,14 +762,14 @@ public class ControllerTest {
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setHand(blatt);
-		spieler1.setSpielart(new GrandGame());
+		spieler1.setGameVariety(new GrandGame());
 		spieler1.setIsDeclarer(true);
 		Player spieler2 = new RuleCompliantPlayer("Leon");
 		spieler2.setHand(blatt);
-		spieler2.setStiche(blatt);
+		spieler2.setTricks(blatt);
 		Player spieler3 = new RuleCompliantPlayer("John Wayne");
 		spieler3.setHand(blatt);
-		spieler3.setAlleGespieltenKarten(blatt);
+		spieler3.setAllPlayedCards(blatt);
 		
 		controller.getTisch().setSpieler1(spieler1);
 		controller.getTisch().setSpieler2(spieler2);

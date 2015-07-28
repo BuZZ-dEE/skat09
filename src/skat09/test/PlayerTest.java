@@ -31,7 +31,7 @@ public class PlayerTest{
 		String name_bsp = "Rainer Hohn";
 		spieler = new Granny(name_bsp);
 		stiche.clear();
-		spieler.setStiche(stiche);
+		spieler.setTricks(stiche);
 		spieler.getGames().clear();
 	}
 	
@@ -124,7 +124,7 @@ public class PlayerTest{
 		final IGameVariety spiel = new GrandGame();
 		IPlayer spieler = new Granny("Hallo");
 		
-		spieler.setSpielart(spiel);
+		spieler.setGameVariety(spiel);
 		ArrayList<PlayingCard> blattest = new ArrayList<PlayingCard>();
 		blattest.add(new PlayingCard(Suit.HEARTS,Value.KING));
 		blattest.add(new PlayingCard(Suit.BELLS,Value.SEVEN));
@@ -192,7 +192,7 @@ public class PlayerTest{
 		spieler.getHand().add(
 		new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		IGameVariety spielart = new GrandGame();
-		spieler.setSpielart(spielart);
+		spieler.setGameVariety(spielart);
 		spieler.spitzenEinordnen();
 			test = true;
 		
@@ -204,7 +204,7 @@ public class PlayerTest{
 		spieler.setHand(new ArrayList<PlayingCard>());
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.setSpielart(new GrandGame());
+		spieler.setGameVariety(new GrandGame());
 		spieler.spitzenEinordnen();
 		assertEquals(1, spieler.spitzenZahl());
 	}
@@ -212,7 +212,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenZahl2() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.spitzenEinordnen();
 		assertEquals(-11, spieler.spitzenZahl());
 	}
@@ -220,7 +220,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new GrandGame());
+		spieler.setGameVariety(new GrandGame());
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.spitzenEinordnen();
@@ -230,7 +230,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit2() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new GrandGame());
+		spieler.setGameVariety(new GrandGame());
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -242,7 +242,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit3() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new GrandGame());
+		spieler.setGameVariety(new GrandGame());
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -256,7 +256,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit4() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new GrandGame());
+		spieler.setGameVariety(new GrandGame());
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -272,7 +272,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit5() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -290,7 +290,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit6() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -310,7 +310,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit7() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -332,7 +332,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit8() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -356,7 +356,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit9() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -382,7 +382,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit10() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -410,7 +410,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenMit11() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		spieler.getHand().add(
@@ -440,7 +440,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
 		spieler.spitzenEinordnen();
@@ -450,7 +450,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne2() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
 		spieler.spitzenEinordnen();
@@ -460,7 +460,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne3() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
 		spieler.spitzenEinordnen();
@@ -470,7 +470,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne4() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
 		spieler.spitzenEinordnen();
@@ -480,7 +480,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne5() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
 		spieler.spitzenEinordnen();
@@ -490,7 +490,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne6() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.KING));
 		spieler.spitzenEinordnen();
@@ -500,7 +500,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne7() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
 		spieler.spitzenEinordnen();
@@ -510,7 +510,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne8() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.NINE));
 		spieler.spitzenEinordnen();
@@ -520,7 +520,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne9() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.EIGHT));
 		spieler.spitzenEinordnen();
@@ -530,7 +530,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne10() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.SEVEN));
 		spieler.spitzenEinordnen();
@@ -540,7 +540,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne11() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
 		spieler.spitzenEinordnen();
@@ -550,7 +550,7 @@ public class PlayerTest{
 	@Test
 	public void testSpitzenOhne12() {
 		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setSpielart(new SuitGame(Suit.BELLS));
+		spieler.setGameVariety(new SuitGame(Suit.BELLS));
 		spieler.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
 		spieler.spitzenEinordnen();
@@ -559,7 +559,7 @@ public class PlayerTest{
 	
 	@Test
 	public void testSpitzenOhne13() {
-		spieler.setSpielart(new GrandGame());
+		spieler.setGameVariety(new GrandGame());
 		spieler.setHand(new ArrayList<PlayingCard>());
 		spieler.spitzenEinordnen();
 		assertEquals(-4, spieler.spitzenOhne(0));
@@ -567,7 +567,7 @@ public class PlayerTest{
 	
 	@Test
 	public void spielbarteKartenTest() {
-		spieler.setSpielart(new NullGameStub2());
+		spieler.setGameVariety(new NullGameStub2());
 		
 		spieler.setHand(new ArrayList<PlayingCard>());
 		spieler.getHand().add(
