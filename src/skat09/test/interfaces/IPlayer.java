@@ -372,17 +372,17 @@ public interface IPlayer {
 	 * Array. Wird zur Berechnung der Spitzen ben&ouml;tigt.
 	 * 
 	 */
-	public abstract void bubeneinordnen();
+	public abstract void rankUnderKnaves();
 	
 	/**
 	 * Liefert f&uuml;r die Methode Bubeneinordnen den Index, an welcher
 	 * Position der Bube im Array gespeichert werden soll.
 	 * 
-	 * @param bubenwert
+	 * @param underKnaveValue
 	 *            - bubenwert
 	 * @return Position
 	 */
-	public abstract int bubeneinordnenhilf(int bubenwert);
+	public abstract int rankUnderKnavesHelp(int underKnaveValue);
 	
 	/**
 	 * Ordnet jeder Trumpfkarte einen Platz im Array zu.
