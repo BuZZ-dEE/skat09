@@ -201,7 +201,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void farbeneinordnen() {
+	public void rankSuit() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -309,7 +309,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return 0;
 	}
 
-	public int farbeeinordnenhilf(int i) {
+	public int rankSuitHelp(int i) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
