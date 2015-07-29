@@ -1621,7 +1621,7 @@ public class SmartPlayer extends Player {
 	}
 
 	@Override
-	public boolean hoeren(int reizwert) {
+	public boolean respond(int reizwert) {
 
 		boolean ergebnis = false;
 
@@ -1634,7 +1634,7 @@ public class SmartPlayer extends Player {
 	}
 
 	@Override
-	public boolean sagen(int reizWert) {
+	public boolean bid(int reizWert) {
 
 		boolean ergebnis = false;
 

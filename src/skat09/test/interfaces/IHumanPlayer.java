@@ -22,7 +22,7 @@ public interface IHumanPlayer {
 	 *            - der aktuelle Reizwert
 	 * @return boolean - true, falls der Spieler mitgeht
 	 */
-	public abstract boolean hoeren(int reizwert);
+	public abstract boolean respond(int reizwert);
 
 	/**
 	 * Fragt den menschlichen Spieler, welchen Wert er als n&auml;chstes reizen
@@ -32,7 +32,7 @@ public interface IHumanPlayer {
 	 *            - dieser Wert muss &uuml;berschritten werden
 	 * @return reizwert des menschlichen Spielers
 	 */
-	public abstract boolean sagen(int reizWert);
+	public abstract boolean bid(int reizWert);
 
 	/**
 	 * Gibt die Karte zur&uuml;ck, die der Spieler auf den Tisch legen
