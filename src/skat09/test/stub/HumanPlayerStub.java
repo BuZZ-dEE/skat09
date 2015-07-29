@@ -200,7 +200,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void bubeneinordnen() {
+	public void rankUnderKnaves() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -310,7 +310,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public int bubeneinordnenhilf(int bubenwert) {
+	public int rankUnderKnavesHelp(int underKnaveValue) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -437,12 +437,12 @@ abstract public class Player implements IPlayer {
 
 		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 
-			bubeneinordnen();
+			rankUnderKnaves();
 		}
 		
 		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
 
-			bubeneinordnen();
+			rankUnderKnaves();
 			farbeneinordnen();
 		}
 		
@@ -450,42 +450,42 @@ abstract public class Player implements IPlayer {
 	}
 	
 	@Override
-	public void bubeneinordnen() {
+	public void rankUnderKnaves() {
 		
-		int kartenwert = 0;
-		ArrayList<PlayingCard> blatt = getHand();
+		int cardValue = 0;
+		ArrayList<PlayingCard> hand = getHand();
 
-		for (int i = 0; i < blatt.size(); i++) {
+		for (int i = 0; i < hand.size(); i++) {
 			
-			if (blatt.get(i).getValue() == Value.UNDER_KNAVE) {
+			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
 
-				kartenwert = gameVariety.evaluateCard(blatt.get(i));
-				trumps[bubeneinordnenhilf(kartenwert)] = blatt.get(i);
+				cardValue = gameVariety. (hand.get(i));
+				trumps[rankUnderKnavesHelp(cardValue)] = hand.get(i);
 			}
 		}
 	}
 
 	@Override
-	public int bubeneinordnenhilf(int bubenwert) {
+	public int rankUnderKnavesHelp(int underKnaveValue) {
 		
 		int erg = -1;
 		
-		if (bubenwert == 14) {
+		if (underKnaveValue == 14) {
 			
 			erg = 3;
 		}
 		
-		if (bubenwert == 15) {
+		if (underKnaveValue == 15) {
 			
 			erg = 2;
 		}
 		
-		if (bubenwert == 16) {
+		if (underKnaveValue == 16) {
 			
 			erg = 1;
 		}
 		
-		if (bubenwert == 17) {
+		if (underKnaveValue == 17) {
 			
 			erg = 0;
 		}

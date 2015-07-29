@@ -1854,7 +1854,7 @@ public class SmartPlayer extends Player {
 			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
 
 				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[bubeneinordnenhilf(kartenwert)] = hand.get(i);
+				spitzen[rankUnderKnavesHelp(kartenwert)] = hand.get(i);
 			}
 
 			else if (hand.get(i).getSuit() == langeFarbe.get(0).getSuit()) {
@@ -1884,7 +1884,7 @@ public class SmartPlayer extends Player {
 			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
 
 				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[bubeneinordnenhilf(kartenwert)] = hand.get(i);
+				spitzen[rankUnderKnavesHelp(kartenwert)] = hand.get(i);
 			}
 		}
 
