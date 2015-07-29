@@ -1860,7 +1860,7 @@ public class SmartPlayer extends Player {
 			else if (hand.get(i).getSuit() == langeFarbe.get(0).getSuit()) {
 
 				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[farbeeinordnenhilf(kartenwert)] = hand.get(i);
+				spitzen[rankSuitHelp(kartenwert)] = hand.get(i);
 			}
 		}
 
