@@ -2452,7 +2452,7 @@ public class SmartPlayerTest {
 		
 		spieler.setMaxReizwert(23);
 		
-		assertTrue(spieler.hoeren(18));
+		assertTrue(spieler.respond(18));
 	}
 	
 	@Test
@@ -2460,7 +2460,7 @@ public class SmartPlayerTest {
 		
 		spieler.setMaxReizwert(23);
 		
-		assertFalse(spieler.hoeren(26));
+		assertFalse(spieler.respond(26));
 	}
 	
 	@Test
@@ -2469,7 +2469,7 @@ public class SmartPlayerTest {
 		
 		spieler.setMaxReizwert(23);
 		
-		assertTrue(spieler.sagen(18));
+		assertTrue(spieler.bid(18));
 	}
 	
 	@Test
@@ -2478,7 +2478,7 @@ public class SmartPlayerTest {
 		
 		spieler.setMaxReizwert(23);
 		
-		assertFalse(spieler.sagen(26));
+		assertFalse(spieler.bid(26));
 	}
 	
 	@Test

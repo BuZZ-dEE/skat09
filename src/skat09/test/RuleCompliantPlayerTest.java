@@ -147,32 +147,32 @@ public class RuleCompliantPlayerTest {
 	
 	@Test
 	public void hoerenTest() {
-		assertTrue(spieler.hoeren(0));
+		assertTrue(spieler.respond(0));
 	}
 	
 	@Test
 	public void hoerenTest2() {
-		assertTrue(spieler.hoeren(18));
+		assertTrue(spieler.respond(18));
 	}
 	
 	@Test
 	public void hoerenTest3() {
-		assertTrue(spieler.hoeren(20));
+		assertTrue(spieler.respond(20));
 	}
 	
 	@Test
 	public void hoerenTest4() {
-		assertFalse(spieler.hoeren(35));
+		assertFalse(spieler.respond(35));
 	}
 	
 	@Test
 	public void sagenTest() {
-		assertTrue(spieler.sagen(0));
+		assertTrue(spieler.bid(0));
 	}
 	
 	@Test
 	public void sagenTest2() {
-		assertTrue(spieler.sagen(18));
+		assertTrue(spieler.bid(18));
 	}
 	
 	@Test

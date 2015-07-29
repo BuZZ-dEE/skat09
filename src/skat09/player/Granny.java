@@ -44,7 +44,7 @@ public class Granny extends Player {
 	 * @param reizwert
 	 *            der aktuelle Reizwert
 	 */
-	public boolean hoeren(int reizwert) {
+	public boolean respond(int reizwert) {
 
 		return false;
 	}
@@ -54,7 +54,7 @@ public class Granny extends Player {
 	 * 
 	 * @return reizwert der Oma
 	 */
-	public boolean sagen(int alterWert) {
+	public boolean bid(int alterWert) {
 
 		return false;
 	}

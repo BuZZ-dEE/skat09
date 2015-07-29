@@ -117,7 +117,7 @@ public class RuleCompliantPlayer extends Player {
 	 * @param reizwert
 	 *            der aktuelle Reizwert
 	 */
-	public boolean hoeren(int reizwert) {
+	public boolean respond(int reizwert) {
 
 		boolean ergebnis = false;
 		
@@ -134,7 +134,7 @@ public class RuleCompliantPlayer extends Player {
 	 * 
 	 * @return reizwert des regelkonformen Spielers
 	 */
-	public boolean sagen(int reizwert) {
+	public boolean bid(int reizwert) {
 
 		boolean ergebnis = false;
 
