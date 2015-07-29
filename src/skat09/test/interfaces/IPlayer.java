@@ -391,14 +391,14 @@ public interface IPlayer {
 	 *            Kartennummer
 	 * @return Position
 	 */
-	public abstract int farbeeinordnenhilf(int i);
+	public abstract int rankSuitHelp(int i);
 
 	/**
 	 * Ordnet alle Tr&uuml;mpfe eines Spielers in ein Array, um sp&auml;ter die
 	 * Spitzen berechnen zu k&ouml;nnen.
 	 * 
 	 */
-	public abstract void farbeneinordnen();
+	public abstract void rankSuit();
 
 	/**
 	 * Rechnet die Spitzen aus. Ist der Kreuz-Bube vorhanden, wird die Methode

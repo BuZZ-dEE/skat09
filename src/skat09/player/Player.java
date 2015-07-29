@@ -443,7 +443,7 @@ abstract public class Player implements IPlayer {
 		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
 
 			rankUnderKnaves();
-			farbeneinordnen();
+			rankSuit();
 		}
 		
 		return this.trumps;
@@ -494,24 +494,24 @@ abstract public class Player implements IPlayer {
 	}
 
 	@Override
-	public void farbeneinordnen() {
+	public void rankSuit() {
 		
-		int kartenwert = 0;
-		SuitGame spiel = (SuitGame) gameVariety;
-		ArrayList<PlayingCard> blatt = getHand();
+		int cardValue = 0;
+		SuitGame suitGame = (SuitGame) gameVariety;
+		ArrayList<PlayingCard> hand = getHand();
 
-		for (int i = 0; i < blatt.size(); i++) {
+		for (int i = 0; i < hand.size(); i++) {
 
-			if (blatt.get(i).getValue() != Value.UNDER_KNAVE && blatt.get(i).getSuit() == spiel.getTrumpSuit()) {
+			if (hand.get(i).getValue() != Value.UNDER_KNAVE && hand.get(i).getSuit() == suitGame.getTrumpSuit()) {
 
-				kartenwert = gameVariety.evaluateCard(blatt.get(i));
-				trumps[farbeeinordnenhilf(kartenwert)] = blatt.get(i);
+				cardValue = gameVariety.evaluateCard(hand.get(i));
+				trumps[rankSuitHelp(cardValue)] = hand.get(i);
 			}
 		}
 	}
 
 	@Override
-	public int farbeeinordnenhilf(int i) {
+	public int rankSuitHelp(int i) {
 		
 		int erg = -1;
 		
