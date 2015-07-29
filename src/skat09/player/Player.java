@@ -459,7 +459,7 @@ abstract public class Player implements IPlayer {
 			
 			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
 
-				cardValue = gameVariety. (hand.get(i));
+				cardValue = gameVariety.evaluateCard (hand.get(i));
 				trumps[rankUnderKnavesHelp(cardValue)] = hand.get(i);
 			}
 		}
