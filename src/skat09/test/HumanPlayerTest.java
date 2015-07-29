@@ -42,25 +42,25 @@ public class HumanPlayerTest {
 	@Test
 	public void hoerenTest1() {
 
-		assertTrue(mensch.hoeren(20));
+		assertTrue(mensch.respond(20));
 	}
 
 	@Test
 	public void hoerenTest2() {
 
-		assertFalse(mensch.hoeren(23));
+		assertFalse(mensch.respond(23));
 	}
 
 	@Test
 	public void sagenTest1() {
 
-		assertTrue(mensch.sagen(20));
+		assertTrue(mensch.bid(20));
 	}
 
 	@Test
 	public void sagenTest2() {
 
-		assertFalse(mensch.sagen(23));
+		assertFalse(mensch.bid(23));
 	}
 
 	@Test

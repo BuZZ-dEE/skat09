@@ -50,7 +50,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	 *            - der aktuelle Reizwert
 	 * @return boolean - true, falls der Spieler mitgeht
 	 */
-	public boolean hoeren(int reizwert) {
+	public boolean respond(int reizwert) {
 
 		return controller.getAusgabe().hoeren(reizwert);
 	}
@@ -63,7 +63,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	 *            - dieser Wert muss &uuml;berschritten werden
 	 * @return reizwert des menschlichen Spielers
 	 */
-	public boolean sagen(int reizWert) {
+	public boolean bid(int reizWert) {
 
 		return controller.getAusgabe().sagen(reizWert);
 	}

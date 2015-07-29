@@ -101,7 +101,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public boolean hoeren(int reizwert) {
+	public boolean respond(int reizwert) {
 	
 		boolean ergebnis = false;
 		
@@ -130,7 +130,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public boolean sagen(int alterWert) {
+	public boolean bid(int alterWert) {
 		
 		boolean ergebnis = false;
 		

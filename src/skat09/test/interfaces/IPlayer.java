@@ -308,7 +308,7 @@ public interface IPlayer {
 	 *            - reizwert der gesagt wurde
 	 * @return false, falls Spieler weg, sonst true
 	 */
-	abstract public boolean hoeren(int reizwert);
+	abstract public boolean respond(int reizwert);
 
 	/**
 	 * Diese Methode simuliert das sagen eines Spielers. M&ouml;chte der Spieler
@@ -317,7 +317,7 @@ public interface IPlayer {
 	 * @param alterWert
 	 *            - Reizwert, der vorher gesagt wurde
 	 */
-	abstract public boolean sagen(int alterWert);
+	abstract public boolean bid(int alterWert);
 
 	/**
 	 * Sortiert das Blatt des Spielers in aufsteigender Reihenfolge, nach der im

@@ -67,13 +67,13 @@ public class GrannyTest {
 	@Test
 	public void testsagen(){
 		
-		assertEquals(false,(oma.sagen(18)));
+		assertEquals(false,(oma.bid(18)));
 	}
 	
 	@Test
 	public void testhoeren(){
 		
-		assertFalse(oma.hoeren(18));
+		assertFalse(oma.respond(18));
 	}
 	
 	@SuppressWarnings("deprecation")

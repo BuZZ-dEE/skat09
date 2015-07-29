@@ -342,10 +342,10 @@ public class Controller implements Observer, IController {
 
 			if (sagen) {
 
-				ergebnis = spieler.sagen(reizwert);
+				ergebnis = spieler.bid(reizwert);
 			} else {
 
-				ergebnis = spieler.hoeren(reizwert);
+				ergebnis = spieler.respond(reizwert);
 			}
 		}
 		return ergebnis;

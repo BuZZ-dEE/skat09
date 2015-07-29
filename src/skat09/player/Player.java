@@ -361,12 +361,27 @@ abstract public class Player implements IPlayer {
 		games.add(points);
 		return games;
 	}
+	
+	/**
+	 * Hören
+	 * 
+	 * @version 29.07.2015 20:47:34
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 */
+	@Override
+	abstract public boolean respond(int reizValue);
 
 	@Override
-	abstract public boolean hoeren(int reizwert);
-
-	@Override
-	abstract public boolean sagen(int alterWert);
+	
+	/**
+	 * Sagen
+	 * 
+	 * @version 29.07.2015 20:48:32
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 */
+	abstract public boolean bid(int oldValue);
 
 	@Override
 	public void sortHand(final IGameVariety gameVariety) {
