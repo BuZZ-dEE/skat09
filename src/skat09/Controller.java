@@ -290,7 +290,7 @@ public class Controller implements Observer, IController {
 
 				output.weg(spieler2);
 
-				// Spieler hoeren lassen oder Reizagent &uuml;bernimmt
+				// Spieler respond lassen oder Reizagent &uuml;bernimmt
 				hoeren = reizenOderReizagent(spieler1, reizwert, true);
 
 				if (!hoeren) {

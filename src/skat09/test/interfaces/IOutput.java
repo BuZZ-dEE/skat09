@@ -51,7 +51,7 @@ public interface IOutput {
 	 *            - aktueller Reizwert
 	 * @return true, falls der Spieler mitgeht
 	 */
-	public abstract boolean hoeren(int wert);
+	public abstract boolean respond(int wert);
 
 	/**
 	 * L&auml;sst einen Spieler sagen und fragt, ob er bei dem besagten Reizwert
@@ -85,7 +85,7 @@ public interface IOutput {
 	 * Informiert den Spieler dar&uuml;ber, dass er eine falsche Eingabe gemacht
 	 * hat und bittet um erneute Eingabe.
 	 */
-	public abstract void falscheEingabe();
+	public abstract void wrongInputHint();
 
 	/**
 	 * Fragt den Spieler ob er hand spielen m&ouml;chte.
@@ -97,7 +97,7 @@ public interface IOutput {
 	/**
 	 * Steuert den gesamten Spielablauf.
 	 */
-	public abstract void spiel();
+	public abstract void play();
 
 
 	/**
@@ -275,7 +275,7 @@ public interface IOutput {
 	 * 
 	 * @return eingelesener String
 	 */
-	public abstract String einlesen();
+	public abstract String readInput();
 
 	/**
 	 * Gibt aus, welche Karte ein Spieler gespielt hat.

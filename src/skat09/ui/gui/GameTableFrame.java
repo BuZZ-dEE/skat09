@@ -273,11 +273,11 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Die Methoden liefert den Wert der Variable hoeren. Dieser soll true sein,
+	 * Die Methoden liefert den Wert der Variable respond. Dieser soll true sein,
 	 * falls der Spieler den aktuellen Reizwert mitgeht und false, falls der
 	 * Spieler weg ist.
 	 * 
-	 * @return Den Wert von hoeren
+	 * @return Den Wert von respond
 	 */
 	public boolean getHoeren() {
 		boolean erg = hoeren;
@@ -1221,7 +1221,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 * Mitspieler einen Reizwert h&ouml;ren soll. Hierbei wird ihm der gebotene
 	 * Reizwert angeboten und er kann mit Ja best&auml;tigen oder mit Nein weg
 	 * sein. Hat er den Reizwert best&auml;tigt, wird die globale Variable
-	 * hoeren auf true gesetzt.
+	 * respond auf true gesetzt.
 	 * 
 	 * @param reizwert
 	 *            Der gebotene Reizwert.
