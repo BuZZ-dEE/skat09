@@ -52,7 +52,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	 */
 	public boolean respond(int reizwert) {
 
-		return controller.getAusgabe().hoeren(reizwert);
+		return controller.getAusgabe().respond(reizwert);
 	}
 
 	/**

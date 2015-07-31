@@ -78,13 +78,13 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public String einlesen() {
+	public String readInput() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	public void falscheEingabe() {
+	public void wrongInputHint() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -147,7 +147,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public boolean hoeren(int wert) {
+	public boolean respond(int wert) {
 		
 		boolean ergebnis = false;
 		
@@ -264,7 +264,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void spiel() {
+	public void play() {
 		// TODO Auto-generated method stub
 		
 	}

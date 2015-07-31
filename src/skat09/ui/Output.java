@@ -39,7 +39,7 @@ abstract public class Output implements IOutput {
 	public abstract String name();
 
 	//@Override
-	public abstract boolean hoeren(int wert);
+	public abstract boolean respond(int wert);
 
 	//@Override
 	public abstract boolean sagen(int reizWert);
@@ -51,13 +51,13 @@ abstract public class Output implements IOutput {
 	public abstract String frageVariante();
 
 	//@Override
-	public abstract void falscheEingabe();
+	public abstract void wrongInputHint();
 
 	//@Override
 	public abstract boolean handspiel();
 
 	//@Override
-	public abstract void spiel();
+	public abstract void play();
 
 	//@Override
 	public abstract int druecken(ArrayList<PlayingCard> blatt, int nummer);
@@ -134,7 +134,7 @@ abstract public class Output implements IOutput {
 	public abstract void neuesSpiel();
 
 	//@Override
-	public abstract String einlesen();
+	public abstract String readInput();
 
 	//@Override
 	public abstract void spieltKarte(IPlayer spieler, PlayingCard karte);
