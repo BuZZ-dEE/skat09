@@ -38,31 +38,32 @@ public class CLIOutput extends Output {
 	 * Der BufferedReader wird ben&ouml;tigt, um den Text, den der Benutzer
 	 * eingibt, einzulesen
 	 */
-	private BufferedReader eingabe = new BufferedReader(new InputStreamReader(
+	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
 			System.in));
 	/**
 	 * Diese Variable ist true, falls die vergangenen Stiche angezeigt werden
 	 * sollen
 	 */
-	private boolean hilfestiche = false;
+	private boolean showLastTricksHelp
+			= false;
 	/**
 	 * Diese Variable ist true, falls die spielbaren Karten angezeigt werden
 	 * sollen
 	 */
-	private boolean hilfespielbar = false;
+	private boolean showPlayableCardsHelp = false;
 
 	
 	
 	/**
 	 * Der Konstruktor der Klasse CLIAusgabe
 	 * 
-	 * @param tisch
+	 * @param table
 	 *            Der Tisch, auf dem gespielt wird
 	 */
-	public CLIOutput(Table tisch) {
+	public CLIOutput(Table table) {
 
 		System.out.println(Messages.getI18n("application.welcome"));
-		this.tisch = tisch;
+		this.tisch = table;
 
 	}
 
@@ -70,7 +71,7 @@ public class CLIOutput extends Output {
 	 * Methode fordert den Spieler auf seine Eingabe zu wiederholen, falls sie
 	 * fehlerhaft war.
 	 */
-	public void falscheEingabe() {
+	public void wrongInputHint() {
 
 		System.out.println(Messages.getI18n("application.output.input.wrong"));
 	}
@@ -79,37 +80,36 @@ public class CLIOutput extends Output {
 	 * L&auml;sst den menschlichen Spieler entscheiden, ob er bei einem
 	 * bestimmten Reizwert mitgeht oder weg ist.
 	 * 
-	 * @param wert
+	 * @param value
 	 *            - aktuell gebotener Reizwert
 	 */
-	public boolean hoeren(int wert) {
-		boolean eingabeKorrekt = false;
-		boolean ergebnis = false;
+	public boolean respond(int value) {
+		boolean correctInput = false;
+		boolean result = false;
 
-		System.out.println(Messages.getI18n("game.commandline.hold", wert,
+		System.out.println(Messages.getI18n("game.commandline.hold", value,
 				Messages.getI18n("game.commandline.bidding.g"),
 				Messages.getI18n("game.commandline.bidding.p")));
 
-		String eingabe = einlesen();
+		String input = readInput();
 
-		while (!eingabeKorrekt) {
-			if (eingabe.equalsIgnoreCase(Messages
+		while (!correctInput) {
+			if (input.equalsIgnoreCase(Messages
 					.getI18n("game.commandline.bidding.g"))) {
 
-				ergebnis = true;
-				eingabeKorrekt = true;
-			}
+				result = true;
+				correctInput = true;
+			} else if (input.equalsIgnoreCase(Messages.getI18n("game.commandline.bidding.p"))) {
 
-			else if (eingabe.equalsIgnoreCase(Messages.getI18n("game.commandline.bidding.p"))) {
-
-				ergebnis = false;
-				eingabeKorrekt = true;
+				result = false;
+				correctInput = true;
 			} else {
 
 				System.out.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
-		return ergebnis;
+
+		return result;
 	}
 
 	@Override
@@ -136,7 +136,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void spiel() {
+	public void play() {
 
 	}
 
@@ -147,7 +147,7 @@ public class CLIOutput extends Output {
 
 		try {
 
-			s = eingabe.readLine();
+			s = bufferedReader.readLine();
 		}
 
 		catch (IOException e) {
@@ -185,7 +185,7 @@ public class CLIOutput extends Output {
 						Messages.getI18n("game.commandline.adversary.type.smart.abbr")));
 		try {
 
-			s = eingabe.readLine();
+			s = bufferedReader.readLine();
 		}
 
 		catch (IOException e) {
@@ -223,7 +223,7 @@ public class CLIOutput extends Output {
 
 		try {
 
-			s = eingabe.readLine();
+			s = bufferedReader.readLine();
 		}
 
 		catch (IOException e) {
@@ -381,7 +381,7 @@ public class CLIOutput extends Output {
 			zaehler++;
 		}
 
-		// G&uuml;tige Zahl einlesen
+		// G&uuml;tige Zahl readInput
 		boolean eingabeKorrekt = false;
 		while (!eingabeKorrekt) {
 
@@ -443,7 +443,7 @@ public class CLIOutput extends Output {
 		boolean gueltig = false;
 
 		// Hilfen:
-		if (hilfespielbar) {
+		if (showPlayableCardsHelp) {
 			hilfeSpielbar(gespielteKarten);
 		}
 		if (hilfestiche) {
@@ -505,7 +505,7 @@ public class CLIOutput extends Output {
 		while (!eingabeKorrekt) {
 			try {
 
-				s = eingabe.readLine();
+				s = bufferedReader.readLine();
 			}
 
 			catch (IOException e) {
@@ -740,18 +740,17 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public String einlesen() {
+	public String readInput() {
 
 		String s = "";
+
 		try {
-
-			s = eingabe.readLine();
-		}
-
-		catch (IOException e) {
+			s = bufferedReader.readLine();
+		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
+
 		return s;
 	}
 
@@ -788,7 +787,7 @@ public class CLIOutput extends Output {
 		while (!eingabeKorrekt) {
 			try {
 
-				string = eingabe.readLine();
+				string = bufferedReader.readLine();
 			}
 
 			catch (IOException e) {
@@ -843,7 +842,7 @@ public class CLIOutput extends Output {
 
 		try {
 
-			s = eingabe.readLine();
+			s = bufferedReader.readLine();
 		}
 
 		catch (IOException e) {
@@ -864,7 +863,7 @@ public class CLIOutput extends Output {
 
 		try {
 
-			s = eingabe.readLine();
+			s = bufferedReader.readLine();
 		}
 
 		catch (IOException e) {
@@ -909,7 +908,7 @@ public class CLIOutput extends Output {
 			System.out.println(Messages.getI18n("game.playable.cards.show.question"));
 			ergebnis = jaNeinAbfrage();
 			if (ergebnis) {
-				hilfespielbar = true;
+				showPlayableCardsHelp = true;
 			}
 			System.out.println(Messages
 					.getI18n("game.trick.last.show.question"));

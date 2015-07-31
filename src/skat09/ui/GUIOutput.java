@@ -57,7 +57,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public boolean hoeren(int wert) {
+	public boolean respond(int wert) {
 		hfenster.hoeren(wert);
 		warte();
 		boolean erg = hfenster.getHoeren();
@@ -73,7 +73,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spiel() {
+	public void play() {
 
 	}
 
@@ -134,7 +134,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void falscheEingabe() {
+	public void wrongInputHint() {
 
 		JFrame frame = new JFrame(Messages.getI18n("application.attention"));
 		frame.add(new JLabel(Messages.getI18n("application.attention.wrong.input")));
@@ -205,7 +205,7 @@ public class GUIOutput extends Output {
 		} else if (spielart.compareTo("Null") == 0) {
 			spiel = new NullGame();
 		} else {
-// TODO why not spiel = new Farbspiel(spielart);
+// TODO why not play = new Farbspiel(spielart);
 			spiel = new SuitGame(null);
 		}
 
@@ -333,7 +333,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public String einlesen() {
+	public String readInput() {
 		return null;
 	}
 
