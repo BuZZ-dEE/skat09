@@ -40,7 +40,7 @@ public class TricksFrame extends JFrame {
 	/**
 	 * Der Tisch, auf dem das Spiel gespielt wird.
 	 */
-	private Table tisch;
+	private Table table;
 	/**
 	 * Das Panel, auf dem sich die Karten befinden, soll scrollbar sein.
 	 */
@@ -50,12 +50,12 @@ public class TricksFrame extends JFrame {
 	 * Der konstruktor der Klasse Stiche. In diesem werden die Komponenten
 	 * initialisiert und das erste mal die update()-Methode aufgerufen.
 	 * 
-	 * @param tisch
+	 * @param table
 	 *            Der Tisch auf dem das Spiel gespielt wird
 	 */
-	public TricksFrame(Table tisch, boolean allestiche) {
+	public TricksFrame(Table table, boolean allTricks) {
 		super(Messages.getI18n("game.trick.past"));
-		this.tisch = tisch;
+		this.table = table;
 		setSize(300, 200);
 		setResizable(false);
 		init();
@@ -64,7 +64,7 @@ public class TricksFrame extends JFrame {
 		scroller = new JScrollPane(panel);
 		scroller.setPreferredSize(new Dimension(300, 200));
 		add(scroller);
-		update(allestiche);
+		update(allTricks);
 	}
 
 	/**
@@ -82,15 +82,15 @@ public class TricksFrame extends JFrame {
 	 * Mit dieser Methode wird die entsprechende Updatemethode aufgerufen, je
 	 * nachdem ob alle Stiche oder nur der letzte Stich ausgegeben werden soll.
 	 * 
-	 * @param allestiche
+	 * @param allTricks
 	 *            Gibt an, ob alle Stiche oder nur der letzte Stiche angezeigt
 	 *            werden sollen
 	 */
-	public void update(boolean allestiche) {
-		if (allestiche) {
-			alleStiche();
+	public void update(boolean allTricks) {
+		if (allTricks) {
+			updateAllTricks();
 		} else {
-			letzterStich();
+			updateLastTrick();
 		}
 	}
 
@@ -98,11 +98,11 @@ public class TricksFrame extends JFrame {
 	 * Mit dieser Methode wird ein bestehendes Stichefenster aktualisiert, indem
 	 * die aktuelle alleGespielteKarten-ArrayList ausgegeben wird
 	 */
-	private void alleStiche() {
+	private void updateAllTricks() {
 		int spalte = 0;
 		int reihe = 0;
 		GridBagConstraints c = new GridBagConstraints();
-		ArrayList<PlayingCard> karten = tisch.getSpieler1()
+		ArrayList<PlayingCard> cards = table.getSpieler1()
 				.getAllPlayedCards();
 
 		panel.removeAll();
@@ -111,11 +111,11 @@ public class TricksFrame extends JFrame {
 		c.gridx = 0;
 		c.gridy = 0;
 
-		for (PlayingCard karte : karten) {
+		for (PlayingCard card : cards) {
 
 			Image image = null;
 
-			image = new ImageIcon(karte.getCardPath()).getImage();
+			image = new ImageIcon(card.getCardPath()).getImage();
 
 			JLabel label = new JLabel(new ImageIcon(image.getScaledInstance(70,
 					110, 1)));
@@ -140,11 +140,11 @@ public class TricksFrame extends JFrame {
 	/**
 	 * Gibt den letzten Stich auf dem Stichefenster aus
 	 */
-	private void letzterStich() {
+	private void updateLastTrick() {
 		int spalte = 0;
 		int reihe = 0;
 		GridBagConstraints c = new GridBagConstraints();
-		ArrayList<PlayingCard> karten = tisch.getSpieler1()
+		ArrayList<PlayingCard> karten = table.getSpieler1()
 				.getAllPlayedCards();
 
 		panel.removeAll();
