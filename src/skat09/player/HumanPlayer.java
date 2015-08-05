@@ -52,7 +52,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	 */
 	public boolean respond(int reizwert) {
 
-		return controller.getAusgabe().respond(reizwert);
+		return controller.getOutput().respond(reizwert);
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	 */
 	public boolean bid(int reizWert) {
 
-		return controller.getAusgabe().sagen(reizWert);
+		return controller.getOutput().sagen(reizWert);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class HumanPlayer extends Player implements IPlayer,
 
 		PlayingCard karte = null;
 		try {
-			karte = controller.getAusgabe().spieleKarte(gespielteKarten, this);
+			karte = controller.getOutput().spieleKarte(gespielteKarten, this);
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -88,11 +88,11 @@ public class HumanPlayer extends Player implements IPlayer,
 				ergebnis = karte;
 				fertig = true;
 			} else {
-				controller.getAusgabe().andereKarte();
+				controller.getOutput().andereKarte();
 				hand.add(karte);
 				sortHand(gameVariety);
 				try {
-					karte = controller.getAusgabe().spieleKarte(
+					karte = controller.getOutput().spieleKarte(
 							gespielteKarten, this);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -119,7 +119,7 @@ public class HumanPlayer extends Player implements IPlayer,
 		}
 
 		for (int i = 0; i < gedrueckteKarten.length; i++) {
-			karte1 = controller.getAusgabe().druecken(hand, i + 1);
+			karte1 = controller.getOutput().druecken(hand, i + 1);
 			gedrueckteKarten[i] = hand.remove(karte1);
 			if (i == 1 && !sechserskat) {
 				gedrueckteKarten[i + 1] = null;
@@ -132,44 +132,44 @@ public class HumanPlayer extends Player implements IPlayer,
 	@Override
 	public boolean handgame() {
 
-		return controller.getAusgabe().handspiel();
+		return controller.getOutput().handspiel();
 	}
 
 	@Override
 	public boolean ouvert() {
 
-		return controller.getAusgabe().ouvert();
+		return controller.getOutput().ouvert();
 	}
 
 	@Override
 	public boolean schneider() {
 
-		return controller.getAusgabe().schneider();
+		return controller.getOutput().schneider();
 	}
 
 	@Override
 	public boolean schwarz() {
 
-		return controller.getAusgabe().schwarz();
+		return controller.getOutput().schwarz();
 	}
 
 	@Override
 	public IGameVariety declareGame() {
 
-		return controller.getAusgabe().spielAnsagen();
+		return controller.getOutput().spielAnsagen();
 	}
 
 	@Override
 	public SuitGame suit() {
 
-		return controller.getAusgabe().farbe();
+		return controller.getOutput().farbe();
 	}
 
 	@Override
 	public int setBidLimit() {
-		int erg = controller.getAusgabe().reizlimitFestlegen();
+		int erg = controller.getOutput().reizlimitFestlegen();
 		while (erg == -1) {
-			erg = controller.getAusgabe().reizlimitFestlegen();
+			erg = controller.getOutput().reizlimitFestlegen();
 		}
 
 		return erg;
@@ -178,6 +178,6 @@ public class HumanPlayer extends Player implements IPlayer,
 	@Override
 	public boolean agent() {
 
-		return controller.getAusgabe().reizAgent();
+		return controller.getOutput().reizAgent();
 	}
 }

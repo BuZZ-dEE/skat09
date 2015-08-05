@@ -21,7 +21,7 @@ public interface IController {
 	 * 
 	 * @return das Ausgabeobjekt
 	 */
-	public abstract IOutput getAusgabe();
+	public abstract IOutput getOutput();
 
 	/**
 	 * gibt das Spiel wieder frei, das vorher f&uuml;r eine GUI-Eingabe
@@ -34,7 +34,7 @@ public interface IController {
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void spiel() throws IOException;
+	public abstract void play() throws IOException;
 
 	/**
 	 * Leitet die Anmeldung

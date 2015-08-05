@@ -71,7 +71,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public IOutput getAusgabe() {
+	public IOutput getOutput() {
 		
 		return ausgabe;
 	}
@@ -143,7 +143,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void spiel() throws IOException {
+	public void play() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
