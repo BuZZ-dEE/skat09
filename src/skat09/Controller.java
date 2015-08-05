@@ -57,19 +57,19 @@ public class Controller implements Observer, IController {
 
 	/**
 	 * 
-	 * @param tisch wird übergeben um darauf arbeiten zu k&ouml;nnen
-	 * @param ausgabe wir ben&ouml;tigt um das Spiel ausgeben zu k
+	 * @param table wird übergeben um darauf arbeiten zu k&ouml;nnen
+	 * @param output wir ben&ouml;tigt um das Spiel ausgeben zu k
 	 * 
 	 * 
 	 */
-	public Controller(Table tisch, IOutput ausgabe) {
-		this.table = tisch;
-		this.output = ausgabe;
+	public Controller(Table table, IOutput output) {
+		this.table = table;
+		this.output = output;
 		spielEinpassen = false;
 	}
 
 	//@Override
-	public IOutput getAusgabe() {
+	public IOutput getOutput() {
 
 		return output;
 	}
@@ -78,7 +78,7 @@ public class Controller implements Observer, IController {
 	 * Dient zur r&uuml;ckgabe des Tisches
 	 * @return tisch gibt den Tisch zur&uuml;ck
 	 */
-	public Table getTisch() {
+	public Table getTable() {
 
 		return table;
 	}
@@ -91,9 +91,9 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void spiel() throws IOException {
+	public void play() throws IOException {
 
-		boolean weiterspielen = true;
+		boolean isContinue = true;
 		anmelden();
 		waehleSkatart();
 		waehleGegner();
@@ -118,9 +118,9 @@ public class Controller implements Observer, IController {
 				spielRaeuberskat();
 			}
 
-			weiterspielen = !spielBeenden();
+			isContinue = !spielBeenden();
 
-		} while (weiterspielen);
+		} while (isContinue);
 
 		System.exit(1);
 	}
