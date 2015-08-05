@@ -446,7 +446,7 @@ public class CLIOutput extends Output {
 		if (showPlayableCardsHelp) {
 			hilfeSpielbar(gespielteKarten);
 		}
-		if (hilfestiche) {
+		if (showLastTricksHelp) {
 			hilfeStiche();
 		}
 
@@ -914,7 +914,7 @@ public class CLIOutput extends Output {
 					.getI18n("game.trick.last.show.question"));
 			ergebnis = jaNeinAbfrage();
 			if (ergebnis) {
-				hilfestiche = true;
+				showLastTricksHelp = true;
 			}
 		}
 	}

@@ -49,6 +49,6 @@ public class Skat09 {
 		if (output instanceof GUIOutput) {
 			controller.warte();
 		}
-		controller.spiel();
+		controller.play();
 	}
 }
