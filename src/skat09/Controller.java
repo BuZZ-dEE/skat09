@@ -92,7 +92,7 @@ public class Controller implements Observer, IController {
 
 		boolean isContinue = true;
 		anmelden();
-		waehleSkatart();
+		chooseSkatVariant();
 		waehleGegner();
 		namenVergleich();
 		waehleSkatblatt();
@@ -179,24 +179,24 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void waehleSkatart() {
+	public void chooseSkatVariant() {
 		
 		String s;
-		s = output.frageVariante();
+		s = output.askForVariant();
 
 		if (s.equals(Messages.getI18n("game.commandline.skat.type.robber.abbr"))) {
 
-			table.setVariante(SkatVariant.RAEUBER);
+			table.setVariant(SkatVariant.RAEUBER);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.skat.type.international.abbr"))) {
 
-			table.setVariante(SkatVariant.SKAT);
+			table.setVariant(SkatVariant.SKAT);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.skat.type.bock.abbr"))) {
-			table.setVariante(SkatVariant.RAMSCHBOCK);
+			table.setVariant(SkatVariant.RAMSCHBOCK);
 		}
 
-		s = output.frageSechserskat();
+		s = output.askForSixSkat();
 		if (s.equals(Messages.getI18n("application.y"))) {
 			table.setSechserskat(true);
 		}

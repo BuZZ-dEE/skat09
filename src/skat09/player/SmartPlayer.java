@@ -1304,7 +1304,7 @@ public class SmartPlayer extends Player {
 	 * Betrachtung der Spielart.
 	 * 
 	 * @param farbe
-	 *            - farbe der Folgekarte
+	 *            - suitGame der Folgekarte
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */

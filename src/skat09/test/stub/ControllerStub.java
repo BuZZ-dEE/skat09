@@ -190,7 +190,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void waehleSkatart() {
+	public void chooseSkatVariant() {
 		// TODO Auto-generated method stub
 		
 	}

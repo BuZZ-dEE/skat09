@@ -118,7 +118,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public String frageVariante() {
+	public String askForVariant() {
 		String erg;
 		int i = fenster.getSkatWahl();
 
@@ -163,7 +163,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public SuitGame farbe() {
+	public SuitGame suitGame() {
 		SuitGame spiel = null;
 		String farbe = hfenster.getFarbe();
 		spiel = declareSuitGame(farbe);
@@ -195,7 +195,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public IGameVariety spielAnsagen() {
+	public IGameVariety declareSuit() {
 		IGameVariety spiel = null;
 		hfenster.ansagen();
 		warte();
@@ -213,7 +213,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler)
+	public PlayingCard playCard(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		hfenster.setGespielteKarten(gespielteKarten);
 		zeigegespielteKarten(gespielteKarten);
@@ -446,7 +446,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public String frageSechserskat() {
+	public String askForSixSkat() {
 		String erg;
 		boolean b = fenster.getSechserkat();
 
