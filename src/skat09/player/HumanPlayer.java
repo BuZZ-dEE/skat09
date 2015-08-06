@@ -76,7 +76,7 @@ public class HumanPlayer extends Player implements IPlayer,
 
 		PlayingCard karte = null;
 		try {
-			karte = controller.getOutput().spieleKarte(gespielteKarten, this);
+			karte = controller.getOutput().playCard(gespielteKarten, this);
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class HumanPlayer extends Player implements IPlayer,
 				hand.add(karte);
 				sortHand(gameVariety);
 				try {
-					karte = controller.getOutput().spieleKarte(
+					karte = controller.getOutput().playCard(
 							gespielteKarten, this);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -156,13 +156,13 @@ public class HumanPlayer extends Player implements IPlayer,
 	@Override
 	public IGameVariety declareGame() {
 
-		return controller.getOutput().spielAnsagen();
+		return controller.getOutput().declareSuit();
 	}
 
 	@Override
 	public SuitGame suit() {
 
-		return controller.getOutput().farbe();
+		return controller.getOutput().suitGame();
 	}
 
 	@Override

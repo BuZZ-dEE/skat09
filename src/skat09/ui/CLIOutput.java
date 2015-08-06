@@ -209,7 +209,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public String frageVariante() {
+	public String askForVariant() {
 
 		System.out.println(Messages
 				.getI18n("game.commandline.skat.type.choose.question"));
@@ -238,7 +238,7 @@ public class CLIOutput extends Output {
 						.getI18n("game.commandline.skat.type.bock.abbr")) != 0) {
 					System.out.println(Messages
 							.getI18n("game.commandline.input.short.wrong"));
-					s = frageVariante();
+					s = askForVariant();
 				}
 			}
 		}
@@ -331,7 +331,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public IGameVariety spielAnsagen() {
+	public IGameVariety declareSuit() {
 
 		int zaehler = 0;
 		int ergebnis = -1;
@@ -361,14 +361,14 @@ public class CLIOutput extends Output {
 		default:
 			System.out.println(Messages.getI18n("game.type.input.wrong"));
 			System.out.println();
-			spielAnsagen();
+			declareSuit();
 		}
 
 		return rueckgabe;
 	}
 
 	@Override
-	public SuitGame farbe() {
+	public SuitGame suitGame() {
 
 		SuitGame rueckgabe = null;
 		int zaehler = 0;
@@ -425,7 +425,7 @@ public class CLIOutput extends Output {
 		for (int i = 0; i < blatt.size(); i++) {
 
 			PlayingCard karte = blatt.get(i);
-			// Farbe farbe = karte.getFarbe();
+			// Farbe suitGame = karte.getFarbe();
 			// Wert wert = karte.getWert();
 			System.out.println(i + ": " + karte.toString());
 		}
@@ -434,7 +434,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler) {
+	public PlayingCard playCard(PlayingCard[] gespielteKarten, IPlayer spieler) {
 
 		PlayingCard ergebnis = null;
 		ArrayList<PlayingCard> blatt = spieler.getHand();
@@ -854,7 +854,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public String frageSechserskat() {
+	public String askForSixSkat() {
 		System.out.println(Messages.getI18n("game.skat.variant.six.play"));
 		System.out.println(Messages.getI18n("application.yes.no.enter",
 				Messages.getI18n("application.y"),
@@ -874,7 +874,7 @@ public class CLIOutput extends Output {
 			if (s.compareTo(Messages.getI18n("application.n")) != 0) {
 				System.out.println(Messages
 						.getI18n("game.commandline.input.short.wrong"));
-				s = frageVariante();
+				s = askForVariant();
 			}
 		}
 		return s;

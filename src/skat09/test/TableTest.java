@@ -150,7 +150,7 @@ public class TableTest {
 	//Testet die Methode getVariante
 	@Test
 	public void getVarianteTest() {
-		tisch.setVariante(SkatVariant.RAEUBER);
+		tisch.setVariant(SkatVariant.RAEUBER);
 		assertEquals(SkatVariant.RAEUBER, tisch.getVariante());
 	}
 	
@@ -614,7 +614,7 @@ public class TableTest {
 	
 	@Test
 	public void ueberreizCheckTest5() {
-		tisch.setVariante(SkatVariant.SKAT);
+		tisch.setVariant(SkatVariant.SKAT);
 		tisch.setHandspiel(false);
 		tisch.setSchneider(false);
 		tisch.setSchwarz(false);
@@ -760,7 +760,7 @@ public class TableTest {
 	
 	@Test
 	public void wertePunkteTest1() {
-		tisch.setVariante(SkatVariant.RAEUBER);
+		tisch.setVariant(SkatVariant.RAEUBER);
 		NullGame spiel = new NullGame();
 		tisch.setSpielart(spiel);
 		tisch.ermittleAlleinspieler().getTricks().clear();
@@ -769,7 +769,7 @@ public class TableTest {
 	
 	@Test
 	public void wertePunkteTest() {
-		tisch.setVariante(SkatVariant.SKAT);
+		tisch.setVariant(SkatVariant.SKAT);
 		tisch.ermittleAlleinspieler().getHand().clear();
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
@@ -833,7 +833,7 @@ public class TableTest {
 	
 	@Test
 	public void wertePunkteTest7() {
-		tisch.setVariante(SkatVariant.SKAT);
+		tisch.setVariant(SkatVariant.SKAT);
 		tisch.ermittleAlleinspieler().getHand().clear();
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
@@ -848,7 +848,7 @@ public class TableTest {
 	public void wertePunkteTest8() {
 		
 		tisch.setBock(true);
-		tisch.setVariante(SkatVariant.RAMSCHBOCK);
+		tisch.setVariant(SkatVariant.RAMSCHBOCK);
 		tisch.ermittleAlleinspieler().getHand().clear();
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));

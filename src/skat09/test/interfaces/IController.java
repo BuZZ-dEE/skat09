@@ -49,7 +49,7 @@ public interface IController {
 	/**
 	 * Die vom menschlichen Spieler gew&auml;hlte Skatart wird gesetzt
 	 */
-	public abstract void waehleSkatart();
+	public abstract void chooseSkatVariant();
 
 	/**
 	 * Die vom menschlichen Spieler gew&auml;hlte Blattart wird gesetzt

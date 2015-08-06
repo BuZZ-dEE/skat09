@@ -79,7 +79,7 @@ public interface IOutput {
 	 * @return String, der die Variante enth&auml;lt r = R&auml;uberskat, i =
 	 *         internationale Skatordnung
 	 */
-	public abstract String frageVariante();
+	public abstract String askForVariant();
 
 	/**
 	 * Informiert den Spieler dar&uuml;ber, dass er eine falsche Eingabe gemacht
@@ -138,7 +138,7 @@ public interface IOutput {
 	 * 
 	 * @return Spielart - die vom Spieler angesagte Spielart
 	 */
-	public abstract IGameVariety spielAnsagen();
+	public abstract IGameVariety declareSuit();
 
 	/**
 	 * Diese Methode fragt den Spieler nach der Trumpffarbe, die er spielen
@@ -146,7 +146,7 @@ public interface IOutput {
 	 * 
 	 * @return - das neue Farbspiel mit der gew&auml;hlten Trumpffarbe
 	 */
-	public abstract SuitGame farbe();
+	public abstract SuitGame suitGame();
 
 	/**
 	 * Zeigt dem Spieler seine Handkarten und die bisher in den Stich gespielten
@@ -159,8 +159,8 @@ public interface IOutput {
 	 * @return Spielkarte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	public abstract PlayingCard spieleKarte(PlayingCard[] gespielteKarten,
-			IPlayer spieler) throws IOException;
+	public abstract PlayingCard playCard(PlayingCard[] gespielteKarten,
+										 IPlayer spieler) throws IOException;
 
 	/**
 	 * Diese Methode gibt aus, welcher Spieler den Stich gewonnen hat.
@@ -329,7 +329,7 @@ public interface IOutput {
 	 * 
 	 * @return Ob Sechserskat gespielt werden soll oder nicht.
 	 */
-	public abstract String frageSechserskat();
+	public abstract String askForSixSkat();
 
 	/**
 	 * L&auml;sst die GUI das Hauptfenster &ouml;ffnen. Bleibt in der CLI leer.

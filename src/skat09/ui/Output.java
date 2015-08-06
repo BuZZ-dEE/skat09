@@ -48,7 +48,7 @@ abstract public class Output implements IOutput {
 	public abstract String gegner(int nummer);
 
 	//@Override
-	public abstract String frageVariante();
+	public abstract String askForVariant();
 
 	//@Override
 	public abstract void wrongInputHint();
@@ -73,14 +73,14 @@ abstract public class Output implements IOutput {
 	public abstract boolean ouvert();
 
 	//@Override
-	public abstract IGameVariety spielAnsagen();
+	public abstract IGameVariety declareSuit();
 
 	//@Override
-	public abstract SuitGame farbe();
+	public abstract SuitGame suitGame();
 
 	//@Override
-	public abstract PlayingCard spieleKarte(PlayingCard[] gespielteKarten,
-			IPlayer spieler) throws IOException;
+	public abstract PlayingCard playCard(PlayingCard[] gespielteKarten,
+										 IPlayer spieler) throws IOException;
 
 	//@Override
 	public abstract void stichGewonnen(IPlayer spieler);
@@ -158,7 +158,7 @@ abstract public class Output implements IOutput {
 	public abstract String getBlattwahl();
 
 	//@Override
-	public abstract String frageSechserskat();
+	public abstract String askForSixSkat();
 
 	//@Override
 	public abstract void hauptfensterOeffnen();

@@ -46,7 +46,7 @@ public class RuleCompliantPlayerTest {
 
 //	@Test
 //	public void testSpieleKarte() {
-//		assertEquals(spielkarte4, spieler.spieleKarte(gespielteKarten));
+//		assertEquals(spielkarte4, spieler.playCard(gespielteKarten));
 //	}
 //	
 //	@Test
@@ -54,13 +54,13 @@ public class RuleCompliantPlayerTest {
 //		blatt.clear();
 //		blatt.add(spielkarte3);
 //		blatt.add(spielkarte4);
-//		assertEquals(spielkarte3, spieler.spieleKarte(gespielteKarten));
+//		assertEquals(spielkarte3, spieler.playCard(gespielteKarten));
 //	}
 //	
 //	@Test
 //	public void testSpieleKarte3() {
 //		gespielteKarten[0] = spielkarte2;
-//		assertEquals(spielkarte4, spieler.spieleKarte(gespielteKarten));
+//		assertEquals(spielkarte4, spieler.playCard(gespielteKarten));
 //	}
 //	
 //	@Test
@@ -69,7 +69,7 @@ public class RuleCompliantPlayerTest {
 //		blatt.add(spielkarte3);
 //		blatt.add(spielkarte4);
 //		gespielteKarten[0] = spielkarte2;
-//		assertEquals(spielkarte4, spieler.spieleKarte(gespielteKarten));
+//		assertEquals(spielkarte4, spieler.playCard(gespielteKarten));
 //	}
 	
 	//Der regelkonforme Spieler spielt eine zufaellige Karte
