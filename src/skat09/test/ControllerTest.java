@@ -196,7 +196,7 @@ public class ControllerTest {
 		
 		OutputStub skat1 = new OutputStub(null,"r",null);
 		Controller controller = new Controller(tisch,skat1);
-		controller.waehleSkatart();
+		controller.chooseSkatVariant();
 		SkatVariant variante = SkatVariant.RAEUBER;
 		assertEquals(variante,controller.getTable().getVariante());
 	}
@@ -206,7 +206,7 @@ public class ControllerTest {
 		
 		OutputStub skat1 = new OutputStub(null,"i",null);
 		Controller controller = new Controller(tisch,skat1);
-		controller.waehleSkatart();
+		controller.chooseSkatVariant();
 		SkatVariant variante = SkatVariant.SKAT;
 		assertEquals(variante,controller.getTable().getVariante());
 	}
@@ -216,7 +216,7 @@ public class ControllerTest {
 		
 		OutputStub skat1 = new OutputStub(null,"b",null);
 		Controller controller = new Controller(tisch,skat1);
-		controller.waehleSkatart();
+		controller.chooseSkatVariant();
 		SkatVariant variante = SkatVariant.RAMSCHBOCK;
 		assertEquals(variante,controller.getTable().getVariante());
 	}
@@ -608,7 +608,7 @@ public class ControllerTest {
 		controller.getTable().setReizagentWert(120);
 		controller.getTable().setReizwert(23);
 		controller.getTable().setBock(true);
-		controller.getTable().setVariante(SkatVariant.RAMSCHBOCK);
+		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
 		controller.getTable().setBockrunden(0);
 		
@@ -656,7 +656,7 @@ public class ControllerTest {
 		controller.getTable().setReizagentWert(120);
 		controller.getTable().setReizwert(23);
 		controller.getTable().setBock(true);
-		controller.getTable().setVariante(SkatVariant.RAMSCHBOCK);
+		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
 		controller.getTable().setBockrunden(0);
 		
@@ -703,7 +703,7 @@ public class ControllerTest {
 		controller.getTable().setReizagentWert(120);
 		controller.getTable().setReizwert(23);
 		controller.getTable().setBock(true);
-		controller.getTable().setVariante(SkatVariant.RAMSCHBOCK);
+		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
 		controller.getTable().setBockrunden(0);
 		
@@ -751,7 +751,7 @@ public class ControllerTest {
 		controller.getTable().setReizagentWert(120);
 		controller.getTable().setReizwert(23);
 		controller.getTable().setBock(true);
-		controller.getTable().setVariante(SkatVariant.RAMSCHBOCK);
+		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
 		controller.getTable().setBockrunden(0);
 		

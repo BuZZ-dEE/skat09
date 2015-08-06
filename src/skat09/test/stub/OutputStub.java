@@ -90,20 +90,20 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public SuitGame farbe() {
+	public SuitGame suitGame() {
 		
 		SuitGame farbspiel = new SuitGame(Suit.LEAVES);
 		return farbspiel;
 	}
 
 	
-	public String frageSechserskat() {
+	public String askForSixSkat() {
 		// TODO Auto-generated method stub
 		return "j";
 	}
 
 	
-	public String frageVariante() {
+	public String askForVariant() {
 		return variante;
 	}
 
@@ -270,7 +270,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public IGameVariety spielAnsagen() {
+	public IGameVariety declareSuit() {
 		
 		return new GrandGame();
 	}
@@ -299,7 +299,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public PlayingCard spieleKarte(PlayingCard[] gespielteKarten, IPlayer spieler)
+	public PlayingCard playCard(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		
 		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);

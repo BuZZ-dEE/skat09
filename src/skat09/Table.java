@@ -616,7 +616,7 @@ public class Table extends Observable {
 		this.spielart = spielart;
 	}
 
-	public void setVariante(SkatVariant variante) {
+	public void setVariant(SkatVariant variante) {
 
 		this.variante = variante;
 	}
