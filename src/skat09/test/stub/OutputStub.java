@@ -185,7 +185,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void neuesSpiel() {
+	public void newGame() {
 		
 	}
 
@@ -196,7 +196,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void punkte(int punkte) {
+	public void points(int punkte) {
 		
 		this.punkte = punkte;
 	}
@@ -282,7 +282,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public void spielBeendet() {
+	public void gameOver() {
 		
 	}
 
@@ -323,7 +323,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void trumpf() {
+	public void trump() {
 		// TODO Auto-generated method stub
 		
 	}

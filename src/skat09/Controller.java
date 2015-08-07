@@ -104,7 +104,7 @@ public class Controller implements Observer, IController {
 		do {
 			bereiteSpielvor();
 			output.positionAnzeigen();
-			output.neuesSpiel();
+			output.newGame();
 
 			if (table.getVariante() == SkatVariant.SKAT) {
 				spielIntSkat();
@@ -597,13 +597,13 @@ public class Controller implements Observer, IController {
 		boolean gewonnen = false;
 		int augen = 0;
 
-		output.spielBeendet();
+		output.gameOver();
 		if (table.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
 			
 			augen = table.werteAugen(table.ermittleAlleinspieler().getTricks());
 			int punkte = table.wertePunkte(augen);
 			output.augen(augen);
-			output.punkte(punkte);
+			output.points(punkte);
 		}
 		gewonnen = table.spielAuswerten();
 
@@ -805,7 +805,7 @@ public class Controller implements Observer, IController {
 		table.getSpieler1().sortHand(spielart);
 		table.getSpieler2().sortHand(spielart);
 		table.getSpieler3().sortHand(spielart);
-		output.trumpf();
+		output.trump();
 		leiteSpiel();
 		auswertung();
 		aufrauemen();
@@ -816,7 +816,7 @@ public class Controller implements Observer, IController {
 	public void normalerSpielverlauf() throws IOException {
 		skatkartenBesitzergeben();
 		alleinspielerAktionen();
-		output.trumpf();
+		output.trump();
 		leiteSpiel();
 		auswertung();
 		aufrauemen();
