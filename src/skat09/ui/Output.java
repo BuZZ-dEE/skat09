@@ -95,7 +95,7 @@ abstract public class Output implements IOutput {
 	public abstract void weg(IPlayer spieler);
 
 	//@Override
-	public abstract void spielBeendet();
+	public abstract void gameOver();
 
 	//@Override
 	public abstract void auswertung(boolean gewonnen);
@@ -122,16 +122,16 @@ abstract public class Output implements IOutput {
 	public abstract void augen(int augen);
 
 	//@Override
-	public abstract void punkte(int punkte);
+	public abstract void points(int punkte);
 
 	//@Override
 	public abstract void alleinspieler();
 
 	//@Override
-	public abstract void trumpf();
+	public abstract void trump();
 
 	//@Override
-	public abstract void neuesSpiel();
+	public abstract void newGame();
 
 	//@Override
 	public abstract String readInput();

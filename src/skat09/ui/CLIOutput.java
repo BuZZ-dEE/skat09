@@ -595,7 +595,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void spielBeendet() {
+	public void gameOver() {
 		System.out.println(Messages.getI18n("game.over"));
 		System.out.println(Messages.getI18n("game.skat.in.was"));
 		PlayingCard[] skat = tisch.getSkat();
@@ -662,7 +662,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void punkte(int punkte) {
+	public void points(int punkte) {
 		System.out.println(Messages.getI18n("player.declarer.score", tisch
 				.ermittleAlleinspieler().getName(), punkte));
 	}
@@ -686,7 +686,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void trumpf() {
+	public void trump() {
 		if (tisch.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
 			System.out.println(Messages.getI18n("player.name.playing.game",
 					tisch.ermittleAlleinspieler().getName(), tisch
@@ -699,7 +699,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void neuesSpiel() {
+	public void newGame() {
 		leerzeile();
 		System.out.println("*************************************");
 		System.out.println(Messages.getI18n("game.new.begins"));
