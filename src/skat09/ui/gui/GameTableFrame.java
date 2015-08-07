@@ -783,7 +783,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 
 		JLabel spiel = new JLabel();
 		Point origin = new Point(0, 0);
-		// JLabel punkte = new JLabel();
+		// JLabel points = new JLabel();
 
 		infobox.removeAll();
 

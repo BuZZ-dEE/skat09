@@ -197,7 +197,7 @@ public interface IOutput {
 	/**
 	 * Diese Methode teilt dem Spieler mit, dass das Spiel beendet ist.
 	 */
-	public abstract void spielBeendet();
+	public abstract void gameOver();
 
 	/**
 	 * Gibt nach einem Spiel aus, ob der Alleinspieler gewonnen oder verloren
@@ -253,7 +253,7 @@ public interface IOutput {
 	 * @param punkte
 	 *            - die vom Alleinspieler erzielten Punkte
 	 */
-	public abstract void punkte(int punkte);
+	public abstract void points(int punkte);
 
 	/**
 	 * Gibt aus, wer der Alleinspieler ist und dass dieser spielt.
@@ -263,12 +263,12 @@ public interface IOutput {
 	/**
 	 * Gibt aus welche Spielart der Alleinspieler spielt.
 	 */
-	public abstract void trumpf();
+	public abstract void trump();
 
 	/**
 	 * Gibt bekannt, dass ein neues Spiel gestartet wurde.
 	 */
-	public abstract void neuesSpiel();
+	public abstract void newGame();
 
 	/**
 	 * Liest einen String von der Ausgabe ein.

@@ -296,7 +296,7 @@ public interface IPlayer {
 	 * ein Spiel als Alleinspieler gespielt hat.
 	 * 
 	 * @param punkte
-	 *            - punkte, die der Spieler erreicht hat
+	 *            - points, die der Spieler erreicht hat
 	 * @return die neue Liste
 	 */
 	public abstract ArrayList<Integer> addPoints(int punkte);

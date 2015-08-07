@@ -263,7 +263,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spielBeendet() {
+	public void gameOver() {
 		hfenster.skataufTisch();
 		warte();
 	}
@@ -311,7 +311,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void punkte(int punkte) {
+	public void points(int punkte) {
 
 	}
 
@@ -322,13 +322,13 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void trumpf() {
+	public void trump() {
 		hfenster.trumpf();
 
 	}
 
 	@Override
-	public void neuesSpiel() {
+	public void newGame() {
 
 	}
 
