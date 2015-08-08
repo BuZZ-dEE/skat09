@@ -49,7 +49,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void andereKarte() {
+	public void anotherCard() {
 		System.out.println("Bitte spiele eine andere Karte!");
 		
 	}
@@ -66,7 +66,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void blattAusgeben(IPlayer spieler) throws IOException {
+	public void outputHand(IPlayer spieler) throws IOException {
 		
 	}
 
@@ -108,7 +108,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public String gegner(int nummer) {
+	public String adversary(int nummer) {
 		
 		return gegner;
 	}
@@ -131,7 +131,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public boolean handspiel() {
+	public boolean handgame() {
 
 		return false;
 	}
@@ -202,7 +202,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void punkteAusgeben() {
+	public void outputPoints() {
 		
 	}
 
@@ -259,7 +259,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public void skatAusgeben(PlayingCard[] skat) throws IOException {
+	public void outputSkat(PlayingCard[] skat) throws IOException {
 		
 	}
 
@@ -276,7 +276,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public boolean spielBeenden() {
+	public boolean quitGame() {
 		// TODO Auto-generated method stub
 		return true;
 	}
@@ -287,7 +287,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void spielBeginnt() {
+	public void gameBegins() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -313,12 +313,12 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void stichGewonnen(IPlayer spieler) {
+	public void trickWon(IPlayer spieler) {
 		
 	}
 
 
-	public void tischLoeschen() {
+	public void deleteTable() {
 		
 	}
 
@@ -347,7 +347,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public void positionAnzeigen() {
+	public void showPosition() {
 		// TODO Auto-generated method stub
 		
 	}

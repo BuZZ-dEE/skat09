@@ -87,7 +87,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public String gegner(int nummer) {
+	public String adversary(int nummer) {
 
 		String s = "";
 		if (nummer == 1) {
@@ -146,7 +146,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public boolean handspiel() {
+	public boolean handgame() {
 		hfenster.handspiel();
 		warte();
 		boolean wert = hfenster.getHandspiel();
@@ -219,7 +219,7 @@ public class GUIOutput extends Output {
 			throws IOException {
 		hfenster.setGespielteKarten(gespielteKarten);
 		zeigegespielteKarten(gespielteKarten);
-		blattAusgeben(spieler);
+		outputHand(spieler);
 		hfenster.setZug(true);
 		warte();
 		int kartennummer = hfenster.getGewaehlteKarte();
@@ -240,20 +240,20 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void stichGewonnen(IPlayer spieler) {
+	public void trickWon(IPlayer spieler) {
 		hfenster.stichGewonnen(spieler);
 
 	}
 
 	@Override
-	public void blattAusgeben(IPlayer spieler) throws IOException {
+	public void outputHand(IPlayer spieler) throws IOException {
 		hfenster.blattAusgeben(spieler);
 		hfenster.gegnerKarten(tisch.getSpieler2(), tisch.getSpieler3());
 
 	}
 
 	@Override
-	public void skatAusgeben(PlayingCard[] skat) throws IOException {
+	public void outputSkat(PlayingCard[] skat) throws IOException {
 		hfenster.skatAusgeben(skat);
 
 	}
@@ -276,7 +276,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void andereKarte() {
+	public void anotherCard() {
 		hfenster.andereKarte();
 
 	}
@@ -297,7 +297,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spielBeginnt() {
+	public void gameBegins() {
 		hfenster.spielBeginnt();
 
 	}
@@ -380,12 +380,12 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public boolean spielBeenden() {
+	public boolean quitGame() {
 		return false;
 	}
 
 	@Override
-	public void punkteAusgeben() {
+	public void outputPoints() {
 
 	}
 
@@ -431,7 +431,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void tischLoeschen() {
+	public void deleteTable() {
 		hfenster.tischRaumen();
 
 	}
@@ -467,7 +467,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void positionAnzeigen() {
+	public void showPosition() {
 		hfenster.gegnerKarten(tisch.getSpieler2(), tisch.getSpieler3());
 
 	}

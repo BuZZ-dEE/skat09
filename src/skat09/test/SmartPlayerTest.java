@@ -402,7 +402,7 @@ public class SmartPlayerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setGameVariety(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		IPlayer gegnger = new Granny("gegner");
+		IPlayer gegnger = new Granny("adversary");
 		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		gespielteKarten[0].setOwner(gegnger);
 		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE);
@@ -439,7 +439,7 @@ public class SmartPlayerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setGameVariety(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		IPlayer gegnger = new Granny("gegner");
+		IPlayer gegnger = new Granny("adversary");
 		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.KING);
 		gespielteKarten[0].setOwner(gegnger);
 		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE);
@@ -476,7 +476,7 @@ public class SmartPlayerTest {
 		spieler.getAnfangsBlatt().add(spielkarte7);
 		spieler.setGameVariety(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		IPlayer gegnger = new Granny("gegner");
+		IPlayer gegnger = new Granny("adversary");
 		gespielteKarten[0] = new PlayingCard(Suit.ACORNS, Value.KING);
 		gespielteKarten[0].setOwner(mate);
 		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.NINE);
@@ -508,7 +508,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		spieler.setHand(blatt);
 		spieler.setIsDeclarer(true);
@@ -574,7 +574,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
@@ -607,7 +607,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
@@ -635,7 +635,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		spieler.setHand(blatt);
 		spieler.setIsDeclarer(true);
@@ -666,7 +666,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
@@ -696,7 +696,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
@@ -726,7 +726,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte5);
 		blatt.add(spielkarte6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		spieler.setHand(blatt);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
@@ -790,7 +790,7 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		spieler.setTeammate(mate);
 		mate.setPosition(Position.MITTELHAND);
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		gegner.setPosition(Position.HINTERHAND);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
@@ -823,7 +823,7 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		spieler.setTeammate(mate);
 		mate.setPosition(Position.HINTERHAND);
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		gegner.setPosition(Position.MITTELHAND);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
@@ -883,7 +883,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte6);
 		spieler.setHand(blatt);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
@@ -911,7 +911,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte6);
 		spieler.setHand(blatt);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
@@ -939,7 +939,7 @@ public class SmartPlayerTest {
 		blatt.add(spielkarte6);
 		spieler.setHand(blatt);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		spieler.setTeammate(mate);
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.TEN);
@@ -1343,7 +1343,7 @@ public class SmartPlayerTest {
 		spieler.setDeck(deck);
 		spieler.setHand(blatt);
 		spieler.setGameVariety(new GrandGame());
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		IPlayer mate = new Granny("mate");
 		spieler.setTeammate(mate);
 		spieler.setTeammate(mate);
@@ -1382,7 +1382,7 @@ public class SmartPlayerTest {
 		spieler.setDeck(deck);
 		spieler.setHand(blatt);
 		spieler.setGameVariety(new GrandGame());
-		IPlayer gegner = new Granny("gegner");
+		IPlayer gegner = new Granny("adversary");
 		IPlayer mate = new Granny("mate");
 		spieler.setTeammate(mate);
 		spieler.setTeammate(mate);
