@@ -88,7 +88,7 @@ public class HumanPlayer extends Player implements IPlayer,
 				ergebnis = karte;
 				fertig = true;
 			} else {
-				controller.getOutput().andereKarte();
+				controller.getOutput().anotherCard();
 				hand.add(karte);
 				sortHand(gameVariety);
 				try {
@@ -132,7 +132,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	@Override
 	public boolean handgame() {
 
-		return controller.getOutput().handspiel();
+		return controller.getOutput().handgame();
 	}
 
 	@Override

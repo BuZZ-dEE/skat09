@@ -303,9 +303,9 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert die Variable handspiel zur&uuml;ck.
+	 * Liefert die Variable handgame zur&uuml;ck.
 	 * 
-	 * @return true, falls handspiel
+	 * @return true, falls handgame
 	 */
 	public boolean getHandspiel() {
 
@@ -1736,7 +1736,7 @@ public class Table extends Observable {
 
 	/**
 	 * Zweiter Teil des &Uuml;berreizchecks. Es werden zus&auml;tzlich
-	 * schneider, schwarz, ouvert und handspiel &uuml;berpr&uuml;ft.
+	 * schneider, schwarz, ouvert und handgame &uuml;berpr&uuml;ft.
 	 * 
 	 * @param stufe
 	 *            - vorher berechnete Stufe

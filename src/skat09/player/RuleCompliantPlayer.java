@@ -68,7 +68,7 @@ public class RuleCompliantPlayer extends Player {
 
 	/**
 	 * Der regelkonforme Spieler ist nie Alleinspieler und kann deshalb nie
-	 * handspiel ansagen.
+	 * handgame ansagen.
 	 */
 	public boolean handgame() {
 

@@ -157,7 +157,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public String gegner(int nummer) {
+	public String adversary(int nummer) {
 
 		String s = "";
 
@@ -201,7 +201,7 @@ public class CLIOutput extends Output {
 
 					System.out.println(Messages
 							.getI18n("game.commandline.input.short.wrong"));
-					s = gegner(nummer);
+					s = adversary(nummer);
 				}
 			}
 		}
@@ -250,9 +250,9 @@ public class CLIOutput extends Output {
 	/**
 	 * Fragt den Spieler, ob er hand spielen m&ouml;chte.
 	 * 
-	 * @return true, falls handspiel
+	 * @return true, falls handgame
 	 */
-	public boolean handspiel() {
+	public boolean handgame() {
 
 		System.out.println(Messages.getI18n("game.skat.take"));
 
@@ -416,7 +416,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void blattAusgeben(IPlayer spieler) {
+	public void outputHand(IPlayer spieler) {
 
 		ArrayList<PlayingCard> blatt = spieler.getHand();
 
@@ -454,7 +454,7 @@ public class CLIOutput extends Output {
 		System.out
 				.println(Messages.getI18n("game.commandline.card.play.input"));
 		leerzeile();
-		blattAusgeben(spieler);
+		outputHand(spieler);
 
 		// Tischkarten zeigen
 		if (gespielteKarten[0] == null) {
@@ -526,7 +526,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void stichGewonnen(IPlayer spieler) {
+	public void trickWon(IPlayer spieler) {
 
 		System.out.println(">> "
 				+ Messages.getI18n("player.trick.won", spieler.getName()));
@@ -543,7 +543,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void skatAusgeben(PlayingCard[] skat) {
+	public void outputSkat(PlayingCard[] skat) {
 
 		System.out.println(Messages.getI18n("game.skat.cards.in"));
 		System.out.println(Messages.getI18n("game.skat.cards",
@@ -642,13 +642,13 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void spielBeginnt() {
+	public void gameBegins() {
 
 		System.out.println(Messages.getI18n("game.starts"));
 	}
 
 	@Override
-	public void andereKarte() {
+	public void anotherCard() {
 
 		System.out
 				.println(Messages.getI18n("game.card.forbidden.other.choose"));
@@ -762,7 +762,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public boolean spielBeenden() {
+	public boolean quitGame() {
 
 		System.out.println(Messages.getI18n("player.game.end"));
 
@@ -812,7 +812,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void punkteAusgeben() {
+	public void outputPoints() {
 		System.out.println("******** ****** ********");
 		System.out.println(Messages.getI18n("game.score.list.current"));
 		System.out.println(tisch.getSpieler1().getName() + "     "
@@ -828,7 +828,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void tischLoeschen() {
+	public void deleteTable() {
 
 	}
 
@@ -886,7 +886,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void positionAnzeigen() {
+	public void showPosition() {
 
 	}
 

@@ -45,7 +45,7 @@ abstract public class Output implements IOutput {
 	public abstract boolean sagen(int reizWert);
 
 	//@Override
-	public abstract String gegner(int nummer);
+	public abstract String adversary(int nummer);
 
 	//@Override
 	public abstract String askForVariant();
@@ -54,7 +54,7 @@ abstract public class Output implements IOutput {
 	public abstract void wrongInputHint();
 
 	//@Override
-	public abstract boolean handspiel();
+	public abstract boolean handgame();
 
 	//@Override
 	public abstract void play();
@@ -83,13 +83,13 @@ abstract public class Output implements IOutput {
 										 IPlayer spieler) throws IOException;
 
 	//@Override
-	public abstract void stichGewonnen(IPlayer spieler);
+	public abstract void trickWon(IPlayer spieler);
 
 	//@Override
-	public abstract void blattAusgeben(IPlayer spieler) throws IOException;
+	public abstract void outputHand(IPlayer spieler) throws IOException;
 
 	//@Override
-	public abstract void skatAusgeben(PlayingCard[] skat) throws IOException;
+	public abstract void outputSkat(PlayingCard[] skat) throws IOException;
 
 	//@Override
 	public abstract void weg(IPlayer spieler);
@@ -113,10 +113,10 @@ abstract public class Output implements IOutput {
 	public abstract void spielEinpassen();
 
 	//@Override
-	public abstract void spielBeginnt();
+	public abstract void gameBegins();
 
 	//@Override
-	public abstract void andereKarte();
+	public abstract void anotherCard();
 
 	//@Override
 	public abstract void augen(int augen);
@@ -146,13 +146,13 @@ abstract public class Output implements IOutput {
 	public abstract boolean reizAgent();
 
 	//@Override
-	public abstract boolean spielBeenden();
+	public abstract boolean quitGame();
 
 	//@Override
-	public abstract void punkteAusgeben();
+	public abstract void outputPoints();
 
 	//@Override
-	public abstract void tischLoeschen();
+	public abstract void deleteTable();
 
 	//@Override
 	public abstract String getBlattwahl();
@@ -170,6 +170,6 @@ abstract public class Output implements IOutput {
 	public abstract void guiAufraumen();
 
 	//@Override
-	public abstract void positionAnzeigen();
+	public abstract void showPosition();
 
 }

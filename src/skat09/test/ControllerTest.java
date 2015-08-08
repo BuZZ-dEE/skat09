@@ -517,7 +517,7 @@ public class ControllerTest {
 		controller2.getTable().setSpielart(new SuitGame(Suit.BELLS));
 
 		
-		//handspiel pruefen
+		//handgame pruefen
 		boolean handspiel = false;
 		if (!controller2.getTable().getHandspiel()) {
 			handspiel = true;
