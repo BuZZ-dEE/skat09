@@ -129,7 +129,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	private String spielart;
 
 	/**
-	 * erfasst, ob handspiel erw&uuml;nscht ist
+	 * erfasst, ob handgame erw&uuml;nscht ist
 	 */
 	private boolean handspiel = false;
 	/**
@@ -335,10 +335,10 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Gibt den Wert der Variable handspiel zur&uuml;ck. Diese ist true, falls
+	 * Gibt den Wert der Variable handgame zur&uuml;ck. Diese ist true, falls
 	 * der Mensch Handspiel w&uuml;nscht, ansonsten false.
 	 * 
-	 * @return Den Wert von handspiel
+	 * @return Den Wert von handgame
 	 */
 	public boolean getHandspiel() {
 		return handspiel;
@@ -913,7 +913,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	/**
 	 * Diese Methode zeigt dem Menschen ein Dialogfeld mit den Optionen Ja und
 	 * Nein. Er soll entscheiden, ob er Hand spielen will oder nicht. Wird Ja
-	 * gew&auml;hlt, wird die globale Variable handspiel true gesetzt, ansonsten
+	 * gew&auml;hlt, wird die globale Variable handgame true gesetzt, ansonsten
 	 * bleibt sie false. Anschliessend wird die Ausgabe wiedergelassen.
 	 */
 	public void handspiel() {

@@ -100,7 +100,7 @@ public class Controller implements Observer, IController {
 
 		do {
 			bereiteSpielvor();
-			output.positionAnzeigen();
+			output.showPosition();
 			output.newGame();
 
 			if (table.getVariante() == SkatVariant.SKAT) {
@@ -137,7 +137,7 @@ public class Controller implements Observer, IController {
 
 		String s;
 
-		s = output.gegner(1);
+		s = output.adversary(1);
 
 		// Eingabe o fuer Oma
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
@@ -159,7 +159,7 @@ public class Controller implements Observer, IController {
 		}
 
 		// Zweiten Gegegner auf die gleiche Weise waehlen
-		s = output.gegner(2);
+		s = output.adversary(2);
 
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
@@ -228,7 +228,7 @@ public class Controller implements Observer, IController {
 
 		// ermitteln, ob menschlicher Spieler den Reizagent benutzen will
 		IPlayer mensch = table.gibMenschlicherSpieler();
-		output.blattAusgeben(mensch);
+		output.outputHand(mensch);
 		boolean reizagent = mensch.agent();
 
 		// Für den menschlichen Spieler das Blatt ausgeben
@@ -409,7 +409,7 @@ public class Controller implements Observer, IController {
 		IPlayer spieler3 = null;
 		PlayingCard[] gespielteKarten;
 
-		output.spielBeginnt();
+		output.gameBegins();
 		int anzahlstiche = 10;
 
 		if (table.getSechserskat() == true) {
@@ -472,7 +472,7 @@ public class Controller implements Observer, IController {
 		// Der Spieler wird gefragt, ob er Hand spielt
 		IPlayer alleinspieler = table.ermittleAlleinspieler();
 		IPlayer mensch = table.gibMenschlicherSpieler();
-		output.blattAusgeben(mensch);
+		output.outputHand(mensch);
 
 		table.setHandspiel(alleinspieler.handgame());
 		alleinspieler.setHandGames(alleinspieler.getHandGames() + 1);
@@ -486,7 +486,7 @@ public class Controller implements Observer, IController {
 			// Skat dem Spieler anzeigen
 			// Skat vom Tisch holen, dem Spieler geben und gedr&uuml;ckte Karten
 			// wieder zum Tisch geben.
-			output.skatAusgeben(table.getSkat());
+			output.outputSkat(table.getSkat());
 			table.setSkat(alleinspieler.druecken(table.getSkat()));
 		}
 		// Spielansage
@@ -605,7 +605,7 @@ public class Controller implements Observer, IController {
 		gewonnen = table.spielAuswerten();
 
 		output.auswertung(gewonnen);
-		output.punkteAusgeben();
+		output.outputPoints();
 		output.statistik();
 
 	}
@@ -645,7 +645,7 @@ public class Controller implements Observer, IController {
 
 	//@Override
 	public void stichAuswertung(PlayingCard[] gespielteKarten, IPlayer gewinner) {
-		output.tischLoeschen();
+		output.deleteTable();
 		for (int i = 0; i < 3; i++) {
 
 			PlayingCard karte = gespielteKarten[i];
@@ -653,7 +653,7 @@ public class Controller implements Observer, IController {
 			output.spieltKarte(besitzer, karte);
 		}
 		output.leerzeile();
-		output.stichGewonnen(gewinner);
+		output.trickWon(gewinner);
 		output.leerzeile();
 	}
 
@@ -681,7 +681,7 @@ public class Controller implements Observer, IController {
 	//@Override
 	public boolean spielBeenden() {
 
-		return output.spielBeenden();
+		return output.quitGame();
 	}
 
 	//@Override

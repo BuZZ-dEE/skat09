@@ -89,7 +89,7 @@ public interface IPlayer {
 	
 	/**
 	 * gibt die Handspiele zur&uuml;ck
-	 * @return the handspiel
+	 * @return the handgame
 	 */
 	public int getHandGames();
 	

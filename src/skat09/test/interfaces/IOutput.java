@@ -70,7 +70,7 @@ public interface IOutput {
 	 *            1, falls 1. Gegner; 2. falls 1. Gegner
 	 * @return String, der Gegerbezeichnung enth&auml;lt
 	 */
-	public abstract String gegner(int nummer);
+	public abstract String adversary(int nummer);
 
 	/**
 	 * Fragt den Spieler, ob er R&auml;uberskat oder Skat nach internationaler
@@ -92,7 +92,7 @@ public interface IOutput {
 	 * 
 	 * @return true, falls der Spieler hand spielt
 	 */
-	public abstract boolean handspiel();
+	public abstract boolean handgame();
 
 	/**
 	 * Steuert den gesamten Spielablauf.
@@ -168,7 +168,7 @@ public interface IOutput {
 	 * @param spieler
 	 *            - der Gewinner des Stichs
 	 */
-	public abstract void stichGewonnen(IPlayer spieler);
+	public abstract void trickWon(IPlayer spieler);
 
 	/**
 	 * Gibt das Blatt des Spielers aus.
@@ -177,14 +177,14 @@ public interface IOutput {
 	 *            - spieler, dessen Blatt ausgegeben werden soll
 	 * @throws IOException
 	 */
-	public abstract void blattAusgeben(IPlayer spieler) throws IOException;
+	public abstract void outputHand(IPlayer spieler) throws IOException;
 
 	/**
 	 * Diese Methoden gibt die im Skat liegende Karten aus.
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void skatAusgeben(PlayingCard[] skat) throws IOException;
+	public abstract void outputSkat(PlayingCard[] skat) throws IOException;
 
 	/**
 	 * Teilt mit, dass ein Spieler weg ist.
@@ -232,12 +232,12 @@ public interface IOutput {
 	/**
 	 * Teilt dem Spieler mit, dass das Spiel beginnt.
 	 */
-	public abstract void spielBeginnt();
+	public abstract void gameBegins();
 
 	/**
 	 * Fordert den Spieler auf eine andere Karte zu spielen.
 	 */
-	public abstract void andereKarte();
+	public abstract void anotherCard();
 
 	/**
 	 * Gibt aus wieviele Augen der Alleinspieler erspielt hat.
@@ -306,17 +306,17 @@ public interface IOutput {
 	 * 
 	 * @return true, falls das Spiel beendet werden soll
 	 */
-	public abstract boolean spielBeenden();
+	public abstract boolean quitGame();
 
 	/**
 	 * Gibt die aktuelle Punkteliste aus.
 	 */
-	public abstract void punkteAusgeben();
+	public abstract void outputPoints();
 
 	/**
 	 * Loescht den Tisch. Fuer GUI.
 	 */
-	public abstract void tischLoeschen();
+	public abstract void deleteTable();
 
 	/**
 	 * Fragt den menschlichen Spieler nach seinem gew&uuml;nschten Blatt 
@@ -339,7 +339,7 @@ public interface IOutput {
 	/**
 	 * Zeigt die Namen und Positionen der Computerspieler an.
 	 */
-	public abstract void positionAnzeigen();
+	public abstract void showPosition();
 
 	/**
 	 * Wird nach abgeschlossem Spiel (10, bzw. 11 Stiche) aufgerufen.
