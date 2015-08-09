@@ -460,7 +460,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void hauptfensterOeffnen() {
+	public void openGameTable() {
 		hfenster = new GameTableFrame(this.tisch, this);
 	}
 
@@ -471,7 +471,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void guiAufraumen() {
+	public void cleanUpGUI() {
 		hfenster.spielAufrauemen();
 	}
 

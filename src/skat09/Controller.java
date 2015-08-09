@@ -640,7 +640,7 @@ public class Controller implements Observer, IController {
 			alleSpieler.setTricks(new ArrayList<PlayingCard>());
 			alleSpieler.setAllPlayedCards(new ArrayList<PlayingCard>());
 		}
-		output.guiAufraumen();
+		output.cleanUpGUI();
 	}
 
 	//@Override

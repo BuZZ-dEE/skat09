@@ -881,7 +881,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void hauptfensterOeffnen() {
+	public void openGameTable() {
 
 	}
 
@@ -891,7 +891,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void guiAufraumen() {
+	public void cleanUpGUI() {
 
 	}
 
