@@ -155,7 +155,7 @@ abstract public class Output implements IOutput {
 	public abstract void deleteTable();
 
 	//@Override
-	public abstract String getBlattwahl();
+	public abstract String getDeckSelection();
 
 	//@Override
 	public abstract String askForSixSkat();
@@ -164,7 +164,7 @@ abstract public class Output implements IOutput {
 	public abstract void openGameTable();
 
 	//@Override
-	public abstract void statistik();
+	public abstract void statistics();
 
 	//@Override
 	public abstract void cleanUpGUI();

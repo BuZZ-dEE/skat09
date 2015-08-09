@@ -833,7 +833,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public String getBlattwahl() {
+	public String getDeckSelection() {
 		System.out.println(Messages.getI18n("game.skat.deck.choose"));
 		System.out.println(Messages.getI18n("game.skat.deck.enter",
 				Messages.getI18n("game.skat.deck.f"),
@@ -947,7 +947,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void statistik() {
+	public void statistics() {
 		// Titel
 		System.out.println("*************************************");
 		System.out.println("**************"
