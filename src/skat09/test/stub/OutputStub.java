@@ -114,7 +114,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public String getBlattwahl() {
+	public String getDeckSelection() {
 		return blattwahl;
 	}
 
@@ -352,7 +352,7 @@ public class OutputStub implements IOutput{
 		
 	}
 
-	public void statistik() {
+	public void statistics() {
 		// TODO Auto-generated method stub
 		
 	}
