@@ -499,7 +499,7 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 	 * beendet das Spiel
 	 */
 	public void beenden() {
-		ausgabe.hauptfensterOeffnen();
+		ausgabe.openGameTable();
 
 		sname = name.getText();
 		int index;

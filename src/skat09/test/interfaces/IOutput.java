@@ -334,7 +334,7 @@ public interface IOutput {
 	/**
 	 * L&auml;sst die GUI das Hauptfenster &ouml;ffnen. Bleibt in der CLI leer.
 	 */
-	public abstract void hauptfensterOeffnen();
+	public abstract void openGameTable();
 
 	/**
 	 * Zeigt die Namen und Positionen der Computerspieler an.
@@ -345,7 +345,7 @@ public interface IOutput {
 	 * Wird nach abgeschlossem Spiel (10, bzw. 11 Stiche) aufgerufen.
 	 * L&ouml;scht &uuml;berfl&uuml;ssige Elemente.
 	 */
-	public abstract void guiAufraumen();
+	public abstract void cleanUpGUI();
 
 	/**
 	 * Die Statistik der Spieler wird auf dem Bildschirm ausgegeben.
