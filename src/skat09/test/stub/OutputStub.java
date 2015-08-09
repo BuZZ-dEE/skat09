@@ -137,7 +137,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void hauptfensterOeffnen() {
+	public void openGameTable() {
 		
 	}
 
@@ -341,7 +341,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public void guiAufraumen() {
+	public void cleanUpGUI() {
 
 		
 	}

@@ -161,13 +161,13 @@ abstract public class Output implements IOutput {
 	public abstract String askForSixSkat();
 
 	//@Override
-	public abstract void hauptfensterOeffnen();
+	public abstract void openGameTable();
 
 	//@Override
 	public abstract void statistik();
 
 	//@Override
-	public abstract void guiAufraumen();
+	public abstract void cleanUpGUI();
 
 	//@Override
 	public abstract void showPosition();
