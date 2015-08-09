@@ -322,7 +322,7 @@ public interface IOutput {
 	 * Fragt den menschlichen Spieler nach seinem gew&uuml;nschten Blatt 
 	 * @return Das gew&auml;hlte Blatt
 	 */
-	public abstract String getBlattwahl();
+	public abstract String getDeckSelection();
 
 	/**
 	 * Fragt den Spieler, ob er Sechserskat spielen m&ouml;chte oder nicht.
@@ -350,6 +350,6 @@ public interface IOutput {
 	/**
 	 * Die Statistik der Spieler wird auf dem Bildschirm ausgegeben.
 	 */
-	public abstract void statistik();
+	public abstract void statistics();
 
 }

@@ -435,7 +435,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public String getBlattwahl() {
+	public String getDeckSelection() {
 		String s = "";
 		if (fenster.getDeutsch() == true) {
 			s = Messages.getI18n("game.skat.deck.g");
@@ -476,7 +476,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void statistik() {
+	public void statistics() {
 		hfenster.statistik();
 		hfenster.neuesSpiel();
 		warte();

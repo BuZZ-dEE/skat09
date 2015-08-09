@@ -207,7 +207,7 @@ public class Controller implements Observer, IController {
 
 		String s;
 
-		s = output.getBlattwahl();
+		s = output.getDeckSelection();
 		if (s.equals(Messages.getI18n("game.skat.deck.g"))) {
 			PlayingCard.setGermanDeck(true);
 		} else if (s.equals(Messages.getI18n("game.skat.deck.f"))) {
@@ -606,7 +606,7 @@ public class Controller implements Observer, IController {
 
 		output.auswertung(gewonnen);
 		output.outputPoints();
-		output.statistik();
+		output.statistics();
 
 	}
 
