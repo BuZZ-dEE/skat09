@@ -267,7 +267,7 @@ public class Controller implements Observer, IController {
 		else {
 
 			alleinspieler.setIsDeclarer(true);
-			output.alleinspieler();
+			output.showDeclarer();
 		}
 	}
 
@@ -801,7 +801,7 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void spielRaeuberskat() throws IOException {
 		entscheideraeuberspiel();
-		output.alleinspieler();
+		output.showDeclarer();
 		normalerSpielverlauf();
 	}
 
