@@ -318,7 +318,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void alleinspieler() {
+	public void showDeclarer() {
 		hfenster.alleinspieler();
 
 	}

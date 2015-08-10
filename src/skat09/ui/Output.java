@@ -125,7 +125,7 @@ abstract public class Output implements IOutput {
 	public abstract void points(int punkte);
 
 	//@Override
-	public abstract void alleinspieler();
+	public abstract void showDeclarer();
 
 	//@Override
 	public abstract void trump();
