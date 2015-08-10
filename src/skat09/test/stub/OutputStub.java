@@ -44,7 +44,7 @@ public class OutputStub implements IOutput{
 		return gespielteKartenZahl;
 	}
 	
-	public void alleinspieler() {
+	public void showDeclarer() {
 		
 	}
 

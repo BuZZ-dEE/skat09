@@ -258,7 +258,7 @@ public interface IOutput {
 	/**
 	 * Gibt aus, wer der Alleinspieler ist und dass dieser spielt.
 	 */
-	public abstract void alleinspieler();
+	public abstract void showDeclarer();
 
 	/**
 	 * Gibt aus welche Spielart der Alleinspieler spielt.

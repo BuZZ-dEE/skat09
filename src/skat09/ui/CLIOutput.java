@@ -668,7 +668,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void alleinspieler() {
+	public void showDeclarer() {
 		System.out.println(Messages.getI18n("player.name.playing", tisch
 				.ermittleAlleinspieler().getName()));
 
