@@ -65,7 +65,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	 */
 	public boolean bid(int reizWert) {
 
-		return controller.getOutput().sagen(reizWert);
+		return controller.getOutput().bid(reizWert);
 	}
 
 	@Override

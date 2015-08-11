@@ -65,7 +65,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public boolean sagen(int alterWert) {
+	public boolean bid(int alterWert) {
 		hfenster.sagen(alterWert);
 		warte();
 		boolean erg = hfenster.getSagen();
@@ -257,8 +257,8 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void auswertung(boolean gewonnen) {
-		hfenster.auswertung(gewonnen);
+	public void showEvaluation(boolean isWon) {
+		hfenster.auswertung(isWon);
 
 	}
 
@@ -269,7 +269,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void weg(IPlayer spieler) {
+	public void pass(IPlayer spieler) {
 
 	}
 

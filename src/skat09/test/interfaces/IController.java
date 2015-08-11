@@ -74,7 +74,7 @@ public interface IController {
 	 * @param spieler1
 	 *            - Spieler der h&ouml;ren muss.
 	 * @param spieler2
-	 *            - Spieler der sagen muss.
+	 *            - Spieler der bid muss.
 	 * @return Spieler, der gewonnen hat oder null.
 	 */
 	public abstract IPlayer reizen2(IPlayer spieler1, IPlayer spieler2);
@@ -96,7 +96,7 @@ public interface IController {
 	 * @param spieler1
 	 *            - Spieler der h&ouml;ren muss.
 	 * @param spieler2
-	 *            - Spieler der sagen muss.
+	 *            - Spieler der bid muss.
 	 * @return Spieler, der gewonnen hat.
 	 */
 	public abstract IPlayer reizen1(IPlayer spieler1, IPlayer spieler2);
@@ -152,12 +152,12 @@ public interface IController {
 
 	/**
 	 * Falls der Reizagent aktiviert wurde und der Spieler menschlich ist lasse
-	 * den Reizagenten h&oumlren/sagen, ansonsten macht die Methode nichts.
+	 * den Reizagenten h&oumlren/bid, ansonsten macht die Methode nichts.
 	 * 
 	 * @param spieler
-	 *            , der h&ouml;ren oder sagen m&uuml;sste
+	 *            , der h&ouml;ren oder bid m&uuml;sste
 	 *            
-	 * @return false, wenn Spieler weg, true, wenn Spieler mitgeht, true,
+	 * @return false, wenn Spieler pass, true, wenn Spieler mitgeht, true,
 	 * falls der reizagent sagt, false, wenn er h&ouml;rt
 	 */
 	public abstract boolean reizagent(IPlayer spieler);

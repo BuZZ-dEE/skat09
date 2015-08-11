@@ -39,7 +39,7 @@ public class Granny extends Player {
 	}
 
 	/**
-	 * Die Oma ist beim h&ouml;ren immer sofort weg.
+	 * Die Oma ist beim h&ouml;ren immer sofort pass.
 	 * 
 	 * @param reizwert
 	 *            der aktuelle Reizwert
@@ -50,7 +50,7 @@ public class Granny extends Player {
 	}
 
 	/**
-	 * Falls die Oma sagen muss, ist sie weg.
+	 * Falls die Oma bid muss, ist sie pass.
 	 * 
 	 * @return reizwert der Oma
 	 */

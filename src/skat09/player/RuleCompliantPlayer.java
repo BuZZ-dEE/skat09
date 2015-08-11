@@ -103,7 +103,7 @@ public class RuleCompliantPlayer extends Player {
 	}
 
 	/**
-	 * Der regelkonforme Spieler ist immer weg und sagt deshalb auch kein Spiel
+	 * Der regelkonforme Spieler ist immer pass und sagt deshalb auch kein Spiel
 	 * an.
 	 */
 	public IGameVariety declareGame() {
@@ -112,7 +112,7 @@ public class RuleCompliantPlayer extends Player {
 	}
 
 	/**
-	 * Der regelkonforme Spieler ist beim h&ouml;ren immer bei 22 weg.
+	 * Der regelkonforme Spieler ist beim h&ouml;ren immer bei 22 pass.
 	 * 
 	 * @param reizwert
 	 *            der aktuelle Reizwert
@@ -130,7 +130,7 @@ public class RuleCompliantPlayer extends Player {
 	}
 
 	/**
-	 * L&auml;sst den regelkonformen Spieler. Der Spieler ist zurzeit bei 22 weg.
+	 * L&auml;sst den regelkonformen Spieler. Der Spieler ist zurzeit bei 22 pass.
 	 * 
 	 * @return reizwert des regelkonformen Spielers
 	 */

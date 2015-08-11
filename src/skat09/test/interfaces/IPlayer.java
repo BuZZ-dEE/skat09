@@ -306,12 +306,12 @@ public interface IPlayer {
 	 * 
 	 * @param reizwert
 	 *            - reizwert der gesagt wurde
-	 * @return false, falls Spieler weg, sonst true
+	 * @return false, falls Spieler pass, sonst true
 	 */
 	abstract public boolean respond(int reizwert);
 
 	/**
-	 * Diese Methode simuliert das sagen eines Spielers. M&ouml;chte der Spieler
+	 * Diese Methode simuliert das bid eines Spielers. M&ouml;chte der Spieler
 	 * nicht h&ouml;her gehen, muss er 0 zur&uuml;ckgeben.
 	 * 
 	 * @param alterWert
