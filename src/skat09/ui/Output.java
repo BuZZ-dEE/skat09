@@ -42,7 +42,7 @@ abstract public class Output implements IOutput {
 	public abstract boolean respond(int wert);
 
 	//@Override
-	public abstract boolean sagen(int reizWert);
+	public abstract boolean bid(int reizWert);
 
 	//@Override
 	public abstract String adversary(int nummer);
@@ -92,13 +92,13 @@ abstract public class Output implements IOutput {
 	public abstract void outputSkat(PlayingCard[] skat) throws IOException;
 
 	//@Override
-	public abstract void weg(IPlayer spieler);
+	public abstract void pass(IPlayer spieler);
 
 	//@Override
 	public abstract void gameOver();
 
 	//@Override
-	public abstract void auswertung(boolean gewonnen);
+	public abstract void showEvaluation(boolean isWon);
 
 	//@Override
 	public abstract void hhVSgewinner(IPlayer gewinner);

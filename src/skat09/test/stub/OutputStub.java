@@ -61,7 +61,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void auswertung(boolean gewonnen) {
+	public void showEvaluation(boolean isWon) {
 		
 	}
 
@@ -224,7 +224,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public boolean sagen(int reizWert) {
+	public boolean bid(int reizWert) {
 		
 	boolean ergebnis = false;
 		
@@ -335,7 +335,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void weg(IPlayer spieler) {
+	public void pass(IPlayer spieler) {
 		// TODO Auto-generated method stub
 		
 	}

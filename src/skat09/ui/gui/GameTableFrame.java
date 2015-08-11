@@ -150,7 +150,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	private boolean reizagent = false;
 	/**
 	 * erfasst, in welchem Zustand des Reizens sich der menschliche Spieler
-	 * befindet - in diesem Fall sagen
+	 * befindet - in diesem Fall bid
 	 */
 	private boolean sagen = false;
 	/**
@@ -260,11 +260,11 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Die Methoden liefert den Wert der Variable sagen. Dieser soll true sein,
+	 * Die Methoden liefert den Wert der Variable bid. Dieser soll true sein,
 	 * falls der Spieler den aktuellen Reizwert sagt und false, falls der
-	 * Spieler weg ist.
+	 * Spieler pass ist.
 	 * 
-	 * @return Den Wert von sagen
+	 * @return Den Wert von bid
 	 */
 	public boolean getSagen() {
 		boolean erg = sagen;
@@ -275,7 +275,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	/**
 	 * Die Methoden liefert den Wert der Variable respond. Dieser soll true sein,
 	 * falls der Spieler den aktuellen Reizwert mitgeht und false, falls der
-	 * Spieler weg ist.
+	 * Spieler pass ist.
 	 * 
 	 * @return Den Wert von respond
 	 */
@@ -1191,9 +1191,9 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 
 	/***
 	 * Diese Methode wird aufgerufen, wenn der Mensch einem anderen Mitspieler
-	 * einen Reizwert sagen soll. Hierbei wird ihm der n&auml;chste Reizwert
-	 * angeboten und er kann mit Ja best&auml;tigen oder mit Nein weg sein. Hat
-	 * er den Reizwert best&auml;tigt, wird die globale Variable sagen auf true
+	 * einen Reizwert bid soll. Hierbei wird ihm der n&auml;chste Reizwert
+	 * angeboten und er kann mit Ja best&auml;tigen oder mit Nein pass sein. Hat
+	 * er den Reizwert best&auml;tigt, wird die globale Variable bid auf true
 	 * gesetzt.
 	 * 
 	 * @param reizwert
@@ -1219,7 +1219,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	/***
 	 * Diese Methode wird aufgerufen, wenn der Mensch von einem anderen
 	 * Mitspieler einen Reizwert h&ouml;ren soll. Hierbei wird ihm der gebotene
-	 * Reizwert angeboten und er kann mit Ja best&auml;tigen oder mit Nein weg
+	 * Reizwert angeboten und er kann mit Ja best&auml;tigen oder mit Nein pass
 	 * sein. Hat er den Reizwert best&auml;tigt, wird die globale Variable
 	 * respond auf true gesetzt.
 	 * 
