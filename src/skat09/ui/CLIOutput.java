@@ -78,7 +78,7 @@ public class CLIOutput extends Output {
 
 	/**
 	 * L&auml;sst den menschlichen Spieler entscheiden, ob er bei einem
-	 * bestimmten Reizwert mitgeht oder weg ist.
+	 * bestimmten Reizwert mitgeht oder pass ist.
 	 * 
 	 * @param value
 	 *            - aktuell gebotener Reizwert
@@ -113,7 +113,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void weg(IPlayer spieler) {
+	public void pass(IPlayer spieler) {
 
 		String name = spieler.getName();
 
@@ -128,7 +128,7 @@ public class CLIOutput extends Output {
 	 * @param reizWert
 	 *            - der aktuell gebotene Reizwert
 	 */
-	public boolean sagen(int reizWert) {
+	public boolean bid(int reizWert) {
 
 		System.out.println(Messages.getI18n("game.say.value", reizWert));
 
@@ -552,9 +552,9 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void auswertung(boolean gewonnen) {
+	public void showEvaluation(boolean isWon) {
 		if (tisch.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
-			if (gewonnen == true) {
+			if (isWon == true) {
 				System.out.println(Messages.getI18n("player.won", tisch
 						.ermittleAlleinspieler().getName()));
 				System.out.println(Messages.getI18n(
@@ -574,7 +574,7 @@ public class CLIOutput extends Output {
 										.size() - 1)));
 			}
 		} else {
-			if (gewonnen) {
+			if (isWon) {
 				System.out.println(Messages.getI18n("player.winner") + " ");
 				System.out.println(Messages.getI18n(
 						"player.winner.score",
@@ -770,7 +770,7 @@ public class CLIOutput extends Output {
 	}
 
 	/**
-	 * Fragt den Benutzer, ob er ja oder nein sagen m&oouml;chte.
+	 * Fragt den Benutzer, ob er ja oder nein bid m&oouml;chte.
 	 * 
 	 * @return true, falls ja; false falls nein
 	 */

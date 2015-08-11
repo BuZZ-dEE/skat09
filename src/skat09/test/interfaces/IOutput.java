@@ -54,14 +54,14 @@ public interface IOutput {
 	public abstract boolean respond(int wert);
 
 	/**
-	 * L&auml;sst einen Spieler sagen und fragt, ob er bei dem besagten Reizwert
+	 * L&auml;sst einen Spieler bid und fragt, ob er bei dem besagten Reizwert
 	 * mitgehen m&ouml;chte.
 	 * 
 	 * @param reizWert
 	 *            - aktueller Reizwert
 	 * @return true, falls der spieler mitgeht
 	 */
-	public abstract boolean sagen(int reizWert);
+	public abstract boolean bid(int reizWert);
 
 	/**
 	 * Fordert den Spieler auf, seine Gegener auszuw&auml;len.
@@ -187,12 +187,12 @@ public interface IOutput {
 	public abstract void outputSkat(PlayingCard[] skat) throws IOException;
 
 	/**
-	 * Teilt mit, dass ein Spieler weg ist.
+	 * Teilt mit, dass ein Spieler pass ist.
 	 * 
 	 * @param spieler
-	 *            - spieler der weg ist.
+	 *            - spieler der pass ist.
 	 */
-	public abstract void weg(IPlayer spieler);
+	public abstract void pass(IPlayer spieler);
 
 	/**
 	 * Diese Methode teilt dem Spieler mit, dass das Spiel beendet ist.
@@ -200,11 +200,11 @@ public interface IOutput {
 	public abstract void gameOver();
 
 	/**
-	 * Gibt nach einem Spiel aus, ob der Alleinspieler gewonnen oder verloren
+	 * Gibt nach einem Spiel aus, ob der Alleinspieler isWon oder verloren
 	 * hat, wieviele Augen er hat und wieviele Punkte er f&uuml;r das Spiel
 	 * bekommt.
 	 */
-	public abstract void auswertung(boolean gewonnen);
+	public abstract void showEvaluation(boolean isWon);
 
 	/**
 	 * L&auml;sst die Hinterhand gegen den vorherigen Gewinner reizen.

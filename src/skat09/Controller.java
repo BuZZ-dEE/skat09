@@ -286,12 +286,12 @@ public class Controller implements Observer, IController {
 
 		if (reizwert == 18) {
 
-			// Spieler sagen lassen oder Reizagent &uuml;bernimmt
+			// Spieler bid lassen oder Reizagent &uuml;bernimmt
 			sagen = reizenOderReizagent(spieler2, reizwert, true);
 
 			if (!sagen) {
 
-				output.weg(spieler2);
+				output.pass(spieler2);
 
 				// Spieler respond lassen oder Reizagent &uuml;bernimmt
 				hoeren = reizenOderReizagent(spieler1, reizwert, true);
@@ -311,7 +311,7 @@ public class Controller implements Observer, IController {
 				if (!hoeren) {
 
 					gewinner = spieler2;
-					output.weg(spieler1);
+					output.pass(spieler1);
 				} else {
 
 					// Reizwert erh&ouml;en und am Tisch setzen
@@ -323,7 +323,7 @@ public class Controller implements Observer, IController {
 		}
 
 		// falls der Reizwert nicht 18 war, wird normal gereizt, bis ein Spieler
-		// weg ist.
+		// pass ist.
 		else {
 
 			gewinner = reizen1(spieler1, spieler2);
@@ -367,15 +367,15 @@ public class Controller implements Observer, IController {
 
 		while (!fertig) {
 
-			// Spieler2 sagen lassen oder Reizagent &uuml;bernimmt
+			// Spieler2 bid lassen oder Reizagent &uuml;bernimmt
 			sagen = reizenOderReizagent(spieler2, reizwert, true);
 
-			// erste if Schleife ueberprueft ob nur ein spieler weg sein
+			// erste if Schleife ueberprueft ob nur ein spieler pass sein
 			// darf und liefert dann vorzeitig den gewinner
 			if (!sagen) {
 
 				gewinner = spieler1;
-				output.weg(spieler2);
+				output.pass(spieler2);
 				break;
 			} else {
 
@@ -385,7 +385,7 @@ public class Controller implements Observer, IController {
 				if (!hoeren) {
 
 					gewinner = spieler2;
-					output.weg(spieler1);
+					output.pass(spieler1);
 					break;
 				}
 			}
@@ -607,7 +607,7 @@ public class Controller implements Observer, IController {
 		}
 		gewonnen = table.spielAuswerten();
 
-		output.auswertung(gewonnen);
+		output.showEvaluation(gewonnen);
 		output.outputPoints();
 		output.statistics();
 
