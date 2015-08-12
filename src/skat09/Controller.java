@@ -251,12 +251,12 @@ public class Controller implements Observer, IController {
 		IPlayer alleinspieler = null;
 
 		// reizen Mittelhand vs. Vorhand
-		output.mhVSvh();
+		output.mittelhandVsVorhand();
 		output.leerzeile();
 		gewinner = reizen1(vorhand, mittelhand);
 
 		// reizen Hinterhand vs. Gewinner
-		output.hhVSgewinner(gewinner);
+		output.hinterhandVsWinner(gewinner);
 		output.leerzeile();
 		alleinspieler = reizen2(gewinner, hinterhand);
 
