@@ -142,7 +142,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void hhVSgewinner(IPlayer gewinner) {
+	public void hinterhandVsWinner(IPlayer winner) {
 		
 	}
 
@@ -174,7 +174,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void mhVSvh() {
+	public void mittelhandVsVorhand() {
 		
 	}
 

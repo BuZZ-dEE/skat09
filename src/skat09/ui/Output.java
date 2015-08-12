@@ -101,10 +101,10 @@ abstract public class Output implements IOutput {
 	public abstract void showEvaluation(boolean isWon);
 
 	//@Override
-	public abstract void hhVSgewinner(IPlayer gewinner);
+	public abstract void hinterhandVsWinner(IPlayer winner);
 
 	//@Override
-	public abstract void mhVSvh();
+	public abstract void mittelhandVsVorhand();
 
 	//@Override
 	public abstract void leerzeile();

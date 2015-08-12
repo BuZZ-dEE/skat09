@@ -280,7 +280,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void hhVSgewinner(IPlayer gewinner) {
+	public void hinterhandVsWinner(IPlayer winner) {
 
 	}
 
@@ -290,7 +290,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void mhVSvh() {
+	public void mittelhandVsVorhand() {
 
 	}
 

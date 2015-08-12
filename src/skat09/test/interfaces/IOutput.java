@@ -209,15 +209,15 @@ public interface IOutput {
 	/**
 	 * L&auml;sst die Hinterhand gegen den vorherigen Gewinner reizen.
 	 * 
-	 * @param gewinner
+	 * @param winner
 	 *            - Spieler, der das Reizen zuvor gewonnen hat
 	 */
-	public abstract void hhVSgewinner(IPlayer gewinner);
+	public abstract void hinterhandVsWinner(IPlayer winner);
 
 	/**
 	 * L&auml;sst die Mittelhand gegen die Vorhand reizen.
 	 */
-	public abstract void mhVSvh();
+	public abstract void mittelhandVsVorhand();
 
 	/**
 	 * Gibt eine Leerzeile aus.
