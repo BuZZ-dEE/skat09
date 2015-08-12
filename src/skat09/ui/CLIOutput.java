@@ -611,7 +611,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void mhVSvh() {
+	public void mittelhandVsVorhand() {
 
 		String mittelhand = tisch.getMittelhand().getName();
 		String vorhand = tisch.getVorhand().getName();
@@ -628,11 +628,11 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void hhVSgewinner(IPlayer gewinner) {
+	public void hinterhandVsWinner(IPlayer winner) {
 
 		String hinterhand = tisch.getHinterhand().getName();
 		System.out.println(Messages.getI18n("game.bidding.against", hinterhand,
-				gewinner.getName()));
+				winner.getName()));
 	}
 
 	@Override
