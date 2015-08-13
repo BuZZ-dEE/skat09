@@ -293,7 +293,7 @@ public class CLIOutput extends Output {
 		boolean eingabeKorrekt = false;
 		while (!eingabeKorrekt) {
 
-			ergebnis = intEinlesen();
+			ergebnis = readIntFromCommandLine();
 
 			if (ergebnis > -1 && ergebnis < 12) {
 
@@ -345,7 +345,7 @@ public class CLIOutput extends Output {
 			zaehler++;
 		}
 
-		ergebnis = intEinlesen();
+		ergebnis = readIntFromCommandLine();
 
 		switch (ergebnis) {
 
@@ -385,7 +385,7 @@ public class CLIOutput extends Output {
 		boolean eingabeKorrekt = false;
 		while (!eingabeKorrekt) {
 
-			ergebnis = intEinlesen();
+			ergebnis = readIntFromCommandLine();
 
 			if (-1 < ergebnis && ergebnis < 4) {
 
@@ -476,7 +476,7 @@ public class CLIOutput extends Output {
 			}
 		}
 		// Einlesen und Ausgeben
-		int zahl = intEinlesen();
+		int zahl = readIntFromCommandLine();
 
 		while (!gueltig) {
 			if (zahl <= blatt.size() - 1) {
@@ -484,7 +484,7 @@ public class CLIOutput extends Output {
 			} else {
 				System.out.println(Messages
 						.getI18n("game.commandline.card.number.input.wrong"));
-				zahl = intEinlesen();
+				zahl = readIntFromCommandLine();
 			}
 		}
 		ergebnis = blatt.remove(zahl);
@@ -495,14 +495,14 @@ public class CLIOutput extends Output {
 	 * Diese Methode liest eine Zahl von der Konsole aus und gibt sie
 	 * zur&uuml;ck.
 	 */
-	public int intEinlesen() {
+	public int readIntFromCommandLine() {
 
-		boolean eingabeKorrekt = false;
+		boolean correctInput = false;
 		String s = "";
-		int ergebnis = -1;
+		int result = -1;
 
 		// Einlesen
-		while (!eingabeKorrekt) {
+		while (!correctInput) {
 			try {
 
 				s = bufferedReader.readLine();
@@ -514,15 +514,15 @@ public class CLIOutput extends Output {
 			}
 			// String to int
 			try {
-				ergebnis = Integer.parseInt(s);
-				eingabeKorrekt = true;
+				result = Integer.parseInt(s);
+				correctInput = true;
 			} catch (Exception E) {
 				System.out.println(Messages
 						.getI18n("game.commandline.input.not.number"));
-				eingabeKorrekt = false;
+				correctInput = false;
 			}
 		}
-		return ergebnis;
+		return result;
 	}
 
 	@Override
@@ -724,7 +724,7 @@ public class CLIOutput extends Output {
 		System.out.println(Messages.getI18n("game.agent.bidding.you.use"));
 		System.out.println(Messages.getI18n("game.agent.bidding.value.enter"));
 		System.out.println(Messages.getI18n("game.agent.bidding.zero.cancel"));
-		ergebnis = intEinlesen();
+		ergebnis = readIntFromCommandLine();
 		while (!fertig) {
 
 			SortedSet<Integer> reizwerte = tisch.getReizwerte();
@@ -733,7 +733,7 @@ public class CLIOutput extends Output {
 				fertig = true;
 			} else {
 
-				ergebnis = intEinlesen();
+				ergebnis = readIntFromCommandLine();
 			}
 		}
 		return ergebnis;
