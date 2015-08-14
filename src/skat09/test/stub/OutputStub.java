@@ -159,7 +159,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void leerzeile() {
+	public void blankLine() {
 		
 	}
 
@@ -293,7 +293,7 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public void spielEinpassen() {
+	public void passGame() {
 		// TODO Auto-generated method stub
 		
 	}

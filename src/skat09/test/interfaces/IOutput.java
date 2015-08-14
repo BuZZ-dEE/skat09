@@ -222,12 +222,12 @@ public interface IOutput {
 	/**
 	 * Gibt eine Leerzeile aus.
 	 */
-	public abstract void leerzeile();
+	public abstract void blankLine();
 
 	/**
 	 * Teilt dem Spieler mit, dass das Spiel eingepasst wird.
 	 */
-	public abstract void spielEinpassen();
+	public abstract void passGame();
 
 	/**
 	 * Teilt dem Spieler mit, dass das Spiel beginnt.

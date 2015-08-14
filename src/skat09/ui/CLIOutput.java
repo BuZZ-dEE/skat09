@@ -33,7 +33,7 @@ public class CLIOutput extends Output {
 	/**
 	 * Der Tisch, auf dem gespielt wird
 	 */
-	private Table tisch;
+	private Table table;
 	/**
 	 * Der BufferedReader wird ben&ouml;tigt, um den Text, den der Benutzer
 	 * eingibt, einzulesen
@@ -63,7 +63,7 @@ public class CLIOutput extends Output {
 	public CLIOutput(Table table) {
 
 		System.out.println(Messages.getI18n("application.welcome"));
-		this.tisch = table;
+		this.table = table;
 
 	}
 
@@ -113,26 +113,26 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void pass(IPlayer spieler) {
+	public void pass(IPlayer player) {
 
-		String name = spieler.getName();
+		String name = player.getName();
 
 		System.out.println(Messages.getI18n("game.hear.off", name));
-		leerzeile();
+		blankLine();
 	}
 
 	/**
 	 * Fragt den Spieler welchen Wert er reizen will und liefert ihn
 	 * zur&uuml;ck.
 	 * 
-	 * @param reizWert
+	 * @param biddingValue
 	 *            - der aktuell gebotene Reizwert
 	 */
-	public boolean bid(int reizWert) {
+	public boolean bid(int biddingValue) {
 
-		System.out.println(Messages.getI18n("game.say.value", reizWert));
+		System.out.println(Messages.getI18n("game.say.value", biddingValue));
 
-		return jaNeinAbfrage();
+		return askForYesNo();
 	}
 
 	@Override
@@ -157,16 +157,16 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public String adversary(int nummer) {
+	public String adversary(int number) {
 
 		String s = "";
 
-		if (nummer == 1) {
+		if (number == 1) {
 
 			System.out.println(Messages
 					.getI18n("game.commandline.adversary.first.choose"));
 
-		} else if (nummer == 2) {
+		} else if (number == 2) {
 
 			System.out.println(Messages
 					.getI18n("game.commandline.adversary.second.choose"));
@@ -201,7 +201,7 @@ public class CLIOutput extends Output {
 
 					System.out.println(Messages
 							.getI18n("game.commandline.input.short.wrong"));
-					s = adversary(nummer);
+					s = adversary(number);
 				}
 			}
 		}
@@ -242,7 +242,7 @@ public class CLIOutput extends Output {
 				}
 			}
 		}
-		hilfe();
+		help();
 		return s;
 
 	}
@@ -256,54 +256,54 @@ public class CLIOutput extends Output {
 
 		System.out.println(Messages.getI18n("game.skat.take"));
 
-		return !jaNeinAbfrage();
+		return !askForYesNo();
 	}
 
 	@Override
-	public int druecken(ArrayList<PlayingCard> blatt, int nummer) {
+	public int druecken(ArrayList<PlayingCard> hand, int number) {
 
 		IGameVariety spielart = new GrandGame();
-		int ergebnis = -1;
+		int result = -1;
 
-		if (nummer == 1) {
+		if (number == 1) {
 			System.out.println(Messages
 					.getI18n("game.skat.choose.press.card.first"));
-		} else if (nummer == 2) {
+		} else if (number == 2) {
 			System.out.println(Messages.getI18n("game.skat.press.card.second"));
-		} else if (nummer == 3) { // TODO why this case?
+		} else if (number == 3) { // TODO why this case?
 			System.out.println(Messages.getI18n("game.skat.press.card.third"));
 		}
 
 		// Karten sortieren
-		tisch.gibMenschlicherSpieler().sortHand(spielart);
+		table.gibMenschlicherSpieler().sortHand(spielart);
 
 		// Alle Karten auflisten
 		System.out.println(Messages.getI18n("game.deck.yours") + ":");
-		for (int i = 0; i < blatt.size(); i++) {
+		for (int i = 0; i < hand.size(); i++) {
 
-			PlayingCard karte = blatt.get(i);
-			Suit farbe = karte.getSuit();
-			Value wert = karte.getValue();
-			System.out.println(i + ": " + farbe + " " + wert); // TODO also
+			PlayingCard card = hand.get(i);
+			Suit suit = card.getSuit();
+			Value value = card.getValue();
+			System.out.println(i + ": " + suit + " " + value); // TODO also
 																// translate
 		}
 
 		// Einlesen
 		// TODO Sechserskat anpassen!
-		boolean eingabeKorrekt = false;
-		while (!eingabeKorrekt) {
+		boolean correctInput = false;
+		while (!correctInput) {
 
-			ergebnis = readIntFromCommandLine();
+			result = readIntFromCommandLine();
 
-			if (ergebnis > -1 && ergebnis < 12) {
+			if (result > -1 && result < 12) {
 
-				eingabeKorrekt = true;
+				correctInput = true;
 			} else {
 
 				System.out.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
-		return ergebnis;
+		return result;
 	}
 
 	@Override
@@ -311,7 +311,7 @@ public class CLIOutput extends Output {
 
 		System.out.println(Messages.getI18n("game.schneider.play.choose"));
 
-		return jaNeinAbfrage();
+		return askForYesNo();
 	}
 
 	@Override
@@ -319,7 +319,7 @@ public class CLIOutput extends Output {
 
 		System.out.println(Messages.getI18n("game.schwarz.play.choose"));
 
-		return jaNeinAbfrage();
+		return askForYesNo();
 	}
 
 	@Override
@@ -327,36 +327,36 @@ public class CLIOutput extends Output {
 
 		System.out.println(Messages.getI18n("game.ouvert.play.choose"));
 
-		return jaNeinAbfrage();
+		return askForYesNo();
 	}
 
 	@Override
 	public IGameVariety declareSuit() {
 
-		int zaehler = 0;
-		int ergebnis = -1;
-		IGameVariety rueckgabe = null;
+		int counter = 0;
+		int result = -1;
+		IGameVariety gameVariety = null;
 
 		System.out.println(Messages.getI18n("game.type.number.choose"));
-		for (Enum<GameVarietyName> spielartbezeichnung : GameVarietyName
+		for (Enum<GameVarietyName> gameVarietyName : GameVarietyName
 				.values()) {
 
-			System.out.println(zaehler + ": " + spielartbezeichnung);
-			zaehler++;
+			System.out.println(counter + ": " + gameVarietyName);
+			counter++;
 		}
 
-		ergebnis = readIntFromCommandLine();
+		result = readIntFromCommandLine();
 
-		switch (ergebnis) {
+		switch (result) {
 
 		case 0:
-			rueckgabe = new GrandGame();
+			gameVariety = new GrandGame();
 			break;
 		case 1:
-			rueckgabe = new NullGame();
+			gameVariety = new NullGame();
 			break;
 		case 2:
-			rueckgabe = new SuitGame(null);
+			gameVariety = new SuitGame(null);
 			break;
 		default:
 			System.out.println(Messages.getI18n("game.type.input.wrong"));
@@ -364,100 +364,98 @@ public class CLIOutput extends Output {
 			declareSuit();
 		}
 
-		return rueckgabe;
+		return gameVariety;
 	}
 
 	@Override
 	public SuitGame suitGame() {
 
-		SuitGame rueckgabe = null;
-		int zaehler = 0;
-		int ergebnis = -1;
+		SuitGame suitGame = null;
+		int counter = 0;
+		int result = -1;
 
 		System.out.println(Messages.getI18n("game.commandline.trump.choose"));
-		for (Enum<Suit> farbe : Suit.values()) {
+		for (Enum<Suit> suit : Suit.values()) {
 
-			System.out.println(zaehler + ": " + farbe);
-			zaehler++;
+			System.out.println(counter + ": " + suit);
+			counter++;
 		}
 
 		// G&uuml;tige Zahl readInput
-		boolean eingabeKorrekt = false;
-		while (!eingabeKorrekt) {
+		boolean correctInput = false;
+		while (!correctInput) {
 
-			ergebnis = readIntFromCommandLine();
+			result = readIntFromCommandLine();
 
-			if (-1 < ergebnis && ergebnis < 4) {
+			if (-1 < result && result < 4) {
 
-				eingabeKorrekt = true;
+				correctInput = true;
 			} else {
 
 				System.out.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
-		switch (ergebnis) {
+		switch (result) {
 
 		case 0:
-			rueckgabe = new SuitGame(Suit.BELLS);
+			suitGame = new SuitGame(Suit.BELLS);
 			break;
 		case 1:
-			rueckgabe = new SuitGame(Suit.HEARTS);
+			suitGame = new SuitGame(Suit.HEARTS);
 			break;
 		case 2:
-			rueckgabe = new SuitGame(Suit.LEAVES);
+			suitGame = new SuitGame(Suit.LEAVES);
 			break;
 		case 3:
-			rueckgabe = new SuitGame(Suit.ACORNS);
+			suitGame = new SuitGame(Suit.ACORNS);
 			break;
 		default:
 			System.out.println(Messages.getI18n("game.color.input.wrong"));
 		}
-		return rueckgabe;
+		return suitGame;
 	}
 
 	@Override
-	public void outputHand(IPlayer spieler) {
+	public void outputHand(IPlayer player) {
 
-		ArrayList<PlayingCard> blatt = spieler.getHand();
+		ArrayList<PlayingCard> hand = player.getHand();
 
 		System.out.println(Messages.getI18n("game.hand.card.yours"));
 
-		for (int i = 0; i < blatt.size(); i++) {
+		for (int i = 0; i < hand.size(); i++) {
 
-			PlayingCard karte = blatt.get(i);
-			// Farbe suitGame = karte.getFarbe();
-			// Wert wert = karte.getWert();
-			System.out.println(i + ": " + karte.toString());
+			PlayingCard card = hand.get(i);
+			System.out.println(i + ": " + card.toString());
 		}
 
 		System.out.println();
 	}
 
 	@Override
-	public PlayingCard playCard(PlayingCard[] gespielteKarten, IPlayer spieler) {
+	public PlayingCard playCard(PlayingCard[] playedCards, IPlayer player) {
 
-		PlayingCard ergebnis = null;
-		ArrayList<PlayingCard> blatt = spieler.getHand();
-		// gueltig wird true gesetzt, wenn eine gueltige Zahl von Konsole
+		PlayingCard result = null;
+		ArrayList<PlayingCard> hand = player.getHand();
+		// valid wird true gesetzt, wenn eine gueltige Zahl von Konsole
 		// eingelesen wurde.
-		boolean gueltig = false;
+		boolean valid = false;
 
 		// Hilfen:
 		if (showPlayableCardsHelp) {
-			hilfeSpielbar(gespielteKarten);
+			showPlayableCardsHelp(playedCards);
 		}
 		if (showLastTricksHelp) {
-			hilfeStiche();
+			showPastTricksHelp();
 		}
 
 		// Handkarten zeigen
 		System.out
 				.println(Messages.getI18n("game.commandline.card.play.input"));
-		leerzeile();
-		outputHand(spieler);
+		blankLine();
+		outputHand(player);
 
 		// Tischkarten zeigen
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
 			System.out.println(Messages.getI18n("game.getOut.you"));
 		} else {
@@ -466,29 +464,29 @@ public class CLIOutput extends Output {
 
 			for (int i = 0; i < 3; i++) {
 
-				if (gespielteKarten[i] != null) {
+				if (playedCards[i] != null) {
 					System.out.println(i
 							+ ": "
 							+ Messages.getI18n("player.card.played",
-									gespielteKarten[i].getOwner().getName(),
-									gespielteKarten[i].toString()));
+									playedCards[i].getOwner().getName(),
+									playedCards[i].toString()));
 				}
 			}
 		}
 		// Einlesen und Ausgeben
-		int zahl = readIntFromCommandLine();
+		int number = readIntFromCommandLine();
 
-		while (!gueltig) {
-			if (zahl <= blatt.size() - 1) {
-				gueltig = true;
+		while (!valid) {
+			if (number <= hand.size() - 1) {
+				valid = true;
 			} else {
 				System.out.println(Messages
 						.getI18n("game.commandline.card.number.input.wrong"));
-				zahl = readIntFromCommandLine();
+				number = readIntFromCommandLine();
 			}
 		}
-		ergebnis = blatt.remove(zahl);
-		return ergebnis;
+		result = hand.remove(number);
+		return result;
 	}
 
 	/**
@@ -526,10 +524,10 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void trickWon(IPlayer spieler) {
+	public void trickWon(IPlayer player) {
 
 		System.out.println(">> "
-				+ Messages.getI18n("player.trick.won", spieler.getName()));
+				+ Messages.getI18n("player.trick.won", player.getName()));
 	}
 
 	/**
@@ -553,24 +551,24 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void showEvaluation(boolean isWon) {
-		if (tisch.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
 			if (isWon == true) {
-				System.out.println(Messages.getI18n("player.won", tisch
+				System.out.println(Messages.getI18n("player.won", table
 						.ermittleAlleinspieler().getName()));
 				System.out.println(Messages.getI18n(
 						"player.win.score",
-						tisch.ermittleAlleinspieler()
+						table.ermittleAlleinspieler()
 								.getGames()
-								.get(tisch.ermittleAlleinspieler().getGames()
+								.get(table.ermittleAlleinspieler().getGames()
 										.size() - 1)));
 			} else {
-				System.out.println(Messages.getI18n("player.loose", tisch
+				System.out.println(Messages.getI18n("player.loose", table
 						.ermittleAlleinspieler().getName()));
 				System.out.println(Messages.getI18n(
 						"player.looser.score",
-						tisch.ermittleAlleinspieler()
+						table.ermittleAlleinspieler()
 								.getGames()
-								.get(tisch.ermittleAlleinspieler().getGames()
+								.get(table.ermittleAlleinspieler().getGames()
 										.size() - 1)));
 			}
 		} else {
@@ -578,17 +576,17 @@ public class CLIOutput extends Output {
 				System.out.println(Messages.getI18n("player.winner") + " ");
 				System.out.println(Messages.getI18n(
 						"player.winner.score",
-						tisch.gibMenschlicherSpieler()
+						table.gibMenschlicherSpieler()
 								.getGames()
-								.get(tisch.gibMenschlicherSpieler().getGames()
+								.get(table.gibMenschlicherSpieler().getGames()
 										.size() - 1)));
 			} else {
 				System.out.println(Messages.getI18n("player.looser"));
 				System.out.println(Messages.getI18n(
 						"player.looser.score",
-						tisch.gibMenschlicherSpieler()
+						table.gibMenschlicherSpieler()
 								.getGames()
-								.get(tisch.gibMenschlicherSpieler().getGames()
+								.get(table.gibMenschlicherSpieler().getGames()
 										.size() - 1)));
 			}
 		}
@@ -598,7 +596,7 @@ public class CLIOutput extends Output {
 	public void gameOver() {
 		System.out.println(Messages.getI18n("game.over"));
 		System.out.println(Messages.getI18n("game.skat.in.was"));
-		PlayingCard[] skat = tisch.getSkat();
+		PlayingCard[] skat = table.getSkat();
 		System.out.println(Messages.getI18n("game.skat.card.first",
 				skat[0].toString()));
 		System.out.println(Messages.getI18n("game.skat.card.second",
@@ -613,8 +611,8 @@ public class CLIOutput extends Output {
 	@Override
 	public void mittelhandVsVorhand() {
 
-		String mittelhand = tisch.getMittelhand().getName();
-		String vorhand = tisch.getVorhand().getName();
+		String mittelhand = table.getMittelhand().getName();
+		String vorhand = table.getVorhand().getName();
 		System.out.println(Messages.getI18n("game.bidding.against", mittelhand,
 				vorhand));
 	}
@@ -622,7 +620,7 @@ public class CLIOutput extends Output {
 	/**
 	 * Gibt eine Leerzeile auf der Konsole aus.
 	 */
-	public void leerzeile() {
+	public void blankLine() {
 
 		System.out.println();
 	}
@@ -630,13 +628,13 @@ public class CLIOutput extends Output {
 	@Override
 	public void hinterhandVsWinner(IPlayer winner) {
 
-		String hinterhand = tisch.getHinterhand().getName();
+		String hinterhand = table.getHinterhand().getName();
 		System.out.println(Messages.getI18n("game.bidding.against", hinterhand,
 				winner.getName()));
 	}
 
 	@Override
-	public void spielEinpassen() {
+	public void passGame() {
 
 		System.out.println(Messages.getI18n("game.bidding.cancel"));
 	}
@@ -656,40 +654,40 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void augen(int augen) {
-		System.out.println(Messages.getI18n("player.declarer.points", tisch
-				.ermittleAlleinspieler().getName(), augen));
+		System.out.println(Messages.getI18n("player.declarer.points", table
+                .ermittleAlleinspieler().getName(), augen));
 
 	}
 
 	@Override
 	public void points(int punkte) {
-		System.out.println(Messages.getI18n("player.declarer.score", tisch
-				.ermittleAlleinspieler().getName(), punkte));
+		System.out.println(Messages.getI18n("player.declarer.score", table
+                .ermittleAlleinspieler().getName(), punkte));
 	}
 
 	@Override
 	public void showDeclarer() {
-		System.out.println(Messages.getI18n("player.name.playing", tisch
-				.ermittleAlleinspieler().getName()));
+		System.out.println(Messages.getI18n("player.name.playing", table
+                .ermittleAlleinspieler().getName()));
 
 	}
 
 	/**
 	 * Gibt an welcher Spieler das Reizen gewonnen hat
 	 * 
-	 * @param spieler
+	 * @param player
 	 */
-	public void gewinntReizen(IPlayer spieler) {
+	public void gewinntReizen(IPlayer player) {
 
 		System.out.println(Messages.getI18n(
-				"player.win.bidding.middlehand.forehand", spieler.getName()));
+                "player.win.bidding.middlehand.forehand", player.getName()));
 	}
 
 	@Override
 	public void trump() {
-		if (tisch.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
 			System.out.println(Messages.getI18n("player.name.playing.game",
-					tisch.ermittleAlleinspieler().getName(), tisch
+					table.ermittleAlleinspieler().getName(), table
 							.getSpielart().toString()));
 			System.out.println("");
 		} else {
@@ -700,10 +698,10 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void newGame() {
-		leerzeile();
+		blankLine();
 		System.out.println("*************************************");
 		System.out.println(Messages.getI18n("game.new.begins"));
-		leerzeile();
+		blankLine();
 
 	}
 
@@ -712,31 +710,31 @@ public class CLIOutput extends Output {
 
 		System.out.println(Messages.getI18n("game.agent.bidding.use"));
 
-		return jaNeinAbfrage();
+		return askForYesNo();
 	}
 
 	@Override
 	public int reizlimitFestlegen() {
 
-		int ergebnis = -1;
-		boolean fertig = false;
+		int result = -1;
+		boolean ready = false;
 
 		System.out.println(Messages.getI18n("game.agent.bidding.you.use"));
 		System.out.println(Messages.getI18n("game.agent.bidding.value.enter"));
 		System.out.println(Messages.getI18n("game.agent.bidding.zero.cancel"));
-		ergebnis = readIntFromCommandLine();
-		while (!fertig) {
+		result = readIntFromCommandLine();
+		while (!ready) {
 
-			SortedSet<Integer> reizwerte = tisch.getReizwerte();
-			if (reizwerte.contains(ergebnis) || ergebnis == 0) {
+			SortedSet<Integer> reizwerte = table.getReizwerte();
+			if (reizwerte.contains(result) || result == 0) {
 
-				fertig = true;
+				ready = true;
 			} else {
 
-				ergebnis = readIntFromCommandLine();
+				result = readIntFromCommandLine();
 			}
 		}
-		return ergebnis;
+		return result;
 	}
 
 	@Override
@@ -766,7 +764,7 @@ public class CLIOutput extends Output {
 
 		System.out.println(Messages.getI18n("player.game.end"));
 
-		return jaNeinAbfrage();
+		return askForYesNo();
 	}
 
 	/**
@@ -774,17 +772,17 @@ public class CLIOutput extends Output {
 	 * 
 	 * @return true, falls ja; false falls nein
 	 */
-	public boolean jaNeinAbfrage() {
+	public boolean askForYesNo() {
 
 		System.out.println(Messages.getI18n("application.yes.no.enter",
 				Messages.getI18n("application.y"),
 				Messages.getI18n("application.n")));
 
-		boolean eingabeKorrekt = false;
-		boolean ergebnis = false;
+		boolean correctInput = false;
+		boolean result = false;
 		String string = "";
 
-		while (!eingabeKorrekt) {
+		while (!correctInput) {
 			try {
 
 				string = bufferedReader.readLine();
@@ -796,33 +794,33 @@ public class CLIOutput extends Output {
 			}
 			if (string.equalsIgnoreCase(Messages.getI18n("application.y"))) {
 
-				ergebnis = true;
-				eingabeKorrekt = true;
+				result = true;
+				correctInput = true;
 			} else if (string.equalsIgnoreCase(Messages
 					.getI18n("application.n"))) {
 
-				ergebnis = false;
-				eingabeKorrekt = true;
+				result = false;
+				correctInput = true;
 			} else {
 
 				System.out.println(Messages.getI18n("application.input.wrong"));
 			}
 		}
-		return ergebnis;
+		return result;
 	}
 
 	@Override
 	public void outputPoints() {
 		System.out.println("******** ****** ********");
 		System.out.println(Messages.getI18n("game.score.list.current"));
-		System.out.println(tisch.getSpieler1().getName() + "     "
-				+ tisch.getSpieler2().getName() + "     "
-				+ tisch.getSpieler3().getName());
-		for (int i = 0; i < tisch.getSpieler1().getGames().size(); i++) {
-			System.out.println(tisch.getSpieler1().getGames().get(i) + "     "
-					+ tisch.getSpieler2().getGames().get(i)
+		System.out.println(table.getSpieler1().getName() + "     "
+				+ table.getSpieler2().getName() + "     "
+				+ table.getSpieler3().getName());
+		for (int i = 0; i < table.getSpieler1().getGames().size(); i++) {
+			System.out.println(table.getSpieler1().getGames().get(i) + "     "
+					+ table.getSpieler2().getGames().get(i)
 					+ "               "
-					+ tisch.getSpieler3().getGames().get(i));
+					+ table.getSpieler3().getGames().get(i));
 		}
 		System.out.println("******** ****** ********");
 	}
@@ -901,19 +899,19 @@ public class CLIOutput extends Output {
 	 * Stiche einsehen will und ob er die spielbaren Karten angezeigt haben
 	 * will.
 	 */
-	public void hilfe() {
+	public void help() {
 		System.out.println(Messages.getI18n("game.help.want"));
-		boolean ergebnis = jaNeinAbfrage();
-		if (ergebnis) {
+		boolean result = askForYesNo();
+		if (result) {
 			System.out.println(Messages.getI18n("game.playable.cards.show.question"));
-			ergebnis = jaNeinAbfrage();
-			if (ergebnis) {
+			result = askForYesNo();
+			if (result) {
 				showPlayableCardsHelp = true;
 			}
 			System.out.println(Messages
 					.getI18n("game.trick.last.show.question"));
-			ergebnis = jaNeinAbfrage();
-			if (ergebnis) {
+			result = askForYesNo();
+			if (result) {
 				showLastTricksHelp = true;
 			}
 		}
@@ -922,27 +920,27 @@ public class CLIOutput extends Output {
 	/**
 	 * Gibt die spielbaren Karten aus.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            Die Karten, die sich schon auf dem Tisch befinden
 	 */
-	public void hilfeSpielbar(PlayingCard[] gespielteKarten) {
-		ArrayList<PlayingCard> karten = tisch.gibMenschlicherSpieler()
-				.playableCards(gespielteKarten);
+	public void showPlayableCardsHelp(PlayingCard[] playedCards) {
+		ArrayList<PlayingCard> cards = table.gibMenschlicherSpieler()
+				.playableCards(playedCards);
 		System.out.println(Messages.getI18n("game.playable.cards"));
-		for (PlayingCard karte : karten) {
-			System.out.println(karte.toString());
+		for (PlayingCard card : cards) {
+			System.out.println(card.toString());
 		}
 	}
 
 	/**
 	 * Gibt die vergangenen Stiche aus;
 	 */
-	public void hilfeStiche() {
-		ArrayList<PlayingCard> karten = tisch.getSpieler1()
+	public void showPastTricksHelp() {
+		ArrayList<PlayingCard> cards = table.getSpieler1()
 				.getAllPlayedCards();
 		System.out.println(Messages.getI18n("game.tricks.last"));
-		for (PlayingCard karte : karten) {
-			System.out.println(karte.toString());
+		for (PlayingCard card : cards) {
+			System.out.println(card.toString());
 		}
 	}
 
@@ -954,9 +952,9 @@ public class CLIOutput extends Output {
 				+ Messages.getI18n("game.statistic") + "**************");
 		System.out.println("");
 
-		IPlayer[] allPlayer = tisch.getAllPlayer();
+		IPlayer[] allPlayer = table.getAllPlayer();
 		for (IPlayer player : allPlayer) {
-			statisticOut(tisch, player);
+			statisticOut(table, player);
 		}
 	}
 
