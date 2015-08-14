@@ -287,7 +287,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void leerzeile() {
+	public void blankLine() {
 
 	}
 
@@ -303,7 +303,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spielEinpassen() {
+	public void passGame() {
 
 	}
 

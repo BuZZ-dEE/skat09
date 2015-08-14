@@ -252,15 +252,15 @@ public class Controller implements Observer, IController {
 
 		// reizen Mittelhand vs. Vorhand
 		output.mittelhandVsVorhand();
-		output.leerzeile();
+		output.blankLine();
 		gewinner = reizen1(vorhand, mittelhand);
 
 		// reizen Hinterhand vs. Gewinner
 		output.hinterhandVsWinner(gewinner);
-		output.leerzeile();
+		output.blankLine();
 		alleinspieler = reizen2(gewinner, hinterhand);
 
-		// Auswertung: Falls niemand spielen will, spielEinpassen setzten,
+		// Auswertung: Falls niemand spielen will, passGame setzten,
 		// ansonsten Alleinspieler im Spiele setzen
 		if (alleinspieler == null) {
 
@@ -655,9 +655,9 @@ public class Controller implements Observer, IController {
 			IPlayer besitzer = karte.getOwner();
 			output.spieltKarte(besitzer, karte);
 		}
-		output.leerzeile();
+		output.blankLine();
 		output.trickWon(gewinner);
-		output.leerzeile();
+		output.blankLine();
 	}
 
 	//@Override
@@ -787,8 +787,8 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void einpassen() throws IOException {
 
-		output.spielEinpassen();
-		output.leerzeile();
+		output.passGame();
+		output.blankLine();
 		table.positionWechseln();
 		aufrauemen();
 	}

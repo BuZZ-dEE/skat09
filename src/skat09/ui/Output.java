@@ -107,10 +107,10 @@ abstract public class Output implements IOutput {
 	public abstract void mittelhandVsVorhand();
 
 	//@Override
-	public abstract void leerzeile();
+	public abstract void blankLine();
 
 	//@Override
-	public abstract void spielEinpassen();
+	public abstract void passGame();
 
 	//@Override
 	public abstract void gameBegins();
