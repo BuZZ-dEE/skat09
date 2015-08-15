@@ -327,7 +327,7 @@ public class Table extends Observable {
 	 * 
 	 * @return gew&auml;tle variante
 	 */
-	public SkatVariant getVariante() {
+	public SkatVariant getVariant() {
 
 		return variante;
 	}
@@ -500,7 +500,7 @@ public class Table extends Observable {
 	 * @param sechserskat
 	 *            the sechserskat to set
 	 */
-	public void setSechserskat(boolean sechserskat) {
+	public void setSixSkat(boolean sechserskat) {
 		this.sechserskat = sechserskat;
 		gewinngrenze = 73;
 		spaltarschwert = 72;
@@ -516,7 +516,7 @@ public class Table extends Observable {
 	 * @param spieler1
 	 *            - der neue Spieler
 	 */
-	public void setSpieler1(IPlayer spieler1) {
+	public void setPlayer1(IPlayer spieler1) {
 
 		this.spieler1 = spieler1;
 		// Spielnachricht nachricht = new Spielnachricht(
@@ -532,7 +532,7 @@ public class Table extends Observable {
 	 * @param spieler2
 	 *            - der neue Spieler
 	 */
-	public void setSpieler2(IPlayer spieler2) {
+	public void setPlayer2(IPlayer spieler2) {
 
 		this.spieler2 = spieler2;
 	}
@@ -543,7 +543,7 @@ public class Table extends Observable {
 	 * @param spieler3
 	 *            - der neue Spieler
 	 */
-	public void setSpieler3(IPlayer spieler3) {
+	public void setPlayer3(IPlayer spieler3) {
 
 		this.spieler3 = spieler3;
 	}
@@ -638,7 +638,7 @@ public class Table extends Observable {
 	 * @param wert
 	 *            - maximal gereizter Wert
 	 */
-	public void setReizagentWert(int wert) {
+	public void setBiddingAgentValue(int wert) {
 
 		reizagentWert = wert;
 	}
@@ -946,7 +946,7 @@ public class Table extends Observable {
 	 * PositionInitialisieren weist jedem Spieler eine Anfangsposition am Tisch
 	 * zu.
 	 */
-	public void positionInitialisieren() {
+	public void initializePositions() {
 
 		spieler1.setPosition(Position.VORHAND);
 		spieler2.setPosition(Position.MITTELHAND);
@@ -1206,7 +1206,7 @@ public class Table extends Observable {
 	/**
 	 * Diese Methode liefert den menschlichen Spieler zur&uuml;ck.
 	 */
-	public IPlayer gibMenschlicherSpieler() {
+	public IPlayer getHumanPlayer() {
 
 		IPlayer ergebnis = null;
 
@@ -1324,12 +1324,12 @@ public class Table extends Observable {
 				spieler3.setGames(spieler[i].getGames());
 			}
 		}
-		// gibMenschlicherSpieler().getSpiele().add(0);
-		int l = gibMenschlicherSpieler().getGames().size();
+		// getHumanPlayer().getSpiele().add(0);
+		int l = getHumanPlayer().getGames().size();
 		// Hat der menschliche Spieler 0 oder mehr Punkte, gilt dies als
 		// gewonnen.
 
-		if (gibMenschlicherSpieler().getGames().get(l - 1) >= 0) {
+		if (getHumanPlayer().getGames().get(l - 1) >= 0) {
 			gewonnen = true;
 		}
 

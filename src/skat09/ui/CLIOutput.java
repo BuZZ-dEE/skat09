@@ -275,7 +275,7 @@ public class CLIOutput extends Output {
 		}
 
 		// Karten sortieren
-		table.gibMenschlicherSpieler().sortHand(spielart);
+		table.getHumanPlayer().sortHand(spielart);
 
 		// Alle Karten auflisten
 		System.out.println(Messages.getI18n("game.deck.yours") + ":");
@@ -576,17 +576,17 @@ public class CLIOutput extends Output {
 				System.out.println(Messages.getI18n("player.winner") + " ");
 				System.out.println(Messages.getI18n(
 						"player.winner.score",
-						table.gibMenschlicherSpieler()
+						table.getHumanPlayer()
 								.getGames()
-								.get(table.gibMenschlicherSpieler().getGames()
+								.get(table.getHumanPlayer().getGames()
 										.size() - 1)));
 			} else {
 				System.out.println(Messages.getI18n("player.looser"));
 				System.out.println(Messages.getI18n(
 						"player.looser.score",
-						table.gibMenschlicherSpieler()
+						table.getHumanPlayer()
 								.getGames()
-								.get(table.gibMenschlicherSpieler().getGames()
+								.get(table.getHumanPlayer().getGames()
 										.size() - 1)));
 			}
 		}
@@ -924,7 +924,7 @@ public class CLIOutput extends Output {
 	 *            Die Karten, die sich schon auf dem Tisch befinden
 	 */
 	public void showPlayableCardsHelp(PlayingCard[] playedCards) {
-		ArrayList<PlayingCard> cards = table.gibMenschlicherSpieler()
+		ArrayList<PlayingCard> cards = table.getHumanPlayer()
 				.playableCards(playedCards);
 		System.out.println(Messages.getI18n("game.playable.cards"));
 		for (PlayingCard card : cards) {

@@ -154,7 +154,7 @@ public class GUIOutput extends Output {
 	@Override
 	public int druecken(ArrayList<PlayingCard> blatt, int nummer) {
 
-		hfenster.blattneu(tisch.gibMenschlicherSpieler());
+		hfenster.blattneu(tisch.getHumanPlayer());
 		hfenster.setZug(true);
 		warte();
 		int kartennummer = hfenster.getGewaehlteKarte();
@@ -369,7 +369,7 @@ public class GUIOutput extends Output {
 
 	@Override
 	public void spieltKarte(IPlayer spieler, PlayingCard karte) {
-		if (tisch.gibMenschlicherSpieler().getName() == spieler.getName()) {
+		if (tisch.getHumanPlayer().getName() == spieler.getName()) {
 			hfenster.menschSpieltKarte();
 		} else {
 			hfenster.spieltKarte(karte);
