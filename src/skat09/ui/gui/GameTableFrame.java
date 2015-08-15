@@ -829,18 +829,18 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 				&& tisch.getSpielart().getGameVariety() == GameVarietyName.RAMSCH) {
 			s = Messages.getI18n(
 					"game.statistic.player.human.score.won",
-					tisch.gibMenschlicherSpieler()
+					tisch.getHumanPlayer()
 							.getGames()
-							.get(tisch.gibMenschlicherSpieler().getGames()
+							.get(tisch.getHumanPlayer().getGames()
 									.size() - 1));
 		}
 		if (!gewonnen
 				&& tisch.getSpielart().getGameVariety() == GameVarietyName.RAMSCH) {
 			s = Messages.getI18n(
 					"game.statistic.player.human.score.lost",
-					tisch.gibMenschlicherSpieler()
+					tisch.getHumanPlayer()
 							.getGames()
-							.get(tisch.gibMenschlicherSpieler().getGames()
+							.get(tisch.getHumanPlayer().getGames()
 									.size() - 1));
 		}
 		return s;

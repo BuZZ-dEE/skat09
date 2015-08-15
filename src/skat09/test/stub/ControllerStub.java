@@ -29,7 +29,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void anmelden() {
+	public void logIn() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -47,7 +47,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void bereiteSpielvor() {
+	public void prepareGame() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -77,7 +77,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void leiteReizen() throws IOException {
+	public void coordinateBidding() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -107,13 +107,13 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public IPlayer reizen1(IPlayer spieler1, IPlayer spieler2) {
+	public IPlayer bidding1(IPlayer spieler1, IPlayer spieler2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	public IPlayer reizen2(IPlayer spieler1, IPlayer spieler2) {
+	public IPlayer bidding2(IPlayer spieler1, IPlayer spieler2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -149,25 +149,25 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public boolean spielBeenden() {
+	public boolean quitGame() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	
-	public void spielIntSkat() throws IOException {
+	public void playIntSkat() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
-	public void spielRaeuberskat() throws IOException {
+	public void playRaeuberskat() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
-	public void spielRamschBock() throws IOException {
+	public void playRamschBock() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -184,7 +184,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void waehleGegner() {
+	public void selectAdversary() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -196,7 +196,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void waehleSkatblatt() {
+	public void selectSkatDeck() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -208,7 +208,7 @@ public class ControllerStub implements IController{
 	}
 
 
-	public void namenVergleich() {
+	public void namesComparison() {
 		// TODO Auto-generated method stub
 		
 	}

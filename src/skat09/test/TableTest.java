@@ -64,9 +64,9 @@ public class TableTest {
 		spieler1.setPosition(Position.VORHAND);
 		spieler2.setPosition(Position.MITTELHAND);
 		spieler3.setPosition(Position.HINTERHAND);
-		tisch.setSpieler1(spieler1);
-		tisch.setSpieler2(spieler2);
-		tisch.setSpieler3(spieler3);
+		tisch.setPlayer1(spieler1);
+		tisch.setPlayer2(spieler2);
+		tisch.setPlayer3(spieler3);
 		tisch.getSpieler1().setIsDeclarer(true);
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
@@ -147,11 +147,11 @@ public class TableTest {
 		assertEquals(spielart, tisch.getSpielart());
 	}
 	
-	//Testet die Methode getVariante
+	//Testet die Methode getVariant
 	@Test
 	public void getVarianteTest() {
 		tisch.setVariant(SkatVariant.RAEUBER);
-		assertEquals(SkatVariant.RAEUBER, tisch.getVariante());
+		assertEquals(SkatVariant.RAEUBER, tisch.getVariant());
 	}
 	
 	//Testet die Methode getReizwert
@@ -165,7 +165,7 @@ public class TableTest {
 	//Testet die Methode getReizagentWert
 	@Test
 	public void reizagentWertTest() {
-		tisch.setReizagentWert(42);
+		tisch.setBiddingAgentValue(42);
 		assertEquals(42, tisch.getReizagentWert());
 	}
 	
@@ -217,7 +217,7 @@ public class TableTest {
 	// Testet ob das erstellte Deck tatsaechlich alle Karten enthaelt
 	@Test
 	public void erstelleDeckTest() {
-		tisch.setSechserskat(true);
+		tisch.setSixSkat(true);
 		tisch.erstelleDeck();
 		assertEquals(36, tisch.getDeck().size());
 	}
@@ -378,7 +378,7 @@ public class TableTest {
 	
 	@Test
 	public void kartenAusteilenTest5() {
-		tisch.setSechserskat(true);
+		tisch.setSixSkat(true);
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
 		assertEquals(0, tisch.getDeck().size());
@@ -502,7 +502,7 @@ public class TableTest {
 
 	@Test
 	public void positionInitialisierenTest() {
-		tisch.positionInitialisieren();
+		tisch.initializePositions();
 		int erg = 0;
 		if (tisch.getSpieler1().getPosition() == Position.VORHAND) {
 			erg = erg + 1;
@@ -672,23 +672,23 @@ public class TableTest {
 	
 	@Test
 	public void gibMenschlicherSpielerTest1() {
-		assertEquals(spieler3, tisch.gibMenschlicherSpieler());
+		assertEquals(spieler3, tisch.getHumanPlayer());
 	}
 	
 	@Test
 	public void gibMenschlicherSpielerTest2() {
-		tisch.setSpieler1(spieler3);
-		tisch.setSpieler2(spieler1);
-		tisch.setSpieler3(spieler2);
-		assertEquals(spieler3, tisch.gibMenschlicherSpieler());
+		tisch.setPlayer1(spieler3);
+		tisch.setPlayer2(spieler1);
+		tisch.setPlayer3(spieler2);
+		assertEquals(spieler3, tisch.getHumanPlayer());
 	}
 	
 	@Test
 	public void gibMenschlicherSpielerTest3() {
-		tisch.setSpieler1(spieler1);
-		tisch.setSpieler2(spieler3);
-		tisch.setSpieler3(spieler2);
-		assertEquals(spieler3, tisch.gibMenschlicherSpieler());
+		tisch.setPlayer1(spieler1);
+		tisch.setPlayer2(spieler3);
+		tisch.setPlayer3(spieler2);
+		assertEquals(spieler3, tisch.getHumanPlayer());
 	}
 	
 	@Test
@@ -982,8 +982,8 @@ public class TableTest {
 	@Test
 	public void spielAuswertenTest4() {
 		IPlayer tmp = tisch.getSpieler1();
-		tisch.setSpieler1(spieler2);
-		tisch.setSpieler2(tmp);
+		tisch.setPlayer1(spieler2);
+		tisch.setPlayer2(tmp);
 		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertFalse(tisch.spielAuswerten());
 	}
@@ -991,8 +991,8 @@ public class TableTest {
 	@Test
 	public void spielAuswertenTest5() {
 		IPlayer tmp = tisch.getSpieler1();
-		tisch.setSpieler1(spieler3);
-		tisch.setSpieler3(tmp);
+		tisch.setPlayer1(spieler3);
+		tisch.setPlayer3(tmp);
 		tisch.ermittleAlleinspieler().getTricks().clear();
 		assertFalse(tisch.spielAuswerten());
 	}
@@ -1002,7 +1002,7 @@ public class TableTest {
 		
 		tisch.setSpielart(new Ramsch());
 		tisch.setBock(true);
-		tisch.setSechserskat(true);
+		tisch.setSixSkat(true);
 		PlayingCard[] skat = new PlayingCard[3];
 		skat[0] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
 		skat[1] = new PlayingCard(Suit.HEARTS, Value.TEN);
@@ -1251,7 +1251,7 @@ public class TableTest {
 	@Test
 	public void anderesSpielVerlorenTest3() {
 	
-		tisch.setSechserskat(false);
+		tisch.setSixSkat(false);
 		tisch.setSchwarz(true);
 		tisch.erstelleDeck();
 		spieler1.getTricks().clear();

@@ -40,12 +40,12 @@ public interface IController {
 	 * Leitet die Anmeldung
 	 * 
 	 */
-	public abstract void anmelden();
+	public abstract void logIn();
 
 	/**
 	 * Menschlicher Spieler soll seine Gegner w&auml;hlen.
 	 */
-	public abstract void waehleGegner();
+	public abstract void selectAdversary();
 	/**
 	 * Die vom menschlichen Spieler gew&auml;hlte Skatart wird gesetzt
 	 */
@@ -54,7 +54,7 @@ public interface IController {
 	/**
 	 * Die vom menschlichen Spieler gew&auml;hlte Blattart wird gesetzt
 	 */
-	public abstract void waehleSkatblatt();
+	public abstract void selectSkatDeck();
 
 	/**
 	 * Leitet das Reizen und ruft die Untermethode reizen auf, um den
@@ -64,7 +64,7 @@ public interface IController {
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void leiteReizen() throws IOException;
+	public abstract void coordinateBidding() throws IOException;
 
 	/**
 	 * Organisiert das Reizen zwischen zwei Spielern und liefert den Gewinner.
@@ -77,7 +77,7 @@ public interface IController {
 	 *            - Spieler der bid muss.
 	 * @return Spieler, der gewonnen hat oder null.
 	 */
-	public abstract IPlayer reizen2(IPlayer spieler1, IPlayer spieler2);
+	public abstract IPlayer bidding2(IPlayer spieler1, IPlayer spieler2);
 
 	/**
 	 * L&auml;sst den Reizagenten das Reizen durchf&uuml;hren oder den Spieler.
@@ -99,7 +99,7 @@ public interface IController {
 	 *            - Spieler der bid muss.
 	 * @return Spieler, der gewonnen hat.
 	 */
-	public abstract IPlayer reizen1(IPlayer spieler1, IPlayer spieler2);
+	public abstract IPlayer bidding1(IPlayer spieler1, IPlayer spieler2);
 
 	/**
 	 * Setzt die Vorhand als Alleinspieler, falls die Variante R&auml;uberskat
@@ -125,7 +125,7 @@ public interface IController {
 	/**
 	 * Diese Methode bereitet alles f$uuml;r ein Spiel vor.
 	 */
-	public abstract void bereiteSpielvor();
+	public abstract void prepareGame();
 
 	/**
 	 * Diese Methode wertet das Spiel aus.
@@ -166,7 +166,7 @@ public interface IController {
 	 * gibt zur&uuml;ck, ob das Spiel beendet wird
 	 * @return boolean
 	 */
-	public abstract boolean spielBeenden();
+	public abstract boolean quitGame();
 
 	/**
 	 * Gibt dem im Skat liegenden Karten den Alleinspieler als Besitzer.
@@ -221,21 +221,21 @@ public interface IController {
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void spielRaeuberskat() throws IOException;
+	public abstract void playRaeuberskat() throws IOException;
 
 	/**
 	 * Spielablauf mit Ramsch und Bock
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void spielRamschBock() throws IOException;
+	public abstract void playRamschBock() throws IOException;
 
 	/**
 	 * Spielablauf nach internationaler Skatordnung
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void spielIntSkat() throws IOException;
+	public abstract void playIntSkat() throws IOException;
 
 	/**
 	 * Falls ein intelligenter Computerspieler mitspielt, m&uuml;ss dieser
@@ -248,6 +248,6 @@ public interface IController {
 	 * Da die Spieler anhand ihrer Namen verglichen werden, darf kein Spieler
 	 * wie ein anderer heißen.
 	 */
-	public void namenVergleich();
+	public void namesComparison();
 
 }

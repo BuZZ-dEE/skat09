@@ -53,7 +53,7 @@ public class Controller implements Observer, IController {
 	 * wird gesetzt, falls niemand spielen will und somit das Spiel einzupassen
 	 * ist
 	 */
-	private boolean spielEinpassen;
+	private boolean passGame;
 
 	/**
 	 * 
@@ -65,7 +65,7 @@ public class Controller implements Observer, IController {
 	public Controller(Table table, IOutput output) {
 		this.table = table;
 		this.output = output;
-		spielEinpassen = false;
+		passGame = false;
 	}
 
 	//@Override
@@ -94,31 +94,31 @@ public class Controller implements Observer, IController {
 	public void play() throws IOException {
 
 		boolean isContinue = true;
-		anmelden();
+		logIn();
 		chooseSkatVariant();
-		waehleGegner();
-		namenVergleich();
-		waehleSkatblatt();
-		table.positionInitialisieren();
+		selectAdversary();
+		namesComparison();
+		selectSkatDeck();
+		table.initializePositions();
 
 		do {
-			bereiteSpielvor();
+			prepareGame();
 			output.showPosition();
 			output.newGame();
 
-			if (table.getVariante() == SkatVariant.SKAT) {
-				spielIntSkat();
+			if (table.getVariant() == SkatVariant.SKAT) {
+				playIntSkat();
 			}
 
-			else if (table.getVariante() == SkatVariant.RAMSCHBOCK) {
-				spielRamschBock();
+			else if (table.getVariant() == SkatVariant.RAMSCHBOCK) {
+				playRamschBock();
 			}
 
-			else if (table.getVariante() == SkatVariant.RAEUBER) {
-				spielRaeuberskat();
+			else if (table.getVariant() == SkatVariant.RAEUBER) {
+				playRaeuberskat();
 			}
 
-			isContinue = !spielBeenden();
+			isContinue = !quitGame();
 
 		} while (isContinue);
 
@@ -126,17 +126,17 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void anmelden() {
+	public void logIn() {
 
 		String name = "";
 		name = output.name();
-		IPlayer spieler = new HumanPlayer(name, this);
-		table.setSpieler1(spieler);
+		IPlayer player = new HumanPlayer(name, this);
+		table.setPlayer1(player);
 
 	}
 
 	//@Override
-	public void waehleGegner() {
+	public void selectAdversary() {
 
 		String s;
 
@@ -145,20 +145,20 @@ public class Controller implements Observer, IController {
 		// Eingabe o fuer Oma
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
-			IPlayer spieler2 = new Granny("Oma Karla");
-			table.setSpieler2(spieler2);
+			IPlayer player2 = new Granny("Oma Karla");
+			table.setPlayer2(player2);
 		}
 		// Eingabe r fuer regelkonformer Spieler
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
 
-			IPlayer spieler2 = new RuleCompliantPlayer("Hans");
-			table.setSpieler2(spieler2);
+			IPlayer player2 = new RuleCompliantPlayer("Hans");
+			table.setPlayer2(player2);
 		}
 		// Eingabe s fuer schlauer Spieler
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {
 
-			IPlayer spieler2 = new SmartPlayer("Heinz");
-			table.setSpieler2(spieler2);
+			IPlayer player2 = new SmartPlayer("Heinz");
+			table.setPlayer2(player2);
 		}
 
 		// Zweiten Gegegner auf die gleiche Weise waehlen
@@ -166,18 +166,18 @@ public class Controller implements Observer, IController {
 
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.granny.abbr"))) {
 
-			IPlayer spieler3 = new Granny("Oma Berta");
-			table.setSpieler3(spieler3);
+			IPlayer player3 = new Granny("Oma Berta");
+			table.setPlayer3(player3);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.normal.abbr"))) {
 
-			IPlayer spieler3 = new RuleCompliantPlayer("Franz");
-			table.setSpieler3(spieler3);
+			IPlayer player3 = new RuleCompliantPlayer("Franz");
+			table.setPlayer3(player3);
 		}
 		if (s.equals(Messages.getI18n("game.commandline.adversary.type.smart.abbr"))) {
 
-			IPlayer spieler3 = new SmartPlayer("Wolfgang");
-			table.setSpieler3(spieler3);
+			IPlayer player3 = new SmartPlayer("Wolfgang");
+			table.setPlayer3(player3);
 		}
 	}
 
@@ -201,12 +201,12 @@ public class Controller implements Observer, IController {
 
 		s = output.askForSixSkat();
 		if (s.equals(Messages.getI18n("application.y"))) {
-			table.setSechserskat(true);
+			table.setSixSkat(true);
 		}
 	}
 
 	//@Override
-	public void waehleSkatblatt() {
+	public void selectSkatDeck() {
 
 		String s;
 
@@ -217,12 +217,12 @@ public class Controller implements Observer, IController {
 
 			PlayingCard.setGermanDeck(false);
 		} else {
-			waehleSkatblatt();
+			selectSkatDeck();
 		}
 	}
 
 	//@Override
-	public void leiteReizen() throws IOException {
+	public void coordinateBidding() throws IOException {
 
 		// Positionen der Spieler ermitteln
 		IPlayer vorhand = table.getVorhand();
@@ -230,94 +230,94 @@ public class Controller implements Observer, IController {
 		IPlayer hinterhand = table.getHinterhand();
 
 		// ermitteln, ob menschlicher Spieler den Reizagent benutzen will
-		IPlayer mensch = table.gibMenschlicherSpieler();
-		output.outputHand(mensch);
-		boolean reizagent = mensch.agent();
+		IPlayer human = table.getHumanPlayer();
+		output.outputHand(human);
+		boolean isUseBiddingAgent = human.agent();
 
 		// Für den menschlichen Spieler das Blatt ausgeben
-		// mensch = tisch.gibMenschlicherSpieler();
+		// human = tisch.getHumanPlayer();
 
-		// Falls Reizagent aktiviert wurde >> reizlimit abfragen
-		int reizlimit = -1;
-		if (reizagent) {
+		// Falls Reizagent aktiviert wurde >> biddingLimit abfragen
+		int biddingLimit = -1;
+		if (isUseBiddingAgent) {
 
-			reizlimit = mensch.setBidLimit();
+			biddingLimit = human.setBidLimit();
 		}
-		table.setReizagentWert(reizlimit);
+		table.setBiddingAgentValue(biddingLimit);
 		// Gewinner des Reizens zwischen Mittelhand und Vorhand
-		IPlayer gewinner = null;
+		IPlayer winner = null;
 
 		// Alleinspieler - Spieler der das gesamte Reizen gewonnen hat
-		IPlayer alleinspieler = null;
+		IPlayer declarer = null;
 
 		// reizen Mittelhand vs. Vorhand
 		output.mittelhandVsVorhand();
 		output.blankLine();
-		gewinner = reizen1(vorhand, mittelhand);
+		winner = bidding1(vorhand, mittelhand);
 
 		// reizen Hinterhand vs. Gewinner
-		output.hinterhandVsWinner(gewinner);
+		output.hinterhandVsWinner(winner);
 		output.blankLine();
-		alleinspieler = reizen2(gewinner, hinterhand);
+		declarer = bidding2(winner, hinterhand);
 
 		// Auswertung: Falls niemand spielen will, passGame setzten,
 		// ansonsten Alleinspieler im Spiele setzen
-		if (alleinspieler == null) {
+		if (declarer == null) {
 
-			spielEinpassen = true;
+			passGame = true;
 		}
 
 		else {
 
-			alleinspieler.setIsDeclarer(true);
+			declarer.setIsDeclarer(true);
 			output.showDeclarer();
 		}
 	}
 
 	//@Override
-	public IPlayer reizen2(IPlayer spieler1, IPlayer spieler2) {
+	public IPlayer bidding2(IPlayer player1, IPlayer player2) {
 
 		// Gewinner des reizens
-		IPlayer gewinner = null;
+		IPlayer winner = null;
 
-		boolean sagen = false;
-		boolean hoeren = false;
-		int reizwert = table.getReizwert();
+		boolean bid = false;
+		boolean respond = false;
+		int biddingValue = table.getReizwert();
 
-		if (reizwert == 18) {
+		if (biddingValue == 18) {
 
 			// Spieler bid lassen oder Reizagent &uuml;bernimmt
-			sagen = reizenOderReizagent(spieler2, reizwert, true);
+			bid = reizenOderReizagent(player2, biddingValue, true);
 
-			if (!sagen) {
+			if (!bid) {
 
-				output.pass(spieler2);
+				output.pass(player2);
 
 				// Spieler respond lassen oder Reizagent &uuml;bernimmt
-				hoeren = reizenOderReizagent(spieler1, reizwert, true);
+				respond = reizenOderReizagent(player1, biddingValue, true);
 
-				if (!hoeren) {
+				if (!respond) {
 
-					gewinner = null;
+					winner = null;
 				} else {
 
-					gewinner = spieler1;
+					winner = player1;
 				}
 			} else {
 
 				// Spieler h&ouml;ren lassen oder Reizagent &uuml;bernimmt
-				hoeren = reizenOderReizagent(spieler1, reizwert, false);
+				respond = reizenOderReizagent(player1, biddingValue, false);
 
-				if (!hoeren) {
+				if (!respond) {
 
-					gewinner = spieler2;
-					output.pass(spieler1);
+					winner = player2;
+					output.pass(player1);
 				} else {
 
 					// Reizwert erh&ouml;en und am Tisch setzen
-					reizwert = table.naechstHoehererReizwert(reizwert);
-					table.setReizwert(reizwert);
-					gewinner = reizen1(spieler1, spieler2);
+					biddingValue = table.naechstHoehererReizwert(biddingValue);
+					table.setReizwert(biddingValue);
+					winner = bidding1(player1, player2);
 				}
 			}
 		}
@@ -326,9 +326,9 @@ public class Controller implements Observer, IController {
 		// pass ist.
 		else {
 
-			gewinner = reizen1(spieler1, spieler2);
+			winner = bidding1(player1, player2);
 		}
-		return gewinner;
+		return winner;
 	}
 
 	//@Override
@@ -355,7 +355,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public IPlayer reizen1(IPlayer spieler1, IPlayer spieler2) {
+	public IPlayer bidding1(IPlayer spieler1, IPlayer spieler2) {
 
 		// Gewinner des Reizens
 		IPlayer gewinner = null;
@@ -474,7 +474,7 @@ public class Controller implements Observer, IController {
 
 		// Der Spieler wird gefragt, ob er Hand spielt
 		IPlayer alleinspieler = table.ermittleAlleinspieler();
-		IPlayer mensch = table.gibMenschlicherSpieler();
+		IPlayer mensch = table.getHumanPlayer();
 		output.outputHand(mensch);
 
 		table.setHandspiel(alleinspieler.handgame());
@@ -549,7 +549,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void bereiteSpielvor() {
+	public void prepareGame() {
 
 		table.erstelleDeck();
 
@@ -579,8 +579,8 @@ public class Controller implements Observer, IController {
 
 				((SmartPlayer) alleSpieler).setAnfangsblatt(alleSpieler
 						.getHand());
-				if (table.getVariante() == SkatVariant.SKAT
-						|| table.getVariante() == SkatVariant.RAMSCHBOCK) {
+				if (table.getVariant() == SkatVariant.SKAT
+						|| table.getVariant() == SkatVariant.RAMSCHBOCK) {
 					
 					((SmartPlayer) alleSpieler).bestimmeMaxReizwert();
 				}
@@ -616,20 +616,20 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void aufrauemen() {
 
-		spielEinpassen = false;
+		passGame = false;
 
 		PlayingCard[] skat = new PlayingCard[3];
 		table.setSkat(skat);
 		table.setSpielart(null);
 		table.setReizwert(18);
-		table.setReizagentWert(0);
+		table.setBiddingAgentValue(0);
 		table.setBock(false);
 		table.setHandspiel(false);
 		table.setSchneider(false);
 		table.setSchwarz(false);
 		table.setOuvert(false);
 
-		if (table.getVariante() == SkatVariant.RAMSCHBOCK
+		if (table.getVariant() == SkatVariant.RAMSCHBOCK
 				&& table.getSpaltarsch() && table.getBockrunden() == 0) {
 			table.setSpaltarsch(false);
 		}
@@ -682,7 +682,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public boolean spielBeenden() {
+	public boolean quitGame() {
 
 		return output.quitGame();
 	}
@@ -824,14 +824,14 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void spielRaeuberskat() throws IOException {
+	public void playRaeuberskat() throws IOException {
 		entscheideraeuberspiel();
 		output.showDeclarer();
 		normalerSpielverlauf();
 	}
 
 	//@Override
-	public void spielRamschBock() throws IOException {
+	public void playRamschBock() throws IOException {
 		if (table.getSpaltarsch() && table.getRamschrunden() == 0) {
 			table.setBock(true);
 			table.setBockrunden(table.getBockrunden() - 1);
@@ -839,9 +839,9 @@ public class Controller implements Observer, IController {
 
 		if (!table.getSpaltarsch()
 				|| (table.getSpaltarsch() && table.getRamschrunden() == 0)) {
-			leiteReizen();
+			coordinateBidding();
 
-			if (!spielEinpassen) {
+			if (!passGame) {
 				normalerSpielverlauf();
 			} else {
 				ramschen();
@@ -854,9 +854,9 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void spielIntSkat() throws IOException {
-		leiteReizen();
-		if (!spielEinpassen) {
+	public void playIntSkat() throws IOException {
+		coordinateBidding();
+		if (!passGame) {
 			normalerSpielverlauf();
 		} else {
 			einpassen();
@@ -882,7 +882,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void namenVergleich() {
+	public void namesComparison() {
 
 		String spieler1 = table.getSpieler1().getName();
 		String spieler2 = table.getSpieler2().getName();
