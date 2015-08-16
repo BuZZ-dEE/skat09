@@ -279,19 +279,19 @@ public class Controller implements Observer, IController {
 
 		boolean bid = false;
 		boolean respond = false;
-		int biddingValue = table.getReizwert();
+		int biddingValue = table.getBiddingValue();
 
 		if (biddingValue == 18) {
 
 			// Spieler bid lassen oder Reizagent &uuml;bernimmt
-			bid = reizenOderReizagent(player2, biddingValue, true);
+			bid = bidOrBiddingAgent(player2, biddingValue, true);
 
 			if (!bid) {
 
 				output.pass(player2);
 
 				// Spieler respond lassen oder Reizagent &uuml;bernimmt
-				respond = reizenOderReizagent(player1, biddingValue, true);
+				respond = bidOrBiddingAgent(player1, biddingValue, true);
 
 				if (!respond) {
 
@@ -303,7 +303,7 @@ public class Controller implements Observer, IController {
 			} else {
 
 				// Spieler h&ouml;ren lassen oder Reizagent &uuml;bernimmt
-				respond = reizenOderReizagent(player1, biddingValue, false);
+				respond = bidOrBiddingAgent(player1, biddingValue, false);
 
 				if (!respond) {
 
@@ -312,8 +312,8 @@ public class Controller implements Observer, IController {
 				} else {
 
 					// Reizwert erh&ouml;en und am Tisch setzen
-					biddingValue = table.naechstHoehererReizwert(biddingValue);
-					table.setReizwert(biddingValue);
+					biddingValue = table.nextGreaterBiddingValue(biddingValue);
+					table.setBiddingValue(biddingValue);
 					winner = bidding1(player1, player2);
 				}
 			}
@@ -329,130 +329,130 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public boolean reizenOderReizagent(IPlayer spieler, int reizwert,
-			boolean sagen) {
+	public boolean bidOrBiddingAgent(IPlayer player, int biddingValue,
+                                     boolean isBidding) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
 		if (table.getReizagentWert() >= 0
-				&& spieler instanceof IHumanPlayer) {
+				&& player instanceof IHumanPlayer) {
 
-			ergebnis = reizagent(spieler);
+			result = reizagent(player);
 		} else {
 
-			if (sagen) {
+			if (isBidding) {
 
-				ergebnis = spieler.bid(reizwert);
+				result = player.bid(biddingValue);
 			} else {
 
-				ergebnis = spieler.respond(reizwert);
+				result = player.respond(biddingValue);
 			}
 		}
-		return ergebnis;
+		return result;
 	}
 
 	//@Override
-	public IPlayer bidding1(IPlayer spieler1, IPlayer spieler2) {
+	public IPlayer bidding1(IPlayer player1, IPlayer player2) {
 
 		// Gewinner des Reizens
-		IPlayer gewinner = null;
+		IPlayer winner = null;
 
-		boolean fertig = false;
-		boolean sagen = false;
-		boolean hoeren = false;
-		int reizwert = table.getReizwert();
+		boolean ready = false;
+		boolean bid = false;
+		boolean resond = false;
+		int biddingValue = table.getBiddingValue();
 
-		while (!fertig) {
+		while (!ready) {
 
 			// Spieler2 bid lassen oder Reizagent &uuml;bernimmt
-			sagen = reizenOderReizagent(spieler2, reizwert, true);
+			bid = bidOrBiddingAgent(player2, biddingValue, true);
 
 			// erste if Schleife ueberprueft ob nur ein spieler pass sein
-			// darf und liefert dann vorzeitig den gewinner
-			if (!sagen) {
+			// darf und liefert dann vorzeitig den winner
+			if (!bid) {
 
-				gewinner = spieler1;
-				output.pass(spieler2);
+				winner = player1;
+				output.pass(player2);
 				break;
 			} else {
 
 				// Spieler1 h&ouml;ren lassen oder Reizagent &uuml;bernimmt
-				hoeren = reizenOderReizagent(spieler1, reizwert, false);
+				resond = bidOrBiddingAgent(player1, biddingValue, false);
 
-				if (!hoeren) {
+				if (!resond) {
 
-					gewinner = spieler2;
-					output.pass(spieler1);
+					winner = player2;
+					output.pass(player1);
 					break;
 				}
 			}
-			reizwert = table.naechstHoehererReizwert(reizwert);
-			table.setReizwert(reizwert); // neu!
+			biddingValue = table.nextGreaterBiddingValue(biddingValue);
+			table.setBiddingValue(biddingValue); // neu!
 		}
 		// neuen Reizwert am Tisch setzen
-		table.setReizwert(reizwert);
-		return gewinner;
+		table.setBiddingValue(biddingValue);
+		return winner;
 	}
 
 	//@Override
-	public void entscheideraeuberspiel() {
+	public void decideRaeuberGame() {
 
 		table.getVorhand().setIsDeclarer(true);
 
 	}
 
 	//@Override
-	public void leiteSpiel() throws NullPointerException, IOException {
+	public void leadGame() throws NullPointerException, IOException {
 
-		IPlayer spieler1 = table.getVorhand();
-		IPlayer spieler2 = null;
-		IPlayer spieler3 = null;
-		PlayingCard[] gespielteKarten;
+		IPlayer player1 = table.getVorhand();
+		IPlayer player2 = null;
+		IPlayer player3 = null;
+		PlayingCard[] playedCards;
 
 		output.gameBegins();
-		int anzahlstiche = 10;
+		int tricksCount = 10;
 
-		if (table.getSechserskat() == true) {
-			anzahlstiche = 11;
+		if (table.getSixSkat() == true) {
+			tricksCount = 11;
 		}
 
-		for (int i = 0; i < anzahlstiche; i++) {
+		for (int i = 0; i < tricksCount; i++) {
 
 			// Spieler initialisieren
-			spieler2 = table.naechsterSpieler(spieler1);
-			spieler3 = table.naechsterSpieler(spieler2);
+			player2 = table.nextPlayer(player1);
+			player3 = table.nextPlayer(player2);
 
 			// Mitspieler setzen
 			table.mitspielerSetzen();
 
 			// jeden Spieler eine Karte Spielen lassen und Tisch aktualisieren
-			gespielteKarten = table.getGespielteKarten();
-			gespielteKarten[0] = spieler1.playCard(gespielteKarten);
-			table.setGespielteKarten(gespielteKarten);
+			playedCards = table.getGespielteKarten();
+			playedCards[0] = player1.playCard(playedCards);
+			table.setGespielteKarten(playedCards);
 
-			gespielteKarten[1] = spieler2.playCard(gespielteKarten);
-			table.setGespielteKarten(gespielteKarten);
+			playedCards[1] = player2.playCard(playedCards);
+			table.setGespielteKarten(playedCards);
 
-			gespielteKarten[2] = spieler3.playCard(gespielteKarten);
-			table.setGespielteKarten(gespielteKarten);
+			playedCards[2] = player3.playCard(playedCards);
+			table.setGespielteKarten(playedCards);
 
 			// Spieler1 neu setzen
-			spieler1 = table.stichAuswerten(table.getSpielart(),
-					gespielteKarten);
+			player1 = table.stichAuswerten(table.getSpielart(),
+					playedCards);
 
 			// Spieler1 den gewonnenen Stich geben.
-			spieler1.addTrick(gespielteKarten);
+			player1.addTrick(playedCards);
 
 			// jedem Spieler mitteilen, welche Karten gespielt wurden
-			table.getSpieler1().addPlayedCards(gespielteKarten);
-			table.getSpieler2().addPlayedCards(gespielteKarten);
-			table.getSpieler3().addPlayedCards(gespielteKarten);
+			table.getSpieler1().addPlayedCards(playedCards);
+			table.getSpieler2().addPlayedCards(playedCards);
+			table.getSpieler3().addPlayedCards(playedCards);
 
 			// Stichauswertung ausgeben
-			stichAuswertung(gespielteKarten, spieler1);
+			stichAuswertung(playedCards, player1);
 
 			if (table.getSpielart().getGameVariety() == GameVarietyName.NULL
-					&& spieler1.getName() == table.ermittleAlleinspieler()
+					&& player1.getName() == table.ermittleAlleinspieler()
 							.getName()) {
 				
 				PlayingCard[] leer = new PlayingCard[3];
@@ -521,13 +521,13 @@ public class Controller implements Observer, IController {
 		alleinspieler.getHand().add(skat[0]);
 		alleinspieler.getHand().add(skat[1]);
 
-		if (table.getSechserskat()) {
+		if (table.getSixSkat()) {
 
 			alleinspieler.getHand().add(skat[2]);
 		}
 
 		alleinspieler.spitzenEinordnen();
-		if (table.getSechserskat()) {
+		if (table.getSixSkat()) {
 
 			alleinspieler.getHand().remove(13);
 			alleinspieler.getHand().remove(12);
@@ -618,7 +618,7 @@ public class Controller implements Observer, IController {
 		PlayingCard[] skat = new PlayingCard[3];
 		table.setSkat(skat);
 		table.setSpielart(null);
-		table.setReizwert(18);
+		table.setBiddingValue(18);
 		table.setBiddingAgentValue(0);
 		table.setBock(false);
 		table.setHandspiel(false);
@@ -662,7 +662,7 @@ public class Controller implements Observer, IController {
 
 		boolean ergebnis = false;
 
-		int reizwert = table.getReizwert();
+		int reizwert = table.getBiddingValue();
 		int maxReizwert = table.getReizagentWert();
 
 		//Falls der Spieler passen will
@@ -691,7 +691,7 @@ public class Controller implements Observer, IController {
 		PlayingCard[] skat = table.getSkat();
 		skat[0].setOwner(alleinspieler);
 		skat[1].setOwner(alleinspieler);
-		if (table.getSechserskat()) {
+		if (table.getSixSkat()) {
 			skat[2].setOwner(alleinspieler);
 		}
 		table.setSkat(skat);
@@ -781,7 +781,7 @@ public class Controller implements Observer, IController {
 		table.getSpieler2().sortHand(spielart);
 		table.getSpieler3().sortHand(spielart);
 		output.trump();
-		leiteSpiel();
+		leadGame();
 		auswertung();
 		aufrauemen();
 		table.positionWechseln();
@@ -792,7 +792,7 @@ public class Controller implements Observer, IController {
 		skatkartenBesitzergeben();
 		alleinspielerAktionen();
 		output.trump();
-		leiteSpiel();
+		leadGame();
 		auswertung();
 		aufrauemen();
 		table.positionWechseln();
@@ -800,7 +800,7 @@ public class Controller implements Observer, IController {
 
 	//@Override
 	public void playRaeuberskat() throws IOException {
-		entscheideraeuberspiel();
+		decideRaeuberGame();
 		output.showDeclarer();
 		normalerSpielverlauf();
 	}

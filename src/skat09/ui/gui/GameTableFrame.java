@@ -584,7 +584,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		// for (int i = 0; i < 2; i++) {
 		int skatLength = tisch.getSkat().length;
 
-		if (!tisch.getSechserskat()) {
+		if (!tisch.getSixSkat()) {
 			skatLength = skatLength - 1;
 		}
 
@@ -615,7 +615,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		button.setPreferredSize(new Dimension(150, 30));
 		button.addActionListener(this);
 
-		if (!tisch.getSechserskat()) {
+		if (!tisch.getSixSkat()) {
 			skatLength = skatLength - 1;
 		}
 
