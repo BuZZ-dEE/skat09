@@ -286,7 +286,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer3(spieler3);
 		controller.getTable().setBiddingAgentValue(20);
 		
-		assertTrue(controller.reizenOderReizagent(spieler1, 18, true));
+		assertTrue(controller.bidOrBiddingAgent(spieler1, 18, true));
 	}
 	
 	@Test
@@ -300,7 +300,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer3(spieler3);
 		controller.getTable().setBiddingAgentValue(20);
 		
-		assertTrue(controller.reizenOderReizagent(spieler1, 23, true));
+		assertTrue(controller.bidOrBiddingAgent(spieler1, 23, true));
 	}
 	
 	@Test
@@ -314,7 +314,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer3(spieler3);
 		controller.getTable().setBiddingAgentValue(0);
 		
-		assertTrue(controller.reizenOderReizagent(spieler1, 20, true));
+		assertTrue(controller.bidOrBiddingAgent(spieler1, 20, true));
 	}
 	
 	@Test
@@ -328,7 +328,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer3(spieler3);
 		controller.getTable().setBiddingAgentValue(0);
 		
-		assertFalse(controller.reizenOderReizagent(spieler1, 23, true));
+		assertFalse(controller.bidOrBiddingAgent(spieler1, 23, true));
 	}
 	
 	@Test
@@ -342,7 +342,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer3(spieler3);
 		controller.getTable().setBiddingAgentValue(0);
 		
-		assertTrue(controller.reizenOderReizagent(spieler1, 20, false));
+		assertTrue(controller.bidOrBiddingAgent(spieler1, 20, false));
 	}
 	
 	@Test
@@ -356,7 +356,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer3(spieler3);
 		controller.getTable().setBiddingAgentValue(0);
 		
-		assertFalse(controller.reizenOderReizagent(spieler1, 23, false));
+		assertFalse(controller.bidOrBiddingAgent(spieler1, 23, false));
 	}
 	
 	@Test
@@ -447,7 +447,7 @@ public class ControllerTest {
 		
 		tisch.setPlayer3(new Granny("Zensursula"));
 		tisch.getSpieler1().setPosition(Position.VORHAND);
-		controller.entscheideraeuberspiel();
+		controller.decideRaeuberGame();
 		
 		assertTrue(tisch.getVorhand().isDeclarer());
 		
@@ -606,7 +606,7 @@ public class ControllerTest {
 		skatkarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		controller.getTable().setSkat(skatkarten);
 		controller.getTable().setBiddingAgentValue(120);
-		controller.getTable().setReizwert(23);
+		controller.getTable().setBiddingValue(23);
 		controller.getTable().setBock(true);
 		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
@@ -654,7 +654,7 @@ public class ControllerTest {
 		skatkarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		controller.getTable().setSkat(skatkarten);
 		controller.getTable().setBiddingAgentValue(120);
-		controller.getTable().setReizwert(23);
+		controller.getTable().setBiddingValue(23);
 		controller.getTable().setBock(true);
 		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
@@ -686,7 +686,7 @@ public class ControllerTest {
 		
 		boolean tischAufgeraeumt = false;
 		
-		if (tisch3.getSkat()[0] == null && tisch3.getReizagentWert() == 0 && tisch3.getReizwert() == 18 &&
+		if (tisch3.getSkat()[0] == null && tisch3.getReizagentWert() == 0 && tisch3.getBiddingValue() == 18 &&
 				tisch3.getBock() == false && tisch3.getSpaltarsch() == false) {
 			tischAufgeraeumt = true;
 		}
@@ -701,7 +701,7 @@ public class ControllerTest {
 		skatkarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		controller.getTable().setSkat(skatkarten);
 		controller.getTable().setBiddingAgentValue(120);
-		controller.getTable().setReizwert(23);
+		controller.getTable().setBiddingValue(23);
 		controller.getTable().setBock(true);
 		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
@@ -749,7 +749,7 @@ public class ControllerTest {
 		skatkarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
 		controller.getTable().setSkat(skatkarten);
 		controller.getTable().setBiddingAgentValue(120);
-		controller.getTable().setReizwert(23);
+		controller.getTable().setBiddingValue(23);
 		controller.getTable().setBock(true);
 		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
@@ -823,7 +823,7 @@ public class ControllerTest {
 	public void reizagentTest() {
 		
 		Player spieler = new Granny("Tini");
-		tisch.setReizwert(23);
+		tisch.setBiddingValue(23);
 		tisch.setBiddingAgentValue(30);
 		assertTrue(controller.reizagent(spieler));
 	}
@@ -832,7 +832,7 @@ public class ControllerTest {
 	public void reizagentTest2() {
 		
 		Player spieler = new Granny("Tini");
-		tisch.setReizwert(30);
+		tisch.setBiddingValue(30);
 		tisch.setBiddingAgentValue(23);
 		assertFalse(controller.reizagent(spieler));
 	}

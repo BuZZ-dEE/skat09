@@ -95,7 +95,7 @@ public class TableTest {
 		gespieltekarten[2] = new PlayingCard(Suit.BELLS, Value.NINE);
 		tisch.setGespielteKarten(gespieltekarten);
 		tisch.getSpieler1().addTrick(gespieltekarten);
-		tisch.setReizwert(18);
+		tisch.setBiddingValue(18);
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
 		tisch.getSpieler1().setGameVariety(spielart);
@@ -154,11 +154,11 @@ public class TableTest {
 		assertEquals(SkatVariant.RAEUBER, tisch.getVariant());
 	}
 	
-	//Testet die Methode getReizwert
+	//Testet die Methode getBiddingValue
 	@Test
 	public void getReizwertTest() {
-		tisch.setReizwert(35);
-		assertEquals(35, tisch.getReizwert());
+		tisch.setBiddingValue(35);
+		assertEquals(35, tisch.getBiddingValue());
 	}
 	
 	
@@ -604,7 +604,7 @@ public class TableTest {
 	public void ueberreizCheckTest4() {
 		GameVariety spiel = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spiel);
-		tisch.setReizwert(23);
+		tisch.setBiddingValue(23);
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
@@ -621,7 +621,7 @@ public class TableTest {
 		tisch.setOuvert(false);
 		GameVariety spiel = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spiel);
-		tisch.setReizwert(23);
+		tisch.setBiddingValue(23);
 		tisch.ermittleAlleinspieler().getHand().clear();
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
@@ -657,17 +657,17 @@ public class TableTest {
 
 	@Test
 	public void naechsterSpielerTest() {
-		assertEquals(spieler2, tisch.naechsterSpieler(spieler1));
+		assertEquals(spieler2, tisch.nextPlayer(spieler1));
 	}
 
 	@Test
 	public void naechsterSpielerTest2() {
-		assertEquals(spieler3, tisch.naechsterSpieler(spieler2));
+		assertEquals(spieler3, tisch.nextPlayer(spieler2));
 	}
 
 	@Test
 	public void naechsterSpielerTest3() {
-		assertEquals(spieler1, tisch.naechsterSpieler(spieler3));
+		assertEquals(spieler1, tisch.nextPlayer(spieler3));
 	}
 	
 	@Test
@@ -725,7 +725,7 @@ public class TableTest {
 
 	@Test
 	public void naechstHoehererReizwertTest() {
-		assertEquals(20, tisch.naechstHoehererReizwert(18));
+		assertEquals(20, tisch.nextGreaterBiddingValue(18));
 	}
 	
 	@Test
@@ -840,7 +840,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
-		tisch.setReizwert(48);
+		tisch.setBiddingValue(48);
 		assertEquals(-108, tisch.wertePunkte(62));
 	}
 	

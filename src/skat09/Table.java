@@ -337,7 +337,7 @@ public class Table extends Observable {
 	 * 
 	 * @return aktueller reizwert
 	 */
-	public int getReizwert() {
+	public int getBiddingValue() {
 
 		return reizwert;
 	}
@@ -408,7 +408,7 @@ public class Table extends Observable {
 	 * 
 	 * @return sechserskat Ob Sechserskat gespielt wird
 	 */
-	public boolean getSechserskat() {
+	public boolean getSixSkat() {
 		return sechserskat;
 	}
 
@@ -627,7 +627,7 @@ public class Table extends Observable {
 	 * @param wert
 	 *            - reizwert
 	 */
-	public void setReizwert(int wert) {
+	public void setBiddingValue(int wert) {
 
 		this.reizwert = wert;
 	}
@@ -1108,7 +1108,7 @@ public class Table extends Observable {
 	 * @param reizwert
 	 * @return der folgende Reizwert
 	 */
-	public int naechstHoehererReizwert(int reizwert) {
+	public int nextGreaterBiddingValue(int reizwert) {
 
 		int ergebnis = reizwert;
 
@@ -1186,7 +1186,7 @@ public class Table extends Observable {
 	 *            - aktueller Spieler
 	 * @return der n&auml;chste Spieler
 	 */
-	public IPlayer naechsterSpieler(IPlayer spieler) {
+	public IPlayer nextPlayer(IPlayer spieler) {
 
 		IPlayer ergebnis = null;
 

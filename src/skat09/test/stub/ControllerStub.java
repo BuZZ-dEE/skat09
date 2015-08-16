@@ -59,7 +59,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void entscheideraeuberspiel() {
+	public void decideRaeuberGame() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -83,7 +83,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void leiteSpiel() throws NullPointerException, IOException {
+	public void leadGame() throws NullPointerException, IOException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -119,7 +119,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public boolean reizenOderReizagent(IPlayer spieler, int reizwert, boolean sagen) {
+	public boolean bidOrBiddingAgent(IPlayer spieler, int reizwert, boolean sagen) {
 		// TODO Auto-generated method stub
 		return false;
 	}

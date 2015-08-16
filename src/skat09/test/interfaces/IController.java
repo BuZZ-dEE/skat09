@@ -86,8 +86,8 @@ public interface IController {
 	 * @param reizwert
 	 * @return true, wenn spieler mitgeht
 	 */
-	public abstract boolean reizenOderReizagent(IPlayer spieler, int reizwert, 
-			boolean sagen);
+	public abstract boolean bidOrBiddingAgent(IPlayer spieler, int reizwert,
+											  boolean sagen);
 
 	/**
 	 * Organisiert das Reizen zwischen zwei Spielern und liefert den Gewinner.
@@ -105,13 +105,13 @@ public interface IController {
 	 * Setzt die Vorhand als Alleinspieler, falls die Variante R&auml;uberskat
 	 * gew&auml;hlt wurde.
 	 */
-	public abstract void entscheideraeuberspiel();
+	public abstract void decideRaeuberGame();
 
 	/**
 	 * Leitet das Spiel, nachdem das Reizen abgeschlossen ist.
 	 * @throws IOException 
 	 */
-	public abstract void leiteSpiel() throws NullPointerException, IOException;
+	public abstract void leadGame() throws NullPointerException, IOException;
 
 	/**
 	 * Leitet alle Aktionen, die der Alleinspieler durchf&uuml;ren muss, bevor
