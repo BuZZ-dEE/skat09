@@ -813,14 +813,14 @@ public class CLIOutput extends Output {
 	public void outputPoints() {
 		System.out.println("******** ****** ********");
 		System.out.println(Messages.getI18n("game.score.list.current"));
-		System.out.println(table.getSpieler1().getName() + "     "
-				+ table.getSpieler2().getName() + "     "
-				+ table.getSpieler3().getName());
-		for (int i = 0; i < table.getSpieler1().getGames().size(); i++) {
-			System.out.println(table.getSpieler1().getGames().get(i) + "     "
-					+ table.getSpieler2().getGames().get(i)
+		System.out.println(table.getPlayer1().getName() + "     "
+				+ table.getPlayer2().getName() + "     "
+				+ table.getPlayer3().getName());
+		for (int i = 0; i < table.getPlayer1().getGames().size(); i++) {
+			System.out.println(table.getPlayer1().getGames().get(i) + "     "
+					+ table.getPlayer2().getGames().get(i)
 					+ "               "
-					+ table.getSpieler3().getGames().get(i));
+					+ table.getPlayer3().getGames().get(i));
 		}
 		System.out.println("******** ****** ********");
 	}
@@ -936,7 +936,7 @@ public class CLIOutput extends Output {
 	 * Gibt die vergangenen Stiche aus;
 	 */
 	public void showPastTricksHelp() {
-		ArrayList<PlayingCard> cards = table.getSpieler1()
+		ArrayList<PlayingCard> cards = table.getPlayer1()
 				.getAllPlayedCards();
 		System.out.println(Messages.getI18n("game.tricks.last"));
 		for (PlayingCard card : cards) {

@@ -429,15 +429,15 @@ public class Controller implements Observer, IController {
 			table.mitspielerSetzen();
 
 			// jeden Spieler eine Karte Spielen lassen und Tisch aktualisieren
-			playedCards = table.getGespielteKarten();
+			playedCards = table.getPlayedCards();
 			playedCards[0] = player1.playCard(playedCards);
-			table.setGespielteKarten(playedCards);
+			table.setPlayedCards(playedCards);
 
 			playedCards[1] = player2.playCard(playedCards);
-			table.setGespielteKarten(playedCards);
+			table.setPlayedCards(playedCards);
 
 			playedCards[2] = player3.playCard(playedCards);
-			table.setGespielteKarten(playedCards);
+			table.setPlayedCards(playedCards);
 
 			// Spieler1 neu setzen
 			player1 = table.stichAuswerten(table.getSpielart(),
@@ -447,9 +447,9 @@ public class Controller implements Observer, IController {
 			player1.addTrick(playedCards);
 
 			// jedem Spieler mitteilen, welche Karten gespielt wurden
-			table.getSpieler1().addPlayedCards(playedCards);
-			table.getSpieler2().addPlayedCards(playedCards);
-			table.getSpieler3().addPlayedCards(playedCards);
+			table.getPlayer1().addPlayedCards(playedCards);
+			table.getPlayer2().addPlayedCards(playedCards);
+			table.getPlayer3().addPlayedCards(playedCards);
 
 			// Stichauswertung ausgeben
 			stichAuswertung(playedCards, player1);
@@ -459,13 +459,13 @@ public class Controller implements Observer, IController {
 							.getName()) {
 				
 				PlayingCard[] leer = new PlayingCard[3];
-				table.setGespielteKarten(leer);
+				table.setPlayedCards(leer);
 				break;
 			}
 
 			// Tisch aufraeumen
 			PlayingCard[] leer = new PlayingCard[3];
-			table.setGespielteKarten(leer);
+			table.setPlayedCards(leer);
 		}
 	}
 
@@ -504,14 +504,14 @@ public class Controller implements Observer, IController {
 		// Spielart ist ermittelt und wird am Tisch sowie bei den Spielern
 		// gesetzt.
 		table.setSpielart(spielart);
-		table.getSpieler1().setGameVariety(spielart);
-		table.getSpieler2().setGameVariety(spielart);
-		table.getSpieler3().setGameVariety(spielart);
+		table.getPlayer1().setGameVariety(spielart);
+		table.getPlayer2().setGameVariety(spielart);
+		table.getPlayer3().setGameVariety(spielart);
 
 		// Sortieren der Spielerbl&auml;tter nachdem Spielart nun bekannt ist.
 		// Dies geschieht nur für die menschlichen Spieler.
-		for (IPlayer alleSpieler : new IPlayer[] { table.getSpieler1(),
-				table.getSpieler2(), table.getSpieler3() }) {
+		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+				table.getPlayer2(), table.getPlayer3() }) {
 
 			if (alleSpieler instanceof IHumanPlayer) {
 
@@ -553,8 +553,8 @@ public class Controller implements Observer, IController {
 
 		table.erstelleDeck();
 
-		for (IPlayer alleSpieler : new IPlayer[] { table.getSpieler1(),
-				table.getSpieler2(), table.getSpieler3() }) {
+		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+				table.getPlayer2(), table.getPlayer3() }) {
 			if (alleSpieler instanceof SmartPlayer) {
 				
 				((SmartPlayer) alleSpieler)
@@ -566,8 +566,8 @@ public class Controller implements Observer, IController {
 		table.kartenAusteilen();
 
 		// für alle menschlichen Spieler das Blatt nach Grandspiel sortieren
-		for (IPlayer alleSpieler : new IPlayer[] { table.getSpieler1(),
-				table.getSpieler2(), table.getSpieler3() }) {
+		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+				table.getPlayer2(), table.getPlayer3() }) {
 
 			if (alleSpieler instanceof HumanPlayer) {
 
@@ -634,8 +634,8 @@ public class Controller implements Observer, IController {
 			table.setSpaltarsch(false);
 		}
 
-		for (IPlayer alleSpieler : new IPlayer[] { table.getSpieler1(),
-				table.getSpieler2(), table.getSpieler3() }) {
+		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+				table.getPlayer2(), table.getPlayer3() }) {
 
 			alleSpieler.setHand(null);
 			alleSpieler.setIsDeclarer(false);
@@ -743,7 +743,7 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void update(Observable tisch, Object gespielteKarten) {
 		//		
-		// Spielkarte[] gespielterKarten = this.tisch.getGespielteKarten();
+		// Spielkarte[] gespielterKarten = this.tisch.getPlayedCards();
 		// if (gespielteKarte[0] == null) {
 		// //Stich dem Gewinner ueberreicht.
 		// }
@@ -797,14 +797,14 @@ public class Controller implements Observer, IController {
 	public void ramschen() throws NullPointerException, IOException {
 		IGameVariety spielart = new Ramsch();
 		table.setSpielart(spielart);
-		table.getSpieler1().setGameVariety(spielart);
-		table.getSpieler2().setGameVariety(spielart);
-		table.getSpieler3().setGameVariety(spielart);
+		table.getPlayer1().setGameVariety(spielart);
+		table.getPlayer2().setGameVariety(spielart);
+		table.getPlayer3().setGameVariety(spielart);
 
 		// Sortieren der Spielerbl&auml;tter nachdem Spielart nun bekannt ist.
-		table.getSpieler1().sortHand(spielart);
-		table.getSpieler2().sortHand(spielart);
-		table.getSpieler3().sortHand(spielart);
+		table.getPlayer1().sortHand(spielart);
+		table.getPlayer2().sortHand(spielart);
+		table.getPlayer3().sortHand(spielart);
 		output.trump();
 		leadGame();
 		auswertung();
@@ -867,8 +867,8 @@ public class Controller implements Observer, IController {
 	public void schlauerSpielerInit() {
 
 		// für alle schlauen Spieler das Deck setzen.
-		for (IPlayer alleSpieler : new IPlayer[] { table.getSpieler1(),
-				table.getSpieler2(), table.getSpieler3() }) {
+		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+				table.getPlayer2(), table.getPlayer3() }) {
 
 			if (alleSpieler instanceof SmartPlayer) {
 
@@ -884,9 +884,9 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void namesComparison() {
 
-		String spieler1 = table.getSpieler1().getName();
-		String spieler2 = table.getSpieler2().getName();
-		String spieler3 = table.getSpieler3().getName();
+		String spieler1 = table.getPlayer1().getName();
+		String spieler2 = table.getPlayer2().getName();
+		String spieler3 = table.getPlayer3().getName();
 
 		if (spieler1.equals(spieler2) && spieler1.equals(spieler3)
 				&& spieler2.equals(spieler3)) {
@@ -906,8 +906,8 @@ public class Controller implements Observer, IController {
 			spieler2 = spieler2 + 1;
 			spieler3 = spieler3 + 2;
 		}
-		table.getSpieler1().setName(spieler1);
-		table.getSpieler2().setName(spieler2);
-		table.getSpieler3().setName(spieler3);
+		table.getPlayer1().setName(spieler1);
+		table.getPlayer2().setName(spieler2);
+		table.getPlayer3().setName(spieler3);
 	}
 }
