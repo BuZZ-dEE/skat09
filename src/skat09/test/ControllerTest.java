@@ -88,7 +88,7 @@ public class ControllerTest {
 		
 		boolean pruefe = false;
 		
-		if (spieler.equals(controller.getTable().getSpieler2())) {
+		if (spieler.equals(controller.getTable().getPlayer2())) {
 				pruefe = true;
 		}
 		
@@ -107,7 +107,7 @@ public class ControllerTest {
 		
 		boolean pruefe = false;
 		
-		if (spieler.equals(controller.getTable().getSpieler3())) {
+		if (spieler.equals(controller.getTable().getPlayer3())) {
 				pruefe = true;
 		}
 		
@@ -126,7 +126,7 @@ public class ControllerTest {
 		
 		boolean pruefe = false;
 		
-		if (spieler.equals(controller.getTable().getSpieler2())) {
+		if (spieler.equals(controller.getTable().getPlayer2())) {
 				pruefe = true;
 		}
 		
@@ -145,7 +145,7 @@ public class ControllerTest {
 		
 		boolean pruefe = false;
 		
-		if (spieler.equals(controller.getTable().getSpieler3())) {
+		if (spieler.equals(controller.getTable().getPlayer3())) {
 				pruefe = true;
 		}
 		
@@ -164,7 +164,7 @@ public class ControllerTest {
 		
 		boolean pruefe = false;
 		
-		if (spieler.equals(controller.getTable().getSpieler2())) {
+		if (spieler.equals(controller.getTable().getPlayer2())) {
 				pruefe = true;
 		}
 		
@@ -183,7 +183,7 @@ public class ControllerTest {
 		
 		boolean pruefe = false;
 		
-		if (spieler.equals(controller.getTable().getSpieler3())) {
+		if (spieler.equals(controller.getTable().getPlayer3())) {
 				pruefe = true;
 		}
 		
@@ -446,7 +446,7 @@ public class ControllerTest {
 		tisch.setPlayer2(new Granny("Gräfin Johanita von Schwanenstein"));
 		
 		tisch.setPlayer3(new Granny("Zensursula"));
-		tisch.getSpieler1().setPosition(Position.VORHAND);
+		tisch.getPlayer1().setPosition(Position.VORHAND);
 		controller.decideRaeuberGame();
 		
 		assertTrue(tisch.getVorhand().isDeclarer());
@@ -473,17 +473,17 @@ public class ControllerTest {
 		
 		controller.prepareGame();
 			boolean hatnamen = true;
-		for (PlayingCard karte : tisch.getSpieler1().getHand()) {
+		for (PlayingCard karte : tisch.getPlayer1().getHand()) {
 			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
 				}
-		for (PlayingCard karte : tisch.getSpieler2().getHand()) {
+		for (PlayingCard karte : tisch.getPlayer2().getHand()) {
 			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
 				}
-		for (PlayingCard karte : tisch.getSpieler3().getHand()) {
+		for (PlayingCard karte : tisch.getPlayer3().getHand()) {
 			if (karte.getOwner() == null) {
 				hatnamen = false;
 			}
@@ -638,7 +638,7 @@ public class ControllerTest {
 				
 		boolean spieler3Aufgeraeumt = false;
 
-		IPlayer sp3 = controller.getTable().getSpieler3();
+		IPlayer sp3 = controller.getTable().getPlayer3();
 		if (sp3.getHand() == null && sp3.isDeclarer() == false &&
 				sp3.getTricks().size() == 0 && sp3.getAllPlayedCards().size() == 0) {
 			spieler3Aufgeraeumt = true;
@@ -733,7 +733,7 @@ public class ControllerTest {
 		
 		boolean spieler1Aufgeraeumt = false;
 		
-		IPlayer sp1 = controller.getTable().getSpieler1();
+		IPlayer sp1 = controller.getTable().getPlayer1();
 		if (sp1.getHand() == null && !sp1.isDeclarer() &&
 				sp1.getTricks().size() == 0 && sp1.getAllPlayedCards().size() == 0) {
 			spieler1Aufgeraeumt = true;
@@ -781,7 +781,7 @@ public class ControllerTest {
 		
 		boolean spieler2Aufgeraeumt = false;
 		
-		IPlayer sp2 = controller.getTable().getSpieler2();
+		IPlayer sp2 = controller.getTable().getPlayer2();
 		if (sp2.getHand() == null && sp2.isDeclarer() == false &&
 				sp2.getTricks().size() == 0 && sp2.getAllPlayedCards().size() == 0) {
 			spieler2Aufgeraeumt = true;
@@ -842,7 +842,7 @@ public class ControllerTest {
 		
 		IPlayer oma = new Granny("o1");
 		controller.getTable().setPlayer1(oma);
-		controller.getTable().getSpieler1().setIsDeclarer(true);
+		controller.getTable().getPlayer1().setIsDeclarer(true);
 		controller.getTable().setPlayer2(new Granny("o2"));
 		controller.getTable().setPlayer3(new Granny("o3"));
 		controller.getTable().setSixSkat(true);
@@ -866,11 +866,11 @@ public class ControllerTest {
 	public void flagsSetzenTest1() {
 		
 		tisch.setPlayer1(new Granny("Erna"));
-		tisch.getSpieler1().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
 		tisch.setSpielart(new NullGame());
-		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
+		controller.flagsSetzen(tisch.getPlayer1(), tisch.getSpielart());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz()) {
@@ -883,12 +883,12 @@ public class ControllerTest {
 	public void flagsSetzenTest2() {
 		
 		tisch.setPlayer1(new Granny("Erna"));
-		tisch.getSpieler1().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
 		tisch.setSpielart(new NullGame());
 		tisch.setHandspiel(false);
-		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
+		controller.flagsSetzen(tisch.getPlayer1(), tisch.getSpielart());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz()) {
@@ -901,11 +901,11 @@ public class ControllerTest {
 	public void flagsSetzenTest3() {
 		
 		tisch.setPlayer1(new Granny("Erna"));
-		tisch.getSpieler1().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
 		tisch.setSpielart(new GrandGame());
-		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
+		controller.flagsSetzen(tisch.getPlayer1(), tisch.getSpielart());
 		
 		boolean ergebnis = false;
 		if (!tisch.getSchneider() && !tisch.getSchwarz() && !tisch.getOuvert()) {
@@ -918,12 +918,12 @@ public class ControllerTest {
 	public void flagsSetzenTest4() {
 		
 		tisch.setPlayer1(new HumanPlayerStub("Bert"));
-		tisch.getSpieler1().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
 		tisch.setSpielart(new GrandGame());
 		tisch.setHandspiel(true);
-		controller.flagsSetzen(tisch.getSpieler1(), tisch.getSpielart());
+		controller.flagsSetzen(tisch.getPlayer1(), tisch.getSpielart());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz() && tisch.getOuvert()) {
@@ -952,7 +952,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(Position.MITTELHAND, controller2.getTable().getSpieler3().getPosition());
+		assertEquals(Position.MITTELHAND, controller2.getTable().getPlayer3().getPosition());
 	}
 	
 	@Test
@@ -962,7 +962,7 @@ public class ControllerTest {
 		tisch2.setPlayer1(new Granny("Hilde"));
 		tisch2.setPlayer2(new Granny("Heide"));
 		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getSpieler1().setIsDeclarer(true);
+		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -974,7 +974,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(Position.MITTELHAND, controller2.getTable().getSpieler3().getPosition());
+		assertEquals(Position.MITTELHAND, controller2.getTable().getPlayer3().getPosition());
 	}
 	
 	@Test
@@ -984,7 +984,7 @@ public class ControllerTest {
 		tisch2.setPlayer1(new Granny("Hilde"));
 		tisch2.setPlayer2(new Granny("Heide"));
 		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getSpieler1().setIsDeclarer(true);
+		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -996,7 +996,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(Position.MITTELHAND, controller2.getTable().getSpieler3().getPosition());
+		assertEquals(Position.MITTELHAND, controller2.getTable().getPlayer3().getPosition());
 	}
 	
 	@Test
@@ -1006,7 +1006,7 @@ public class ControllerTest {
 		tisch2.setPlayer1(new Granny("Hilde"));
 		tisch2.setPlayer2(new Granny("Heide"));
 		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getSpieler1().setIsDeclarer(true);
+		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.setSpaltarsch(true);
 		tisch2.setRamschrunden(0);
 		tisch2.initializePositions();
@@ -1020,7 +1020,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(Position.MITTELHAND, controller2.getTable().getSpieler3().getPosition());
+		assertEquals(Position.MITTELHAND, controller2.getTable().getPlayer3().getPosition());
 	}
 	
 	@Test
@@ -1030,7 +1030,7 @@ public class ControllerTest {
 		tisch2.setPlayer1(new Granny("Hilde"));
 		tisch2.setPlayer2(new Granny("Heide"));
 		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getSpieler1().setIsDeclarer(true);
+		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.setSpaltarsch(true);
 		tisch2.setRamschrunden(1);
 		tisch2.initializePositions();
@@ -1044,7 +1044,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(Position.MITTELHAND, controller2.getTable().getSpieler3().getPosition());
+		assertEquals(Position.MITTELHAND, controller2.getTable().getPlayer3().getPosition());
 	}
 	
 	@Test
@@ -1054,7 +1054,7 @@ public class ControllerTest {
 		tisch2.setPlayer1(new RuleCompliantPlayer("Hilde"));
 		tisch2.setPlayer2(new RuleCompliantPlayer("Heide"));
 		tisch2.setPlayer3(new RuleCompliantPlayer("Harald"));
-		tisch2.getSpieler1().setIsDeclarer(true);
+		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -1066,7 +1066,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(Position.MITTELHAND, controller2.getTable().getSpieler3().getPosition());
+		assertEquals(Position.MITTELHAND, controller2.getTable().getPlayer3().getPosition());
 	}
 	
 	@Test
@@ -1076,7 +1076,7 @@ public class ControllerTest {
 		tisch2.setPlayer1(new Granny("Hilde"));
 		tisch2.setPlayer2(new Granny("Heide"));
 		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getSpieler1().setIsDeclarer(true);
+		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -1088,7 +1088,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(Position.MITTELHAND, controller2.getTable().getSpieler3().getPosition());
+		assertEquals(Position.MITTELHAND, controller2.getTable().getPlayer3().getPosition());
 	}
 	
 	@Test
@@ -1098,7 +1098,7 @@ public class ControllerTest {
 		tisch2.setPlayer1(new RuleCompliantPlayer("Hilde"));
 		tisch2.setPlayer2(new RuleCompliantPlayer("Heide"));
 		tisch2.setPlayer3(new RuleCompliantPlayer("Harald"));
-		tisch2.getSpieler1().setIsDeclarer(true);
+		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
 		tisch2.erstelleDeck();
 		tisch2.kartenAusteilen();
@@ -1110,7 +1110,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(Position.MITTELHAND, controller2.getTable().getSpieler3().getPosition());
+		assertEquals(Position.MITTELHAND, controller2.getTable().getPlayer3().getPosition());
 	}
 	
 	@Test
@@ -1144,7 +1144,7 @@ public class ControllerTest {
 		tisch.setPlayer3(spieler3);
 		ArrayList<PlayingCard> skat2 = new ArrayList<PlayingCard>(Arrays.asList(skat));
 		
-		SmartPlayer ergebnis = (SmartPlayer) tisch.getSpieler1();
+		SmartPlayer ergebnis = (SmartPlayer) tisch.getPlayer1();
 		
 		controller.schlauerSpielerInit();
 		
@@ -1161,7 +1161,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(spieler2);
 		controller.getTable().setPlayer3(spieler3);
 		controller.namesComparison();
-		assertEquals("Gertrud1", controller.getTable().getSpieler1().getName());
+		assertEquals("Gertrud1", controller.getTable().getPlayer1().getName());
 	}
 	
 	@Test
@@ -1174,7 +1174,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(spieler2);
 		controller.getTable().setPlayer3(spieler3);
 		controller.namesComparison();
-		assertEquals("Gertrud2", controller.getTable().getSpieler2().getName());
+		assertEquals("Gertrud2", controller.getTable().getPlayer2().getName());
 	}
 	
 	@Test
@@ -1187,7 +1187,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(spieler2);
 		controller.getTable().setPlayer3(spieler3);
 		controller.namesComparison();
-		assertEquals("Gertrud2", controller.getTable().getSpieler3().getName());
+		assertEquals("Gertrud2", controller.getTable().getPlayer3().getName());
 	}
 	
 	@Test
@@ -1200,7 +1200,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(spieler2);
 		controller.getTable().setPlayer3(spieler3);
 		controller.namesComparison();
-		assertEquals("Gertrud1", controller.getTable().getSpieler2().getName());
+		assertEquals("Gertrud1", controller.getTable().getPlayer2().getName());
 	}
 	
 	@Test

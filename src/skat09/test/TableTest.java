@@ -67,17 +67,17 @@ public class TableTest {
 		tisch.setPlayer1(spieler1);
 		tisch.setPlayer2(spieler2);
 		tisch.setPlayer3(spieler3);
-		tisch.getSpieler1().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
-		tisch.getSpieler1().getHand().clear();
-		tisch.getSpieler1().getHand().add(spielkarte1);
-		tisch.getSpieler1().getHand().add(spielkarte2);
-		tisch.getSpieler1().getHand().add(spielkarte3);
-	    tisch.getSpieler2().getHand().clear();
-	    tisch.getSpieler2().getHand().add(spielkarte4);
-	    tisch.getSpieler3().getHand().clear();
-	    tisch.getSpieler3().getHand().add(spielkarte3);
+		tisch.getPlayer1().getHand().clear();
+		tisch.getPlayer1().getHand().add(spielkarte1);
+		tisch.getPlayer1().getHand().add(spielkarte2);
+		tisch.getPlayer1().getHand().add(spielkarte3);
+	    tisch.getPlayer2().getHand().clear();
+	    tisch.getPlayer2().getHand().add(spielkarte4);
+	    tisch.getPlayer3().getHand().clear();
+	    tisch.getPlayer3().getHand().add(spielkarte3);
 	    skat[0] = null;
 	    skat[1] = null;
 	    tisch.setSkat(skat);
@@ -89,16 +89,16 @@ public class TableTest {
 			}
 		}
 
-		PlayingCard[] gespieltekarten = tisch.getGespielteKarten();
+		PlayingCard[] gespieltekarten = tisch.getPlayedCards();
 		gespieltekarten[0] = new PlayingCard(Suit.HEARTS, Value.DAUS);
 		gespieltekarten[1] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		gespieltekarten[2] = new PlayingCard(Suit.BELLS, Value.NINE);
-		tisch.setGespielteKarten(gespieltekarten);
-		tisch.getSpieler1().addTrick(gespieltekarten);
+		tisch.setPlayedCards(gespieltekarten);
+		tisch.getPlayer1().addTrick(gespieltekarten);
 		tisch.setBiddingValue(18);
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setSpielart(spielart);
-		tisch.getSpieler1().setGameVariety(spielart);
+		tisch.getPlayer1().setGameVariety(spielart);
 	}
 
 	@After
@@ -110,19 +110,19 @@ public class TableTest {
 	// Konstruktortest fuer Spieler1
 	@Test
 	public void tischSpieler1Test() {
-		assertEquals("Bert", tisch.getSpieler1().getName());
+		assertEquals("Bert", tisch.getPlayer1().getName());
 	}
 
 	// Konstruktortest fuer Spieler2
 	@Test
 	public void tischSpieler2Test() {
-		assertEquals("Ernie", tisch.getSpieler2().getName());
+		assertEquals("Ernie", tisch.getPlayer2().getName());
 	}
 
 	// Konstruktortest fuer Spieler3
 	@Test
 	public void tischSpieler3Test() {
-		assertEquals("Hans", tisch.getSpieler3().getName());
+		assertEquals("Hans", tisch.getPlayer3().getName());
 	}
 	
 	//Testet die Methode getHandspiel
@@ -349,7 +349,7 @@ public class TableTest {
 		boolean test = false;
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
-		if(tisch.getSpieler1().getHand().size() == 10){
+		if(tisch.getPlayer1().getHand().size() == 10){
 			test = true;
 		}
 		assertTrue(test);
@@ -359,14 +359,14 @@ public class TableTest {
 	public void kartenAusteilenTest2() {
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
-		assertEquals(10, tisch.getSpieler2().getHand().size());
+		assertEquals(10, tisch.getPlayer2().getHand().size());
 	}
 
 	@Test
 	public void kartenAusteilenTest3() {
 		tisch.erstelleDeck();
 		tisch.kartenAusteilen();
-		assertEquals(10, tisch.getSpieler3().getHand().size());
+		assertEquals(10, tisch.getPlayer3().getHand().size());
 	}
 
 	@Test
@@ -386,8 +386,8 @@ public class TableTest {
 	
 	@Test
 	public void getProzentAlleinTest() {
-		tisch.getSpieler1().getGames().clear();
-		tisch.getSpieler1().getGames().add(18);
+		tisch.getPlayer1().getGames().clear();
+		tisch.getPlayer1().getGames().add(18);
 		//tisch.addAnzahlSpiele();
 		
 		assertEquals(100, tisch.getProzentAllein(spieler1));
@@ -395,8 +395,8 @@ public class TableTest {
 	
 	@Test
 	public void getAnzahlAlleinTest() {
-		tisch.getSpieler1().getGames().clear();
-		tisch.getSpieler1().getGames().add(18);
+		tisch.getPlayer1().getGames().clear();
+		tisch.getPlayer1().getGames().add(18);
 		//tisch.addAnzahlSpiele();
 		
 		assertEquals(1, tisch.getAnzahlAllein(spieler1));
@@ -404,8 +404,8 @@ public class TableTest {
 	
 	@Test
 	public void anzahlGewinneTest() {
-		tisch.getSpieler1().getGames().clear();
-		tisch.getSpieler1().getGames().add(18);
+		tisch.getPlayer1().getGames().clear();
+		tisch.getPlayer1().getGames().add(18);
 		assertEquals(1, tisch.anzahlderGewinne(spieler1));
 	}
 
@@ -416,15 +416,15 @@ public class TableTest {
 
 	@Test
 	public void ermittleAlleinspielerTest2() {
-		tisch.getSpieler1().setIsDeclarer(false);
-		tisch.getSpieler2().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(false);
+		tisch.getPlayer2().setIsDeclarer(true);
 		assertEquals(spieler2, tisch.ermittleAlleinspieler());
 	}
 	
 	@Test
 	public void ermittleAlleinspielerTest3() {
-		tisch.getSpieler1().setIsDeclarer(false);
-		tisch.getSpieler3().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(false);
+		tisch.getPlayer3().setIsDeclarer(true);
 		assertEquals(spieler3, tisch.ermittleAlleinspieler());
 	}
 	
@@ -504,13 +504,13 @@ public class TableTest {
 	public void positionInitialisierenTest() {
 		tisch.initializePositions();
 		int erg = 0;
-		if (tisch.getSpieler1().getPosition() == Position.VORHAND) {
+		if (tisch.getPlayer1().getPosition() == Position.VORHAND) {
 			erg = erg + 1;
 		}
-		if (tisch.getSpieler2().getPosition() == Position.MITTELHAND) {
+		if (tisch.getPlayer2().getPosition() == Position.MITTELHAND) {
 			erg = erg + 1;
 		}
-		if (tisch.getSpieler3().getPosition() == Position.HINTERHAND) {
+		if (tisch.getPlayer3().getPosition() == Position.HINTERHAND) {
 			erg = erg + 1;
 		}
 		assertEquals(3, erg);
@@ -693,17 +693,17 @@ public class TableTest {
 	
 	@Test
 	public void getAktuellePunkteTest() {
-		tisch.getSpieler1().getGames().clear();
-		tisch.getSpieler1().getGames().add(18);
-		assertEquals(18, tisch.getAktuellePunkte(tisch.getSpieler1()));
+		tisch.getPlayer1().getGames().clear();
+		tisch.getPlayer1().getGames().add(18);
+		assertEquals(18, tisch.getAktuellePunkte(tisch.getPlayer1()));
 	}
 	
 	@Test
 	public void kartenbesitzerGebenTest() {
 		boolean test = false;
 		tisch.kartenBesitzergeben();
-		for (int i= 0; i<tisch.getSpieler1().getHand().size(); i++){
-			if (tisch.getSpieler1().getHand().get(i).getOwner().equals(tisch.getSpieler1())) {
+		for (int i= 0; i<tisch.getPlayer1().getHand().size(); i++){
+			if (tisch.getPlayer1().getHand().get(i).getOwner().equals(tisch.getPlayer1())) {
 				test = true;
 			}
 		}
@@ -715,8 +715,8 @@ public class TableTest {
 	public void kartenbesitzerGebenTest2() {
 		boolean test = false;
 		tisch.kartenBesitzergeben();
-		for (int i= 0; i<tisch.getSpieler3().getHand().size(); i++){
-			if (tisch.getSpieler3().getHand().get(i).getOwner().equals(tisch.getSpieler3())) {
+		for (int i= 0; i<tisch.getPlayer3().getHand().size(); i++){
+			if (tisch.getPlayer3().getHand().get(i).getOwner().equals(tisch.getPlayer3())) {
 				test = true;
 			}
 		}
@@ -981,7 +981,7 @@ public class TableTest {
 	
 	@Test
 	public void spielAuswertenTest4() {
-		IPlayer tmp = tisch.getSpieler1();
+		IPlayer tmp = tisch.getPlayer1();
 		tisch.setPlayer1(spieler2);
 		tisch.setPlayer2(tmp);
 		tisch.ermittleAlleinspieler().getTricks().clear();
@@ -990,7 +990,7 @@ public class TableTest {
 	
 	@Test
 	public void spielAuswertenTest5() {
-		IPlayer tmp = tisch.getSpieler1();
+		IPlayer tmp = tisch.getPlayer1();
 		tisch.setPlayer1(spieler3);
 		tisch.setPlayer3(tmp);
 		tisch.ermittleAlleinspieler().getTricks().clear();
@@ -1020,15 +1020,15 @@ public class TableTest {
 	@Test
 	public void sortiereSpielerRamschTest() {
 		
-		tisch.getSpieler1().getTricks().clear();
-		tisch.getSpieler1().getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
-		tisch.getSpieler1().getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
-		tisch.getSpieler2().getTricks().clear();
-		tisch.getSpieler2().getTricks().add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
-		tisch.getSpieler2().getTricks().add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
-		tisch.getSpieler3().getTricks().clear();
-		tisch.getSpieler3().getTricks().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getSpieler3().getTricks().add(new PlayingCard(Suit.LEAVES, Value.KING));
+		tisch.getPlayer1().getTricks().clear();
+		tisch.getPlayer1().getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
+		tisch.getPlayer1().getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
+		tisch.getPlayer2().getTricks().clear();
+		tisch.getPlayer2().getTricks().add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
+		tisch.getPlayer2().getTricks().add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
+		tisch.getPlayer3().getTricks().clear();
+		tisch.getPlayer3().getTricks().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+		tisch.getPlayer3().getTricks().add(new PlayingCard(Suit.LEAVES, Value.KING));
 		
 		IPlayer[] spielerU = new IPlayer[3];
 		spielerU[0] = spieler1;
@@ -1124,14 +1124,14 @@ public class TableTest {
 	@Test
 	public void ermittleMitspielerTest1() {
 		
-		tisch.getSpieler1().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(true);
 		assertEquals(spieler3, tisch.ermittleMitspieler(spieler2));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest2() {
 		
-		tisch.getSpieler1().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(true);
 		assertEquals(spieler2, tisch.ermittleMitspieler(spieler3));
 	}
 	
@@ -1139,51 +1139,51 @@ public class TableTest {
 	@Test
 	public void ermittleMitspielerTest3() {
 		
-		tisch.getSpieler1().setIsDeclarer(false);
-		tisch.getSpieler2().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(false);
+		tisch.getPlayer2().setIsDeclarer(true);
 		assertEquals(spieler1, tisch.ermittleMitspieler(spieler3));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest4() {
 		
-		tisch.getSpieler1().setIsDeclarer(false);
-		tisch.getSpieler2().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(false);
+		tisch.getPlayer2().setIsDeclarer(true);
 		assertEquals(spieler3, tisch.ermittleMitspieler(spieler1));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest5() {
 		
-		tisch.getSpieler1().setIsDeclarer(false);
-		tisch.getSpieler3().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(false);
+		tisch.getPlayer3().setIsDeclarer(true);
 		assertEquals(spieler1, tisch.ermittleMitspieler(spieler2));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest6() {
 		
-		tisch.getSpieler1().setIsDeclarer(false);
-		tisch.getSpieler3().setIsDeclarer(true);
+		tisch.getPlayer1().setIsDeclarer(false);
+		tisch.getPlayer3().setIsDeclarer(true);
 		assertEquals(spieler2, tisch.ermittleMitspieler(spieler1));
 	}
 	
 	@Test
 	public void mitspielerSetzenTest1() {
 		tisch.mitspielerSetzen();
-		assertEquals(null, tisch.getSpieler1().getTeammate());
+		assertEquals(null, tisch.getPlayer1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest2() {
 		tisch.mitspielerSetzen();
-		assertEquals(spieler3, tisch.getSpieler2().getTeammate());
+		assertEquals(spieler3, tisch.getPlayer2().getTeammate());
 	}
 	
 	@Test 
 	public void mitspielerSetzenTest3() {
 		tisch.mitspielerSetzen();
-		assertEquals(spieler2, tisch.getSpieler3().getTeammate());
+		assertEquals(spieler2, tisch.getPlayer3().getTeammate());
 	}
 	
 	@Test
@@ -1192,28 +1192,28 @@ public class TableTest {
 		spieler1.setIsDeclarer(false);
 		spieler2.setIsDeclarer(true);
 		tisch.mitspielerSetzen();
-		assertEquals(spieler3, tisch.getSpieler1().getTeammate());
+		assertEquals(spieler3, tisch.getPlayer1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest5() {
 		tisch.setSpielart(new Ramsch());
 		tisch.mitspielerSetzen();
-		assertEquals(null, tisch.getSpieler1().getTeammate());
+		assertEquals(null, tisch.getPlayer1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest6() {
 		tisch.setSpielart(new Ramsch());
 		tisch.mitspielerSetzen();
-		assertEquals(null, tisch.getSpieler2().getTeammate());
+		assertEquals(null, tisch.getPlayer2().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest7() {
 		tisch.setSpielart(new Ramsch());
 		tisch.mitspielerSetzen();
-		assertEquals(null, tisch.getSpieler3().getTeammate());
+		assertEquals(null, tisch.getPlayer3().getTeammate());
 	}
 	
 	@Test

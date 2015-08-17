@@ -246,7 +246,7 @@ public class GUIOutput extends Output {
 	@Override
 	public void outputHand(IPlayer spieler) throws IOException {
 		hfenster.blattAusgeben(spieler);
-		hfenster.gegnerKarten(tisch.getSpieler2(), tisch.getSpieler3());
+		hfenster.gegnerKarten(tisch.getPlayer2(), tisch.getPlayer3());
 
 	}
 
@@ -466,7 +466,7 @@ public class GUIOutput extends Output {
 
 	@Override
 	public void showPosition() {
-		hfenster.gegnerKarten(tisch.getSpieler2(), tisch.getSpieler3());
+		hfenster.gegnerKarten(tisch.getPlayer2(), tisch.getPlayer3());
 
 	}
 

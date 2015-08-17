@@ -220,7 +220,7 @@ public class Table extends Observable {
 	 * 
 	 * @return spieler1
 	 */
-	public IPlayer getSpieler1() {
+	public IPlayer getPlayer1() {
 
 		return spieler1;
 	}
@@ -230,7 +230,7 @@ public class Table extends Observable {
 	 * 
 	 * @return spieler2
 	 */
-	public IPlayer getSpieler2() {
+	public IPlayer getPlayer2() {
 
 		return spieler2;
 	}
@@ -240,7 +240,7 @@ public class Table extends Observable {
 	 * 
 	 * @return spieler3
 	 */
-	public IPlayer getSpieler3() {
+	public IPlayer getPlayer3() {
 
 		return spieler3;
 	}
@@ -266,7 +266,7 @@ public class Table extends Observable {
 	 * 
 	 * @return auf dem Tisch liegende Karten
 	 */
-	public PlayingCard[] getGespielteKarten() {
+	public PlayingCard[] getPlayedCards() {
 
 		return gespielteKarten;
 	}
@@ -587,7 +587,7 @@ public class Table extends Observable {
 	 * @param gespielteKarten
 	 *            - ein Array, dass die drei gespielten Karten.
 	 */
-	public void setGespielteKarten(PlayingCard[] gespielteKarten) {
+	public void setPlayedCards(PlayingCard[] gespielteKarten) {
 
 		this.gespielteKarten = gespielteKarten;
 		super.setChanged();
