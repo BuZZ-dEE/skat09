@@ -317,7 +317,7 @@ public class Table extends Observable {
 	 * 
 	 * @return spielart der aktuellen Runde
 	 */
-	public IGameVariety getSpielart() {
+	public IGameVariety getGameVariety() {
 
 		return spielart;
 	}
@@ -744,8 +744,8 @@ public class Table extends Observable {
 	 *            - &uuml;bergibt die Spielart
 	 * @return Spieler, der den Stich gewonnen hat
 	 */
-	public IPlayer stichAuswerten(IGameVariety spielart,
-			PlayingCard[] gespielteKarten) throws NullPointerException {
+	public IPlayer evaluateTrick(IGameVariety spielart,
+								 PlayingCard[] gespielteKarten) throws NullPointerException {
 
 		IPlayer stichGewinner = null;
 		PlayingCard hoechsteKarte = null;

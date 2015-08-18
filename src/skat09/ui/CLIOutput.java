@@ -551,7 +551,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void showEvaluation(boolean isWon) {
-		if (table.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
 			if (isWon == true) {
 				System.out.println(Messages.getI18n("player.won", table
 						.ermittleAlleinspieler().getName()));
@@ -685,10 +685,10 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void trump() {
-		if (table.getSpielart().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
 			System.out.println(Messages.getI18n("player.name.playing.game",
 					table.ermittleAlleinspieler().getName(), table
-							.getSpielart().toString()));
+							.getGameVariety().toString()));
 			System.out.println("");
 		} else {
 			System.out.println(Messages.getI18n("game.ramsch.playing"));
