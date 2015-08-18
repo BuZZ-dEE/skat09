@@ -139,12 +139,12 @@ public class TableTest {
 		assertFalse(tisch.getHandspiel());
 	}
 	
-	//Testet die Methode getSpielart
+	//Testet die Methode getGameVariety
 	@Test
 	public void getSpielartTest() {
 		IGameVariety spielart = new GrandGame();
 		tisch.setSpielart(spielart);
-		assertEquals(spielart, tisch.getSpielart());
+		assertEquals(spielart, tisch.getGameVariety());
 	}
 	
 	//Testet die Methode getVariant
@@ -275,7 +275,7 @@ public class TableTest {
 		gespielteKarten[0].setOwner(spieler1);
 		gespielteKarten[1].setOwner(spieler2);
 		gespielteKarten[2].setOwner(spieler3);
-		assertEquals(spieler2, tisch.stichAuswerten(spielart, gespielteKarten));
+		assertEquals(spieler2, tisch.evaluateTrick(spielart, gespielteKarten));
 		
 	}
 	
@@ -289,7 +289,7 @@ public class TableTest {
 		gespielteKarten[0].setOwner(spieler1);
 		gespielteKarten[1].setOwner(spieler2);
 		gespielteKarten[2].setOwner(spieler3);
-		assertEquals(spieler3, tisch.stichAuswerten(spielart, gespielteKarten));
+		assertEquals(spieler3, tisch.evaluateTrick(spielart, gespielteKarten));
 	}
 	
 	@Test
@@ -302,7 +302,7 @@ public class TableTest {
 		gespielteKarten[0].setOwner(spieler1);
 		gespielteKarten[1].setOwner(spieler2);
 		gespielteKarten[2].setOwner(spieler3);
-		assertEquals(spieler3, tisch.stichAuswerten(spielart, gespielteKarten));
+		assertEquals(spieler3, tisch.evaluateTrick(spielart, gespielteKarten));
 	}
 	
 	@Test
@@ -315,7 +315,7 @@ public class TableTest {
 		gespielteKarten[0].setOwner(spieler1);
 		gespielteKarten[1].setOwner(spieler2);
 		gespielteKarten[2].setOwner(spieler3);
-		assertEquals(spieler1, tisch.stichAuswerten(spielart, gespielteKarten));
+		assertEquals(spieler1, tisch.evaluateTrick(spielart, gespielteKarten));
 	}
 	
 	@Test
@@ -328,7 +328,7 @@ public class TableTest {
 		gespielteKarten[0].setOwner(spieler1);
 		gespielteKarten[1].setOwner(spieler2);
 		gespielteKarten[2].setOwner(spieler3);
-		assertEquals(spieler1, tisch.stichAuswerten(spielart, gespielteKarten));
+		assertEquals(spieler1, tisch.evaluateTrick(spielart, gespielteKarten));
 	}
 	
 	@Test
@@ -341,7 +341,7 @@ public class TableTest {
 		gespielteKarten[0].setOwner(spieler1);
 		gespielteKarten[1].setOwner(spieler2);
 		gespielteKarten[2].setOwner(spieler3);
-		assertEquals(spieler1, tisch.stichAuswerten(spielart, gespielteKarten));
+		assertEquals(spieler1, tisch.evaluateTrick(spielart, gespielteKarten));
 	}
 	
 	@Test

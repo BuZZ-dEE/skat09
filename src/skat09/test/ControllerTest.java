@@ -525,8 +525,8 @@ public class ControllerTest {
 		
 		//spielart pruefen
 		boolean spielart2 = false;
-		System.out.println(controller2.getTable().getSpielart().toString());
-		if (controller2.getTable().getSpielart().toString().equals((new SuitGame(Suit.BELLS)).toString())) {
+		System.out.println(controller2.getTable().getGameVariety().toString());
+		if (controller2.getTable().getGameVariety().toString().equals((new SuitGame(Suit.BELLS)).toString())) {
 			spielart2 = true;
 		}
 		
@@ -870,7 +870,7 @@ public class ControllerTest {
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
 		tisch.setSpielart(new NullGame());
-		controller.flagsSetzen(tisch.getPlayer1(), tisch.getSpielart());
+		controller.flagsSetzen(tisch.getPlayer1(), tisch.getGameVariety());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz()) {
@@ -888,7 +888,7 @@ public class ControllerTest {
 		tisch.setPlayer3(new Granny("Mochochocho"));
 		tisch.setSpielart(new NullGame());
 		tisch.setHandspiel(false);
-		controller.flagsSetzen(tisch.getPlayer1(), tisch.getSpielart());
+		controller.flagsSetzen(tisch.getPlayer1(), tisch.getGameVariety());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz()) {
@@ -905,7 +905,7 @@ public class ControllerTest {
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
 		tisch.setSpielart(new GrandGame());
-		controller.flagsSetzen(tisch.getPlayer1(), tisch.getSpielart());
+		controller.flagsSetzen(tisch.getPlayer1(), tisch.getGameVariety());
 		
 		boolean ergebnis = false;
 		if (!tisch.getSchneider() && !tisch.getSchwarz() && !tisch.getOuvert()) {
@@ -923,7 +923,7 @@ public class ControllerTest {
 		tisch.setPlayer3(new Granny("Mochochocho"));
 		tisch.setSpielart(new GrandGame());
 		tisch.setHandspiel(true);
-		controller.flagsSetzen(tisch.getPlayer1(), tisch.getSpielart());
+		controller.flagsSetzen(tisch.getPlayer1(), tisch.getGameVariety());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz() && tisch.getOuvert()) {
