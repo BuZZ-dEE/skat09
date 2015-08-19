@@ -449,7 +449,7 @@ public class Controller implements Observer, IController {
 			table.getPlayer3().addPlayedCards(playedCards);
 
 			// Stichauswertung ausgeben
-			stichAuswertung(playedCards, player1);
+			outputTrickEvaluation(playedCards, player1);
 
 			if (table.getGameVariety().getGameVariety() == GameVarietyName.NULL
 					&& player1.getName() == table.ermittleAlleinspieler()
@@ -467,119 +467,119 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void alleinspielerAktionen() throws IOException {
+	public void declarerActions() throws IOException {
 
 		// Der Spieler wird gefragt, ob er Hand spielt
-		IPlayer alleinspieler = table.ermittleAlleinspieler();
-		IPlayer mensch = table.getHumanPlayer();
-		output.outputHand(mensch);
+		IPlayer declarer = table.ermittleAlleinspieler();
+		IPlayer human = table.getHumanPlayer();
+		output.outputHand(human);
 
-		table.setHandspiel(alleinspieler.handgame());
-		alleinspieler.setHandGames(alleinspieler.getHandGames() + 1);
-		IGameVariety spielart = null;
+		table.setHandGame(declarer.handgame());
+		declarer.setHandGames(declarer.getHandGames() + 1);
+		IGameVariety gameVariety = null;
 		PlayingCard[] skat = null;
 
 		// Falls der Spieler kein Handspiel macht, muss er zwei Karten
 		// dr&uuml;cken.
-		if (!table.getHandspiel()) {
+		if (!table.getHandGame()) {
 
 			// Skat dem Spieler anzeigen
 			// Skat vom Tisch holen, dem Spieler geben und gedr&uuml;ckte Karten
 			// wieder zum Tisch geben.
 			output.outputSkat(table.getSkat());
-			table.setSkat(alleinspieler.druecken(table.getSkat()));
+			table.setSkat(declarer.druecken(table.getSkat()));
 		}
 		// Spielansage
-		spielart = alleinspieler.declareGame();
+		gameVariety = declarer.declareGame();
 
 		// Falls es sich um ein Farbspiel handelt wird eine Trumpffarbe
 		// ben&ouml;tigt.
-		if (spielart instanceof SuitGame) {
+		if (gameVariety instanceof SuitGame) {
 
-			spielart = alleinspieler.suit();
+			gameVariety = declarer.suit();
 		}
 		// Spielart ist ermittelt und wird am Tisch sowie bei den Spielern
 		// gesetzt.
-		table.setSpielart(spielart);
-		table.getPlayer1().setGameVariety(spielart);
-		table.getPlayer2().setGameVariety(spielart);
-		table.getPlayer3().setGameVariety(spielart);
+		table.setGameVariety(gameVariety);
+		table.getPlayer1().setGameVariety(gameVariety);
+		table.getPlayer2().setGameVariety(gameVariety);
+		table.getPlayer3().setGameVariety(gameVariety);
 
 		// Sortieren der Spielerbl&auml;tter nachdem Spielart nun bekannt ist.
 		// Dies geschieht nur für die menschlichen Spieler.
-		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+		for (IPlayer allPlayer : new IPlayer[] { table.getPlayer1(),
 				table.getPlayer2(), table.getPlayer3() }) {
 
-			if (alleSpieler instanceof IHumanPlayer) {
+			if (allPlayer instanceof IHumanPlayer) {
 
-				((IPlayer) alleSpieler).sortHand(spielart);
+				((IPlayer) allPlayer).sortHand(gameVariety);
 			}
 		}
 
 		// Den Skat in das Blatt einordnen, um die Spitzen zu z&auml;hlen.
 		skat = table.getSkat();
-		alleinspieler.getHand().add(skat[0]);
-		alleinspieler.getHand().add(skat[1]);
+		declarer.getHand().add(skat[0]);
+		declarer.getHand().add(skat[1]);
 
 		if (table.getSixSkat()) {
 
-			alleinspieler.getHand().add(skat[2]);
+			declarer.getHand().add(skat[2]);
 		}
 
-		alleinspieler.spitzenEinordnen();
+		declarer.spitzenEinordnen();
 		if (table.getSixSkat()) {
 
-			alleinspieler.getHand().remove(13);
-			alleinspieler.getHand().remove(12);
-			alleinspieler.getHand().remove(11);
+			declarer.getHand().remove(13);
+			declarer.getHand().remove(12);
+			declarer.getHand().remove(11);
 		} else {
 
-			alleinspieler.getHand().remove(11);
-			alleinspieler.getHand().remove(10);
+			declarer.getHand().remove(11);
+			declarer.getHand().remove(10);
 		}
 
 
 		// &Uuml;berpr&uuml;fen, ob schneider/schwarz/ouvert gefragt werden muss
 		// und entsprechende Variablen am Tisch setzen.
-		flagsSetzen(alleinspieler, spielart);
-		schlauerSpielerInit();
+		setFlags(declarer, gameVariety);
+		initializeSmartPlayer();
 	}
 
 	//@Override
 	public void prepareGame() {
 
-		table.erstelleDeck();
+		table.createDeck();
 
-		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+		for (IPlayer allPlayer : new IPlayer[] { table.getPlayer1(),
 				table.getPlayer2(), table.getPlayer3() }) {
-			if (alleSpieler instanceof SmartPlayer) {
+			if (allPlayer instanceof SmartPlayer) {
 				
-				((SmartPlayer) alleSpieler)
+				((SmartPlayer) allPlayer)
 						.setDeck(new ArrayList<PlayingCard>((table.getDeck())));
 			}
 		}
 
-		table.mischeDeck();
-		table.kartenAusteilen();
+		table.shuffleDeck();
+		table.dealOutCards();
 
 		// für alle menschlichen Spieler das Blatt nach Grandspiel sortieren
-		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+		for (IPlayer allPlayer : new IPlayer[] { table.getPlayer1(),
 				table.getPlayer2(), table.getPlayer3() }) {
 
-			if (alleSpieler instanceof HumanPlayer) {
+			if (allPlayer instanceof HumanPlayer) {
 
-				((HumanPlayer) alleSpieler)
+				((HumanPlayer) allPlayer)
 						.sortHand(new GrandGame());
 			}
 
-			if (alleSpieler instanceof SmartPlayer) {
+			if (allPlayer instanceof SmartPlayer) {
 
-				((SmartPlayer) alleSpieler).setAnfangsblatt(alleSpieler
+				((SmartPlayer) allPlayer).setAnfangsblatt(allPlayer
 						.getHand());
 				if (table.getVariant() == SkatVariant.SKAT
 						|| table.getVariant() == SkatVariant.RAMSCHBOCK) {
 					
-					((SmartPlayer) alleSpieler).bestimmeMaxReizwert();
+					((SmartPlayer) allPlayer).bestimmeMaxReizwert();
 				}
 			}
 		}
@@ -617,11 +617,11 @@ public class Controller implements Observer, IController {
 
 		PlayingCard[] skat = new PlayingCard[3];
 		table.setSkat(skat);
-		table.setSpielart(null);
+		table.setGameVariety(null);
 		table.setBiddingValue(18);
 		table.setBiddingAgentValue(0);
 		table.setBock(false);
-		table.setHandspiel(false);
+		table.setHandGame(false);
 		table.setSchneider(false);
 		table.setSchwarz(false);
 		table.setOuvert(false);
@@ -644,7 +644,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void stichAuswertung(PlayingCard[] gespielteKarten, IPlayer gewinner) {
+	public void outputTrickEvaluation(PlayingCard[] gespielteKarten, IPlayer gewinner) {
 		output.deleteTable();
 		for (int i = 0; i < 3; i++) {
 
@@ -698,9 +698,9 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void flagsSetzen(IPlayer alleinspieler, IGameVariety spielart) {
+	public void setFlags(IPlayer alleinspieler, IGameVariety spielart) {
 
-		if (table.getHandspiel()) {
+		if (table.getHandGame()) {
 
 			if (spielart instanceof NullGame) {
 
@@ -771,7 +771,7 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void ramschen() throws NullPointerException, IOException {
 		IGameVariety spielart = new Ramsch();
-		table.setSpielart(spielart);
+		table.setGameVariety(spielart);
 		table.getPlayer1().setGameVariety(spielart);
 		table.getPlayer2().setGameVariety(spielart);
 		table.getPlayer3().setGameVariety(spielart);
@@ -790,7 +790,7 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void normalerSpielverlauf() throws IOException {
 		skatkartenBesitzergeben();
-		alleinspielerAktionen();
+		declarerActions();
 		output.trump();
 		leadGame();
 		auswertung();
@@ -839,7 +839,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void schlauerSpielerInit() {
+	public void initializeSmartPlayer() {
 
 		// für alle schlauen Spieler das Deck setzen.
 		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),

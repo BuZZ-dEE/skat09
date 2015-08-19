@@ -514,12 +514,12 @@ public class ControllerTest {
 		skat[1] = new PlayingCard(Suit.HEARTS, Value.SIX);
 		skat[2] = new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE);
 		controller2.getTable().setSkat(skat);
-		controller2.getTable().setSpielart(new SuitGame(Suit.BELLS));
+		controller2.getTable().setGameVariety(new SuitGame(Suit.BELLS));
 
 		
 		//handgame pruefen
 		boolean handspiel = false;
-		if (!controller2.getTable().getHandspiel()) {
+		if (!controller2.getTable().getHandGame()) {
 			handspiel = true;
 		}
 		
@@ -531,7 +531,7 @@ public class ControllerTest {
 		}
 		
 		try {
-			controller2.alleinspielerAktionen();
+			controller2.declarerActions();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -589,7 +589,7 @@ public class ControllerTest {
 		tisch2.setPlayer1(spieler1);
 		tisch2.setPlayer2(spieler2);
 		tisch2.setPlayer3(spieler3);
-		tisch2.setSpielart(new SuitGame(Suit.ACORNS));
+		tisch2.setGameVariety(new SuitGame(Suit.ACORNS));
 		
 		controller.auswertung();
 		
@@ -811,7 +811,7 @@ public class ControllerTest {
 		gespielteKarten[1] = k2;
 		gespielteKarten[2] = k3;
 		
-		controller2.stichAuswertung(gespielteKarten, gewinner);
+		controller2.outputTrickEvaluation(gespielteKarten, gewinner);
 		
 		OutputStub ausgabe = (OutputStub) controller2.getOutput();
 		assertEquals(3, ausgabe.getGespielteKartenZahl());
@@ -846,8 +846,8 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(new Granny("o2"));
 		controller.getTable().setPlayer3(new Granny("o3"));
 		controller.getTable().setSixSkat(true);
-		controller.getTable().erstelleDeck();
-		controller.getTable().kartenAusteilen();
+		controller.getTable().createDeck();
+		controller.getTable().dealOutCards();
 		controller.getTable().kartenBesitzergeben();
 		
 		controller.skatkartenBesitzergeben();
@@ -869,8 +869,8 @@ public class ControllerTest {
 		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
-		tisch.setSpielart(new NullGame());
-		controller.flagsSetzen(tisch.getPlayer1(), tisch.getGameVariety());
+		tisch.setGameVariety(new NullGame());
+		controller.setFlags(tisch.getPlayer1(), tisch.getGameVariety());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz()) {
@@ -886,9 +886,9 @@ public class ControllerTest {
 		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
-		tisch.setSpielart(new NullGame());
-		tisch.setHandspiel(false);
-		controller.flagsSetzen(tisch.getPlayer1(), tisch.getGameVariety());
+		tisch.setGameVariety(new NullGame());
+		tisch.setHandGame(false);
+		controller.setFlags(tisch.getPlayer1(), tisch.getGameVariety());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz()) {
@@ -904,8 +904,8 @@ public class ControllerTest {
 		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
-		tisch.setSpielart(new GrandGame());
-		controller.flagsSetzen(tisch.getPlayer1(), tisch.getGameVariety());
+		tisch.setGameVariety(new GrandGame());
+		controller.setFlags(tisch.getPlayer1(), tisch.getGameVariety());
 		
 		boolean ergebnis = false;
 		if (!tisch.getSchneider() && !tisch.getSchwarz() && !tisch.getOuvert()) {
@@ -921,9 +921,9 @@ public class ControllerTest {
 		tisch.getPlayer1().setIsDeclarer(true);
 		tisch.setPlayer2(new Granny("Renate"));
 		tisch.setPlayer3(new Granny("Mochochocho"));
-		tisch.setSpielart(new GrandGame());
-		tisch.setHandspiel(true);
-		controller.flagsSetzen(tisch.getPlayer1(), tisch.getGameVariety());
+		tisch.setGameVariety(new GrandGame());
+		tisch.setHandGame(true);
+		controller.setFlags(tisch.getPlayer1(), tisch.getGameVariety());
 		
 		boolean ergebnis = false;
 		if (tisch.getSchneider() && tisch.getSchwarz() && tisch.getOuvert()) {
@@ -940,8 +940,8 @@ public class ControllerTest {
 		tisch2.setPlayer2(new Granny("Heide"));
 		tisch2.setPlayer3(new Granny("Harald"));
 		tisch2.initializePositions();
-		tisch2.erstelleDeck();
-		tisch2.kartenAusteilen();
+		tisch2.createDeck();
+		tisch2.dealOutCards();
 		tisch2.kartenBesitzergeben();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
@@ -964,8 +964,8 @@ public class ControllerTest {
 		tisch2.setPlayer3(new Granny("Harald"));
 		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
-		tisch2.erstelleDeck();
-		tisch2.kartenAusteilen();
+		tisch2.createDeck();
+		tisch2.dealOutCards();
 		tisch2.kartenBesitzergeben();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
@@ -986,8 +986,8 @@ public class ControllerTest {
 		tisch2.setPlayer3(new Granny("Harald"));
 		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
-		tisch2.erstelleDeck();
-		tisch2.kartenAusteilen();
+		tisch2.createDeck();
+		tisch2.dealOutCards();
 		tisch2.kartenBesitzergeben();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
@@ -1010,8 +1010,8 @@ public class ControllerTest {
 		tisch2.setSpaltarsch(true);
 		tisch2.setRamschrunden(0);
 		tisch2.initializePositions();
-		tisch2.erstelleDeck();
-		tisch2.kartenAusteilen();
+		tisch2.createDeck();
+		tisch2.dealOutCards();
 		tisch2.kartenBesitzergeben();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
@@ -1034,8 +1034,8 @@ public class ControllerTest {
 		tisch2.setSpaltarsch(true);
 		tisch2.setRamschrunden(1);
 		tisch2.initializePositions();
-		tisch2.erstelleDeck();
-		tisch2.kartenAusteilen();
+		tisch2.createDeck();
+		tisch2.dealOutCards();
 		tisch2.kartenBesitzergeben();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
@@ -1056,8 +1056,8 @@ public class ControllerTest {
 		tisch2.setPlayer3(new RuleCompliantPlayer("Harald"));
 		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
-		tisch2.erstelleDeck();
-		tisch2.kartenAusteilen();
+		tisch2.createDeck();
+		tisch2.dealOutCards();
 		tisch2.kartenBesitzergeben();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
@@ -1078,8 +1078,8 @@ public class ControllerTest {
 		tisch2.setPlayer3(new Granny("Harald"));
 		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
-		tisch2.erstelleDeck();
-		tisch2.kartenAusteilen();
+		tisch2.createDeck();
+		tisch2.dealOutCards();
 		tisch2.kartenBesitzergeben();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
@@ -1100,8 +1100,8 @@ public class ControllerTest {
 		tisch2.setPlayer3(new RuleCompliantPlayer("Harald"));
 		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.initializePositions();
-		tisch2.erstelleDeck();
-		tisch2.kartenAusteilen();
+		tisch2.createDeck();
+		tisch2.dealOutCards();
 		tisch2.kartenBesitzergeben();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
@@ -1146,7 +1146,7 @@ public class ControllerTest {
 		
 		SmartPlayer ergebnis = (SmartPlayer) tisch.getPlayer1();
 		
-		controller.schlauerSpielerInit();
+		controller.initializeSmartPlayer();
 		
 		assertEquals(skat2, ergebnis.getSkat());
 	}

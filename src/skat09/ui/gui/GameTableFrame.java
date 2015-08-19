@@ -1062,7 +1062,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		} else {
 			s = "";
 		}
-		if (tisch.getHandspiel()) {
+		if (tisch.getHandGame()) {
 			s = s + "Hand";
 		}
 		String spielart = tisch.getGameVariety().toString();
