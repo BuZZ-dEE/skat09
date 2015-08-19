@@ -120,7 +120,7 @@ public interface IController {
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void alleinspielerAktionen() throws IOException;
+	public abstract void declarerActions() throws IOException;
 
 	/**
 	 * Diese Methode bereitet alles f$uuml;r ein Spiel vor.
@@ -147,8 +147,8 @@ public interface IController {
 	 * @param gewinner
 	 *            - vorher ermittelter Gewinner des Stichs
 	 */
-	public abstract void stichAuswertung(PlayingCard[] gespielteKarten,
-			IPlayer gewinner);
+	public abstract void outputTrickEvaluation(PlayingCard[] gespielteKarten,
+											   IPlayer gewinner);
 
 	/**
 	 * Falls der Reizagent aktiviert wurde und der Spieler menschlich ist lasse
@@ -181,7 +181,7 @@ public interface IController {
 	 * @param spielart
 	 *            - vom Alleinspieler angesagte Spielart
 	 */
-	public abstract void flagsSetzen(IPlayer alleinspieler, IGameVariety spielart);
+	public abstract void setFlags(IPlayer alleinspieler, IGameVariety spielart);
 
 	/**
 	 * Falls ein Spieler eine Karte spielt, wird dies &uuml;ber die Ausgabe
@@ -242,7 +242,7 @@ public interface IController {
 	 * die Zahl seiner Spitzen kennen. Diese Methode berechnet die Spitzen
 	 * des Computerspielers und teil sie dem Computerspieler mit.
 	 */
-	public abstract void schlauerSpielerInit();
+	public abstract void initializeSmartPlayer();
 	
 	/**
 	 * Da die Spieler anhand ihrer Namen verglichen werden, darf kein Spieler

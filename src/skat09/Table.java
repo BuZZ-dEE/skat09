@@ -307,7 +307,7 @@ public class Table extends Observable {
 	 * 
 	 * @return true, falls handgame
 	 */
-	public boolean getHandspiel() {
+	public boolean getHandGame() {
 
 		return handspiel;
 	}
@@ -611,7 +611,7 @@ public class Table extends Observable {
 	 * @param spielart
 	 *            f&uuml;r die akutelle Runde
 	 */
-	public void setSpielart(IGameVariety spielart) {
+	public void setGameVariety(IGameVariety spielart) {
 
 		this.spielart = spielart;
 	}
@@ -646,7 +646,7 @@ public class Table extends Observable {
 	/**
 	 * Setzt den booleanWert für Handspiel.
 	 */
-	public void setHandspiel(boolean wert) {
+	public void setHandGame(boolean wert) {
 
 		this.handspiel = wert;
 	}
@@ -703,7 +703,7 @@ public class Table extends Observable {
 	 * Erstellt ein neues Deck mit 32 Karten. Jede Karte darf nur einmal
 	 * vorkommen.
 	 */
-	public void erstelleDeck() {
+	public void createDeck() {
 
 		PlayingCard karte;
 		// Spielkarte.setBlatt(true);
@@ -729,7 +729,7 @@ public class Table extends Observable {
 	/**
 	 * Mischt das &uuml;bergebene Deck und liefert es zur&uuml;ck.
 	 */
-	public void mischeDeck() {
+	public void shuffleDeck() {
 
 		Collections.shuffle(deck);
 	}
@@ -782,7 +782,7 @@ public class Table extends Observable {
 	 * sie nach den Vorgaben der internationalen Skatordnung an die Spieler und
 	 * in den Skat.
 	 */
-	public void kartenAusteilen() {
+	public void dealOutCards() {
 		anzahlSpiele = anzahlSpiele + 1;
 		ArrayList<PlayingCard> blatt1 = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>();

@@ -23,7 +23,7 @@ public class ControllerStub implements IController{
 	}
 	
 	
-	public void alleinspielerAktionen() throws IOException {
+	public void declarerActions() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -65,7 +65,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void flagsSetzen(IPlayer alleinspieler, IGameVariety spielart) {
+	public void setFlags(IPlayer alleinspieler, IGameVariety spielart) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -131,7 +131,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void schlauerSpielerInit() {
+	public void initializeSmartPlayer() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -173,7 +173,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void stichAuswertung(PlayingCard[] gespielteKarten, IPlayer gewinner) {
+	public void outputTrickEvaluation(PlayingCard[] gespielteKarten, IPlayer gewinner) {
 		// TODO Auto-generated method stub
 		
 	}

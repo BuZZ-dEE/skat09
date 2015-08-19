@@ -490,7 +490,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		spieler.setDeck(deck);
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.DAUS);
@@ -524,7 +524,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		spieler.setDeck(deck);
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.DAUS);
@@ -556,7 +556,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		spieler.setDeck(deck);
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.DAUS);
@@ -589,7 +589,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		spieler.setDeck(deck);
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.EIGHT);
@@ -1297,7 +1297,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.DAUS);
 		PlayingCard spielkarte2 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
@@ -1326,7 +1326,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.DAUS);
 		PlayingCard spielkarte2 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
@@ -1365,7 +1365,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.DAUS);
 		PlayingCard spielkarte2 = new PlayingCard(Suit.HEARTS, Value.SEVEN);
@@ -1404,7 +1404,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.DAUS);
 		PlayingCard spielkarte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
@@ -1433,7 +1433,7 @@ public class SmartPlayerTest {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		deck = tisch.getDeck();
 		PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.NINE);
 		PlayingCard spielkarte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
@@ -1583,7 +1583,7 @@ public class SmartPlayerTest {
 	public void gegnerMoeglicheSpielbareKartenTest() {
 		
 		Table tisch = new Table();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		//Collections.shuffle(deck);
 		deck.addAll(tisch.getDeck());
@@ -1619,7 +1619,7 @@ public class SmartPlayerTest {
 	public void moeglicheGegnerKarteTest() {
 		
 		Table tisch = new Table();
-		tisch.erstelleDeck();
+		tisch.createDeck();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		Collections.shuffle(deck);
 		deck.addAll(tisch.getDeck());
