@@ -1230,7 +1230,7 @@ public class Table extends Observable {
 	 * 
 	 * @return true, falls der &uuml;bergebene Spieler das Spiel gewonnen hat
 	 */
-	public boolean spielAuswerten() {
+	public boolean evaluateGame() {
 		boolean gewonnen = false;
 		if (spielart.getGameVariety() != GameVarietyName.RAMSCH) {
 			ArrayList<PlayingCard> temp = new ArrayList<PlayingCard>();
@@ -1239,7 +1239,7 @@ public class Table extends Observable {
 
 			int augen = werteAugen(temp);
 
-			int punkte = wertePunkte(augen);
+			int punkte = calculatePoints(augen);
 			augenliste.add(augen);
 			punkteliste.add(punkte);
 
@@ -1472,7 +1472,7 @@ public class Table extends Observable {
 	 *            Zahl der Augen, die der Spieler bekommen hat
 	 * @return Punkte des Spielers
 	 */
-	public int wertePunkte(int augenzahl) {
+	public int calculatePoints(int augenzahl) {
 
 		int erg = 0;
 		ueberreizt = false;

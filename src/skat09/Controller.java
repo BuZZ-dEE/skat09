@@ -591,20 +591,20 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void auswertung() {
 		// Spieler spieler = tisch.ermittleAlleinspieler();
-		boolean gewonnen = false;
+		boolean won = false;
 		int augen = 0;
 
 		output.gameOver();
 		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
 			
 			augen = table.werteAugen(table.ermittleAlleinspieler().getTricks());
-			int punkte = table.wertePunkte(augen);
+			int points = table.calculatePoints(augen);
 			output.augen(augen);
-			output.points(punkte);
+			output.points(points);
 		}
-		gewonnen = table.spielAuswerten();
+		won = table.evaluateGame();
 
-		output.showEvaluation(gewonnen);
+		output.showEvaluation(won);
 		output.outputPoints();
 		output.statistics();
 
