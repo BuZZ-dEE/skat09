@@ -764,7 +764,7 @@ public class TableTest {
 		NullGame spiel = new NullGame();
 		tisch.setGameVariety(spiel);
 		tisch.ermittleAlleinspieler().getTricks().clear();
-		assertEquals(23, tisch.wertePunkte(0));
+		assertEquals(23, tisch.calculatePoints(0));
 	}
 	
 	@Test
@@ -774,7 +774,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		assertEquals(18, tisch.wertePunkte(62));
+		assertEquals(18, tisch.calculatePoints(62));
 	}
 	
 	@Test
@@ -785,7 +785,7 @@ public class TableTest {
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setGameVariety(spielart);
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		assertEquals(27, tisch.wertePunkte(91));
+		assertEquals(27, tisch.calculatePoints(91));
 	}
 	
 	@Test
@@ -794,7 +794,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
-		assertEquals(27, tisch.wertePunkte(120));
+		assertEquals(27, tisch.calculatePoints(120));
 	}
 	
 	@Test
@@ -806,7 +806,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().setTricks(deck);
 		tisch.ermittleAlleinspieler().getTricks().remove(31);
 		tisch.ermittleAlleinspieler().getTricks().remove(30);
-		assertEquals(27, tisch.wertePunkte(144));
+		assertEquals(27, tisch.calculatePoints(144));
 	}
 	
 	@Test
@@ -817,7 +817,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
 		tisch.setGameVariety(spielart);
-		assertEquals(48, tisch.wertePunkte(62));
+		assertEquals(48, tisch.calculatePoints(62));
 	}
 	
 	@Test
@@ -828,7 +828,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
 		tisch.setGameVariety(spielart);
-		assertEquals(-96, tisch.wertePunkte(45));
+		assertEquals(-96, tisch.calculatePoints(45));
 	}
 	
 	@Test
@@ -841,7 +841,7 @@ public class TableTest {
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setGameVariety(spielart);
 		tisch.setBiddingValue(48);
-		assertEquals(-108, tisch.wertePunkte(62));
+		assertEquals(-108, tisch.calculatePoints(62));
 	}
 	
 	@Test
@@ -856,7 +856,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().setTricks(deck);
 		tisch.ermittleAlleinspieler().getTricks().remove(31);
 		tisch.ermittleAlleinspieler().getTricks().remove(30);
-		assertEquals(54, tisch.wertePunkte(144));
+		assertEquals(54, tisch.calculatePoints(144));
 	}
 	
 	@Test
@@ -937,7 +937,7 @@ public class TableTest {
 	@Test
 	public void spielAuswertenTest() {
 		tisch.ermittleAlleinspieler().getTricks().clear();
-		assertFalse(tisch.spielAuswerten());
+		assertFalse(tisch.evaluateGame());
 	}
 	
 	@Test
@@ -945,7 +945,7 @@ public class TableTest {
 		tisch.ermittleAlleinspieler().getTricks().clear();
 		IGameVariety spielart = new NullGame();
 		tisch.setGameVariety(spielart);
-		assertTrue(tisch.spielAuswerten());
+		assertTrue(tisch.evaluateGame());
 	}
 	
 	@Test
@@ -976,7 +976,7 @@ public class TableTest {
 		
 		tisch.setHandGame(true);
 		tisch.setSchneider(true);
-		assertTrue(tisch.spielAuswerten());
+		assertTrue(tisch.evaluateGame());
 	}
 	
 	@Test
@@ -985,7 +985,7 @@ public class TableTest {
 		tisch.setPlayer1(spieler2);
 		tisch.setPlayer2(tmp);
 		tisch.ermittleAlleinspieler().getTricks().clear();
-		assertFalse(tisch.spielAuswerten());
+		assertFalse(tisch.evaluateGame());
 	}
 	
 	@Test
@@ -994,7 +994,7 @@ public class TableTest {
 		tisch.setPlayer1(spieler3);
 		tisch.setPlayer3(tmp);
 		tisch.ermittleAlleinspieler().getTricks().clear();
-		assertFalse(tisch.spielAuswerten());
+		assertFalse(tisch.evaluateGame());
 	}
 	
 	@Test
@@ -1014,7 +1014,7 @@ public class TableTest {
 		spieler1.getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
 		spieler1.getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
 		spieler2.getTricks().add(new PlayingCard(Suit.ACORNS, Value.SIX));
-		assertTrue(tisch.spielAuswerten());
+		assertTrue(tisch.evaluateGame());
 	}
 	
 	@Test
