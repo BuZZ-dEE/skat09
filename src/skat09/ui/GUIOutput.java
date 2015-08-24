@@ -368,11 +368,11 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(IPlayer spieler, PlayingCard karte) {
-		if (tisch.getHumanPlayer().getName() == spieler.getName()) {
+	public void spieltKarte(IPlayer player, PlayingCard card) {
+		if (tisch.getHumanPlayer().getName() == player.getName()) {
 			hfenster.menschSpieltKarte();
 		} else {
-			hfenster.spieltKarte(karte);
+			hfenster.spieltKarte(card);
 		}
 
 	}

@@ -35,7 +35,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void aufrauemen() {
+	public void cleanUp() {
 		// TODO Auto-generated method stub
 		
 	}

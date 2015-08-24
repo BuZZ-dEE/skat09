@@ -136,7 +136,7 @@ public interface IController {
 	 * Die Methode r&auml;umt den Tisch auf. Die Karten der Spieler, sowie der
 	 * Skat und die eingezogenen Stiche der Spieler werden gel&ouml;scht.
 	 */
-	public abstract void aufrauemen();
+	public abstract void cleanUp();
 
 	/**
 	 * Diese Methode gibt auf der Konsole aus, welcher Spieler welche Karte

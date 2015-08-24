@@ -611,7 +611,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void aufrauemen() {
+	public void cleanUp() {
 
 		passGame = false;
 
@@ -644,16 +644,16 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void outputTrickEvaluation(PlayingCard[] gespielteKarten, IPlayer gewinner) {
+	public void outputTrickEvaluation(PlayingCard[] playedCards, IPlayer winner) {
 		output.deleteTable();
 		for (int i = 0; i < 3; i++) {
 
-			PlayingCard karte = gespielteKarten[i];
-			IPlayer besitzer = karte.getOwner();
-			output.spieltKarte(besitzer, karte);
+			PlayingCard card = playedCards[i];
+			IPlayer owner = card.getOwner();
+			output.spieltKarte(owner, card);
 		}
 		output.blankLine();
-		output.trickWon(gewinner);
+		output.trickWon(winner);
 		output.blankLine();
 	}
 
@@ -765,7 +765,7 @@ public class Controller implements Observer, IController {
 		output.passGame();
 		output.blankLine();
 		table.positionWechseln();
-		aufrauemen();
+		cleanUp();
 	}
 
 	//@Override
@@ -783,7 +783,7 @@ public class Controller implements Observer, IController {
 		output.trump();
 		leadGame();
 		auswertung();
-		aufrauemen();
+		cleanUp();
 		table.positionWechseln();
 	}
 
@@ -794,7 +794,7 @@ public class Controller implements Observer, IController {
 		output.trump();
 		leadGame();
 		auswertung();
-		aufrauemen();
+		cleanUp();
 		table.positionWechseln();
 	}
 
