@@ -753,10 +753,10 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(IPlayer spieler, PlayingCard karte) {
+	public void spieltKarte(IPlayer player, PlayingCard card) {
 
 		System.out.println(Messages.getI18n("player.name.playing.card",
-				spieler.getName(), karte.toString()));
+				player.getName(), card.toString()));
 	}
 
 	@Override

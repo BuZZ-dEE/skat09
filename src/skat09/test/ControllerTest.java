@@ -632,7 +632,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(spieler2);
 		controller.getTable().setPlayer3(spieler3);
 		
-		controller.aufrauemen();
+		controller.cleanUp();
 		
 		Table tisch3 = controller.getTable();
 				
@@ -680,7 +680,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(spieler2);
 		controller.getTable().setPlayer3(spieler3);
 		
-		controller.aufrauemen();
+		controller.cleanUp();
 		
 		Table tisch3 = controller.getTable();
 		
@@ -727,7 +727,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(spieler2);
 		controller.getTable().setPlayer3(spieler3);
 		
-		controller.aufrauemen();
+		controller.cleanUp();
 		
 		Table tisch3 = controller.getTable();
 		
@@ -775,7 +775,7 @@ public class ControllerTest {
 		controller.getTable().setPlayer2(spieler2);
 		controller.getTable().setPlayer3(spieler3);
 		
-		controller.aufrauemen();
+		controller.cleanUp();
 		
 		Table tisch3 = controller.getTable();
 		

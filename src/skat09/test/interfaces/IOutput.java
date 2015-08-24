@@ -280,12 +280,12 @@ public interface IOutput {
 	/**
 	 * Gibt aus, welche Karte ein Spieler gespielt hat.
 	 * 
-	 * @param spieler
+	 * @param player
 	 *            - Spieler, der die Karte spielt
-	 * @param karte
+	 * @param card
 	 *            - Karte, die gespielt wird
 	 */
-	public abstract void spieltKarte(IPlayer spieler, PlayingCard karte);
+	public abstract void spieltKarte(IPlayer player, PlayingCard card);
 
 	/**
 	 * Fragt den Spieler, wie hoch er reizen m&ouml;chte.

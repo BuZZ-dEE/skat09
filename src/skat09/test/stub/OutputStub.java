@@ -307,7 +307,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void spieltKarte(IPlayer spieler, PlayingCard karte) {
+	public void spieltKarte(IPlayer player, PlayingCard card) {
 		
 		gespielteKartenZahl++;
 	}
