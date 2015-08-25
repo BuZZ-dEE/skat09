@@ -69,4 +69,32 @@
   		</dependency>
   	</dependencies>
   </dependencyManagement>
+  <issueManagement>
+  	<system>GitHub</system>
+  	<url>https://github.com/BuZZ-dEE/skat09/issues</url>
+  </issueManagement>
+  <scm>
+  	<url>https://github.com/BuZZ-dEE/skat09</url>
+  	<connection>scm:git:git://github.com:BuZZ-dEE/skat09.git</connection>
+  	<developerConnection>scm:git:git@github.com:BuZZ-dEE/skat09.git</developerConnection>
+  </scm>
+  	<developers>
+		<developer>
+			<email>ssc@openmailbox.org</email>
+			<name>Sebastian Schlatow</name>
+			<url>https://github.com/BuZZ-dEE</url>
+			<id>BuZZ-dEE</id>
+			<roles>
+                <role>Developer</role>
+            </roles>
+		</developer>
+	</developers>
+  	<inceptionYear>2009</inceptionYear>
+  	    <licenses>
+        <license>
+            <name>GNU General Public License</name>
+            <url>https://www.gnu.org/licenses/gpl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 </project>
