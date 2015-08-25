@@ -26,8 +26,13 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
-          <source/>
-          <target/>
+        	<rules>
+				<requireJavaVersion>
+					<version>1.8</version>
+				</requireJavaVersion>
+		  	</rules>
+         	<source>1.8</source>
+        	<tagret>1.8</tagret>
         </configuration>
       </plugin>
     </plugins>
