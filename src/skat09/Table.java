@@ -850,7 +850,7 @@ public class Table extends Observable {
 	 * 
 	 * @return der Alleinspieler
 	 */
-	public IPlayer ermittleAlleinspieler() {
+	public IPlayer getDeclarer() {
 
 		IPlayer alleinSpieler = null;
 
@@ -881,7 +881,7 @@ public class Table extends Observable {
 		IPlayer mitspieler = null;
 
 		String spielername = spieler.getName();
-		String alleinspielername = ermittleAlleinspieler().getName();
+		String alleinspielername = getDeclarer().getName();
 
 		if (!spieler1.getName().equals(spielername)
 				&& !spieler1.getName().equals(alleinspielername)) {
@@ -1235,7 +1235,7 @@ public class Table extends Observable {
 		if (spielart.getGameVariety() != GameVarietyName.RAMSCH) {
 			ArrayList<PlayingCard> temp = new ArrayList<PlayingCard>();
 
-			temp = ermittleAlleinspieler().getTricks();
+			temp = getDeclarer().getTricks();
 
 			int augen = werteAugen(temp);
 
@@ -1581,9 +1581,9 @@ public class Table extends Observable {
 		}
 
 		// Schwarz gespielt?
-		if ((augenzahl == maximaleaugen && ermittleAlleinspieler().getTricks()
+		if ((augenzahl == maximaleaugen && getDeclarer().getTricks()
 				.size() == allestiche)
-				|| (augenzahl == 0 && ermittleAlleinspieler().getTricks()
+				|| (augenzahl == 0 && getDeclarer().getTricks()
 						.size() == 0)) {
 			stufe = stufe + 1;
 		}
@@ -1651,7 +1651,7 @@ public class Table extends Observable {
 
 		boolean verloren = false;
 
-		if (ermittleAlleinspieler().getTricks().size() > 0) {
+		if (getDeclarer().getTricks().size() > 0) {
 			verloren = true;
 		}
 
@@ -1679,12 +1679,12 @@ public class Table extends Observable {
 		}
 
 		else if (schwarz
-				&& ermittleAlleinspieler().getTricks().size() < allestiche) {
+				&& getDeclarer().getTricks().size() < allestiche) {
 			verloren = true;
 		}
 
 		else if (ouvert
-				&& ermittleAlleinspieler().getTricks().size() < allestiche) {
+				&& getDeclarer().getTricks().size() < allestiche) {
 			verloren = true;
 		}
 
@@ -1720,7 +1720,7 @@ public class Table extends Observable {
 		stufe = ueberreizcheck2(stufe);
 		
 
-		if (((Math.abs(ermittleAlleinspieler().spitzenZahl()) + stufe) * zwierg) < reizwert
+		if (((Math.abs(getDeclarer().spitzenZahl()) + stufe) * zwierg) < reizwert
 				&& spielart.getGameVariety() != GameVarietyName.NULL) {
 			
 			if (reizwert > punkte) {
@@ -1808,7 +1808,7 @@ public class Table extends Observable {
 	 */
 	public int punkteGrandspiel(int augenzahl) {
 		int punkte = 0;
-		punkte = (Math.abs(ermittleAlleinspieler().spitzenZahl()) + berechneStufe(augenzahl)) * 24;
+		punkte = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl)) * 24;
 		return punkte;
 	}
 
@@ -1826,7 +1826,7 @@ public class Table extends Observable {
 		SuitGame spiel = (SuitGame) spielart;
 		grundwert = spiel.getTrumpSuit().value();
 		grundwertliste.add(grundwert);
-		punkte = (Math.abs(ermittleAlleinspieler().spitzenZahl()) + berechneStufe(augenzahl))
+		punkte = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl))
 				* grundwert;
 		return punkte;
 	}

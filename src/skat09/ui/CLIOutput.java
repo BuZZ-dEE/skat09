@@ -554,21 +554,21 @@ public class CLIOutput extends Output {
 		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
 			if (isWon == true) {
 				System.out.println(Messages.getI18n("player.won", table
-						.ermittleAlleinspieler().getName()));
+						.getDeclarer().getName()));
 				System.out.println(Messages.getI18n(
 						"player.win.score",
-						table.ermittleAlleinspieler()
+						table.getDeclarer()
 								.getGames()
-								.get(table.ermittleAlleinspieler().getGames()
+								.get(table.getDeclarer().getGames()
 										.size() - 1)));
 			} else {
 				System.out.println(Messages.getI18n("player.loose", table
-						.ermittleAlleinspieler().getName()));
+						.getDeclarer().getName()));
 				System.out.println(Messages.getI18n(
 						"player.looser.score",
-						table.ermittleAlleinspieler()
+						table.getDeclarer()
 								.getGames()
-								.get(table.ermittleAlleinspieler().getGames()
+								.get(table.getDeclarer().getGames()
 										.size() - 1)));
 			}
 		} else {
@@ -655,20 +655,20 @@ public class CLIOutput extends Output {
 	@Override
 	public void augen(int augen) {
 		System.out.println(Messages.getI18n("player.declarer.points", table
-                .ermittleAlleinspieler().getName(), augen));
+                .getDeclarer().getName(), augen));
 
 	}
 
 	@Override
 	public void points(int punkte) {
 		System.out.println(Messages.getI18n("player.declarer.score", table
-                .ermittleAlleinspieler().getName(), punkte));
+                .getDeclarer().getName(), punkte));
 	}
 
 	@Override
 	public void showDeclarer() {
 		System.out.println(Messages.getI18n("player.name.playing", table
-                .ermittleAlleinspieler().getName()));
+                .getDeclarer().getName()));
 
 	}
 
@@ -687,7 +687,7 @@ public class CLIOutput extends Output {
 	public void trump() {
 		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
 			System.out.println(Messages.getI18n("player.name.playing.game",
-					table.ermittleAlleinspieler().getName(), table
+					table.getDeclarer().getName(), table
 							.getGameVariety().toString()));
 			System.out.println("");
 		} else {

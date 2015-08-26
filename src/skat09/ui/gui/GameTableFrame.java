@@ -792,10 +792,10 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 			spiel.setText(""
 					+ Messages.getI18n(
 							"game.statistic.declarer.score.won",
-							tisch.ermittleAlleinspieler().getName(),
-							tisch.ermittleAlleinspieler()
+							tisch.getDeclarer().getName(),
+							tisch.getDeclarer()
 									.getGames()
-									.get(tisch.ermittleAlleinspieler()
+									.get(tisch.getDeclarer()
 											.getGames().size() - 1), augen));
 		}
 		if (!gewonnen
@@ -803,10 +803,10 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 			spiel.setText(""
 					+ Messages.getI18n(
 							"game.statistic.declarer.score.lost",
-							tisch.ermittleAlleinspieler().getName(),
-							tisch.ermittleAlleinspieler()
+							tisch.getDeclarer().getName(),
+							tisch.getDeclarer()
 									.getGames()
-									.get(tisch.ermittleAlleinspieler()
+									.get(tisch.getDeclarer()
 											.getGames().size() - 1), augen));
 		}
 		spiel.setText(ramschAuswertung(gewonnen));
@@ -1039,7 +1039,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 * informiert wird, wer Alleinspieler ist.
 	 */
 	public void alleinspieler() {
-		JLabel text = new JLabel(tisch.ermittleAlleinspieler().getName()
+		JLabel text = new JLabel(tisch.getDeclarer().getName()
 				+ " spielt:");
 		linkeSeite.add(text);
 		pack();
