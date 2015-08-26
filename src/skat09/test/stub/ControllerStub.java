@@ -41,7 +41,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void auswertung() {
+	public void evaluation() {
 		// TODO Auto-generated method stub
 		
 	}

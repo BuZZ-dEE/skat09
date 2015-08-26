@@ -130,7 +130,7 @@ public interface IController {
 	/**
 	 * Diese Methode wertet das Spiel aus.
 	 */
-	public abstract void auswertung();
+	public abstract void evaluation();
 
 	/**
 	 * Die Methode r&auml;umt den Tisch auf. Die Karten der Spieler, sowie der

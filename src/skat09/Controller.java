@@ -452,7 +452,7 @@ public class Controller implements Observer, IController {
 			outputTrickEvaluation(playedCards, player1);
 
 			if (table.getGameVariety().getGameVariety() == GameVarietyName.NULL
-					&& player1.getName() == table.ermittleAlleinspieler()
+					&& player1.getName() == table.getDeclarer()
 							.getName()) {
 				
 				PlayingCard[] leer = new PlayingCard[3];
@@ -470,7 +470,7 @@ public class Controller implements Observer, IController {
 	public void declarerActions() throws IOException {
 
 		// Der Spieler wird gefragt, ob er Hand spielt
-		IPlayer declarer = table.ermittleAlleinspieler();
+		IPlayer declarer = table.getDeclarer();
 		IPlayer human = table.getHumanPlayer();
 		output.outputHand(human);
 
@@ -589,15 +589,15 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void auswertung() {
-		// Spieler spieler = tisch.ermittleAlleinspieler();
+	public void evaluation() {
+		// Spieler spieler = tisch.getDeclarer();
 		boolean won = false;
 		int augen = 0;
 
 		output.gameOver();
 		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
 			
-			augen = table.werteAugen(table.ermittleAlleinspieler().getTricks());
+			augen = table.werteAugen(table.getDeclarer().getTricks());
 			int points = table.calculatePoints(augen);
 			output.augen(augen);
 			output.points(points);
@@ -631,14 +631,14 @@ public class Controller implements Observer, IController {
 			table.setSpaltarsch(false);
 		}
 
-		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+		for (IPlayer allPlayer : new IPlayer[] { table.getPlayer1(),
 				table.getPlayer2(), table.getPlayer3() }) {
 
-			alleSpieler.setHand(null);
-			alleSpieler.setIsDeclarer(false);
-			alleSpieler.setGameVariety(null);
-			alleSpieler.setTricks(new ArrayList<PlayingCard>());
-			alleSpieler.setAllPlayedCards(new ArrayList<PlayingCard>());
+			allPlayer.setHand(null);
+			allPlayer.setIsDeclarer(false);
+			allPlayer.setGameVariety(null);
+			allPlayer.setTricks(new ArrayList<PlayingCard>());
+			allPlayer.setAllPlayedCards(new ArrayList<PlayingCard>());
 		}
 		output.cleanUpGUI();
 	}
@@ -660,7 +660,7 @@ public class Controller implements Observer, IController {
 	//@Override
 	public boolean reizagent(IPlayer spieler) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
 		int reizwert = table.getBiddingValue();
 		int maxReizwert = table.getReizagentWert();
@@ -668,14 +668,14 @@ public class Controller implements Observer, IController {
 		//Falls der Spieler passen will
 		if (maxReizwert == 0) {
 			
-			ergebnis = false;
+			result = false;
 		}
 		else if (maxReizwert >= reizwert) {
 
-			ergebnis = true;
+			result = true;
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	//@Override
@@ -687,7 +687,7 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void skatkartenBesitzergeben() {
 
-		IPlayer alleinspieler = table.ermittleAlleinspieler();
+		IPlayer alleinspieler = table.getDeclarer();
 		PlayingCard[] skat = table.getSkat();
 		skat[0].setOwner(alleinspieler);
 		skat[1].setOwner(alleinspieler);
@@ -782,7 +782,7 @@ public class Controller implements Observer, IController {
 		table.getPlayer3().sortHand(spielart);
 		output.trump();
 		leadGame();
-		auswertung();
+		evaluation();
 		cleanUp();
 		table.positionWechseln();
 	}
@@ -793,7 +793,7 @@ public class Controller implements Observer, IController {
 		declarerActions();
 		output.trump();
 		leadGame();
-		auswertung();
+		evaluation();
 		cleanUp();
 		table.positionWechseln();
 	}

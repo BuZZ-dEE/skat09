@@ -254,7 +254,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-				assertEquals(null, controller.getTable().ermittleAlleinspieler());
+				assertEquals(null, controller.getTable().getDeclarer());
 	}
 	
 	@Test
@@ -272,7 +272,7 @@ public class ControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		assertEquals(spieler.getName(), controller.getTable().ermittleAlleinspieler().getName());
+		assertEquals(spieler.getName(), controller.getTable().getDeclarer().getName());
 	}
 	
 	@Test
@@ -591,7 +591,7 @@ public class ControllerTest {
 		tisch2.setPlayer3(spieler3);
 		tisch2.setGameVariety(new SuitGame(Suit.ACORNS));
 		
-		controller.auswertung();
+		controller.evaluation();
 		
 		OutputStub ausgabe2 = (OutputStub) controller.getOutput();
 		assertEquals(24, ausgabe2.getPunkte());
