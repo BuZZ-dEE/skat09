@@ -451,7 +451,7 @@ public class TableTest {
 
 	@Test
 	public void positionWechselnTest() {
-		tisch.positionWechseln();
+		tisch.changePosition();
 		int erg = 0;
 		if (tisch.getHinterhand().equals(spieler1)) {
 			erg = 1;
@@ -467,8 +467,8 @@ public class TableTest {
 	
 	@Test
 	public void positionWechselnTest2() {
-		tisch.positionWechseln();
-		tisch.positionWechseln();
+		tisch.changePosition();
+		tisch.changePosition();
 		int erg = 0;
 		if (tisch.getMittelhand().equals(spieler1)) {
 			erg = 1;
@@ -484,9 +484,9 @@ public class TableTest {
 	
 	@Test
 	public void positionWechselnTest3() {
-		tisch.positionWechseln();
-		tisch.positionWechseln();
-		tisch.positionWechseln();
+		tisch.changePosition();
+		tisch.changePosition();
+		tisch.changePosition();
 		int erg = 0;
 		if (tisch.getVorhand().equals(spieler1)) {
 			erg = 1;

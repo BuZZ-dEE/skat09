@@ -66,7 +66,7 @@ public class Skat09 extends Application {
 
 		IController controller = new Controller(table, output);
 		if (output instanceof GUIOutput) {
-			controller.warte();
+			controller.waiting();
 		}
 		controller.play();
 	}

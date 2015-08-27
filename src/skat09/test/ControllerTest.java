@@ -850,7 +850,7 @@ public class ControllerTest {
 		controller.getTable().dealOutCards();
 		controller.getTable().kartenBesitzergeben();
 		
-		controller.skatkartenBesitzergeben();
+		controller.assignSkatCardsToOwner();
 		
 		PlayingCard[] skat = controller.getTable().getSkat();
 		boolean initErfolgreich = false;
@@ -970,7 +970,7 @@ public class ControllerTest {
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
-			controller2.normalerSpielverlauf();
+			controller2.normalGamePlay();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -1217,7 +1217,7 @@ public class ControllerTest {
 		
 		OutputStub stubbie = new OutputStub(null,null,null);
 		Controller controll = new Controller(tisch,stubbie);
-		controll.warte();
+		controll.waiting();
 		assertTrue(controll.getOutput().getRelease());
 	}
 }

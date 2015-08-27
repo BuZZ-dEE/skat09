@@ -630,7 +630,7 @@ public class Controller implements Observer, IController {
 		table.setOuvert(false);
 
 		if (table.getVariant() == SkatVariant.RAMSCHBOCK
-				&& table.getSpaltarsch() && table.getBockrunden() == 0) {
+				&& table.getSpaltarsch() && table.getBockRounds() == 0) {
 			table.setSpaltarsch(false);
 		}
 
@@ -661,19 +661,19 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public boolean reizagent(IPlayer spieler) {
+	public boolean reizagent(IPlayer player) {
 
 		boolean result = false;
 
-		int reizwert = table.getBiddingValue();
-		int maxReizwert = table.getReizagentWert();
+		int biddingValue = table.getBiddingValue();
+		int maxBiddingValue = table.getReizagentWert();
 
 		//Falls der Spieler passen will
-		if (maxReizwert == 0) {
+		if (maxBiddingValue == 0) {
 			
 			result = false;
 		}
-		else if (maxReizwert >= reizwert) {
+		else if (maxBiddingValue >= biddingValue) {
 
 			result = true;
 		}
@@ -688,37 +688,37 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void skatkartenBesitzergeben() {
+	public void assignSkatCardsToOwner() {
 
-		IPlayer alleinspieler = table.getDeclarer();
+		IPlayer declarer = table.getDeclarer();
 		PlayingCard[] skat = table.getSkat();
-		skat[0].setOwner(alleinspieler);
-		skat[1].setOwner(alleinspieler);
+		skat[0].setOwner(declarer);
+		skat[1].setOwner(declarer);
 		if (table.getSixSkat()) {
-			skat[2].setOwner(alleinspieler);
+			skat[2].setOwner(declarer);
 		}
 		table.setSkat(skat);
 	}
 
 	//@Override
-	public void setFlags(IPlayer alleinspieler, IGameVariety spielart) {
+	public void setFlags(IPlayer declarer, IGameVariety gameVariety) {
 
 		if (table.getHandGame()) {
 
-			if (spielart instanceof NullGame) {
+			if (gameVariety instanceof NullGame) {
 
 				table.setSchneider(false);
 				table.setSchwarz(false);
-				table.setOuvert(alleinspieler.ouvert());
-			} else if (alleinspieler.schneider()) {
+				table.setOuvert(declarer.ouvert());
+			} else if (declarer.schneider()) {
 
 				table.setSchneider(true);
 
-				if (alleinspieler.schwarz()) {
+				if (declarer.schwarz()) {
 
 					table.setSchwarz(true);
 
-					if (alleinspieler.ouvert()) {
+					if (declarer.ouvert()) {
 
 						table.setOuvert(true);
 					}
@@ -726,11 +726,11 @@ public class Controller implements Observer, IController {
 			}
 		} else {
 
-			if (spielart instanceof NullGame) {
+			if (gameVariety instanceof NullGame) {
 
 				table.setSchneider(true);
 				table.setSchwarz(true);
-				table.setOuvert(alleinspieler.ouvert());
+				table.setOuvert(declarer.ouvert());
 			} else {
 
 				table.setSchneider(false);
@@ -741,8 +741,8 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void update(Observable tisch, Object gespielteKarten) {
-		//		
+	public void update(Observable table, Object playedCards) {
+		//
 		// Spielkarte[] gespielterKarten = this.tisch.getPlayedCards();
 		// if (gespielteKarte[0] == null) {
 		// //Stich dem Gewinner ueberreicht.
@@ -751,7 +751,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void warte() {
+	public void waiting() {
 //		while (!output.getRelease()) {
 //			try {
 //				Thread.sleep(500);
@@ -785,71 +785,71 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public void einpassen() throws IOException {
+	public void passGame() throws IOException {
 
 		output.passGame();
 		output.blankLine();
-		table.positionWechseln();
+		table.changePosition();
 		cleanUp();
 	}
 
 	//@Override
 	public void ramschen() throws NullPointerException, IOException {
-		IGameVariety spielart = new Ramsch();
-		table.setGameVariety(spielart);
-		table.getPlayer1().setGameVariety(spielart);
-		table.getPlayer2().setGameVariety(spielart);
-		table.getPlayer3().setGameVariety(spielart);
+		IGameVariety gameVariety = new Ramsch();
+		table.setGameVariety(gameVariety);
+		table.getPlayer1().setGameVariety(gameVariety);
+		table.getPlayer2().setGameVariety(gameVariety);
+		table.getPlayer3().setGameVariety(gameVariety);
 
 		// Sortieren der Spielerbl&auml;tter nachdem Spielart nun bekannt ist.
-		table.getPlayer1().sortHand(spielart);
-		table.getPlayer2().sortHand(spielart);
-		table.getPlayer3().sortHand(spielart);
+		table.getPlayer1().sortHand(gameVariety);
+		table.getPlayer2().sortHand(gameVariety);
+		table.getPlayer3().sortHand(gameVariety);
 		output.trump();
 		leadGame();
 		evaluation();
 		cleanUp();
-		table.positionWechseln();
+		table.changePosition();
 	}
 
 	//@Override
-	public void normalerSpielverlauf() throws IOException {
-		skatkartenBesitzergeben();
+	public void normalGamePlay() throws IOException {
+		assignSkatCardsToOwner();
 		declarerActions();
 		output.trump();
 		leadGame();
 		evaluation();
 		cleanUp();
-		table.positionWechseln();
+		table.changePosition();
 	}
 
 	//@Override
 	public void playRaeuberskat() throws IOException {
 		decideRaeuberGame();
 		output.showDeclarer();
-		normalerSpielverlauf();
+		normalGamePlay();
 	}
 
 	//@Override
 	public void playRamschBock() throws IOException {
-		if (table.getSpaltarsch() && table.getRamschrunden() == 0) {
+		if (table.getSpaltarsch() && table.getRamschRounds() == 0) {
 			table.setBock(true);
-			table.setBockrunden(table.getBockrunden() - 1);
+			table.setBockrunden(table.getBockRounds() - 1);
 		}
 
 		if (!table.getSpaltarsch()
-				|| (table.getSpaltarsch() && table.getRamschrunden() == 0)) {
+				|| (table.getSpaltarsch() && table.getRamschRounds() == 0)) {
 			coordinateBidding();
 
 			if (!passGame) {
-				normalerSpielverlauf();
+				normalGamePlay();
 			} else {
 				ramschen();
 
 			}
 		} else {
 			ramschen();
-			table.setRamschrunden(table.getRamschrunden() - 1);
+			table.setRamschrunden(table.getRamschRounds() - 1);
 		}
 	}
 
@@ -857,9 +857,9 @@ public class Controller implements Observer, IController {
 	public void playIntSkat() throws IOException {
 		coordinateBidding();
 		if (!passGame) {
-			normalerSpielverlauf();
+			normalGamePlay();
 		} else {
-			einpassen();
+			passGame();
 		}
 	}
 
@@ -867,14 +867,14 @@ public class Controller implements Observer, IController {
 	public void initializeSmartPlayer() {
 
 		// für alle schlauen Spieler das Deck setzen.
-		for (IPlayer alleSpieler : new IPlayer[] { table.getPlayer1(),
+		for (IPlayer allPlayer : new IPlayer[] { table.getPlayer1(),
 				table.getPlayer2(), table.getPlayer3() }) {
 
-			if (alleSpieler instanceof SmartPlayer) {
+			if (allPlayer instanceof SmartPlayer) {
 
-				if (alleSpieler.isDeclarer()) {
+				if (allPlayer.isDeclarer()) {
 
-					alleSpieler.setSkat(new ArrayList<PlayingCard>(Arrays
+					allPlayer.setSkat(new ArrayList<PlayingCard>(Arrays
 							.asList(table.getSkat())));
 				}
 			}
@@ -884,30 +884,30 @@ public class Controller implements Observer, IController {
 	//@Override
 	public void namesComparison() {
 
-		String spieler1 = table.getPlayer1().getName();
-		String spieler2 = table.getPlayer2().getName();
-		String spieler3 = table.getPlayer3().getName();
+		String player1 = table.getPlayer1().getName();
+		String player2 = table.getPlayer2().getName();
+		String player3 = table.getPlayer3().getName();
 
-		if (spieler1.equals(spieler2) && spieler1.equals(spieler3)
-				&& spieler2.equals(spieler3)) {
-			spieler1 = spieler1 + 1;
-			spieler2 = spieler2 + 2;
-			spieler3 = spieler3 + 3;
-		} else if (spieler1.equals(spieler2)) {
+		if (player1.equals(player2) && player1.equals(player3)
+				&& player2.equals(player3)) {
+			player1 = player1 + 1;
+			player2 = player2 + 2;
+			player3 = player3 + 3;
+		} else if (player1.equals(player2)) {
 
-			spieler1 = spieler1 + 1;
-			spieler2 = spieler2 + 2;
-		} else if (spieler1.equals(spieler3)) {
+			player1 = player1 + 1;
+			player2 = player2 + 2;
+		} else if (player1.equals(player3)) {
 
-			spieler1 = spieler1 + 1;
-			spieler3 = spieler3 + 2;
-		} else if (spieler2.equals(spieler3)) {
+			player1 = player1 + 1;
+			player3 = player3 + 2;
+		} else if (player2.equals(player3)) {
 
-			spieler2 = spieler2 + 1;
-			spieler3 = spieler3 + 2;
+			player2 = player2 + 1;
+			player3 = player3 + 2;
 		}
-		table.getPlayer1().setName(spieler1);
-		table.getPlayer2().setName(spieler2);
-		table.getPlayer3().setName(spieler3);
+		table.getPlayer1().setName(player1);
+		table.getPlayer2().setName(player2);
+		table.getPlayer3().setName(player3);
 	}
 }
