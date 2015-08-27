@@ -53,7 +53,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void einpassen() throws IOException {
+	public void passGame() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -89,7 +89,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void normalerSpielverlauf() throws IOException {
+	public void normalGamePlay() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -137,7 +137,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void skatkartenBesitzergeben() {
+	public void assignSkatCardsToOwner() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -202,7 +202,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void warte() {
+	public void waiting() {
 		// TODO Auto-generated method stub
 		
 	}

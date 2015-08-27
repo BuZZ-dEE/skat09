@@ -47,7 +47,7 @@ public class Skat09 {
 
 		IController controller = new Controller(table, output);
 		if (output instanceof GUIOutput) {
-			controller.warte();
+			controller.waiting();
 		}
 		controller.play();
 	}

@@ -171,7 +171,7 @@ public interface IController {
 	/**
 	 * Gibt dem im Skat liegenden Karten den Alleinspieler als Besitzer.
 	 */
-	public abstract void skatkartenBesitzergeben();
+	public abstract void assignSkatCardsToOwner();
 
 	/**
 	 * Setzt die Flags schneider, schwarz und ouvert im Tisch.
@@ -193,14 +193,14 @@ public interface IController {
 	 * h&auml;lt das Spiel an, damit der Spieler in der GUI Eingaben
 	 * setzen kann
 	 */
-	public abstract void warte();
+	public abstract void waiting();
 
 	/**
 	 * Wird ausgef&uuml;hrt, falls eingepasst wurde.
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void einpassen() throws IOException;
+	public abstract void passGame() throws IOException;
 
 	/**
 	 * Spielvorbereitung im Fall, dass geramscht wird.
@@ -214,7 +214,7 @@ public interface IController {
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void normalerSpielverlauf() throws IOException;
+	public abstract void normalGamePlay() throws IOException;
 
 	/**
 	 * Spielablauf Rauberskat

@@ -365,14 +365,14 @@ public class Table extends Observable {
 	/**
 	 * @return Die Anzahl der verbleibenden Bockspiele
 	 */
-	public int getBockrunden() {
+	public int getBockRounds() {
 		return bockrunden;
 	}
 
 	/**
 	 * @return Die Anzahl der verbleibenden Ramschspiele
 	 */
-	public int getRamschrunden() {
+	public int getRamschRounds() {
 		return ramschrunden;
 	}
 
@@ -957,7 +957,7 @@ public class Table extends Observable {
 	 * Diese Methode sorgt daf&uuml;r, dass nach einem Spiel die Positionen der
 	 * Spieler gewechselt werden.
 	 */
-	public void positionWechseln() {
+	public void changePosition() {
 
 		Position position = spieler1.getPosition();
 
