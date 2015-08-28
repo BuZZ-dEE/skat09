@@ -34,19 +34,19 @@ public class Table extends Observable {
 	/**
 	 * Der erste Spieler am Tisch
 	 */
-	private IPlayer spieler1;
+	private IPlayer player1;
 	/**
 	 * Der zweite Spieler am Tisch
 	 */
-	private IPlayer spieler2;
+	private IPlayer player2;
 	/**
 	 * Der dritte Spieler am Tisch
 	 */
-	private IPlayer spieler3;
+	private IPlayer player3;
 	/**
 	 * Die aktuell gespielte Spielart
 	 */
-	private IGameVariety spielart;
+	private IGameVariety gameVariety;
 	/**
 	 * Das gesamte Kartenspiel
 	 */
@@ -54,7 +54,7 @@ public class Table extends Observable {
 	/**
 	 * Karten die auf dem Tisch liegen
 	 */
-	private PlayingCard[] gespielteKarten;
+	private PlayingCard[] playedCards;
 	/**
 	 * Die Karten, die im Skat liegen
 	 */
@@ -62,7 +62,7 @@ public class Table extends Observable {
 	/**
 	 * True, wenn Handspiel gespielt wird
 	 */
-	private boolean handspiel;
+	private boolean handGame;
 	/**
 	 * True, wenn Ouvert gespielt wird
 	 */
@@ -78,29 +78,29 @@ public class Table extends Observable {
 	/**
 	 * Der aktuell gebotene Reizwert
 	 */
-	private int reizwert;
+	private int biddingValue;
 	/**
 	 * Falls der Reizagent genutzt wird, wird hier der max. Reizwert bis zu dem
 	 * der Spieler mitgeht gespeichert.
 	 */
-	private int reizagentWert;
+	private int biddingAgentValue;
 	/**
 	 * Skatvariante: Raeuberskat oder normales Skat oder Skat mit Ramsch und
 	 * Bock?
 	 */
-	private SkatVariant variante;
+	private SkatVariant skatVariant;
 	/**
 	 * Alle Reizwerte die vorkommen koennen
 	 */
-	private SortedSet<Integer> reizwerte;
+	private SortedSet<Integer> biddingValues;
 	/**
 	 * z&auml;hlt die bisher gespielten Spiele mit
 	 */
-	private int anzahlSpiele;
+	private int gameRoundCounter;
 	/**
 	 * Die Tr&uuml;mpfe, mit denen der Alleinspieler spielt
 	 */
-	private PlayingCard[] truempfe = new PlayingCard[12];
+	private PlayingCard[] trumps = new PlayingCard[12];
 	/**
 	 * True, wenn die Situation Spaltarsch aufgetreten ist
 	 */
@@ -184,18 +184,18 @@ public class Table extends Observable {
 
 		super();
 
-		anzahlSpiele = 0;
-		gespielteKarten = new PlayingCard[3];
+		gameRoundCounter = 0;
+		playedCards = new PlayingCard[3];
 		skat = new PlayingCard[3];
 		deck = new ArrayList<PlayingCard>();
 		grundwertliste = new ArrayList<Integer>();
 		augenliste = new ArrayList<Integer>();
 		punkteliste = new ArrayList<Integer>();
 		ueberreizliste = new ArrayList<Boolean>();
-		reizwerte = new TreeSet<Integer>();
-		reizwert = 18;
-		reizagentWert = 0;
-		handspiel = false;
+		biddingValues = new TreeSet<Integer>();
+		biddingValue = 18;
+		biddingAgentValue = 0;
+		handGame = false;
 		schneider = false;
 		schwarz = false;
 		ouvert = false;
@@ -218,31 +218,31 @@ public class Table extends Observable {
 	/**
 	 * Liefert den 1. Spieler zur&uuml;ck.
 	 * 
-	 * @return spieler1
+	 * @return player1
 	 */
 	public IPlayer getPlayer1() {
 
-		return spieler1;
+		return player1;
 	}
 
 	/**
 	 * Liefert den 2. Spieler zur&uuml;ck.
 	 * 
-	 * @return spieler2
+	 * @return player2
 	 */
 	public IPlayer getPlayer2() {
 
-		return spieler2;
+		return player2;
 	}
 
 	/**
 	 * Liefert den 3. Spieler zur&uuml;ck.
 	 * 
-	 * @return spieler3
+	 * @return player3
 	 */
 	public IPlayer getPlayer3() {
 
-		return spieler3;
+		return player3;
 	}
 	
 	/**
@@ -256,7 +256,7 @@ public class Table extends Observable {
 	 */
 	public IPlayer[] getAllPlayer() {
 
-		IPlayer[] playerAll = {spieler1, spieler2, spieler3};
+		IPlayer[] playerAll = {player1, player2, player3};
 		
 		return playerAll;
 	}
@@ -268,7 +268,7 @@ public class Table extends Observable {
 	 */
 	public PlayingCard[] getPlayedCards() {
 
-		return gespielteKarten;
+		return playedCards;
 	}
 
 	/**
@@ -289,7 +289,7 @@ public class Table extends Observable {
 	 */
 	public SortedSet<Integer> getReizwerte() {
 
-		return reizwerte;
+		return biddingValues;
 	}
 
 	/**
@@ -309,37 +309,37 @@ public class Table extends Observable {
 	 */
 	public boolean getHandGame() {
 
-		return handspiel;
+		return handGame;
 	}
 
 	/**
 	 * Liefert die aktuell gesetzte Spielart zur&uuml;ck.
 	 * 
-	 * @return spielart der aktuellen Runde
+	 * @return gameVariety der aktuellen Runde
 	 */
 	public IGameVariety getGameVariety() {
 
-		return spielart;
+		return gameVariety;
 	}
 
 	/**
 	 * Liefert die Spielvariante.
 	 * 
-	 * @return gew&auml;tle variante
+	 * @return gew&auml;tle skatVariant
 	 */
 	public SkatVariant getVariant() {
 
-		return variante;
+		return skatVariant;
 	}
 
 	/**
 	 * Liefert den aktuell gesetzten Reizwert zur&uuml;ck.
 	 * 
-	 * @return aktueller reizwert
+	 * @return aktueller biddingValue
 	 */
 	public int getBiddingValue() {
 
-		return reizwert;
+		return biddingValue;
 	}
 
 	/**
@@ -348,9 +348,9 @@ public class Table extends Observable {
 	 * 
 	 * @return maximalWert
 	 */
-	public int getReizagentWert() {
+	public int getBiddingAgentValue() {
 
-		return reizagentWert;
+		return biddingAgentValue;
 	}
 
 	/**
@@ -386,21 +386,21 @@ public class Table extends Observable {
 	/**
 	 * Die Methode gibt die Anzahl der Spiele zur&uuml;ck
 	 * 
-	 * @return anzahlSpiele Die Anzahl der Spiele
+	 * @return gameRoundCounter Die Anzahl der Spiele
 	 */
 	public int getAnzahlSpiele() {
 
-		return anzahlSpiele;
+		return gameRoundCounter;
 	}
 
 	/**
-	 * Liefert die truempfe Variable zur&uuml;ck.
+	 * Liefert die trumps Variable zur&uuml;ck.
 	 * 
-	 * @return truempfe
+	 * @return trumps
 	 */
 	public PlayingCard[] getTruempfe() {
 
-		return truempfe;
+		return trumps;
 	}
 
 	/**
@@ -518,7 +518,7 @@ public class Table extends Observable {
 	 */
 	public void setPlayer1(IPlayer spieler1) {
 
-		this.spieler1 = spieler1;
+		this.player1 = spieler1;
 		// Spielnachricht nachricht = new Spielnachricht(
 		// Spielnachricht.Spieler.SPIELER1, Spielnachricht.Flags.NICHTS,
 		// Spielnachricht.Bewegung.NICHTS);
@@ -534,7 +534,7 @@ public class Table extends Observable {
 	 */
 	public void setPlayer2(IPlayer spieler2) {
 
-		this.spieler2 = spieler2;
+		this.player2 = spieler2;
 	}
 
 	/**
@@ -545,7 +545,7 @@ public class Table extends Observable {
 	 */
 	public void setPlayer3(IPlayer spieler3) {
 
-		this.spieler3 = spieler3;
+		this.player3 = spieler3;
 	}
 
 	/**
@@ -589,7 +589,7 @@ public class Table extends Observable {
 	 */
 	public void setPlayedCards(PlayingCard[] gespielteKarten) {
 
-		this.gespielteKarten = gespielteKarten;
+		this.playedCards = gespielteKarten;
 		super.setChanged();
 		super.notifyObservers(gespielteKarten);
 	}
@@ -613,23 +613,23 @@ public class Table extends Observable {
 	 */
 	public void setGameVariety(IGameVariety spielart) {
 
-		this.spielart = spielart;
+		this.gameVariety = spielart;
 	}
 
 	public void setVariant(SkatVariant variante) {
 
-		this.variante = variante;
+		this.skatVariant = variante;
 	}
 
 	/**
 	 * Setzt den Reizwert des Tisches.
 	 * 
 	 * @param wert
-	 *            - reizwert
+	 *            - biddingValue
 	 */
 	public void setBiddingValue(int wert) {
 
-		this.reizwert = wert;
+		this.biddingValue = wert;
 	}
 
 	/**
@@ -640,7 +640,7 @@ public class Table extends Observable {
 	 */
 	public void setBiddingAgentValue(int wert) {
 
-		reizagentWert = wert;
+		biddingAgentValue = wert;
 	}
 
 	/**
@@ -648,7 +648,7 @@ public class Table extends Observable {
 	 */
 	public void setHandGame(boolean wert) {
 
-		this.handspiel = wert;
+		this.handGame = wert;
 	}
 
 	/**
@@ -686,14 +686,14 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * setzt die truempfe Variable neu.
+	 * setzt die trumps Variable neu.
 	 * 
 	 * @param truempfe
-	 *            - die neuen truempfe
+	 *            - die neuen trumps
 	 */
 	public void setTruempfe(PlayingCard[] truempfe) {
 
-		this.truempfe = truempfe;
+		this.trumps = truempfe;
 	}
 
 	//
@@ -783,7 +783,7 @@ public class Table extends Observable {
 	 * in den Skat.
 	 */
 	public void dealOutCards() {
-		anzahlSpiele = anzahlSpiele + 1;
+		gameRoundCounter = gameRoundCounter + 1;
 		ArrayList<PlayingCard> blatt1 = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> blatt3 = new ArrayList<PlayingCard>();
@@ -814,16 +814,16 @@ public class Table extends Observable {
 			}
 		}
 		// Den Spielern die Blaetter ueberreichen.
-		spieler1.setHand(blatt1);
-		spieler2.setHand(blatt2);
-		spieler3.setHand(blatt3);
+		player1.setHand(blatt1);
+		player2.setHand(blatt2);
+		player3.setHand(blatt3);
 	}
 
 	/**
-	 * Addiert ein neues Spiel zu anzahlSpiele.
+	 * Addiert ein neues Spiel zu gameRoundCounter.
 	 */
 	public void addAnzahlSpiele() {
-		anzahlSpiele = anzahlSpiele + 1;
+		gameRoundCounter = gameRoundCounter + 1;
 	}
 
 	/**
@@ -831,17 +831,17 @@ public class Table extends Observable {
 	 */
 	public void kartenBesitzergeben() {
 
-		ArrayList<PlayingCard> blatt1 = spieler1.getHand();
+		ArrayList<PlayingCard> blatt1 = player1.getHand();
 		for (PlayingCard karte : blatt1) {
-			karte.setOwner(spieler1);
+			karte.setOwner(player1);
 		}
-		ArrayList<PlayingCard> blatt2 = spieler2.getHand();
+		ArrayList<PlayingCard> blatt2 = player2.getHand();
 		for (PlayingCard karte : blatt2) {
-			karte.setOwner(spieler2);
+			karte.setOwner(player2);
 		}
-		ArrayList<PlayingCard> blatt3 = spieler3.getHand();
+		ArrayList<PlayingCard> blatt3 = player3.getHand();
 		for (PlayingCard karte : blatt3) {
-			karte.setOwner(spieler3);
+			karte.setOwner(player3);
 		}
 	}
 
@@ -854,19 +854,19 @@ public class Table extends Observable {
 
 		IPlayer alleinSpieler = null;
 
-		if (spieler1.isDeclarer()) {
+		if (player1.isDeclarer()) {
 
-			alleinSpieler = spieler1;
+			alleinSpieler = player1;
 		}
 
-		else if (spieler2.isDeclarer()) {
+		else if (player2.isDeclarer()) {
 
-			alleinSpieler = spieler2;
+			alleinSpieler = player2;
 		}
 
-		else if (spieler3.isDeclarer()) {
+		else if (player3.isDeclarer()) {
 
-			alleinSpieler = spieler3;
+			alleinSpieler = player3;
 		}
 		return alleinSpieler;
 	}
@@ -883,17 +883,17 @@ public class Table extends Observable {
 		String spielername = spieler.getName();
 		String alleinspielername = getDeclarer().getName();
 
-		if (!spieler1.getName().equals(spielername)
-				&& !spieler1.getName().equals(alleinspielername)) {
+		if (!player1.getName().equals(spielername)
+				&& !player1.getName().equals(alleinspielername)) {
 
-			mitspieler = spieler1;
-		} else if (!spieler2.getName().equals(spielername)
-				&& !spieler2.getName().equals(alleinspielername)) {
+			mitspieler = player1;
+		} else if (!player2.getName().equals(spielername)
+				&& !player2.getName().equals(alleinspielername)) {
 
-			mitspieler = spieler2;
+			mitspieler = player2;
 		} else {
 
-			mitspieler = spieler3;
+			mitspieler = player3;
 		}
 		return mitspieler;
 	}
@@ -903,42 +903,42 @@ public class Table extends Observable {
 	 */
 	public void mitspielerSetzen() {
 
-		if (spielart.getGameVariety() != GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() != GameVarietyName.RAMSCH) {
 
-			if (!spieler1.isDeclarer()) {
+			if (!player1.isDeclarer()) {
 
-				spieler1.setTeammate(ermittleMitspieler(spieler1));
+				player1.setTeammate(ermittleMitspieler(player1));
 			}
 
 			else {
 
-				spieler1.setTeammate(null);
+				player1.setTeammate(null);
 			}
 
-			if (!spieler2.isDeclarer()) {
+			if (!player2.isDeclarer()) {
 
-				spieler2.setTeammate(ermittleMitspieler(spieler2));
-			}
-
-			else {
-
-				spieler2.setTeammate(null);
-			}
-
-			if (!spieler3.isDeclarer()) {
-
-				spieler3.setTeammate(ermittleMitspieler(spieler3));
+				player2.setTeammate(ermittleMitspieler(player2));
 			}
 
 			else {
 
-				spieler3.setTeammate(null);
+				player2.setTeammate(null);
+			}
+
+			if (!player3.isDeclarer()) {
+
+				player3.setTeammate(ermittleMitspieler(player3));
+			}
+
+			else {
+
+				player3.setTeammate(null);
 			}
 		} else {
 
-			spieler1.setTeammate(null);
-			spieler2.setTeammate(null);
-			spieler3.setTeammate(null);
+			player1.setTeammate(null);
+			player2.setTeammate(null);
+			player3.setTeammate(null);
 		}
 	}
 
@@ -948,9 +948,9 @@ public class Table extends Observable {
 	 */
 	public void initializePositions() {
 
-		spieler1.setPosition(Position.VORHAND);
-		spieler2.setPosition(Position.MITTELHAND);
-		spieler3.setPosition(Position.HINTERHAND);
+		player1.setPosition(Position.VORHAND);
+		player2.setPosition(Position.MITTELHAND);
+		player3.setPosition(Position.HINTERHAND);
 	}
 
 	/**
@@ -959,28 +959,28 @@ public class Table extends Observable {
 	 */
 	public void changePosition() {
 
-		Position position = spieler1.getPosition();
+		Position position = player1.getPosition();
 
 		switch (position) {
 		case VORHAND:
 
-			spieler1.setPosition(Position.HINTERHAND);
-			spieler2.setPosition(Position.VORHAND);
-			spieler3.setPosition(Position.MITTELHAND);
+			player1.setPosition(Position.HINTERHAND);
+			player2.setPosition(Position.VORHAND);
+			player3.setPosition(Position.MITTELHAND);
 			break;
 
 		case MITTELHAND:
 
-			spieler1.setPosition(Position.VORHAND);
-			spieler2.setPosition(Position.MITTELHAND);
-			spieler3.setPosition(Position.HINTERHAND);
+			player1.setPosition(Position.VORHAND);
+			player2.setPosition(Position.MITTELHAND);
+			player3.setPosition(Position.HINTERHAND);
 			break;
 
 		case HINTERHAND:
 
-			spieler1.setPosition(Position.MITTELHAND);
-			spieler2.setPosition(Position.HINTERHAND);
-			spieler3.setPosition(Position.VORHAND);
+			player1.setPosition(Position.MITTELHAND);
+			player2.setPosition(Position.HINTERHAND);
+			player3.setPosition(Position.VORHAND);
 			break;
 		}
 	}
@@ -993,33 +993,33 @@ public class Table extends Observable {
 
 		// Alle Karo-Reizwerte hinzufuegen
 		for (int i = 18; i <= 162; i += 9) {
-			reizwerte.add(i);
+			biddingValues.add(i);
 		}
 		// Alle Herz-Reizwerte hinzufuegen
 		for (int i = 20; i <= 180; i += 10) {
-			reizwerte.add(i);
+			biddingValues.add(i);
 		}
 		// Alle Pik-Reizwerte hinzufuegen
 		for (int i = 22; i <= 198; i += 11) {
-			reizwerte.add(i);
+			biddingValues.add(i);
 		}
 		// Alle Kreuz-Reizwerte hinzufuegen
 		for (int i = 24; i <= 216; i += 12) {
-			reizwerte.add(i);
+			biddingValues.add(i);
 		}
 		// Die restlichen Reizwerte von Nullspiel und Grand/Grand-Ouvert
-		reizwerte.add(23);
-		reizwerte.add(35);
-		reizwerte.add(46);
-		reizwerte.add(59);
-		reizwerte.add(240);
-		reizwerte.add(264);
+		biddingValues.add(23);
+		biddingValues.add(35);
+		biddingValues.add(46);
+		biddingValues.add(59);
+		biddingValues.add(240);
+		biddingValues.add(264);
 
 		// neue Reizwerte durch 6erSkat
-		reizwerte.add(171);
-		reizwerte.add(190);
-		reizwerte.add(209);
-		reizwerte.add(228);
+		biddingValues.add(171);
+		biddingValues.add(190);
+		biddingValues.add(209);
+		biddingValues.add(228);
 	}
 
 	/**
@@ -1031,19 +1031,19 @@ public class Table extends Observable {
 
 		IPlayer vorhand;
 
-		if (spieler1.getPosition() == Position.VORHAND) {
+		if (player1.getPosition() == Position.VORHAND) {
 
-			vorhand = spieler1;
+			vorhand = player1;
 		}
 
-		else if (spieler2.getPosition() == Position.VORHAND) {
+		else if (player2.getPosition() == Position.VORHAND) {
 
-			vorhand = spieler2;
+			vorhand = player2;
 		}
 
 		else {
 
-			vorhand = spieler3;
+			vorhand = player3;
 		}
 		return vorhand;
 	}
@@ -1057,19 +1057,19 @@ public class Table extends Observable {
 
 		IPlayer mittelhand;
 
-		if (spieler1.getPosition() == Position.MITTELHAND) {
+		if (player1.getPosition() == Position.MITTELHAND) {
 
-			mittelhand = spieler1;
+			mittelhand = player1;
 		}
 
-		else if (spieler2.getPosition() == Position.MITTELHAND) {
+		else if (player2.getPosition() == Position.MITTELHAND) {
 
-			mittelhand = spieler2;
+			mittelhand = player2;
 		}
 
 		else {
 
-			mittelhand = spieler3;
+			mittelhand = player3;
 		}
 		return mittelhand;
 	}
@@ -1083,19 +1083,19 @@ public class Table extends Observable {
 
 		IPlayer hinterhand = null;
 
-		if (spieler1.getPosition() == Position.HINTERHAND) {
+		if (player1.getPosition() == Position.HINTERHAND) {
 
-			hinterhand = spieler1;
+			hinterhand = player1;
 		}
 
-		else if (spieler2.getPosition() == Position.HINTERHAND) {
+		else if (player2.getPosition() == Position.HINTERHAND) {
 
-			hinterhand = spieler2;
+			hinterhand = player2;
 		}
 
 		else {
 
-			hinterhand = spieler3;
+			hinterhand = player3;
 		}
 		return hinterhand;
 	}
@@ -1112,7 +1112,7 @@ public class Table extends Observable {
 
 		int ergebnis = reizwert;
 
-		for (Integer element : reizwerte) {
+		for (Integer element : biddingValues) {
 
 			if (element > reizwert) {
 
@@ -1127,7 +1127,7 @@ public class Table extends Observable {
 	 * Liefert zu einem Reizwert den n&auml;chst kleineren Reizwert zur&uuml;ck.
 	 * 
 	 * @param reizwert
-	 *            - reizwert, zudem der kleinere Wert gesucht ist
+	 *            - biddingValue, zudem der kleinere Wert gesucht ist
 	 * @return kleineren Reizwert
 	 */
 	public int naechstNiedrigererReizwert(int reizwert) {
@@ -1136,7 +1136,7 @@ public class Table extends Observable {
 
 		for (int i = reizwert - 1; i >= 18; i--) {
 
-			if (reizwerte.contains(i)) {
+			if (biddingValues.contains(i)) {
 
 				ergebnis = i;
 				break;
@@ -1167,7 +1167,7 @@ public class Table extends Observable {
 
 		else if (neuerWert > alterWert) {
 
-			for (Integer element : reizwerte) {
+			for (Integer element : biddingValues) {
 
 				if (element == neuerWert) {
 
@@ -1210,15 +1210,15 @@ public class Table extends Observable {
 
 		IPlayer ergebnis = null;
 
-		if (spieler1 instanceof IHumanPlayer) {
+		if (player1 instanceof IHumanPlayer) {
 
-			ergebnis = spieler1;
-		} else if (spieler2 instanceof IHumanPlayer) {
+			ergebnis = player1;
+		} else if (player2 instanceof IHumanPlayer) {
 
-			ergebnis = spieler2;
+			ergebnis = player2;
 		} else {
 
-			ergebnis = spieler3;
+			ergebnis = player3;
 		}
 		return ergebnis;
 	}
@@ -1232,7 +1232,7 @@ public class Table extends Observable {
 	 */
 	public boolean evaluateGame() {
 		boolean gewonnen = false;
-		if (spielart.getGameVariety() != GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() != GameVarietyName.RAMSCH) {
 			ArrayList<PlayingCard> temp = new ArrayList<PlayingCard>();
 
 			temp = getDeclarer().getTricks();
@@ -1253,22 +1253,22 @@ public class Table extends Observable {
 				bockrunden = 3;
 			}
 
-			if (spieler1.isDeclarer() == true) {
-				spieler1.addPoints(punkte);
+			if (player1.isDeclarer() == true) {
+				player1.addPoints(punkte);
 			} else {
-				spieler1.addPoints(0);
+				player1.addPoints(0);
 			}
 
-			if (spieler2.isDeclarer() == true) {
-				spieler2.addPoints(punkte);
+			if (player2.isDeclarer() == true) {
+				player2.addPoints(punkte);
 			} else {
-				spieler2.addPoints(0);
+				player2.addPoints(0);
 			}
 
-			if (spieler3.isDeclarer() == true) {
-				spieler3.addPoints(punkte);
+			if (player3.isDeclarer() == true) {
+				player3.addPoints(punkte);
 			} else {
-				spieler3.addPoints(0);
+				player3.addPoints(0);
 			}
 		} else {
 			gewonnen = ramschAuswertung();
@@ -1293,9 +1293,9 @@ public class Table extends Observable {
 	private boolean ramschAuswertung() {
 		boolean gewonnen = false;
 		IPlayer[] spieler = new IPlayer[3];
-		spieler[0] = spieler1;
-		spieler[1] = spieler2;
-		spieler[2] = spieler3;
+		spieler[0] = player1;
+		spieler[1] = player2;
+		spieler[2] = player3;
 		int bock = 1;
 		if (this.bock) {
 			bock = 2;
@@ -1314,14 +1314,14 @@ public class Table extends Observable {
 		spieler = entscheideRamsch(spieler, skataugen, bock);
 
 		for (int i = 0; i < spieler.length; i++) {
-			if (spieler[i].getName() == spieler1.getName()) {
-				spieler1.setGames(spieler[i].getGames());
+			if (spieler[i].getName() == player1.getName()) {
+				player1.setGames(spieler[i].getGames());
 			}
-			if (spieler[i].getName() == spieler2.getName()) {
-				spieler2.setGames(spieler[i].getGames());
+			if (spieler[i].getName() == player2.getName()) {
+				player2.setGames(spieler[i].getGames());
 			}
-			if (spieler[i].getName() == spieler3.getName()) {
-				spieler3.setGames(spieler[i].getGames());
+			if (spieler[i].getName() == player3.getName()) {
+				player3.setGames(spieler[i].getGames());
 			}
 		}
 		// getHumanPlayer().getSpiele().add(0);
@@ -1481,7 +1481,7 @@ public class Table extends Observable {
 
 		erg = punkteVarianten(erg, augenzahl);
 
-		if (variante == SkatVariant.RAMSCHBOCK && bock == true) {
+		if (skatVariant == SkatVariant.RAMSCHBOCK && bock == true) {
 			erg = erg * 2;
 		}
 
@@ -1490,9 +1490,9 @@ public class Table extends Observable {
 			erg = erg * (-2);
 		}
 
-		if (variante == SkatVariant.SKAT
-				|| variante == SkatVariant.RAMSCHBOCK) {
-			if (ueberreizCheck(erg) != 0 && reizwert != 0) {
+		if (skatVariant == SkatVariant.SKAT
+				|| skatVariant == SkatVariant.RAMSCHBOCK) {
+			if (ueberreizCheck(erg) != 0 && biddingValue != 0) {
 				
 				erg = ueberreizCheck(erg);
 			} 
@@ -1503,15 +1503,15 @@ public class Table extends Observable {
 	}
 
 	public int punkteVarianten(int erg, int augenzahl) {
-		if (spielart.getGameVariety() == GameVarietyName.NULL) {
+		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
 			grundwertliste.add(23);
 			erg = punkteNullspiel();
 		}
-		if (spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 			grundwertliste.add(24);
 			erg = punkteGrandspiel(augenzahl);
 		}
-		if (spielart.getGameVariety() == GameVarietyName.SUIT) {
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
 			erg = punkteFarbspiel(augenzahl);
 		}
 		return erg;
@@ -1571,7 +1571,7 @@ public class Table extends Observable {
 		int stufe = 1;
 
 		// Hand gespielt?
-		if (handspiel == true) {
+		if (handGame == true) {
 			stufe = 2;
 		}
 
@@ -1631,11 +1631,11 @@ public class Table extends Observable {
 		// Gr&uuml;nde zu verlieren_
 		boolean verloren = false;
 
-		if (spielart.getGameVariety() == GameVarietyName.NULL) {
+		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
 			verloren = nullVerloren();
 		}
 
-		else if (spielart.getGameVariety() != GameVarietyName.NULL) {
+		else if (gameVariety.getGameVariety() != GameVarietyName.NULL) {
 			verloren = anderesSpielVerloren(augenzahl);
 		}
 
@@ -1706,11 +1706,11 @@ public class Table extends Observable {
 		int erg = 0;
 		int stufe = 1;
 
-		if (spielart.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 			zwierg = 24;
 		}
-		if (spielart.getGameVariety() == GameVarietyName.SUIT) {
-			SuitGame spiel = (SuitGame) spielart;
+		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
+			SuitGame spiel = (SuitGame) gameVariety;
 			zwierg = spiel.getTrumpSuit().value();
 		}
 		
@@ -1720,12 +1720,12 @@ public class Table extends Observable {
 		stufe = ueberreizcheck2(stufe);
 		
 
-		if (((Math.abs(getDeclarer().spitzenZahl()) + stufe) * zwierg) < reizwert
-				&& spielart.getGameVariety() != GameVarietyName.NULL) {
+		if (((Math.abs(getDeclarer().spitzenZahl()) + stufe) * zwierg) < biddingValue
+				&& gameVariety.getGameVariety() != GameVarietyName.NULL) {
 			
-			if (reizwert > punkte) {
+			if (biddingValue > punkte) {
 				setUeberreizt(true);
-				while (reizwert > erg) {
+				while (biddingValue > erg) {
 					erg = erg + zwierg;
 				}
 			}
@@ -1750,7 +1750,7 @@ public class Table extends Observable {
 		if (schwarz) {
 			stufe = stufe + 1;
 		}
-		if (handspiel) {
+		if (handGame) {
 			stufe = stufe + 1;
 		}
 		if (ouvert) {
@@ -1788,9 +1788,9 @@ public class Table extends Observable {
 	 */
 	public int punkteNullspiel() {
 		int punkte = 23;
-		if (handspiel == true && ouvert == true) {
+		if (handGame == true && ouvert == true) {
 			punkte = 59;
-		} else if (handspiel == true) {
+		} else if (handGame == true) {
 			punkte = 35;
 		} else if (ouvert == true) {
 			punkte = 46;
@@ -1823,7 +1823,7 @@ public class Table extends Observable {
 	public int punkteFarbspiel(int augenzahl) {
 		int punkte = 0;
 		int grundwert = 0;
-		SuitGame spiel = (SuitGame) spielart;
+		SuitGame spiel = (SuitGame) gameVariety;
 		grundwert = spiel.getTrumpSuit().value();
 		grundwertliste.add(grundwert);
 		punkte = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl))

@@ -334,7 +334,7 @@ public class Controller implements Observer, IController {
 
 		boolean result = false;
 
-		if (table.getReizagentWert() >= 0
+		if (table.getBiddingAgentValue() >= 0
 				&& player instanceof IHumanPlayer) {
 
 			result = reizagent(player);
@@ -663,7 +663,7 @@ public class Controller implements Observer, IController {
 		boolean result = false;
 
 		int biddingValue = table.getBiddingValue();
-		int maxBiddingValue = table.getReizagentWert();
+		int maxBiddingValue = table.getBiddingAgentValue();
 
 		//Falls der Spieler passen will
 		if (maxBiddingValue == 0) {

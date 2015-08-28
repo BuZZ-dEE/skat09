@@ -686,7 +686,7 @@ public class ControllerTest {
 		
 		boolean tischAufgeraeumt = false;
 		
-		if (tisch3.getSkat()[0] == null && tisch3.getReizagentWert() == 0 && tisch3.getBiddingValue() == 18 &&
+		if (tisch3.getSkat()[0] == null && tisch3.getBiddingAgentValue() == 0 && tisch3.getBiddingValue() == 18 &&
 				tisch3.getBock() == false && tisch3.getSpaltarsch() == false) {
 			tischAufgeraeumt = true;
 		}

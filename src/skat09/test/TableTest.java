@@ -162,11 +162,11 @@ public class TableTest {
 	}
 	
 	
-	//Testet die Methode getReizagentWert
+	//Testet die Methode getBiddingAgentValue
 	@Test
 	public void reizagentWertTest() {
 		tisch.setBiddingAgentValue(42);
-		assertEquals(42, tisch.getReizagentWert());
+		assertEquals(42, tisch.getBiddingAgentValue());
 	}
 	
 	//Testet , ob die Reizwerte korrekt zurueckgegeben werden
