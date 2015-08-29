@@ -610,7 +610,7 @@ public class ControllerTest {
 		controller.getTable().setBock(true);
 		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
-		controller.getTable().setBockrunden(0);
+		controller.getTable().setBockRounds(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.BELLS, Value.SIX));
@@ -658,7 +658,7 @@ public class ControllerTest {
 		controller.getTable().setBock(true);
 		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
-		controller.getTable().setBockrunden(0);
+		controller.getTable().setBockRounds(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.BELLS, Value.SIX));
@@ -705,7 +705,7 @@ public class ControllerTest {
 		controller.getTable().setBock(true);
 		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
-		controller.getTable().setBockrunden(0);
+		controller.getTable().setBockRounds(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.BELLS, Value.SIX));
@@ -753,7 +753,7 @@ public class ControllerTest {
 		controller.getTable().setBock(true);
 		controller.getTable().setVariant(SkatVariant.RAMSCHBOCK);
 		controller.getTable().setSpaltarsch(true);
-		controller.getTable().setBockrunden(0);
+		controller.getTable().setBockRounds(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.BELLS, Value.SIX));
@@ -1008,7 +1008,7 @@ public class ControllerTest {
 		tisch2.setPlayer3(new Granny("Harald"));
 		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.setSpaltarsch(true);
-		tisch2.setRamschrunden(0);
+		tisch2.setRamschRounds(0);
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
@@ -1032,7 +1032,7 @@ public class ControllerTest {
 		tisch2.setPlayer3(new Granny("Harald"));
 		tisch2.getPlayer1().setIsDeclarer(true);
 		tisch2.setSpaltarsch(true);
-		tisch2.setRamschrunden(1);
+		tisch2.setRamschRounds(1);
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();

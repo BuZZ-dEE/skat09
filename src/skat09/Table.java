@@ -112,21 +112,21 @@ public class Table extends Observable {
 	/**
 	 * Die noch zu spielenden Ramschspiele
 	 */
-	private int ramschrunden;
+	private int ramschRounds;
 	/**
 	 * Die noch zu spielenden Bockspiele
 	 */
-	private int bockrunden;
+	private int bockRounds;
 	/**
 	 * True, wenn Sechserskat gespielt wird
 	 */
-	private boolean sechserskat;
+	private boolean sixSkat;
 
 	// Auswertung, benoetigte Werte
 	/**
 	 * Gewinngrenze ist bei 32 Karten 61, beim Sechserskat 73
 	 */
-	private int gewinngrenze; // 32 Karten : 61, 6erSkat: 73
+	private int winLimit; // 32 Karten : 61, 6erSkat: 73
 	/**
 	 * Spaltarschwert ist bei 32 Karten 60, beim Sechserskat 72
 	 */
@@ -134,7 +134,7 @@ public class Table extends Observable {
 	/**
 	 * Schneidergrenze ist bei 32 Karten 30, beim Sechserskat 36
 	 */
-	private int schneidergrenze; // 32 Karten: 30 , 6er Skat 36
+	private int schneiderLimit; // 32 Karten: 30 , 6er Skat 36
 	/**
 	 * Schneidergrenze ist bei 32 Karten 90, beim Sechserskat 108
 	 */
@@ -147,7 +147,7 @@ public class Table extends Observable {
 	 * Anzahl der Karten, die ein Spieler am Ende haben muss, wenn er alle
 	 * Stiche gewonnen hat. Bei 32 Karten 30, beim Sechserskat 33
 	 */
-	private int allestiche; // 32 Karten: 30 Karten, 6erSkat: 33 Karten
+	private int allTricks; // 32 Karten: 30 Karten, 6erSkat: 33 Karten
 	/**
 	 * Gibt an, ob das letzte Spiel ueberreizt war.
 	 */
@@ -199,13 +199,13 @@ public class Table extends Observable {
 		schneider = false;
 		schwarz = false;
 		ouvert = false;
-		sechserskat = false;
-		gewinngrenze = 61;
+		sixSkat = false;
+		winLimit = 61;
 		spaltarschwert = 60;
-		schneidergrenze = 30;
+		schneiderLimit = 30;
 		gegnerschneider = 90;
 		maximaleaugen = 120;
-		allestiche = 30;
+		allTricks = 30;
 
 		reizwerteErzeugen();
 
@@ -366,14 +366,14 @@ public class Table extends Observable {
 	 * @return Die Anzahl der verbleibenden Bockspiele
 	 */
 	public int getBockRounds() {
-		return bockrunden;
+		return bockRounds;
 	}
 
 	/**
 	 * @return Die Anzahl der verbleibenden Ramschspiele
 	 */
 	public int getRamschRounds() {
-		return ramschrunden;
+		return ramschRounds;
 	}
 
 	/**
@@ -406,10 +406,10 @@ public class Table extends Observable {
 	/**
 	 * Die Methode gibt an, ob Sechserskat gespielt wird oder nicht
 	 * 
-	 * @return sechserskat Ob Sechserskat gespielt wird
+	 * @return sixSkat Ob Sechserskat gespielt wird
 	 */
 	public boolean getSixSkat() {
-		return sechserskat;
+		return sixSkat;
 	}
 
 	/**
@@ -498,16 +498,16 @@ public class Table extends Observable {
 
 	/**
 	 * @param sechserskat
-	 *            the sechserskat to set
+	 *            the sixSkat to set
 	 */
 	public void setSixSkat(boolean sechserskat) {
-		this.sechserskat = sechserskat;
-		gewinngrenze = 73;
+		this.sixSkat = sechserskat;
+		winLimit = 73;
 		spaltarschwert = 72;
-		schneidergrenze = 36;
+		schneiderLimit = 36;
 		gegnerschneider = 108;
 		maximaleaugen = 144;
-		allestiche = 33;
+		allTricks = 33;
 	}
 
 	/**
@@ -662,19 +662,19 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * @param ramschrunden
+	 * @param ramschRounds
 	 *            Die Anzahl der verbleibenden Bockrunden.
 	 */
-	public void setRamschrunden(int ramschrunden) {
-		this.ramschrunden = ramschrunden;
+	public void setRamschRounds(int ramschRounds) {
+		this.ramschRounds = ramschRounds;
 	}
 
 	/**
-	 * @param bockrunden
+	 * @param bockRounds
 	 *            Die Anzahl der verbleibenden Bockrunden.
 	 */
-	public void setBockrunden(int bockrunden) {
-		this.bockrunden = bockrunden;
+	public void setBockRounds(int bockRounds) {
+		this.bockRounds = bockRounds;
 	}
 
 	/**
@@ -718,7 +718,7 @@ public class Table extends Observable {
 				deck.add(karte);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
-				if ((karte.getValue() == Value.SIX) && (sechserskat == false)) {
+				if ((karte.getValue() == Value.SIX) && (sixSkat == false)) {
 					deck.remove(karte);
 				}
 			}
@@ -794,7 +794,7 @@ public class Table extends Observable {
 		kartenAnzahl[0] = 3;
 		kartenAnzahl[1] = 4;
 		kartenAnzahl[2] = 3;
-		if (sechserskat) {
+		if (sixSkat) {
 			kartenAnzahl[2] = 4;
 		}
 
@@ -808,7 +808,7 @@ public class Table extends Observable {
 
 				skat[0] = deck.remove(0);
 				skat[1] = deck.remove(0);
-				if (sechserskat) {
+				if (sixSkat) {
 					skat[2] = deck.remove(0);
 				}
 			}
@@ -1249,8 +1249,8 @@ public class Table extends Observable {
 
 			if (punkte == spaltarschwert) {
 				spaltarsch = true;
-				ramschrunden = 3;
-				bockrunden = 3;
+				ramschRounds = 3;
+				bockRounds = 3;
 			}
 
 			if (player1.isDeclarer() == true) {
@@ -1306,7 +1306,7 @@ public class Table extends Observable {
 		ArrayList<PlayingCard> skat = new ArrayList<PlayingCard>();
 		skat.add(this.skat[0]);
 		skat.add(this.skat[1]);
-		if (sechserskat) {
+		if (sixSkat) {
 			skat.add(this.skat[2]);
 		}
 		int skataugen = werteAugen(skat);
@@ -1576,13 +1576,13 @@ public class Table extends Observable {
 		}
 
 		// Schneider gespielt?
-		if ((augenzahl > gegnerschneider) || (augenzahl < schneidergrenze)) {
+		if ((augenzahl > gegnerschneider) || (augenzahl < schneiderLimit)) {
 			stufe = stufe + 1;
 		}
 
 		// Schwarz gespielt?
 		if ((augenzahl == maximaleaugen && getDeclarer().getTricks()
-				.size() == allestiche)
+				.size() == allTricks)
 				|| (augenzahl == 0 && getDeclarer().getTricks()
 						.size() == 0)) {
 			stufe = stufe + 1;
@@ -1670,7 +1670,7 @@ public class Table extends Observable {
 
 		boolean verloren = false;
 
-		if (augenzahl < gewinngrenze) {
+		if (augenzahl < winLimit) {
 			verloren = true;
 		}
 
@@ -1679,12 +1679,12 @@ public class Table extends Observable {
 		}
 
 		else if (schwarz
-				&& getDeclarer().getTricks().size() < allestiche) {
+				&& getDeclarer().getTricks().size() < allTricks) {
 			verloren = true;
 		}
 
 		else if (ouvert
-				&& getDeclarer().getTricks().size() < allestiche) {
+				&& getDeclarer().getTricks().size() < allTricks) {
 			verloren = true;
 		}
 

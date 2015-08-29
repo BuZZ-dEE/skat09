@@ -809,7 +809,7 @@ public class Controller implements Observer, IController {
 	public void playRamschBock() throws IOException {
 		if (table.getSpaltarsch() && table.getRamschRounds() == 0) {
 			table.setBock(true);
-			table.setBockrunden(table.getBockRounds() - 1);
+			table.setBockRounds(table.getBockRounds() - 1);
 		}
 
 		if (!table.getSpaltarsch()
@@ -824,7 +824,7 @@ public class Controller implements Observer, IController {
 			}
 		} else {
 			ramschen();
-			table.setRamschrunden(table.getRamschRounds() - 1);
+			table.setRamschRounds(table.getRamschRounds() - 1);
 		}
 	}
 
