@@ -3,7 +3,7 @@
 
 __TODOs:__
 
-1. [Localisation](https://github.com/BuZZ-dEE/skat09/issues/1) 
+1. [JavaFX](https://github.com/BuZZ-dEE/skat09/issues/5) 
 2. [Network game](https://github.com/BuZZ-dEE/skat09/issues/2)
 
 ## License
