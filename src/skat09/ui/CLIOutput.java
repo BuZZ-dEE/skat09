@@ -725,7 +725,7 @@ public class CLIOutput extends Output {
 		result = readIntFromCommandLine();
 		while (!ready) {
 
-			SortedSet<Integer> reizwerte = table.getReizwerte();
+			SortedSet<Integer> reizwerte = table.getBiddingValues();
 			if (reizwerte.contains(result) || result == 0) {
 
 				ready = true;

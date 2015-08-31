@@ -200,7 +200,7 @@ public class TableTest {
 		reizwerte.add(209);
 		reizwerte.add(228);
 		
-		assertEquals(reizwerte, tisch.getReizwerte());
+		assertEquals(reizwerte, tisch.getBiddingValues());
 	}
 	
 	//Testet die Methode getSkat
@@ -1118,7 +1118,7 @@ public class TableTest {
 	public void addAnzahlSpieleTest() {
 		
 		tisch.addAnzahlSpiele();
-		assertEquals(2, tisch.getAnzahlSpiele());
+		assertEquals(2, tisch.getGameRoundCounter());
 	}
 	
 	@Test

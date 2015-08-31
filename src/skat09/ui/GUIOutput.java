@@ -355,7 +355,7 @@ public class GUIOutput extends Output {
 		int wert = hfenster.getReizlim();
 		while (!fertig) {
 
-			SortedSet<Integer> reizwerte = tisch.getReizwerte();
+			SortedSet<Integer> reizwerte = tisch.getBiddingValues();
 			if (reizwerte.contains(wert) || wert == 0) {
 				fertig = true;
 			} else {

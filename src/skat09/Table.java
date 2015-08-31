@@ -287,7 +287,7 @@ public class Table extends Observable {
 	 * @return SortedSet (sortierte Reizwerte, die nicht doppelt vorkommen
 	 *         k&ouml;nnen)
 	 */
-	public SortedSet<Integer> getReizwerte() {
+	public SortedSet<Integer> getBiddingValues() {
 
 		return biddingValues;
 	}
@@ -388,7 +388,7 @@ public class Table extends Observable {
 	 * 
 	 * @return gameRoundCounter Die Anzahl der Spiele
 	 */
-	public int getAnzahlSpiele() {
+	public int getGameRoundCounter() {
 
 		return gameRoundCounter;
 	}
@@ -398,7 +398,7 @@ public class Table extends Observable {
 	 * 
 	 * @return trumps
 	 */
-	public PlayingCard[] getTruempfe() {
+	public PlayingCard[] getTrumps() {
 
 		return trumps;
 	}
@@ -497,11 +497,11 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * @param sechserskat
+	 * @param sixSkat
 	 *            the sixSkat to set
 	 */
-	public void setSixSkat(boolean sechserskat) {
-		this.sixSkat = sechserskat;
+	public void setSixSkat(boolean sixSkat) {
+		this.sixSkat = sixSkat;
 		winLimit = 73;
 		spaltarschwert = 72;
 		schneiderLimit = 36;
@@ -513,12 +513,12 @@ public class Table extends Observable {
 	/**
 	 * Setzt den ersten Spieler neu.
 	 * 
-	 * @param spieler1
+	 * @param player1
 	 *            - der neue Spieler
 	 */
-	public void setPlayer1(IPlayer spieler1) {
+	public void setPlayer1(IPlayer player1) {
 
-		this.player1 = spieler1;
+		this.player1 = player1;
 		// Spielnachricht nachricht = new Spielnachricht(
 		// Spielnachricht.Spieler.SPIELER1, Spielnachricht.Flags.NICHTS,
 		// Spielnachricht.Bewegung.NICHTS);
@@ -529,126 +529,126 @@ public class Table extends Observable {
 	/**
 	 * Setzt den zweiten Spieler neu.
 	 * 
-	 * @param spieler2
+	 * @param player2
 	 *            - der neue Spieler
 	 */
-	public void setPlayer2(IPlayer spieler2) {
+	public void setPlayer2(IPlayer player2) {
 
-		this.player2 = spieler2;
+		this.player2 = player2;
 	}
 
 	/**
 	 * Setzt den dritten Spieler neu.
 	 * 
-	 * @param spieler3
+	 * @param player3
 	 *            - der neue Spieler
 	 */
-	public void setPlayer3(IPlayer spieler3) {
+	public void setPlayer3(IPlayer player3) {
 
-		this.player3 = spieler3;
+		this.player3 = player3;
 	}
 
 	/**
 	 * Setzt das schneider-flag mit dem &uuml;bergebenen Wert.
 	 * 
-	 * @param wert
+	 * @param value
 	 *            - true falls gesetzt
 	 */
-	public void setSchneider(boolean wert) {
+	public void setSchneider(boolean value) {
 
-		this.schneider = wert;
+		this.schneider = value;
 	}
 
 	/**
 	 * Setzt das schwarz-flag mit dem &uuml;bergebenen Wert.
 	 * 
-	 * @param wert
+	 * @param value
 	 *            - true falls gesetzt
 	 */
-	public void setSchwarz(boolean wert) {
+	public void setSchwarz(boolean value) {
 
-		this.schwarz = wert;
+		this.schwarz = value;
 	}
 
 	/**
 	 * Setzt das ouvert-flag mit dem &uuml;bergebenen Wert.
 	 * 
-	 * @param wert
+	 * @param value
 	 *            - true falls gesetzt
 	 */
-	public void setOuvert(boolean wert) {
+	public void setOuvert(boolean value) {
 
-		this.ouvert = wert;
+		this.ouvert = value;
 	}
 
 	/**
 	 * Setzt das gespielteKartenArray.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - ein Array, dass die drei gespielten Karten.
 	 */
-	public void setPlayedCards(PlayingCard[] gespielteKarten) {
+	public void setPlayedCards(PlayingCard[] playedCards) {
 
-		this.playedCards = gespielteKarten;
+		this.playedCards = playedCards;
 		super.setChanged();
-		super.notifyObservers(gespielteKarten);
+		super.notifyObservers(playedCards);
 	}
 
 	/**
 	 * Legt zwei Karten in den Skat.
 	 * 
-	 * @param skatkarten
+	 * @param skatCards
 	 *            - die in den Skat gelegt werden sollen.
 	 */
-	public void setSkat(PlayingCard[] skatkarten) {
+	public void setSkat(PlayingCard[] skatCards) {
 
-		skat = skatkarten;
+		skat = skatCards;
 	}
 
 	/**
 	 * Legt die Spielart der aktuellen Runde fest.
 	 * 
-	 * @param spielart
+	 * @param gameVariety
 	 *            f&uuml;r die akutelle Runde
 	 */
-	public void setGameVariety(IGameVariety spielart) {
+	public void setGameVariety(IGameVariety gameVariety) {
 
-		this.gameVariety = spielart;
+		this.gameVariety = gameVariety;
 	}
 
-	public void setVariant(SkatVariant variante) {
+	public void setVariant(SkatVariant variant) {
 
-		this.skatVariant = variante;
+		this.skatVariant = variant;
 	}
 
 	/**
 	 * Setzt den Reizwert des Tisches.
 	 * 
-	 * @param wert
+	 * @param value
 	 *            - biddingValue
 	 */
-	public void setBiddingValue(int wert) {
+	public void setBiddingValue(int value) {
 
-		this.biddingValue = wert;
+		this.biddingValue = value;
 	}
 
 	/**
 	 * Setzt den Reizagentwert des Tisches.
 	 * 
-	 * @param wert
+	 * @param value
 	 *            - maximal gereizter Wert
 	 */
-	public void setBiddingAgentValue(int wert) {
+	public void setBiddingAgentValue(int value) {
 
-		biddingAgentValue = wert;
+		biddingAgentValue = value;
 	}
 
 	/**
 	 * Setzt den booleanWert für Handspiel.
 	 */
-	public void setHandGame(boolean wert) {
+	public void setHandGame(boolean value) {
 
-		this.handGame = wert;
+		this.handGame = value;
 	}
 
 	/**
@@ -688,12 +688,12 @@ public class Table extends Observable {
 	/**
 	 * setzt die trumps Variable neu.
 	 * 
-	 * @param truempfe
+	 * @param trumps
 	 *            - die neuen trumps
 	 */
-	public void setTruempfe(PlayingCard[] truempfe) {
+	public void setTruempfe(PlayingCard[] trumps) {
 
-		this.trumps = truempfe;
+		this.trumps = trumps;
 	}
 
 	//
@@ -705,21 +705,21 @@ public class Table extends Observable {
 	 */
 	public void createDeck() {
 
-		PlayingCard karte;
-		// Spielkarte.setBlatt(true);
+		PlayingCard card;
+
 
 		deck.clear();
 
-		for (Suit farbe : Suit.values()) {
+		for (Suit suit : Suit.values()) {
 
 			for (Value wert : Value.values()) {
 
-				karte = new PlayingCard(farbe, wert);
-				deck.add(karte);
+				card = new PlayingCard(suit, wert);
+				deck.add(card);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
-				if ((karte.getValue() == Value.SIX) && (sixSkat == false)) {
-					deck.remove(karte);
+				if ((card.getValue() == Value.SIX) && (sixSkat == false)) {
+					deck.remove(card);
 				}
 			}
 		}
