@@ -737,28 +737,28 @@ public class Table extends Observable {
 	/**
 	 * Wertet einen gespielten Stich aus und gibt den Gewinner zur&uuml;ck.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - im Stich enthaltene Karten@return das neue Deck bestehend
 	 *            aus 32 Karten in einer ArrayList
-	 * @param spielart
+	 * @param gameVariety
 	 *            - &uuml;bergibt die Spielart
 	 * @return Spieler, der den Stich gewonnen hat
 	 */
-	public IPlayer evaluateTrick(IGameVariety spielart,
-								 PlayingCard[] gespielteKarten) throws NullPointerException {
+	public IPlayer evaluateTrick(IGameVariety gameVariety,
+								 PlayingCard[] playedCards) throws NullPointerException {
 
-		IPlayer stichGewinner = null;
-		PlayingCard hoechsteKarte = null;
+		IPlayer trickWinner = null;
+		PlayingCard highestCard = null;
 
-		hoechsteKarte = spielart.higherCard(gespielteKarten[0],
-				gespielteKarten[1]);
+		highestCard = gameVariety.higherCard(playedCards[0],
+				playedCards[1]);
 
-		hoechsteKarte = spielart
-				.higherCard(hoechsteKarte, gespielteKarten[2]);
+		highestCard = gameVariety
+				.higherCard(highestCard, playedCards[2]);
 
-		stichGewinner = hoechsteKarte.getOwner();
+		trickWinner = highestCard.getOwner();
 
-		return stichGewinner;
+		return trickWinner;
 	}
 
 	/**
