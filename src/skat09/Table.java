@@ -764,16 +764,16 @@ public class Table extends Observable {
 	/**
 	 * Eine bestimmte Anzahl an Karten in ein Blatt reintun.
 	 * 
-	 * @param blatt
+	 * @param hand
 	 *            - in das die Karten rein sollen
-	 * @param kartenAnzahl
+	 * @param cardsCount
 	 *            - Anzahl der Karten, die in das Blatt rein sollen
 	 */
-	private void kartenInsBlatt(ArrayList<PlayingCard> blatt, int kartenAnzahl) {
+	private void cardsInToHand(ArrayList<PlayingCard> hand, int cardsCount) {
 
-		for (int i = 0; i < kartenAnzahl; i++) {
+		for (int i = 0; i < cardsCount; i++) {
 
-			blatt.add(deck.remove(0));
+			hand.add(deck.remove(0));
 		}
 	}
 
@@ -800,9 +800,9 @@ public class Table extends Observable {
 
 		for (int i = 0; i < 3; i++) {
 
-			kartenInsBlatt(blatt1, kartenAnzahl[i]);
-			kartenInsBlatt(blatt2, kartenAnzahl[i]);
-			kartenInsBlatt(blatt3, kartenAnzahl[i]);
+			cardsInToHand(blatt1, kartenAnzahl[i]);
+			cardsInToHand(blatt2, kartenAnzahl[i]);
+			cardsInToHand(blatt3, kartenAnzahl[i]);
 			// 2 Karten in den Skat legen!
 			if (i == 0) {
 
