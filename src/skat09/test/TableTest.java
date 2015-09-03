@@ -388,7 +388,7 @@ public class TableTest {
 	public void getProzentAlleinTest() {
 		tisch.getPlayer1().getGames().clear();
 		tisch.getPlayer1().getGames().add(18);
-		//tisch.addAnzahlSpiele();
+		//tisch.addGameCount();
 		
 		assertEquals(100, tisch.getProzentAllein(spieler1));
 	}
@@ -397,7 +397,7 @@ public class TableTest {
 	public void getAnzahlAlleinTest() {
 		tisch.getPlayer1().getGames().clear();
 		tisch.getPlayer1().getGames().add(18);
-		//tisch.addAnzahlSpiele();
+		//tisch.addGameCount();
 		
 		assertEquals(1, tisch.getAnzahlAllein(spieler1));
 	}
@@ -701,7 +701,7 @@ public class TableTest {
 	@Test
 	public void kartenbesitzerGebenTest() {
 		boolean test = false;
-		tisch.kartenBesitzergeben();
+		tisch.giveCardsToOwner();
 		for (int i= 0; i<tisch.getPlayer1().getHand().size(); i++){
 			if (tisch.getPlayer1().getHand().get(i).getOwner().equals(tisch.getPlayer1())) {
 				test = true;
@@ -714,7 +714,7 @@ public class TableTest {
 	@Test
 	public void kartenbesitzerGebenTest2() {
 		boolean test = false;
-		tisch.kartenBesitzergeben();
+		tisch.giveCardsToOwner();
 		for (int i= 0; i<tisch.getPlayer3().getHand().size(); i++){
 			if (tisch.getPlayer3().getHand().get(i).getOwner().equals(tisch.getPlayer3())) {
 				test = true;
@@ -730,32 +730,32 @@ public class TableTest {
 	
 	@Test
 	public void pruefeNeuenReizwertTest() {
-		assertEquals(true, tisch.pruefeNeuenReizwert(18 , 0));
+		assertEquals(true, tisch.checkNewBiddingValue(18, 0));
 	}
 	
 	@Test
 	public void pruefeNeuenReizwertTest2() {
-		assertEquals(true, tisch.pruefeNeuenReizwert(18 , 20));
+		assertEquals(true, tisch.checkNewBiddingValue(18, 20));
 	}
 	
 	@Test
 	public void pruefeNeuenReizwertTest3() {
-		assertEquals(false, tisch.pruefeNeuenReizwert(18 , 21));
+		assertEquals(false, tisch.checkNewBiddingValue(18, 21));
 	}
 	
 	@Test
 	public void naechstniedrigerReizwertTest() {
-		assertEquals(18, tisch.naechstNiedrigererReizwert(20));
+		assertEquals(18, tisch.nextLowerBiddingValue(20));
 	}
 	
 	@Test
 	public void naechstniedrigerReizwertTest2() {
-		assertEquals(20, tisch.naechstNiedrigererReizwert(22));
+		assertEquals(20, tisch.nextLowerBiddingValue(22));
 	}
 	
 	@Test
 	public void naechstniedrigerReizwertTest3() {
-		assertEquals(22, tisch.naechstNiedrigererReizwert(23));
+		assertEquals(22, tisch.nextLowerBiddingValue(23));
 	}
 	
 	@Test
@@ -1117,7 +1117,7 @@ public class TableTest {
 	@Test
 	public void addAnzahlSpieleTest() {
 		
-		tisch.addAnzahlSpiele();
+		tisch.addGameCount();
 		assertEquals(2, tisch.getGameRoundCounter());
 	}
 	
@@ -1125,14 +1125,14 @@ public class TableTest {
 	public void ermittleMitspielerTest1() {
 		
 		tisch.getPlayer1().setIsDeclarer(true);
-		assertEquals(spieler3, tisch.ermittleMitspieler(spieler2));
+		assertEquals(spieler3, tisch.determineTeammate(spieler2));
 	}
 	
 	@Test
 	public void ermittleMitspielerTest2() {
 		
 		tisch.getPlayer1().setIsDeclarer(true);
-		assertEquals(spieler2, tisch.ermittleMitspieler(spieler3));
+		assertEquals(spieler2, tisch.determineTeammate(spieler3));
 	}
 	
 	//Spieler 1 ist default Alleinspieler =D
@@ -1141,7 +1141,7 @@ public class TableTest {
 		
 		tisch.getPlayer1().setIsDeclarer(false);
 		tisch.getPlayer2().setIsDeclarer(true);
-		assertEquals(spieler1, tisch.ermittleMitspieler(spieler3));
+		assertEquals(spieler1, tisch.determineTeammate(spieler3));
 	}
 	
 	@Test
@@ -1149,7 +1149,7 @@ public class TableTest {
 		
 		tisch.getPlayer1().setIsDeclarer(false);
 		tisch.getPlayer2().setIsDeclarer(true);
-		assertEquals(spieler3, tisch.ermittleMitspieler(spieler1));
+		assertEquals(spieler3, tisch.determineTeammate(spieler1));
 	}
 	
 	@Test
@@ -1157,7 +1157,7 @@ public class TableTest {
 		
 		tisch.getPlayer1().setIsDeclarer(false);
 		tisch.getPlayer3().setIsDeclarer(true);
-		assertEquals(spieler1, tisch.ermittleMitspieler(spieler2));
+		assertEquals(spieler1, tisch.determineTeammate(spieler2));
 	}
 	
 	@Test
@@ -1165,24 +1165,24 @@ public class TableTest {
 		
 		tisch.getPlayer1().setIsDeclarer(false);
 		tisch.getPlayer3().setIsDeclarer(true);
-		assertEquals(spieler2, tisch.ermittleMitspieler(spieler1));
+		assertEquals(spieler2, tisch.determineTeammate(spieler1));
 	}
 	
 	@Test
 	public void mitspielerSetzenTest1() {
-		tisch.mitspielerSetzen();
+		tisch.setTeammate();
 		assertEquals(null, tisch.getPlayer1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest2() {
-		tisch.mitspielerSetzen();
+		tisch.setTeammate();
 		assertEquals(spieler3, tisch.getPlayer2().getTeammate());
 	}
 	
 	@Test 
 	public void mitspielerSetzenTest3() {
-		tisch.mitspielerSetzen();
+		tisch.setTeammate();
 		assertEquals(spieler2, tisch.getPlayer3().getTeammate());
 	}
 	
@@ -1191,28 +1191,28 @@ public class TableTest {
 		
 		spieler1.setIsDeclarer(false);
 		spieler2.setIsDeclarer(true);
-		tisch.mitspielerSetzen();
+		tisch.setTeammate();
 		assertEquals(spieler3, tisch.getPlayer1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest5() {
 		tisch.setGameVariety(new Ramsch());
-		tisch.mitspielerSetzen();
+		tisch.setTeammate();
 		assertEquals(null, tisch.getPlayer1().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest6() {
 		tisch.setGameVariety(new Ramsch());
-		tisch.mitspielerSetzen();
+		tisch.setTeammate();
 		assertEquals(null, tisch.getPlayer2().getTeammate());
 	}
 	
 	@Test
 	public void mitspielerSetzenTest7() {
 		tisch.setGameVariety(new Ramsch());
-		tisch.mitspielerSetzen();
+		tisch.setTeammate();
 		assertEquals(null, tisch.getPlayer3().getTeammate());
 	}
 	

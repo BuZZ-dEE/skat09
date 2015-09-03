@@ -423,7 +423,7 @@ public class Controller implements Observer, IController {
 			player3 = table.nextPlayer(player2);
 
 			// Mitspieler setzen
-			table.mitspielerSetzen();
+			table.setTeammate();
 
 			// jeden Spieler eine Karte Spielen lassen und Tisch aktualisieren
 			playedCards = table.getPlayedCards();
@@ -584,7 +584,7 @@ public class Controller implements Observer, IController {
 			}
 		}
 
-		table.kartenBesitzergeben();
+		table.giveCardsToOwner();
 
 	}
 

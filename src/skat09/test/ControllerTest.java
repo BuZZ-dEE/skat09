@@ -848,7 +848,7 @@ public class ControllerTest {
 		controller.getTable().setSixSkat(true);
 		controller.getTable().createDeck();
 		controller.getTable().dealOutCards();
-		controller.getTable().kartenBesitzergeben();
+		controller.getTable().giveCardsToOwner();
 		
 		controller.assignSkatCardsToOwner();
 		
@@ -942,7 +942,7 @@ public class ControllerTest {
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
-		tisch2.kartenBesitzergeben();
+		tisch2.giveCardsToOwner();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
@@ -966,7 +966,7 @@ public class ControllerTest {
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
-		tisch2.kartenBesitzergeben();
+		tisch2.giveCardsToOwner();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
@@ -988,7 +988,7 @@ public class ControllerTest {
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
-		tisch2.kartenBesitzergeben();
+		tisch2.giveCardsToOwner();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
@@ -1012,7 +1012,7 @@ public class ControllerTest {
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
-		tisch2.kartenBesitzergeben();
+		tisch2.giveCardsToOwner();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
@@ -1036,7 +1036,7 @@ public class ControllerTest {
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
-		tisch2.kartenBesitzergeben();
+		tisch2.giveCardsToOwner();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
@@ -1058,7 +1058,7 @@ public class ControllerTest {
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
-		tisch2.kartenBesitzergeben();
+		tisch2.giveCardsToOwner();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
@@ -1080,7 +1080,7 @@ public class ControllerTest {
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
-		tisch2.kartenBesitzergeben();
+		tisch2.giveCardsToOwner();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
@@ -1102,7 +1102,7 @@ public class ControllerTest {
 		tisch2.initializePositions();
 		tisch2.createDeck();
 		tisch2.dealOutCards();
-		tisch2.kartenBesitzergeben();
+		tisch2.giveCardsToOwner();
 		Output ausgabe = new CLIOutput(tisch2);
 		Controller controller2 = new Controller(tisch2, ausgabe);
 		try {
