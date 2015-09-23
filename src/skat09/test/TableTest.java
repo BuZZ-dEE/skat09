@@ -390,7 +390,7 @@ public class TableTest {
 		tisch.getPlayer1().getGames().add(18);
 		//tisch.addGameCount();
 		
-		assertEquals(100, tisch.getProzentAllein(spieler1));
+		assertEquals(100, tisch.getPercentDeclarer(spieler1));
 	}
 	
 	@Test
@@ -1040,7 +1040,7 @@ public class TableTest {
 		spieler[1] = spieler3;
 		spieler[2] = spieler1;
 	
-		assertArrayEquals(spieler, tisch.sortiereSpielerRamsch(spielerU));
+		assertArrayEquals(spieler, tisch.sortPlayerRamsch(spielerU));
 	}
 	
 	@Test
@@ -1072,7 +1072,7 @@ public class TableTest {
 		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.TEN));
 		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
 		
-		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 0, 2);
+		IPlayer[] ergebnis = tisch.decideRamsch(spieler, 0, 2);
 		
 		Granny vergleich = new Granny("heino");
 		vergleich.getGames().add(240);
@@ -1089,7 +1089,7 @@ public class TableTest {
 		spieler[2] = spieler3;
 		spieler[0].getTricks().clear();
 		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.DAUS));
-		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
+		IPlayer[] ergebnis = tisch.decideRamsch(spieler, 20, 2);
 		
 		Granny vergleich = new Granny("heino");
 		vergleich.getGames().add(-124);
@@ -1106,7 +1106,7 @@ public class TableTest {
 		spieler[2] = spieler3;
 		spieler[0].getTricks().add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
 		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.DAUS));
-		IPlayer[] ergebnis = tisch.entscheideRamsch(spieler, 20, 2);
+		IPlayer[] ergebnis = tisch.decideRamsch(spieler, 20, 2);
 		
 		Granny vergleich = new Granny("heino");
 		vergleich.getGames().add(-62);

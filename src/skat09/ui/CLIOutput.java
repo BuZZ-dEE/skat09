@@ -975,7 +975,7 @@ public class CLIOutput extends Output {
 				+ "   ");
 		System.out.println(Messages.getI18n(
 				"game.statistic.declarer.quantity.percent.result",
-				table.getProzentAllein(player)));
+				table.getPercentDeclarer(player)));
 		System.out.print(Messages
 				.getI18n("game.statistic.declarer.quantity.won") + "   ");
 		System.out.println(Messages.getI18n(

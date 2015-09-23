@@ -1271,7 +1271,7 @@ public class Table extends Observable {
 				player3.addPoints(0);
 			}
 		} else {
-			won = ramschAuswertung();
+			won = ramschEvaluation();
 		}
 		
 		if (ueberreizt) {
@@ -1290,18 +1290,18 @@ public class Table extends Observable {
 	 * @return Gibt true zur&uuml;ck, falls der menschliche Spieler 0 oder 120
 	 *         Punkte erreicht hat.
 	 */
-	private boolean ramschAuswertung() {
-		boolean gewonnen = false;
-		IPlayer[] spieler = new IPlayer[3];
-		spieler[0] = player1;
-		spieler[1] = player2;
-		spieler[2] = player3;
+	private boolean ramschEvaluation() {
+		boolean won = false;
+		IPlayer[] players = new IPlayer[3];
+		players[0] = player1;
+		players[1] = player2;
+		players[2] = player3;
 		int bock = 1;
 		if (this.bock) {
 			bock = 2;
 		}
 
-		spieler = sortiereSpielerRamsch(spieler);
+		players = sortPlayerRamsch(players);
 
 		ArrayList<PlayingCard> skat = new ArrayList<PlayingCard>();
 		skat.add(this.skat[0]);
@@ -1311,61 +1311,61 @@ public class Table extends Observable {
 		}
 		int skataugen = werteAugen(skat);
 
-		spieler = entscheideRamsch(spieler, skataugen, bock);
+		players = decideRamsch(players, skataugen, bock);
 
-		for (int i = 0; i < spieler.length; i++) {
-			if (spieler[i].getName() == player1.getName()) {
-				player1.setGames(spieler[i].getGames());
+		for (int i = 0; i < players.length; i++) {
+			if (players[i].getName() == player1.getName()) {
+				player1.setGames(players[i].getGames());
 			}
-			if (spieler[i].getName() == player2.getName()) {
-				player2.setGames(spieler[i].getGames());
+			if (players[i].getName() == player2.getName()) {
+				player2.setGames(players[i].getGames());
 			}
-			if (spieler[i].getName() == player3.getName()) {
-				player3.setGames(spieler[i].getGames());
+			if (players[i].getName() == player3.getName()) {
+				player3.setGames(players[i].getGames());
 			}
 		}
 		// getHumanPlayer().getSpiele().add(0);
 		int l = getHumanPlayer().getGames().size();
 		// Hat der menschliche Spieler 0 oder mehr Punkte, gilt dies als
-		// gewonnen.
+		// won.
 
 		if (getHumanPlayer().getGames().get(l - 1) >= 0) {
-			gewonnen = true;
+			won = true;
 		}
 
-		return gewonnen;
+		return won;
 	}
 
 	/**
 	 * Erstellt ein Array, dass alle Spieler enthaelt, aufsteigend sortiert, der
 	 * Spieler mit den wenigsten Augen zuerst.
 	 * 
-	 * @param spieler
+	 * @param player
 	 *            - array mit allen Spielern
 	 * @return das sortierte Array
 	 */
-	public IPlayer[] sortiereSpielerRamsch(IPlayer[] spieler) {
+	public IPlayer[] sortPlayerRamsch(IPlayer[] player) {
 
 		// Sortieren des Arrays nach gewonnenen Augen, [0] ist dabei die
 		// niedrigste Augenzahl
-		for (int i = 0; i < spieler.length; i++) {
-			for (int j = 0; j < spieler.length - 1; j++) {
-				if (werteAugen(spieler[j].getTricks()) > werteAugen(spieler[j + 1]
+		for (int i = 0; i < player.length; i++) {
+			for (int j = 0; j < player.length - 1; j++) {
+				if (werteAugen(player[j].getTricks()) > werteAugen(player[j + 1]
 						.getTricks())) {
-					IPlayer a = spieler[j];
-					spieler[j] = spieler[j + 1];
-					spieler[j + 1] = a;
+					IPlayer a = player[j];
+					player[j] = player[j + 1];
+					player[j + 1] = a;
 				}
 			}
 		}
-		return spieler;
+		return player;
 	}
 
 	/**
 	 * Entscheidet, welcher Spieler das Spiel gewonnen hat und verteilt die
 	 * Punkte.
 	 * 
-	 * @param spieler
+	 * @param player
 	 *            Bekommt das sortierte Array mit den Spielern
 	 * @param skataugen
 	 *            Die Augen, die im Skat lagen
@@ -1373,95 +1373,95 @@ public class Table extends Observable {
 	 *            Ob Bock gespielt wird oder nicht
 	 * @return Das ver&auml;nderte Spielerarray
 	 */
-	public IPlayer[] entscheideRamsch(IPlayer[] spieler, int skataugen,
-			int bock) {
+	public IPlayer[] decideRamsch(IPlayer[] player, int skataugen,
+								  int bock) {
 		grundwertliste.add(0);
 		// Ist ein Durchmarsch gelungen?
-		if (werteAugen(spieler[2].getTricks()) == maximaleaugen) {
-			spieler[2].getGames().add(maximaleaugen * bock);
+		if (werteAugen(player[2].getTricks()) == maximaleaugen) {
+			player[2].getGames().add(maximaleaugen * bock);
 			augenliste.add(maximaleaugen);
 			pointsList.add(maximaleaugen * bock);
-			spieler[1].getGames().add(0);
-			spieler[0].getGames().add(0);
+			player[1].getGames().add(0);
+			player[0].getGames().add(0);
 			// Ist ansonsten ein anderer Spieler Jungfrau geblieben? Dann werden
 			// die Augen doppelt gezaehlt.
-		} else if (werteAugen(spieler[0].getTricks()) == 0) {
-			spieler[2].getGames().add(
-					-((werteAugen(spieler[2].getTricks()) + skataugen) * 2)
+		} else if (werteAugen(player[0].getTricks()) == 0) {
+			player[2].getGames().add(
+					-((werteAugen(player[2].getTricks()) + skataugen) * 2)
 							* bock);
-			augenliste.add((werteAugen(spieler[2].getTricks()) + skataugen));
+			augenliste.add((werteAugen(player[2].getTricks()) + skataugen));
 			pointsList
-					.add(-((werteAugen(spieler[2].getTricks()) + skataugen) * 2)
+					.add(-((werteAugen(player[2].getTricks()) + skataugen) * 2)
 							* bock);
-			spieler[1].getGames().add(0);
-			spieler[0].getGames().add(0);
+			player[1].getGames().add(0);
+			player[0].getGames().add(0);
 			// Ansonsten bekommt der Spieler mit den meisten Augen so viele
 			// Minuspunkte, wie er Augen erspielt hat und Augen im Skat lagen.
 		} else {
-			spieler[2].getGames().add(
-					-((werteAugen(spieler[2].getTricks()) + skataugen)) * bock);
-			augenliste.add((werteAugen(spieler[2].getTricks()) + skataugen));
-			pointsList.add(-(werteAugen(spieler[2].getTricks()) + skataugen)
+			player[2].getGames().add(
+					-((werteAugen(player[2].getTricks()) + skataugen)) * bock);
+			augenliste.add((werteAugen(player[2].getTricks()) + skataugen));
+			pointsList.add(-(werteAugen(player[2].getTricks()) + skataugen)
 					* bock);
-			spieler[1].getGames().add(0);
-			spieler[0].getGames().add(0);
+			player[1].getGames().add(0);
+			player[0].getGames().add(0);
 		}
-		return spieler;
+		return player;
 	}
 
 	/**
 	 * Berechnet die aktuelle Punktzahl eines Spielers aus seinem Spiele-Array.
 	 * 
-	 * @param spieler
+	 * @param player
 	 *            - spieler dessen Punkte berechnet werden sollen
 	 * @return Punktzahl des Spielers
 	 */
-	public int getAktuellePunkte(IPlayer spieler) {
+	public int getAktuellePunkte(IPlayer player) {
 
-		int ergebnis = 0;
+		int result = 0;
 
-		for (int i = 0; i < spieler.getGames().size(); i++) {
+		for (int i = 0; i < player.getGames().size(); i++) {
 
-			ergebnis += spieler.getGames().get(i);
+			result += player.getGames().get(i);
 		}
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Berechnet, wie h&auml;ufig ein Spieler Alleinspieler war und gibt die
 	 * Prozentzahl aus.
 	 * 
-	 * @param spieler
+	 * @param player
 	 *            - spieler dessen Prozentwert gesucht ist
 	 * @return Prozent Alleinspieler
 	 */
-	public int getProzentAllein(IPlayer spieler) {
-		int erg = 0;
-		for (int i = 0; i < spieler.getGames().size(); i++) {
-			if (spieler.getGames().get(i) != 0) {
-				erg = erg + 1;
+	public int getPercentDeclarer(IPlayer player) {
+		int result = 0;
+		for (int i = 0; i < player.getGames().size(); i++) {
+			if (player.getGames().get(i) != 0) {
+				result = result + 1;
 			}
 
 		}
-		return ((100 * erg) / spieler.getGames().size());
+		return ((100 * result) / player.getGames().size());
 	}
 
 	/**
 	 * Berechnet, wie h&auml;ufig ein Spieler Alleinspieler war.
 	 * 
-	 * @param spieler
+	 * @param player
 	 *            - Spieler dessen Anzahl der Alleinspiele gesucht ist
 	 * @return Anzahl der Spiele
 	 */
-	public int getAnzahlAllein(IPlayer spieler) {
-		int erg = 0;
-		for (int i = 0; i < spieler.getGames().size(); i++) {
-			if (spieler.getGames().get(i) != 0) {
-				erg = erg + 1;
+	public int getAnzahlAllein(IPlayer player) {
+		int result = 0;
+		for (int i = 0; i < player.getGames().size(); i++) {
+			if (player.getGames().get(i) != 0) {
+				result = result + 1;
 			}
 
 		}
-		return erg;
+		return result;
 	}
 
 	/**
@@ -1474,31 +1474,31 @@ public class Table extends Observable {
 	 */
 	public int calculatePoints(int augenzahl) {
 
-		int erg = 0;
+		int result = 0;
 		ueberreizt = false;
 		// int zwerg = 0;
 		// int stufe = berechneStufe(augenzahl);
 
-		erg = punkteVarianten(erg, augenzahl);
+		result = punkteVarianten(result, augenzahl);
 
 		if (skatVariant == SkatVariant.RAMSCHBOCK && bock == true) {
-			erg = erg * 2;
+			result = result * 2;
 		}
 
 		// erg = ( Math.abs((spitzenZahl() ) + 1 + stufe) * zwerg);
 		if (checkVerloren(augenzahl)) {
-			erg = erg * (-2);
+			result = result * (-2);
 		}
 
 		if (skatVariant == SkatVariant.SKAT
 				|| skatVariant == SkatVariant.RAMSCHBOCK) {
-			if (ueberreizCheck(erg) != 0 && biddingValue != 0) {
+			if (ueberreizCheck(result) != 0 && biddingValue != 0) {
 				
-				erg = ueberreizCheck(erg);
+				result = ueberreizCheck(result);
 			} 
 		}
 
-		return erg;
+		return result;
 
 	}
 
