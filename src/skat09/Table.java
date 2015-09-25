@@ -1502,19 +1502,19 @@ public class Table extends Observable {
 
 	}
 
-	public int punkteVarianten(int erg, int augenzahl) {
+	public int punkteVarianten(int result, int augenzahl) {
 		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
 			grundwertliste.add(23);
-			erg = punkteNullspiel();
+			result = pointsNullGame();
 		}
 		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 			grundwertliste.add(24);
-			erg = punkteGrandspiel(augenzahl);
+			result = pointsGrandGame(augenzahl);
 		}
 		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
-			erg = punkteFarbspiel(augenzahl);
+			result = pointsSuitGame(augenzahl);
 		}
-		return erg;
+		return result;
 	}
 
 	/**
@@ -1786,7 +1786,7 @@ public class Table extends Observable {
 	 * 
 	 * @return gewonnene Punkte
 	 */
-	public int punkteNullspiel() {
+	public int pointsNullGame() {
 		int punkte = 23;
 		if (handGame == true && ouvert == true) {
 			punkte = 59;
@@ -1806,7 +1806,7 @@ public class Table extends Observable {
 	 *            - Die vom Spieler gemachten Augen
 	 * @return gewonnene Punkte
 	 */
-	public int punkteGrandspiel(int augenzahl) {
+	public int pointsGrandGame(int augenzahl) {
 		int punkte = 0;
 		punkte = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl)) * 24;
 		return punkte;
@@ -1820,7 +1820,7 @@ public class Table extends Observable {
 	 *            - vom Spieler erreichte Augenzahl
 	 * @return gewonnene Punkte
 	 */
-	public int punkteFarbspiel(int augenzahl) {
+	public int pointsSuitGame(int augenzahl) {
 		int punkte = 0;
 		int grundwert = 0;
 		SuitGame spiel = (SuitGame) gameVariety;

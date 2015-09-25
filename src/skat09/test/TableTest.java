@@ -867,7 +867,7 @@ public class TableTest {
 		tisch.getDeclarer().spitzenEinordnen();
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setGameVariety(spielart);
-	assertEquals(18, tisch.punkteFarbspiel(62));
+	assertEquals(18, tisch.pointsSuitGame(62));
 	}
 	
 	@Test
@@ -878,7 +878,7 @@ public class TableTest {
 		tisch.getDeclarer().spitzenEinordnen();
 		IGameVariety spielart = new GrandGame();
 		tisch.setGameVariety(spielart);
-		assertEquals(48, tisch.punkteGrandspiel(62));
+		assertEquals(48, tisch.pointsGrandGame(62));
 	}
 	
 	@Test
@@ -890,7 +890,7 @@ public class TableTest {
 		IGameVariety spielart = new NullGame();
 		tisch.setGameVariety(spielart);
 		tisch.getDeclarer().getTricks().clear();
-		assertEquals(23, tisch.punkteNullspiel());
+		assertEquals(23, tisch.pointsNullGame());
 	}
 	
 	@Test
@@ -903,7 +903,7 @@ public class TableTest {
 		tisch.setGameVariety(spielart);
 		tisch.getDeclarer().getTricks().clear();
 		tisch.setHandGame(true);
-		assertEquals(35, tisch.punkteNullspiel());
+		assertEquals(35, tisch.pointsNullGame());
 	}
 	
 	@Test
@@ -917,7 +917,7 @@ public class TableTest {
 		tisch.getDeclarer().getTricks().clear();
 		tisch.setHandGame(false);
 		tisch.setOuvert(true);
-		assertEquals(46, tisch.punkteNullspiel());
+		assertEquals(46, tisch.pointsNullGame());
 	}
 	
 	@Test
@@ -931,7 +931,7 @@ public class TableTest {
 		tisch.getDeclarer().getTricks().clear();
 		tisch.setHandGame(true);
 		tisch.setOuvert(true);
-		assertEquals(59, tisch.punkteNullspiel());
+		assertEquals(59, tisch.pointsNullGame());
 	}
 	
 	@Test
