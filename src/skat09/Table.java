@@ -1520,37 +1520,37 @@ public class Table extends Observable {
 	/**
 	 * Ermittelt die Augen eines Spielers nach Spielschluss.
 	 * 
-	 * @param stiche
+	 * @param tricks
 	 *            - Stiche, die der Spieler gewonnen hat
 	 * @return Augen des Spielers
 	 */
-	public int werteAugen(ArrayList<PlayingCard> stiche) {
+	public int werteAugen(ArrayList<PlayingCard> tricks) {
 
 		int erg = 0;
 
-		for (int i = 0; i < stiche.size(); i++) {
+		for (int i = 0; i < tricks.size(); i++) {
 
-			if (stiche.get(i).getValue() == Value.DAUS) {
+			if (tricks.get(i).getValue() == Value.DAUS) {
 
 				erg += 11;
 
-			} else if (stiche.get(i).getValue() == Value.TEN) {
+			} else if (tricks.get(i).getValue() == Value.TEN) {
 
 				erg += 10;
 
-			} else if (stiche.get(i).getValue() == Value.UNDER_KNAVE) {
+			} else if (tricks.get(i).getValue() == Value.UNDER_KNAVE) {
 
 				erg += 2;
 
-			} else if (stiche.get(i).getValue() == Value.OVER_KNAVE) {
+			} else if (tricks.get(i).getValue() == Value.OVER_KNAVE) {
 
 				erg += 3;
 
-			} else if (stiche.get(i).getValue() == Value.KING) {
+			} else if (tricks.get(i).getValue() == Value.KING) {
 
 				erg += 4;
 
-			} else if (stiche.get(i).getValue() == Value.SIX) {
+			} else if (tricks.get(i).getValue() == Value.SIX) {
 
 				erg += 6;
 			}
