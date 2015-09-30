@@ -1526,37 +1526,37 @@ public class Table extends Observable {
 	 */
 	public int werteAugen(ArrayList<PlayingCard> tricks) {
 
-		int erg = 0;
+		int result = 0;
 
 		for (int i = 0; i < tricks.size(); i++) {
 
 			if (tricks.get(i).getValue() == Value.DAUS) {
 
-				erg += 11;
+				result += 11;
 
 			} else if (tricks.get(i).getValue() == Value.TEN) {
 
-				erg += 10;
+				result += 10;
 
 			} else if (tricks.get(i).getValue() == Value.UNDER_KNAVE) {
 
-				erg += 2;
+				result += 2;
 
 			} else if (tricks.get(i).getValue() == Value.OVER_KNAVE) {
 
-				erg += 3;
+				result += 3;
 
 			} else if (tricks.get(i).getValue() == Value.KING) {
 
-				erg += 4;
+				result += 4;
 
 			} else if (tricks.get(i).getValue() == Value.SIX) {
 
-				erg += 6;
+				result += 6;
 			}
 		}
 
-		return erg;
+		return result;
 	}
 
 	/**
@@ -1568,16 +1568,16 @@ public class Table extends Observable {
 	 */
 	public int berechneStufe(int augenzahl) {
 
-		int stufe = 1;
+		int level = 1;
 
 		// Hand gespielt?
 		if (handGame == true) {
-			stufe = 2;
+			level = 2;
 		}
 
 		// Schneider gespielt?
 		if ((augenzahl > gegnerschneider) || (augenzahl < schneiderLimit)) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
 
 		// Schwarz gespielt?
@@ -1585,39 +1585,39 @@ public class Table extends Observable {
 				.size() == allTricks)
 				|| (augenzahl == 0 && getDeclarer().getTricks()
 						.size() == 0)) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
 
-		stufe = berechnestufe2(stufe);
+		level = calculateLevel2(level);
 
-		return stufe;
+		return level;
 	}
 
 	/**
 	 * Berechnet Gewinnstufe des abgeschlossenen Spiels. (2. Teil)
 	 * 
-	 * @param stufe
+	 * @param level
 	 *            - bisher berechnete Stufe
 	 * @return fertig berechnete Stufe
 	 */
-	private int berechnestufe2(int stufe) {
+	private int calculateLevel2(int level) {
 
 		// Schneider angesagt?
 		if (schneider == true) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
 
 		// Schwarz angesagt?
 		if (schwarz == true) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
 
 		// Ouvert gespielt?
 		if (ouvert == true) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
 
-		return stufe;
+		return level;
 	}
 
 	/**
@@ -1629,17 +1629,17 @@ public class Table extends Observable {
 	 */
 	public boolean checkVerloren(int augenzahl) {
 		// Gr&uuml;nde zu verlieren_
-		boolean verloren = false;
+		boolean lost = false;
 
 		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
-			verloren = nullVerloren();
+			lost = nullVerloren();
 		}
 
 		else if (gameVariety.getGameVariety() != GameVarietyName.NULL) {
-			verloren = anderesSpielVerloren(augenzahl);
+			lost = anderesSpielVerloren(augenzahl);
 		}
 
-		return verloren;
+		return lost;
 	}
 
 	/**
@@ -1649,13 +1649,13 @@ public class Table extends Observable {
 	 */
 	public boolean nullVerloren() {
 
-		boolean verloren = false;
+		boolean lost = false;
 
 		if (getDeclarer().getTricks().size() > 0) {
-			verloren = true;
+			lost = true;
 		}
 
-		return verloren;
+		return lost;
 	}
 
 	/**
@@ -1668,43 +1668,43 @@ public class Table extends Observable {
 	 */
 	public boolean anderesSpielVerloren(int augenzahl) {
 
-		boolean verloren = false;
+		boolean lost = false;
 
 		if (augenzahl < winLimit) {
-			verloren = true;
+			lost = true;
 		}
 
 		else if (schneider && augenzahl <= gegnerschneider) {
-			verloren = true;
+			lost = true;
 		}
 
 		else if (schwarz
 				&& getDeclarer().getTricks().size() < allTricks) {
-			verloren = true;
+			lost = true;
 		}
 
 		else if (ouvert
 				&& getDeclarer().getTricks().size() < allTricks) {
-			verloren = true;
+			lost = true;
 		}
 
-		return verloren;
+		return lost;
 	}
 
 	/**
 	 * Die Methode pr&uuml;ft, ob sich der Alleinspieler &uuml;berreizt hat. Die
 	 * Methode wird zur Auswertung ben&ouml;tigt.
 	 * 
-	 * @param punkte
+	 * @param points
 	 *            Die erreichten Punkte werden &uuml;bergeben
 	 * @return 0 f&uuml;r nicht &uuml;berreizt, die negative Punktzahl, falls
 	 *         &uuml;berreizt wurde.
 	 */
-	public int ueberreizCheck(int punkte) {
+	public int ueberreizCheck(int points) {
 
 		int zwierg = 0;
-		int erg = 0;
-		int stufe = 1;
+		int result = 0;
+		int level = 1;
 
 		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 			zwierg = 24;
@@ -1714,70 +1714,70 @@ public class Table extends Observable {
 			zwierg = spiel.getTrumpSuit().value();
 		}
 		
-		if (punkte < 0) {
-			punkte = Math.abs(punkte / 2);
+		if (points < 0) {
+			points = Math.abs(points / 2);
 		}
-		stufe = ueberreizcheck2(stufe);
+		level = ueberreizcheck2(level);
 		
 
-		if (((Math.abs(getDeclarer().spitzenZahl()) + stufe) * zwierg) < biddingValue
+		if (((Math.abs(getDeclarer().spitzenZahl()) + level) * zwierg) < biddingValue
 				&& gameVariety.getGameVariety() != GameVarietyName.NULL) {
 			
-			if (biddingValue > punkte) {
+			if (biddingValue > points) {
 				setUeberreizt(true);
-				while (biddingValue > erg) {
-					erg = erg + zwierg;
+				while (biddingValue > result) {
+					result = result + zwierg;
 				}
 			}
 		}
 
-		return (-erg) * 2;
+		return (-result) * 2;
 	}
 
 	/**
 	 * Zweiter Teil des &Uuml;berreizchecks. Es werden zus&auml;tzlich
 	 * schneider, schwarz, ouvert und handgame &uuml;berpr&uuml;ft.
 	 * 
-	 * @param stufe
+	 * @param level
 	 *            - vorher berechnete Stufe
 	 * @return berechnete Stufe
 	 */
-	private int ueberreizcheck2(int stufe) {
+	private int ueberreizcheck2(int level) {
 
 		if (schneider) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
 		if (schwarz) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
 		if (handGame) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
 		if (ouvert) {
-			stufe = stufe + 1;
+			level = level + 1;
 		}
-		return stufe;
+		return level;
 	}
 
 	/**
 	 * Gibt die Anzahl der gewonnenen Spiele als Alleinspieler zur&uuml;ck.
 	 * 
-	 * @param spieler
+	 * @param player
 	 *            - spieler, dessen gewonnen Spiele ausgegeben werden sollen
 	 * @return Anzahl der gewonnen Spiele
 	 */
-	public int anzahlderGewinne(IPlayer spieler) {
+	public int anzahlderGewinne(IPlayer player) {
 
-		int ergebnis = 0;
+		int result = 0;
 
-		for (int i = 0; i < spieler.getGames().size(); i++) {
+		for (int i = 0; i < player.getGames().size(); i++) {
 
-			if (spieler.getGames().get(i) > 0) {
+			if (player.getGames().get(i) > 0) {
 
-				ergebnis++;
+				result++;
 			}
 		}
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1787,15 +1787,15 @@ public class Table extends Observable {
 	 * @return gewonnene Punkte
 	 */
 	public int pointsNullGame() {
-		int punkte = 23;
+		int points = 23;
 		if (handGame == true && ouvert == true) {
-			punkte = 59;
+			points = 59;
 		} else if (handGame == true) {
-			punkte = 35;
+			points = 35;
 		} else if (ouvert == true) {
-			punkte = 46;
+			points = 46;
 		}
-		return punkte;
+		return points;
 	}
 
 	/**
@@ -1807,9 +1807,9 @@ public class Table extends Observable {
 	 * @return gewonnene Punkte
 	 */
 	public int pointsGrandGame(int augenzahl) {
-		int punkte = 0;
-		punkte = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl)) * 24;
-		return punkte;
+		int points = 0;
+		points = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl)) * 24;
+		return points;
 	}
 
 	/**
@@ -1821,13 +1821,13 @@ public class Table extends Observable {
 	 * @return gewonnene Punkte
 	 */
 	public int pointsSuitGame(int augenzahl) {
-		int punkte = 0;
-		int grundwert = 0;
-		SuitGame spiel = (SuitGame) gameVariety;
-		grundwert = spiel.getTrumpSuit().value();
-		grundwertliste.add(grundwert);
-		punkte = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl))
-				* grundwert;
-		return punkte;
+		int points = 0;
+		int baseValue = 0;
+		SuitGame suitGame = (SuitGame) gameVariety;
+		baseValue = suitGame.getTrumpSuit().value();
+		grundwertliste.add(baseValue);
+		points = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl))
+				* baseValue;
+		return points;
 	}
 }
