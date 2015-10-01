@@ -130,7 +130,7 @@ public class Table extends Observable {
 	/**
 	 * Spaltarschwert ist bei 32 Karten 60, beim Sechserskat 72
 	 */
-	private int spaltarschwert; // 32 Karten: 60, 6erSkat 72
+	private int spaltarschValue; // 32 Karten: 60, 6erSkat 72
 	/**
 	 * Schneidergrenze ist bei 32 Karten 30, beim Sechserskat 36
 	 */
@@ -138,25 +138,25 @@ public class Table extends Observable {
 	/**
 	 * Schneidergrenze ist bei 32 Karten 90, beim Sechserskat 108
 	 */
-	private int gegnerschneider; // 32 Karten: 90, 6erSkat 108
+	private int adversarySchneiderLimit; // 32 Karten: 90, 6erSkat 108
 	/**
 	 * Maximale Augenzahl ist bei 32 Karten 120, beim Sechserskat 144
 	 */
-	private int maximaleaugen; // 32 Karten: 120, 6erSkat 144
+	private int maximalAugen; // 32 Karten: 120, 6erSkat 144
 	/**
 	 * Anzahl der Karten, die ein Spieler am Ende haben muss, wenn er alle
 	 * Stiche gewonnen hat. Bei 32 Karten 30, beim Sechserskat 33
 	 */
 	private int allTricks; // 32 Karten: 30 Karten, 6erSkat: 33 Karten
 	/**
-	 * Gibt an, ob das letzte Spiel ueberreizt war.
+	 * Gibt an, ob das letzte Spiel isOverbidding war.
 	 */
-	private boolean ueberreizt;
+	private boolean isOverbidding;
 	/**
 	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
 	 * jedes Spiel ist notiert, ob das Spiel &uuml;berreizt war oder nicht.
 	 */
-	public ArrayList<Boolean> ueberreizliste;
+	public ArrayList<Boolean> overbidList;
 	/**
 	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
 	 * jedes Spiel ist notiert, wie viele Augen gewonnen wurden.
@@ -191,7 +191,7 @@ public class Table extends Observable {
 		grundwertliste = new ArrayList<Integer>();
 		augenliste = new ArrayList<Integer>();
 		pointsList = new ArrayList<Integer>();
-		ueberreizliste = new ArrayList<Boolean>();
+		overbidList = new ArrayList<Boolean>();
 		biddingValues = new TreeSet<Integer>();
 		biddingValue = 18;
 		biddingAgentValue = 0;
@@ -201,10 +201,10 @@ public class Table extends Observable {
 		ouvert = false;
 		sixSkat = false;
 		winLimit = 61;
-		spaltarschwert = 60;
+		spaltarschValue = 60;
 		schneiderLimit = 30;
-		gegnerschneider = 90;
-		maximaleaugen = 120;
+		adversarySchneiderLimit = 90;
+		maximalAugen = 120;
 		allTricks = 30;
 
 		generateBiddingValues();
@@ -440,12 +440,12 @@ public class Table extends Observable {
 	}
 	
 	/**
-	 * Gibt die ArrayList ueberreizliste zur&uuml;ck
+	 * Gibt die ArrayList overbidList zur&uuml;ck
 	 * 
-	 * @return ueberreizliste
+	 * @return overbidList
 	 */
 	public ArrayList<Boolean> getUeber() {
-		return ueberreizliste;
+		return overbidList;
 	}
 	
 	/**
@@ -474,26 +474,20 @@ public class Table extends Observable {
 	public ArrayList<Integer> getGrundwertListe() {
 		return grundwertliste;
 	}
-	
-	
-
-	//
-	// set-Methoden
-	//
 
 	/**
-	 * @param ueberreizt
-	 *            the ueberreizt to set
+	 * @param overbidding
+	 *            the isOverbidding to set
 	 */
-	public void setUeberreizt(boolean ueberreizt) {
-		this.ueberreizt = ueberreizt;
+	public void setOverbidding(boolean overbidding) {
+		this.isOverbidding = overbidding;
 	}
 
 	/**
-	 * @return the ueberreizt
+	 * @return the isOverbidding
 	 */
-	public boolean istUeberreizt() {
-		return ueberreizt;
+	public boolean isOverbidding() {
+		return isOverbidding;
 	}
 
 	/**
@@ -503,10 +497,10 @@ public class Table extends Observable {
 	public void setSixSkat(boolean sixSkat) {
 		this.sixSkat = sixSkat;
 		winLimit = 73;
-		spaltarschwert = 72;
+		spaltarschValue = 72;
 		schneiderLimit = 36;
-		gegnerschneider = 108;
-		maximaleaugen = 144;
+		adversarySchneiderLimit = 108;
+		maximalAugen = 144;
 		allTricks = 33;
 	}
 
@@ -1237,7 +1231,7 @@ public class Table extends Observable {
 
 			temp = getDeclarer().getTricks();
 
-			int augen = werteAugen(temp);
+			int augen = calculateAugen(temp);
 
 			int points = calculatePoints(augen);
 			augenliste.add(augen);
@@ -1247,7 +1241,7 @@ public class Table extends Observable {
 				won = true;
 			}
 
-			if (points == spaltarschwert) {
+			if (points == spaltarschValue) {
 				spaltarsch = true;
 				ramschRounds = 3;
 				bockRounds = 3;
@@ -1274,10 +1268,10 @@ public class Table extends Observable {
 			won = ramschEvaluation();
 		}
 		
-		if (ueberreizt) {
-			ueberreizliste.add(true);
+		if (isOverbidding) {
+			overbidList.add(true);
 		} else {
-			ueberreizliste.add(false);
+			overbidList.add(false);
 		}
 		return won;
 	}
@@ -1309,7 +1303,7 @@ public class Table extends Observable {
 		if (sixSkat) {
 			skat.add(this.skat[2]);
 		}
-		int skataugen = werteAugen(skat);
+		int skataugen = calculateAugen(skat);
 
 		players = decideRamsch(players, skataugen, bock);
 
@@ -1350,7 +1344,7 @@ public class Table extends Observable {
 		// niedrigste Augenzahl
 		for (int i = 0; i < player.length; i++) {
 			for (int j = 0; j < player.length - 1; j++) {
-				if (werteAugen(player[j].getTricks()) > werteAugen(player[j + 1]
+				if (calculateAugen(player[j].getTricks()) > calculateAugen(player[j + 1]
 						.getTricks())) {
 					IPlayer a = player[j];
 					player[j] = player[j + 1];
@@ -1377,21 +1371,21 @@ public class Table extends Observable {
 								  int bock) {
 		grundwertliste.add(0);
 		// Ist ein Durchmarsch gelungen?
-		if (werteAugen(player[2].getTricks()) == maximaleaugen) {
-			player[2].getGames().add(maximaleaugen * bock);
-			augenliste.add(maximaleaugen);
-			pointsList.add(maximaleaugen * bock);
+		if (calculateAugen(player[2].getTricks()) == maximalAugen) {
+			player[2].getGames().add(maximalAugen * bock);
+			augenliste.add(maximalAugen);
+			pointsList.add(maximalAugen * bock);
 			player[1].getGames().add(0);
 			player[0].getGames().add(0);
 			// Ist ansonsten ein anderer Spieler Jungfrau geblieben? Dann werden
 			// die Augen doppelt gezaehlt.
-		} else if (werteAugen(player[0].getTricks()) == 0) {
+		} else if (calculateAugen(player[0].getTricks()) == 0) {
 			player[2].getGames().add(
-					-((werteAugen(player[2].getTricks()) + skataugen) * 2)
+					-((calculateAugen(player[2].getTricks()) + skataugen) * 2)
 							* bock);
-			augenliste.add((werteAugen(player[2].getTricks()) + skataugen));
+			augenliste.add((calculateAugen(player[2].getTricks()) + skataugen));
 			pointsList
-					.add(-((werteAugen(player[2].getTricks()) + skataugen) * 2)
+					.add(-((calculateAugen(player[2].getTricks()) + skataugen) * 2)
 							* bock);
 			player[1].getGames().add(0);
 			player[0].getGames().add(0);
@@ -1399,9 +1393,9 @@ public class Table extends Observable {
 			// Minuspunkte, wie er Augen erspielt hat und Augen im Skat lagen.
 		} else {
 			player[2].getGames().add(
-					-((werteAugen(player[2].getTricks()) + skataugen)) * bock);
-			augenliste.add((werteAugen(player[2].getTricks()) + skataugen));
-			pointsList.add(-(werteAugen(player[2].getTricks()) + skataugen)
+					-((calculateAugen(player[2].getTricks()) + skataugen)) * bock);
+			augenliste.add((calculateAugen(player[2].getTricks()) + skataugen));
+			pointsList.add(-(calculateAugen(player[2].getTricks()) + skataugen)
 					* bock);
 			player[1].getGames().add(0);
 			player[0].getGames().add(0);
@@ -1475,11 +1469,11 @@ public class Table extends Observable {
 	public int calculatePoints(int augenzahl) {
 
 		int result = 0;
-		ueberreizt = false;
+		isOverbidding = false;
 		// int zwerg = 0;
-		// int stufe = berechneStufe(augenzahl);
+		// int stufe = calculateLevel(augenzahl);
 
-		result = punkteVarianten(result, augenzahl);
+		result = pointsVariants(result, augenzahl);
 
 		if (skatVariant == SkatVariant.RAMSCHBOCK && bock == true) {
 			result = result * 2;
@@ -1502,17 +1496,17 @@ public class Table extends Observable {
 
 	}
 
-	public int punkteVarianten(int result, int augenzahl) {
+	public int pointsVariants(int result, int augenCount) {
 		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
 			grundwertliste.add(23);
 			result = pointsNullGame();
 		}
 		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 			grundwertliste.add(24);
-			result = pointsGrandGame(augenzahl);
+			result = pointsGrandGame(augenCount);
 		}
 		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
-			result = pointsSuitGame(augenzahl);
+			result = pointsSuitGame(augenCount);
 		}
 		return result;
 	}
@@ -1524,7 +1518,7 @@ public class Table extends Observable {
 	 *            - Stiche, die der Spieler gewonnen hat
 	 * @return Augen des Spielers
 	 */
-	public int werteAugen(ArrayList<PlayingCard> tricks) {
+	public int calculateAugen(ArrayList<PlayingCard> tricks) {
 
 		int result = 0;
 
@@ -1566,7 +1560,7 @@ public class Table extends Observable {
 	 *            Bekommt die erreichte Augenzahl &uuml;bergeben.
 	 * @return Die Gewinnstufe
 	 */
-	public int berechneStufe(int augenzahl) {
+	public int calculateLevel(int augenzahl) {
 
 		int level = 1;
 
@@ -1576,12 +1570,12 @@ public class Table extends Observable {
 		}
 
 		// Schneider gespielt?
-		if ((augenzahl > gegnerschneider) || (augenzahl < schneiderLimit)) {
+		if ((augenzahl > adversarySchneiderLimit) || (augenzahl < schneiderLimit)) {
 			level = level + 1;
 		}
 
 		// Schwarz gespielt?
-		if ((augenzahl == maximaleaugen && getDeclarer().getTricks()
+		if ((augenzahl == maximalAugen && getDeclarer().getTricks()
 				.size() == allTricks)
 				|| (augenzahl == 0 && getDeclarer().getTricks()
 						.size() == 0)) {
@@ -1674,7 +1668,7 @@ public class Table extends Observable {
 			lost = true;
 		}
 
-		else if (schneider && augenzahl <= gegnerschneider) {
+		else if (schneider && augenzahl <= adversarySchneiderLimit) {
 			lost = true;
 		}
 
@@ -1724,7 +1718,7 @@ public class Table extends Observable {
 				&& gameVariety.getGameVariety() != GameVarietyName.NULL) {
 			
 			if (biddingValue > points) {
-				setUeberreizt(true);
+				setOverbidding(true);
 				while (biddingValue > result) {
 					result = result + zwierg;
 				}
@@ -1808,7 +1802,7 @@ public class Table extends Observable {
 	 */
 	public int pointsGrandGame(int augenzahl) {
 		int points = 0;
-		points = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl)) * 24;
+		points = (Math.abs(getDeclarer().spitzenZahl()) + calculateLevel(augenzahl)) * 24;
 		return points;
 	}
 
@@ -1826,7 +1820,7 @@ public class Table extends Observable {
 		SuitGame suitGame = (SuitGame) gameVariety;
 		baseValue = suitGame.getTrumpSuit().value();
 		grundwertliste.add(baseValue);
-		points = (Math.abs(getDeclarer().spitzenZahl()) + berechneStufe(augenzahl))
+		points = (Math.abs(getDeclarer().spitzenZahl()) + calculateLevel(augenzahl))
 				* baseValue;
 		return points;
 	}

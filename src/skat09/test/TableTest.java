@@ -430,7 +430,7 @@ public class TableTest {
 	
 	@Test
 	public void werteAugenTest() {
-		assertEquals(144, tisch.werteAugen(deck));
+		assertEquals(144, tisch.calculateAugen(deck));
 	}
 
 	@Test
@@ -518,36 +518,36 @@ public class TableTest {
 
 	@Test
 	public void berechneStufeTest() {
-		assertEquals(1, tisch.berechneStufe(61));
+		assertEquals(1, tisch.calculateLevel(61));
 	}
 
 	@Test
 	public void berechneStufeTest2() {
-		assertEquals(2, tisch.berechneStufe(92));
+		assertEquals(2, tisch.calculateLevel(92));
 	}
 
 	@Test
 	public void berechneStufeTest3() {
 		tisch.getDeclarer().getTricks().clear();
-		assertEquals(3, tisch.berechneStufe(0));
+		assertEquals(3, tisch.calculateLevel(0));
 	}
 
 	@Test
 	public void berechneStufeTest4() {
 		tisch.setHandGame(true);
-		assertEquals(2, tisch.berechneStufe(61));
+		assertEquals(2, tisch.calculateLevel(61));
 	}
 
 	@Test
 	public void berechneStufeTest5() {
 		tisch.setHandGame(true);
-		assertEquals(3, tisch.berechneStufe(92));
+		assertEquals(3, tisch.calculateLevel(92));
 	}
 
 	@Test
 	public void berechneStufeTest6() {
 		tisch.setHandGame(true);
-		assertEquals(3, tisch.berechneStufe(120));
+		assertEquals(3, tisch.calculateLevel(120));
 	}
 	
 	@Test
@@ -556,7 +556,7 @@ public class TableTest {
 		tisch.setSchneider(true);
 		tisch.setSchwarz(true);
 		tisch.setOuvert(true);
-		assertEquals(6, tisch.berechneStufe(100));
+		assertEquals(6, tisch.calculateLevel(100));
 	}
 
 	@Test
@@ -609,7 +609,7 @@ public class TableTest {
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.getDeclarer().spitzenEinordnen();
 		tisch.ueberreizCheck(18);
-		assertEquals(true, tisch.istUeberreizt());
+		assertEquals(true, tisch.isOverbidding());
 	}
 	
 	@Test

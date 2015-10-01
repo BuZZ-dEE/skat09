@@ -597,7 +597,7 @@ public class Controller implements Observer, IController {
 		output.gameOver();
 		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
 			
-			augen = table.werteAugen(table.getDeclarer().getTricks());
+			augen = table.calculateAugen(table.getDeclarer().getTricks());
 			int points = table.calculatePoints(augen);
 			output.augen(augen);
 			output.points(points);
