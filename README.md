@@ -1,5 +1,6 @@
 # A [Skat][1] Game
 
+[![Build Status](https://travis-ci.org/BuZZ-dEE/skat09.svg)](https://travis-ci.org/BuZZ-dEE/skat09)
 
 __TODOs:__
 
