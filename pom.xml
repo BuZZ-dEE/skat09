@@ -32,7 +32,7 @@
             </requireJavaVersion>
           </rules>
           <source>1.8</source>
-          <tagret>1.8</tagret>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
