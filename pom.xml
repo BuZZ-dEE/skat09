@@ -6,7 +6,6 @@
   <name>Skat09</name>
   <description>A Skat game</description>
   <build>
-    <sourceDirectory>src</sourceDirectory>
     <resources>
       <resource>
         <directory>src</directory>
