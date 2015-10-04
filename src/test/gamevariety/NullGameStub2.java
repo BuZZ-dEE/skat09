@@ -1,4 +1,4 @@
-package test.stub;
+package test.gamevariety;
 
 import java.util.ArrayList;
 

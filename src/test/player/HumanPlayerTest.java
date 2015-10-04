@@ -21,9 +21,9 @@ import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
 import main.ui.IOutput;
-import test.stub.OutputStub;
-import test.stub.ControllerStub;
-import test.stub.NullGameStub;
+import test.ControllerStub;
+import test.gamevariety.NullGameStub;
+import test.ui.OutputStub;
 
 
 public class HumanPlayerTest {

@@ -1,4 +1,4 @@
-package test.stub;
+package test;
 
 import java.io.IOException;
 import java.util.Observable;

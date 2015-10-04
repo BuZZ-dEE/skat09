@@ -1,4 +1,4 @@
-package test.stub;
+package test.player;
 
 import java.util.ArrayList;
 

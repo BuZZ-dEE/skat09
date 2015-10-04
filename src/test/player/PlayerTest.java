@@ -17,7 +17,7 @@ import main.player.IPlayer;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.stub.NullGameStub2;
+import test.gamevariety.NullGameStub2;
 
 
 public class PlayerTest{
