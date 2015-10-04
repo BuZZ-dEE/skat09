@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import main.IController;
 import main.gamevariety.GrandGame;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
+import main.player.IPlayer;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.IOutput;
-import test.interfaces.IController;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
+import main.ui.IOutput;
 
 
 public class OutputStub implements IOutput{

@@ -1,7 +1,8 @@
-package test.interfaces;
+package main.player;
 
 import java.io.IOException;
 
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
 

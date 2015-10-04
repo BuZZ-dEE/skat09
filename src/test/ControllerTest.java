@@ -19,6 +19,7 @@ import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
 import main.player.Granny;
 import main.player.HumanPlayer;
+import main.player.IPlayer;
 import main.player.Player;
 import main.player.Position;
 import main.player.RuleCompliantPlayer;
@@ -26,13 +27,12 @@ import main.player.SmartPlayer;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.IOutput;
-import test.interfaces.IPlayer;
 import test.stub.OutputStub;
 import test.stub.HumanPlayerStub;
 import test.stub.HumanPlayerStub2;
 import main.ui.Output;
 import main.ui.CLIOutput;
+import main.ui.IOutput;
 
 
 public class ControllerTest {

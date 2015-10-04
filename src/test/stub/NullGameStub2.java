@@ -3,8 +3,8 @@ package test.stub;
 import java.util.ArrayList;
 
 import main.gamevariety.GameVariety;
+import main.gamevariety.INullGame;
 import main.playingcard.PlayingCard;
-import test.interfaces.INullGame;
 
 
 public class NullGameStub2 extends GameVariety implements INullGame {

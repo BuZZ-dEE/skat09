@@ -1,8 +1,7 @@
-package test.interfaces;
+package main.gamevariety;
 
 import java.util.ArrayList;
 
-import main.gamevariety.GameVarietyName;
 import main.playingcard.PlayingCard;
 
 

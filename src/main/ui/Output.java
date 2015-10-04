@@ -3,11 +3,10 @@ package main.ui;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
+import main.player.IPlayer;
 import main.playingcard.PlayingCard;
-import test.interfaces.IOutput;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
 
 
 /**

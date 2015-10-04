@@ -10,13 +10,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import main.gamevariety.GrandGame;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
 import main.player.Granny;
+import main.player.IPlayer;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
 import test.stub.NullGameStub2;
 
 

@@ -37,8 +37,8 @@ import javax.swing.KeyStroke;
 import main.Messages;
 import main.Table;
 import main.gamevariety.GameVarietyName;
+import main.player.IPlayer;
 import main.playingcard.PlayingCard;
-import test.interfaces.IPlayer;
 import main.ui.GUIOutput;
 
 /**

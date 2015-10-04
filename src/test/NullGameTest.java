@@ -8,11 +8,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import main.gamevariety.GameVarietyName;
+import main.gamevariety.INullGame;
 import main.gamevariety.NullGame;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.INullGame;
 
 
 public class NullGameTest {

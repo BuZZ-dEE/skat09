@@ -18,13 +18,13 @@ import main.gamevariety.NullGame;
 import main.gamevariety.Ramsch;
 import main.gamevariety.SuitGame;
 import main.player.Granny;
+import main.player.IPlayer;
 import main.player.Position;
 import main.player.RuleCompliantPlayer;
 import main.player.SmartPlayer;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.IPlayer;
 
 
 public class SmartPlayerTest {

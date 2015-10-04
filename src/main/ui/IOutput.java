@@ -1,9 +1,11 @@
-package test.interfaces;
+package main.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
+import main.player.IPlayer;
 import main.playingcard.PlayingCard;
 
 

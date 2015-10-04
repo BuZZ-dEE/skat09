@@ -2,11 +2,10 @@ package main;
 
 import java.io.IOException;
 
-import test.interfaces.IOutput;
-import test.interfaces.IController;
 import main.tools.OSValidator;
 import main.ui.CLIOutput;
 import main.ui.GUIOutput;
+import main.ui.IOutput;
 
 /**
  * Die Main Klasse dient dem Programmstart, sowie dem Initialisieren der

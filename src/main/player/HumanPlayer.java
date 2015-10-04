@@ -2,12 +2,10 @@ package main.player;
 
 import java.io.IOException;
 
+import main.IController;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
-import test.interfaces.IController;
-import test.interfaces.IHumanPlayer;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
 
 
 /**

@@ -14,22 +14,22 @@ import org.junit.Before;
 import org.junit.Test;
 
 import main.Controller;
+import main.IController;
 import main.SkatVariant;
 import main.Table;
 import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
 import main.gamevariety.Ramsch;
 import main.gamevariety.SuitGame;
 import main.player.Granny;
 import main.player.HumanPlayer;
+import main.player.IPlayer;
 import main.player.Position;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.IController;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
 import main.ui.CLIOutput;
 
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import main.playingcard.PlayingCard;
 import main.playingcard.Value;
-import test.interfaces.INullGame;
 
 
 /**

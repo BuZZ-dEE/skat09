@@ -1,9 +1,12 @@
-package test.interfaces;
+package main;
 
 import java.io.IOException;
 import java.util.Observable;
 
+import main.gamevariety.IGameVariety;
+import main.player.IPlayer;
 import main.playingcard.PlayingCard;
+import main.ui.IOutput;
 
 
 /**

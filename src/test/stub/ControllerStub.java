@@ -3,12 +3,12 @@ package test.stub;
 import java.io.IOException;
 import java.util.Observable;
 
+import main.IController;
 import main.Table;
+import main.gamevariety.IGameVariety;
+import main.player.IPlayer;
 import main.playingcard.PlayingCard;
-import test.interfaces.IOutput;
-import test.interfaces.IController;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
+import main.ui.IOutput;
 
 
 public class ControllerStub implements IController{

@@ -2,13 +2,13 @@ package test.stub;
 
 import java.util.ArrayList;
 
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
+import main.player.IHumanPlayer;
+import main.player.IPlayer;
 import main.player.Position;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
-import test.interfaces.IHumanPlayer;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
 
 
 public class HumanPlayerStub implements IPlayer, IHumanPlayer {

@@ -2,10 +2,10 @@ package main.player;
 
 
 
+import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
-import test.interfaces.IGameVariety;
 
 /**
  * Die Klasse regelkonformer Spieler erzeugt einen Computerspieler, der sich an

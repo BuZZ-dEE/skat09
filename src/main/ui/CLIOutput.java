@@ -10,13 +10,13 @@ import main.Messages;
 import main.Table;
 import main.gamevariety.GameVarietyName;
 import main.gamevariety.GrandGame;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
+import main.player.IPlayer;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
 
 /**
  * Diese Klasse wird das Spiel f&uuml;r den menschlichen Spieler &uuml;ber die

@@ -8,19 +8,18 @@ import java.util.Observer;
 
 import main.gamevariety.GameVarietyName;
 import main.gamevariety.GrandGame;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
 import main.gamevariety.Ramsch;
 import main.gamevariety.SuitGame;
 import main.player.Granny;
 import main.player.HumanPlayer;
+import main.player.IHumanPlayer;
+import main.player.IPlayer;
 import main.player.RuleCompliantPlayer;
 import main.player.SmartPlayer;
 import main.playingcard.PlayingCard;
-import test.interfaces.IOutput;
-import test.interfaces.IController;
-import test.interfaces.IHumanPlayer;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
+import main.ui.IOutput;
 
 
 /**

@@ -5,12 +5,12 @@ import java.util.Random;
 
 import main.gamevariety.GameVarietyName;
 import main.gamevariety.GrandGame;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.IGameVariety;
 
 
 /**

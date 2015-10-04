@@ -1,10 +1,10 @@
-package test.interfaces;
+package main.player;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
-import main.player.Position;
 import main.playingcard.PlayingCard;
 
 /**

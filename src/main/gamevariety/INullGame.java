@@ -1,4 +1,4 @@
-package test.interfaces;
+package main.gamevariety;
 
 import java.util.ArrayList;
 

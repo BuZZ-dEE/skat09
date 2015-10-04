@@ -7,14 +7,14 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import main.gamevariety.GameVarietyName;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
+import main.player.IHumanPlayer;
+import main.player.IPlayer;
 import main.player.Position;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
 import main.playingcard.Value;
-import test.interfaces.IHumanPlayer;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
 
 
 /**

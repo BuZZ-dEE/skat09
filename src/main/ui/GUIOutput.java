@@ -9,13 +9,13 @@ import javax.swing.JLabel;
 import main.Messages;
 import main.Table;
 import main.gamevariety.GrandGame;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
+import main.player.IPlayer;
 import main.player.PlayerEnum;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
-import test.interfaces.IGameVariety;
-import test.interfaces.IPlayer;
 import main.ui.gui.*;
 
 

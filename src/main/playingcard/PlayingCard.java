@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import test.interfaces.IPlayer;
+import main.player.IPlayer;
 import main.ui.gui.SvgImageProcessing;
 
 /**

@@ -1,9 +1,9 @@
 package main.player;
 
 import main.gamevariety.GrandGame;
+import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
-import test.interfaces.IGameVariety;
 
 /**
  * Diese Klasse beschreibt das Verhalten des Computerspielers "Oma". Die Oma
