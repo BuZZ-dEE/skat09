@@ -6,6 +6,8 @@
   <name>Skat09</name>
   <description>A Skat game</description>
   <build>
+    <sourceDirectory>/home/buzz-dee/Workspace/skat09/src/main/</sourceDirectory>
+    <testSourceDirectory>/home/buzz-dee/Workspace/skat09/src/test/</testSourceDirectory>
     <resources>
       <resource>
         <directory>src</directory>
