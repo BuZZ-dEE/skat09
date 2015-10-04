@@ -499,6 +499,7 @@ public class ControllerTest {
 	}
 	
 	@Test
+	@Ignore
 	public void alleinspielerAktionenTest() {
 		
 		Table tisch2 = new Table();
