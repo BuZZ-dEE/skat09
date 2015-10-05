@@ -2,3 +2,14 @@ language: java
 
 jdk:
   - oraclejdk8
+
+# blacklist
+branches:
+  except:
+    - javafx-gui
+
+# whitelist
+branches:
+  only:
+    - master
+    - network
