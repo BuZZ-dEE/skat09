@@ -10,7 +10,7 @@ import main.ui.CLIOutput;
 import main.ui.GUIOutput;
 import main.ui.IOutput;
 import main.ui.IOutput;
-import test.IController;
+import main.IController;
 
 /**
  * Die Main Klasse dient dem Programmstart, sowie dem Initialisieren der

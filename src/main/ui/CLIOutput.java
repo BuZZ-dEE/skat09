@@ -748,11 +748,7 @@ public class CLIOutput extends Output {
 
 			e.printStackTrace();
 		}
-
-		catch (IOException e) {
-
-			e.printStackTrace();
-		}
+		
 		return s;
 	}
 

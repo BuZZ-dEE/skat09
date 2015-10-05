@@ -1,4 +1,4 @@
-package skat09.ui.gui;
+package main.ui.gui;
 
 /**
  * The tricks window.

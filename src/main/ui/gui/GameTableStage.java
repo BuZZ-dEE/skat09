@@ -1,4 +1,4 @@
-package skat09.ui.gui;
+package main.ui.gui;
 
 import java.io.IOException;
 
@@ -6,12 +6,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import skat09.Messages;
-import skat09.Table;
-import skat09.gamevariety.GameVarietyName;
-import skat09.playingcard.PlayingCard;
-import skat09.test.interfaces.IPlayer;
-import skat09.ui.GUIOutput;
+import main.Messages;
+import main.Table;
+import main.gamevariety.GameVarietyName;
+import main.playingcard.PlayingCard;
+import main.player.IPlayer;
+import main.ui.GUIOutput;
 
 import javax.swing.*;
 

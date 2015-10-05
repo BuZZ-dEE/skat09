@@ -1,4 +1,4 @@
-package skat09.ui.gui;
+package main.ui.gui;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -24,10 +24,10 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import skat09.Messages;
-import skat09.player.PlayerEnum;
-import skat09.tools.Configuration;
-import skat09.ui.GUIOutput;
+import main.Messages;
+import main.player.PlayerEnum;
+import main.tools.Configuration;
+import main.ui.GUIOutput;
 
 /**
  * The skat entry setp window.
