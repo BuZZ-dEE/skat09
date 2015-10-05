@@ -1,4 +1,4 @@
-package skat09.net;
+package main.net;
 
 public interface IClient {
 

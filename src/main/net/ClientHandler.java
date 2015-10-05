@@ -1,4 +1,4 @@
-package skat09.net;
+package main.net;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelHandler.Sharable;
