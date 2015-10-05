@@ -6,7 +6,8 @@
   <name>Skat09</name>
   <description>A Skat game</description>
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/main/</sourceDirectory>
+    <testSourceDirectory>src/test/</testSourceDirectory>
     <resources>
       <resource>
         <directory>src</directory>
@@ -24,7 +25,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
+        <version>3.3</version>
         <configuration>
           <rules>
             <requireJavaVersion>
@@ -32,7 +33,7 @@
             </requireJavaVersion>
           </rules>
           <source>1.8</source>
-          <tagret>1.8</tagret>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
@@ -63,6 +64,7 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <dependencyManagement>
@@ -102,4 +104,8 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 </project>
