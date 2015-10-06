@@ -171,7 +171,7 @@ public class Table extends Observable {
 	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
 	 * jedes Spiel ist notiert, wie hoch der Grundwert des Spiels war.
 	 */
-	public ArrayList<Integer> grundwertliste;
+	public ArrayList<Integer> baseValues;
 
 	//
 	// Konstruktor
@@ -188,7 +188,7 @@ public class Table extends Observable {
 		playedCards = new PlayingCard[3];
 		skat = new PlayingCard[3];
 		deck = new ArrayList<PlayingCard>();
-		grundwertliste = new ArrayList<Integer>();
+		baseValues = new ArrayList<Integer>();
 		augenliste = new ArrayList<Integer>();
 		pointsList = new ArrayList<Integer>();
 		overbidList = new ArrayList<Boolean>();
@@ -472,7 +472,7 @@ public class Table extends Observable {
 	 * @return grundwertliste
 	 */
 	public ArrayList<Integer> getGrundwertListe() {
-		return grundwertliste;
+		return baseValues;
 	}
 
 	/**
@@ -1369,7 +1369,7 @@ public class Table extends Observable {
 	 */
 	public IPlayer[] decideRamsch(IPlayer[] player, int skataugen,
 								  int bock) {
-		grundwertliste.add(0);
+		baseValues.add(0);
 		// Ist ein Durchmarsch gelungen?
 		if (calculateAugen(player[2].getTricks()) == maximalAugen) {
 			player[2].getGames().add(maximalAugen * bock);
@@ -1498,11 +1498,11 @@ public class Table extends Observable {
 
 	public int pointsVariants(int result, int augenCount) {
 		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
-			grundwertliste.add(23);
+			baseValues.add(23);
 			result = pointsNullGame();
 		}
 		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
-			grundwertliste.add(24);
+			baseValues.add(24);
 			result = pointsGrandGame(augenCount);
 		}
 		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
@@ -1819,7 +1819,7 @@ public class Table extends Observable {
 		int baseValue = 0;
 		SuitGame suitGame = (SuitGame) gameVariety;
 		baseValue = suitGame.getTrumpSuit().value();
-		grundwertliste.add(baseValue);
+		baseValues.add(baseValue);
 		points = (Math.abs(getDeclarer().spitzenZahl()) + calculateLevel(augenzahl))
 				* baseValue;
 		return points;
