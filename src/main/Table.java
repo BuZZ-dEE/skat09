@@ -161,7 +161,7 @@ public class Table extends Observable {
 	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
 	 * jedes Spiel ist notiert, wie viele Augen gewonnen wurden.
 	 */
-	public ArrayList<Integer> augenliste;
+	public ArrayList<Integer> augenForRounds;
 	/**
 	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
 	 * jedes Spiel ist notiert, wie viele Punkte gewonnen wurden.
@@ -189,7 +189,7 @@ public class Table extends Observable {
 		skat = new PlayingCard[3];
 		deck = new ArrayList<PlayingCard>();
 		baseValues = new ArrayList<Integer>();
-		augenliste = new ArrayList<Integer>();
+		augenForRounds = new ArrayList<Integer>();
 		pointsList = new ArrayList<Integer>();
 		overbidList = new ArrayList<Boolean>();
 		biddingValues = new TreeSet<Integer>();
@@ -449,12 +449,12 @@ public class Table extends Observable {
 	}
 	
 	/**
-	 * Gibt die ArrayList augenliste zur&uuml;ck
+	 * Gibt die ArrayList augenForRounds zur&uuml;ck
 	 * 
-	 * @return augenliste
+	 * @return augenForRounds
 	 */
 	public ArrayList<Integer> getAugenListe() {
-		return augenliste;
+		return augenForRounds;
 	}
 	
 	/**
@@ -1234,7 +1234,7 @@ public class Table extends Observable {
 			int augen = calculateAugen(temp);
 
 			int points = calculatePoints(augen);
-			augenliste.add(augen);
+			augenForRounds.add(augen);
 			pointsList.add(points);
 
 			if (points > 0) {
@@ -1373,7 +1373,7 @@ public class Table extends Observable {
 		// Ist ein Durchmarsch gelungen?
 		if (calculateAugen(player[2].getTricks()) == maximalAugen) {
 			player[2].getGames().add(maximalAugen * bock);
-			augenliste.add(maximalAugen);
+			augenForRounds.add(maximalAugen);
 			pointsList.add(maximalAugen * bock);
 			player[1].getGames().add(0);
 			player[0].getGames().add(0);
@@ -1383,7 +1383,7 @@ public class Table extends Observable {
 			player[2].getGames().add(
 					-((calculateAugen(player[2].getTricks()) + skataugen) * 2)
 							* bock);
-			augenliste.add((calculateAugen(player[2].getTricks()) + skataugen));
+			augenForRounds.add((calculateAugen(player[2].getTricks()) + skataugen));
 			pointsList
 					.add(-((calculateAugen(player[2].getTricks()) + skataugen) * 2)
 							* bock);
@@ -1394,7 +1394,7 @@ public class Table extends Observable {
 		} else {
 			player[2].getGames().add(
 					-((calculateAugen(player[2].getTricks()) + skataugen)) * bock);
-			augenliste.add((calculateAugen(player[2].getTricks()) + skataugen));
+			augenForRounds.add((calculateAugen(player[2].getTricks()) + skataugen));
 			pointsList.add(-(calculateAugen(player[2].getTricks()) + skataugen)
 					* bock);
 			player[1].getGames().add(0);
