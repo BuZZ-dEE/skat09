@@ -597,7 +597,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.getDeclarer().spitzenEinordnen();
-		assertEquals(0, tisch.ueberreizCheck(18));
+		assertEquals(0, tisch.checkOverbid(18));
 	}
 	
 	@Test
@@ -608,7 +608,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.getDeclarer().spitzenEinordnen();
-		tisch.ueberreizCheck(18);
+		tisch.checkOverbid(18);
 		assertEquals(true, tisch.isOverbidding());
 	}
 	
@@ -627,7 +627,7 @@ public class TableTest {
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.getDeclarer().spitzenEinordnen();
 		
-		assertEquals(-54, tisch.ueberreizCheck(18));
+		assertEquals(-54, tisch.checkOverbid(18));
 	}
 	
 	@Test
@@ -637,7 +637,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.getDeclarer().spitzenEinordnen();
-		assertEquals(0, tisch.ueberreizCheck(18));
+		assertEquals(0, tisch.checkOverbid(18));
 	}
 	
 	@Test
@@ -651,7 +651,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		tisch.getDeclarer().spitzenEinordnen();
-		assertEquals(0, tisch.ueberreizCheck(18));
+		assertEquals(0, tisch.checkOverbid(18));
 	}
 	
 

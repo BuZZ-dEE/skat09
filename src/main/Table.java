@@ -173,9 +173,7 @@ public class Table extends Observable {
 	 */
 	public ArrayList<Integer> baseValues;
 
-	//
-	// Konstruktor
-	//
+
 
 	/**
 	 * Instanziert einen Tisch
@@ -210,10 +208,6 @@ public class Table extends Observable {
 		generateBiddingValues();
 
 	}
-
-	//
-	// get-Methoden
-	//
 
 	/**
 	 * Liefert den 1. Spieler zur&uuml;ck.
@@ -513,11 +507,6 @@ public class Table extends Observable {
 	public void setPlayer1(IPlayer player1) {
 
 		this.player1 = player1;
-		// Spielnachricht nachricht = new Spielnachricht(
-		// Spielnachricht.Spieler.SPIELER1, Spielnachricht.Flags.NICHTS,
-		// Spielnachricht.Bewegung.NICHTS);
-		// setChanged();
-		// notifyObservers(nachricht);
 	}
 
 	/**
@@ -685,14 +674,11 @@ public class Table extends Observable {
 	 * @param trumps
 	 *            - die neuen trumps
 	 */
-	public void setTruempfe(PlayingCard[] trumps) {
+	public void setTrumps(PlayingCard[] trumps) {
 
 		this.trumps = trumps;
 	}
 
-	//
-	// weitere Methoden
-	//
 	/**
 	 * Erstellt ein neues Deck mit 32 Karten. Jede Karte darf nur einmal
 	 * vorkommen.
@@ -1486,9 +1472,9 @@ public class Table extends Observable {
 
 		if (skatVariant == SkatVariant.SKAT
 				|| skatVariant == SkatVariant.RAMSCHBOCK) {
-			if (ueberreizCheck(result) != 0 && biddingValue != 0) {
+			if (checkOverbid(result) != 0 && biddingValue != 0) {
 				
-				result = ueberreizCheck(result);
+				result = checkOverbid(result);
 			} 
 		}
 
@@ -1694,7 +1680,7 @@ public class Table extends Observable {
 	 * @return 0 f&uuml;r nicht &uuml;berreizt, die negative Punktzahl, falls
 	 *         &uuml;berreizt wurde.
 	 */
-	public int ueberreizCheck(int points) {
+	public int checkOverbid(int points) {
 
 		int zwierg = 0;
 		int result = 0;
@@ -1704,14 +1690,14 @@ public class Table extends Observable {
 			zwierg = 24;
 		}
 		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
-			SuitGame spiel = (SuitGame) gameVariety;
-			zwierg = spiel.getTrumpSuit().value();
+			SuitGame suit = (SuitGame) gameVariety;
+			zwierg = suit.getTrumpSuit().value();
 		}
 		
 		if (points < 0) {
 			points = Math.abs(points / 2);
 		}
-		level = ueberreizcheck2(level);
+		level = getLLevel(level);
 		
 
 		if (((Math.abs(getDeclarer().spitzenZahl()) + level) * zwierg) < biddingValue
@@ -1736,7 +1722,7 @@ public class Table extends Observable {
 	 *            - vorher berechnete Stufe
 	 * @return berechnete Stufe
 	 */
-	private int ueberreizcheck2(int level) {
+	private int getLLevel(int level) {
 
 		if (schneider) {
 			level = level + 1;
