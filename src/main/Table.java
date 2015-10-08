@@ -1684,7 +1684,6 @@ public class Table extends Observable {
 
 		int zwierg = 0;
 		int result = 0;
-		int level = 1;
 
 		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
 			zwierg = 24;
@@ -1697,7 +1696,7 @@ public class Table extends Observable {
 		if (points < 0) {
 			points = Math.abs(points / 2);
 		}
-		level = getLLevel(level);
+		int level = getLLevel();
 		
 
 		if (((Math.abs(getDeclarer().spitzenZahl()) + level) * zwierg) < biddingValue
@@ -1717,12 +1716,12 @@ public class Table extends Observable {
 	/**
 	 * Zweiter Teil des &Uuml;berreizchecks. Es werden zus&auml;tzlich
 	 * schneider, schwarz, ouvert und handgame &uuml;berpr&uuml;ft.
-	 * 
-	 * @param level
-	 *            - vorher berechnete Stufe
+	 *
 	 * @return berechnete Stufe
 	 */
-	private int getLLevel(int level) {
+	private int getLLevel() {
+
+        int level = 1;
 
 		if (schneider) {
 			level = level + 1;
@@ -1736,6 +1735,7 @@ public class Table extends Observable {
 		if (ouvert) {
 			level = level + 1;
 		}
+
 		return level;
 	}
 
