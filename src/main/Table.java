@@ -438,7 +438,7 @@ public class Table extends Observable {
 	 * 
 	 * @return overbidList
 	 */
-	public ArrayList<Boolean> getUeber() {
+	public ArrayList<Boolean> getOverbids() {
 		return overbidList;
 	}
 	

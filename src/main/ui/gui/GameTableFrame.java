@@ -741,19 +741,19 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		for (int i = 0; i < tisch.getPlayer1().getGames().size(); i++) {
 
 			if (tisch.getPlayer1().getGames().get(i) != 0
-					&& tisch.getUeber().get(i)) {
+					&& tisch.getOverbids().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
 			punkte = new JLabel(tisch.getPlayer1().getGames().get(i) + s);
 			if (tisch.getPlayer2().getGames().get(i) != 0
-					&& tisch.getUeber().get(i)) {
+					&& tisch.getOverbids().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
 			punkte1 = new JLabel(tisch.getPlayer2().getGames().get(i) + s);
 			if (tisch.getPlayer3().getGames().get(i) != 0
-					&& tisch.getUeber().get(i)) {
+					&& tisch.getOverbids().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
