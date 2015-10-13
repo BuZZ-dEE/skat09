@@ -447,7 +447,7 @@ public class Table extends Observable {
 	 * 
 	 * @return augenForRounds
 	 */
-	public ArrayList<Integer> getAugenListe() {
+	public ArrayList<Integer> getAugenForRounds() {
 		return augenForRounds;
 	}
 	

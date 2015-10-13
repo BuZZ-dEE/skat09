@@ -759,7 +759,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 				s = "";
 			punkte2 = new JLabel(tisch.getPlayer3().getGames().get(i) + s);
 			grundw = new JLabel(tisch.getGrundwertListe().get(i) + "");
-			augenzahl = new JLabel(tisch.getAugenListe().get(i) + "");
+			augenzahl = new JLabel(tisch.getAugenForRounds().get(i) + "");
 
 			setzeStats(punkt, 0, 1 + i);
 			setzeStats(punkte, 1, 1 + i);
