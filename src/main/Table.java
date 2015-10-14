@@ -465,7 +465,7 @@ public class Table extends Observable {
 	 * 
 	 * @return grundwertliste
 	 */
-	public ArrayList<Integer> getGrundwertListe() {
+	public ArrayList<Integer> getBaseValues() {
 		return baseValues;
 	}
 
