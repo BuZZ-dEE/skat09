@@ -97,7 +97,7 @@
 		</developer>
 	</developers>
   	<inceptionYear>2009</inceptionYear>
-  	    <licenses>
+    <licenses>
         <license>
             <name>GNU General Public License</name>
             <url>https://www.gnu.org/licenses/gpl.txt</url>
