@@ -22,7 +22,7 @@ import main.playingcard.Value;
  * Controller gesteuert.
  * 
  * MVC: Der Tisch ist das Model, er erweitert die Klasse Observable. Eventuell
- * m&uuml;ssen noch Methoden &uuml;berschrieben werden.
+ * müssen noch Methoden überschrieben werden.
  * 
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin
  *         Bruhns
@@ -94,11 +94,11 @@ public class Table extends Observable {
 	 */
 	private SortedSet<Integer> biddingValues;
 	/**
-	 * z&auml;hlt die bisher gespielten Spiele mit
+	 * zählt die bisher gespielten Spiele mit
 	 */
 	private int gameRoundCounter;
 	/**
-	 * Die Tr&uuml;mpfe, mit denen der Alleinspieler spielt
+	 * Die Trümpfe, mit denen der Alleinspieler spielt
 	 */
 	private PlayingCard[] trumps = new PlayingCard[12];
 	/**
@@ -153,22 +153,22 @@ public class Table extends Observable {
 	 */
 	private boolean isOverbidding;
 	/**
-	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
-	 * jedes Spiel ist notiert, ob das Spiel &uuml;berreizt war oder nicht.
+	 * Enthält so viele Einträge, wie Spiele gespielt wurden. Für
+	 * jedes Spiel ist notiert, ob das Spiel überreizt war oder nicht.
 	 */
 	public ArrayList<Boolean> overbidList;
 	/**
-	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
+	 * Enthält so viele Einträge, wie Spiele gespielt wurden. Für
 	 * jedes Spiel ist notiert, wie viele Augen gewonnen wurden.
 	 */
 	public ArrayList<Integer> augenForRounds;
 	/**
-	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
+	 * Enthält so viele Einträge, wie Spiele gespielt wurden. Für
 	 * jedes Spiel ist notiert, wie viele Punkte gewonnen wurden.
 	 */
 	public ArrayList<Integer> pointsList;
 	/**
-	 * Enth&auml;lt so viele Eintr&auml;ge, wie Spiele gespielt wurden. F&uuml;r
+	 * Enthält so viele Einträge, wie Spiele gespielt wurden. Für
 	 * jedes Spiel ist notiert, wie hoch der Grundwert des Spiels war.
 	 */
 	public ArrayList<Integer> baseValues;
@@ -210,7 +210,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert den 1. Spieler zur&uuml;ck.
+	 * Liefert den 1. Spieler zurück.
 	 * 
 	 * @return player1
 	 */
@@ -220,7 +220,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert den 2. Spieler zur&uuml;ck.
+	 * Liefert den 2. Spieler zurück.
 	 * 
 	 * @return player2
 	 */
@@ -230,7 +230,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert den 3. Spieler zur&uuml;ck.
+	 * Liefert den 3. Spieler zurück.
 	 * 
 	 * @return player3
 	 */
@@ -256,7 +256,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert die bereits auf dem Tisch liegenden Karten zur&uuml;ck.
+	 * Liefert die bereits auf dem Tisch liegenden Karten zurück.
 	 * 
 	 * @return auf dem Tisch liegende Karten
 	 */
@@ -266,7 +266,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Gib das Deck des Tisches zur&uuml;ck.
+	 * Gib das Deck des Tisches zurück.
 	 * 
 	 * @return deck des Tisches
 	 */
@@ -276,10 +276,10 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert alle existierenden Reizwerte in einem SortedSet zur&uuml;ck.
+	 * Liefert alle existierenden Reizwerte in einem SortedSet zurück.
 	 * 
 	 * @return SortedSet (sortierte Reizwerte, die nicht doppelt vorkommen
-	 *         k&ouml;nnen)
+	 *         können)
 	 */
 	public SortedSet<Integer> getBiddingValues() {
 
@@ -297,7 +297,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert die Variable handgame zur&uuml;ck.
+	 * Liefert die Variable handgame zurück.
 	 * 
 	 * @return true, falls handgame
 	 */
@@ -307,7 +307,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert die aktuell gesetzte Spielart zur&uuml;ck.
+	 * Liefert die aktuell gesetzte Spielart zurück.
 	 * 
 	 * @return gameVariety der aktuellen Runde
 	 */
@@ -319,7 +319,7 @@ public class Table extends Observable {
 	/**
 	 * Liefert die Spielvariante.
 	 * 
-	 * @return gew&auml;tle skatVariant
+	 * @return gewätle skatVariant
 	 */
 	public SkatVariant getVariant() {
 
@@ -327,7 +327,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert den aktuell gesetzten Reizwert zur&uuml;ck.
+	 * Liefert den aktuell gesetzten Reizwert zurück.
 	 * 
 	 * @return aktueller biddingValue
 	 */
@@ -348,7 +348,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert zur&uuml;ck, ob das letzte Spiel 60-60 war.
+	 * Liefert zurück, ob das letzte Spiel 60-60 war.
 	 * 
 	 * @return true, falls letztes Spiel 60-60 war.
 	 */
@@ -378,7 +378,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Die Methode gibt die Anzahl der Spiele zur&uuml;ck
+	 * Die Methode gibt die Anzahl der Spiele zurück
 	 * 
 	 * @return gameRoundCounter Die Anzahl der Spiele
 	 */
@@ -388,7 +388,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert die trumps Variable zur&uuml;ck.
+	 * Liefert die trumps Variable zurück.
 	 * 
 	 * @return trumps
 	 */
@@ -434,7 +434,7 @@ public class Table extends Observable {
 	}
 	
 	/**
-	 * Gibt die ArrayList overbidList zur&uuml;ck
+	 * Gibt die ArrayList overbidList zurück
 	 * 
 	 * @return overbidList
 	 */
@@ -443,7 +443,7 @@ public class Table extends Observable {
 	}
 	
 	/**
-	 * Gibt die ArrayList augenForRounds zur&uuml;ck
+	 * Gibt die ArrayList augenForRounds zurück
 	 * 
 	 * @return augenForRounds
 	 */
@@ -452,7 +452,7 @@ public class Table extends Observable {
 	}
 	
 	/**
-	 * Gibt die ArrayList pointsList zur&uuml;ck
+	 * Gibt die ArrayList pointsList zurück
 	 * 
 	 * @return pointsList
 	 */
@@ -461,7 +461,7 @@ public class Table extends Observable {
 	}
 	
 	/**
-	 * Gibt die ArrayList grundwertliste zur&uuml;ck
+	 * Gibt die ArrayList grundwertliste zurück
 	 * 
 	 * @return grundwertliste
 	 */
@@ -532,7 +532,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das schneider-flag mit dem &uuml;bergebenen Wert.
+	 * Setzt das schneider-flag mit dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -543,7 +543,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das schwarz-flag mit dem &uuml;bergebenen Wert.
+	 * Setzt das schwarz-flag mit dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -554,7 +554,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das ouvert-flag mit dem &uuml;bergebenen Wert.
+	 * Setzt das ouvert-flag mit dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -592,7 +592,7 @@ public class Table extends Observable {
 	 * Legt die Spielart der aktuellen Runde fest.
 	 * 
 	 * @param gameVariety
-	 *            f&uuml;r die akutelle Runde
+	 *            für die akutelle Runde
 	 */
 	public void setGameVariety(IGameVariety gameVariety) {
 
@@ -707,7 +707,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Mischt das &uuml;bergebene Deck und liefert es zur&uuml;ck.
+	 * Mischt das übergebene Deck und liefert es zurück.
 	 */
 	public void shuffleDeck() {
 
@@ -715,13 +715,13 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Wertet einen gespielten Stich aus und gibt den Gewinner zur&uuml;ck.
+	 * Wertet einen gespielten Stich aus und gibt den Gewinner zurück.
 	 * 
 	 * @param playedCards
 	 *            - im Stich enthaltene Karten@return das neue Deck bestehend
 	 *            aus 32 Karten in einer ArrayList
 	 * @param gameVariety
-	 *            - &uuml;bergibt die Spielart
+	 *            - übergibt die Spielart
 	 * @return Spieler, der den Stich gewonnen hat
 	 */
 	public IPlayer evaluateTrick(IGameVariety gameVariety,
@@ -826,7 +826,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Diese Methode liefert den Alleinspieler zur&uuml;ck.
+	 * Diese Methode liefert den Alleinspieler zurück.
 	 * 
 	 * @return der Alleinspieler
 	 */
@@ -852,7 +852,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Diese Methode ermittelt den Mitspieler zur&uuml;ck.
+	 * Diese Methode ermittelt den Mitspieler zurück.
 	 * 
 	 * @return der Mitspieler
 	 */
@@ -934,7 +934,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Diese Methode sorgt daf&uuml;r, dass nach einem Spiel die Positionen der
+	 * Diese Methode sorgt dafür, dass nach einem Spiel die Positionen der
 	 * Spieler gewechselt werden.
 	 */
 	public void changePosition() {
@@ -966,8 +966,8 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Bef&uuml;llt das Reizwerte-Array mit allen Reizwerten, die vorkommen
-	 * k&ouml;nnen.
+	 * Befüllt das Reizwerte-Array mit allen Reizwerten, die vorkommen
+	 * können.
 	 */
 	public void generateBiddingValues() {
 
@@ -1003,7 +1003,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Ermittelt den Vorhandspieler und liefert ihn zur&uuml;ck.
+	 * Ermittelt den Vorhandspieler und liefert ihn zurück.
 	 * 
 	 * @return den Vorhandspieler
 	 */
@@ -1029,7 +1029,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Ermittelt den Mittelhandspieler und liefert ihn zur&uuml;ck.
+	 * Ermittelt den Mittelhandspieler und liefert ihn zurück.
 	 * 
 	 * @return den Mittelhandspieler
 	 */
@@ -1055,7 +1055,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Ermittelt den Hinterhandspieler und liefert ihn zur&uuml;ck.
+	 * Ermittelt den Hinterhandspieler und liefert ihn zurück.
 	 * 
 	 * @return den Hinterhandspieler
 	 */
@@ -1082,8 +1082,8 @@ public class Table extends Observable {
 
 	/**
 	 * Die Methode erwartet einen Reizwert und gibt den darauf folgenden
-	 * Reizwert zur&uuml;ck. Falls es keinen h&ouml;heren Reizwert gibt, wird
-	 * der Eingabewert zur&uuml;ckgegeben.
+	 * Reizwert zurück. Falls es keinen höheren Reizwert gibt, wird
+	 * der Eingabewert zurückgegeben.
 	 * 
 	 * @param biddingValue
 	 * @return der folgende Reizwert
@@ -1104,7 +1104,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Liefert zu einem Reizwert den n&auml;chst kleineren Reizwert zur&uuml;ck.
+	 * Liefert zu einem Reizwert den nächst kleineren Reizwert zurück.
 	 * 
 	 * @param biddingValue
 	 *            - biddingValue, zudem der kleinere Wert gesucht ist
@@ -1127,14 +1127,14 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Ermittelt ob der neue Reizwert existiert und tats&auml;chlich h&ouml;her
+	 * Ermittelt ob der neue Reizwert existiert und tatsächlich höher
 	 * ist als der alte Reizwert.
 	 * 
 	 * @param oldValue
 	 *            - zuvor gereizter Wert
 	 * @param newValue
 	 *            - vom Spieler neu vorgeschlagener Reizwert
-	 * @return true - falls der neue Reizwert g&uuml;ltig ist
+	 * @return true - falls der neue Reizwert gültig ist
 	 */
 	public boolean checkNewBiddingValue(int oldValue, int newValue) {
 
@@ -1159,12 +1159,12 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Diese Methode liefert den Folgespielers eines Spielers zur&uuml;ck, wenn
+	 * Diese Methode liefert den Folgespielers eines Spielers zurück, wenn
 	 * im Uhrzeigersinn gespielt wird.
 	 * 
 	 * @param player
 	 *            - aktueller Spieler
-	 * @return der n&auml;chste Spieler
+	 * @return der nächste Spieler
 	 */
 	public IPlayer nextPlayer(IPlayer player) {
 
@@ -1184,7 +1184,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Diese Methode liefert den menschlichen Spieler zur&uuml;ck.
+	 * Diese Methode liefert den menschlichen Spieler zurück.
 	 */
 	public IPlayer getHumanPlayer() {
 
@@ -1205,10 +1205,10 @@ public class Table extends Observable {
 
 	/**
 	 * Bestimmt ob der Alleinspieler das Spiel gewonnen hat. Ausserdem werden
-	 * zus&auml;tzlich weitere Variablen f&uers Ramschen gesetzt, falls
+	 * zusätzlich weitere Variablen f&uers Ramschen gesetzt, falls
 	 * notwendig.
 	 * 
-	 * @return true, falls der &uuml;bergebene Spieler das Spiel gewonnen hat
+	 * @return true, falls der übergebene Spieler das Spiel gewonnen hat
 	 */
 	public boolean evaluateGame() {
 		boolean won = false;
@@ -1267,7 +1267,7 @@ public class Table extends Observable {
 	 * Die Methode schreibt die gewonnenen Punkte in das Spielearray der
 	 * Spieler.
 	 * 
-	 * @return Gibt true zur&uuml;ck, falls der menschliche Spieler 0 oder 120
+	 * @return Gibt true zurück, falls der menschliche Spieler 0 oder 120
 	 *         Punkte erreicht hat.
 	 */
 	private boolean ramschEvaluation() {
@@ -1351,7 +1351,7 @@ public class Table extends Observable {
 	 *            Die Augen, die im Skat lagen
 	 * @param bock
 	 *            Ob Bock gespielt wird oder nicht
-	 * @return Das ver&auml;nderte Spielerarray
+	 * @return Das veränderte Spielerarray
 	 */
 	public IPlayer[] decideRamsch(IPlayer[] player, int skataugen,
 								  int bock) {
@@ -1408,7 +1408,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Berechnet, wie h&auml;ufig ein Spieler Alleinspieler war und gibt die
+	 * Berechnet, wie häufig ein Spieler Alleinspieler war und gibt die
 	 * Prozentzahl aus.
 	 * 
 	 * @param player
@@ -1427,7 +1427,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Berechnet, wie h&auml;ufig ein Spieler Alleinspieler war.
+	 * Berechnet, wie häufig ein Spieler Alleinspieler war.
 	 * 
 	 * @param player
 	 *            - Spieler dessen Anzahl der Alleinspiele gesucht ist
@@ -1543,7 +1543,7 @@ public class Table extends Observable {
 	 * Berechnet die Gewinnstufe des abgeschlossenen Spiels. (Erster Teil)
 	 * 
 	 * @param augenzahl
-	 *            Bekommt die erreichte Augenzahl &uuml;bergeben.
+	 *            Bekommt die erreichte Augenzahl übergeben.
 	 * @return Die Gewinnstufe
 	 */
 	public int calculateLevel(int augenzahl) {
@@ -1601,14 +1601,14 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Die Methode pr&uuml;ft, ob ein Spiel gewonnen wurde oder nicht.
+	 * Die Methode prüft, ob ein Spiel gewonnen wurde oder nicht.
 	 * 
 	 * @param augenzahl
 	 *            Die erreichte Augenzahl des Alleinspielers
-	 * @return false f&uuml;r gewonnen, true f&uuml;r verloren
+	 * @return false für gewonnen, true für verloren
 	 */
 	public boolean checkVerloren(int augenzahl) {
-		// Gr&uuml;nde zu verlieren_
+		// Gründe zu verlieren_
 		boolean lost = false;
 
 		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
@@ -1623,9 +1623,9 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Die Methode pr&uuml;ft, ob ein Nullspiel gewonnen wurde oder nicht.
+	 * Die Methode prüft, ob ein Nullspiel gewonnen wurde oder nicht.
 	 * 
-	 * @return false f&uuml;r gewonnen, true f&uuml;r verloren
+	 * @return false für gewonnen, true für verloren
 	 */
 	public boolean nullVerloren() {
 
@@ -1639,12 +1639,12 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Die Methode pr&uuml;ft, ob ein Farbspiel oder Grandspiel gewonnen wurde
+	 * Die Methode prüft, ob ein Farbspiel oder Grandspiel gewonnen wurde
 	 * oder nicht.
 	 * 
 	 * @param augenzahl
 	 *            - die erreichte Augenzahl des Alleinspielers
-	 * @return false f&uuml;r gewonnen, true f&uuml;r verloren
+	 * @return false für gewonnen, true für verloren
 	 */
 	public boolean anderesSpielVerloren(int augenzahl) {
 
@@ -1672,13 +1672,13 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Die Methode pr&uuml;ft, ob sich der Alleinspieler &uuml;berreizt hat. Die
-	 * Methode wird zur Auswertung ben&ouml;tigt.
+	 * Die Methode prüft, ob sich der Alleinspieler überreizt hat. Die
+	 * Methode wird zur Auswertung benötigt.
 	 * 
 	 * @param points
-	 *            Die erreichten Punkte werden &uuml;bergeben
-	 * @return 0 f&uuml;r nicht &uuml;berreizt, die negative Punktzahl, falls
-	 *         &uuml;berreizt wurde.
+	 *            Die erreichten Punkte werden übergeben
+	 * @return 0 für nicht überreizt, die negative Punktzahl, falls
+	 *         überreizt wurde.
 	 */
 	public int checkOverbid(int points) {
 
@@ -1714,8 +1714,8 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Zweiter Teil des &Uuml;berreizchecks. Es werden zus&auml;tzlich
-	 * schneider, schwarz, ouvert und handgame &uuml;berpr&uuml;ft.
+	 * Zweiter Teil des überreizchecks. Es werden zusätzlich
+	 * schneider, schwarz, ouvert und handgame überprüft.
 	 *
 	 * @return berechnete Stufe
 	 */
@@ -1740,7 +1740,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Gibt die Anzahl der gewonnenen Spiele als Alleinspieler zur&uuml;ck.
+	 * Gibt die Anzahl der gewonnenen Spiele als Alleinspieler zurück.
 	 * 
 	 * @param player
 	 *            - spieler, dessen gewonnen Spiele ausgegeben werden sollen
@@ -1761,8 +1761,8 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Berechnet die Punkte, die ein Spieler f&uuml;r sein Nullspiel
-	 * erh&auml;lt.
+	 * Berechnet die Punkte, die ein Spieler für sein Nullspiel
+	 * erhält.
 	 * 
 	 * @return gewonnene Punkte
 	 */
@@ -1779,8 +1779,8 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Berechnet wieviele Punkte ein Spieler f&uuml;r ein beendetes Grandspiel
-	 * erh&auml;lt.
+	 * Berechnet wieviele Punkte ein Spieler für ein beendetes Grandspiel
+	 * erhält.
 	 * 
 	 * @param augenzahl
 	 *            - Die vom Spieler gemachten Augen
@@ -1793,8 +1793,8 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Berechnet, wieviele Punkte ein Spieler f&uuml;r ein gewonnenes Farbspiel
-	 * erh&auml;lt.
+	 * Berechnet, wieviele Punkte ein Spieler für ein gewonnenes Farbspiel
+	 * erhält.
 	 * 
 	 * @param augenzahl
 	 *            - vom Spieler erreichte Augenzahl
