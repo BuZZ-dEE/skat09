@@ -2,6 +2,7 @@
 .settings/
 /target/
 /bin/
+*.bak
 *.class
 *.iml
 *.orig
