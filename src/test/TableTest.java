@@ -406,7 +406,7 @@ public class TableTest {
 	public void anzahlGewinneTest() {
 		tisch.getPlayer1().getGames().clear();
 		tisch.getPlayer1().getGames().add(18);
-		assertEquals(1, tisch.anzahlderGewinne(spieler1));
+		assertEquals(1, tisch.getDeclarersWonGamesSum(spieler1));
 	}
 
 	@Test

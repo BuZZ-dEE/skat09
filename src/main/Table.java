@@ -1746,7 +1746,7 @@ public class Table extends Observable {
 	 *            - spieler, dessen gewonnen Spiele ausgegeben werden sollen
 	 * @return Anzahl der gewonnen Spiele
 	 */
-	public int anzahlderGewinne(IPlayer player) {
+	public int getDeclarersWonGamesSum(IPlayer player) {
 
 		int result = 0;
 

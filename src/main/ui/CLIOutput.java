@@ -980,7 +980,7 @@ public class CLIOutput extends Output {
 				.getI18n("game.statistic.declarer.quantity.won") + "   ");
 		System.out.println(Messages.getI18n(
 				"game.statistic.declarer.quantity.won.result",
-				table.anzahlderGewinne(player), player.getGames().size()));
+				table.getDeclarersWonGamesSum(player), player.getGames().size()));
 		System.out.print(Messages.getI18n(
 				"game.statistic.declarer.quantity.hand", player.getName())
 				+ "   ");

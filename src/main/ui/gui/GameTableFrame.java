@@ -1730,7 +1730,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		s[0] = tisch.getPercentDeclarer(spieler) + "("
 				+ +tisch.getAnzahlAllein(spieler) + ")";
 		// Anzahl Gewinne
-		s[1] = tisch.anzahlderGewinne(spieler) + "/"
+		s[1] = tisch.getDeclarersWonGamesSum(spieler) + "/"
 				+ tisch.getAnzahlAllein(spieler);
 		// Handspiele
 		s[2] = spieler.getHandGames() + "/" + tisch.getAnzahlAllein(spieler);
