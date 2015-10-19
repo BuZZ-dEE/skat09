@@ -558,25 +558,25 @@ abstract public class Player implements IPlayer {
 	}
 	
 	@Override
-	public int spitzenZahl() {
+	public int matadorsJackStraitCount() {
 		
 		int erg = 0;
 
 		if (trumps[0] != null) {
 			
-			erg = spitzenMit(erg);
+			erg = matadorsJackStraitWith(erg);
 		}
 		
 		else {
 			
-			erg = spitzenOhne(erg);
+			erg = matadorsJackStraitWithout(erg);
 		}
 
 		return erg;
 	}
 	
 	@Override
-	public int spitzenMit(int erg) {
+	public int matadorsJackStraitWith(int erg) {
 
 		for (int i = 0; i < trumps.length; i++) {
 
@@ -590,7 +590,7 @@ abstract public class Player implements IPlayer {
 	}
 	
 	@Override
-	public int spitzenOhne(int erg) {
+	public int matadorsJackStraitWithout(int erg) {
 
 		for (int i = 0; i < trumps.length; i++) {
 			
