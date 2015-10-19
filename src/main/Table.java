@@ -1465,7 +1465,7 @@ public class Table extends Observable {
 			result = result * 2;
 		}
 
-		// erg = ( Math.abs((spitzenZahl() ) + 1 + stufe) * zwerg);
+		// erg = ( Math.abs((matadorsJackStraitCount() ) + 1 + stufe) * zwerg);
 		if (checkVerloren(augenzahl)) {
 			result = result * (-2);
 		}
@@ -1699,7 +1699,7 @@ public class Table extends Observable {
 		int level = getLLevel();
 		
 
-		if (((Math.abs(getDeclarer().spitzenZahl()) + level) * zwierg) < biddingValue
+		if (((Math.abs(getDeclarer().matadorsJackStraitCount()) + level) * zwierg) < biddingValue
 				&& gameVariety.getGameVariety() != GameVarietyName.NULL) {
 			
 			if (biddingValue > points) {
@@ -1788,7 +1788,7 @@ public class Table extends Observable {
 	 */
 	public int pointsGrandGame(int augenzahl) {
 		int points = 0;
-		points = (Math.abs(getDeclarer().spitzenZahl()) + calculateLevel(augenzahl)) * 24;
+		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augenzahl)) * 24;
 		return points;
 	}
 
@@ -1806,7 +1806,7 @@ public class Table extends Observable {
 		SuitGame suitGame = (SuitGame) gameVariety;
 		baseValue = suitGame.getTrumpSuit().value();
 		baseValues.add(baseValue);
-		points = (Math.abs(getDeclarer().spitzenZahl()) + calculateLevel(augenzahl))
+		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augenzahl))
 				* baseValue;
 		return points;
 	}

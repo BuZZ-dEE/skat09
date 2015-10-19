@@ -402,14 +402,14 @@ public interface IPlayer {
 
 	/**
 	 * Rechnet die Spitzen aus. Ist der Kreuz-Bube vorhanden, wird die Methode
-	 * spitzenMit() aufgerufen und die Anzahl der Spitzen in ununterbrochender
-	 * Reihenfolge wird berechnet, ansonsten wird die Methode spitzenOhne()
+	 * matadorsJackStraitWith() aufgerufen und die Anzahl der Spitzen in ununterbrochender
+	 * Reihenfolge wird berechnet, ansonsten wird die Methode matadorsJackStraitWithout()
 	 * aufgerufen und die fehlenden Spitzen werden berechnet.
 	 * 
 	 * @return Positiver Wert von 1-11 fuer vorhandene Spitzen, Negativer Wert
 	 *         von -1 bis -11 f&uuml;r fehlende Spitzen.
 	 */
-	public abstract int spitzenZahl();
+	public abstract int matadorsJackStraitCount();
 
 	/**
 	 * Rechnet die Spitzen in ununterbrochener Reihenfolge aus.
@@ -418,7 +418,7 @@ public interface IPlayer {
 	 *            Bisheriger Spitzenwert, sollte 1 sein.
 	 * @return Die Anzahl der Spitzen.
 	 */
-	public abstract int spitzenMit(int erg);
+	public abstract int matadorsJackStraitWith(int erg);
 
 	/**
 	 * Rechnet die fehlenden Spitzen in ununterbrochener Reihenfolge aus. Wird
@@ -428,7 +428,7 @@ public interface IPlayer {
 	 *            Bisherige Spitzen, sollte 0 sein.
 	 * @return Gibt die Anzahl der fehlenden Spitzen zur&uuml;ck.
 	 */
-	public abstract int spitzenOhne(int erg);
+	public abstract int matadorsJackStraitWithout(int erg);
 	
 	
 

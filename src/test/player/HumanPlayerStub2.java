@@ -276,17 +276,17 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return null;
 	}
 
-	public int spitzenMit(int erg) {
+	public int matadorsJackStraitWith(int erg) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public int spitzenOhne(int erg) {
+	public int matadorsJackStraitWithout(int erg) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public int spitzenZahl() {
+	public int matadorsJackStraitCount() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
