@@ -16,7 +16,7 @@ import main.playingcard.Value;
 
 /**
  * Diese Klasse Spieler simuliert einen Skatspieler mit all seinen
- * M&ouml;glichkeiten am Spiel teilzunehmen. Ein Spieler hat zum Beispiel ein
+ * Möglichkeiten am Spiel teilzunehmen. Ein Spieler hat zum Beispiel ein
  * Blatt, eine Position am Spieltisch, kann reizen und Karten Spielen.
  * 
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
@@ -273,7 +273,7 @@ abstract public class Player implements IPlayer {
 	}
 
 	/**
-	 * F&uuml;gt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
+	 * Fügt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
 	 * @param playedCards
 	 * 
 	 */

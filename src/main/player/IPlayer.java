@@ -8,7 +8,7 @@ import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
 
 /**
- * Das Interface ISpieler beinhaltet die Methodenr&uuml;mpfe f&uuml;r den Spieler
+ * Das Interface ISpieler beinhaltet die Methodenrümpfe für den Spieler
  * 
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
@@ -16,28 +16,28 @@ import main.playingcard.PlayingCard;
 public interface IPlayer {
 
 	/**
-	 * Gibt den Namen des Spielers zur&uuml;ck.
+	 * Gibt den Namen des Spielers zurück.
 	 * 
 	 * @return Name des Spielers
 	 */
 	public abstract String getName();
 
 	/**
-	 * Gibt die Position des Spielers zur&uuml;ck.
+	 * Gibt die Position des Spielers zurück.
 	 * 
 	 * @return Position des Spielers
 	 */
 	public abstract Position getPosition();
 
 	/**
-	 * Gibt das Blatt des Spielers zur&uuml;ck.
+	 * Gibt das Blatt des Spielers zurück.
 	 * 
 	 * @return Blatt des Spielers
 	 */
 	public abstract ArrayList<PlayingCard> getHand();
 
 	/**
-	 * Gibt die vom Spieler gewonnenen Stiche zur&uuml;ck.
+	 * Gibt die vom Spieler gewonnenen Stiche zurück.
 	 * 
 	 * @return vom Spieler gewonnen Stiche
 	 */
@@ -52,14 +52,14 @@ public interface IPlayer {
 
 	/**
 	 * Liefert alle bisher vom Spieler gespielten Spiele in einer ArrayList
-	 * zur&uuml;ck.
+	 * zurück.
 	 * 
 	 * @return alle vom Spieler bisher gespielten Spiele
 	 */
 	public abstract ArrayList<Integer> getGames();
 
 	/**
-	 * Gibt den Mitspieler eines Spielers zur&uuml;ck, sofern dieser nicht der
+	 * Gibt den Mitspieler eines Spielers zurück, sofern dieser nicht der
 	 * Alleinspieler ist
 	 * 
 	 * @return Mitspieler des Spielers
@@ -81,14 +81,14 @@ public interface IPlayer {
 	public abstract ArrayList<PlayingCard> getRestHand();
 
 	/**
-	 * Liefert die im Spieler gesetzte Spielart zur&uuml;ck.
+	 * Liefert die im Spieler gesetzte Spielart zurück.
 	 * 
 	 * @return die gesetzte Spielart
 	 */
 	public abstract IGameVariety getGameVariety();
 	
 	/**
-	 * gibt die Handspiele zur&uuml;ck
+	 * gibt die Handspiele zurück
 	 * @return the handgame
 	 */
 	public int getHandGames();
@@ -147,7 +147,7 @@ public interface IPlayer {
 	public abstract void setGames(ArrayList<Integer> spiele);
 
 	/**
-	 * F&uuml;gt der Stichliste einen gewonnenen Stich hinzu.
+	 * Fügt der Stichliste einen gewonnenen Stich hinzu.
 	 * 
 	 * @param stiche
 	 *            - der vom Spieler gewonnene Stich
@@ -155,8 +155,8 @@ public interface IPlayer {
 	public abstract void setTricks(ArrayList<PlayingCard> stiche);
 
 	/**
-	 * Setzt den Namen des Spielers. Wird ben&ouml;tigt, damit der Name
-	 * ge&auml;ndert werden kann, falls er doppelt auftaucht.
+	 * Setzt den Namen des Spielers. Wird benötigt, damit der Name
+	 * geändert werden kann, falls er doppelt auftaucht.
 	 * 
 	 * @param name
 	 */
@@ -190,7 +190,7 @@ public interface IPlayer {
 	public abstract void setSkat(ArrayList<PlayingCard> skat);
 
 	/**
-	 * F&uuml;gt einen gewonnenen Stich zu den bisher gewonnenen Stichen hinzu.
+	 * Fügt einen gewonnenen Stich zu den bisher gewonnenen Stichen hinzu.
 	 * 
 	 * @param stich
 	 *            - die drei am Tisch gewonnenen Karten
@@ -198,11 +198,11 @@ public interface IPlayer {
 	public abstract void addTrick(PlayingCard[] stich);
 
 	/**
-	 * F&uuml;gt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
+	 * Fügt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
 	 * @param gespielteKarten
 	 */
 	/**
-	 * F&uuml;gt die gespielten Karten, in die alleGespieltenKarten
+	 * Fügt die gespielten Karten, in die alleGespieltenKarten
 	 * Variable hinzu.
 	 * 
 	 * @param gespielteKarten - die in einer Runde gespielten Karten
@@ -214,14 +214,14 @@ public interface IPlayer {
 	 * 
 	 * @param gespielteKarten
 	 *            - Karten, die auf dem Tisch liegen.
-	 * @return Die Karten, die gespielt werden d&uuml;rfen.
+	 * @return Die Karten, die gespielt werden dürfen.
 	 */
 	public abstract ArrayList<PlayingCard> playableCards(
 			PlayingCard[] gespielteKarten);
 
 	/**
-	 * Gibt die Karte zur&uuml;ck, die der Spieler auf den Tisch legen
-	 * m&ouml;chte.
+	 * Gibt die Karte zurück, die der Spieler auf den Tisch legen
+	 * möchte.
 	 * 
 	 * @param gespielteKarten
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
@@ -241,24 +241,24 @@ public interface IPlayer {
 			PlayingCard[] gespielteKarten);
 
 	/**
-	 * Gibt die gedr&uuml;ckten Spielkarten zur&uuml;ck.
+	 * Gibt die gedrückten Spielkarten zurück.
 	 * 
-	 * @return gedr&uuml;ckte Spielkarten
+	 * @return gedrückte Spielkarten
 	 */
 	abstract public PlayingCard[] druecken(PlayingCard[] skat);
 
 	/**
 	 * SpielAnsagen ermittelt, ob der Spieler ein Farb-, Grand-, oder Nullspiel
-	 * w&uuml;nscht.
+	 * wünscht.
 	 * 
-	 * @return die gew&uuml;nschte Spielart
+	 * @return die gewünschte Spielart
 	 */
 	abstract public IGameVariety declareGame();
 
 	/**
 	 * Handspiel ermittelt, ob der Spieler ein Handspiel ansagt.
 	 * 
-	 * @return true, falls der Spieler ein Handspiel w&uuml;nscht
+	 * @return true, falls der Spieler ein Handspiel wünscht
 	 */
 	abstract public boolean handgame();
 
@@ -284,7 +284,7 @@ public interface IPlayer {
 	abstract public boolean schwarz();
 
 	/**
-	 * Liefert ein Farbspiel mit korrekt gesetzten Trumpffarbe zur&uuml;ck,
+	 * Liefert ein Farbspiel mit korrekt gesetzten Trumpffarbe zurück,
 	 * nachdem der Spieler seine Wahl getroffen hat.
 	 * 
 	 * @return Farbspiel mit gesetzter Trumpffarbe
@@ -292,7 +292,7 @@ public interface IPlayer {
 	abstract public SuitGame suit();
 
 	/**
-	 * F&uuml;gt einen neuen Eintrag zu Liste der Spiele dazu, wenn der Spieler
+	 * Fügt einen neuen Eintrag zu Liste der Spiele dazu, wenn der Spieler
 	 * ein Spiel als Alleinspieler gespielt hat.
 	 * 
 	 * @param punkte
@@ -302,7 +302,7 @@ public interface IPlayer {
 	public abstract ArrayList<Integer> addPoints(int punkte);
 
 	/**
-	 * Diese Methode simuliert das h&ouml;ren eines Spielers.
+	 * Diese Methode simuliert das hören eines Spielers.
 	 * 
 	 * @param reizwert
 	 *            - reizwert der gesagt wurde
@@ -311,8 +311,8 @@ public interface IPlayer {
 	abstract public boolean respond(int reizwert);
 
 	/**
-	 * Diese Methode simuliert das bid eines Spielers. M&ouml;chte der Spieler
-	 * nicht h&ouml;her gehen, muss er 0 zur&uuml;ckgeben.
+	 * Diese Methode simuliert das bid eines Spielers. Möchte der Spieler
+	 * nicht höher gehen, muss er 0 zurückgeben.
 	 * 
 	 * @param alterWert
 	 *            - Reizwert, der vorher gesagt wurde
@@ -321,7 +321,7 @@ public interface IPlayer {
 
 	/**
 	 * Sortiert das Blatt des Spielers in aufsteigender Reihenfolge, nach der im
-	 * Parameter &uuml;bergebenen Spielart.
+	 * Parameter übergebenen Spielart.
 	 * 
 	 * @param spielart
 	 *            - spielart nach der sortiert werden soll
@@ -329,14 +329,14 @@ public interface IPlayer {
 	public abstract void sortHand(final IGameVariety spielart);
 
 	/**
-	 * Fragt den Spieler, ob er mit Reizagent spielen m&ouml;chte.
+	 * Fragt den Spieler, ob er mit Reizagent spielen möchte.
 	 * 
 	 * @return true, falls der Spieler mit Reizagent spielt
 	 */
 	public abstract boolean agent();
 
 	/**
-	 * Vergleicht den Spieler mit dem &uuml;bergebenen Spieler. Das Ergebnis ist
+	 * Vergleicht den Spieler mit dem übergebenen Spieler. Das Ergebnis ist
 	 * true, falls die beiden Spieler den gleichen Namen haben.
 	 * 
 	 * @param spieler
@@ -348,34 +348,34 @@ public interface IPlayer {
 
 	/**
 	 * Benutzt der Spieler den Reizagenten, liefert diese Methode den maximalen
-	 * Reizwert, den der Spieler spielen w&uuml;rde.
+	 * Reizwert, den der Spieler spielen würde.
 	 * 
 	 * @return maximaler Reizwert
 	 */
 	public abstract int setBidLimit();
 
 	/**
-	 * Diese Methode speichert die Tr&uuml;mpfe des &uuml;bergebenen Spielers im
-	 * Spitzen-Array. Die Spitzen werden ben&ouml;tigt, um die Spielstufe zu
-	 * berechnen. Dies kann f&uuml;r eine Hilfe verwendet werden und f&uuml;r
-	 * einen Check, ob der Spieler sich &uuml;berreizt hat.
+	 * Diese Methode speichert die Trümpfe des übergebenen Spielers im
+	 * Spitzen-Array. Die Spitzen werden benötigt, um die Spielstufe zu
+	 * berechnen. Dies kann für eine Hilfe verwendet werden und für
+	 * einen Check, ob der Spieler sich überreizt hat.
 	 * 
 	 * Achtung: Die truempfe werden direkt in der Tischvariablen gesetzt, aber
-	 * zus&auml;tzlich auch noch zur&uuml;ck gegeben.
+	 * zusätzlich auch noch zurück gegeben.
 	 * 
 	 * 
 	 */
 	public abstract PlayingCard[] spitzenEinordnen();
 
 	/**
-	 * Legt jeden Buben, die der Alleinspieler auf der Hand h&auml;lt in ein
-	 * Array. Wird zur Berechnung der Spitzen ben&ouml;tigt.
+	 * Legt jeden Buben, die der Alleinspieler auf der Hand hält in ein
+	 * Array. Wird zur Berechnung der Spitzen benötigt.
 	 * 
 	 */
 	public abstract void rankUnderKnaves();
 	
 	/**
-	 * Liefert f&uuml;r die Methode Bubeneinordnen den Index, an welcher
+	 * Liefert für die Methode Bubeneinordnen den Index, an welcher
 	 * Position der Bube im Array gespeichert werden soll.
 	 * 
 	 * @param underKnaveValue
@@ -394,8 +394,8 @@ public interface IPlayer {
 	public abstract int rankSuitHelp(int i);
 
 	/**
-	 * Ordnet alle Tr&uuml;mpfe eines Spielers in ein Array, um sp&auml;ter die
-	 * Spitzen berechnen zu k&ouml;nnen.
+	 * Ordnet alle Trümpfe eines Spielers in ein Array, um später die
+	 * Spitzen berechnen zu können.
 	 * 
 	 */
 	public abstract void rankSuit();
@@ -407,7 +407,7 @@ public interface IPlayer {
 	 * aufgerufen und die fehlenden Spitzen werden berechnet.
 	 * 
 	 * @return Positiver Wert von 1-11 fuer vorhandene Spitzen, Negativer Wert
-	 *         von -1 bis -11 f&uuml;r fehlende Spitzen.
+	 *         von -1 bis -11 für fehlende Spitzen.
 	 */
 	public abstract int matadorsJackStraitCount();
 
@@ -426,7 +426,7 @@ public interface IPlayer {
 	 * 
 	 * @param erg
 	 *            Bisherige Spitzen, sollte 0 sein.
-	 * @return Gibt die Anzahl der fehlenden Spitzen zur&uuml;ck.
+	 * @return Gibt die Anzahl der fehlenden Spitzen zurück.
 	 */
 	public abstract int matadorsJackStraitWithout(int erg);
 	
