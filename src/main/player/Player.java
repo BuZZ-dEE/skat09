@@ -69,7 +69,7 @@ abstract public class Player implements IPlayer {
 	/**
 	 * Holds the cards after taking the skat.
 	 */
-	protected ArrayList<PlayingCard> nachSkat;
+	protected ArrayList<PlayingCard> afterSkat;
 	
 	/**
 	 *  For player knowing all cards.
@@ -302,12 +302,6 @@ abstract public class Player implements IPlayer {
 			}
 		}
 		
-		
-//		if (spielbareKarten.size() == 0) {
-//			
-//			spielbareKarten.addAll(blatt);
-//		}
-		
 		return cardsToPlay;
 	}
 
@@ -414,23 +408,23 @@ abstract public class Player implements IPlayer {
 	public abstract boolean agent();
 
 	@Override
-	public boolean equals(IPlayer spieler) {
+	public boolean equals(IPlayer player) {
 
-		boolean erg = false;
+		boolean result = false;
 
-		if (spieler.getName().equals(this.getName())) {
+		if (player.getName().equals(this.getName())) {
 
-			erg = true;
+			result = true;
 		}
 
-		return erg;
+		return result;
 	}
 
 	@Override
 	public abstract int setBidLimit();
 	
 	@Override
-	public PlayingCard[] spitzenEinordnen() {
+	public PlayingCard[] arrangeMatadorsJackStraitOrder() {
 
 		trumps = new PlayingCard[12];
 

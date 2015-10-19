@@ -126,33 +126,33 @@ public interface IPlayer {
 	/**
 	 * Setzt das Alleinspielerflag.
 	 * 
-	 * @param istAlleinspieler
+	 * @param isDeclarer
 	 *            - true, wenn Spieler Alleinspieler ist
 	 */
-	public abstract void setIsDeclarer(boolean istAlleinspieler);
+	public abstract void setIsDeclarer(boolean isDeclarer);
 
 	/**
 	 * Setzt das Mitspielerflag.
 	 * 
-	 * @param mitspieler
+	 * @param teammate
 	 *            - Der Spieler, der Mitspieler ist.
 	 */
-	public abstract void setTeammate(IPlayer mitspieler);
+	public abstract void setTeammate(IPlayer teammate);
 
 	/**
 	 * Setzt die Liste mit den vom Spieler gespielten Spielen
 	 * 
-	 * @param spiele
+	 * @param games
 	 */
-	public abstract void setGames(ArrayList<Integer> spiele);
+	public abstract void setGames(ArrayList<Integer> games);
 
 	/**
 	 * Fügt der Stichliste einen gewonnenen Stich hinzu.
 	 * 
-	 * @param stiche
+	 * @param tricks
 	 *            - der vom Spieler gewonnene Stich
 	 */
-	public abstract void setTricks(ArrayList<PlayingCard> stiche);
+	public abstract void setTricks(ArrayList<PlayingCard> tricks);
 
 	/**
 	 * Setzt den Namen des Spielers. Wird benötigt, damit der Name
@@ -165,14 +165,14 @@ public interface IPlayer {
 	/**
 	 * 
 	 */
-	public abstract void setAllPlayedCards(ArrayList<PlayingCard> karten);
+	public abstract void setAllPlayedCards(ArrayList<PlayingCard> cards);
 
 	/**
 	 * Setzt die Truempfe Variable neu.
 	 * 
-	 * @param truempfe - die neuen Truempfe
+	 * @param trumps - die neuen Truempfe
 	 */
-	public abstract void setTrumps(PlayingCard[] truempfe);
+	public abstract void setTrumps(PlayingCard[] trumps);
 
 	/**
 	 * Setzt das Deck im Spieler, damit der Spieler das Deck kennt.
@@ -192,10 +192,10 @@ public interface IPlayer {
 	/**
 	 * Fügt einen gewonnenen Stich zu den bisher gewonnenen Stichen hinzu.
 	 * 
-	 * @param stich
+	 * @param trick
 	 *            - die drei am Tisch gewonnenen Karten
 	 */
-	public abstract void addTrick(PlayingCard[] stich);
+	public abstract void addTrick(PlayingCard[] trick);
 
 	/**
 	 * Fügt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
@@ -205,9 +205,9 @@ public interface IPlayer {
 	 * Fügt die gespielten Karten, in die alleGespieltenKarten
 	 * Variable hinzu.
 	 * 
-	 * @param gespielteKarten - die in einer Runde gespielten Karten
+	 * @param playedCards - die in einer Runde gespielten Karten
 	 */
-	public abstract void addPlayedCards(PlayingCard[] gespielteKarten);
+	public abstract void addPlayedCards(PlayingCard[] playedCards);
 
 	/**
 	 * Ermittelt die Karten, die der Spieler spielen darf.
@@ -223,12 +223,12 @@ public interface IPlayer {
 	 * Gibt die Karte zurück, die der Spieler auf den Tisch legen
 	 * möchte.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	abstract public PlayingCard playCard(PlayingCard[] gespielteKarten)
+	abstract public PlayingCard playCard(PlayingCard[] playedCards)
 			throws IOException;
 
 	/**
