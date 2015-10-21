@@ -5,4 +5,7 @@
 *.bak
 *.class
 *.iml
+*.jar
 *.orig
+
+hs_err_pid*
