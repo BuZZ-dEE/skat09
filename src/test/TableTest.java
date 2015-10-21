@@ -596,7 +596,7 @@ public class TableTest {
 		
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(0, tisch.checkOverbid(18));
 	}
 	
@@ -607,7 +607,7 @@ public class TableTest {
 		tisch.setBiddingValue(23);
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		tisch.checkOverbid(18);
 		assertEquals(true, tisch.isOverbidding());
 	}
@@ -625,7 +625,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		
 		assertEquals(-54, tisch.checkOverbid(18));
 	}
@@ -636,7 +636,7 @@ public class TableTest {
 		tisch.setGameVariety(new GrandGame());
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(0, tisch.checkOverbid(18));
 	}
 	
@@ -650,7 +650,7 @@ public class TableTest {
 		tisch.setGameVariety(new GrandGame());
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(0, tisch.checkOverbid(18));
 	}
 	
@@ -773,7 +773,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(18, tisch.calculatePoints(62));
 	}
 	
@@ -784,7 +784,7 @@ public class TableTest {
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setGameVariety(spielart);
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(27, tisch.calculatePoints(91));
 	}
 	
@@ -793,7 +793,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(27, tisch.calculatePoints(120));
 	}
 	
@@ -802,7 +802,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		tisch.getDeclarer().setTricks(deck);
 		tisch.getDeclarer().getTricks().remove(31);
 		tisch.getDeclarer().getTricks().remove(30);
@@ -814,7 +814,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new GrandGame();
 		tisch.setGameVariety(spielart);
 		assertEquals(48, tisch.calculatePoints(62));
@@ -825,7 +825,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new GrandGame();
 		tisch.setGameVariety(spielart);
 		assertEquals(-96, tisch.calculatePoints(45));
@@ -837,7 +837,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setGameVariety(spielart);
 		tisch.setBiddingValue(48);
@@ -852,7 +852,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		tisch.getDeclarer().setTricks(deck);
 		tisch.getDeclarer().getTricks().remove(31);
 		tisch.getDeclarer().getTricks().remove(30);
@@ -864,7 +864,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new SuitGame(Suit.BELLS);
 		tisch.setGameVariety(spielart);
 	assertEquals(18, tisch.pointsSuitGame(62));
@@ -875,7 +875,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new GrandGame();
 		tisch.setGameVariety(spielart);
 		assertEquals(48, tisch.pointsGrandGame(62));
@@ -886,7 +886,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new NullGame();
 		tisch.setGameVariety(spielart);
 		tisch.getDeclarer().getTricks().clear();
@@ -898,7 +898,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new NullGame();
 		tisch.setGameVariety(spielart);
 		tisch.getDeclarer().getTricks().clear();
@@ -911,7 +911,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new NullGame();
 		tisch.setGameVariety(spielart);
 		tisch.getDeclarer().getTricks().clear();
@@ -925,7 +925,7 @@ public class TableTest {
 		tisch.getDeclarer().getHand().clear();
 		tisch.getDeclarer().getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new NullGame();
 		tisch.setGameVariety(spielart);
 		tisch.getDeclarer().getTricks().clear();
@@ -972,7 +972,7 @@ public class TableTest {
 		tisch.getDeclarer().getTricks().add(karte3);
 		tisch.getDeclarer().getTricks().add(karte3);
 		tisch.getDeclarer().getHand().add(karte2);
-		tisch.getDeclarer().spitzenEinordnen();
+		tisch.getDeclarer().arrangeMatadorsJackStraitOrder();
 		
 		tisch.setHandGame(true);
 		tisch.setSchneider(true);

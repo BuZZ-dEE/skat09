@@ -525,7 +525,7 @@ public class Controller implements Observer, IController {
 			declarer.getHand().add(skat[2]);
 		}
 
-		declarer.spitzenEinordnen();
+		declarer.arrangeMatadorsJackStraitOrder();
 		if (table.getSixSkat()) {
 
 			declarer.getHand().remove(13);

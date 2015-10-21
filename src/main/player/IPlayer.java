@@ -365,7 +365,7 @@ public interface IPlayer {
 	 * 
 	 * 
 	 */
-	public abstract PlayingCard[] spitzenEinordnen();
+	public abstract PlayingCard[] arrangeMatadorsJackStraitOrder();
 
 	/**
 	 * Legt jeden Buben, die der Alleinspieler auf der Hand hält in ein

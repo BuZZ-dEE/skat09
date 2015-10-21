@@ -580,7 +580,7 @@ public class ControllerTest {
 		spieler1.setTricks(blatt1);
 		spieler1.setHand(blatt1);
 		spieler1.setGameVariety(new SuitGame(Suit.ACORNS));
-		spieler1.spitzenEinordnen();
+		spieler1.arrangeMatadorsJackStraitOrder();
 		
 		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>(); 
 		blatt2.add(new PlayingCard(Suit.LEAVES, Value.NINE));

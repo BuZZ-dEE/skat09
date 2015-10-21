@@ -275,7 +275,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 		return null;
 	}
 
-	public PlayingCard[] spitzenEinordnen() {
+	public PlayingCard[] arrangeMatadorsJackStraitOrder() {
 		// TODO Auto-generated method stub
 		return null;
 	}
