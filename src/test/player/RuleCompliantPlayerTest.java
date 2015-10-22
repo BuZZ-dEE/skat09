@@ -46,30 +46,30 @@ public class RuleCompliantPlayerTest {
 
 //	@Test
 //	public void testSpieleKarte() {
-//		assertEquals(spielkarte4, spieler.playCard(gespielteKarten));
+//		assertEquals(playingcard4, spieler.playCard(gespielteKarten));
 //	}
 //	
 //	@Test
 //	public void testSpieleKarte2() {
 //		blatt.clear();
-//		blatt.add(spielkarte3);
-//		blatt.add(spielkarte4);
-//		assertEquals(spielkarte3, spieler.playCard(gespielteKarten));
+//		blatt.add(playingcard3);
+//		blatt.add(playingcard4);
+//		assertEquals(playingcard3, spieler.playCard(gespielteKarten));
 //	}
 //	
 //	@Test
 //	public void testSpieleKarte3() {
-//		gespielteKarten[0] = spielkarte2;
-//		assertEquals(spielkarte4, spieler.playCard(gespielteKarten));
+//		gespielteKarten[0] = playingcard2;
+//		assertEquals(playingcard4, spieler.playCard(gespielteKarten));
 //	}
 //	
 //	@Test
 //	public void testSpieleKarte4() {
 //		blatt.clear();
-//		blatt.add(spielkarte3);
-//		blatt.add(spielkarte4);
-//		gespielteKarten[0] = spielkarte2;
-//		assertEquals(spielkarte4, spieler.playCard(gespielteKarten));
+//		blatt.add(playingcard3);
+//		blatt.add(playingcard4);
+//		gespielteKarten[0] = playingcard2;
+//		assertEquals(playingcard4, spieler.playCard(gespielteKarten));
 //	}
 	
 	//Der regelkonforme Spieler spielt eine zufaellige Karte
