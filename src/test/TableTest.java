@@ -388,7 +388,7 @@ public class TableTest {
 	public void getProzentAlleinTest() {
 		tisch.getPlayer1().getGames().clear();
 		tisch.getPlayer1().getGames().add(18);
-		//tisch.addGameCount();
+		//table.addGameCount();
 		
 		assertEquals(100, tisch.getPercentDeclarer(spieler1));
 	}
@@ -397,7 +397,7 @@ public class TableTest {
 	public void getAnzahlAlleinTest() {
 		tisch.getPlayer1().getGames().clear();
 		tisch.getPlayer1().getGames().add(18);
-		//tisch.addGameCount();
+		//table.addGameCount();
 		
 		assertEquals(1, tisch.getAnzahlAllein(spieler1));
 	}
