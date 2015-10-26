@@ -336,7 +336,7 @@ public class Controller implements Observer, IController {
 		if (table.getBiddingAgentValue() >= 0
 				&& player instanceof IHumanPlayer) {
 
-			result = reizagent(player);
+			result = bidAgent(player);
 		} else {
 
 			if (isBidding) {
@@ -657,7 +657,7 @@ public class Controller implements Observer, IController {
 	}
 
 	//@Override
-	public boolean reizagent(IPlayer player) {
+	public boolean bidAgent(IPlayer player) {
 
 		boolean result = false;
 

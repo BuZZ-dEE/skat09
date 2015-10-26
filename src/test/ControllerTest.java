@@ -835,7 +835,7 @@ public class ControllerTest {
 		Player spieler = new Granny("Tini");
 		tisch.setBiddingValue(23);
 		tisch.setBiddingAgentValue(30);
-		assertTrue(controller.reizagent(spieler));
+		assertTrue(controller.bidAgent(spieler));
 	}
 	
 	@Test
@@ -844,7 +844,7 @@ public class ControllerTest {
 		Player spieler = new Granny("Tini");
 		tisch.setBiddingValue(30);
 		tisch.setBiddingAgentValue(23);
-		assertFalse(controller.reizagent(spieler));
+		assertFalse(controller.bidAgent(spieler));
 	}
 	
 	@Test
