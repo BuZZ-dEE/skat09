@@ -145,7 +145,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 */
 	private boolean schneider = false;
 	/**
-	 * erfasst, ob ein reizagent erw&uuml;nscht ist
+	 * erfasst, ob ein bidAgent erw&uuml;nscht ist
 	 */
 	private boolean reizagent = false;
 	/**
@@ -375,10 +375,10 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Gibt den Wert der Variable reizagent zur&uuml;ck. Diese ist true, falls
+	 * Gibt den Wert der Variable bidAgent zur&uuml;ck. Diese ist true, falls
 	 * der Mensch den Reizagenten nutzen will, ansonsten false.
 	 * 
-	 * @return Den Wert von reizagent
+	 * @return Den Wert von bidAgent
 	 */
 	public boolean getAgent() {
 		return reizagent;
@@ -1155,7 +1155,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 * Diese Methode zeigt dem Menschen ein Dialogfenster, welches die
 	 * Auswahlm&ouml,glichkeiten Ja und Nein bietet. Der Mensch kann hierbei
 	 * entscheiden, ob er den Reizagenten nutzen m&ouml;chte oder nicht. Hat er
-	 * Ja ausgew&auml;hlt, wird die globale Variable reizagent auf true gesetzt.
+	 * Ja ausgew&auml;hlt, wird die globale Variable bidAgent auf true gesetzt.
 	 */
 	public void reizagent() {
 		// Das Fenster soll zentriert werden

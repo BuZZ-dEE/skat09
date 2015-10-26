@@ -65,7 +65,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void setFlags(IPlayer alleinspieler, IGameVariety spielart) {
+	public void setFlags(IPlayer declarer, IGameVariety gameVariety) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -101,7 +101,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public boolean reizagent(IPlayer player) {
+	public boolean bidAgent(IPlayer player) {
 		// TODO Auto-generated method stub
 		return false;
 	}

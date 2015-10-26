@@ -161,9 +161,9 @@ public interface IController {
 	 *            , der h&ouml;ren oder bid m&uuml;sste
 	 *            
 	 * @return false, wenn Spieler pass, true, wenn Spieler mitgeht, true,
-	 * falls der reizagent sagt, false, wenn er h&ouml;rt
+	 * falls der bidAgent sagt, false, wenn er h&ouml;rt
 	 */
-	public abstract boolean reizagent(IPlayer spieler);
+	public abstract boolean bidAgent(IPlayer spieler);
 
 	/**
 	 * gibt zur&uuml;ck, ob das Spiel beendet wird
