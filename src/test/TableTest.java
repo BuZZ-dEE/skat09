@@ -86,52 +86,52 @@ public class TableTest {
 			}
 		}
 
-		PlayingCard[] gespieltekarten = table.getPlayedCards();
-		gespieltekarten[0] = new PlayingCard(Suit.HEARTS, Value.DAUS);
-		gespieltekarten[1] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		gespieltekarten[2] = new PlayingCard(Suit.BELLS, Value.NINE);
-		table.setPlayedCards(gespieltekarten);
-		table.getPlayer1().addTrick(gespieltekarten);
+		PlayingCard[] playedCards = table.getPlayedCards();
+		playedCards[0] = new PlayingCard(Suit.HEARTS, Value.DAUS);
+		playedCards[1] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(Suit.BELLS, Value.NINE);
+		table.setPlayedCards(playedCards);
+		table.getPlayer1().addTrick(playedCards);
 		table.setBiddingValue(18);
-		IGameVariety spielart = new SuitGame(Suit.BELLS);
-		table.setGameVariety(spielart);
-		table.getPlayer1().setGameVariety(spielart);
+		IGameVariety gameVariety = new SuitGame(Suit.BELLS);
+		table.setGameVariety(gameVariety);
+		table.getPlayer1().setGameVariety(gameVariety);
 	}
 
 	@After
 	public void after() {
-		GameVariety spielart = new SuitGame(Suit.BELLS);
-		table.setGameVariety(spielart);
+		GameVariety gameVariety = new SuitGame(Suit.BELLS);
+		table.setGameVariety(gameVariety);
 	}
 
 	// Konstruktortest fuer Spieler1
 	@Test
-	public void tischSpieler1Test() {
+	public void tablePlayerTest() {
 		assertEquals("Bert", table.getPlayer1().getName());
 	}
 
 	// Konstruktortest fuer Spieler2
 	@Test
-	public void tischSpieler2Test() {
+	public void tablePlayer2Test() {
 		assertEquals("Ernie", table.getPlayer2().getName());
 	}
 
 	// Konstruktortest fuer Spieler3
 	@Test
-	public void tischSpieler3Test() {
+	public void tablePlayer3Test() {
 		assertEquals("Hans", table.getPlayer3().getName());
 	}
 	
 	//Testet die Methode getHandGame
 	@Test
-	public void getHandspiel1Test() {
+	public void getHandGame1Test() {
 		table.setHandGame(true);
 		assertTrue(table.getHandGame());
 	}
 	
 	//Testet die Methode getHandGame
 	@Test
-	public void getHandspiel2Test() {
+	public void getHandGame2Test() {
 		table.setHandGame(false);
 		assertFalse(table.getHandGame());
 	}
