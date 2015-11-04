@@ -138,22 +138,22 @@ public class TableTest {
 	
 	//Testet die Methode getGameVariety
 	@Test
-	public void getSpielartTest() {
-		IGameVariety spielart = new GrandGame();
-		table.setGameVariety(spielart);
-		assertEquals(spielart, table.getGameVariety());
+	public void getGameVarietyTest() {
+		IGameVariety gameVariety = new GrandGame();
+		table.setGameVariety(gameVariety);
+		assertEquals(gameVariety, table.getGameVariety());
 	}
 	
 	//Testet die Methode getVariant
 	@Test
-	public void getVarianteTest() {
+	public void getVariantTest() {
 		table.setVariant(SkatVariant.RAEUBER);
 		assertEquals(SkatVariant.RAEUBER, table.getVariant());
 	}
 	
 	//Testet die Methode getBiddingValue
 	@Test
-	public void getReizwertTest() {
+	public void getBiddingValueTest() {
 		table.setBiddingValue(35);
 		assertEquals(35, table.getBiddingValue());
 	}
@@ -161,7 +161,7 @@ public class TableTest {
 	
 	//Testet die Methode getBiddingAgentValue
 	@Test
-	public void reizagentWertTest() {
+	public void biddingAgentValueTest() {
 		table.setBiddingAgentValue(42);
 		assertEquals(42, table.getBiddingAgentValue());
 	}
