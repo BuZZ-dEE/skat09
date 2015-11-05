@@ -169,35 +169,35 @@ public class TableTest {
 	//Testet , ob die Reizwerte korrekt zurueckgegeben werden
 	@Test
 	public void getReizwerteTest() {
-		SortedSet<Integer> reizwerte = new TreeSet<Integer>();
+		SortedSet<Integer> biddingValues = new TreeSet<Integer>();
 		for (int i = 18; i <= 162; i += 9) {
-			reizwerte.add(i);
+			biddingValues.add(i);
 		}
 		// Alle Herz-Reizwerte hinzufuegen
 		for (int i = 20; i <= 180; i += 10) {
-			reizwerte.add(i);
+			biddingValues.add(i);
 		}
 		// Alle Pik-Reizwerte hinzufuegen
 		for (int i = 22; i <= 198; i += 11) {
-			reizwerte.add(i);
+			biddingValues.add(i);
 		}
 	// Alle Kreuz-Reizwerte hinzufuegen
 		for (int i = 24; i <= 216; i += 12) {
-			reizwerte.add(i);
+			biddingValues.add(i);
 		}
 		// Die restlichen Reizwerte von Nullspiel und Grand/Grand-Ouvert
-		reizwerte.add(23);
-		reizwerte.add(35);
-		reizwerte.add(46);
-		reizwerte.add(59);
-		reizwerte.add(240);
-		reizwerte.add(264);
-		reizwerte.add(171);
-		reizwerte.add(190);
-		reizwerte.add(209);
-		reizwerte.add(228);
+		biddingValues.add(23);
+		biddingValues.add(35);
+		biddingValues.add(46);
+		biddingValues.add(59);
+		biddingValues.add(240);
+		biddingValues.add(264);
+		biddingValues.add(171);
+		biddingValues.add(190);
+		biddingValues.add(209);
+		biddingValues.add(228);
 		
-		assertEquals(reizwerte, table.getBiddingValues());
+		assertEquals(biddingValues, table.getBiddingValues());
 	}
 	
 	//Testet die Methode getSkat
@@ -263,82 +263,82 @@ public class TableTest {
 	}
 
 	@Test
-	public void stichAuswertenTest1() {
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
-		IGameVariety spielart = new NullGame();
-		gespielteKarten[0].setOwner(player1);
-		gespielteKarten[1].setOwner(player2);
-		gespielteKarten[2].setOwner(player3);
-		assertEquals(player2, table.evaluateTrick(spielart, gespielteKarten));
+	public void evaluateTrickTest1() {
+		PlayingCard[] playedCards = new PlayingCard[3];
+		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
+		playedCards[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+		IGameVariety gameVariety = new NullGame();
+		playedCards[0].setOwner(player1);
+		playedCards[1].setOwner(player2);
+		playedCards[2].setOwner(player3);
+		assertEquals(player2, table.evaluateTrick(gameVariety, playedCards));
 		
 	}
 	
 	@Test
-	public void stichAuswertenTest2() {
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		gespielteKarten[2] = new PlayingCard(Suit.BELLS, Value.KING);
-		IGameVariety spielart = new NullGame();
-		gespielteKarten[0].setOwner(player1);
-		gespielteKarten[1].setOwner(player2);
-		gespielteKarten[2].setOwner(player3);
-		assertEquals(player3, table.evaluateTrick(spielart, gespielteKarten));
+	public void evaluateTrickTest2() {
+		PlayingCard[] playedCards = new PlayingCard[3];
+		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
+		playedCards[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(Suit.BELLS, Value.KING);
+		IGameVariety gameVariety = new NullGame();
+		playedCards[0].setOwner(player1);
+		playedCards[1].setOwner(player2);
+		playedCards[2].setOwner(player3);
+		assertEquals(player3, table.evaluateTrick(gameVariety, playedCards));
 	}
 	
 	@Test
-	public void stichAuswertenTest3() {
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.DAUS);
-		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
-		IGameVariety spielart = new SuitGame(Suit.HEARTS);
-		gespielteKarten[0].setOwner(player1);
-		gespielteKarten[1].setOwner(player2);
-		gespielteKarten[2].setOwner(player3);
-		assertEquals(player3, table.evaluateTrick(spielart, gespielteKarten));
+	public void evaluateTrickTest3() {
+		PlayingCard[] playedCards = new PlayingCard[3];
+		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
+		playedCards[1] = new PlayingCard(Suit.BELLS, Value.DAUS);
+		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+		IGameVariety gameVariety = new SuitGame(Suit.HEARTS);
+		playedCards[0].setOwner(player1);
+		playedCards[1].setOwner(player2);
+		playedCards[2].setOwner(player3);
+		assertEquals(player3, table.evaluateTrick(gameVariety, playedCards));
 	}
 	
 	@Test
-	public void stichAuswertenTest4() {
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
-		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		IGameVariety spielart = new GrandGame();
-		gespielteKarten[0].setOwner(player1);
-		gespielteKarten[1].setOwner(player2);
-		gespielteKarten[2].setOwner(player3);
-		assertEquals(player1, table.evaluateTrick(spielart, gespielteKarten));
+	public void evaluateTrickTest4() {
+		PlayingCard[] playedCards = new PlayingCard[3];
+		playedCards[0] = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
+		playedCards[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		IGameVariety gameVariety = new GrandGame();
+		playedCards[0].setOwner(player1);
+		playedCards[1].setOwner(player2);
+		playedCards[2].setOwner(player3);
+		assertEquals(player1, table.evaluateTrick(gameVariety, playedCards));
 	}
 	
 	@Test
-	public void stichAuswertenTest5() {
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
-		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
-		IGameVariety spielart = new NullGame();
-		gespielteKarten[0].setOwner(player1);
-		gespielteKarten[1].setOwner(player2);
-		gespielteKarten[2].setOwner(player3);
-		assertEquals(player1, table.evaluateTrick(spielart, gespielteKarten));
+	public void evaluateTrickTest5() {
+		PlayingCard[] playedCards = new PlayingCard[3];
+		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
+		playedCards[1] = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+		IGameVariety gameVariety = new NullGame();
+		playedCards[0].setOwner(player1);
+		playedCards[1].setOwner(player2);
+		playedCards[2].setOwner(player3);
+		assertEquals(player1, table.evaluateTrick(gameVariety, playedCards));
 	}
 	
 	@Test
-	public void stichAuswertenTest6() {
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		gespielteKarten[1] = new PlayingCard(Suit.LEAVES, Value.DAUS);
-		gespielteKarten[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
-		IGameVariety spielart = new SuitGame(Suit.ACORNS);
-		gespielteKarten[0].setOwner(player1);
-		gespielteKarten[1].setOwner(player2);
-		gespielteKarten[2].setOwner(player3);
-		assertEquals(player1, table.evaluateTrick(spielart, gespielteKarten));
+	public void evaluateTrickTest6() {
+		PlayingCard[] playedCards = new PlayingCard[3];
+		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
+		playedCards[1] = new PlayingCard(Suit.LEAVES, Value.DAUS);
+		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+		IGameVariety gameVariety = new SuitGame(Suit.ACORNS);
+		playedCards[0].setOwner(player1);
+		playedCards[1].setOwner(player2);
+		playedCards[2].setOwner(player3);
+		assertEquals(player1, table.evaluateTrick(gameVariety, playedCards));
 	}
 	
 	@Test
