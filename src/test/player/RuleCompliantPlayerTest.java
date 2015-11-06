@@ -51,9 +51,9 @@ public class RuleCompliantPlayerTest {
 //	
 //	@Test
 //	public void testSpieleKarte2() {
-//		blatt.clear();
-//		blatt.add(playingcard3);
-//		blatt.add(playingcard4);
+//		hand.clear();
+//		hand.add(playingcard3);
+//		hand.add(playingcard4);
 //		assertEquals(playingcard3, spieler.playCard(gespielteKarten));
 //	}
 //	
@@ -65,9 +65,9 @@ public class RuleCompliantPlayerTest {
 //	
 //	@Test
 //	public void testSpieleKarte4() {
-//		blatt.clear();
-//		blatt.add(playingcard3);
-//		blatt.add(playingcard4);
+//		hand.clear();
+//		hand.add(playingcard3);
+//		hand.add(playingcard4);
 //		gespielteKarten[0] = playingcard2;
 //		assertEquals(playingcard4, spieler.playCard(gespielteKarten));
 //	}
