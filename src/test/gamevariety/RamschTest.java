@@ -17,7 +17,7 @@ public class RamschTest {
 	Ramsch ramsch = new Ramsch();
 	
 	@Test
-	public void gespielteKartePruefen() {
+	public void checkPlayedCards() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
