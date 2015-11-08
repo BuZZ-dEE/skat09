@@ -30,7 +30,7 @@ public class RamschTest {
 	}
 	
 	@Test
-	public void gespielteKartePruefen2() {
+	public void checkPlayedCards2() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
@@ -44,7 +44,7 @@ public class RamschTest {
 	}
 	
 	@Test
-	public void gespielteKartePruefen3() {
+	public void checkPlayedCards3() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
@@ -58,7 +58,7 @@ public class RamschTest {
 	}
 	
 	@Test
-	public void gespielteKartePruefen4() {
+	public void checkPlayedCards4() {
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
 		blatt.add(new PlayingCard(Suit.LEAVES, Value.EIGHT));
