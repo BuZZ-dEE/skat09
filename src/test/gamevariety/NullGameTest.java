@@ -54,35 +54,35 @@ public class NullGameTest {
 	}
 	
 	@Test
-	public void testNullspiel() {
+	public void testNullGame() {
 		assertEquals(GameVarietyName.NULL, new NullGame().getGameVariety());
 	}
 	
-	
+
 	@Test
-	public void testGespielteKartePruefen() {
+	public void testCheckedPlayedCards() {
 		assertEquals(true, game.checkedPlayedCards(hand, playedCards, playingCard4));
 	}
 	
 	@Test
-	public void testGespielteKartePruefen2() {
+	public void testCheckedPlayedCards2() {
 		assertEquals(true, game.checkedPlayedCards(hand, playedCards, playingCard3));
 	}
 	
 	@Test
-	public void testGespielteKartePruefen3() {
+	public void testCheckedPlayedCards3() {
 		playedCards[0] = playingCard5;
 		assertEquals(true, game.checkedPlayedCards(hand, playedCards, playingCard4));
 	}
 	
 	@Test
-	public void testGespielteKartePruefen4() {
+	public void testCheckedPlayedCards4() {
 		playedCards[0] = playingCard5;
 		assertEquals(false, game.checkedPlayedCards(hand, playedCards, playingCard3));
 	}
 	
 	@Test
-	public void testGespielteKartePruefen5() {
+	public void testCheckedPlayedCards5() {
 		playedCards[0] = null;
 		assertEquals(true, game.checkedPlayedCards(hand, playedCards, playingCard4));
 	}
