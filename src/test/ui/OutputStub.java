@@ -69,8 +69,6 @@ public class OutputStub implements IOutput{
 	public void outputHand(IPlayer spieler) throws IOException {
 		
 	}
-
-	//Drueckt immer die erste Karte des Blattes
 	
 	public int druecken(ArrayList<PlayingCard> blatt, int nummer) {
 		
