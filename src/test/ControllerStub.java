@@ -11,7 +11,7 @@ import main.playingcard.PlayingCard;
 import main.ui.IOutput;
 
 
-public class ControllerStub implements IController{
+public class ControllerStub implements IController {
 
 	Table table;
 	IOutput output;
