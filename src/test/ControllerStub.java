@@ -13,13 +13,13 @@ import main.ui.IOutput;
 
 public class ControllerStub implements IController{
 
-	Table tisch;
-	IOutput ausgabe;
+	Table table;
+	IOutput output;
 	
-	public ControllerStub(Table tisch, IOutput ausgabe) {
+	public ControllerStub(Table table, IOutput output) {
 		
-		this.tisch = tisch;
-		this.ausgabe = ausgabe;
+		this.table = table;
+		this.output = output;
 	}
 	
 	
@@ -65,7 +65,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void setFlags(IPlayer alleinspieler, IGameVariety spielart) {
+	public void setFlags(IPlayer declarer, IGameVariety gameVariety) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -73,7 +73,7 @@ public class ControllerStub implements IController{
 	
 	public IOutput getOutput() {
 		
-		return ausgabe;
+		return output;
 	}
 
 	
@@ -101,25 +101,25 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public boolean reizagent(IPlayer spieler) {
+	public boolean bidAgent(IPlayer player) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	
-	public IPlayer bidding1(IPlayer spieler1, IPlayer spieler2) {
+	public IPlayer bidding1(IPlayer player1, IPlayer player2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	public IPlayer bidding2(IPlayer spieler1, IPlayer spieler2) {
+	public IPlayer bidding2(IPlayer player1, IPlayer player2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	public boolean bidOrBiddingAgent(IPlayer spieler, int reizwert, boolean sagen) {
+	public boolean bidOrBiddingAgent(IPlayer player, int reizValue, boolean bid) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -173,13 +173,13 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public void outputTrickEvaluation(PlayingCard[] gespielteKarten, IPlayer gewinner) {
+	public void outputTrickEvaluation(PlayingCard[] playedCards, IPlayer winner) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
-	public void update(Observable tisch, Object gespielteKarten) {
+	public void update(Observable table, Object playedCards) {
 		// TODO Auto-generated method stub
 	}
 

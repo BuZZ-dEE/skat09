@@ -16,7 +16,7 @@ import main.playingcard.Value;
 
 /**
  * Diese Klasse Spieler simuliert einen Skatspieler mit all seinen
- * M&ouml;glichkeiten am Spiel teilzunehmen. Ein Spieler hat zum Beispiel ein
+ * Möglichkeiten am Spiel teilzunehmen. Ein Spieler hat zum Beispiel ein
  * Blatt, eine Position am Spieltisch, kann reizen und Karten Spielen.
  * 
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
@@ -69,7 +69,7 @@ abstract public class Player implements IPlayer {
 	/**
 	 * Holds the cards after taking the skat.
 	 */
-	protected ArrayList<PlayingCard> nachSkat;
+	protected ArrayList<PlayingCard> afterSkat;
 	
 	/**
 	 *  For player knowing all cards.
@@ -273,7 +273,7 @@ abstract public class Player implements IPlayer {
 	}
 
 	/**
-	 * F&uuml;gt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
+	 * Fügt einen gewonnenen Stich zu den bisher gespielten Stichen hinzu.
 	 * @param playedCards
 	 * 
 	 */
@@ -301,12 +301,6 @@ abstract public class Player implements IPlayer {
 				restHand.add(hand.get(i));
 			}
 		}
-		
-		
-//		if (spielbareKarten.size() == 0) {
-//			
-//			spielbareKarten.addAll(blatt);
-//		}
 		
 		return cardsToPlay;
 	}
@@ -414,23 +408,23 @@ abstract public class Player implements IPlayer {
 	public abstract boolean agent();
 
 	@Override
-	public boolean equals(IPlayer spieler) {
+	public boolean equals(IPlayer player) {
 
-		boolean erg = false;
+		boolean result = false;
 
-		if (spieler.getName().equals(this.getName())) {
+		if (player.getName().equals(this.getName())) {
 
-			erg = true;
+			result = true;
 		}
 
-		return erg;
+		return result;
 	}
 
 	@Override
 	public abstract int setBidLimit();
 	
 	@Override
-	public PlayingCard[] spitzenEinordnen() {
+	public PlayingCard[] arrangeMatadorsJackStraitOrder() {
 
 		trumps = new PlayingCard[12];
 
@@ -558,25 +552,25 @@ abstract public class Player implements IPlayer {
 	}
 	
 	@Override
-	public int spitzenZahl() {
+	public int matadorsJackStraitCount() {
 		
 		int erg = 0;
 
 		if (trumps[0] != null) {
 			
-			erg = spitzenMit(erg);
+			erg = matadorsJackStraitWith(erg);
 		}
 		
 		else {
 			
-			erg = spitzenOhne(erg);
+			erg = matadorsJackStraitWithout(erg);
 		}
 
 		return erg;
 	}
 	
 	@Override
-	public int spitzenMit(int erg) {
+	public int matadorsJackStraitWith(int erg) {
 
 		for (int i = 0; i < trumps.length; i++) {
 
@@ -590,7 +584,7 @@ abstract public class Player implements IPlayer {
 	}
 	
 	@Override
-	public int spitzenOhne(int erg) {
+	public int matadorsJackStraitWithout(int erg) {
 
 		for (int i = 0; i < trumps.length; i++) {
 			

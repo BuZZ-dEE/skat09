@@ -155,9 +155,9 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public void setIsDeclarer(boolean istAlleinspieler) {
+	public void setIsDeclarer(boolean isDeclarer) {
 	
-		this.istAlleinspieler = istAlleinspieler;
+		this.istAlleinspieler = isDeclarer;
 	}
 
 	
@@ -173,7 +173,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public void setTricks(ArrayList<PlayingCard> stiche) {
+	public void setTricks(ArrayList<PlayingCard> tricks) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -185,13 +185,13 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public PlayingCard playCard(PlayingCard[] gespielteKarten) {
+	public PlayingCard playCard(PlayingCard[] playedCards) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
-	public void addTrick(PlayingCard[] stich) {
+	public void addTrick(PlayingCard[] trick) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -206,7 +206,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void addPlayedCards(PlayingCard[] gespielteKarten) {
+	public void addPlayedCards(PlayingCard[] playedCards) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -241,7 +241,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void setTeammate(IPlayer mitspieler) {
+	public void setTeammate(IPlayer teammate) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -256,12 +256,12 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public void setGames(ArrayList<Integer> spiele) {
+	public void setGames(ArrayList<Integer> games) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void setTrumps(PlayingCard[] truempfe) {
+	public void setTrumps(PlayingCard[] trumps) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -271,22 +271,22 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 		return null;
 	}
 
-	public PlayingCard[] spitzenEinordnen() {
+	public PlayingCard[] arrangeMatadorsJackStraitOrder() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public int spitzenMit(int erg) {
+	public int matadorsJackStraitWith(int erg) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public int spitzenOhne(int erg) {
+	public int matadorsJackStraitWithout(int erg) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public int spitzenZahl() {
+	public int matadorsJackStraitCount() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

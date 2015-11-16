@@ -22,22 +22,22 @@ import test.gamevariety.NullGameStub2;
 
 public class PlayerTest{
 
-	private IPlayer spieler;
-	ArrayList<PlayingCard> stiche = new ArrayList<PlayingCard>();
+	private IPlayer player;
+	ArrayList<PlayingCard> tricks = new ArrayList<PlayingCard>();
 	
 	
 	@Before
 	public void setUp(){
 		String name_bsp = "Rainer Hohn";
-		spieler = new Granny(name_bsp);
-		stiche.clear();
-		spieler.setTricks(stiche);
-		spieler.getGames().clear();
+		player = new Granny(name_bsp);
+		tricks.clear();
+		player.setTricks(tricks);
+		player.getGames().clear();
 	}
 	
 	@Test
 	public void testSpieler() {
-		assertEquals("Rainer Hohn",spieler.getName());
+		assertEquals("Rainer Hohn",player.getName());
 	}
 
 	@Test
@@ -49,8 +49,8 @@ public class PlayerTest{
 		gespielteKarten[0] = karte1;
 		gespielteKarten[1] = karte2;
 		gespielteKarten[2] = karte3;
-		spieler.addTrick(gespielteKarten);
-		assertEquals(3, spieler.getTricks().size());
+		player.addTrick(gespielteKarten);
+		assertEquals(3, player.getTricks().size());
 		
 	}
 	
@@ -63,8 +63,8 @@ public class PlayerTest{
 		gespielteKarten[0] = karte1;
 		gespielteKarten[1] = karte2;
 		gespielteKarten[2] = karte3;
-		spieler.addTrick(gespielteKarten);
-		assertEquals(karte1, spieler.getTricks().get(0));
+		player.addTrick(gespielteKarten);
+		assertEquals(karte1, player.getTricks().get(0));
 		
 	}
 	
@@ -77,8 +77,8 @@ public class PlayerTest{
 		gespielteKarten[0] = karte1;
 		gespielteKarten[1] = karte2;
 		gespielteKarten[2] = karte3;
-		spieler.addTrick(gespielteKarten);
-		assertEquals(karte2, spieler.getTricks().get(1));
+		player.addTrick(gespielteKarten);
+		assertEquals(karte2, player.getTricks().get(1));
 	}
 	
 	@Test
@@ -90,33 +90,33 @@ public class PlayerTest{
 		gespielteKarten[0] = karte1;
 		gespielteKarten[1] = karte2;
 		gespielteKarten[2] = karte3;
-		spieler.addTrick(gespielteKarten);
-		assertEquals(karte3, spieler.getTricks().get(2));
+		player.addTrick(gespielteKarten);
+		assertEquals(karte3, player.getTricks().get(2));
 		
 	}
 	
 	@Test
 	public void neuerEintragTest() {
 		ArrayList<Integer> spiele;
-		spiele=spieler.addPoints(18);
+		spiele=player.addPoints(18);
 		assertEquals(1, spiele.size());
 	}
 	
 	@Test
 	public void neuerEintragTest2() {
 		ArrayList<Integer> spiele;
-		spiele=spieler.addPoints(18);
+		spiele=player.addPoints(18);
 		assertEquals(18,(int) spiele.get(0));
 	}
 	
 	@Test
 	public void agentTest() {
-		assertFalse(spieler.agent());
+		assertFalse(player.agent());
 	}
 	
 	@Test
 	public void reizlimitTest() {
-		assertEquals(0, spieler.setBidLimit());
+		assertEquals(0, player.setBidLimit());
 	}
 	
 	@Test
@@ -170,8 +170,8 @@ public class PlayerTest{
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
 		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.EIGHT);
 		gespielteKarten[2] = new PlayingCard(Suit.LEAVES, Value.DAUS);
-		spieler.addPlayedCards(gespielteKarten);
-		assertEquals(gespielteKarten[0], spieler.getAllPlayedCards().get(0));
+		player.addPlayedCards(gespielteKarten);
+		assertEquals(gespielteKarten[0], player.getAllPlayedCards().get(0));
 	}
 	
 	@Test
@@ -181,19 +181,19 @@ public class PlayerTest{
 		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
 		gespielteKarten[1] = new PlayingCard(Suit.BELLS, Value.EIGHT);
 		gespielteKarten[2] = new PlayingCard(Suit.LEAVES, Value.DAUS);
-		spieler.addPlayedCards(gespielteKarten);
-		assertEquals(gespielteKarten[2], spieler.getAllPlayedCards().get(2));
+		player.addPlayedCards(gespielteKarten);
+		assertEquals(gespielteKarten[2], player.getAllPlayedCards().get(2));
 	}
 	
 	@Test
 	public void spitzenEinordnenTest() {
 		boolean test = false;
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.getHand().add(
 		new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
 		IGameVariety spielart = new GrandGame();
-		spieler.setGameVariety(spielart);
-		spieler.spitzenEinordnen();
+		player.setGameVariety(spielart);
+		player.arrangeMatadorsJackStraitOrder();
 			test = true;
 		
 		assertTrue(test);
@@ -201,399 +201,399 @@ public class PlayerTest{
 	
 	@Test
 	public void testSpitzenZahl() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.setGameVariety(new GrandGame());
-		spieler.spitzenEinordnen();
-		assertEquals(1, spieler.spitzenZahl());
+		player.setGameVariety(new GrandGame());
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(1, player.matadorsJackStraitCount());
 	}
 	
 	@Test
 	public void testSpitzenZahl2() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.spitzenEinordnen();
-		assertEquals(-11, spieler.spitzenZahl());
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-11, player.matadorsJackStraitCount());
 	}
 
 	@Test
 	public void testSpitzenMit() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new GrandGame());
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new GrandGame());
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(1, spieler.spitzenMit(1));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(1, player.matadorsJackStraitWith(1));
 	}
 
 	@Test
 	public void testSpitzenMit2() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new GrandGame());
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new GrandGame());
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(2, spieler.spitzenMit(2));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(2, player.matadorsJackStraitWith(2));
 	}
 
 	@Test
 	public void testSpitzenMit3() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new GrandGame());
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new GrandGame());
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(3, spieler.spitzenMit(3));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(3, player.matadorsJackStraitWith(3));
 	}
 
 	@Test
 	public void testSpitzenMit4() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new GrandGame());
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new GrandGame());
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(4, spieler.spitzenMit(4));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(4, player.matadorsJackStraitWith(4));
 	}
 
 	@Test
 	public void testSpitzenMit5() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.spitzenEinordnen();
-		assertEquals(5, spieler.spitzenMit(5));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(5, player.matadorsJackStraitWith(5));
 	}
 
 	@Test
 	public void testSpitzenMit6() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler.spitzenEinordnen();
-		assertEquals(6, spieler.spitzenMit(6));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(6, player.matadorsJackStraitWith(6));
 	}
 
 	@Test
 	public void testSpitzenMit7() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.KING));
-		spieler.spitzenEinordnen();
-		assertEquals(7, spieler.spitzenMit(7));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(7, player.matadorsJackStraitWith(7));
 	}
 
 	@Test
 	public void testSpitzenMit8() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.KING));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(8, spieler.spitzenMit(8));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(8, player.matadorsJackStraitWith(8));
 	}
 
 	@Test
 	public void testSpitzenMit9() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.KING));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.NINE));
-		spieler.spitzenEinordnen();
-		assertEquals(9, spieler.spitzenMit(9));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(9, player.matadorsJackStraitWith(9));
 	}
 
 	@Test
 	public void testSpitzenMit10() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.KING));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.NINE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.EIGHT));
-		spieler.spitzenEinordnen();
-		assertEquals(10, spieler.spitzenMit(10));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(10, player.matadorsJackStraitWith(10));
 	}
 
 	@Test
 	public void testSpitzenMit11() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.KING));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.NINE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.EIGHT));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.SEVEN));
-		spieler.spitzenEinordnen();
-		assertEquals(11, spieler.spitzenMit(11));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(11, player.matadorsJackStraitWith(11));
 	}
 
 	@Test
 	public void testSpitzenOhne() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(-1, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-1, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne2() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(-2, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-2, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne3() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(-3, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-3, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne4() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.spitzenEinordnen();
-		assertEquals(-4, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-4, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne5() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler.spitzenEinordnen();
-		assertEquals(-5, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-5, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne6() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.KING));
-		spieler.spitzenEinordnen();
-		assertEquals(-6, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-6, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne7() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(-7, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-7, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne8() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.NINE));
-		spieler.spitzenEinordnen();
-		assertEquals(-8, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-8, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne9() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.EIGHT));
-		spieler.spitzenEinordnen();
-		assertEquals(-9, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-9, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne10() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.SEVEN));
-		spieler.spitzenEinordnen();
-		assertEquals(-10, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-10, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne11() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(-11, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-11, player.matadorsJackStraitWithout(0));
 	}
 
 	@Test
 	public void testSpitzenOhne12() {
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.setGameVariety(new SuitGame(Suit.BELLS));
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.getHand().add(
 				new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
-		spieler.spitzenEinordnen();
-		assertEquals(-11, spieler.spitzenOhne(0));
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-11, player.matadorsJackStraitWithout(0));
 	} 
 	
 	@Test
 	public void testSpitzenOhne13() {
-		spieler.setGameVariety(new GrandGame());
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.spitzenEinordnen();
-		assertEquals(-4, spieler.spitzenOhne(0));
+		player.setGameVariety(new GrandGame());
+		player.setHand(new ArrayList<PlayingCard>());
+		player.arrangeMatadorsJackStraitOrder();
+		assertEquals(-4, player.matadorsJackStraitWithout(0));
 	}
 	
 	@Test
 	public void spielbarteKartenTest() {
-		spieler.setGameVariety(new NullGameStub2());
+		player.setGameVariety(new NullGameStub2());
 		
-		spieler.setHand(new ArrayList<PlayingCard>());
-		spieler.getHand().add(
+		player.setHand(new ArrayList<PlayingCard>());
+		player.getHand().add(
 				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
 		PlayingCard karte3 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		spieler.getHand().add(karte3);
-		spieler.getHand().add(
+		player.getHand().add(karte3);
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.KING));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.NINE));
-		spieler.getHand().add(
+		player.getHand().add(
 				new PlayingCard(Suit.BELLS, Value.EIGHT));
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		ArrayList<PlayingCard> erwartet = new ArrayList<PlayingCard>();
 		erwartet.add(karte3);
-		assertEquals(erwartet, spieler.playableCards(gespielteKarten));
+		assertEquals(erwartet, player.playableCards(gespielteKarten));
 	}
 	
 	
@@ -601,7 +601,7 @@ public class PlayerTest{
 	public void equalsTest() {
 		
 		IPlayer spieler2 = new Granny("Rainer Hohn");
-		assertTrue(spieler.equals(spieler2));
+		assertTrue(player.equals(spieler2));
 	}
 	@Test
 	public void farbenEinordnenTest() {

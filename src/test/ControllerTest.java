@@ -580,7 +580,7 @@ public class ControllerTest {
 		spieler1.setTricks(blatt1);
 		spieler1.setHand(blatt1);
 		spieler1.setGameVariety(new SuitGame(Suit.ACORNS));
-		spieler1.spitzenEinordnen();
+		spieler1.arrangeMatadorsJackStraitOrder();
 		
 		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>(); 
 		blatt2.add(new PlayingCard(Suit.LEAVES, Value.NINE));
@@ -835,7 +835,7 @@ public class ControllerTest {
 		Player spieler = new Granny("Tini");
 		tisch.setBiddingValue(23);
 		tisch.setBiddingAgentValue(30);
-		assertTrue(controller.reizagent(spieler));
+		assertTrue(controller.bidAgent(spieler));
 	}
 	
 	@Test
@@ -844,7 +844,7 @@ public class ControllerTest {
 		Player spieler = new Granny("Tini");
 		tisch.setBiddingValue(30);
 		tisch.setBiddingAgentValue(23);
-		assertFalse(controller.reizagent(spieler));
+		assertFalse(controller.bidAgent(spieler));
 	}
 	
 	@Test

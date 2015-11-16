@@ -145,7 +145,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 */
 	private boolean schneider = false;
 	/**
-	 * erfasst, ob ein reizagent erw&uuml;nscht ist
+	 * erfasst, ob ein bidAgent erw&uuml;nscht ist
 	 */
 	private boolean reizagent = false;
 	/**
@@ -375,10 +375,10 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Gibt den Wert der Variable reizagent zur&uuml;ck. Diese ist true, falls
+	 * Gibt den Wert der Variable bidAgent zur&uuml;ck. Diese ist true, falls
 	 * der Mensch den Reizagenten nutzen will, ansonsten false.
 	 * 
-	 * @return Den Wert von reizagent
+	 * @return Den Wert von bidAgent
 	 */
 	public boolean getAgent() {
 		return reizagent;
@@ -741,25 +741,25 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		for (int i = 0; i < tisch.getPlayer1().getGames().size(); i++) {
 
 			if (tisch.getPlayer1().getGames().get(i) != 0
-					&& tisch.getUeber().get(i)) {
+					&& tisch.getOverbids().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
 			punkte = new JLabel(tisch.getPlayer1().getGames().get(i) + s);
 			if (tisch.getPlayer2().getGames().get(i) != 0
-					&& tisch.getUeber().get(i)) {
+					&& tisch.getOverbids().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
 			punkte1 = new JLabel(tisch.getPlayer2().getGames().get(i) + s);
 			if (tisch.getPlayer3().getGames().get(i) != 0
-					&& tisch.getUeber().get(i)) {
+					&& tisch.getOverbids().get(i)) {
 				s = "(ue)";
 			} else
 				s = "";
 			punkte2 = new JLabel(tisch.getPlayer3().getGames().get(i) + s);
-			grundw = new JLabel(tisch.getGrundwertListe().get(i) + "");
-			augenzahl = new JLabel(tisch.getAugenListe().get(i) + "");
+			grundw = new JLabel(tisch.getBaseValues().get(i) + "");
+			augenzahl = new JLabel(tisch.getAugenForRounds().get(i) + "");
 
 			setzeStats(punkt, 0, 1 + i);
 			setzeStats(punkte, 1, 1 + i);
@@ -1155,7 +1155,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 * Diese Methode zeigt dem Menschen ein Dialogfenster, welches die
 	 * Auswahlm&ouml,glichkeiten Ja und Nein bietet. Der Mensch kann hierbei
 	 * entscheiden, ob er den Reizagenten nutzen m&ouml;chte oder nicht. Hat er
-	 * Ja ausgew&auml;hlt, wird die globale Variable reizagent auf true gesetzt.
+	 * Ja ausgew&auml;hlt, wird die globale Variable bidAgent auf true gesetzt.
 	 */
 	public void reizagent() {
 		// Das Fenster soll zentriert werden
@@ -1730,7 +1730,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		s[0] = tisch.getPercentDeclarer(spieler) + "("
 				+ +tisch.getAnzahlAllein(spieler) + ")";
 		// Anzahl Gewinne
-		s[1] = tisch.anzahlderGewinne(spieler) + "/"
+		s[1] = tisch.getDeclarersWonGamesSum(spieler) + "/"
 				+ tisch.getAnzahlAllein(spieler);
 		// Handspiele
 		s[2] = spieler.getHandGames() + "/" + tisch.getAnzahlAllein(spieler);
