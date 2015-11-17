@@ -12,30 +12,26 @@ import main.playingcard.Suit;
 
 
 public class HumanPlayerStub implements IPlayer, IHumanPlayer {
-
-	//
-	//Datenfelder
-	//
 	
 	private String name;
-	private boolean istAlleinspieler;
-	private ArrayList<PlayingCard> blatt;
+	private boolean isDeclarer;
+	private ArrayList<PlayingCard> hand;
 	Position position;
 	
 	public HumanPlayerStub(String name) {
 		
 		this.name = name;
-		this.istAlleinspieler = false;
-		this.blatt = new ArrayList<PlayingCard>();
+		this.isDeclarer = false;
+		this.hand = new ArrayList<PlayingCard>();
 	}
 	
 	public boolean agent() {
 		
-		boolean ergebnis = true;
-		return ergebnis;
+		boolean result = true;
+		return result;
 	}
 
-	public void sortHand(IGameVariety spielart) {
+	public void sortHand(IGameVariety gameVariety) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -47,7 +43,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	}
 
 
-	public boolean equals(IPlayer spieler) {
+	public boolean equals(IPlayer player) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -61,13 +57,13 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	
 	public ArrayList<PlayingCard> getHand() {
 		
-		return blatt;
+		return hand;
 	}
 
 	
 	public boolean isDeclarer() {
 		
-		return istAlleinspieler;
+		return isDeclarer;
 	}
 
 	
@@ -101,18 +97,18 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public boolean respond(int reizwert) {
+	public boolean respond(int biddingValue) {
 	
-		boolean ergebnis = false;
+		boolean result = false;
 		
-		if (reizwert <= 22) {
-			ergebnis = true;
+		if (biddingValue <= 22) {
+			result = true;
 		}
-		return ergebnis;
+		return result;
 	}
 
 	
-	public ArrayList<Integer> addPoints(int punkte) {
+	public ArrayList<Integer> addPoints(int points) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -130,14 +126,14 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public boolean bid(int alterWert) {
+	public boolean bid(int oldBiddingValue) {
 		
-		boolean ergebnis = false;
+		boolean result = false;
 		
-		if (alterWert <= 22) {
-			ergebnis = true;
+		if (oldBiddingValue <= 22) {
+			result = true;
 		}
-		return ergebnis;
+		return result;
 	}
 
 	
@@ -153,7 +149,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public void setHand(ArrayList<PlayingCard> blatt) {
+	public void setHand(ArrayList<PlayingCard> hand) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -161,7 +157,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	
 	public void setIsDeclarer(boolean isDeclarer) {
 	
-		this.istAlleinspieler = isDeclarer;
+		this.isDeclarer = isDeclarer;
 	}
 
 	
@@ -171,7 +167,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 	}
 
 	
-	public void setGameVariety(IGameVariety spielart) {
+	public void setGameVariety(IGameVariety gameVariety) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -235,7 +231,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 		return null;
 	}
 
-	public void setAllPlayedCards(ArrayList<PlayingCard> karten) {
+	public void setAllPlayedCards(ArrayList<PlayingCard> cards) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -270,7 +266,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 		
 	}
 
-	public ArrayList<PlayingCard> playableCards(PlayingCard[] gespielteKarten) {
+	public ArrayList<PlayingCard> playableCards(PlayingCard[] playedCards) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -295,7 +291,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 		return 0;
 	}
 
-	public PlayingCard playRamdonAllowedCard(PlayingCard[] gespielteKarten) {
+	public PlayingCard playRamdonAllowedCard(PlayingCard[] playedCards) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -305,7 +301,7 @@ public class HumanPlayerStub implements IPlayer, IHumanPlayer {
 		return 0;
 	}
 
-	public void setHandGames(int handspiele) {
+	public void setHandGames(int handGames) {
 		// TODO Auto-generated method stub
 		
 	}
