@@ -28,39 +28,39 @@ import test.ui.OutputStub;
 
 public class HumanPlayerTest {
 
-	Table tisch = new Table();
-	IOutput ausgabe = new OutputStub(null,null,null);
-	IController controller = new ControllerStub(tisch, ausgabe);
-	HumanPlayer mensch = new HumanPlayer("Peter", controller);
+	Table table = new Table();
+	IOutput output = new OutputStub(null,null,null);
+	IController controller = new ControllerStub(table, output);
+	HumanPlayer humanPlayer = new HumanPlayer("Peter", controller);
 
 	@Before
 	public void setUp() throws Exception {
 
-		mensch.setHand(new ArrayList<PlayingCard>());
+		humanPlayer.setHand(new ArrayList<PlayingCard>());
 	}
 
 	@Test
 	public void hoerenTest1() {
 
-		assertTrue(mensch.respond(20));
+		assertTrue(humanPlayer.respond(20));
 	}
 
 	@Test
 	public void hoerenTest2() {
 
-		assertFalse(mensch.respond(23));
+		assertFalse(humanPlayer.respond(23));
 	}
 
 	@Test
 	public void sagenTest1() {
 
-		assertTrue(mensch.bid(20));
+		assertTrue(humanPlayer.bid(20));
 	}
 
 	@Test
 	public void sagenTest2() {
 
-		assertFalse(mensch.bid(23));
+		assertFalse(humanPlayer.bid(23));
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class HumanPlayerTest {
 		skat[0] = new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE);
 		skat[1] = new PlayingCard(Suit.ACORNS, Value.KING);
 		skat[2] = new PlayingCard(Suit.ACORNS, Value.DAUS);
-		assertArrayEquals(skat, mensch.druecken(skat));
+		assertArrayEquals(skat, humanPlayer.druecken(skat));
 	}
 
 	@Test
@@ -80,96 +80,96 @@ public class HumanPlayerTest {
 		skat[0] = new PlayingCard(Suit.HEARTS, Value.EIGHT);
 		skat[1] = new PlayingCard(Suit.BELLS, Value.EIGHT);
 		skat[2] = null;
-		assertArrayEquals(skat, mensch.druecken(skat));
+		assertArrayEquals(skat, humanPlayer.druecken(skat));
 	}
 
 	@Test
-	public void spieleKarteTest() {
+	public void playCardTest() {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
-		mensch.setGameVariety(new GrandGame());
-		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		gespielteKarten[1] = new PlayingCard(Suit.HEARTS, Value.NINE);
-		if (karte.equals(mensch.playCard(gespielteKarten))) {
+		humanPlayer.setGameVariety(new GrandGame());
+		PlayingCard card = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard[] playedCards = new PlayingCard[3];
+		playedCards[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		playedCards[1] = new PlayingCard(Suit.HEARTS, Value.NINE);
+		if (card.equals(humanPlayer.playCard(playedCards))) {
 
-			ergebnis = true;
+			result = true;
 		}
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void spieleKarteTest2() {
+	public void playCardTest2() {
 
-		GameVariety nullspiel = new NullGameStub();
-		boolean ergebnis = false;
+		GameVariety nullGame = new NullGameStub();
+		boolean result = false;
 
-		mensch.setGameVariety(nullspiel);
-		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
+		humanPlayer.setGameVariety(nullGame);
+		PlayingCard card = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard[] playedCards = new PlayingCard[3];
 		
-		if (karte.equals(mensch.playCard(gespielteKarten))) {
-				ergebnis = true;
+		if (card.equals(humanPlayer.playCard(playedCards))) {
+				result = true;
 		}
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 
 	@Test
-	public void handspielTest() {
+	public void handGameTest() {
 
-		assertFalse(mensch.handgame());
+		assertFalse(humanPlayer.handgame());
 	}
 
 	@Test
 	public void ouvertTest() {
 
-		assertTrue(mensch.ouvert());
+		assertTrue(humanPlayer.ouvert());
 	}
 
 	@Test
 	public void schneiderTest() {
 
-		assertTrue(mensch.schneider());
+		assertTrue(humanPlayer.schneider());
 	}
 
 	@Test
 	public void schwarzTest() {
 
-		assertFalse(mensch.schwarz());
+		assertFalse(humanPlayer.schwarz());
 	}
 
 	@Test
-	public void spielAnsagenTest() {
+	public void annouceGameTest() {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
-		IGameVariety spielart = new GrandGame();
-		if (spielart.getGameVariety().equals(mensch.declareGame().getGameVariety())) {
+		IGameVariety gameVariety = new GrandGame();
+		if (gameVariety.getGameVariety().equals(humanPlayer.declareGame().getGameVariety())) {
 
-			ergebnis = true;
+			result = true;
 		}
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 
 	@Test
-	public void farbeTest() {
+	public void suitTest() {
 
-		SuitGame farbspiel = new SuitGame(Suit.LEAVES);
-		assertEquals(farbspiel.getTrumpSuit(), mensch.suit()
+		SuitGame suitGame = new SuitGame(Suit.LEAVES);
+		assertEquals(suitGame.getTrumpSuit(), humanPlayer.suit()
 				.getTrumpSuit());
 	}
 
 	@Test
-	public void reizlimitFestlegen() {
+	public void setBidLimitTest() {
 
-		assertEquals(23, mensch.setBidLimit());
+		assertEquals(23, humanPlayer.setBidLimit());
 	}
 
 	@Test
-	public void reizAgentTest() {
+	public void biddingAgentTest() {
 
-		assertFalse(mensch.agent());
+		assertFalse(humanPlayer.agent());
 	}
 }
