@@ -20,33 +20,33 @@ import main.playingcard.Value;
 
 public class RuleCompliantPlayerTest {
 	
-	ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-	PlayingCard spielkarte1;
-	PlayingCard spielkarte2;
-	PlayingCard spielkarte3;
-	PlayingCard spielkarte4;
-	RuleCompliantPlayer spieler = new RuleCompliantPlayer("Mimi");
-	PlayingCard[] gespielteKarten = new PlayingCard[3];
-	SuitGame spiel = new SuitGame(Suit.HEARTS);
+	ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+	PlayingCard playingCard1;
+	PlayingCard playingCard2;
+	PlayingCard playingCard3;
+	PlayingCard playingCard4;
+	RuleCompliantPlayer player = new RuleCompliantPlayer("Mimi");
+	PlayingCard[] playedCards = new PlayingCard[3];
+	SuitGame suitGame = new SuitGame(Suit.HEARTS);
 	
 	@Before
 	public void setUp() {
-		spielkarte1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
-		spielkarte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		spielkarte3 = new PlayingCard(Suit.LEAVES, Value.NINE);
-		spielkarte4 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		playingCard1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
+		playingCard2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+		playingCard3 = new PlayingCard(Suit.LEAVES, Value.NINE);
+		playingCard4 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
 		
-		blatt.add(spielkarte4);
-		blatt.add(spielkarte3);
-		gespielteKarten[0] = spielkarte1;
+		hand.add(playingCard4);
+		hand.add(playingCard3);
+		playedCards[0] = playingCard1;
 		
-		spieler.setHand(blatt);
-		spieler.setGameVariety(spiel);
+		player.setHand(hand);
+		player.setGameVariety(suitGame);
 	}
 
 //	@Test
-//	public void testSpieleKarte() {
-//		assertEquals(playingcard4, spieler.playCard(playedCards));
+//	public void testPlayCard() {
+//		assertEquals(playingcard4, player.playCard(playedCards));
 //	}
 //	
 //	@Test
@@ -54,13 +54,13 @@ public class RuleCompliantPlayerTest {
 //		hand.clear();
 //		hand.add(playingcard3);
 //		hand.add(playingcard4);
-//		assertEquals(playingcard3, spieler.playCard(playedCards));
+//		assertEquals(playingcard3, player.playCard(playedCards));
 //	}
 //	
 //	@Test
 //	public void testSpieleKarte3() {
 //		playedCards[0] = playingcard2;
-//		assertEquals(playingcard4, spieler.playCard(playedCards));
+//		assertEquals(playingcard4, player.playCard(playedCards));
 //	}
 //	
 //	@Test
@@ -69,7 +69,7 @@ public class RuleCompliantPlayerTest {
 //		hand.add(playingcard3);
 //		hand.add(playingcard4);
 //		playedCards[0] = playingcard2;
-//		assertEquals(playingcard4, spieler.playCard(playedCards));
+//		assertEquals(playingcard4, player.playCard(playedCards));
 //	}
 	
 	//Der regelkonforme Spieler spielt eine zufaellige Karte
@@ -78,34 +78,34 @@ public class RuleCompliantPlayerTest {
 	//entfernt wurde.
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testSpieleKarte() {
+	public void testPlayCard() {
 	
-		boolean testErfolgreich = false;
+		boolean testSuccess = false;
 		
-		blatt.clear();
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.EIGHT));
-		ArrayList<PlayingCard> altesBlatt = new ArrayList<PlayingCard>();
-		altesBlatt = (ArrayList<PlayingCard>) blatt.clone();
-		spieler.setHand(blatt);
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		gespielteKarten[0] = new PlayingCard(Suit.BELLS, Value.SEVEN); 
-		PlayingCard gespielteKarte = new PlayingCard(null,null);
-		gespielteKarte = spieler.playCard(gespielteKarten);
-		blatt = spieler.getHand();
+		hand.clear();
+		hand.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
+		hand.add(new PlayingCard(Suit.BELLS, Value.EIGHT));
+		ArrayList<PlayingCard> oldHand = new ArrayList<PlayingCard>();
+		oldHand = (ArrayList<PlayingCard>) hand.clone();
+		player.setHand(hand);
+		PlayingCard[] playedCards = new PlayingCard[3];
+		playedCards[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
+		PlayingCard playedCard = new PlayingCard(null,null);
+		playedCard = player.playCard(playedCards);
+		hand = player.getHand();
 		
-		if(altesBlatt.contains(gespielteKarte)) {
+		if(oldHand.contains(playedCard)) {
 			
-			if (!blatt.contains(gespielteKarte)) {
+			if (!hand.contains(playedCard)) {
 			
-				testErfolgreich = true;
+				testSuccess = true;
 			}
 		}
-		assertTrue(testErfolgreich);
+		assertTrue(testSuccess);
 	}
 	
 	@Test
-	public void testRegelkonformerSpieler() {
+	public void testRuleCompliantPlayer() {
 		assertEquals("Hans", new RuleCompliantPlayer("Hans").getName());
 	}
 
@@ -113,70 +113,70 @@ public class RuleCompliantPlayerTest {
 	@Test
 	public void drueckenTest() {
 		PlayingCard[] skat = new PlayingCard[2];
-		assertArrayEquals(null, spieler.druecken(skat));
+		assertArrayEquals(null, player.druecken(skat));
 	}
 	
 	@Test
-	public void handspielTest() {
-		assertTrue(spieler.handgame());
+	public void handgameTest() {
+		assertTrue(player.handgame());
 	}
 	
 	@Test
 	public void schneiderTest() {
-		assertFalse(spieler.schneider());
+		assertFalse(player.schneider());
 	}
 	
 	@Test
 	public void schwarzTest() {
-		assertFalse(spieler.schwarz());
+		assertFalse(player.schwarz());
 	}
 	
 	@Test
 	public void ouvertTest() {
-		assertFalse(spieler.ouvert());
+		assertFalse(player.ouvert());
 	}
 	
 	@Test
-	public void spielAnsagenTest() {
+	public void declareGameTest() {
 		boolean test = false;
-		if (spieler.declareGame() instanceof NullGame) {
+		if (player.declareGame() instanceof NullGame) {
 			test = true;
 		}
 		assertTrue(test);
 	}
 	
 	@Test
-	public void hoerenTest() {
-		assertTrue(spieler.respond(0));
+	public void respondTest() {
+		assertTrue(player.respond(0));
 	}
 	
 	@Test
-	public void hoerenTest2() {
-		assertTrue(spieler.respond(18));
+	public void respondTest2() {
+		assertTrue(player.respond(18));
 	}
 	
 	@Test
-	public void hoerenTest3() {
-		assertTrue(spieler.respond(20));
+	public void respondTest3() {
+		assertTrue(player.respond(20));
 	}
 	
 	@Test
-	public void hoerenTest4() {
-		assertFalse(spieler.respond(35));
+	public void respondTest4() {
+		assertFalse(player.respond(35));
 	}
 	
 	@Test
-	public void sagenTest() {
-		assertTrue(spieler.bid(0));
+	public void bidTest() {
+		assertTrue(player.bid(0));
 	}
 	
 	@Test
-	public void sagenTest2() {
-		assertTrue(spieler.bid(18));
+	public void bidTest2() {
+		assertTrue(player.bid(18));
 	}
 	
 	@Test
-	public void farbeTest() {
-		assertEquals(null, spieler.suit());
+	public void suitTest() {
+		assertEquals(null, player.suit());
 	}
 }
