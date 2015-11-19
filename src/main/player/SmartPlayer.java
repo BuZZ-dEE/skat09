@@ -713,9 +713,9 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 		Random zufall = new Random();
-		ArrayList<PlayingCard> buben = kartenEinesWertes(hand, Value.UNDER_KNAVE);
-		ArrayList<PlayingCard> asse = kartenEinesWertes(hand, Value.DAUS);
-		ArrayList<PlayingCard> zehnen = kartenEinesWertes(hand, Value.TEN);
+		ArrayList<PlayingCard> buben = cardsOfRank(hand, Value.UNDER_KNAVE);
+		ArrayList<PlayingCard> asse = cardsOfRank(hand, Value.DAUS);
+		ArrayList<PlayingCard> zehnen = cardsOfRank(hand, Value.TEN);
 
 		if (buben.size() > 2) {
 
@@ -732,7 +732,7 @@ public class SmartPlayer extends Player {
 
 			for (PlayingCard karte : asse) {
 
-				if (kartenEinerFarbe(anfangsBlatt, karte.getSuit()).size() <= 4) {
+				if (cardsOfSuit(anfangsBlatt, karte.getSuit()).size() <= 4) {
 
 					ergebnis = asse.get(zufall.nextInt(asse.size()));
 					break;
@@ -746,7 +746,7 @@ public class SmartPlayer extends Player {
 
 			for (PlayingCard karte : zehnen) {
 
-				// if (kartenEinerFarbe(anfangsBlatt,
+				// if (cardsOfSuit(anfangsBlatt,
 				// karte.getFarbe()).size() <= 4
 				// && alleGespielteKarten.contains(naechstHoehereKarte(
 				// karte.getFarbe(), karte))) {
@@ -765,7 +765,7 @@ public class SmartPlayer extends Player {
 					}
 				}
 
-				if (kartenEinerFarbe(anfangsBlatt, karte.getSuit()).size() <= 4
+				if (cardsOfSuit(anfangsBlatt, karte.getSuit()).size() <= 4
 						&& enthalten) {
 
 					ergebnis = zehnen.get(zufall.nextInt(zehnen.size()));
@@ -1405,54 +1405,54 @@ public class SmartPlayer extends Player {
 	 * Diese Methode sucht in einem Blatt Karten eines bestimmten Wertes und
 	 * packt diese in eine ArrayList.
 	 * 
-	 * @param blatt
+	 * @param hand
 	 *            - Das Blatt aus dem die Arrayliste eines Wertes geholt werden
 	 *            soll.
-	 * @param wert
+	 * @param value
 	 *            - Der Wert einer Karte. z.B.: Ein Ass
 	 * @return Die ArrayList mit den Assen.
 	 */
-	public ArrayList<PlayingCard> kartenEinesWertes(ArrayList<PlayingCard> blatt,
-			Value wert) {
+	public ArrayList<PlayingCard> cardsOfRank(ArrayList<PlayingCard> hand,
+											  Value value) {
 
-		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>(4);
+		ArrayList<PlayingCard> result = new ArrayList<PlayingCard>(4);
 
-		for (PlayingCard karte : blatt) {
+		for (PlayingCard card : hand) {
 
-			if (karte.getValue() == wert) {
+			if (card.getValue() == value) {
 
-				ergebnis.add(karte);
+				result.add(card);
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Diese Methode sucht in einem Blatt Karten einer bestimmten Farbe und
 	 * packt diese in eine ArrayList. Buben werden nicht ber&uuml;cksichtigt.
 	 * 
-	 * @param blatt
+	 * @param hand
 	 *            - Das Blatt aus dem die Arrayliste einer Farbe geholt werden
 	 *            soll.
-	 * @param farbe
+	 * @param suit
 	 *            - Die Farbe einer Karte. z.B.: Kreuz
 	 * @return Die ArrayList mit den Karten der Farbe Kreuz.
 	 */
-	public ArrayList<PlayingCard> kartenEinerFarbe(ArrayList<PlayingCard> blatt,
-			Suit farbe) {
+	public ArrayList<PlayingCard> cardsOfSuit(ArrayList<PlayingCard> hand,
+											  Suit suit) {
 
-		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> result = new ArrayList<PlayingCard>();
 
-		for (PlayingCard karte : blatt) {
+		for (PlayingCard card : hand) {
 
-			if (karte.getSuit() == farbe && karte.getValue() != Value.UNDER_KNAVE) {
+			if (card.getSuit() == suit && card.getValue() != Value.UNDER_KNAVE) {
 
-				ergebnis.add(karte);
+				result.add(card);
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1975,10 +1975,10 @@ public class SmartPlayer extends Player {
 	 */
 	public ArrayList<PlayingCard> ermittleKurzeLangeFarbe(boolean lang) {
 
-		ArrayList<PlayingCard> karo = kartenEinerFarbe(hand, Suit.BELLS);
-		ArrayList<PlayingCard> herz = kartenEinerFarbe(hand, Suit.HEARTS);
-		ArrayList<PlayingCard> pik = kartenEinerFarbe(hand, Suit.LEAVES);
-		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(hand, Suit.ACORNS);
+		ArrayList<PlayingCard> karo = cardsOfSuit(hand, Suit.BELLS);
+		ArrayList<PlayingCard> herz = cardsOfSuit(hand, Suit.HEARTS);
+		ArrayList<PlayingCard> pik = cardsOfSuit(hand, Suit.LEAVES);
+		ArrayList<PlayingCard> kreuz = cardsOfSuit(hand, Suit.ACORNS);
 		ArrayList<PlayingCard> gewinner = new ArrayList<PlayingCard>();
 
 		// Die übergegebene Variable lang ist true, d.h. man möchte die lange
