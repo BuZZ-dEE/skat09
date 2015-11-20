@@ -3,7 +3,7 @@ package main.player;
 import java.util.ArrayList;
 import java.util.Random;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
@@ -106,22 +106,22 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			ergebnis = grandSpielen(gespielteKarten);
 		}
 
-		else if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
+		else if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 
 			ergebnis = farbeSpielen(gespielteKarten);
 		}
 
-		else if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
+		else if (gameVariety.getGameVariety() == GameVariety.Name.NULL) {
 
 			ergebnis = nullSpielen(gespielteKarten);
 		}
 
-		else if (gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
+		else if (gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
 			ergebnis = ramschSpielen(gespielteKarten);
 		}
@@ -1154,8 +1154,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.OVER_KNAVE);
 		} else {
@@ -1179,8 +1179,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.TEN);
 		} else {
@@ -1205,8 +1205,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.DAUS);
 		} else {
@@ -1231,9 +1231,9 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND
-				|| gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND
+				|| gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
 			ergebnis = null;
 		}
@@ -1312,8 +1312,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.NINE);
 		} else {
@@ -1338,8 +1338,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.KING);
 		} else {
@@ -1363,8 +1363,8 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			ergebnis = new PlayingCard(farbe, Value.TEN);
 		} else {
@@ -1388,9 +1388,9 @@ public class SmartPlayer extends Player {
 		
 		PlayingCard ergebnis = null;
 		
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND
-				|| gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND
+				|| gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
 			ergebnis = null;
 		} else {
@@ -1747,13 +1747,13 @@ public class SmartPlayer extends Player {
 		int ergebnis = 0;
 		PlayingCard[] spitzen;
 
-		if (zuReizendeSpielart.getGameVariety() == GameVarietyName.SUIT) {
+		if (zuReizendeSpielart.getGameVariety() == GameVariety.Name.SUIT) {
 
 			spitzen = farbeSpitzen(zuReizendeSpielart);
 			ergebnis = spitzenZaehlen(spitzen);
 		}
 
-		else if (zuReizendeSpielart.getGameVariety() == GameVarietyName.GRAND) {
+		else if (zuReizendeSpielart.getGameVariety() == GameVariety.Name.GRAND) {
 
 			spitzen = grandSpitzen(zuReizendeSpielart);
 			ergebnis = spitzenZaehlen(spitzen);

@@ -16,16 +16,15 @@ import main.playingcard.Value;
  */
 abstract public class GameVariety implements IGameVariety {
 	
-	private GameVarietyName gameVarietyName;
-	
+	private Name gameVarietyName;
 
 	@Override
-	public GameVarietyName getGameVariety() {
+	public Name getGameVariety() {
 		return gameVarietyName;
 	}
 	
 	@Override
-	public void setGameVariety(GameVarietyName gameVarietyName) {
+	public void setGameVariety(Name gameVarietyName) {
 		this.gameVarietyName = gameVarietyName;
 	}
 
@@ -231,5 +230,4 @@ abstract public class GameVariety implements IGameVariety {
 		}
 		return result;
 	}
-
 }

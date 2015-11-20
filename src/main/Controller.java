@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
@@ -450,7 +450,7 @@ public class Controller implements Observer, IController {
 			// Stichauswertung ausgeben
 			outputTrickEvaluation(playedCards, player1);
 
-			if (table.getGameVariety().getGameVariety() == GameVarietyName.NULL
+			if (table.getGameVariety().getGameVariety() == GameVariety.Name.NULL
 					&& player1.getName() == table.getDeclarer()
 							.getName()) {
 				
@@ -594,7 +594,7 @@ public class Controller implements Observer, IController {
 		int augen = 0;
 
 		output.gameOver();
-		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getGameVariety().getGameVariety() != main.gamevariety.GameVariety.Name.RAMSCH) {
 			
 			augen = table.calculateAugen(table.getDeclarer().getTricks());
 			int points = table.calculatePoints(augen);

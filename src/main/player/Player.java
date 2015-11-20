@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
@@ -428,12 +428,12 @@ abstract public class Player implements IPlayer {
 
 		trumps = new PlayingCard[12];
 
-		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			rankUnderKnaves();
 		}
 		
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 
 			rankUnderKnaves();
 			rankSuit();

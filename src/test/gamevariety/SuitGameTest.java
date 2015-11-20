@@ -7,7 +7,7 @@ import java.util.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
@@ -64,7 +64,7 @@ public class SuitGameTest {
 
 	@Test
 	public void SuitGameTest2() {
-		assertEquals(GameVarietyName.SUIT, new SuitGame(Suit.BELLS)
+		assertEquals(GameVariety.Name.SUIT, new SuitGame(Suit.BELLS)
 				.getGameVariety());
 	}
 

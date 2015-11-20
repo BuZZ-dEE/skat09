@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.INullGame;
 import main.gamevariety.NullGame;
 import main.playingcard.PlayingCard;
@@ -55,7 +55,7 @@ public class NullGameTest {
 	
 	@Test
 	public void testNullGame() {
-		assertEquals(GameVarietyName.NULL, new NullGame().getGameVariety());
+		assertEquals(GameVariety.Name.NULL, new NullGame().getGameVariety());
 	}
 	
 

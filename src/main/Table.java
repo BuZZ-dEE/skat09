@@ -6,7 +6,7 @@ import java.util.Observable;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
 import main.player.IHumanPlayer;
@@ -883,7 +883,7 @@ public class Table extends Observable {
 	 */
 	public void setTeammate() {
 
-		if (gameVariety.getGameVariety() != GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() != GameVariety.Name.RAMSCH) {
 
 			if (!player1.isDeclarer()) {
 
@@ -1212,7 +1212,7 @@ public class Table extends Observable {
 	 */
 	public boolean evaluateGame() {
 		boolean won = false;
-		if (gameVariety.getGameVariety() != GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() != GameVariety.Name.RAMSCH) {
 			ArrayList<PlayingCard> temp = new ArrayList<PlayingCard>();
 
 			temp = getDeclarer().getTricks();
@@ -1483,15 +1483,15 @@ public class Table extends Observable {
 	}
 
 	public int pointsVariants(int result, int augenCount) {
-		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.NULL) {
 			baseValues.add(23);
 			result = pointsNullGame();
 		}
-		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 			baseValues.add(24);
 			result = pointsGrandGame(augenCount);
 		}
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 			result = pointsSuitGame(augenCount);
 		}
 		return result;
@@ -1611,11 +1611,11 @@ public class Table extends Observable {
 		// Gründe zu verlieren_
 		boolean lost = false;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.NULL) {
 			lost = nullVerloren();
 		}
 
-		else if (gameVariety.getGameVariety() != GameVarietyName.NULL) {
+		else if (gameVariety.getGameVariety() != GameVariety.Name.NULL) {
 			lost = anderesSpielVerloren(augenzahl);
 		}
 
@@ -1685,10 +1685,10 @@ public class Table extends Observable {
 		int zwierg = 0;
 		int result = 0;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 			zwierg = 24;
 		}
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 			SuitGame suit = (SuitGame) gameVariety;
 			zwierg = suit.getTrumpSuit().value();
 		}
@@ -1700,7 +1700,7 @@ public class Table extends Observable {
 		
 
 		if (((Math.abs(getDeclarer().matadorsJackStraitCount()) + level) * zwierg) < biddingValue
-				&& gameVariety.getGameVariety() != GameVarietyName.NULL) {
+				&& gameVariety.getGameVariety() != GameVariety.Name.NULL) {
 			
 			if (biddingValue > points) {
 				setOverbidding(true);

@@ -19,7 +19,7 @@ public class NullGame extends GameVariety implements INullGame {
 	 * Instanziert ein Null - Spiel
 	 */
 	public NullGame() {
-		setGameVariety(GameVarietyName.NULL);
+		setGameVariety(Name.NULL);
 	}
 
 	

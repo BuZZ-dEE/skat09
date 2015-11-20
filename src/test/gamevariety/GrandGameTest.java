@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.playingcard.PlayingCard;
 import main.playingcard.Suit;
@@ -53,7 +53,7 @@ public class GrandGameTest {
 	
 	@Test
 	public void testGrandGame() {
-		assertEquals(GameVarietyName.GRAND, game.getGameVariety());
+		assertEquals(GameVariety.Name.GRAND, game.getGameVariety());
 	}
 	
 	//

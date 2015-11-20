@@ -15,7 +15,7 @@ import main.playingcard.Value;
 public class Ramsch extends GameVariety {
 	
 	public Ramsch() {
-		setGameVariety(GameVarietyName.RAMSCH);
+		setGameVariety(Name.RAMSCH);
 	}
 
 	@Override

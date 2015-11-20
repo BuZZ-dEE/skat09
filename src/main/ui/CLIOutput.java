@@ -8,7 +8,7 @@ import java.util.SortedSet;
 
 import main.Messages;
 import main.Table;
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
@@ -338,7 +338,7 @@ public class CLIOutput extends Output {
 		IGameVariety gameVariety = null;
 
 		System.out.println(Messages.getI18n("game.type.number.choose"));
-		for (Enum<GameVarietyName> gameVarietyName : GameVarietyName
+		for (Enum<GameVariety.Name> gameVarietyName : GameVariety.Name
 				.values()) {
 
 			System.out.println(counter + ": " + gameVarietyName);
@@ -551,7 +551,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void showEvaluation(boolean isWon) {
-		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getGameVariety().getGameVariety() != GameVariety.Name.RAMSCH) {
 			if (isWon == true) {
 				System.out.println(Messages.getI18n("player.won", table
 						.getDeclarer().getName()));
@@ -685,7 +685,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void trump() {
-		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getGameVariety().getGameVariety() != GameVariety.Name.RAMSCH) {
 			System.out.println(Messages.getI18n("player.name.playing.game",
 					table.getDeclarer().getName(), table
 							.getGameVariety().toString()));

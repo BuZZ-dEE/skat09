@@ -12,19 +12,34 @@ import main.playingcard.PlayingCard;
  * @version 03.07.2009
  */
 public interface IGameVariety {
-
+	
+	/**
+	 * The game variety
+	 * 
+	 * <li>Grand
+	 * <li>Null
+	 * <li>Suit
+	 * <li>Ramsch
+	 * 
+	 * @since 21.11.2015 00:27:37
+	 * 
+	 * @author Sebastian Schlatow <ssc@openmailbox.org>
+	 *
+	 */
+    public enum Name { GRAND, NULL,  SUIT, RAMSCH }
+	
 	/**
 	 * gibt die aktuelle Spielart zurueck.
 	 * 
 	 * @return aktuelle Spielart
 	 */
-	public abstract GameVarietyName getGameVariety();
+	public abstract Name getGameVariety();
 
 	/**
 	 * Setzt die Spielartbezeichnung der Spielart
 	 * @param art Die Spielartbezeichnung
 	 */
-	public abstract void setGameVariety(GameVarietyName art);
+	public abstract void setGameVariety(Name art);
 
 	/**
 	 * Prueft in Abh&auml;ngigkeit von der zuerst gespielten Karten, ob eine Karte
