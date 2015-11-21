@@ -13,8 +13,6 @@ import main.player.IHumanPlayer;
 import main.player.IPlayer;
 import main.player.Position;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 
 /**
@@ -690,15 +688,15 @@ public class Table extends Observable {
 
 		deck.clear();
 
-		for (Suit suit : Suit.values()) {
+		for (PlayingCard.Suit suit : PlayingCard.Suit.values()) {
 
-			for (Value wert : Value.values()) {
+			for (PlayingCard.Rank wert : PlayingCard.Rank.values()) {
 
 				card = new PlayingCard(suit, wert);
 				deck.add(card);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
-				if ((card.getValue() == Value.SIX) && (sixSkat == false)) {
+				if ((card.getValue() == PlayingCard.Rank.SIX) && (sixSkat == false)) {
 					deck.remove(card);
 				}
 			}
@@ -1510,27 +1508,27 @@ public class Table extends Observable {
 
 		for (int i = 0; i < tricks.size(); i++) {
 
-			if (tricks.get(i).getValue() == Value.DAUS) {
+			if (tricks.get(i).getValue() == PlayingCard.Rank.DAUS) {
 
 				result += 11;
 
-			} else if (tricks.get(i).getValue() == Value.TEN) {
+			} else if (tricks.get(i).getValue() == PlayingCard.Rank.TEN) {
 
 				result += 10;
 
-			} else if (tricks.get(i).getValue() == Value.UNDER_KNAVE) {
+			} else if (tricks.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				result += 2;
 
-			} else if (tricks.get(i).getValue() == Value.OVER_KNAVE) {
+			} else if (tricks.get(i).getValue() == PlayingCard.Rank.OVER_KNAVE) {
 
 				result += 3;
 
-			} else if (tricks.get(i).getValue() == Value.KING) {
+			} else if (tricks.get(i).getValue() == PlayingCard.Rank.KING) {
 
 				result += 4;
 
-			} else if (tricks.get(i).getValue() == Value.SIX) {
+			} else if (tricks.get(i).getValue() == PlayingCard.Rank.SIX) {
 
 				result += 6;
 			}

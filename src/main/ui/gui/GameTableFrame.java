@@ -886,7 +886,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 * Anschliessend wird die Ausgabe wiedergelassen.
 	 */
 	public void reizLimfest() {
-		String s = (String) JOptionPane.showInputDialog(null,
+		String s = JOptionPane.showInputDialog(null,
 				Messages.getI18n("game.agent.value.bidding.enter"));
 
 		// If a string was returned, say so.
@@ -1268,11 +1268,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 
 		if (e.getActionCommand().compareTo(
 				Messages.getI18n("game.playable.cards.show")) == 0) {
-			if (!spielbarhilfe) {
-				spielbarhilfe = true;
-			} else {
-				spielbarhilfe = false;
-			}
+			spielbarhilfe = !spielbarhilfe;
 		}
 
 		if (e.getActionCommand().compareTo(

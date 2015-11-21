@@ -15,8 +15,6 @@ import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
 import main.player.IPlayer;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 /**
  * Diese Klasse wird das Spiel f&uuml;r den menschlichen Spieler &uuml;ber die
@@ -282,9 +280,9 @@ public class CLIOutput extends Output {
 		for (int i = 0; i < hand.size(); i++) {
 
 			PlayingCard card = hand.get(i);
-			Suit suit = card.getSuit();
-			Value value = card.getValue();
-			System.out.println(i + ": " + suit + " " + value); // TODO also
+			PlayingCard.Suit suit = card.getSuit();
+			PlayingCard.Rank rank = card.getValue();
+			System.out.println(i + ": " + suit + " " + rank); // TODO also
 																// translate
 		}
 
@@ -375,7 +373,7 @@ public class CLIOutput extends Output {
 		int result = -1;
 
 		System.out.println(Messages.getI18n("game.commandline.trump.choose"));
-		for (Enum<Suit> suit : Suit.values()) {
+		for (Enum<PlayingCard.Suit> suit : PlayingCard.Suit.values()) {
 
 			System.out.println(counter + ": " + suit);
 			counter++;
@@ -398,16 +396,16 @@ public class CLIOutput extends Output {
 		switch (result) {
 
 		case 0:
-			suitGame = new SuitGame(Suit.BELLS);
+			suitGame = new SuitGame(PlayingCard.Suit.BELLS);
 			break;
 		case 1:
-			suitGame = new SuitGame(Suit.HEARTS);
+			suitGame = new SuitGame(PlayingCard.Suit.HEARTS);
 			break;
 		case 2:
-			suitGame = new SuitGame(Suit.LEAVES);
+			suitGame = new SuitGame(PlayingCard.Suit.LEAVES);
 			break;
 		case 3:
-			suitGame = new SuitGame(Suit.ACORNS);
+			suitGame = new SuitGame(PlayingCard.Suit.ACORNS);
 			break;
 		default:
 			System.out.println(Messages.getI18n("game.color.input.wrong"));

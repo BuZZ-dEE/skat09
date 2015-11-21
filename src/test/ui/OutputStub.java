@@ -10,8 +10,6 @@ import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
 import main.player.IPlayer;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 import main.ui.IOutput;
 
 
@@ -90,7 +88,7 @@ public class OutputStub implements IOutput{
 	
 	public SuitGame suitGame() {
 		
-		SuitGame farbspiel = new SuitGame(Suit.LEAVES);
+		SuitGame farbspiel = new SuitGame(PlayingCard.Suit.LEAVES);
 		return farbspiel;
 	}
 
@@ -300,7 +298,7 @@ public class OutputStub implements IOutput{
 	public PlayingCard playCard(PlayingCard[] gespielteKarten, IPlayer spieler)
 			throws IOException {
 		
-		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		return karte;
 	}
 

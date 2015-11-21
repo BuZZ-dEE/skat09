@@ -15,7 +15,6 @@ import main.gamevariety.SuitGame;
 import main.player.IPlayer;
 import main.player.PlayerEnum;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
 import main.ui.gui.*;
 
 
@@ -411,16 +410,16 @@ public class GUIOutput extends Output {
 		SuitGame suitGame = null;
 		
 		if (s.compareTo(Messages.getI18n("game.type.german.herz")) == 0) {
-			suitGame = new SuitGame(Suit.HEARTS);
+			suitGame = new SuitGame(PlayingCard.Suit.HEARTS);
 		} else if (s.compareTo(Messages.getI18n("game.type.diamonds")) == 0
 				|| s.compareTo(Messages.getI18n("game.type.german.schellen")) == 0) {
-			suitGame = new SuitGame(Suit.BELLS);
+			suitGame = new SuitGame(PlayingCard.Suit.BELLS);
 		} else if (s.compareTo(Messages.getI18n("game.type.spades")) == 0
 				|| s.compareTo(Messages.getI18n("game.type.german.gruen")) == 0) {
-			suitGame = new SuitGame(Suit.LEAVES);
+			suitGame = new SuitGame(PlayingCard.Suit.LEAVES);
 		} else if (s.compareTo(Messages.getI18n("game.type.clubs")) == 0
 				|| s.compareTo(Messages.getI18n("game.type.german.eichel")) == 0) {
-			suitGame = new SuitGame(Suit.ACORNS);
+			suitGame = new SuitGame(PlayingCard.Suit.ACORNS);
 		} else {
 			System.out.println("Fehler in farbeansagen()");
 		}

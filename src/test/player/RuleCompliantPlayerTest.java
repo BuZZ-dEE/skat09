@@ -14,9 +14,6 @@ import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
 import main.player.RuleCompliantPlayer;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
-
 
 public class RuleCompliantPlayerTest {
 	
@@ -27,14 +24,14 @@ public class RuleCompliantPlayerTest {
 	PlayingCard playingCard4;
 	RuleCompliantPlayer player = new RuleCompliantPlayer("Mimi");
 	PlayingCard[] playedCards = new PlayingCard[3];
-	SuitGame suitGame = new SuitGame(Suit.HEARTS);
+	SuitGame suitGame = new SuitGame(PlayingCard.Suit.HEARTS);
 	
 	@Before
 	public void setUp() {
-		playingCard1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
-		playingCard2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		playingCard3 = new PlayingCard(Suit.LEAVES, Value.NINE);
-		playingCard4 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
+		playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		playingCard3 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
+		playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
 		hand.add(playingCard4);
 		hand.add(playingCard3);
@@ -83,13 +80,13 @@ public class RuleCompliantPlayerTest {
 		boolean testSuccess = false;
 		
 		hand.clear();
-		hand.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
-		hand.add(new PlayingCard(Suit.BELLS, Value.EIGHT));
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT));
 		ArrayList<PlayingCard> oldHand = new ArrayList<PlayingCard>();
 		oldHand = (ArrayList<PlayingCard>) hand.clone();
 		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.BELLS, Value.SEVEN);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard playedCard = new PlayingCard(null,null);
 		playedCard = player.playCard(playedCards);
 		hand = player.getHand();

@@ -10,13 +10,11 @@ import org.junit.Test;
 import main.gamevariety.GameVariety;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 public class SuitGameTest {
-	Suit a = Suit.HEARTS;
+	PlayingCard.Suit a = PlayingCard.Suit.HEARTS;
 	SuitGame game = new SuitGame(a);
-	Suit b = Suit.LEAVES;
+	PlayingCard.Suit b = PlayingCard.Suit.LEAVES;
 	SuitGame game2 = new SuitGame(b);
 	PlayingCard card1;
 	PlayingCard card2;
@@ -35,15 +33,15 @@ public class SuitGameTest {
 
 	@Before
 	public void setUp() {
-		card1 = new PlayingCard(Suit.HEARTS, Value.KING);
-		card2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		card3 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		card4 = new PlayingCard(Suit.BELLS, Value.KING);
-		card5 = new PlayingCard(Suit.ACORNS, Value.DAUS);
-		card6 = new PlayingCard(Suit.ACORNS, Value.NINE);
-		card7 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		card8 = new PlayingCard(Suit.LEAVES, Value.DAUS);
-		card9 = new PlayingCard(Suit.BELLS, Value.NINE);
+		card1 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING);
+		card2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		card3 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+		card4 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
+		card5 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
+		card6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
+		card7 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
+		card8 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
+		card9 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		
 		
 		hand.add(card2);
@@ -59,18 +57,18 @@ public class SuitGameTest {
 
 	@Test
 	public void SuitGameTest3() {
-		assertEquals(Suit.BELLS, new SuitGame(Suit.BELLS).getTrumpSuit());
+		assertEquals(PlayingCard.Suit.BELLS, new SuitGame(PlayingCard.Suit.BELLS).getTrumpSuit());
 	}
 
 	@Test
 	public void SuitGameTest2() {
-		assertEquals(GameVariety.Name.SUIT, new SuitGame(Suit.BELLS)
+		assertEquals(GameVariety.Name.SUIT, new SuitGame(PlayingCard.Suit.BELLS)
 				.getGameVariety());
 	}
 
 	@Test
 	public void testgetTrumpSuit() {
-		assertEquals(Suit.HEARTS, game.getTrumpSuit());
+		assertEquals(PlayingCard.Suit.HEARTS, game.getTrumpSuit());
 	}
 
 	@Test

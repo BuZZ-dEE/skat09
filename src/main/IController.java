@@ -24,40 +24,40 @@ public interface IController {
 	 * 
 	 * @return das Ausgabeobjekt
 	 */
-	public abstract IOutput getOutput();
+	IOutput getOutput();
 
 	/**
 	 * gibt das Spiel wieder frei, das vorher f&uuml;r eine GUI-Eingabe
 	 * angehalten wurde
 	 */
-	public abstract void release();
+	void release();
 
 	/**
 	 * Leitet das gesamte Spiel.
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void play() throws IOException;
+	void play() throws IOException;
 
 	/**
 	 * Leitet die Anmeldung
 	 * 
 	 */
-	public abstract void logIn();
+	void logIn();
 
 	/**
 	 * Menschlicher Spieler soll seine Gegner w&auml;hlen.
 	 */
-	public abstract void selectAdversary();
+	void selectAdversary();
 	/**
 	 * Die vom menschlichen Spieler gew&auml;hlte Skatart wird gesetzt
 	 */
-	public abstract void chooseSkatVariant();
+	void chooseSkatVariant();
 
 	/**
 	 * Die vom menschlichen Spieler gew&auml;hlte Blattart wird gesetzt
 	 */
-	public abstract void selectSkatDeck();
+	void selectSkatDeck();
 
 	/**
 	 * Leitet das Reizen und ruft die Untermethode reizen auf, um den
@@ -67,7 +67,7 @@ public interface IController {
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void coordinateBidding() throws IOException;
+	void coordinateBidding() throws IOException;
 
 	/**
 	 * Organisiert das Reizen zwischen zwei Spielern und liefert den Gewinner.
@@ -80,7 +80,7 @@ public interface IController {
 	 *            - Spieler der bid muss.
 	 * @return Spieler, der gewonnen hat oder null.
 	 */
-	public abstract IPlayer bidding2(IPlayer spieler1, IPlayer spieler2);
+	IPlayer bidding2(IPlayer spieler1, IPlayer spieler2);
 
 	/**
 	 * L&auml;sst den Reizagenten das Reizen durchf&uuml;hren oder den Spieler.
@@ -89,8 +89,8 @@ public interface IController {
 	 * @param reizwert
 	 * @return true, wenn spieler mitgeht
 	 */
-	public abstract boolean bidOrBiddingAgent(IPlayer spieler, int reizwert,
-											  boolean sagen);
+	boolean bidOrBiddingAgent(IPlayer spieler, int reizwert,
+							  boolean sagen);
 
 	/**
 	 * Organisiert das Reizen zwischen zwei Spielern und liefert den Gewinner.
@@ -102,19 +102,19 @@ public interface IController {
 	 *            - Spieler der bid muss.
 	 * @return Spieler, der gewonnen hat.
 	 */
-	public abstract IPlayer bidding1(IPlayer spieler1, IPlayer spieler2);
+	IPlayer bidding1(IPlayer spieler1, IPlayer spieler2);
 
 	/**
 	 * Setzt die Vorhand als Alleinspieler, falls die Variante R&auml;uberskat
 	 * gew&auml;hlt wurde.
 	 */
-	public abstract void decideRaeuberGame();
+	void decideRaeuberGame();
 
 	/**
 	 * Leitet das Spiel, nachdem das Reizen abgeschlossen ist.
 	 * @throws IOException 
 	 */
-	public abstract void leadGame() throws NullPointerException, IOException;
+	void leadGame() throws NullPointerException, IOException;
 
 	/**
 	 * Leitet alle Aktionen, die der Alleinspieler durchf&uuml;ren muss, bevor
@@ -123,23 +123,23 @@ public interface IController {
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void declarerActions() throws IOException;
+	void declarerActions() throws IOException;
 
 	/**
 	 * Diese Methode bereitet alles f$uuml;r ein Spiel vor.
 	 */
-	public abstract void prepareGame();
+	void prepareGame();
 
 	/**
 	 * Diese Methode wertet das Spiel aus.
 	 */
-	public abstract void evaluation();
+	void evaluation();
 
 	/**
 	 * Die Methode r&auml;umt den Tisch auf. Die Karten der Spieler, sowie der
 	 * Skat und die eingezogenen Stiche der Spieler werden gel&ouml;scht.
 	 */
-	public abstract void cleanUp();
+	void cleanUp();
 
 	/**
 	 * Diese Methode gibt auf der Konsole aus, welcher Spieler welche Karte
@@ -150,8 +150,8 @@ public interface IController {
 	 * @param gewinner
 	 *            - vorher ermittelter Gewinner des Stichs
 	 */
-	public abstract void outputTrickEvaluation(PlayingCard[] gespielteKarten,
-											   IPlayer gewinner);
+	void outputTrickEvaluation(PlayingCard[] gespielteKarten,
+							   IPlayer gewinner);
 
 	/**
 	 * Falls der Reizagent aktiviert wurde und der Spieler menschlich ist lasse
@@ -163,18 +163,18 @@ public interface IController {
 	 * @return false, wenn Spieler pass, true, wenn Spieler mitgeht, true,
 	 * falls der bidAgent sagt, false, wenn er h&ouml;rt
 	 */
-	public abstract boolean bidAgent(IPlayer spieler);
+	boolean bidAgent(IPlayer spieler);
 
 	/**
 	 * gibt zur&uuml;ck, ob das Spiel beendet wird
 	 * @return boolean
 	 */
-	public abstract boolean quitGame();
+	boolean quitGame();
 
 	/**
 	 * Gibt dem im Skat liegenden Karten den Alleinspieler als Besitzer.
 	 */
-	public abstract void assignSkatCardsToOwner();
+	void assignSkatCardsToOwner();
 
 	/**
 	 * Setzt die Flags schneider, schwarz und ouvert im Tisch.
@@ -184,73 +184,73 @@ public interface IController {
 	 * @param spielart
 	 *            - vom Alleinspieler angesagte Spielart
 	 */
-	public abstract void setFlags(IPlayer alleinspieler, IGameVariety spielart);
+	void setFlags(IPlayer alleinspieler, IGameVariety spielart);
 
 	/**
 	 * Falls ein Spieler eine Karte spielt, wird dies &uuml;ber die Ausgabe
 	 * bekannt gegeben.
 	 */
-	public abstract void update(Observable tisch, Object gespielteKarten);
+	void update(Observable tisch, Object gespielteKarten);
 
 	/**
 	 * h&auml;lt das Spiel an, damit der Spieler in der GUI Eingaben
 	 * setzen kann
 	 */
-	public abstract void waiting();
+	void waiting();
 
 	/**
 	 * Wird ausgef&uuml;hrt, falls eingepasst wurde.
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void passGame() throws IOException;
+	void passGame() throws IOException;
 
 	/**
 	 * Spielvorbereitung im Fall, dass geramscht wird.
 	 * @throws IOException 
 	 * @throws NullPointerException 
 	 */
-	public abstract void ramschen() throws NullPointerException, IOException;
+	void ramschen() throws NullPointerException, IOException;
 
 	/**
 	 * Spielverlauf bei normalem Spiel (nicht Ramsch)
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void normalGamePlay() throws IOException;
+	void normalGamePlay() throws IOException;
 
 	/**
 	 * Spielablauf Rauberskat
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void playRaeuberskat() throws IOException;
+	void playRaeuberskat() throws IOException;
 
 	/**
 	 * Spielablauf mit Ramsch und Bock
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void playRamschBock() throws IOException;
+	void playRamschBock() throws IOException;
 
 	/**
 	 * Spielablauf nach internationaler Skatordnung
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void playIntSkat() throws IOException;
+	void playIntSkat() throws IOException;
 
 	/**
 	 * Falls ein intelligenter Computerspieler mitspielt, m&uuml;ss dieser
 	 * die Zahl seiner Spitzen kennen. Diese Methode berechnet die Spitzen
 	 * des Computerspielers und teil sie dem Computerspieler mit.
 	 */
-	public abstract void initializeSmartPlayer();
+	void initializeSmartPlayer();
 	
 	/**
 	 * Da die Spieler anhand ihrer Namen verglichen werden, darf kein Spieler
 	 * wie ein anderer heißen.
 	 */
-	public void namesComparison();
+	void namesComparison();
 
 }

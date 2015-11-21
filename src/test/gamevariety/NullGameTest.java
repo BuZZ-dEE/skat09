@@ -11,8 +11,6 @@ import main.gamevariety.GameVariety;
 import main.gamevariety.INullGame;
 import main.gamevariety.NullGame;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 
 public class NullGameTest {
@@ -35,17 +33,17 @@ public class NullGameTest {
 	@Before
 	public void setUp() {
 		
-		playingCard1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
-		playingCard2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		playingCard3 = new PlayingCard(Suit.LEAVES, Value.NINE);
-		playingCard4 = new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE);
-		playingCard5 = new PlayingCard(Suit.ACORNS, Value.KING);
-		playingCard6 = new PlayingCard(Suit.ACORNS, Value.TEN);
-		playingCard7 = new PlayingCard(Suit.ACORNS, Value.DAUS);
-		playingCard8 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		playingCard9 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		playingCard10 = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
-		playingCard11 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
+		playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		playingCard3 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
+		playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE);
+		playingCard5 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
+		playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
+		playingCard7 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
+		playingCard8 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+		playingCard9 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
+		playingCard10 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
+		playingCard11 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
 		hand.add(playingCard4);
 		hand.add(playingCard3);

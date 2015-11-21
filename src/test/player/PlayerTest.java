@@ -15,8 +15,6 @@ import main.gamevariety.SuitGame;
 import main.player.Granny;
 import main.player.IPlayer;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 import test.gamevariety.NullGameStub2;
 
 
@@ -42,9 +40,9 @@ public class PlayerTest{
 
 	@Test
 	public void addTrickTest() {
-		PlayingCard card1 = new PlayingCard(Suit.HEARTS,Value.KING);
-		PlayingCard card2 =	new PlayingCard(Suit.BELLS,Value.SEVEN);
-		PlayingCard card3 =	new PlayingCard(Suit.ACORNS,Value.TEN);
+		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.KING);
+		PlayingCard card2 =	new PlayingCard(PlayingCard.Suit.BELLS,PlayingCard.Rank.SEVEN);
+		PlayingCard card3 =	new PlayingCard(PlayingCard.Suit.ACORNS,PlayingCard.Rank.TEN);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = card1;
 		playedCards[1] = card2;
@@ -56,9 +54,9 @@ public class PlayerTest{
 	
 	@Test
 	public void addTrickTest2() {
-		PlayingCard card1 = new PlayingCard(Suit.HEARTS,Value.KING);
-		PlayingCard card2 =	new PlayingCard(Suit.BELLS,Value.SEVEN);
-		PlayingCard card3 =	new PlayingCard(Suit.ACORNS,Value.TEN);
+		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.KING);
+		PlayingCard card2 =	new PlayingCard(PlayingCard.Suit.BELLS,PlayingCard.Rank.SEVEN);
+		PlayingCard card3 =	new PlayingCard(PlayingCard.Suit.ACORNS,PlayingCard.Rank.TEN);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = card1;
 		playedCards[1] = card2;
@@ -70,9 +68,9 @@ public class PlayerTest{
 	
 	@Test
 	public void addTrickTest3() {
-		PlayingCard card1 = new PlayingCard(Suit.HEARTS,Value.KING);
-		PlayingCard card2 =	new PlayingCard(Suit.BELLS,Value.SEVEN);
-		PlayingCard card3 =	new PlayingCard(Suit.ACORNS,Value.TEN);
+		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.KING);
+		PlayingCard card2 =	new PlayingCard(PlayingCard.Suit.BELLS,PlayingCard.Rank.SEVEN);
+		PlayingCard card3 =	new PlayingCard(PlayingCard.Suit.ACORNS,PlayingCard.Rank.TEN);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = card1;
 		playedCards[1] = card2;
@@ -83,9 +81,9 @@ public class PlayerTest{
 	
 	@Test
 	public void addTrickTest4() {
-		PlayingCard card1 = new PlayingCard(Suit.HEARTS,Value.KING);
-		PlayingCard card2 =	new PlayingCard(Suit.BELLS,Value.SEVEN);
-		PlayingCard card3 =	new PlayingCard(Suit.ACORNS,Value.TEN);
+		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.KING);
+		PlayingCard card2 =	new PlayingCard(PlayingCard.Suit.BELLS,PlayingCard.Rank.SEVEN);
+		PlayingCard card3 =	new PlayingCard(PlayingCard.Suit.ACORNS,PlayingCard.Rank.TEN);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = card1;
 		playedCards[1] = card2;
@@ -126,31 +124,31 @@ public class PlayerTest{
 		
 		player.setGameVariety(games);
 		ArrayList<PlayingCard> handTest = new ArrayList<PlayingCard>();
-		handTest.add(new PlayingCard(Suit.HEARTS,Value.KING));
-		handTest.add(new PlayingCard(Suit.BELLS,Value.SEVEN));
-		handTest.add(new PlayingCard(Suit.ACORNS,Value.TEN));
-		handTest.add(new PlayingCard(Suit.LEAVES,Value.EIGHT));
-		handTest.add(new PlayingCard(Suit.LEAVES,Value.KING));
-		handTest.add(new PlayingCard(Suit.HEARTS,Value.DAUS));
-		handTest.add(new PlayingCard(Suit.HEARTS,Value.OVER_KNAVE));
-		handTest.add(new PlayingCard(Suit.LEAVES,Value.TEN));
-		handTest.add(new PlayingCard(Suit.LEAVES,Value.DAUS));
-		handTest.add(new PlayingCard(Suit.ACORNS,Value.UNDER_KNAVE));
+		handTest.add(new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.KING));
+		handTest.add(new PlayingCard(PlayingCard.Suit.BELLS,PlayingCard.Rank.SEVEN));
+		handTest.add(new PlayingCard(PlayingCard.Suit.ACORNS,PlayingCard.Rank.TEN));
+		handTest.add(new PlayingCard(PlayingCard.Suit.LEAVES,PlayingCard.Rank.EIGHT));
+		handTest.add(new PlayingCard(PlayingCard.Suit.LEAVES,PlayingCard.Rank.KING));
+		handTest.add(new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.DAUS));
+		handTest.add(new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.OVER_KNAVE));
+		handTest.add(new PlayingCard(PlayingCard.Suit.LEAVES,PlayingCard.Rank.TEN));
+		handTest.add(new PlayingCard(PlayingCard.Suit.LEAVES,PlayingCard.Rank.DAUS));
+		handTest.add(new PlayingCard(PlayingCard.Suit.ACORNS,PlayingCard.Rank.UNDER_KNAVE));
 		
 		player.setHand(handTest);
 		
 		ArrayList<PlayingCard> testproof = new ArrayList<PlayingCard>();
 		
-		testproof.add(new PlayingCard(Suit.BELLS,Value.SEVEN));
-		testproof.add(new PlayingCard(Suit.HEARTS,Value.OVER_KNAVE));
-		testproof.add(new PlayingCard(Suit.HEARTS,Value.KING));
-		testproof.add(new PlayingCard(Suit.HEARTS,Value.DAUS));
-		testproof.add(new PlayingCard(Suit.LEAVES,Value.EIGHT));
-		testproof.add(new PlayingCard(Suit.LEAVES,Value.KING));
-		testproof.add(new PlayingCard(Suit.LEAVES,Value.TEN));
-		testproof.add(new PlayingCard(Suit.LEAVES,Value.DAUS));
-		testproof.add(new PlayingCard(Suit.ACORNS,Value.TEN));
-		testproof.add(new PlayingCard(Suit.ACORNS,Value.UNDER_KNAVE));
+		testproof.add(new PlayingCard(PlayingCard.Suit.BELLS,PlayingCard.Rank.SEVEN));
+		testproof.add(new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.OVER_KNAVE));
+		testproof.add(new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.KING));
+		testproof.add(new PlayingCard(PlayingCard.Suit.HEARTS,PlayingCard.Rank.DAUS));
+		testproof.add(new PlayingCard(PlayingCard.Suit.LEAVES,PlayingCard.Rank.EIGHT));
+		testproof.add(new PlayingCard(PlayingCard.Suit.LEAVES,PlayingCard.Rank.KING));
+		testproof.add(new PlayingCard(PlayingCard.Suit.LEAVES,PlayingCard.Rank.TEN));
+		testproof.add(new PlayingCard(PlayingCard.Suit.LEAVES,PlayingCard.Rank.DAUS));
+		testproof.add(new PlayingCard(PlayingCard.Suit.ACORNS,PlayingCard.Rank.TEN));
+		testproof.add(new PlayingCard(PlayingCard.Suit.ACORNS,PlayingCard.Rank.UNDER_KNAVE));
 		
 		player.sortHand(games);
 		boolean compare = true;
@@ -167,9 +165,9 @@ public class PlayerTest{
 	public void addPlayedCardsTest() {
 		
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
-		playedCards[1] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		playedCards[2] = new PlayingCard(Suit.LEAVES, Value.DAUS);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		player.addPlayedCards(playedCards);
 		assertEquals(playedCards[0], player.getAllPlayedCards().get(0));
 	}
@@ -178,9 +176,9 @@ public class PlayerTest{
 	public void addPlayedCardsTest2() {
 		
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
-		playedCards[1] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		playedCards[2] = new PlayingCard(Suit.LEAVES, Value.DAUS);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		player.addPlayedCards(playedCards);
 		assertEquals(playedCards[2], player.getAllPlayedCards().get(2));
 	}
@@ -190,7 +188,7 @@ public class PlayerTest{
 		boolean test = false;
 		player.setHand(new ArrayList<PlayingCard>());
 		player.getHand().add(
-		new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+		new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		IGameVariety grandGame = new GrandGame();
 		player.setGameVariety(grandGame);
 		player.arrangeMatadorsJackStraitOrder();
@@ -203,7 +201,7 @@ public class PlayerTest{
 	public void testMatadorsJackStraitCount() {
 		player.setHand(new ArrayList<PlayingCard>());
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.setGameVariety(new GrandGame());
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(1, player.matadorsJackStraitCount());
@@ -212,7 +210,7 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitCount2() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-11, player.matadorsJackStraitCount());
 	}
@@ -222,7 +220,7 @@ public class PlayerTest{
 		player.setHand(new ArrayList<PlayingCard>());
 		player.setGameVariety(new GrandGame());
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(1, player.matadorsJackStraitWith(1));
 	}
@@ -232,9 +230,9 @@ public class PlayerTest{
 		player.setHand(new ArrayList<PlayingCard>());
 		player.setGameVariety(new GrandGame());
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(2, player.matadorsJackStraitWith(2));
 	}
@@ -244,11 +242,11 @@ public class PlayerTest{
 		player.setHand(new ArrayList<PlayingCard>());
 		player.setGameVariety(new GrandGame());
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(3, player.matadorsJackStraitWith(3));
 	}
@@ -258,13 +256,13 @@ public class PlayerTest{
 		player.setHand(new ArrayList<PlayingCard>());
 		player.setGameVariety(new GrandGame());
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(4, player.matadorsJackStraitWith(4));
 	}
@@ -272,17 +270,17 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWith5() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(5, player.matadorsJackStraitWith(5));
 	}
@@ -290,19 +288,19 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWith6() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.TEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(6, player.matadorsJackStraitWith(6));
 	}
@@ -310,21 +308,21 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWith7() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.TEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.KING));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(7, player.matadorsJackStraitWith(7));
 	}
@@ -332,23 +330,23 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWith8() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.TEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.KING));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(8, player.matadorsJackStraitWith(8));
 	}
@@ -356,25 +354,25 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWith9() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.TEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.KING));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.NINE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(9, player.matadorsJackStraitWith(9));
 	}
@@ -382,27 +380,27 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWith10() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.TEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.KING));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.NINE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.EIGHT));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(10, player.matadorsJackStraitWith(10));
 	}
@@ -410,29 +408,29 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWith11() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.TEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.KING));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.NINE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.EIGHT));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.SEVEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(11, player.matadorsJackStraitWith(11));
 	}
@@ -440,9 +438,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-1, player.matadorsJackStraitWithout(0));
 	}
@@ -450,9 +448,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout2() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-2, player.matadorsJackStraitWithout(0));
 	}
@@ -460,9 +458,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout3() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-3, player.matadorsJackStraitWithout(0));
 	}
@@ -470,9 +468,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout4() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-4, player.matadorsJackStraitWithout(0));
 	}
@@ -480,9 +478,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout5() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.TEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-5, player.matadorsJackStraitWithout(0));
 	}
@@ -490,9 +488,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout6() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.KING));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-6, player.matadorsJackStraitWithout(0));
 	}
@@ -500,9 +498,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout7() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-7, player.matadorsJackStraitWithout(0));
 	}
@@ -510,9 +508,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout8() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.NINE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-8, player.matadorsJackStraitWithout(0));
 	}
@@ -520,9 +518,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout9() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.EIGHT));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-9, player.matadorsJackStraitWithout(0));
 	}
@@ -530,9 +528,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout10() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.SEVEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-10, player.matadorsJackStraitWithout(0));
 	}
@@ -540,9 +538,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout11() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-11, player.matadorsJackStraitWithout(0));
 	}
@@ -550,9 +548,9 @@ public class PlayerTest{
 	@Test
 	public void testMatadorsJackStraitWithout12() {
 		player.setHand(new ArrayList<PlayingCard>());
-		player.setGameVariety(new SuitGame(Suit.BELLS));
+		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		player.getHand().add(
-				new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE));
 		player.arrangeMatadorsJackStraitOrder();
 		assertEquals(-11, player.matadorsJackStraitWithout(0));
 	} 
@@ -571,25 +569,25 @@ public class PlayerTest{
 		
 		player.setHand(new ArrayList<PlayingCard>());
 		player.getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		PlayingCard card3 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+				new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
+		PlayingCard card3 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		player.getHand().add(card3);
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.DAUS));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.TEN));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.KING));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.NINE));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 		player.getHand().add(
-				new PlayingCard(Suit.BELLS, Value.EIGHT));
+				new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT));
 		PlayingCard[] playedCards = new PlayingCard[3];
 		ArrayList<PlayingCard> expected = new ArrayList<PlayingCard>();
 		expected.add(card3);

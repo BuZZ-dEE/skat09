@@ -10,8 +10,6 @@ import org.junit.Test;
 import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 
 public class GrandGameTest {
@@ -33,15 +31,15 @@ public class GrandGameTest {
 	@Before
 	public void setUp() {
 		game = new GrandGame();
-		card1 = new PlayingCard(Suit.HEARTS, Value.KING);
-		card2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		card3 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		card4 = new PlayingCard(Suit.BELLS, Value.KING);
-		card5 = new PlayingCard(Suit.ACORNS, Value.DAUS);
-		card6 = new PlayingCard(Suit.ACORNS, Value.NINE);
-		card7 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		card8 = new PlayingCard(Suit.LEAVES, Value.EIGHT);
-		card9 = new PlayingCard(Suit.BELLS, Value.NINE);
+		card1 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING);
+		card2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		card3 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+		card4 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
+		card5 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
+		card6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
+		card7 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
+		card8 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.EIGHT);
+		card9 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		
 		hand.add(card2);
 		hand.add(card6);

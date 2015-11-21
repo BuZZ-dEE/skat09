@@ -511,7 +511,7 @@ public class Controller implements Observer, IController {
 
 			if (allPlayer instanceof IHumanPlayer) {
 
-				((IPlayer) allPlayer).sortHand(gameVariety);
+				allPlayer.sortHand(gameVariety);
 			}
 		}
 

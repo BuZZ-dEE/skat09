@@ -11,24 +11,22 @@ import org.junit.Test;
 import main.gamevariety.GrandGame;
 import main.player.Granny;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 import static org.junit.Assert.*;
 
 //import de.uniluebeck.main.*;
 public class GrannyTest {
 
 	private Granny oma = new Granny("Franz");
-	PlayingCard spielkarte1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
-	PlayingCard spielkarte2 = new PlayingCard(Suit.BELLS, Value.EIGHT);
-	PlayingCard spielkarte3 = new PlayingCard(Suit.BELLS, Value.NINE);
-	PlayingCard spielkarte4 = new PlayingCard(Suit.BELLS, Value.TEN);
-	PlayingCard spielkarte5 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-	PlayingCard spielkarte6 = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
-	PlayingCard spielkarte7 = new PlayingCard(Suit.BELLS, Value.KING);
-	PlayingCard spielkarte8 = new PlayingCard(Suit.BELLS, Value.DAUS);
-	PlayingCard spielkarte9 = new PlayingCard(Suit.HEARTS, Value.SEVEN);
-	PlayingCard spielkarte10 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+	PlayingCard spielkarte1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
+	PlayingCard spielkarte2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+	PlayingCard spielkarte3 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
+	PlayingCard spielkarte4 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
+	PlayingCard spielkarte5 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+	PlayingCard spielkarte6 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
+	PlayingCard spielkarte7 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
+	PlayingCard spielkarte8 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
+	PlayingCard spielkarte9 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
+	PlayingCard spielkarte10 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 
 	ArrayList<PlayingCard> omablatt = new ArrayList<PlayingCard>();
 	

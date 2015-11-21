@@ -28,8 +28,6 @@ import main.player.HumanPlayer;
 import main.player.IPlayer;
 import main.player.Position;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 import main.ui.CLIOutput;
 
 
@@ -54,10 +52,10 @@ public class TableTest {
 	@Before
 	public void setUp() {
 		
-		playingCard1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
-		playingCard2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		playingCard3 = new PlayingCard(Suit.LEAVES, Value.NINE);
-		playingCard4 = new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE);
+		playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
+		playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		playingCard3 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
+		playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE);
 		player1.setPosition(Position.VORHAND);
 		player2.setPosition(Position.MITTELHAND);
 		player3.setPosition(Position.HINTERHAND);
@@ -79,28 +77,28 @@ public class TableTest {
 	    skat[1] = null;
 	    table.setSkat(skat);
 		
-		for (Suit farbe : Suit.values()) {
-			for (Value wert : Value.values()) {
+		for (PlayingCard.Suit farbe : PlayingCard.Suit.values()) {
+			for (PlayingCard.Rank wert : PlayingCard.Rank.values()) {
 				PlayingCard karte = new PlayingCard(farbe, wert);
 				deck.add(karte);
 			}
 		}
 
 		PlayingCard[] playedCards = table.getPlayedCards();
-		playedCards[0] = new PlayingCard(Suit.HEARTS, Value.DAUS);
-		playedCards[1] = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		playedCards[2] = new PlayingCard(Suit.BELLS, Value.NINE);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		table.setPlayedCards(playedCards);
 		table.getPlayer1().addTrick(playedCards);
 		table.setBiddingValue(18);
-		IGameVariety gameVariety = new SuitGame(Suit.BELLS);
+		IGameVariety gameVariety = new SuitGame(PlayingCard.Suit.BELLS);
 		table.setGameVariety(gameVariety);
 		table.getPlayer1().setGameVariety(gameVariety);
 	}
 
 	@After
 	public void after() {
-		GameVariety gameVariety = new SuitGame(Suit.BELLS);
+		GameVariety gameVariety = new SuitGame(PlayingCard.Suit.BELLS);
 		table.setGameVariety(gameVariety);
 	}
 
@@ -204,8 +202,8 @@ public class TableTest {
 	@Test
 	public void getSkatTest() {
 		PlayingCard[] skat = new PlayingCard[2];
-		skat[0] = new PlayingCard(Suit.HEARTS, Value.DAUS);
-		skat[1] = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+		skat[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
+		skat[1] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 		table.setSkat(skat);
 		
 		assertArrayEquals(skat, table.getSkat());
@@ -265,9 +263,9 @@ public class TableTest {
 	@Test
 	public void evaluateTrickTest1() {
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		playedCards[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
 		IGameVariety gameVariety = new NullGame();
 		playedCards[0].setOwner(player1);
 		playedCards[1].setOwner(player2);
@@ -279,9 +277,9 @@ public class TableTest {
 	@Test
 	public void evaluateTrickTest2() {
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		playedCards[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		playedCards[2] = new PlayingCard(Suit.BELLS, Value.KING);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
 		IGameVariety gameVariety = new NullGame();
 		playedCards[0].setOwner(player1);
 		playedCards[1].setOwner(player2);
@@ -292,10 +290,10 @@ public class TableTest {
 	@Test
 	public void evaluateTrickTest3() {
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		playedCards[1] = new PlayingCard(Suit.BELLS, Value.DAUS);
-		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
-		IGameVariety gameVariety = new SuitGame(Suit.HEARTS);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
+		IGameVariety gameVariety = new SuitGame(PlayingCard.Suit.HEARTS);
 		playedCards[0].setOwner(player1);
 		playedCards[1].setOwner(player2);
 		playedCards[2].setOwner(player3);
@@ -305,9 +303,9 @@ public class TableTest {
 	@Test
 	public void evaluateTrickTest4() {
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
-		playedCards[1] = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		IGameVariety gameVariety = new GrandGame();
 		playedCards[0].setOwner(player1);
 		playedCards[1].setOwner(player2);
@@ -318,9 +316,9 @@ public class TableTest {
 	@Test
 	public void evaluateTrickTest5() {
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		playedCards[1] = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
-		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
 		IGameVariety gameVariety = new NullGame();
 		playedCards[0].setOwner(player1);
 		playedCards[1].setOwner(player2);
@@ -331,10 +329,10 @@ public class TableTest {
 	@Test
 	public void evaluateTrickTest6() {
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.BELLS, Value.EIGHT);
-		playedCards[1] = new PlayingCard(Suit.LEAVES, Value.DAUS);
-		playedCards[2] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
-		IGameVariety gameVariety = new SuitGame(Suit.ACORNS);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
+		playedCards[2] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
+		IGameVariety gameVariety = new SuitGame(PlayingCard.Suit.ACORNS);
 		playedCards[0].setOwner(player1);
 		playedCards[1].setOwner(player2);
 		playedCards[2].setOwner(player3);
@@ -592,18 +590,18 @@ public class TableTest {
 	public void ueberreizCheckTest() {
 		
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(0, table.checkOverbid(18));
 	}
 	
 	@Test
 	public void ueberreizCheckTest4() {
-		GameVariety spiel = new SuitGame(Suit.BELLS);
+		GameVariety spiel = new SuitGame(PlayingCard.Suit.BELLS);
 		table.setGameVariety(spiel);
 		table.setBiddingValue(23);
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		table.checkOverbid(18);
 		assertEquals(true, table.isOverbidding());
@@ -616,12 +614,12 @@ public class TableTest {
 		table.setSchneider(false);
 		table.setSchwarz(false);
 		table.setOuvert(false);
-		GameVariety spiel = new SuitGame(Suit.BELLS);
+		GameVariety spiel = new SuitGame(PlayingCard.Suit.BELLS);
 		table.setGameVariety(spiel);
 		table.setBiddingValue(23);
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		
 		assertEquals(-54, table.checkOverbid(18));
@@ -632,7 +630,7 @@ public class TableTest {
 		
 		table.setGameVariety(new GrandGame());
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(0, table.checkOverbid(18));
 	}
@@ -646,7 +644,7 @@ public class TableTest {
 		table.setOuvert(true);
 		table.setGameVariety(new GrandGame());
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(0, table.checkOverbid(18));
 	}
@@ -769,7 +767,7 @@ public class TableTest {
 		table.setVariant(SkatVariant.SKAT);
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(18, table.calculatePoints(62));
 	}
@@ -778,8 +776,8 @@ public class TableTest {
 	public void wertePunkteTest2() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		IGameVariety spielart = new SuitGame(Suit.BELLS);
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
+		IGameVariety spielart = new SuitGame(PlayingCard.Suit.BELLS);
 		table.setGameVariety(spielart);
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(27, table.calculatePoints(91));
@@ -789,7 +787,7 @@ public class TableTest {
 	public void wertePunkteTest3() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(27, table.calculatePoints(120));
 	}
@@ -798,7 +796,7 @@ public class TableTest {
 	public void wertePunkteTest4() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		table.getDeclarer().setTricks(deck);
 		table.getDeclarer().getTricks().remove(31);
@@ -810,7 +808,7 @@ public class TableTest {
 	public void wertePunkteTest5() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new GrandGame();
 		table.setGameVariety(spielart);
@@ -821,7 +819,7 @@ public class TableTest {
 	public void wertePunkteTest6() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new GrandGame();
 		table.setGameVariety(spielart);
@@ -833,9 +831,9 @@ public class TableTest {
 		table.setVariant(SkatVariant.SKAT);
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new SuitGame(Suit.BELLS);
+		IGameVariety spielart = new SuitGame(PlayingCard.Suit.BELLS);
 		table.setGameVariety(spielart);
 		table.setBiddingValue(48);
 		assertEquals(-108, table.calculatePoints(62));
@@ -848,7 +846,7 @@ public class TableTest {
 		table.setVariant(SkatVariant.RAMSCHBOCK);
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		table.getDeclarer().setTricks(deck);
 		table.getDeclarer().getTricks().remove(31);
@@ -860,9 +858,9 @@ public class TableTest {
 	public void punkteFarbspielTest() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new SuitGame(Suit.BELLS);
+		IGameVariety spielart = new SuitGame(PlayingCard.Suit.BELLS);
 		table.setGameVariety(spielart);
 	assertEquals(18, table.pointsSuitGame(62));
 	}
@@ -871,7 +869,7 @@ public class TableTest {
 	public void punkteGrandspielTest() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new GrandGame();
 		table.setGameVariety(spielart);
@@ -882,7 +880,7 @@ public class TableTest {
 	public void punkteNullspielTest() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new NullGame();
 		table.setGameVariety(spielart);
@@ -894,7 +892,7 @@ public class TableTest {
 	public void punkteNullspielTest2() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new NullGame();
 		table.setGameVariety(spielart);
@@ -907,7 +905,7 @@ public class TableTest {
 	public void punkteNullspielTest3() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new NullGame();
 		table.setGameVariety(spielart);
@@ -921,7 +919,7 @@ public class TableTest {
 	public void punkteNullspielTest4() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
-				new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		IGameVariety spielart = new NullGame();
 		table.setGameVariety(spielart);
@@ -948,10 +946,10 @@ public class TableTest {
 	@Test
 	public void spielAuswertenTest3() {
 		
-		table.setGameVariety(new SuitGame(Suit.ACORNS));
+		table.setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
 		table.getDeclarer().getTricks().clear();
-		table.getDeclarer().setGameVariety(new SuitGame(Suit.ACORNS));
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.TEN);
+		table.getDeclarer().setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN);
 		table.getDeclarer().getTricks().add(karte);
 		table.getDeclarer().getTricks().add(karte);
 		table.getDeclarer().getTricks().add(karte);
@@ -963,9 +961,9 @@ public class TableTest {
 		table.getDeclarer().getTricks().add(karte);
 		table.getDeclarer().getTricks().add(karte);
 		table.getDeclarer().getTricks().add(karte);
-		PlayingCard karte2 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard karte2 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		table.getDeclarer().getTricks().add(karte2);
-		PlayingCard karte3 = new PlayingCard(Suit.HEARTS, Value.KING);
+		PlayingCard karte3 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING);
 		table.getDeclarer().getTricks().add(karte3);
 		table.getDeclarer().getTricks().add(karte3);
 		table.getDeclarer().getHand().add(karte2);
@@ -1001,16 +999,16 @@ public class TableTest {
 		table.setBock(true);
 		table.setSixSkat(true);
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Suit.HEARTS, Value.SEVEN);
-		skat[1] = new PlayingCard(Suit.HEARTS, Value.TEN);
-		skat[2] = new PlayingCard(Suit.LEAVES, Value.EIGHT);
+		skat[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
+		skat[1] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN);
+		skat[2] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.EIGHT);
 		table.setSkat(skat);
 		player1.getTricks().clear();
 		player2.getTricks().clear();
 		player3.getTricks().clear();
-		player1.getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
-		player1.getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
-		player2.getTricks().add(new PlayingCard(Suit.ACORNS, Value.SIX));
+		player1.getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
+		player1.getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
+		player2.getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		assertTrue(table.evaluateGame());
 	}
 	
@@ -1018,14 +1016,14 @@ public class TableTest {
 	public void sortiereSpielerRamschTest() {
 		
 		table.getPlayer1().getTricks().clear();
-		table.getPlayer1().getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
-		table.getPlayer1().getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
+		table.getPlayer1().getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
+		table.getPlayer1().getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
 		table.getPlayer2().getTricks().clear();
-		table.getPlayer2().getTricks().add(new PlayingCard(Suit.ACORNS, Value.SEVEN));
-		table.getPlayer2().getTricks().add(new PlayingCard(Suit.ACORNS, Value.EIGHT));
+		table.getPlayer2().getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SEVEN));
+		table.getPlayer2().getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.EIGHT));
 		table.getPlayer3().getTricks().clear();
-		table.getPlayer3().getTricks().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		table.getPlayer3().getTricks().add(new PlayingCard(Suit.LEAVES, Value.KING));
+		table.getPlayer3().getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
+		table.getPlayer3().getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.KING));
 		
 		IPlayer[] spielerU = new IPlayer[3];
 		spielerU[0] = player1;
@@ -1048,26 +1046,26 @@ public class TableTest {
 		spieler[1] = player2;
 		spieler[2] = player3;
 		spieler[2].getTricks().clear();
-		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.OVER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.KING));
-		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.TEN));
-		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.DAUS));
-		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.KING));
-		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.TEN));
-		spieler[2].getTricks().add(new PlayingCard(Suit.HEARTS, Value.DAUS));
-		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.KING));
-		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.TEN));
-		spieler[2].getTricks().add(new PlayingCard(Suit.LEAVES, Value.DAUS));
-		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.KING));
-		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.TEN));
-		spieler[2].getTricks().add(new PlayingCard(Suit.ACORNS, Value.DAUS));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.KING));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
 		
 		IPlayer[] ergebnis = table.decideRamsch(spieler, 0, 2);
 		
@@ -1085,7 +1083,7 @@ public class TableTest {
 		spieler[1] = player2;
 		spieler[2] = player3;
 		spieler[0].getTricks().clear();
-		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.DAUS));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		IPlayer[] ergebnis = table.decideRamsch(spieler, 20, 2);
 		
 		Granny vergleich = new Granny("heino");
@@ -1101,8 +1099,8 @@ public class TableTest {
 		spieler[0] = player1;
 		spieler[1] = player2;
 		spieler[2] = player3;
-		spieler[0].getTricks().add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(Suit.BELLS, Value.DAUS));
+		spieler[0].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
+		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		IPlayer[] ergebnis = table.decideRamsch(spieler, 20, 2);
 		
 		Granny vergleich = new Granny("heino");
