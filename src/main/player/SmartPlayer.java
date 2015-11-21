@@ -1849,7 +1849,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < hand.size(); i++) {
 
-			if (hand.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+			if (hand.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
 				spitzen[rankUnderKnavesHelp(kartenwert)] = hand.get(i);
@@ -1879,7 +1879,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < hand.size(); i++) {
 
-			if (hand.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+			if (hand.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
 				spitzen[rankUnderKnavesHelp(kartenwert)] = hand.get(i);
