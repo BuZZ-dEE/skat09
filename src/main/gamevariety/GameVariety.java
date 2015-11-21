@@ -36,7 +36,7 @@ abstract public class GameVariety implements IGameVariety {
 		boolean result = true;
 		
 		// If suit follow is okay return true
-		if (playedCards[0].getSuit() == cardToCheck.getSuit() && cardToCheck.getValue() != PlayingCard.Rank.UNDER_KNAVE) {
+		if (playedCards[0].getSuit() == cardToCheck.getSuit() && cardToCheck.getRank() != PlayingCard.Rank.UNDER_KNAVE) {
 
 			result = true;
 		}
@@ -46,7 +46,7 @@ abstract public class GameVariety implements IGameVariety {
 
 			for (int i = 0; i < deck.size(); i++) {
 
-				if (deck.get(i).getSuit() == playedCards[0].getSuit() && deck.get(i).getValue() != PlayingCard.Rank.UNDER_KNAVE) {
+				if (deck.get(i).getSuit() == playedCards[0].getSuit() && deck.get(i).getRank() != PlayingCard.Rank.UNDER_KNAVE) {
 
 					result = false;
 					break;
@@ -130,7 +130,7 @@ abstract public class GameVariety implements IGameVariety {
 
 		PlayingCard result;
 
-		if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			result = card1;
 		}
@@ -164,7 +164,7 @@ abstract public class GameVariety implements IGameVariety {
 	@Override
 	public int evaluateCard(PlayingCard card) {
 
-		PlayingCard.Rank rank = card.getValue();
+		PlayingCard.Rank rank = card.getRank();
 		int result = 0;
 
 		switch (rank) {

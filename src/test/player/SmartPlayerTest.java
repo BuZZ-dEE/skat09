@@ -66,7 +66,7 @@ public class SmartPlayerTest {
 	
 	@Test
 	public void testalleinspielerRauskommenGrand() {
-		assertEquals(PlayingCard.Rank.UNDER_KNAVE, player.alleinspielerRauskommenGrand(playedCards).getValue());
+		assertEquals(PlayingCard.Rank.UNDER_KNAVE, player.alleinspielerRauskommenGrand(playedCards).getRank());
 	}
 	
 	@Test
@@ -1092,7 +1092,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
-		if (gespielt.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
 			ergebnis = true;
 		}
@@ -1121,7 +1121,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
-		if (gespielt.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
 			ergebnis = true;
 		}
@@ -1150,7 +1150,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
-		if (gespielt.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
 			ergebnis = true;
 		}
@@ -1180,7 +1180,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
-		if (gespielt.getValue() == PlayingCard.Rank.DAUS) {
+		if (gespielt.getRank() == PlayingCard.Rank.DAUS) {
 			
 			ergebnis = true;
 		}
@@ -1248,7 +1248,7 @@ public class SmartPlayerTest {
 		
 		boolean ergebnis = false;
 		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
-		if (gespielt.getValue() == PlayingCard.Rank.TEN) {
+		if (gespielt.getRank() == PlayingCard.Rank.TEN) {
 			
 			ergebnis = true;
 		}
@@ -1317,7 +1317,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		
-		assertEquals(PlayingCard.Rank.UNDER_KNAVE, player.rauskommenGrand(playedCards).getValue());
+		assertEquals(PlayingCard.Rank.UNDER_KNAVE, player.rauskommenGrand(playedCards).getRank());
 	}
 	
 	@Test

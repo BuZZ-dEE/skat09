@@ -696,7 +696,7 @@ public class Table extends Observable {
 				deck.add(card);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
-				if ((card.getValue() == PlayingCard.Rank.SIX) && (sixSkat == false)) {
+				if ((card.getRank() == PlayingCard.Rank.SIX) && (sixSkat == false)) {
 					deck.remove(card);
 				}
 			}
@@ -1508,27 +1508,27 @@ public class Table extends Observable {
 
 		for (int i = 0; i < tricks.size(); i++) {
 
-			if (tricks.get(i).getValue() == PlayingCard.Rank.DAUS) {
+			if (tricks.get(i).getRank() == PlayingCard.Rank.DAUS) {
 
 				result += 11;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.TEN) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.TEN) {
 
 				result += 10;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				result += 2;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.OVER_KNAVE) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.OVER_KNAVE) {
 
 				result += 3;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.KING) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.KING) {
 
 				result += 4;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.SIX) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.SIX) {
 
 				result += 6;
 			}

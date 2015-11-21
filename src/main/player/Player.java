@@ -449,7 +449,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < hand.size(); i++) {
 			
-			if (hand.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+			if (hand.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				cardValue = gameVariety.evaluateCard (hand.get(i));
 				trumps[rankUnderKnavesHelp(cardValue)] = hand.get(i);
@@ -494,7 +494,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < hand.size(); i++) {
 
-			if (hand.get(i).getValue() != PlayingCard.Rank.UNDER_KNAVE && hand.get(i).getSuit() == suitGame.getTrumpSuit()) {
+			if (hand.get(i).getRank() != PlayingCard.Rank.UNDER_KNAVE && hand.get(i).getSuit() == suitGame.getTrumpSuit()) {
 
 				cardValue = gameVariety.evaluateCard(hand.get(i));
 				trumps[rankSuitHelp(cardValue)] = hand.get(i);

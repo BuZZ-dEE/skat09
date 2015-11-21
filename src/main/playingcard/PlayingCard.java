@@ -21,11 +21,11 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	/**
 	 * Feld f&uuml;r die Farbe
 	 */
-	private Suit suit;
+	private final Suit suit;
 	/**
 	 * Feld f&uuml;r den Wert
 	 */
-	private Rank rank;
+	private final Rank rank;
 	/**
 	 * Feld f&uuml;r den Besitzer
 	 */
@@ -157,7 +157,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return wert der Karte
 	 */
-	public Rank getValue() {
+	public Rank getRank() {
 		return rank;
 	}
 
@@ -223,7 +223,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 		boolean result;
 
 		result = this.suit.ordinal() == card.getSuit().ordinal()
-				&& this.rank.ordinal() == card.getValue().ordinal();
+				&& this.rank.ordinal() == card.getRank().ordinal();
 
 		return result;
 	}
@@ -242,7 +242,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 		
 		int result = Integer.MAX_VALUE;
 		
-		if (rank == card.getValue() && suit == card.getSuit()) {
+		if (rank == card.getRank() && suit == card.getSuit()) {
 			
 			result = 0;
 		}

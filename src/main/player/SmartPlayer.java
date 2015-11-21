@@ -1101,7 +1101,7 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		switch (karte.getValue()) {
+		switch (karte.getRank()) {
 
 		case SIX:
 			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.SEVEN);
@@ -1259,7 +1259,7 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		switch (karte.getValue()) {
+		switch (karte.getRank()) {
 
 		case SIX:
 			ergebnis = null;
@@ -1417,7 +1417,7 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard card : hand) {
 
-			if (card.getValue() == value) {
+			if (card.getRank() == value) {
 
 				result.add(card);
 			}
@@ -1444,7 +1444,7 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard card : hand) {
 
-			if (card.getSuit() == suit && card.getValue() != PlayingCard.Rank.UNDER_KNAVE) {
+			if (card.getSuit() == suit && card.getRank() != PlayingCard.Rank.UNDER_KNAVE) {
 
 				result.add(card);
 			}
@@ -1917,18 +1917,18 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : hand) {
 
-			if (karte.getValue() == PlayingCard.Rank.SEVEN || karte.getValue() == PlayingCard.Rank.EIGHT
-					|| karte.getValue() == PlayingCard.Rank.NINE) {
+			if (karte.getRank() == PlayingCard.Rank.SEVEN || karte.getRank() == PlayingCard.Rank.EIGHT
+					|| karte.getRank() == PlayingCard.Rank.NINE) {
 
 				kartenKleiner10++;
 			}
 
-			if (karte.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+			if (karte.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				buben++;
 			}
 
-			if (karte.getValue() == PlayingCard.Rank.DAUS || karte.getValue() == PlayingCard.Rank.TEN) {
+			if (karte.getRank() == PlayingCard.Rank.DAUS || karte.getRank() == PlayingCard.Rank.TEN) {
 
 				kartenGroesserKoenig++;
 			}
@@ -2133,27 +2133,27 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < stiche.size(); i++) {
 
-			if (stiche.get(i).getValue() == PlayingCard.Rank.DAUS) {
+			if (stiche.get(i).getRank() == PlayingCard.Rank.DAUS) {
 
 				erg += 11;
 
-			} else if (stiche.get(i).getValue() == PlayingCard.Rank.TEN) {
+			} else if (stiche.get(i).getRank() == PlayingCard.Rank.TEN) {
 
 				erg += 10;
 
-			} else if (stiche.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+			} else if (stiche.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				erg += 2;
 
-			} else if (stiche.get(i).getValue() == PlayingCard.Rank.OVER_KNAVE) {
+			} else if (stiche.get(i).getRank() == PlayingCard.Rank.OVER_KNAVE) {
 
 				erg += 3;
 
-			} else if (stiche.get(i).getValue() == PlayingCard.Rank.KING) {
+			} else if (stiche.get(i).getRank() == PlayingCard.Rank.KING) {
 
 				erg += 4;
 
-			} else if (stiche.get(i).getValue() == PlayingCard.Rank.SIX) {
+			} else if (stiche.get(i).getRank() == PlayingCard.Rank.SIX) {
 
 				erg += 6;
 			}
@@ -2173,7 +2173,7 @@ public class SmartPlayer extends Player {
 
 		int ergebnis;
 
-		switch (karte.getValue()) {
+		switch (karte.getRank()) {
 		case SIX:
 			ergebnis = 6;
 			break;

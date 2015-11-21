@@ -281,7 +281,7 @@ public class CLIOutput extends Output {
 
 			PlayingCard card = hand.get(i);
 			PlayingCard.Suit suit = card.getSuit();
-			PlayingCard.Rank rank = card.getValue();
+			PlayingCard.Rank rank = card.getRank();
 			System.out.println(i + ": " + suit + " " + rank); // TODO also
 																// translate
 		}

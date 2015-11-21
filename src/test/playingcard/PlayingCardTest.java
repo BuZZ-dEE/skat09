@@ -29,7 +29,7 @@ public class PlayingCardTest {
 	 */
 	@Test
 	public void testSpielkarte1() {
-		assertEquals(PlayingCard.Rank.EIGHT, karte1.getValue() );
+		assertEquals(PlayingCard.Rank.EIGHT, karte1.getRank() );
 	}
 	
 	/**
