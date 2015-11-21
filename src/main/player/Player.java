@@ -6,12 +6,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
-import main.playingcard.Value;
 
 
 /**
@@ -428,12 +427,12 @@ abstract public class Player implements IPlayer {
 
 		trumps = new PlayingCard[12];
 
-		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			rankUnderKnaves();
 		}
 		
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 
 			rankUnderKnaves();
 			rankSuit();
@@ -450,7 +449,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < hand.size(); i++) {
 			
-			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
+			if (hand.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				cardValue = gameVariety.evaluateCard (hand.get(i));
 				trumps[rankUnderKnavesHelp(cardValue)] = hand.get(i);
@@ -495,7 +494,7 @@ abstract public class Player implements IPlayer {
 
 		for (int i = 0; i < hand.size(); i++) {
 
-			if (hand.get(i).getValue() != Value.UNDER_KNAVE && hand.get(i).getSuit() == suitGame.getTrumpSuit()) {
+			if (hand.get(i).getValue() != PlayingCard.Rank.UNDER_KNAVE && hand.get(i).getSuit() == suitGame.getTrumpSuit()) {
 
 				cardValue = gameVariety.evaluateCard(hand.get(i));
 				trumps[rankSuitHelp(cardValue)] = hand.get(i);

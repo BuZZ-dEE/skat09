@@ -531,11 +531,7 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 		}
 
 		index = blattwahl.getSelectedIndex();
-		if (index == 0) {
-			deutsch = true;
-		} else {
-			deutsch = false;
-		}
+		deutsch = index == 0;
 
 		if (sechser.isSelected()) {
 			sechserskat = true;

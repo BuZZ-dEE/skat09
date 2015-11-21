@@ -3,8 +3,6 @@ package main.gamevariety;
 import java.util.ArrayList;
 
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 
 /**
@@ -16,16 +14,15 @@ import main.playingcard.Value;
  */
 abstract public class GameVariety implements IGameVariety {
 	
-	private GameVarietyName gameVarietyName;
-	
+	private Name gameVarietyName;
 
 	@Override
-	public GameVarietyName getGameVariety() {
+	public Name getGameVariety() {
 		return gameVarietyName;
 	}
 	
 	@Override
-	public void setGameVariety(GameVarietyName gameVarietyName) {
+	public void setGameVariety(Name gameVarietyName) {
 		this.gameVarietyName = gameVarietyName;
 	}
 
@@ -39,7 +36,7 @@ abstract public class GameVariety implements IGameVariety {
 		boolean result = true;
 		
 		// If suit follow is okay return true
-		if (playedCards[0].getSuit() == cardToCheck.getSuit() && cardToCheck.getValue() != Value.UNDER_KNAVE) {
+		if (playedCards[0].getSuit() == cardToCheck.getSuit() && cardToCheck.getValue() != PlayingCard.Rank.UNDER_KNAVE) {
 
 			result = true;
 		}
@@ -49,7 +46,7 @@ abstract public class GameVariety implements IGameVariety {
 
 			for (int i = 0; i < deck.size(); i++) {
 
-				if (deck.get(i).getSuit() == playedCards[0].getSuit() && deck.get(i).getValue() != Value.UNDER_KNAVE) {
+				if (deck.get(i).getSuit() == playedCards[0].getSuit() && deck.get(i).getValue() != PlayingCard.Rank.UNDER_KNAVE) {
 
 					result = false;
 					break;
@@ -93,20 +90,20 @@ abstract public class GameVariety implements IGameVariety {
 		
 		PlayingCard result;
 		
-		if (card1.getSuit() == Suit.ACORNS
-				&& card2.getSuit() != Suit.ACORNS) {
+		if (card1.getSuit() == PlayingCard.Suit.ACORNS
+				&& card2.getSuit() != PlayingCard.Suit.ACORNS) {
 
 			result = card1;
 		}
 
-		else if (card1.getSuit() == Suit.LEAVES
-				&& card2.getSuit() != Suit.ACORNS) {
+		else if (card1.getSuit() == PlayingCard.Suit.LEAVES
+				&& card2.getSuit() != PlayingCard.Suit.ACORNS) {
 
 			result = card1;
 		}
 
-		else if (card1.getSuit() == Suit.HEARTS
-				&& (card2.getSuit() != Suit.ACORNS && card2.getSuit() != Suit.LEAVES)) {
+		else if (card1.getSuit() == PlayingCard.Suit.HEARTS
+				&& (card2.getSuit() != PlayingCard.Suit.ACORNS && card2.getSuit() != PlayingCard.Suit.LEAVES)) {
 
 			result = card1;
 		}
@@ -133,7 +130,7 @@ abstract public class GameVariety implements IGameVariety {
 
 		PlayingCard result;
 
-		if (card1.getValue() == Value.UNDER_KNAVE) {
+		if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			result = card1;
 		}
@@ -167,10 +164,10 @@ abstract public class GameVariety implements IGameVariety {
 	@Override
 	public int evaluateCard(PlayingCard card) {
 
-		Value value = card.getValue();
+		PlayingCard.Rank rank = card.getValue();
 		int result = 0;
 
-		switch (value) {
+		switch (rank) {
 		case SIX:
 			result = 6;
 			break;
@@ -208,7 +205,7 @@ abstract public class GameVariety implements IGameVariety {
 	@Override
 	public int evaluateUnderKnave(PlayingCard card) {
 
-		Suit suit = card.getSuit();
+		PlayingCard.Suit suit = card.getSuit();
 		int result = 0;
 
 		switch (suit) {
@@ -231,5 +228,4 @@ abstract public class GameVariety implements IGameVariety {
 		}
 		return result;
 	}
-
 }

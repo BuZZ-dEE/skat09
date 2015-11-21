@@ -18,8 +18,6 @@ import main.gamevariety.IGameVariety;
 import main.gamevariety.SuitGame;
 import main.player.HumanPlayer;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 import main.ui.IOutput;
 import test.ControllerStub;
 import test.gamevariety.NullGameStub;
@@ -67,9 +65,9 @@ public class HumanPlayerTest {
 	public void drueckenTest() {
 
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE);
-		skat[1] = new PlayingCard(Suit.ACORNS, Value.KING);
-		skat[2] = new PlayingCard(Suit.ACORNS, Value.DAUS);
+		skat[0] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE);
+		skat[1] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
+		skat[2] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
 		assertArrayEquals(skat, humanPlayer.druecken(skat));
 	}
 
@@ -77,8 +75,8 @@ public class HumanPlayerTest {
 	public void drueckenTest2() {
 
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		skat[1] = new PlayingCard(Suit.BELLS, Value.EIGHT);
+		skat[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		skat[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
 		skat[2] = null;
 		assertArrayEquals(skat, humanPlayer.druecken(skat));
 	}
@@ -89,10 +87,10 @@ public class HumanPlayerTest {
 		boolean result = false;
 
 		humanPlayer.setGameVariety(new GrandGame());
-		PlayingCard card = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard[] playedCards = new PlayingCard[3];
-		playedCards[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		playedCards[1] = new PlayingCard(Suit.HEARTS, Value.NINE);
+		playedCards[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
+		playedCards[1] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE);
 		if (card.equals(humanPlayer.playCard(playedCards))) {
 
 			result = true;
@@ -107,7 +105,7 @@ public class HumanPlayerTest {
 		boolean result = false;
 
 		humanPlayer.setGameVariety(nullGame);
-		PlayingCard card = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		if (card.equals(humanPlayer.playCard(playedCards))) {
@@ -156,7 +154,7 @@ public class HumanPlayerTest {
 	@Test
 	public void suitTest() {
 
-		SuitGame suitGame = new SuitGame(Suit.LEAVES);
+		SuitGame suitGame = new SuitGame(PlayingCard.Suit.LEAVES);
 		assertEquals(suitGame.getTrumpSuit(), humanPlayer.suit()
 				.getTrumpSuit());
 	}

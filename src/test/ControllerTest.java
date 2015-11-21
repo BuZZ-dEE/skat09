@@ -25,8 +25,6 @@ import main.player.Position;
 import main.player.RuleCompliantPlayer;
 import main.player.SmartPlayer;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 import test.player.HumanPlayerStub;
 import test.player.HumanPlayerStub2;
 import test.ui.OutputStub;
@@ -468,10 +466,10 @@ public class ControllerTest {
 		tisch.setPlayer1(new HumanPlayer("Hildegard", controller));
 		SmartPlayer sspieler = new SmartPlayer("Gräfin Johanita von Schwanenstein");
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.NINE));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.TEN));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
+		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
+		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		sspieler.setHand(blatt);
 		sspieler.setAnfangsblatt(blatt);
 		tisch.setPlayer2(sspieler);
@@ -510,7 +508,7 @@ public class ControllerTest {
 		mensch.setIsDeclarer(true);
 		mensch.setHand(new ArrayList<PlayingCard>());
 		for (int i = 0; i < 10; i++) {
-			mensch.getHand().add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
+			mensch.getHand().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		}
 		controller2.getTable().setPlayer1(mensch);
 		Player spieler2 = new Granny("Basti");
@@ -519,11 +517,11 @@ public class ControllerTest {
 		controller2.getTable().setPlayer3(spieler3);
 		controller2.getTable().setSixSkat(true);
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		skat[1] = new PlayingCard(Suit.HEARTS, Value.SIX);
-		skat[2] = new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE);
+		skat[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		skat[1] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX);
+		skat[2] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		controller2.getTable().setSkat(skat);
-		controller2.getTable().setGameVariety(new SuitGame(Suit.BELLS));
+		controller2.getTable().setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 
 		
 		//handgame pruefen
@@ -535,7 +533,7 @@ public class ControllerTest {
 		//spielart pruefen
 		boolean spielart2 = false;
 		System.out.println(controller2.getTable().getGameVariety().toString());
-		if (controller2.getTable().getGameVariety().toString().equals((new SuitGame(Suit.BELLS)).toString())) {
+		if (controller2.getTable().getGameVariety().toString().equals((new SuitGame(PlayingCard.Suit.BELLS)).toString())) {
 			spielart2 = true;
 		}
 		
@@ -568,38 +566,38 @@ public class ControllerTest {
 		spieler1.setIsDeclarer(true);
 		
 		ArrayList<PlayingCard> blatt1 = new ArrayList<PlayingCard>(); 
-		blatt1.add(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE));
-		blatt1.add(new PlayingCard(Suit.ACORNS, Value.DAUS));
-		blatt1.add(new PlayingCard(Suit.ACORNS, Value.TEN));
-		blatt1.add(new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE));
-		blatt1.add(new PlayingCard(Suit.ACORNS, Value.KING));
-		blatt1.add(new PlayingCard(Suit.BELLS, Value.DAUS));
-		blatt1.add(new PlayingCard(Suit.BELLS, Value.TEN));
-		blatt1.add(new PlayingCard(Suit.LEAVES, Value.DAUS));
-		blatt1.add(new PlayingCard(Suit.LEAVES, Value.TEN));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS));
+		blatt1.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
 		spieler1.setTricks(blatt1);
 		spieler1.setHand(blatt1);
-		spieler1.setGameVariety(new SuitGame(Suit.ACORNS));
+		spieler1.setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
 		spieler1.arrangeMatadorsJackStraitOrder();
 		
 		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>(); 
-		blatt2.add(new PlayingCard(Suit.LEAVES, Value.NINE));
-		blatt2.add(new PlayingCard(Suit.LEAVES, Value.SIX));
-		blatt2.add(new PlayingCard(Suit.LEAVES, Value.TEN));
-		blatt2.add(new PlayingCard(Suit.LEAVES, Value.OVER_KNAVE));
+		blatt2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE));
+		blatt2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		blatt2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
+		blatt2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE));
 		spieler2.setTricks(blatt2);
 		
 		ArrayList<PlayingCard> blatt3 = new ArrayList<PlayingCard>(); 
-		blatt3.add(new PlayingCard(Suit.HEARTS, Value.NINE));
-		blatt3.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
-		blatt3.add(new PlayingCard(Suit.HEARTS, Value.TEN));
-		blatt3.add(new PlayingCard(Suit.HEARTS, Value.SEVEN));
+		blatt3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
+		blatt3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
+		blatt3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
+		blatt3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN));
 		spieler3.setTricks(blatt3);
 		
 		tisch2.setPlayer1(spieler1);
 		tisch2.setPlayer2(spieler2);
 		tisch2.setPlayer3(spieler3);
-		tisch2.setGameVariety(new SuitGame(Suit.ACORNS));
+		tisch2.setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
 		
 		controller.evaluation();
 		
@@ -613,7 +611,7 @@ public class ControllerTest {
 		
 		
 		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		skatkarten[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		controller.getTable().setSkat(skatkarten);
 		controller.getTable().setBiddingAgentValue(120);
 		controller.getTable().setBiddingValue(23);
@@ -623,9 +621,9 @@ public class ControllerTest {
 		controller.getTable().setBockRounds(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.BELLS, Value.SIX));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.NINE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setHand(blatt);
@@ -661,7 +659,7 @@ public class ControllerTest {
 	public void aufraeumenTest2() {
 		
 		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		skatkarten[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		controller.getTable().setSkat(skatkarten);
 		controller.getTable().setBiddingAgentValue(120);
 		controller.getTable().setBiddingValue(23);
@@ -671,9 +669,9 @@ public class ControllerTest {
 		controller.getTable().setBockRounds(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.BELLS, Value.SIX));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.NINE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setHand(blatt);
@@ -708,7 +706,7 @@ public class ControllerTest {
 	public void aufraeumenTest3() {
 		
 		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		skatkarten[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		controller.getTable().setSkat(skatkarten);
 		controller.getTable().setBiddingAgentValue(120);
 		controller.getTable().setBiddingValue(23);
@@ -718,9 +716,9 @@ public class ControllerTest {
 		controller.getTable().setBockRounds(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.BELLS, Value.SIX));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.NINE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setHand(blatt);
@@ -756,7 +754,7 @@ public class ControllerTest {
 	public void aufraeumen4Test() {
 	
 		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		skatkarten[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		controller.getTable().setSkat(skatkarten);
 		controller.getTable().setBiddingAgentValue(120);
 		controller.getTable().setBiddingValue(23);
@@ -766,9 +764,9 @@ public class ControllerTest {
 		controller.getTable().setBockRounds(0);
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.BELLS, Value.SIX));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.NINE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 	
 		Player spieler1 = new Granny("Joy");
 		spieler1.setHand(blatt);
@@ -811,9 +809,9 @@ public class ControllerTest {
 		Player s2 = new Granny("Benny");
 		Player s3 = new Granny("Daniel");
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
-		PlayingCard k1 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		PlayingCard k2 = new PlayingCard(Suit.HEARTS, Value.DAUS);
-		PlayingCard k3 = new PlayingCard(Suit.BELLS, Value.SEVEN);
+		PlayingCard k1 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
+		PlayingCard k2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
+		PlayingCard k3 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		k1.setOwner(gewinner);
 		k2.setOwner(s2);
 		k3.setOwner(s3);
@@ -1131,12 +1129,12 @@ public class ControllerTest {
 		Player spieler3 = new RuleCompliantPlayer("Bernd");
 		
 		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.SEVEN));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.EIGHT));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.NINE));
-		blatt.add(new PlayingCard(Suit.HEARTS, Value.TEN));
-		blatt.add(new PlayingCard(Suit.LEAVES, Value.SEVEN));
-		blatt.add(new PlayingCard(Suit.BELLS, Value.DAUS));
+		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN));
+		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
+		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
+		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
+		blatt.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SEVEN));
+		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		
 		spieler1.setHand(blatt);
 		spieler2.setHand(blatt);
@@ -1145,9 +1143,9 @@ public class ControllerTest {
 		spieler1.setIsDeclarer(true);
 		
 		PlayingCard[] skat = new PlayingCard[3];
-		skat[0] = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		skat[1] = new PlayingCard(Suit.LEAVES, Value.DAUS);
-		skat[2] = new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE);
+		skat[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		skat[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
+		skat[2] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE);
 		tisch.setSkat(skat);
 		tisch.setPlayer1(spieler1);
 		tisch.setPlayer2(spieler2);

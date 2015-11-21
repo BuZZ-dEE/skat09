@@ -8,15 +8,13 @@ import java.util.SortedSet;
 
 import main.Messages;
 import main.Table;
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
 import main.player.IPlayer;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 /**
  * Diese Klasse wird das Spiel f&uuml;r den menschlichen Spieler &uuml;ber die
@@ -282,9 +280,9 @@ public class CLIOutput extends Output {
 		for (int i = 0; i < hand.size(); i++) {
 
 			PlayingCard card = hand.get(i);
-			Suit suit = card.getSuit();
-			Value value = card.getValue();
-			System.out.println(i + ": " + suit + " " + value); // TODO also
+			PlayingCard.Suit suit = card.getSuit();
+			PlayingCard.Rank rank = card.getValue();
+			System.out.println(i + ": " + suit + " " + rank); // TODO also
 																// translate
 		}
 
@@ -338,7 +336,7 @@ public class CLIOutput extends Output {
 		IGameVariety gameVariety = null;
 
 		System.out.println(Messages.getI18n("game.type.number.choose"));
-		for (Enum<GameVarietyName> gameVarietyName : GameVarietyName
+		for (Enum<GameVariety.Name> gameVarietyName : GameVariety.Name
 				.values()) {
 
 			System.out.println(counter + ": " + gameVarietyName);
@@ -375,7 +373,7 @@ public class CLIOutput extends Output {
 		int result = -1;
 
 		System.out.println(Messages.getI18n("game.commandline.trump.choose"));
-		for (Enum<Suit> suit : Suit.values()) {
+		for (Enum<PlayingCard.Suit> suit : PlayingCard.Suit.values()) {
 
 			System.out.println(counter + ": " + suit);
 			counter++;
@@ -398,16 +396,16 @@ public class CLIOutput extends Output {
 		switch (result) {
 
 		case 0:
-			suitGame = new SuitGame(Suit.BELLS);
+			suitGame = new SuitGame(PlayingCard.Suit.BELLS);
 			break;
 		case 1:
-			suitGame = new SuitGame(Suit.HEARTS);
+			suitGame = new SuitGame(PlayingCard.Suit.HEARTS);
 			break;
 		case 2:
-			suitGame = new SuitGame(Suit.LEAVES);
+			suitGame = new SuitGame(PlayingCard.Suit.LEAVES);
 			break;
 		case 3:
-			suitGame = new SuitGame(Suit.ACORNS);
+			suitGame = new SuitGame(PlayingCard.Suit.ACORNS);
 			break;
 		default:
 			System.out.println(Messages.getI18n("game.color.input.wrong"));
@@ -551,7 +549,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void showEvaluation(boolean isWon) {
-		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getGameVariety().getGameVariety() != GameVariety.Name.RAMSCH) {
 			if (isWon == true) {
 				System.out.println(Messages.getI18n("player.won", table
 						.getDeclarer().getName()));
@@ -685,7 +683,7 @@ public class CLIOutput extends Output {
 
 	@Override
 	public void trump() {
-		if (table.getGameVariety().getGameVariety() != GameVarietyName.RAMSCH) {
+		if (table.getGameVariety().getGameVariety() != GameVariety.Name.RAMSCH) {
 			System.out.println(Messages.getI18n("player.name.playing.game",
 					table.getDeclarer().getName(), table
 							.getGameVariety().toString()));

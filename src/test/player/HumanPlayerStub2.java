@@ -8,7 +8,6 @@ import main.player.IHumanPlayer;
 import main.player.IPlayer;
 import main.player.Position;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
 
 
 public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
@@ -51,7 +50,7 @@ public class HumanPlayerStub2 implements IPlayer, IHumanPlayer {
 	
 	public SuitGame suit() {
 		
-		return new SuitGame(Suit.BELLS);
+		return new SuitGame(PlayingCard.Suit.BELLS);
 	}
 
 	

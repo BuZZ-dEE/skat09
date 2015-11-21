@@ -11,8 +11,6 @@ import org.junit.Test;
 
 import main.gamevariety.GrandGame;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 
 
@@ -40,19 +38,19 @@ public class GameVarietyTest {
 	@Before
 	public void setUp() {
 
-		playingcard1 = new PlayingCard(Suit.BELLS, Value.SEVEN);
-		playingcard2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		playingcard3 = new PlayingCard(Suit.LEAVES, Value.NINE);
-		playingcard4 = new PlayingCard(Suit.ACORNS, Value.OVER_KNAVE);
-		playingcard5 = new PlayingCard(Suit.ACORNS, Value.KING);
-		playingcard6 = new PlayingCard(Suit.ACORNS, Value.TEN);
-		playingcard7 = new PlayingCard(Suit.ACORNS, Value.DAUS);
-		playingcard8 = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
-		playingcard9 = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
-		playingcard10 = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
-		playingcard11 = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
-		playingcard12 = new PlayingCard(Suit.HEARTS, Value.SIX);
-		playingcard13 = new PlayingCard(Suit.HEARTS, Value.SIX);
+		playingcard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
+		playingcard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		playingcard3 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
+		playingcard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE);
+		playingcard5 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
+		playingcard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
+		playingcard7 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
+		playingcard8 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+		playingcard9 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
+		playingcard10 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
+		playingcard11 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
+		playingcard12 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX);
+		playingcard13 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX);
 	}
 	
 	@Test

@@ -25,7 +25,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	/**
 	 * Feld f&uuml;r den Wert
 	 */
-	private Value value;
+	private Rank rank;
 	/**
 	 * Feld f&uuml;r den Besitzer
 	 */
@@ -34,14 +34,102 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * Feld das angibt, ob deutsches oder franz&ouml;sisches Blatt benutzt wird
 	 */
 	private static boolean germanDeck;
+
+    public enum Suit {
+
+        /**
+         *  Bells / Diamonds / Karo
+         */
+        BELLS(9),
+        /**
+         * Hearts / Herz
+         */
+        HEARTS(10),
+        /**
+         * Spades / Leaves / Pik
+         */
+        LEAVES(11),
+        /**
+         * Acorns / Clubs / Kreuz
+         */
+        ACORNS(12);
+
+        /**
+         * Der Wert, den ein Element aus der Enum haben kann
+         */
+        private int suitValue;
+
+        /**
+         * Gibt den Ordnungswert eines Elements zur&uuml;ck
+         * @return Den Wert eines Elements
+         */
+        public int value() {
+
+            return suitValue;
+        }
+
+        /**
+         * Der Konstruktor der Enum Farbe
+         * @param suitValue Der Ordnungswert, den eine Farbe haben soll
+         */
+        Suit(int suitValue) {
+
+            this.suitValue = suitValue;
+        }
+
+    }
+
+    public enum Rank {
+
+        /**
+         * Halter des Farbwertes 6
+         */
+        SIX,
+        /**
+         * Halter des Farbwertes 7
+         */
+        SEVEN,
+        /**
+         * Halter des Farbwertes 8
+         */
+        EIGHT,
+        /**
+         * Halter des Farbwertes 9
+         */
+        NINE,
+        /**
+         * Halter des Farbwertes 10
+         */
+        TEN,
+        /**
+         * Halter des Farbwertes Bube
+         * Under knave (Unter) == Jack (Junge / Bube)
+         */
+        UNDER_KNAVE,
+        /**
+         * Halter des Farbwertes Dame
+         * Over knave (Ober) == Queen (Dame)
+         */
+        OVER_KNAVE,
+        /**
+         * Halter des Farbwertes König
+         * King == King (König)
+         */
+        KING,
+        /**
+         * Halter des Farbwertes Ass
+         * Daus (Daus) == Ace (Ass)
+         */
+        DAUS
+    }
 	
 	/**
 	 * Konstruktor der Klasse Spielkarte. Setzt die Farbe und den Wert der Karte
 	 * @param suit Die Farbe der zu erzeugenden Karte
-	 * @param value Der Wert der zu erzeugenden Karte
+	 * @param rank Der Wert der zu erzeugenden Karte
 	 */
-	public PlayingCard(Suit suit, Value value) {
-		this.value = value;
+	public PlayingCard(Suit suit, Rank rank) {
+		this.rank = rank;
 		this.suit = suit;
 		//deutsch = false;
 	}
@@ -69,8 +157,8 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return wert der Karte
 	 */
-	public Value getValue() {
-		return value;
+	public Rank getValue() {
+		return rank;
 	}
 
 	/**
@@ -111,7 +199,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	public String toString() {
 		String string = "";
 		if (germanDeck == true) {
-			string = suit + " " + value;
+			string = suit + " " + rank;
 		} else {
 			String frenchSuit = frenchSuit();
 			String frenchValue = frenchValue();
@@ -134,16 +222,8 @@ public class PlayingCard implements Comparable<PlayingCard> {
 
 		boolean result;
 
-		if (this.suit.ordinal() == card.getSuit().ordinal()
-				&& this.value.ordinal() == card.getValue().ordinal()) {
-
-			result = true;
-		}
-
-		else {
-
-			result = false;
-		}
+		result = this.suit.ordinal() == card.getSuit().ordinal()
+				&& this.rank.ordinal() == card.getValue().ordinal();
 
 		return result;
 	}
@@ -162,7 +242,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 		
 		int result = Integer.MAX_VALUE;
 		
-		if (value == card.getValue() && suit == card.getSuit()) {
+		if (rank == card.getValue() && suit == card.getSuit()) {
 			
 			result = 0;
 		}
@@ -202,14 +282,14 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 */
 	public String frenchValue() {
 		String frenchValue ="";
-		if (value == Value.UNDER_KNAVE) {
+		if (rank == Rank.UNDER_KNAVE) {
 			frenchValue = "JACK";
-		} else if (value == Value.OVER_KNAVE) {
+		} else if (rank == Rank.OVER_KNAVE) {
 			frenchValue = "QUEEN";
-		} else if (value == Value.DAUS) {
+		} else if (rank == Rank.DAUS) {
 			frenchValue = "ACE";
 		} else {
-			frenchValue = "" + value;
+			frenchValue = "" + rank;
 		}
 		return frenchValue;
 	}

@@ -3,14 +3,12 @@ package main.player;
 import java.util.ArrayList;
 import java.util.Random;
 
-import main.gamevariety.GameVarietyName;
+import main.gamevariety.GameVariety;
 import main.gamevariety.GrandGame;
 import main.gamevariety.IGameVariety;
 import main.gamevariety.NullGame;
 import main.gamevariety.SuitGame;
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 
 /**
@@ -106,22 +104,22 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
 			ergebnis = grandSpielen(gespielteKarten);
 		}
 
-		else if (gameVariety.getGameVariety() == GameVarietyName.SUIT) {
+		else if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 
 			ergebnis = farbeSpielen(gespielteKarten);
 		}
 
-		else if (gameVariety.getGameVariety() == GameVarietyName.NULL) {
+		else if (gameVariety.getGameVariety() == GameVariety.Name.NULL) {
 
 			ergebnis = nullSpielen(gespielteKarten);
 		}
 
-		else if (gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
+		else if (gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
 			ergebnis = ramschSpielen(gespielteKarten);
 		}
@@ -713,9 +711,9 @@ public class SmartPlayer extends Player {
 
 		PlayingCard ergebnis = null;
 		Random zufall = new Random();
-		ArrayList<PlayingCard> buben = kartenEinesWertes(hand, Value.UNDER_KNAVE);
-		ArrayList<PlayingCard> asse = kartenEinesWertes(hand, Value.DAUS);
-		ArrayList<PlayingCard> zehnen = kartenEinesWertes(hand, Value.TEN);
+		ArrayList<PlayingCard> buben = cardsOfRank(hand, PlayingCard.Rank.UNDER_KNAVE);
+		ArrayList<PlayingCard> asse = cardsOfRank(hand, PlayingCard.Rank.DAUS);
+		ArrayList<PlayingCard> zehnen = cardsOfRank(hand, PlayingCard.Rank.TEN);
 
 		if (buben.size() > 2) {
 
@@ -732,7 +730,7 @@ public class SmartPlayer extends Player {
 
 			for (PlayingCard karte : asse) {
 
-				if (kartenEinerFarbe(anfangsBlatt, karte.getSuit()).size() <= 4) {
+				if (cardsOfSuit(anfangsBlatt, karte.getSuit()).size() <= 4) {
 
 					ergebnis = asse.get(zufall.nextInt(asse.size()));
 					break;
@@ -746,7 +744,7 @@ public class SmartPlayer extends Player {
 
 			for (PlayingCard karte : zehnen) {
 
-				// if (kartenEinerFarbe(anfangsBlatt,
+				// if (cardsOfSuit(anfangsBlatt,
 				// karte.getFarbe()).size() <= 4
 				// && alleGespielteKarten.contains(naechstHoehereKarte(
 				// karte.getFarbe(), karte))) {
@@ -765,7 +763,7 @@ public class SmartPlayer extends Player {
 					}
 				}
 
-				if (kartenEinerFarbe(anfangsBlatt, karte.getSuit()).size() <= 4
+				if (cardsOfSuit(anfangsBlatt, karte.getSuit()).size() <= 4
 						&& enthalten) {
 
 					ergebnis = zehnen.get(zufall.nextInt(zehnen.size()));
@@ -802,8 +800,8 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : buben) {
 
-			if (karte.equals(new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE))
-					|| karte.equals(new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE))) {
+			if (karte.equals(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE))
+					|| karte.equals(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE))) {
 
 				ergebnis = buben.get(zufall.nextInt(buben.size()));
 				break;
@@ -1099,26 +1097,26 @@ public class SmartPlayer extends Player {
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst h&ouml;here Karte
 	 */
-	public PlayingCard naechstHoehereKarte(Suit farbe, PlayingCard karte) {
+	public PlayingCard naechstHoehereKarte(PlayingCard.Suit farbe, PlayingCard karte) {
 
 		PlayingCard ergebnis = null;
 
 		switch (karte.getValue()) {
 
 		case SIX:
-			ergebnis = new PlayingCard(farbe, Value.SEVEN);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.SEVEN);
 			break;
 		case SEVEN:
-			ergebnis = new PlayingCard(farbe, Value.EIGHT);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.EIGHT);
 			break;
 		case EIGHT:
-			ergebnis = new PlayingCard(farbe, Value.NINE);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.NINE);
 			break;
 		case NINE:
 			ergebnis = naechstHoehereKarteNeun(farbe);
 			break;
 		case OVER_KNAVE:
-			ergebnis = new PlayingCard(farbe, Value.KING);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.KING);
 			break;
 		case KING:
 			ergebnis = naechstHoehereKarteKoenig(farbe);
@@ -1150,17 +1148,17 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteNeun(Suit farbe) {
+	public PlayingCard naechstHoehereKarteNeun(PlayingCard.Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Value.OVER_KNAVE);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.OVER_KNAVE);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Value.TEN);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
 		}
 
 		return ergebnis;
@@ -1175,17 +1173,17 @@ public class SmartPlayer extends Player {
 	 *            - Farbe von der die n&auml;chst niedrigere Karte verlangt wird
 	 * @return die n&aumlchst h&ouml;here Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstHoehereKarteKoenig(Suit farbe) {
+	public PlayingCard naechstHoehereKarteKoenig(PlayingCard.Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Value.TEN);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Value.DAUS);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.DAUS);
 		}
 
 		return ergebnis;
@@ -1201,17 +1199,17 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteZehn(Suit farbe) {
+	public PlayingCard naechstHoehereKarteZehn(PlayingCard.Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Value.DAUS);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.DAUS);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Value.OVER_KNAVE);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.OVER_KNAVE);
 		}
 
 		return ergebnis;
@@ -1227,20 +1225,20 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteBube(Suit farbe) {
+	public PlayingCard naechstHoehereKarteBube(PlayingCard.Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND
-				|| gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND
+				|| gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
 			ergebnis = null;
 		}
 
 		else {
 
-			ergebnis = new PlayingCard(farbe, Value.OVER_KNAVE);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.OVER_KNAVE);
 		}
 
 		return ergebnis;
@@ -1257,7 +1255,7 @@ public class SmartPlayer extends Player {
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst niedrigere Karte
 	 */
-	public PlayingCard naechstNiedrigereKarte(Suit farbe, PlayingCard karte) {
+	public PlayingCard naechstNiedrigereKarte(PlayingCard.Suit farbe, PlayingCard karte) {
 
 		PlayingCard ergebnis = null;
 
@@ -1267,19 +1265,19 @@ public class SmartPlayer extends Player {
 			ergebnis = null;
 			break;
 		case SEVEN:
-			ergebnis = new PlayingCard(farbe, Value.SIX);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.SIX);
 			break;
 		case EIGHT:
-			ergebnis = new PlayingCard(farbe, Value.SEVEN);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.SEVEN);
 			break;
 		case NINE:
-			ergebnis = new PlayingCard(farbe, Value.EIGHT);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.EIGHT);
 			break;
 		case OVER_KNAVE:
 			ergebnis = naechstNiedrigereKarteDame(farbe);
 			break;
 		case KING:
-			ergebnis = new PlayingCard(farbe, Value.OVER_KNAVE);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.OVER_KNAVE);
 			break;
 		case TEN:
 			ergebnis = naechstNiedrigereKarteZehn(farbe);
@@ -1308,17 +1306,17 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteDame(Suit farbe) {
+	public PlayingCard naechstNiedrigereKarteDame(PlayingCard.Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Value.NINE);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.NINE);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Value.TEN);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
 		}
 
 		return ergebnis;
@@ -1334,17 +1332,17 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteZehn(Suit farbe) {
+	public PlayingCard naechstNiedrigereKarteZehn(PlayingCard.Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Value.KING);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.KING);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Value.NINE);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.NINE);
 		}
 
 		return ergebnis;
@@ -1359,17 +1357,17 @@ public class SmartPlayer extends Player {
 	 *            - Farbe der zu suchenden Karte"
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteAss(Suit farbe) {
+	public PlayingCard naechstNiedrigereKarteAss(PlayingCard.Suit farbe) {
 
 		PlayingCard ergebnis = null;
 
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, Value.TEN);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Value.KING);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.KING);
 		}
 
 		return ergebnis;
@@ -1384,18 +1382,18 @@ public class SmartPlayer extends Player {
 	 *            - Farbe der zu suchenden Karte
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteBube(Suit farbe) {
+	public PlayingCard naechstNiedrigereKarteBube(PlayingCard.Suit farbe) {
 		
 		PlayingCard ergebnis = null;
 		
-		if (gameVariety.getGameVariety() == GameVarietyName.SUIT
-				|| gameVariety.getGameVariety() == GameVarietyName.GRAND
-				|| gameVariety.getGameVariety() == GameVarietyName.RAMSCH) {
+		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
+				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND
+				|| gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
 			ergebnis = null;
 		} else {
 
-			ergebnis = new PlayingCard(farbe, Value.TEN);
+			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
 		}
 		
 		return ergebnis;
@@ -1405,54 +1403,54 @@ public class SmartPlayer extends Player {
 	 * Diese Methode sucht in einem Blatt Karten eines bestimmten Wertes und
 	 * packt diese in eine ArrayList.
 	 * 
-	 * @param blatt
+	 * @param hand
 	 *            - Das Blatt aus dem die Arrayliste eines Wertes geholt werden
 	 *            soll.
-	 * @param wert
+	 * @param value
 	 *            - Der Wert einer Karte. z.B.: Ein Ass
 	 * @return Die ArrayList mit den Assen.
 	 */
-	public ArrayList<PlayingCard> kartenEinesWertes(ArrayList<PlayingCard> blatt,
-			Value wert) {
+	public ArrayList<PlayingCard> cardsOfRank(ArrayList<PlayingCard> hand,
+			PlayingCard.Rank value) {
 
-		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>(4);
+		ArrayList<PlayingCard> result = new ArrayList<PlayingCard>(4);
 
-		for (PlayingCard karte : blatt) {
+		for (PlayingCard card : hand) {
 
-			if (karte.getValue() == wert) {
+			if (card.getValue() == value) {
 
-				ergebnis.add(karte);
+				result.add(card);
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Diese Methode sucht in einem Blatt Karten einer bestimmten Farbe und
 	 * packt diese in eine ArrayList. Buben werden nicht ber&uuml;cksichtigt.
 	 * 
-	 * @param blatt
+	 * @param hand
 	 *            - Das Blatt aus dem die Arrayliste einer Farbe geholt werden
 	 *            soll.
-	 * @param farbe
+	 * @param suit
 	 *            - Die Farbe einer Karte. z.B.: Kreuz
 	 * @return Die ArrayList mit den Karten der Farbe Kreuz.
 	 */
-	public ArrayList<PlayingCard> kartenEinerFarbe(ArrayList<PlayingCard> blatt,
-			Suit farbe) {
+	public ArrayList<PlayingCard> cardsOfSuit(ArrayList<PlayingCard> hand,
+			PlayingCard.Suit suit) {
 
-		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> result = new ArrayList<PlayingCard>();
 
-		for (PlayingCard karte : blatt) {
+		for (PlayingCard card : hand) {
 
-			if (karte.getSuit() == farbe && karte.getValue() != Value.UNDER_KNAVE) {
+			if (card.getSuit() == suit && card.getValue() != PlayingCard.Rank.UNDER_KNAVE) {
 
-				ergebnis.add(karte);
+				result.add(card);
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1708,7 +1706,7 @@ public class SmartPlayer extends Player {
 	 */
 	public void maxReizwertFarbe(int ermittelteSpitzen) {
 
-		Suit farbe = ermittleTrumpffarbe();
+		PlayingCard.Suit farbe = ermittleTrumpffarbe();
 
 		maxReizwert = (ermittelteSpitzen + 1) * farbe.value();
 	}
@@ -1747,13 +1745,13 @@ public class SmartPlayer extends Player {
 		int ergebnis = 0;
 		PlayingCard[] spitzen;
 
-		if (zuReizendeSpielart.getGameVariety() == GameVarietyName.SUIT) {
+		if (zuReizendeSpielart.getGameVariety() == GameVariety.Name.SUIT) {
 
 			spitzen = farbeSpitzen(zuReizendeSpielart);
 			ergebnis = spitzenZaehlen(spitzen);
 		}
 
-		else if (zuReizendeSpielart.getGameVariety() == GameVarietyName.GRAND) {
+		else if (zuReizendeSpielart.getGameVariety() == GameVariety.Name.GRAND) {
 
 			spitzen = grandSpitzen(zuReizendeSpielart);
 			ergebnis = spitzenZaehlen(spitzen);
@@ -1851,7 +1849,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < hand.size(); i++) {
 
-			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
+			if (hand.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
 				spitzen[rankUnderKnavesHelp(kartenwert)] = hand.get(i);
@@ -1881,7 +1879,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < hand.size(); i++) {
 
-			if (hand.get(i).getValue() == Value.UNDER_KNAVE) {
+			if (hand.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
 				spitzen[rankUnderKnavesHelp(kartenwert)] = hand.get(i);
@@ -1919,18 +1917,18 @@ public class SmartPlayer extends Player {
 
 		for (PlayingCard karte : hand) {
 
-			if (karte.getValue() == Value.SEVEN || karte.getValue() == Value.EIGHT
-					|| karte.getValue() == Value.NINE) {
+			if (karte.getValue() == PlayingCard.Rank.SEVEN || karte.getValue() == PlayingCard.Rank.EIGHT
+					|| karte.getValue() == PlayingCard.Rank.NINE) {
 
 				kartenKleiner10++;
 			}
 
-			if (karte.getValue() == Value.UNDER_KNAVE) {
+			if (karte.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				buben++;
 			}
 
-			if (karte.getValue() == Value.DAUS || karte.getValue() == Value.TEN) {
+			if (karte.getValue() == PlayingCard.Rank.DAUS || karte.getValue() == PlayingCard.Rank.TEN) {
 
 				kartenGroesserKoenig++;
 			}
@@ -1975,10 +1973,10 @@ public class SmartPlayer extends Player {
 	 */
 	public ArrayList<PlayingCard> ermittleKurzeLangeFarbe(boolean lang) {
 
-		ArrayList<PlayingCard> karo = kartenEinerFarbe(hand, Suit.BELLS);
-		ArrayList<PlayingCard> herz = kartenEinerFarbe(hand, Suit.HEARTS);
-		ArrayList<PlayingCard> pik = kartenEinerFarbe(hand, Suit.LEAVES);
-		ArrayList<PlayingCard> kreuz = kartenEinerFarbe(hand, Suit.ACORNS);
+		ArrayList<PlayingCard> karo = cardsOfSuit(hand, PlayingCard.Suit.BELLS);
+		ArrayList<PlayingCard> herz = cardsOfSuit(hand, PlayingCard.Suit.HEARTS);
+		ArrayList<PlayingCard> pik = cardsOfSuit(hand, PlayingCard.Suit.LEAVES);
+		ArrayList<PlayingCard> kreuz = cardsOfSuit(hand, PlayingCard.Suit.ACORNS);
 		ArrayList<PlayingCard> gewinner = new ArrayList<PlayingCard>();
 
 		// Die übergegebene Variable lang ist true, d.h. man möchte die lange
@@ -2096,25 +2094,25 @@ public class SmartPlayer extends Player {
 	 * 
 	 * @return Farbe, die am h&auml;ufigsten Vorkommt.
 	 */
-	public Suit ermittleTrumpffarbe() {
+	public PlayingCard.Suit ermittleTrumpffarbe() {
 
-		Suit ergebnis = null;
+		PlayingCard.Suit ergebnis = null;
 		ArrayList<PlayingCard> gewinner = ermittleKurzeLangeFarbe(true);
 
 		// Gewinner feststellen
 		switch (gewinner.get(0).getSuit()) {
 
 		case BELLS:
-			ergebnis = Suit.BELLS;
+			ergebnis = PlayingCard.Suit.BELLS;
 			break;
 		case HEARTS:
-			ergebnis = Suit.HEARTS;
+			ergebnis = PlayingCard.Suit.HEARTS;
 			break;
 		case LEAVES:
-			ergebnis = Suit.LEAVES;
+			ergebnis = PlayingCard.Suit.LEAVES;
 			break;
 		case ACORNS:
-			ergebnis = Suit.ACORNS;
+			ergebnis = PlayingCard.Suit.ACORNS;
 			break;
 		default:
 			System.err.println("Fehler in ermittleTrumpfarbe!");
@@ -2135,27 +2133,27 @@ public class SmartPlayer extends Player {
 
 		for (int i = 0; i < stiche.size(); i++) {
 
-			if (stiche.get(i).getValue() == Value.DAUS) {
+			if (stiche.get(i).getValue() == PlayingCard.Rank.DAUS) {
 
 				erg += 11;
 
-			} else if (stiche.get(i).getValue() == Value.TEN) {
+			} else if (stiche.get(i).getValue() == PlayingCard.Rank.TEN) {
 
 				erg += 10;
 
-			} else if (stiche.get(i).getValue() == Value.UNDER_KNAVE) {
+			} else if (stiche.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				erg += 2;
 
-			} else if (stiche.get(i).getValue() == Value.OVER_KNAVE) {
+			} else if (stiche.get(i).getValue() == PlayingCard.Rank.OVER_KNAVE) {
 
 				erg += 3;
 
-			} else if (stiche.get(i).getValue() == Value.KING) {
+			} else if (stiche.get(i).getValue() == PlayingCard.Rank.KING) {
 
 				erg += 4;
 
-			} else if (stiche.get(i).getValue() == Value.SIX) {
+			} else if (stiche.get(i).getValue() == PlayingCard.Rank.SIX) {
 
 				erg += 6;
 			}

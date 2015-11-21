@@ -23,7 +23,7 @@ public interface IHumanPlayer {
 	 *            - der aktuelle Reizwert
 	 * @return boolean - true, falls der Spieler mitgeht
 	 */
-	public abstract boolean respond(int reizwert);
+	boolean respond(int reizwert);
 
 	/**
 	 * Fragt den menschlichen Spieler, welchen Wert er als n&auml;chstes reizen
@@ -33,7 +33,7 @@ public interface IHumanPlayer {
 	 *            - dieser Wert muss &uuml;berschritten werden
 	 * @return reizwert des menschlichen Spielers
 	 */
-	public abstract boolean bid(int reizWert);
+	boolean bid(int reizWert);
 
 	/**
 	 * Gibt die Karte zur&uuml;ck, die der Spieler auf den Tisch legen
@@ -44,42 +44,42 @@ public interface IHumanPlayer {
 	 * @return die Karte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	public abstract PlayingCard playCard(PlayingCard[] gespielteKarten);
+	PlayingCard playCard(PlayingCard[] gespielteKarten);
 
 	/**
 	 * Gibt die gedr&uuml;ckten Spielkarten zur&uuml;ck.
 	 * 
 	 * @return gedr&uuml;ckte Spielkarten
 	 */
-	public abstract PlayingCard[] druecken(PlayingCard[] skat);
+	PlayingCard[] druecken(PlayingCard[] skat);
 
 	/**
 	 * Handspiel ermittelt, ob der Spieler ein Handspiel ansagt.
 	 * 
 	 * @return true, falls der Spieler ein Handspiel w&uuml;nscht
 	 */
-	public abstract boolean handgame();
+	boolean handgame();
 
 	/**
 	 * Ouvert ermittelt, ob der Spieler mit offenen Karten spielen will.
 	 * 
 	 * @return true, falls offenes Spiel
 	 */
-	public abstract boolean ouvert();
+	boolean ouvert();
 
 	/**
 	 * schneider ermittelt, ob der Spieler schneider spielen will.
 	 * 
 	 * @return true, falls schneider
 	 */
-	public abstract boolean schneider();
+	boolean schneider();
 
 	/**
 	 *Schwarz ermittelt, ob der Spieler schwarz spielen will.
 	 * 
 	 * @return true, falls schwarz
 	 */
-	public abstract boolean schwarz();
+	boolean schwarz();
 
 	/**
 	 * SpielAnsagen ermittelt, ob der Spieler ein Farb-, Grand-, oder Nullspiel
@@ -87,7 +87,7 @@ public interface IHumanPlayer {
 	 * 
 	 * @return die gew&uuml;nschte Spielart
 	 */
-	public abstract IGameVariety declareGame();
+	IGameVariety declareGame();
 
 	/**
 	 * Liefert ein Farbspiel mit korrekt gesetzten Trumpffarbe zur&uuml;ck,
@@ -95,7 +95,7 @@ public interface IHumanPlayer {
 	 * 
 	 * @return Farbspiel mit gesetzter Trumpffarbe
 	 */
-	public abstract SuitGame suit();
+	SuitGame suit();
 
 	/**
 	 * Benutzt der Spieler den Reizagenten, liefert diese Methode den maximalen
@@ -103,13 +103,13 @@ public interface IHumanPlayer {
 	 * 
 	 * @return maximaler Reizwert
 	 */
-	public abstract int setBidLimit();
+	int setBidLimit();
 
 	/**
 	 * Fragt den Spieler, ob er mit Reizagent spielen m&ouml;chte.
 	 * 
 	 * @return true, falls der Spieler mit Reizagent spielt
 	 */
-	public abstract boolean agent();
+	boolean agent();
 
 }

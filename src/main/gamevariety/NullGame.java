@@ -3,7 +3,6 @@ package main.gamevariety;
 import java.util.ArrayList;
 
 import main.playingcard.PlayingCard;
-import main.playingcard.Value;
 
 
 /**
@@ -19,7 +18,7 @@ public class NullGame extends GameVariety implements INullGame {
 	 * Instanziert ein Null - Spiel
 	 */
 	public NullGame() {
-		setGameVariety(GameVarietyName.NULL);
+		setGameVariety(Name.NULL);
 	}
 
 	
@@ -107,40 +106,40 @@ public class NullGame extends GameVariety implements INullGame {
 	@Override
 	public int evaluateCard(PlayingCard card) {
 
-		Value value = card.getValue();
+		PlayingCard.Rank value = card.getValue();
 		int result = -1;
 
 		switch (value) {
 
 		case SIX:
-			result = Value.SIX.ordinal();
+			result = PlayingCard.Rank.SIX.ordinal();
 			break;
 		case SEVEN:
-			result = Value.SEVEN.ordinal();
+			result = PlayingCard.Rank.SEVEN.ordinal();
 			break;
 		case EIGHT:
-			result = Value.EIGHT.ordinal();
+			result = PlayingCard.Rank.EIGHT.ordinal();
 			break;
 		case NINE:
-			result = Value.NINE.ordinal();
+			result = PlayingCard.Rank.NINE.ordinal();
 			break;
 		case TEN:
-			result = Value.TEN.ordinal();
+			result = PlayingCard.Rank.TEN.ordinal();
 			break;
 		case UNDER_KNAVE:
-			result = Value.UNDER_KNAVE.ordinal();
+			result = PlayingCard.Rank.UNDER_KNAVE.ordinal();
 			break;
 		case OVER_KNAVE:
-			result = Value.OVER_KNAVE.ordinal();
+			result = PlayingCard.Rank.OVER_KNAVE.ordinal();
 			break;
 		case KING:
-			result = Value.KING.ordinal();
+			result = PlayingCard.Rank.KING.ordinal();
 			break;
 		case DAUS:
-			result = Value.DAUS.ordinal();
+			result = PlayingCard.Rank.DAUS.ordinal();
 			break;
 		// default:
-		// ergebnis = -1;
+		// result = -1;
 		//
 		}
 		return result;

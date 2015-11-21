@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import main.playingcard.PlayingCard;
-import main.playingcard.Suit;
-import main.playingcard.Value;
 
 /**
  * Testklasse fuer die Spielkarte
@@ -16,12 +14,12 @@ import main.playingcard.Value;
 
 public class PlayingCardTest {
 	
-	Value wert1 = Value.EIGHT;
-	Suit farbe1 = Suit.HEARTS;
+	PlayingCard.Rank wert1 = PlayingCard.Rank.EIGHT;
+	PlayingCard.Suit farbe1 = PlayingCard.Suit.HEARTS;
 	PlayingCard karte1 = new PlayingCard(farbe1, wert1);
 	
-	Value wert2 = Value.OVER_KNAVE;
-	Suit farbe2 = Suit.LEAVES;
+	PlayingCard.Rank wert2 = PlayingCard.Rank.OVER_KNAVE;
+	PlayingCard.Suit farbe2 = PlayingCard.Suit.LEAVES;
 	PlayingCard karte2 = new PlayingCard(farbe2, wert2);
 	
 	
@@ -31,7 +29,7 @@ public class PlayingCardTest {
 	 */
 	@Test
 	public void testSpielkarte1() {
-		assertEquals(Value.EIGHT, karte1.getValue() );
+		assertEquals(PlayingCard.Rank.EIGHT, karte1.getValue() );
 	}
 	
 	/**
@@ -39,7 +37,7 @@ public class PlayingCardTest {
 	 */
 	@Test
 	public void testSpielkarte2() {
-		assertEquals(Suit.HEARTS, karte1.getSuit() );
+		assertEquals(PlayingCard.Suit.HEARTS, karte1.getSuit() );
 	}
 	
 	/**
@@ -68,94 +66,94 @@ public class PlayingCardTest {
 	@Test
 	public void toStringTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.LEAVES, Value.DAUS);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		assertEquals("LEAVES DAUS", karte.toString());
 		
 	}
 	
 	@Test
 	public void compareToTest() {
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
+		PlayingCard karte1 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		PlayingCard karte2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 		assertEquals(0, karte1.compareTo(karte2));
 	}
 	
 	@Test
 	public void compareToTest2() {
-		PlayingCard karte1 = new PlayingCard(Suit.HEARTS, Value.EIGHT);
-		PlayingCard karte2 = new PlayingCard(Suit.HEARTS, Value.NINE);
+		PlayingCard karte1 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+		PlayingCard karte2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE);
 		assertEquals(Integer.MAX_VALUE, karte1.compareTo(karte2));
 	}
 	
 	@Test
 	public void frenchSuitTest() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
 		assertEquals("DIAMONDS", karte.frenchSuit());
 	}
 	
 	@Test
 	public void frenchSuitTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.UNDER_KNAVE);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		assertEquals("HEARTS", karte.frenchSuit());
 	}
 	
 	@Test
 	public void frenchSuitTest3() {
 		
-		PlayingCard karte = new PlayingCard(Suit.LEAVES, Value.UNDER_KNAVE);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		assertEquals("SPADES", karte.frenchSuit());
 	}
 	
 	@Test
 	public void frenchSuitTest4() {
 		
-		PlayingCard karte = new PlayingCard(Suit.ACORNS, Value.UNDER_KNAVE);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		assertEquals("CLUBS", karte.frenchSuit());
 	}
 	
 	@Test
 	public void frenchValueTest() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.UNDER_KNAVE);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
 		assertEquals("JACK", karte.frenchValue());
 	}
 	
 	@Test
 	public void frenchValueTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.OVER_KNAVE);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
 		assertEquals("QUEEN", karte.frenchValue());
 	}
 	
 	@Test
 	public void frenchValueTest3() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.DAUS);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		assertEquals("ACE", karte.frenchValue());
 	}
 	
 	@Test
 	public void frenchValueTest4() {
 		
-		PlayingCard karte = new PlayingCard(Suit.BELLS, Value.NINE);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		assertEquals("NINE", karte.frenchValue());
 	}
 	
 	@Test
 	public void dateiPfadTest() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
-		karte.setGermanDeck(true);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE);
+		PlayingCard.setGermanDeck(true);
 		assertEquals("germancards/HEARTS_OVER_KNAVE", karte.filePath());
 	}
 	
 	@Test
 	public void dateiPfadTest2() {
 		
-		PlayingCard karte = new PlayingCard(Suit.HEARTS, Value.OVER_KNAVE);
-		karte.setGermanDeck(false);
+		PlayingCard karte = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE);
+		PlayingCard.setGermanDeck(false);
 		assertEquals("frenchcards/HEARTS_QUEEN", karte.filePath());
 	}
 }

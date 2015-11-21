@@ -24,7 +24,7 @@ public interface IOutput {
 	 * 
 	 * @return True, falls die Ausgabe frei ist, false, falls sie wartet
 	 */
-	public abstract boolean getRelease();
+	boolean getRelease();
 
 	/**
 	 * Setzt den Status der Variable release. Diese soll true sein falls die
@@ -34,7 +34,7 @@ public interface IOutput {
 	 *            Den Wert von release. True falls die Ausgabe frei ist, false
 	 *            falls die Ausgabe wartet
 	 */
-	public abstract void setRelease(boolean release);
+	void setRelease(boolean release);
 
 
 	
@@ -43,7 +43,7 @@ public interface IOutput {
 	 * 
 	 * @return name des Spielers
 	 */
-	public abstract String name();
+	String name();
 
 	/**
 	 * L&auml;sst einen Spieler h&ouml;ren und fragt, ob er bei dem besagten
@@ -53,7 +53,7 @@ public interface IOutput {
 	 *            - aktueller Reizwert
 	 * @return true, falls der Spieler mitgeht
 	 */
-	public abstract boolean respond(int wert);
+	boolean respond(int wert);
 
 	/**
 	 * L&auml;sst einen Spieler bid und fragt, ob er bei dem besagten Reizwert
@@ -63,7 +63,7 @@ public interface IOutput {
 	 *            - aktueller Reizwert
 	 * @return true, falls der spieler mitgeht
 	 */
-	public abstract boolean bid(int reizWert);
+	boolean bid(int reizWert);
 
 	/**
 	 * Fordert den Spieler auf, seine Gegener auszuw&auml;len.
@@ -72,7 +72,7 @@ public interface IOutput {
 	 *            1, falls 1. Gegner; 2. falls 1. Gegner
 	 * @return String, der Gegerbezeichnung enth&auml;lt
 	 */
-	public abstract String adversary(int nummer);
+	String adversary(int nummer);
 
 	/**
 	 * Fragt den Spieler, ob er R&auml;uberskat oder Skat nach internationaler
@@ -81,25 +81,25 @@ public interface IOutput {
 	 * @return String, der die Variante enth&auml;lt r = R&auml;uberskat, i =
 	 *         internationale Skatordnung
 	 */
-	public abstract String askForVariant();
+	String askForVariant();
 
 	/**
 	 * Informiert den Spieler dar&uuml;ber, dass er eine falsche Eingabe gemacht
 	 * hat und bittet um erneute Eingabe.
 	 */
-	public abstract void wrongInputHint();
+	void wrongInputHint();
 
 	/**
 	 * Fragt den Spieler ob er hand spielen m&ouml;chte.
 	 * 
 	 * @return true, falls der Spieler hand spielt
 	 */
-	public abstract boolean handgame();
+	boolean handgame();
 
 	/**
 	 * Steuert den gesamten Spielablauf.
 	 */
-	public abstract void play();
+	void play();
 
 
 	/**
@@ -112,35 +112,35 @@ public interface IOutput {
 	 *            - 1 fuer 1. Karte dr&uuml;cken, 2 fuer 2. Karte dr&uuml;cken
 	 * @return nummer der gedr&uuml;ckten Karte
 	 */
-	public abstract int druecken(ArrayList<PlayingCard> blatt, int nummer);
+	int druecken(ArrayList<PlayingCard> blatt, int nummer);
 
 	/**
 	 * Fragt den menschlichen Spieler, ob er schneider spielen m&ouml;chte.
 	 * 
 	 * @return true, falls schneider
 	 */
-	public abstract boolean schneider();
+	boolean schneider();
 
 	/**
 	 * Fragt den menschlichen Spieler, ob er schwarz spielen m&ouml;chte.
 	 * 
 	 * @return true, falls schwarz
 	 */
-	public abstract boolean schwarz();
+	boolean schwarz();
 
 	/**
 	 * Fragt den menschlichen Spieler, ob er ouvert spielen m&ouml;chte.
 	 * 
 	 * @return true, falls ouvert
 	 */
-	public abstract boolean ouvert();
+	boolean ouvert();
 
 	/**
 	 * Fragt den menschlichen Spieler, welches Spiel er ansagen m&ouml;chte.
 	 * 
 	 * @return Spielart - die vom Spieler angesagte Spielart
 	 */
-	public abstract IGameVariety declareSuit();
+	IGameVariety declareSuit();
 
 	/**
 	 * Diese Methode fragt den Spieler nach der Trumpffarbe, die er spielen
@@ -148,7 +148,7 @@ public interface IOutput {
 	 * 
 	 * @return - das neue Farbspiel mit der gew&auml;hlten Trumpffarbe
 	 */
-	public abstract SuitGame suitGame();
+	SuitGame suitGame();
 
 	/**
 	 * Zeigt dem Spieler seine Handkarten und die bisher in den Stich gespielten
@@ -161,8 +161,8 @@ public interface IOutput {
 	 * @return Spielkarte, die der Spieler spielt
 	 * @throws IOException
 	 */
-	public abstract PlayingCard playCard(PlayingCard[] gespielteKarten,
-										 IPlayer spieler) throws IOException;
+	PlayingCard playCard(PlayingCard[] gespielteKarten,
+						 IPlayer spieler) throws IOException;
 
 	/**
 	 * Diese Methode gibt aus, welcher Spieler den Stich gewonnen hat.
@@ -170,7 +170,7 @@ public interface IOutput {
 	 * @param spieler
 	 *            - der Gewinner des Stichs
 	 */
-	public abstract void trickWon(IPlayer spieler);
+	void trickWon(IPlayer spieler);
 
 	/**
 	 * Gibt das Blatt des Spielers aus.
@@ -179,14 +179,14 @@ public interface IOutput {
 	 *            - spieler, dessen Blatt ausgegeben werden soll
 	 * @throws IOException
 	 */
-	public abstract void outputHand(IPlayer spieler) throws IOException;
+	void outputHand(IPlayer spieler) throws IOException;
 
 	/**
 	 * Diese Methoden gibt die im Skat liegende Karten aus.
 	 * 
 	 * @throws IOException
 	 */
-	public abstract void outputSkat(PlayingCard[] skat) throws IOException;
+	void outputSkat(PlayingCard[] skat) throws IOException;
 
 	/**
 	 * Teilt mit, dass ein Spieler pass ist.
@@ -194,19 +194,19 @@ public interface IOutput {
 	 * @param spieler
 	 *            - spieler der pass ist.
 	 */
-	public abstract void pass(IPlayer spieler);
+	void pass(IPlayer spieler);
 
 	/**
 	 * Diese Methode teilt dem Spieler mit, dass das Spiel beendet ist.
 	 */
-	public abstract void gameOver();
+	void gameOver();
 
 	/**
 	 * Gibt nach einem Spiel aus, ob der Alleinspieler isWon oder verloren
 	 * hat, wieviele Augen er hat und wieviele Punkte er f&uuml;r das Spiel
 	 * bekommt.
 	 */
-	public abstract void showEvaluation(boolean isWon);
+	void showEvaluation(boolean isWon);
 
 	/**
 	 * L&auml;sst die Hinterhand gegen den vorherigen Gewinner reizen.
@@ -214,32 +214,32 @@ public interface IOutput {
 	 * @param winner
 	 *            - Spieler, der das Reizen zuvor gewonnen hat
 	 */
-	public abstract void hinterhandVsWinner(IPlayer winner);
+	void hinterhandVsWinner(IPlayer winner);
 
 	/**
 	 * L&auml;sst die Mittelhand gegen die Vorhand reizen.
 	 */
-	public abstract void mittelhandVsVorhand();
+	void mittelhandVsVorhand();
 
 	/**
 	 * Gibt eine Leerzeile aus.
 	 */
-	public abstract void blankLine();
+	void blankLine();
 
 	/**
 	 * Teilt dem Spieler mit, dass das Spiel eingepasst wird.
 	 */
-	public abstract void passGame();
+	void passGame();
 
 	/**
 	 * Teilt dem Spieler mit, dass das Spiel beginnt.
 	 */
-	public abstract void gameBegins();
+	void gameBegins();
 
 	/**
 	 * Fordert den Spieler auf eine andere Karte zu spielen.
 	 */
-	public abstract void anotherCard();
+	void anotherCard();
 
 	/**
 	 * Gibt aus wieviele Augen der Alleinspieler erspielt hat.
@@ -247,7 +247,7 @@ public interface IOutput {
 	 * @param augen
 	 *            - die vom Alleinspieler erspielten Augen
 	 */
-	public abstract void augen(int augen);
+	void augen(int augen);
 
 	/**
 	 * Gibt aus wieviele Punkte der Alleinspieler erreicht hat.
@@ -255,29 +255,29 @@ public interface IOutput {
 	 * @param punkte
 	 *            - die vom Alleinspieler erzielten Punkte
 	 */
-	public abstract void points(int punkte);
+	void points(int punkte);
 
 	/**
 	 * Gibt aus, wer der Alleinspieler ist und dass dieser spielt.
 	 */
-	public abstract void showDeclarer();
+	void showDeclarer();
 
 	/**
 	 * Gibt aus welche Spielart der Alleinspieler spielt.
 	 */
-	public abstract void trump();
+	void trump();
 
 	/**
 	 * Gibt bekannt, dass ein neues Spiel gestartet wurde.
 	 */
-	public abstract void newGame();
+	void newGame();
 
 	/**
 	 * Liest einen String von der Ausgabe ein.
 	 * 
 	 * @return eingelesener String
 	 */
-	public abstract String readInput();
+	String readInput();
 
 	/**
 	 * Gibt aus, welche Karte ein Spieler gespielt hat.
@@ -287,71 +287,71 @@ public interface IOutput {
 	 * @param card
 	 *            - Karte, die gespielt wird
 	 */
-	public abstract void spieltKarte(IPlayer player, PlayingCard card);
+	void spieltKarte(IPlayer player, PlayingCard card);
 
 	/**
 	 * Fragt den Spieler, wie hoch er reizen m&ouml;chte.
 	 * 
 	 * @return maximaler Reizwert des Spielers
 	 */
-	public abstract int reizlimitFestlegen();
+	int reizlimitFestlegen();
 
 	/**
 	 * Fragt den Spieler, ob der Reizagent aktiviert werden soll.
 	 * 
 	 * @return true, falls der Spieler mit Agent spielen will.
 	 */
-	public abstract boolean reizAgent();
+	boolean reizAgent();
 
 	/**
 	 * Fragt den Spieler, ob er das Spiel beenden m&ouml;chte.
 	 * 
 	 * @return true, falls das Spiel beendet werden soll
 	 */
-	public abstract boolean quitGame();
+	boolean quitGame();
 
 	/**
 	 * Gibt die aktuelle Punkteliste aus.
 	 */
-	public abstract void outputPoints();
+	void outputPoints();
 
 	/**
 	 * Loescht den Tisch. Fuer GUI.
 	 */
-	public abstract void deleteTable();
+	void deleteTable();
 
 	/**
 	 * Fragt den menschlichen Spieler nach seinem gew&uuml;nschten Blatt 
 	 * @return Das gew&auml;hlte Blatt
 	 */
-	public abstract String getDeckSelection();
+	String getDeckSelection();
 
 	/**
 	 * Fragt den Spieler, ob er Sechserskat spielen m&ouml;chte oder nicht.
 	 * 
 	 * @return Ob Sechserskat gespielt werden soll oder nicht.
 	 */
-	public abstract String askForSixSkat();
+	String askForSixSkat();
 
 	/**
 	 * L&auml;sst die GUI das Hauptfenster &ouml;ffnen. Bleibt in der CLI leer.
 	 */
-	public abstract void openGameTable();
+	void openGameTable();
 
 	/**
 	 * Zeigt die Namen und Positionen der Computerspieler an.
 	 */
-	public abstract void showPosition();
+	void showPosition();
 
 	/**
 	 * Wird nach abgeschlossem Spiel (10, bzw. 11 Stiche) aufgerufen.
 	 * L&ouml;scht &uuml;berfl&uuml;ssige Elemente.
 	 */
-	public abstract void cleanUpGUI();
+	void cleanUpGUI();
 
 	/**
 	 * Die Statistik der Spieler wird auf dem Bildschirm ausgegeben.
 	 */
-	public abstract void statistics();
+	void statistics();
 
 }
