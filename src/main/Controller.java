@@ -649,7 +649,7 @@ public class Controller implements Observer, IController {
 
 			PlayingCard card = playedCards[i];
 			IPlayer owner = card.getOwner();
-			output.spieltKarte(owner, card);
+			output.playCard(owner, card);
 		}
 		output.blankLine();
 		output.trickWon(winner);

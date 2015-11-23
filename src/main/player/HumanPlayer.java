@@ -165,9 +165,9 @@ public class HumanPlayer extends Player implements IPlayer,
 
 	@Override
 	public int setBidLimit() {
-		int erg = controller.getOutput().reizlimitFestlegen();
+		int erg = controller.getOutput().setBiddingLimit();
 		while (erg == -1) {
-			erg = controller.getOutput().reizlimitFestlegen();
+			erg = controller.getOutput().setBiddingLimit();
 		}
 
 		return erg;
@@ -176,6 +176,6 @@ public class HumanPlayer extends Player implements IPlayer,
 	@Override
 	public boolean agent() {
 
-		return controller.getOutput().reizAgent();
+		return controller.getOutput().biddingAgent();
 	}
 }

@@ -287,21 +287,21 @@ public interface IOutput {
 	 * @param card
 	 *            - Karte, die gespielt wird
 	 */
-	void spieltKarte(IPlayer player, PlayingCard card);
+	void playCard(IPlayer player, PlayingCard card);
 
 	/**
 	 * Fragt den Spieler, wie hoch er reizen m&ouml;chte.
 	 * 
 	 * @return maximaler Reizwert des Spielers
 	 */
-	int reizlimitFestlegen();
+	int setBiddingLimit();
 
 	/**
 	 * Fragt den Spieler, ob der Reizagent aktiviert werden soll.
 	 * 
 	 * @return true, falls der Spieler mit Agent spielen will.
 	 */
-	boolean reizAgent();
+	boolean biddingAgent();
 
 	/**
 	 * Fragt den Spieler, ob er das Spiel beenden m&ouml;chte.

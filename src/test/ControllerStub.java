@@ -119,7 +119,7 @@ public class ControllerStub implements IController{
 	}
 
 	
-	public boolean bidOrBiddingAgent(IPlayer player, int reizValue, boolean bid) {
+	public boolean bidOrBiddingAgent(IPlayer player, int biddingValue, boolean bid) {
 		// TODO Auto-generated method stub
 		return false;
 	}
