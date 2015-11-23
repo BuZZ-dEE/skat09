@@ -202,7 +202,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 			string = suit + " " + rank;
 		} else {
 			String frenchSuit = frenchSuit();
-			String frenchValue = frenchValue();
+			String frenchValue = frenchRank();
 			string = frenchSuit + " " + frenchValue;
 		}
 		
@@ -280,18 +280,18 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @version 20.07.2015 22:21:36
 	 */
-	public String frenchValue() {
-		String frenchValue ="";
+	public String frenchRank() {
+		String frenchRank ="";
 		if (rank == Rank.UNDER_KNAVE) {
-			frenchValue = "JACK";
+			frenchRank = "JACK";
 		} else if (rank == Rank.OVER_KNAVE) {
-			frenchValue = "QUEEN";
+			frenchRank = "QUEEN";
 		} else if (rank == Rank.DAUS) {
-			frenchValue = "ACE";
+			frenchRank = "ACE";
 		} else {
-			frenchValue = "" + rank;
+			frenchRank = "" + rank;
 		}
-		return frenchValue;
+		return frenchRank;
 	}
 	
 	/**
