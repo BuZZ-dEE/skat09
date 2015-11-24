@@ -142,7 +142,7 @@ abstract public class Output implements IOutput {
 	public abstract int reizlimitFestlegen();
 
 	//@Override
-	public abstract boolean reizAgent();
+	public abstract boolean biddingAgent();
 
 	//@Override
 	public abstract boolean quitGame();
