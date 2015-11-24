@@ -703,8 +703,7 @@ public class CLIOutput extends Output {
 
 	}
 
-	@Override
-	public boolean reizAgent() {
+	public boolean biddingAgent() {
 
 		System.out.println(Messages.getI18n("game.agent.bidding.use"));
 

@@ -336,8 +336,7 @@ public class GUIOutput extends Output {
 		return null;
 	}
 
-	@Override
-	public boolean reizAgent() {
+	public boolean biddingAgent() {
 
 		hfenster.reizagent();
 		warte();
