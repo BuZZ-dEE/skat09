@@ -136,10 +136,10 @@ abstract public class Output implements IOutput {
 	public abstract String readInput();
 
 	//@Override
-	public abstract void spieltKarte(IPlayer player, PlayingCard card);
+	public abstract void playCard(IPlayer player, PlayingCard card);
 
 	//@Override
-	public abstract int reizlimitFestlegen();
+	public abstract int setBiddingLimit();
 
 	//@Override
 	public abstract boolean biddingAgent();

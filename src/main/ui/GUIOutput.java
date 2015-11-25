@@ -345,7 +345,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public int reizlimitFestlegen() {
+	public int setBiddingLimit() {
 		boolean fertig = false;
 		hfenster.reizLimfest();
 		warte();
@@ -366,7 +366,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(IPlayer player, PlayingCard card) {
+	public void playCard(IPlayer player, PlayingCard card) {
 		if (tisch.getHumanPlayer().getName() == player.getName()) {
 			hfenster.menschSpieltKarte();
 		} else {

@@ -711,7 +711,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public int reizlimitFestlegen() {
+	public int setBiddingLimit() {
 
 		int result = -1;
 		boolean ready = false;
@@ -750,7 +750,7 @@ public class CLIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(IPlayer player, PlayingCard card) {
+	public void playCard(IPlayer player, PlayingCard card) {
 
 		System.out.println(Messages.getI18n("player.name.playing.card",
 				player.getName(), card.toString()));
