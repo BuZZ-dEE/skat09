@@ -154,17 +154,17 @@ public class SmartPlayer extends Player {
 
 		if (playedCards[0] == null) {
 
-			result = rauskommen(playedCards);
+			result = playFirstCardSuit(playedCards);
 		}
 
 		else if (playedCards[1] == null) {
 
-			result = alsZweiterKarteSpielen(playedCards);
+			result = playSecondCardSuit(playedCards);
 		}
 
 		else if (playedCards[2] == null) {
 
-			result = alsDritterKarteSpielen(playedCards);
+			result = playThirdCardSuit(playedCards);
 		}
 
 		return result;
@@ -174,115 +174,115 @@ public class SmartPlayer extends Player {
 	 * Die Methode sorgt daf&uml;r, dass der Spieler eine Karte zum Spielen
 	 * auswählt, die in einem Nullspiel Sinn macht.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Nullspiels gespielt werden soll
 	 */
-	public PlayingCard playNull(PlayingCard[] gespielteKarten) {
+	public PlayingCard playNull(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
-			ergebnis = rauskommenNull(gespielteKarten);
+			result = playFirstCardNull(playedCards);
 		}
 
-		else if (gespielteKarten[1] == null) {
+		else if (playedCards[1] == null) {
 
-			ergebnis = alsZweiterKarteSpielenNull(gespielteKarten);
+			result = playSecondCardNull(playedCards);
 		}
 
-		else if (gespielteKarten[2] == null) {
+		else if (playedCards[2] == null) {
 
-			ergebnis = alsDritterKarteSpielenNull(gespielteKarten);
+			result = playThirdCardNull(playedCards);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Die Methode sorgt daf&uml;r, dass der Spieler eine Karte zum Spielen
 	 * auswählt, die in einem Nullspiel Sinn macht.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Nullspiels gespielt werden soll
 	 */
-	public PlayingCard playRamsch(PlayingCard[] gespielteKarten) {
+	public PlayingCard playRamsch(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
-			ergebnis = rauskommenRamsch(gespielteKarten);
+			result = playFirstCardRamsch(playedCards);
 		}
 
-		else if (gespielteKarten[1] == null) {
+		else if (playedCards[1] == null) {
 
-			ergebnis = alsZweiterKarteSpielenRamsch(gespielteKarten);
+			result = playSecondCardRamsch(playedCards);
 		}
 
-		else if (gespielteKarten[2] == null) {
+		else if (playedCards[2] == null) {
 
-			ergebnis = alsDritterKarteSpielenRamsch(gespielteKarten);
+			result = playThirdCardRamsch(playedCards);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler spielt kommt raus, d.h. er spielt zuerst eine Karte.
 	 * Das Array der gespielten Karten ist in diesem Fall leer.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playFirstCardGrand(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardGrand(PlayingCard[] playedCards) {
 
-		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
-		PlayingCard ergebnis = null;
-		Random zufallszahl = new Random();
+		ArrayList<PlayingCard> suit = new ArrayList<PlayingCard>();
+		PlayingCard result = null;
+		Random random = new Random();
 
 		if (isDeclarer) {
 
-			ergebnis = alleinspielerRauskommenGrand(gespielteKarten);
+			result = playFirstCardGrandAsDeclarer(playedCards);
 		}
 
 		else {
 
 			if (teammate.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
 
-				farbe = ermittleKurzeLangeFarbe(false);
+				suit = determineShortLongSuit(false);
 
-				if (farbe.isEmpty()) {
+				if (suit.isEmpty()) {
 
-					ergebnis = playRamdonAllowedCard(gespielteKarten);
+					result = playRamdonAllowedCard(playedCards);
 				}
 
 				else {
 
-					ergebnis = farbe.get(zufallszahl.nextInt(farbe.size()));
+					result = suit.get(random.nextInt(suit.size()));
 				}
 			}
 
 			else if (teammate.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
 
-				farbe = ermittleKurzeLangeFarbe(true);
+				suit = determineShortLongSuit(true);
 
-				if (farbe.isEmpty()) {
+				if (suit.isEmpty()) {
 
-					ergebnis = playRamdonAllowedCard(gespielteKarten);
+					result = playRamdonAllowedCard(playedCards);
 				}
 
 				else {
 
-					ergebnis = farbe.get(zufallszahl.nextInt(farbe.size()));
+					result = suit.get(random.nextInt(suit.size()));
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -393,7 +393,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard rauskommen(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardSuit(PlayingCard[] gespielteKarten) {
 
 		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
 		PlayingCard ergebnis = null;
@@ -408,7 +408,7 @@ public class SmartPlayer extends Player {
 
 			if (teammate.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
 
-				farbe = ermittleKurzeLangeFarbe(false);
+				farbe = determineShortLongSuit(false);
 
 				if (farbe.isEmpty()) {
 
@@ -423,7 +423,7 @@ public class SmartPlayer extends Player {
 
 			else if (teammate.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
 
-				farbe = ermittleKurzeLangeFarbe(true);
+				farbe = determineShortLongSuit(true);
 
 				if (farbe.isEmpty()) {
 
@@ -448,7 +448,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard alsZweiterKarteSpielen(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSecondCardSuit(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -494,7 +494,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard alsDritterKarteSpielen(PlayingCard[] gespielteKarten) {
+	public PlayingCard playThirdCardSuit(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -547,7 +547,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard rauskommenNull(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardNull(PlayingCard[] gespielteKarten) {
 
 		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
 		PlayingCard ergebnis = null;
@@ -562,7 +562,7 @@ public class SmartPlayer extends Player {
 
 			if (teammate.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
 
-				farbe = ermittleKurzeLangeFarbe(false);
+				farbe = determineShortLongSuit(false);
 
 				if (farbe.isEmpty()) {
 
@@ -577,7 +577,7 @@ public class SmartPlayer extends Player {
 
 			else if (teammate.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
 
-				farbe = ermittleKurzeLangeFarbe(true);
+				farbe = determineShortLongSuit(true);
 
 				if (farbe.isEmpty()) {
 
@@ -602,7 +602,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard alsZweiterKarteSpielenNull(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSecondCardNull(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -635,7 +635,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard alsDritterKarteSpielenNull(PlayingCard[] gespielteKarten) {
+	public PlayingCard playThirdCardNull(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -682,14 +682,14 @@ public class SmartPlayer extends Player {
 
 	/**
 	 * Die Methode sorgt daf&uuml;r, dass der Spieler, wenn Grand gespielt wird,
-	 * er Alleinspieler ist und rauskommen soll, eine Karte spielt.
+	 * er Alleinspieler ist und playFirstCardSuit soll, eine Karte spielt.
 	 * 
 	 * @param gespielteKarten
 	 *            - die aktuell gespielten Karten, die auf dem Tisch liegen. in
 	 *            diesem Fall ist das Array aber leer
 	 * @return die Karte, die gespielt wird
 	 */
-	public PlayingCard alleinspielerRauskommenGrand(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardGrandAsDeclarer(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 		Random zufall = new Random();
@@ -883,7 +883,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard rauskommenRamsch(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardRamsch(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -900,7 +900,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard alsZweiterKarteSpielenRamsch(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSecondCardRamsch(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -917,7 +917,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard alsDritterKarteSpielenRamsch(PlayingCard[] gespielteKarten) {
+	public PlayingCard playThirdCardRamsch(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -1827,7 +1827,7 @@ public class SmartPlayer extends Player {
 
 		int kartenwert = 0;
 		PlayingCard[] spitzen = new PlayingCard[13];
-		ArrayList<PlayingCard> langeFarbe = ermittleKurzeLangeFarbe(true);
+		ArrayList<PlayingCard> langeFarbe = determineShortLongSuit(true);
 
 		for (int i = 0; i < hand.size(); i++) {
 
@@ -1892,7 +1892,7 @@ public class SmartPlayer extends Player {
 		int buben = 0;
 		int kartenGroesserKoenig = 0;
 
-		ArrayList<PlayingCard> langeFarbe = ermittleKurzeLangeFarbe(true);
+		ArrayList<PlayingCard> langeFarbe = determineShortLongSuit(true);
 
 		// Spielart auf die der Spieler reizt
 		IGameVariety zuReizendeSpielart;
@@ -1953,7 +1953,7 @@ public class SmartPlayer extends Player {
 	 * @return Die ArrayList von der Farbe mit den Karten, die am
 	 *         h&auml;ufigsten bzw. am wenigsten vorkommt.
 	 */
-	public ArrayList<PlayingCard> ermittleKurzeLangeFarbe(boolean lang) {
+	public ArrayList<PlayingCard> determineShortLongSuit(boolean lang) {
 
 		ArrayList<PlayingCard> karo = cardsOfSuit(hand, PlayingCard.Suit.BELLS);
 		ArrayList<PlayingCard> herz = cardsOfSuit(hand, PlayingCard.Suit.HEARTS);
@@ -2079,7 +2079,7 @@ public class SmartPlayer extends Player {
 	public PlayingCard.Suit ermittleTrumpffarbe() {
 
 		PlayingCard.Suit ergebnis = null;
-		ArrayList<PlayingCard> gewinner = ermittleKurzeLangeFarbe(true);
+		ArrayList<PlayingCard> gewinner = determineShortLongSuit(true);
 
 		// Gewinner feststellen
 		switch (gewinner.get(0).getSuit()) {

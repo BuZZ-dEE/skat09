@@ -66,7 +66,7 @@ public class SmartPlayerTest {
 	
 	@Test
 	public void testalleinspielerRauskommenGrand() {
-		assertEquals(PlayingCard.Rank.UNDER_KNAVE, player.alleinspielerRauskommenGrand(playedCards).getRank());
+		assertEquals(PlayingCard.Rank.UNDER_KNAVE, player.playFirstCardGrandAsDeclarer(playedCards).getRank());
 	}
 	
 	@Test
@@ -130,7 +130,7 @@ public class SmartPlayerTest {
 		player.setGameVariety(new NullGame());
 		PlayingCard[] gespielteKarten = new PlayingCard[3];
 		
-		assertEquals(playingCard1, player.rauskommenNull(gespielteKarten));
+		assertEquals(playingCard1, player.playFirstCardNull(gespielteKarten));
 	}
 	
 	@Test
@@ -163,7 +163,7 @@ public class SmartPlayerTest {
 		player.setPosition(Position.VORHAND);
 		
 		boolean success = false;
-		if(hand.contains(player.rauskommenNull(playedCards))) {
+		if(hand.contains(player.playFirstCardNull(playedCards))) {
 			
 			success = true;
 		}
@@ -201,7 +201,7 @@ public class SmartPlayerTest {
 		player.setPosition(Position.VORHAND);
 		
 		boolean success = false;
-		if(hand.contains(player.rauskommenNull(playedCards))) {
+		if(hand.contains(player.playFirstCardNull(playedCards))) {
 			
 			success = true;
 		}
@@ -238,7 +238,7 @@ public class SmartPlayerTest {
 		player.setPosition(Position.VORHAND);
 		
 		boolean success = false;
-		if(hand.contains(player.rauskommenNull(playedCards))) {
+		if(hand.contains(player.playFirstCardNull(playedCards))) {
 			
 			success = true;
 		}
@@ -273,7 +273,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		
-		assertEquals(playingCard1, player.alsZweiterKarteSpielenNull(playedCards));
+		assertEquals(playingCard1, player.playSecondCardNull(playedCards));
 	}
 	
 	@Test
@@ -306,7 +306,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
 		playedCards[0].setOwner(mate);
 		
-		assertEquals(playingCard2, player.alsZweiterKarteSpielenNull(playedCards));
+		assertEquals(playingCard2, player.playSecondCardNull(playedCards));
 	}
 	
 	@Test
@@ -339,7 +339,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
 		playedCards[0].setOwner(adversary);
 		
-		assertEquals(playingCard2, player.alsZweiterKarteSpielenNull(playedCards));
+		assertEquals(playingCard2, player.playSecondCardNull(playedCards));
 	}
 	
 	@Test
@@ -370,7 +370,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		
-		assertEquals(playingCard1, player.alsDritterKarteSpielenNull(playedCards));
+		assertEquals(playingCard1, player.playThirdCardNull(playedCards));
 	}
 	
 	@Test
@@ -407,7 +407,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
-		assertEquals(playingCard5, player.alsDritterKarteSpielenNull(playedCards));
+		assertEquals(playingCard5, player.playThirdCardNull(playedCards));
 	}
 	
 	@Test
@@ -444,7 +444,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
-		assertEquals(playingCard5, player.alsDritterKarteSpielenNull(playedCards));
+		assertEquals(playingCard5, player.playThirdCardNull(playedCards));
 	}
 
 	@Test
@@ -481,7 +481,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
 		playedCards[1].setOwner(adversary);
 		
-		assertEquals(playingCard5, player.alsDritterKarteSpielenNull(playedCards));
+		assertEquals(playingCard5, player.playThirdCardNull(playedCards));
 	}
 	
 	@Test
@@ -761,7 +761,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		
 		boolean erfolg = false;
-		if (!blatt.contains(player.rauskommen(playedCards))) {
+		if (!blatt.contains(player.playFirstCardSuit(playedCards))) {
 			erfolg = true;
 		}
 		assertTrue(erfolg);
@@ -794,7 +794,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean erfolg = false;
-		if (playingCard3.getSuit().equals((player.rauskommen(playedCards)).getSuit())) {
+		if (playingCard3.getSuit().equals((player.playFirstCardSuit(playedCards)).getSuit())) {
 			erfolg = true;
 		}
 		assertTrue(erfolg);
@@ -827,7 +827,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean erfolg = false;
-		if (playingCard3.getSuit().equals((player.rauskommen(playedCards)).getSuit())) {
+		if (playingCard3.getSuit().equals((player.playFirstCardSuit(playedCards)).getSuit())) {
 			erfolg = true;
 		}
 		assertTrue(erfolg);
@@ -857,7 +857,7 @@ public class SmartPlayerTest {
 		
 		
 		boolean erfolg = false;
-		if (!blatt.contains(player.alsZweiterKarteSpielen(playedCards))) {
+		if (!blatt.contains(player.playSecondCardSuit(playedCards))) {
 			erfolg = true;
 		}
 		assertTrue(erfolg);
@@ -888,7 +888,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		playedCards[0].setOwner(mate);
 		
-		assertEquals(playingCard1, player.alsZweiterKarteSpielen(playedCards));
+		assertEquals(playingCard1, player.playSecondCardSuit(playedCards));
 	}
 	
 	@Test
@@ -916,7 +916,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		playedCards[0].setOwner(gegner);
 		
-		assertEquals(playingCard1, player.alsZweiterKarteSpielen(playedCards));
+		assertEquals(playingCard1, player.playSecondCardSuit(playedCards));
 	}
 	
 	@Test
@@ -946,7 +946,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
-		assertEquals(playingCard1, player.alsZweiterKarteSpielen(playedCards));
+		assertEquals(playingCard1, player.playSecondCardSuit(playedCards));
 	}
 	
 	@Test
@@ -973,7 +973,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		
 		boolean erfolg = false;
-		if (!blatt.contains(player.alsDritterKarteSpielen(playedCards))) {
+		if (!blatt.contains(player.playThirdCardSuit(playedCards))) {
 			erfolg = true;
 		}
 		assertTrue(erfolg);
@@ -1006,7 +1006,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
-		assertEquals(playingCard1, player.alsDritterKarteSpielen(playedCards));
+		assertEquals(playingCard1, player.playThirdCardSuit(playedCards));
 	}
 	
 	@Test
@@ -1036,7 +1036,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
-		assertEquals(playingCard3, player.alsDritterKarteSpielen(playedCards));
+		assertEquals(playingCard3, player.playThirdCardSuit(playedCards));
 	}
 	
 	@Test
@@ -1066,7 +1066,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
-		assertEquals(playingCard1, player.alsDritterKarteSpielen(playedCards));
+		assertEquals(playingCard1, player.playThirdCardSuit(playedCards));
 	}
 	
 	@Test
@@ -1091,7 +1091,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean ergebnis = false;
-		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
+		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
 		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
 			ergebnis = true;
@@ -1120,7 +1120,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean ergebnis = false;
-		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
+		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
 		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
 			ergebnis = true;
@@ -1149,7 +1149,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean ergebnis = false;
-		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
+		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
 		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
 			ergebnis = true;
@@ -1179,7 +1179,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean ergebnis = false;
-		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
+		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
 		if (gespielt.getRank() == PlayingCard.Rank.DAUS) {
 			
 			ergebnis = true;
@@ -1212,7 +1212,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean ergebnis = false;
-		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
+		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
 		if (blatt.contains(gespielt)) {
 			
 			ergebnis = true;
@@ -1247,7 +1247,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean ergebnis = false;
-		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
+		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
 		if (gespielt.getRank() == PlayingCard.Rank.TEN) {
 			
 			ergebnis = true;
@@ -1282,7 +1282,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean ergebnis = false;
-		PlayingCard gespielt = player.alleinspielerRauskommenGrand(playedCards);
+		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
 		if (blatt.contains(gespielt)) {
 			
 			ergebnis = true;
@@ -1526,7 +1526,7 @@ public class SmartPlayerTest {
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		assertEquals(playingCard1, 
-				player.rauskommenRamsch(playedCards));
+				player.playFirstCardRamsch(playedCards));
 	}
 	
 	@Test
@@ -1550,7 +1550,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		
 		assertEquals(playingCard1, 
-				player.alsZweiterKarteSpielenRamsch(playedCards));
+				player.playSecondCardRamsch(playedCards));
 	}
 	
 	@Test
@@ -1575,7 +1575,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
 		
 		assertEquals(playingCard1, 
-				player.alsDritterKarteSpielenRamsch(playedCards));
+				player.playThirdCardRamsch(playedCards));
 	}
 	
 	@Test
@@ -3007,7 +3007,7 @@ public class SmartPlayerTest {
 		kreuz.add(card3);
 		kreuz.add(card4);
 		
-		assertEquals(kreuz, player.ermittleKurzeLangeFarbe(true));
+		assertEquals(kreuz, player.determineShortLongSuit(true));
 	}
 	
 	@Test
@@ -3033,7 +3033,7 @@ public class SmartPlayerTest {
 		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
 		pik.add(card5);
 		
-		assertEquals(pik, player.ermittleKurzeLangeFarbe(false));
+		assertEquals(pik, player.determineShortLongSuit(false));
 	}
 	
 	@Test
