@@ -17,14 +17,6 @@ import main.playingcard.PlayingCard;
  * 
  */
 public class RuleCompliantPlayer extends Player {
-
-	//
-	// Datenfelder
-	//
-
-	//
-	// Konstruktor
-	//
 	
 	/**
 	 * Der Konstruktor der Klasse RegelkonformerSpieler
@@ -35,26 +27,14 @@ public class RuleCompliantPlayer extends Player {
 		super(name);
 	}
 
-	//
-	// get-Methoden
-	//
-
-	//
-	// set-Methoden
-	//
-
-	//
-	// weitere Methoden
-	//
-
 	@Override
-	public PlayingCard playCard(PlayingCard[] gespielteKarten) {
+	public PlayingCard playCard(PlayingCard[] playedCards) {
 		
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 	
-		ergebnis = playRamdonAllowedCard(gespielteKarten);
+		result = playRamdonAllowedCard(playedCards);
 		
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -114,19 +94,19 @@ public class RuleCompliantPlayer extends Player {
 	/**
 	 * Der regelkonforme Spieler ist beim h&ouml;ren immer bei 22 pass.
 	 * 
-	 * @param reizwert
+	 * @param biddingValue
 	 *            der aktuelle Reizwert
 	 */
-	public boolean respond(int reizwert) {
+	public boolean respond(int biddingValue) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 		
-		if (reizwert <= 22) {
+		if (biddingValue <= 22) {
 
-			ergebnis = true;
+			result = true;
 		}
 		
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -134,16 +114,16 @@ public class RuleCompliantPlayer extends Player {
 	 * 
 	 * @return reizwert des regelkonformen Spielers
 	 */
-	public boolean bid(int reizwert) {
+	public boolean bid(int biddingValue) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
-		if (reizwert <= 22) {
+		if (biddingValue <= 22) {
 
-			ergebnis = true;
+			result = true;
 		}
 		
-		return ergebnis;
+		return result;
 	}
 
 	@Override

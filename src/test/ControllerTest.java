@@ -471,7 +471,7 @@ public class ControllerTest {
 		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
 		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
 		sspieler.setHand(blatt);
-		sspieler.setAnfangsblatt(blatt);
+		sspieler.setStartHand(blatt);
 		table.setPlayer2(sspieler);
 		table.setPlayer3(new Granny("Zensursula"));
 		

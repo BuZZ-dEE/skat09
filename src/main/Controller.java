@@ -573,7 +573,7 @@ public class Controller implements Observer, IController {
 
 			if (allPlayer instanceof SmartPlayer) {
 
-				((SmartPlayer) allPlayer).setAnfangsblatt(allPlayer
+				((SmartPlayer) allPlayer).setStartHand(allPlayer
 						.getHand());
 				if (table.getVariant() == SkatVariant.SKAT
 						|| table.getVariant() == SkatVariant.RAMSCHBOCK) {

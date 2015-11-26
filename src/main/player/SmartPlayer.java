@@ -22,45 +22,31 @@ import main.playingcard.PlayingCard;
  */
 public class SmartPlayer extends Player {
 
-	//
-	// Datenfelder
-	//
+	int cardsOfsuitCount;
 
-	// Anzahl der Karten von einer Farbe
-	int anzahlKartenVonFarbe;
+	int maxBiddingValue;
 
-	// Reizwert, bis zu dem der schlaue Spieler mitgeht.
-	int maxReizwert;
+	IGameVariety gameVarietyToPlay;
 
-	// Spielart, die der Schlaue Spieler spielen wuerde
-	IGameVariety zuspielendeSpielart;
-
-	// Das Anfangsblatt
-	ArrayList<PlayingCard> anfangsBlatt;
-
-	//
-	// Konstruktor
-	//
+	ArrayList<PlayingCard> startHand;
+	
+	
 
 	public SmartPlayer(String name) {
 
 		super(name);
-		maxReizwert = -1;
+		maxBiddingValue = -1;
 		gameVariety = null;
 	}
-
-	//
-	// get-Methoden
-	//
 
 	/**
 	 * Gibt den maximalen Reizwert des Spielers zurück.
 	 * 
 	 * @return der maximale Reizwert, den der Spieler reizen kann
 	 */
-	public int getMaxReizwert() {
+	public int getMaxBiddingValue() {
 
-		return maxReizwert;
+		return maxBiddingValue;
 	}
 
 	/**
@@ -69,123 +55,119 @@ public class SmartPlayer extends Player {
 	 * 
 	 * @return das anfangsblatt, das der spieler bekommt, wenn ausgeteilt wurde
 	 */
-	public ArrayList<PlayingCard> getAnfangsBlatt() {
+	public ArrayList<PlayingCard> getStartHand() {
 
-		return anfangsBlatt;
+		return startHand;
 	}
 
 	/**
 	 * setzt das Anfangsblatt, das der Spieler zu beginn besitzt
 	 * 
-	 * @param blatt
+	 * @param hand
 	 */
 	@SuppressWarnings("unchecked")
-	public void setAnfangsblatt(ArrayList<PlayingCard> blatt) {
+	public void setStartHand(ArrayList<PlayingCard> hand) {
 
-		anfangsBlatt = (ArrayList<PlayingCard>) blatt.clone();
+		startHand = (ArrayList<PlayingCard>) hand.clone();
 	}
 
 	/**
 	 * setzt den Maximalen reizwert
 	 * 
-	 * @param maxReizwert
+	 * @param maxBiddingValue
 	 */
-	public void setMaxReizwert(int maxReizwert) {
+	public void setMaxBiddingValue(int maxBiddingValue) {
 
-		this.maxReizwert = maxReizwert;
+		this.maxBiddingValue = maxBiddingValue;
 	}
 
-	//
-	// weitere Methoden
-	//
-
 	@Override
-	public PlayingCard playCard(PlayingCard[] gespielteKarten) {
+	public PlayingCard playCard(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = grandSpielen(gespielteKarten);
+			result = playGrand(playedCards);
 		}
 
 		else if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 
-			ergebnis = farbeSpielen(gespielteKarten);
+			result = playSuit(playedCards);
 		}
 
 		else if (gameVariety.getGameVariety() == GameVariety.Name.NULL) {
 
-			ergebnis = nullSpielen(gespielteKarten);
+			result = playNull(playedCards);
 		}
 
 		else if (gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
-			ergebnis = ramschSpielen(gespielteKarten);
+			result = playRamsch(playedCards);
 		}
 
-		hand.remove(ergebnis);
+		hand.remove(result);
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Die Methode sorgt daf&uml;r, dass der Spieler eine Karte zum Spielen
 	 * auswählt, die in einem Grandspiel Sinn macht.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Grands gespielt werden soll
 	 */
-	public PlayingCard grandSpielen(PlayingCard[] gespielteKarten) {
+	public PlayingCard playGrand(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
-			ergebnis = rauskommenGrand(gespielteKarten);
+			result = playFirstCardGrand(playedCards);
 		}
 
-		else if (gespielteKarten[1] == null) {
-			ergebnis = alsZweiterKarteSpielenGrand(gespielteKarten);
+		else if (playedCards[1] == null) {
+			result = playSecondCardGrand(playedCards);
 		}
 
-		else if (gespielteKarten[2] == null) {
+		else if (playedCards[2] == null) {
 
-			ergebnis = alsDritterKarteSpielenGrand(gespielteKarten);
+			result = playThirdCardGrand(playedCards);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Die Methode sorgt daf&uml;r, dass der Spieler eine Karte zum Spielen
 	 * auswählt, die in einem Farbspiel Sinn macht.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Farbspiels gespielt werden soll
 	 */
-	public PlayingCard farbeSpielen(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSuit(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		if (gespielteKarten[0] == null) {
+		if (playedCards[0] == null) {
 
-			ergebnis = rauskommen(gespielteKarten);
+			result = rauskommen(playedCards);
 		}
 
-		else if (gespielteKarten[1] == null) {
+		else if (playedCards[1] == null) {
 
-			ergebnis = alsZweiterKarteSpielen(gespielteKarten);
+			result = alsZweiterKarteSpielen(playedCards);
 		}
 
-		else if (gespielteKarten[2] == null) {
+		else if (playedCards[2] == null) {
 
-			ergebnis = alsDritterKarteSpielen(gespielteKarten);
+			result = alsDritterKarteSpielen(playedCards);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -196,7 +178,7 @@ public class SmartPlayer extends Player {
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Nullspiels gespielt werden soll
 	 */
-	public PlayingCard nullSpielen(PlayingCard[] gespielteKarten) {
+	public PlayingCard playNull(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -226,7 +208,7 @@ public class SmartPlayer extends Player {
 	 *            - die Karten, die auf dem Tisch liegen
 	 * @return die Karte, die im Falle eines Nullspiels gespielt werden soll
 	 */
-	public PlayingCard ramschSpielen(PlayingCard[] gespielteKarten) {
+	public PlayingCard playRamsch(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -256,7 +238,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard rauskommenGrand(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardGrand(PlayingCard[] gespielteKarten) {
 
 		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
 		PlayingCard ergebnis = null;
@@ -311,7 +293,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard alsZweiterKarteSpielenGrand(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSecondCardGrand(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -358,7 +340,7 @@ public class SmartPlayer extends Player {
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard alsDritterKarteSpielenGrand(PlayingCard[] gespielteKarten) {
+	public PlayingCard playThirdCardGrand(PlayingCard[] gespielteKarten) {
 
 		PlayingCard ergebnis = null;
 
@@ -730,7 +712,7 @@ public class SmartPlayer extends Player {
 
 			for (PlayingCard karte : asse) {
 
-				if (cardsOfSuit(anfangsBlatt, karte.getSuit()).size() <= 4) {
+				if (cardsOfSuit(startHand, karte.getSuit()).size() <= 4) {
 
 					ergebnis = asse.get(zufall.nextInt(asse.size()));
 					break;
@@ -763,7 +745,7 @@ public class SmartPlayer extends Player {
 					}
 				}
 
-				if (cardsOfSuit(anfangsBlatt, karte.getSuit()).size() <= 4
+				if (cardsOfSuit(startHand, karte.getSuit()).size() <= 4
 						&& enthalten) {
 
 					ergebnis = zehnen.get(zufall.nextInt(zehnen.size()));
@@ -1623,7 +1605,7 @@ public class SmartPlayer extends Player {
 
 		boolean ergebnis = false;
 
-		if (reizwert <= maxReizwert) {
+		if (reizwert <= maxBiddingValue) {
 
 			ergebnis = true;
 		}
@@ -1636,7 +1618,7 @@ public class SmartPlayer extends Player {
 
 		boolean ergebnis = false;
 
-		if (reizWert <= maxReizwert) {
+		if (reizWert <= maxBiddingValue) {
 
 			ergebnis = true;
 		}
@@ -1694,7 +1676,7 @@ public class SmartPlayer extends Player {
 
 		else {
 
-			maxReizwert = -1;
+			maxBiddingValue = -1;
 		}
 	}
 
@@ -1708,7 +1690,7 @@ public class SmartPlayer extends Player {
 
 		PlayingCard.Suit farbe = ermittleTrumpffarbe();
 
-		maxReizwert = (ermittelteSpitzen + 1) * farbe.value();
+		maxBiddingValue = (ermittelteSpitzen + 1) * farbe.value();
 	}
 
 	/**
@@ -1720,7 +1702,7 @@ public class SmartPlayer extends Player {
 	 */
 	public void maxReizwertGrand(int ermittelteSpitzen) {
 
-		maxReizwert = (ermittelteSpitzen + 1) * 24;
+		maxBiddingValue = (ermittelteSpitzen + 1) * 24;
 	}
 
 	/**
@@ -1730,7 +1712,7 @@ public class SmartPlayer extends Player {
 	 */
 	public void maxReizwertNull() {
 
-		maxReizwert = 23;
+		maxBiddingValue = 23;
 	}
 
 	/**
@@ -1934,7 +1916,7 @@ public class SmartPlayer extends Player {
 			}
 		}
 
-		anzahlKartenVonFarbe = langeFarbe.size();
+		cardsOfsuitCount = langeFarbe.size();
 
 		// Auswertung
 		if (kartenKleiner10 >= 5) {
@@ -1947,8 +1929,8 @@ public class SmartPlayer extends Player {
 			zuReizendeSpielart = new GrandGame();
 		}
 
-		else if ((buben >= 2 && anzahlKartenVonFarbe >= 4)
-				|| (buben < 2 && anzahlKartenVonFarbe >= 6)) {
+		else if ((buben >= 2 && cardsOfsuitCount >= 4)
+				|| (buben < 2 && cardsOfsuitCount >= 6)) {
 
 			zuReizendeSpielart = new SuitGame(langeFarbe.get(0).getSuit());
 		}
