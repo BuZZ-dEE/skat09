@@ -1638,7 +1638,7 @@ public class SmartPlayerTest {
 		player.setSkat(new ArrayList<PlayingCard>(Arrays.asList(playedCards)));
 	
 		assertEquals(deck, 
-				player.moeglicheGegnerKarten(alleGespielteKarten, playedCards));
+				player.possibleAdversaryCards(alleGespielteKarten, playedCards));
 	}
 	
 	@Test
@@ -1656,7 +1656,7 @@ public class SmartPlayerTest {
 		blatt.add(card3);
 		blatt.add(card4);
 		blatt.add(card5);
-		int zufallszahl = player.zufallszahl(blatt);
+		int zufallszahl = player.randomNumber(blatt);
 		
 		boolean ergebnis = false;
 		if (zufallszahl >= 0 && zufallszahl < blatt.size()) {
@@ -2919,7 +2919,7 @@ public class SmartPlayerTest {
 		player.setHand(hand);
 		
 		assertEquals(new NullGame().getGameVariety(), 
-				player.bestimmeSpielart().getGameVariety());
+				player.determineGameVariety().getGameVariety());
 	}
 	
 	@Test
@@ -2939,7 +2939,7 @@ public class SmartPlayerTest {
 		player.setHand(hand);
 		
 		assertEquals(new GrandGame().getGameVariety(), 
-				player.bestimmeSpielart().getGameVariety());
+				player.determineGameVariety().getGameVariety());
 	}
 	
 	@Test
@@ -2959,7 +2959,7 @@ public class SmartPlayerTest {
 		player.setHand(hand);
 		
 		assertEquals(new SuitGame(PlayingCard.Suit.LEAVES).getGameVariety(), 
-				player.bestimmeSpielart().getGameVariety());
+				player.determineGameVariety().getGameVariety());
 	}
 	
 	@Test
@@ -2979,7 +2979,7 @@ public class SmartPlayerTest {
 		player.setHand(hand);
 		
 		assertEquals(new SuitGame(PlayingCard.Suit.LEAVES).getGameVariety(), 
-				player.bestimmeSpielart().getGameVariety());
+				player.determineGameVariety().getGameVariety());
 	}
 	
 	@Test

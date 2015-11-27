@@ -289,41 +289,41 @@ public class SmartPlayer extends Player {
 	 * Der schlaue Spieler ist als zweiter dran eine Karte zu spielen. In dem
 	 * Array der gespielten Karten ist in diesem Fall eine Karte drin.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playSecondCardGrand(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSecondCardGrand(PlayingCard[] playedCards) {
 
 		PlayingCard ergebnis = null;
 
 		if (isDeclarer) {
 
-			ergebnis = alleinspieleralsZweiterKarteSpielenGrand(gespielteKarten);
+			ergebnis = alleinspieleralsZweiterKarteSpielenGrand(playedCards);
 		}
 
 		else {
 
-			if (gespielteKarten[0].getOwner().equals(teammate)) {
+			if (playedCards[0].getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+				ergebnis = hoechsteSpielbareKarte(playableCards(playedCards));
 			}
 
 			else {
 
 				if (gameVariety
 						.higherCard(
-								gespielteKarten[0],
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+								playedCards[0],
+								hoechsteSpielbareKarte(playableCards(playedCards)))
 						.equals(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
+								hoechsteSpielbareKarte(playableCards(playedCards)))) {
 
-					ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+					ergebnis = hoechsteSpielbareKarte(playableCards(playedCards));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+					ergebnis = niedrigsteSpielbareKarte(playableCards(playedCards));
 
 				}
 			}
@@ -336,48 +336,48 @@ public class SmartPlayer extends Player {
 	 * Der schlaue Spieler ist als dritter dran eine Karte zu spielen. In dem
 	 * Array der gespielten Karten sind in diesem Fall zwei Karten drin.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playThirdCardGrand(PlayingCard[] gespielteKarten) {
+	public PlayingCard playThirdCardGrand(PlayingCard[] playedCards) {
 
 		PlayingCard ergebnis = null;
 
 		if (isDeclarer) {
 
-			ergebnis = alleinspieleralsDritterKarteSpielenGrand(gespielteKarten);
+			ergebnis = alleinspieleralsDritterKarteSpielenGrand(playedCards);
 		}
 
 		else {
 
-			if (gameVariety.higherCard(gespielteKarten[0], gespielteKarten[1])
+			if (gameVariety.higherCard(playedCards[0], playedCards[1])
 					.getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+				ergebnis = hoechsteSpielbareKarte(playableCards(playedCards));
 			}
 
 			else {
 
 				if (gameVariety
 						.higherCard(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-								gespielteKarten[0])
+								hoechsteSpielbareKarte(playableCards(playedCards)),
+								playedCards[0])
 						.equals(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+								hoechsteSpielbareKarte(playableCards(playedCards)))
 						&& gameVariety
 								.higherCard(
-										hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-										gespielteKarten[1])
+										hoechsteSpielbareKarte(playableCards(playedCards)),
+										playedCards[1])
 								.equals(
-										hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
+										hoechsteSpielbareKarte(playableCards(playedCards)))) {
 
-					ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+					ergebnis = hoechsteSpielbareKarte(playableCards(playedCards));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+					ergebnis = niedrigsteSpielbareKarte(playableCards(playedCards));
 				}
 			}
 		}
@@ -389,322 +389,322 @@ public class SmartPlayer extends Player {
 	 * Der schlaue Spieler spielt kommt raus, d.h. er spielt zuerst eine Karte.
 	 * Das Array der gespielten Karten ist in diesem Fall leer.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playFirstCardSuit(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardSuit(PlayingCard[] playedCards) {
 
-		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
-		PlayingCard ergebnis = null;
-		Random zufallszahl = new Random();
+		ArrayList<PlayingCard> suit = new ArrayList<PlayingCard>();
+		PlayingCard result = null;
+		Random random = new Random();
 
 		if (isDeclarer) {
 
-			ergebnis = playRamdonAllowedCard(gespielteKarten);
+			result = playRamdonAllowedCard(playedCards);
 		}
 
 		else {
 
 			if (teammate.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
 
-				farbe = determineShortLongSuit(false);
+				suit = determineShortLongSuit(false);
 
-				if (farbe.isEmpty()) {
+				if (suit.isEmpty()) {
 
-					ergebnis = playRamdonAllowedCard(gespielteKarten);
+					result = playRamdonAllowedCard(playedCards);
 				}
 
 				else {
 
-					ergebnis = farbe.get(zufallszahl.nextInt(farbe.size()));
+					result = suit.get(random.nextInt(suit.size()));
 				}
 			}
 
 			else if (teammate.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
 
-				farbe = determineShortLongSuit(true);
+				suit = determineShortLongSuit(true);
 
-				if (farbe.isEmpty()) {
+				if (suit.isEmpty()) {
 
-					ergebnis = playRamdonAllowedCard(gespielteKarten);
+					result = playRamdonAllowedCard(playedCards);
 				}
 
 				else {
 
-					ergebnis = farbe.get(zufallszahl.nextInt(farbe.size()));
+					result = suit.get(random.nextInt(suit.size()));
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler ist als zweiter dran eine Karte zu spielen. In dem
 	 * Array der gespielten Karten ist in diesem Fall eine Karte drin.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playSecondCardSuit(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSecondCardSuit(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (isDeclarer) {
 
-			ergebnis = playRamdonAllowedCard(gespielteKarten);
+			result = playRamdonAllowedCard(playedCards);
 		}
 
 		else {
 
-			if (gespielteKarten[0].getOwner().equals(teammate)) {
+			if (playedCards[0].getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+				result = hoechsteSpielbareKarte(playableCards(playedCards));
 			}
 
 			else {
 
 				if (gameVariety
 						.higherCard(
-								gespielteKarten[0],
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+								playedCards[0],
+								hoechsteSpielbareKarte(playableCards(playedCards)))
 						.equals(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
+								hoechsteSpielbareKarte(playableCards(playedCards)))) {
 
-					ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+					result = hoechsteSpielbareKarte(playableCards(playedCards));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+					result = niedrigsteSpielbareKarte(playableCards(playedCards));
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler ist als dritter dran eine Karte zu spielen. In dem
 	 * Array der gespielten Karten sind in diesem Fall zwei Karten drin.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playThirdCardSuit(PlayingCard[] gespielteKarten) {
+	public PlayingCard playThirdCardSuit(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (isDeclarer) {
 
-			ergebnis = playRamdonAllowedCard(gespielteKarten);
+			result = playRamdonAllowedCard(playedCards);
 		}
 
 		else {
 
-			if (gameVariety.higherCard(gespielteKarten[0], gespielteKarten[1])
+			if (gameVariety.higherCard(playedCards[0], playedCards[1])
 					.getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+				result = hoechsteSpielbareKarte(playableCards(playedCards));
 			}
 
 			else {
 
 				if (gameVariety
 						.higherCard(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-								gespielteKarten[0])
+								hoechsteSpielbareKarte(playableCards(playedCards)),
+								playedCards[0])
 						.equals(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+								hoechsteSpielbareKarte(playableCards(playedCards)))
 						&& gameVariety
 								.higherCard(
-										hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-										gespielteKarten[1])
+										hoechsteSpielbareKarte(playableCards(playedCards)),
+										playedCards[1])
 								.equals(
-										hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
+										hoechsteSpielbareKarte(playableCards(playedCards)))) {
 
-					ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+					result = hoechsteSpielbareKarte(playableCards(playedCards));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+					result = niedrigsteSpielbareKarte(playableCards(playedCards));
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler spielt kommt raus, d.h. er spielt zuerst eine Karte.
 	 * Das Array der gespielten Karten ist in diesem Fall leer.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playFirstCardNull(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardNull(PlayingCard[] playedCards) {
 
-		ArrayList<PlayingCard> farbe = new ArrayList<PlayingCard>();
-		PlayingCard ergebnis = null;
-		Random zufallszahl = new Random();
+		ArrayList<PlayingCard> suit = new ArrayList<PlayingCard>();
+		PlayingCard result = null;
+		Random random = new Random();
 
 		if (isDeclarer) {
 
-			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+			result = niedrigsteSpielbareKarte(playableCards(playedCards));
 		}
 
 		else {
 
 			if (teammate.getPosition().ordinal() == ((position.ordinal() + 1) % 3)) {
 
-				farbe = determineShortLongSuit(false);
+				suit = determineShortLongSuit(false);
 
-				if (farbe.isEmpty()) {
+				if (suit.isEmpty()) {
 
-					ergebnis = playRamdonAllowedCard(gespielteKarten);
+					result = playRamdonAllowedCard(playedCards);
 				}
 
 				else {
 
-					ergebnis = farbe.get(zufallszahl.nextInt(farbe.size()));
+					result = suit.get(random.nextInt(suit.size()));
 				}
 			}
 
 			else if (teammate.getPosition().ordinal() == ((position.ordinal() + 2) % 3)) {
 
-				farbe = determineShortLongSuit(true);
+				suit = determineShortLongSuit(true);
 
-				if (farbe.isEmpty()) {
+				if (suit.isEmpty()) {
 
-					ergebnis = playRamdonAllowedCard(gespielteKarten);
+					result = playRamdonAllowedCard(playedCards);
 				}
 
 				else {
 
-					ergebnis = farbe.get(zufallszahl.nextInt(farbe.size()));
+					result = suit.get(random.nextInt(suit.size()));
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler ist als zweiter dran eine Karte zu spielen. In dem
 	 * Array der gespielten Karten ist in diesem Fall eine Karte drin.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playSecondCardNull(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSecondCardNull(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (isDeclarer) {
 
-			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+			result = niedrigsteSpielbareKarte(playableCards(playedCards));
 		}
 
 		else {
 
-			if (gespielteKarten[0].getOwner().equals(teammate)) {
+			if (playedCards[0].getOwner().equals(teammate)) {
 
-				ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+				result = niedrigsteSpielbareKarte(playableCards(playedCards));
 			}
 
 			else {
 
-				ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+				result = niedrigsteSpielbareKarte(playableCards(playedCards));
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler ist als dritter dran eine Karte zu spielen. In dem
 	 * Array der gespielten Karten sind in diesem Fall zwei Karten drin.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playThirdCardNull(PlayingCard[] gespielteKarten) {
+	public PlayingCard playThirdCardNull(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (isDeclarer) {
 
-			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+			result = niedrigsteSpielbareKarte(playableCards(playedCards));
 		}
 
 		else {
 
-			if (gameVariety.higherCard(gespielteKarten[0], gespielteKarten[1])
+			if (gameVariety.higherCard(playedCards[0], playedCards[1])
 					.getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+				result = hoechsteSpielbareKarte(playableCards(playedCards));
 			}
 
 			else {
 
 				if (gameVariety
 						.higherCard(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-								gespielteKarten[0])
+								hoechsteSpielbareKarte(playableCards(playedCards)),
+								playedCards[0])
 						.equals(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+								hoechsteSpielbareKarte(playableCards(playedCards)))
 						&& gameVariety
 								.higherCard(
-										hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-										gespielteKarten[1])
+										hoechsteSpielbareKarte(playableCards(playedCards)),
+										playedCards[1])
 								.equals(
-										hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
+										hoechsteSpielbareKarte(playableCards(playedCards)))) {
 
-					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+					result = niedrigsteSpielbareKarte(playableCards(playedCards));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+					result = niedrigsteSpielbareKarte(playableCards(playedCards));
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Die Methode sorgt daf&uuml;r, dass der Spieler, wenn Grand gespielt wird,
 	 * er Alleinspieler ist und playFirstCardSuit soll, eine Karte spielt.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - die aktuell gespielten Karten, die auf dem Tisch liegen. in
 	 *            diesem Fall ist das Array aber leer
 	 * @return die Karte, die gespielt wird
 	 */
-	public PlayingCard playFirstCardGrandAsDeclarer(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardGrandAsDeclarer(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
-		Random zufall = new Random();
+		PlayingCard result = null;
+		Random random = new Random();
 		ArrayList<PlayingCard> buben = cardsOfRank(hand, PlayingCard.Rank.UNDER_KNAVE);
 		ArrayList<PlayingCard> asse = cardsOfRank(hand, PlayingCard.Rank.DAUS);
 		ArrayList<PlayingCard> zehnen = cardsOfRank(hand, PlayingCard.Rank.TEN);
 
 		if (buben.size() > 2) {
 
-			ergebnis = buben.get(zufall.nextInt(buben.size()));
+			result = buben.get(random.nextInt(buben.size()));
 		}
 
 		else if (buben.size() == 2) {
 
-			ergebnis = bubeSpielen(gespielteKarten, buben, zufall);
+			result = bubeSpielen(playedCards, buben, random);
 
 		}
 
@@ -714,7 +714,7 @@ public class SmartPlayer extends Player {
 
 				if (cardsOfSuit(startHand, karte.getSuit()).size() <= 4) {
 
-					ergebnis = asse.get(zufall.nextInt(asse.size()));
+					result = asse.get(random.nextInt(asse.size()));
 					break;
 
 				}
@@ -748,18 +748,18 @@ public class SmartPlayer extends Player {
 				if (cardsOfSuit(startHand, karte.getSuit()).size() <= 4
 						&& enthalten) {
 
-					ergebnis = zehnen.get(zufall.nextInt(zehnen.size()));
+					result = zehnen.get(random.nextInt(zehnen.size()));
 					break;
 				}
 			}
 		}
 
-		if (ergebnis == null) {
+		if (result == null) {
 
-			ergebnis = hand.get(zufall.nextInt(hand.size()));
+			result = hand.get(random.nextInt(hand.size()));
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -767,7 +767,7 @@ public class SmartPlayer extends Player {
 	 * zufälligen Buben zurück. Dies tut sie aber nur, wenn in der Liste der
 	 * Kreuz Bube oder der Pik Bube vorhanden ist.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - die bisher gespielten Karten auf dem Tisch
 	 * @param buben
 	 *            - die Arrayliste mit den Buben
@@ -775,23 +775,23 @@ public class SmartPlayer extends Player {
 	 *            - Zufallswert
 	 * @return der zufällig aus der Liste ausgewählte Bube
 	 */
-	public PlayingCard bubeSpielen(PlayingCard[] gespielteKarten,
+	public PlayingCard bubeSpielen(PlayingCard[] playedCards,
 			ArrayList<PlayingCard> buben, Random zufall) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		for (PlayingCard karte : buben) {
+		for (PlayingCard card : buben) {
 
-			if (karte.equals(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE))
-					|| karte.equals(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE))) {
+			if (card.equals(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE))
+					|| card.equals(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE))) {
 
-				ergebnis = buben.get(zufall.nextInt(buben.size()));
+				result = buben.get(zufall.nextInt(buben.size()));
 				break;
 
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -799,43 +799,43 @@ public class SmartPlayer extends Player {
 	 * er Alleinspieler ist und als Zweiter eine Karte spielen soll, eine Karte
 	 * spielt.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - die aktuell gespielten Karten, die auf dem Tisch liegen. in
 	 *            diesem Fall ist in dem Array eine Karte
 	 * @return die Karte, die gespielt wird
 	 */
 	public PlayingCard alleinspieleralsZweiterKarteSpielenGrand(
-			PlayingCard[] gespielteKarten) {
+			PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety
 				.higherCard(
-						gespielteKarten[0],
-						hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+						playedCards[0],
+						hoechsteSpielbareKarte(playableCards(playedCards)))
 				.equals(
-						hoechsteSpielbareKarte(playableCards(gespielteKarten)))
+						hoechsteSpielbareKarte(playableCards(playedCards)))
 
 				&& gameVariety
 						.higherCard(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-								hoechsteSpielbareKarte(gegnerMoeglicheSpielbareKarten(gespielteKarten)))
+								hoechsteSpielbareKarte(playableCards(playedCards)),
+								hoechsteSpielbareKarte(gegnerMoeglicheSpielbareKarten(playedCards)))
 						.equals(
-								hoechsteSpielbareKarte(playableCards(gespielteKarten)))) {
+								hoechsteSpielbareKarte(playableCards(playedCards)))) {
 
-			ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+			result = hoechsteSpielbareKarte(playableCards(playedCards));
 		}
 
 		else {
 
-			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+			result = niedrigsteSpielbareKarte(playableCards(playedCards));
 		}
 
 		// TODO loeschen
 		System.out.println("alleinspieleralsZweiterKarteSpielenGrand"
-				+ ergebnis.toString());
+				+ result.toString());
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -843,87 +843,87 @@ public class SmartPlayer extends Player {
 	 * er Alleinspieler ist und als Dritter eine Karte spielen soll, eine Karte
 	 * spielt.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - die aktuell gespielten Karten, die auf dem Tisch liegen. in
 	 *            diesem Fall sind in dem Array zwei Karten
 	 * @return die Karte, die gespielt wird
 	 */
 	public PlayingCard alleinspieleralsDritterKarteSpielenGrand(
-			PlayingCard[] gespielteKarten) {
+			PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (((gameVariety.higherCard(
-				hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-				gespielteKarten[0])
-				.equals(hoechsteSpielbareKarte(playableCards(gespielteKarten)))) && gameVariety
+				hoechsteSpielbareKarte(playableCards(playedCards)),
+				playedCards[0])
+				.equals(hoechsteSpielbareKarte(playableCards(playedCards)))) && gameVariety
 				.higherCard(
-						hoechsteSpielbareKarte(playableCards(gespielteKarten)),
-						gespielteKarten[1])
+						hoechsteSpielbareKarte(playableCards(playedCards)),
+						playedCards[1])
 				.equals(
-						hoechsteSpielbareKarte(playableCards(gespielteKarten))))
-				&& ((augenKarte(gespielteKarten[0]) > 3) && (augenKarte(gespielteKarten[1]) > 3))) {
+						hoechsteSpielbareKarte(playableCards(playedCards))))
+				&& ((augenKarte(playedCards[0]) > 3) && (augenKarte(playedCards[1]) > 3))) {
 
-			ergebnis = hoechsteSpielbareKarte(playableCards(gespielteKarten));
+			result = hoechsteSpielbareKarte(playableCards(playedCards));
 		}
 
 		else {
 
-			ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+			result = niedrigsteSpielbareKarte(playableCards(playedCards));
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler spielt kommt raus, d.h. er spielt zuerst eine Karte.
 	 * Das Array der gespielten Karten ist in diesem Fall leer.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playFirstCardRamsch(PlayingCard[] gespielteKarten) {
+	public PlayingCard playFirstCardRamsch(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+		result = niedrigsteSpielbareKarte(playableCards(playedCards));
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler ist als zweiter dran eine Karte zu spielen. In dem
 	 * Array der gespielten Karten ist in diesem Fall eine Karte drin.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playSecondCardRamsch(PlayingCard[] gespielteKarten) {
+	public PlayingCard playSecondCardRamsch(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+		result = niedrigsteSpielbareKarte(playableCards(playedCards));
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Der schlaue Spieler ist als dritter dran eine Karte zu spielen. In dem
 	 * Array der gespielten Karten sind in diesem Fall zwei Karten drin.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die schon von anderen Mitspielern gespielt wurden
 	 * @return die Karte, die der Spieler spielt
 	 */
-	public PlayingCard playThirdCardRamsch(PlayingCard[] gespielteKarten) {
+	public PlayingCard playThirdCardRamsch(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		ergebnis = niedrigsteSpielbareKarte(playableCards(gespielteKarten));
+		result = niedrigsteSpielbareKarte(playableCards(playedCards));
 
-		return ergebnis;
+		return result;
 	}
 
 	// /**
@@ -951,69 +951,69 @@ public class SmartPlayer extends Player {
 	 * die m&oumlglichen spielbaren Karten. Diese Methode funktionert nur, wenn
 	 * eine Karte auf dem Tisch liegt.
 	 * 
-	 * @param gespielteKarten
+	 * @param playedCards
 	 *            - Karten, die gerade auf dem Tisch liegen
 	 * @return Ein Liste mit den m&oumlglichen spielbaren Karten.
 	 */
 	public ArrayList<PlayingCard> gegnerMoeglicheSpielbareKarten(
-			PlayingCard[] gespielteKarten) {
+			PlayingCard[] playedCards) {
 
 		System.out.println("gegnermoeglicheSpielbareKarten");
-		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> mGK = moeglicheGegnerKarten(allPlayedCards,
-				gespielteKarten);
+		ArrayList<PlayingCard> result = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> possibleAdversaryCards = possibleAdversaryCards(allPlayedCards,
+				playedCards);
 
-		for (int i = 0; i < mGK.size(); i++) {
+		for (int i = 0; i < possibleAdversaryCards.size(); i++) {
 
 			if (gameVariety
-					.checkedPlayedCards(mGK, gespielteKarten, mGK.get(i))) {
+					.checkedPlayedCards(possibleAdversaryCards, playedCards, possibleAdversaryCards.get(i))) {
 
-				ergebnis.add(mGK.get(i));
+				result.add(possibleAdversaryCards.get(i));
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Die Methode ermittelt die Karten, die beide Gegner zusammen haben.
 	 * 
-	 * @param alleGespielteKarten
+	 * @param allPlayedCards
 	 *            - alle Karten, die bisher gespielt wurden
-	 * @param gespieltenKarten
+	 * @param playedCards
 	 *            - Karten, die gerade auf dem Tisch liegen
 	 * @return Eine Liste mit den Karten, die beide Gegner zusammen haben.
 	 */
-	public ArrayList<PlayingCard> moeglicheGegnerKarten(
-			ArrayList<PlayingCard> alleGespielteKarten,
-			PlayingCard[] gespieltenKarten) {
+	public ArrayList<PlayingCard> possibleAdversaryCards(
+			ArrayList<PlayingCard> allPlayedCards,
+			PlayingCard[] playedCards) {
 
-		ArrayList<PlayingCard> ergebnis = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> result = new ArrayList<PlayingCard>();
 
 		if (!deck.isEmpty()) {
-			ergebnis.addAll(deck);
+			result.addAll(deck);
 		}
 		if (hand != null && !hand.isEmpty()) {
-			ergebnis.removeAll(hand);
+			result.removeAll(hand);
 		}
-		if (alleGespielteKarten != null && !alleGespielteKarten.isEmpty()) {
-			ergebnis.removeAll(alleGespielteKarten);
+		if (allPlayedCards != null && !allPlayedCards.isEmpty()) {
+			result.removeAll(allPlayedCards);
 		}
 		if (skat != null && !skat.isEmpty()) {
-			ergebnis.removeAll(skat);
+			result.removeAll(skat);
 		}
 
-		for (int i = 0; i < gespieltenKarten.length; i++) {
+		for (int i = 0; i < playedCards.length; i++) {
 
-			ergebnis.remove(gespieltenKarten[i]);
+			result.remove(playedCards[i]);
 		}
 
 		// TODO loeschen
-		for (PlayingCard karte : ergebnis) {
-			System.out.println("moeglicheGegnerKarten" + karte.toString());
+		for (PlayingCard card : result) {
+			System.out.println("possibleAdversaryCards" + card.toString());
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	// Es wird nicht gecheatet!!!
@@ -1034,7 +1034,7 @@ public class SmartPlayer extends Player {
 	// ArrayList<Spielkarte> alleGespielteKarten,
 	// Spielkarte[] gespieltenKarten) {
 	//
-	// ArrayList<Spielkarte> ergebnis = moeglicheGegnerKarten(
+	// ArrayList<Spielkarte> ergebnis = possibleAdversaryCards(
 	// alleGespielteKarten, gespieltenKarten);
 	//
 	// for (Spielkarte karte : ergebnis) {
@@ -1052,72 +1052,72 @@ public class SmartPlayer extends Player {
 	 * Die Methode berechnet für eine Arraylist von Spielkarten in
 	 * Abh&auml;ngigkeit der Gr&ouml;ße ein Zufallszahl.
 	 * 
-	 * @param kartenliste
+	 * @param cards
 	 *            - Liste für die in Abh&auml;ngigkeit ihrer L&auml;nge eine
 	 *            Zufallszahl generiert werden soll.
 	 * @return Die Zufallszahl
 	 */
-	public int zufallszahl(ArrayList<PlayingCard> kartenliste) {
+	public int randomNumber(ArrayList<PlayingCard> cards) {
 
-		int ergebnis = -1;
+		int result = -1;
 		Random zufall = new Random();
 
-		if (kartenliste.size() > 0) {
+		if (cards.size() > 0) {
 
-			ergebnis = zufall.nextInt(kartenliste.size());
+			result = zufall.nextInt(cards.size());
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Die Methode liefert f&uuml;r eine Karte die n&auml;chst h&ouml;here Karte
 	 * der gleichen Farbe zur&uuml;ck. Buben werden nicht direkt betrachtet.
 	 * 
-	 * @param karte
+	 * @param card
 	 *            - karte zu der die n&aumlchst h&ouml;here Karte der gleichen
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst h&ouml;here Karte
 	 */
-	public PlayingCard naechstHoehereKarte(PlayingCard.Suit farbe, PlayingCard karte) {
+	public PlayingCard naechstHoehereKarte(PlayingCard.Suit suit, PlayingCard card) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		switch (karte.getRank()) {
+		switch (card.getRank()) {
 
 		case SIX:
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.SEVEN);
+			result = new PlayingCard(suit, PlayingCard.Rank.SEVEN);
 			break;
 		case SEVEN:
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.EIGHT);
+			result = new PlayingCard(suit, PlayingCard.Rank.EIGHT);
 			break;
 		case EIGHT:
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.NINE);
+			result = new PlayingCard(suit, PlayingCard.Rank.NINE);
 			break;
 		case NINE:
-			ergebnis = naechstHoehereKarteNeun(farbe);
+			result = naechstHoehereKarteNeun(suit);
 			break;
 		case OVER_KNAVE:
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.KING);
+			result = new PlayingCard(suit, PlayingCard.Rank.KING);
 			break;
 		case KING:
-			ergebnis = naechstHoehereKarteKoenig(farbe);
+			result = naechstHoehereKarteKoenig(suit);
 			break;
 		case TEN:
-			ergebnis = naechstHoehereKarteZehn(farbe);
+			result = naechstHoehereKarteZehn(suit);
 			break;
 		case DAUS:
-			ergebnis = null;
+			result = null;
 			break;
 		case UNDER_KNAVE:
-			ergebnis = naechstHoehereKarteBube(farbe);
+			result = naechstHoehereKarteBube(suit);
 			break;
 		default:
-			ergebnis = null;
+			result = null;
 			break;
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1125,25 +1125,25 @@ public class SmartPlayer extends Player {
 	 * n&auml;chst h&ouml;here Karte der gleichen Farbe zur&uuml;ck. Dies
 	 * geschieht unter Betrachtung der Spielart.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - Farbe von der die n&auml;chst niedrigere Karte verlang wird
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteNeun(PlayingCard.Suit farbe) {
+	public PlayingCard naechstHoehereKarteNeun(PlayingCard.Suit suit) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
 				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.OVER_KNAVE);
+			result = new PlayingCard(suit, PlayingCard.Rank.OVER_KNAVE);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
+			result = new PlayingCard(suit, PlayingCard.Rank.TEN);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1151,24 +1151,24 @@ public class SmartPlayer extends Player {
 	 * h&ouml;here Karte der gleichen Farbe zurück. Dies geschieht unter
 	 * Betrachtung der Spielart.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - Farbe von der die n&auml;chst niedrigere Karte verlangt wird
 	 * @return die n&aumlchst h&ouml;here Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstHoehereKarteKoenig(PlayingCard.Suit farbe) {
+	public PlayingCard naechstHoehereKarteKoenig(PlayingCard.Suit suit) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
 				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
+			result = new PlayingCard(suit, PlayingCard.Rank.TEN);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.DAUS);
+			result = new PlayingCard(suit, PlayingCard.Rank.DAUS);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1176,25 +1176,25 @@ public class SmartPlayer extends Player {
 	 * n&auml;chst h&ouml;here Karte der gleichen Farbe zur&uuml;ck. Dies
 	 * geschieht unter Betrachtung der Spielart.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - Farbe der Nachfolgerkarte
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteZehn(PlayingCard.Suit farbe) {
+	public PlayingCard naechstHoehereKarteZehn(PlayingCard.Suit suit) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
 				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.DAUS);
+			result = new PlayingCard(suit, PlayingCard.Rank.DAUS);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.OVER_KNAVE);
+			result = new PlayingCard(suit, PlayingCard.Rank.OVER_KNAVE);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1202,80 +1202,80 @@ public class SmartPlayer extends Player {
 	 * n&auml;chst h&ouml;here Karte der gleichen Farbe zur&uuml;ck. Dies
 	 * geschieht unter Betrachtung der Spielart.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - Farbe der Nachfolgerkarte
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteBube(PlayingCard.Suit farbe) {
+	public PlayingCard naechstHoehereKarteBube(PlayingCard.Suit suit) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
 				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND
 				|| gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
-			ergebnis = null;
+			result = null;
 		}
 
 		else {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.OVER_KNAVE);
+			result = new PlayingCard(suit, PlayingCard.Rank.OVER_KNAVE);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Die Methode liefert f&uuml;r eine Karte die n&auml;chst niedrigere Karte
 	 * der gleichen Farbe zur&uuml;ck. Buben werden nicht direkt betrachtet.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - Farbe der Folgekarte
-	 * @param karte
+	 * @param card
 	 *            - karte zu der die n&aumlchst niedrigere Karte der gleichen
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst niedrigere Karte
 	 */
-	public PlayingCard naechstNiedrigereKarte(PlayingCard.Suit farbe, PlayingCard karte) {
+	public PlayingCard naechstNiedrigereKarte(PlayingCard.Suit suit, PlayingCard card) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		switch (karte.getRank()) {
+		switch (card.getRank()) {
 
 		case SIX:
-			ergebnis = null;
+			result = null;
 			break;
 		case SEVEN:
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.SIX);
+			result = new PlayingCard(suit, PlayingCard.Rank.SIX);
 			break;
 		case EIGHT:
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.SEVEN);
+			result = new PlayingCard(suit, PlayingCard.Rank.SEVEN);
 			break;
 		case NINE:
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.EIGHT);
+			result = new PlayingCard(suit, PlayingCard.Rank.EIGHT);
 			break;
 		case OVER_KNAVE:
-			ergebnis = naechstNiedrigereKarteDame(farbe);
+			result = naechstNiedrigereKarteDame(suit);
 			break;
 		case KING:
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.OVER_KNAVE);
+			result = new PlayingCard(suit, PlayingCard.Rank.OVER_KNAVE);
 			break;
 		case TEN:
-			ergebnis = naechstNiedrigereKarteZehn(farbe);
+			result = naechstNiedrigereKarteZehn(suit);
 			break;
 		case DAUS:
-			ergebnis = naechstNiedrigereKarteAss(farbe);
+			result = naechstNiedrigereKarteAss(suit);
 			break;
 		case UNDER_KNAVE:
-			ergebnis = naechstNiedrigereKarteBube(farbe);
+			result = naechstNiedrigereKarteBube(suit);
 			break;
 		default:
-			ergebnis = null;
+			result = null;
 			break;
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1283,25 +1283,25 @@ public class SmartPlayer extends Player {
 	 * niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies geschieht unter
 	 * Betrachtung der Spielart.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - suitGame der Folgekarte
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteDame(PlayingCard.Suit farbe) {
+	public PlayingCard naechstNiedrigereKarteDame(PlayingCard.Suit suit) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
 				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.NINE);
+			result = new PlayingCard(suit, PlayingCard.Rank.NINE);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
+			result = new PlayingCard(suit, PlayingCard.Rank.TEN);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1309,25 +1309,25 @@ public class SmartPlayer extends Player {
 	 * n&auml;chst niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies
 	 * geschieht unter Betrachtung der Spielart.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - Farbe von der die n&auml;chst niedrigste Karte verlangt wird
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteZehn(PlayingCard.Suit farbe) {
+	public PlayingCard naechstNiedrigereKarteZehn(PlayingCard.Suit suit) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
 				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.KING);
+			result = new PlayingCard(suit, PlayingCard.Rank.KING);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.NINE);
+			result = new PlayingCard(suit, PlayingCard.Rank.NINE);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1335,24 +1335,24 @@ public class SmartPlayer extends Player {
 	 * niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies geschieht unter
 	 * Betrachtung der Spielart.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - Farbe der zu suchenden Karte"
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteAss(PlayingCard.Suit farbe) {
+	public PlayingCard naechstNiedrigereKarteAss(PlayingCard.Suit suit) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
 				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
+			result = new PlayingCard(suit, PlayingCard.Rank.TEN);
 		} else {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.KING);
+			result = new PlayingCard(suit, PlayingCard.Rank.KING);
 		}
 
-		return ergebnis;
+		return result;
 	}
 	
 	/**
@@ -1360,25 +1360,25 @@ public class SmartPlayer extends Player {
 	 * niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies geschieht unter
 	 * Betrachtung der Spielart.
 	 * 
-	 * @param farbe
+	 * @param suit
 	 *            - Farbe der zu suchenden Karte
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteBube(PlayingCard.Suit farbe) {
+	public PlayingCard naechstNiedrigereKarteBube(PlayingCard.Suit suit) {
 		
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 		
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT
 				|| gameVariety.getGameVariety() == GameVariety.Name.GRAND
 				|| gameVariety.getGameVariety() == GameVariety.Name.RAMSCH) {
 
-			ergebnis = null;
+			result = null;
 		} else {
 
-			ergebnis = new PlayingCard(farbe, PlayingCard.Rank.TEN);
+			result = new PlayingCard(suit, PlayingCard.Rank.TEN);
 		}
 		
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1388,18 +1388,18 @@ public class SmartPlayer extends Player {
 	 * @param hand
 	 *            - Das Blatt aus dem die Arrayliste eines Wertes geholt werden
 	 *            soll.
-	 * @param value
+	 * @param rank
 	 *            - Der Wert einer Karte. z.B.: Ein Ass
 	 * @return Die ArrayList mit den Assen.
 	 */
 	public ArrayList<PlayingCard> cardsOfRank(ArrayList<PlayingCard> hand,
-			PlayingCard.Rank value) {
+			PlayingCard.Rank rank) {
 
 		ArrayList<PlayingCard> result = new ArrayList<PlayingCard>(4);
 
 		for (PlayingCard card : hand) {
 
-			if (card.getRank() == value) {
+			if (card.getRank() == rank) {
 
 				result.add(card);
 			}
@@ -1439,22 +1439,22 @@ public class SmartPlayer extends Player {
 	 * Es wird die h&ouml;chste spielbare Karte aus den spielbaren Karten
 	 * bestimmt und zur&uuml;ck geliefert.
 	 * 
-	 * @param spielbareKarten
+	 * @param playedCards
 	 *            - Eine Liste mit den m&ouml;glichen zu spielenden Karten.
 	 * @return Die h&ouml;chste spielbare Karte.
 	 */
 	public PlayingCard hoechsteSpielbareKarte(
-			ArrayList<PlayingCard> spielbareKarten) {
+			ArrayList<PlayingCard> playedCards) {
 
-		PlayingCard ergebnis = spielbareKarten.get(0);
+		PlayingCard result = playedCards.get(0);
 
-		for (int i = 1; i < spielbareKarten.size(); i++) {
+		for (int i = 1; i < playedCards.size(); i++) {
 
-			ergebnis = hoechsteSpielbareKarteBestimmen(ergebnis,
-					spielbareKarten.get(i));
+			result = hoechsteSpielbareKarteBestimmen(result,
+					playedCards.get(i));
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1462,22 +1462,22 @@ public class SmartPlayer extends Player {
 	 * und zur&uuml;ck geliefert. Die Farbe ist bei der Auswertung nicht
 	 * relevant.
 	 * 
-	 * @param spielbareKarten
+	 * @param playedCards
 	 *            - Eine Liste mit den m&ouml;glichen zu spielenden Karten.
 	 * @return Die niedrigste spielbare Karte.
 	 */
 	public PlayingCard niedrigsteSpielbareKarte(
-			ArrayList<PlayingCard> spielbareKarten) {
+			ArrayList<PlayingCard> playedCards) {
 
-		PlayingCard ergebnis = spielbareKarten.get(0);
+		PlayingCard result = playedCards.get(0);
 
-		for (int i = 1; i < spielbareKarten.size(); i++) {
+		for (int i = 1; i < playedCards.size(); i++) {
 
-			ergebnis = niedrigsteSpielbareKarteBestimmen(ergebnis,
-					spielbareKarten.get(i));
+			result = niedrigsteSpielbareKarteBestimmen(result,
+					playedCards.get(i));
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1485,35 +1485,35 @@ public class SmartPlayer extends Player {
 	 * geliefert. Dies geschieht in Abh&auml;ngigkeit von der Spielart und nur
 	 * aufgrund der Kartenwerte, d.h. unabh&auml;ngig von der Farbe.
 	 * 
-	 * @param karte1
+	 * @param card1
 	 *            - Die erste Karte.
-	 * @param karte2
+	 * @param card2
 	 *            - Die zweite Karte.
 	 * @return - Die h&ouml;here von zwei Karten.
 	 */
-	public PlayingCard hoechsteSpielbareKarteBestimmen(PlayingCard karte1,
-			PlayingCard karte2) {
+	public PlayingCard hoechsteSpielbareKarteBestimmen(PlayingCard card1,
+			PlayingCard card2) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		if (gameVariety.evaluateCard(karte1) == gameVariety.evaluateCard(karte2)) {
+		if (gameVariety.evaluateCard(card1) == gameVariety.evaluateCard(card2)) {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
-		else if (gameVariety.evaluateCard(karte1) < gameVariety
-				.evaluateCard(karte2)) {
+		else if (gameVariety.evaluateCard(card1) < gameVariety
+				.evaluateCard(card2)) {
 
-			ergebnis = karte2;
+			result = card2;
 		}
 
-		else if (gameVariety.evaluateCard(karte1) > gameVariety
-				.evaluateCard(karte2)) {
+		else if (gameVariety.evaluateCard(card1) > gameVariety
+				.evaluateCard(card2)) {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1521,39 +1521,39 @@ public class SmartPlayer extends Player {
 	 * Dies geschieht in Abh&auml;ngigkeit von der Spielart und nur aufgrund der
 	 * Kartenwerte, d.h. unabh&auml;ngig von der Farbe.
 	 * 
-	 * @param karte1
+	 * @param card1
 	 *            - Die erste Karte.
-	 * @param karte2
+	 * @param card2
 	 *            - Die zweite Karte.
 	 * @return - Die niedrigere von zwei Karten.
 	 */
-	public PlayingCard niedrigsteSpielbareKarteBestimmen(PlayingCard karte1,
-			PlayingCard karte2) {
+	public PlayingCard niedrigsteSpielbareKarteBestimmen(PlayingCard card1,
+			PlayingCard card2) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
-		if (gameVariety.evaluateCard(karte1) == gameVariety.evaluateCard(karte2)) {
+		if (gameVariety.evaluateCard(card1) == gameVariety.evaluateCard(card2)) {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
-		else if (gameVariety.evaluateCard(karte1) < gameVariety
-				.evaluateCard(karte2)) {
+		else if (gameVariety.evaluateCard(card1) < gameVariety
+				.evaluateCard(card2)) {
 
-			ergebnis = karte1;
+			result = card1;
 		}
 
-		else if (gameVariety.evaluateCard(karte1) > gameVariety
-				.evaluateCard(karte2)) {
+		else if (gameVariety.evaluateCard(card1) > gameVariety
+				.evaluateCard(card2)) {
 
-			ergebnis = karte2;
+			result = card2;
 		}
 
-		if (ergebnis == null) {
-			ergebnis = karte1;
+		if (result == null) {
+			result = card1;
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	// Der SchlaueSpieler spielt hand und muss deshalb noch nicht druecken.
@@ -1590,48 +1590,48 @@ public class SmartPlayer extends Player {
 	@Override
 	public IGameVariety declareGame() {
 
-		IGameVariety zuSpielendeSpielart = bestimmeSpielart();
+		IGameVariety gameVarietyToPlay = determineGameVariety();
 
-		if (zuSpielendeSpielart == null) {
+		if (gameVarietyToPlay == null) {
 
-			zuSpielendeSpielart = new NullGame();
+			gameVarietyToPlay = new NullGame();
 		}
 
-		return zuSpielendeSpielart;
+		return gameVarietyToPlay;
 	}
 
 	@Override
-	public boolean respond(int reizwert) {
+	public boolean respond(int biddingValue) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
-		if (reizwert <= maxBiddingValue) {
+		if (biddingValue <= maxBiddingValue) {
 
-			ergebnis = true;
+			result = true;
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	@Override
-	public boolean bid(int reizWert) {
+	public boolean bid(int biddingValue) {
 
-		boolean ergebnis = false;
+		boolean result = false;
 
-		if (reizWert <= maxBiddingValue) {
+		if (biddingValue <= maxBiddingValue) {
 
-			ergebnis = true;
+			result = true;
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	@Override
 	public SuitGame suit() {
 
-		SuitGame farbe = new SuitGame(ermittleTrumpffarbe());
+		SuitGame suit = new SuitGame(ermittleTrumpffarbe());
 
-		return farbe;
+		return suit;
 	}
 
 	@Override
@@ -1651,7 +1651,7 @@ public class SmartPlayer extends Player {
 
 	public void bestimmeMaxReizwert() {
 
-		IGameVariety zuReizendeSpielart = bestimmeSpielart();
+		IGameVariety zuReizendeSpielart = determineGameVariety();
 		System.out.println(zuReizendeSpielart);
 
 		if (zuReizendeSpielart != null) {
@@ -1688,9 +1688,9 @@ public class SmartPlayer extends Player {
 	 */
 	public void maxReizwertFarbe(int ermittelteSpitzen) {
 
-		PlayingCard.Suit farbe = ermittleTrumpffarbe();
+		PlayingCard.Suit suit = ermittleTrumpffarbe();
 
-		maxBiddingValue = (ermittelteSpitzen + 1) * farbe.value();
+		maxBiddingValue = (ermittelteSpitzen + 1) * suit.value();
 	}
 
 	/**
@@ -1724,22 +1724,22 @@ public class SmartPlayer extends Player {
 	 */
 	public int ermittleSpitzen(IGameVariety zuReizendeSpielart) {
 
-		int ergebnis = 0;
+		int result = 0;
 		PlayingCard[] spitzen;
 
 		if (zuReizendeSpielart.getGameVariety() == GameVariety.Name.SUIT) {
 
 			spitzen = farbeSpitzen(zuReizendeSpielart);
-			ergebnis = spitzenZaehlen(spitzen);
+			result = spitzenZaehlen(spitzen);
 		}
 
 		else if (zuReizendeSpielart.getGameVariety() == GameVariety.Name.GRAND) {
 
 			spitzen = grandSpitzen(zuReizendeSpielart);
-			ergebnis = spitzenZaehlen(spitzen);
+			result = spitzenZaehlen(spitzen);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1752,19 +1752,19 @@ public class SmartPlayer extends Player {
 	 */
 	public int spitzenZaehlen(PlayingCard[] spitzen) {
 
-		int ergebnis = 0;
+		int result = 0;
 
 		if (spitzen[0] != null) {
 
-			ergebnis = mit(spitzen);
+			result = mit(spitzen);
 		}
 
 		else {
 
-			ergebnis = ohne(spitzen);
+			result = ohne(spitzen);
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1777,18 +1777,18 @@ public class SmartPlayer extends Player {
 	 */
 	public int ohne(PlayingCard[] spitzen) {
 
-		int ergebnis = 0;
+		int result = 0;
 
 		for (int i = 1; i < spitzen.length; i++) {
 
 			if (spitzen[i] != null) {
 
-				ergebnis = i;
+				result = i;
 				break;
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1801,18 +1801,18 @@ public class SmartPlayer extends Player {
 	 */
 	public int mit(PlayingCard[] spitzen) {
 
-		int ergebnis = 0;
+		int result = 0;
 
 		for (int i = 1; i < spitzen.length; i++) {
 
 			if (spitzen[i] == null) {
 
-				ergebnis = i;
+				result = i;
 				break;
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -1825,22 +1825,22 @@ public class SmartPlayer extends Player {
 	 */
 	public PlayingCard[] farbeSpitzen(IGameVariety zuReizendeSpielart) {
 
-		int kartenwert = 0;
+		int cardValue = 0;
 		PlayingCard[] spitzen = new PlayingCard[13];
-		ArrayList<PlayingCard> langeFarbe = determineShortLongSuit(true);
+		ArrayList<PlayingCard> longSuit = determineShortLongSuit(true);
 
 		for (int i = 0; i < hand.size(); i++) {
 
 			if (hand.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
-				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[rankUnderKnavesHelp(kartenwert)] = hand.get(i);
+				cardValue = zuReizendeSpielart.evaluateCard(hand.get(i));
+				spitzen[rankUnderKnavesHelp(cardValue)] = hand.get(i);
 			}
 
-			else if (hand.get(i).getSuit() == langeFarbe.get(0).getSuit()) {
+			else if (hand.get(i).getSuit() == longSuit.get(0).getSuit()) {
 
-				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[rankSuitHelp(kartenwert)] = hand.get(i);
+				cardValue = zuReizendeSpielart.evaluateCard(hand.get(i));
+				spitzen[rankSuitHelp(cardValue)] = hand.get(i);
 			}
 		}
 
@@ -1856,15 +1856,15 @@ public class SmartPlayer extends Player {
 	 */
 	public PlayingCard[] grandSpitzen(IGameVariety zuReizendeSpielart) {
 
-		int kartenwert = 0;
+		int cardValue = 0;
 		PlayingCard[] spitzen = new PlayingCard[4];
 
 		for (int i = 0; i < hand.size(); i++) {
 
 			if (hand.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
-				kartenwert = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[rankUnderKnavesHelp(kartenwert)] = hand.get(i);
+				cardValue = zuReizendeSpielart.evaluateCard(hand.get(i));
+				spitzen[rankUnderKnavesHelp(cardValue)] = hand.get(i);
 			}
 		}
 
@@ -1875,7 +1875,7 @@ public class SmartPlayer extends Player {
 	 * Diese Methode entscheidet, welche Spielart der schlaue Spieler mit seinen
 	 * Handkarten w&auml;len w&uuml;rde.
 	 */
-	public IGameVariety bestimmeSpielart() {
+	public IGameVariety determineGameVariety() {
 
 		// Damit der Computerspieler ein Nullspiel macht, darf er
 		// keinen Buben auf der Hand haben und zudem muss er mindestens
@@ -1892,31 +1892,31 @@ public class SmartPlayer extends Player {
 		int buben = 0;
 		int kartenGroesserKoenig = 0;
 
-		ArrayList<PlayingCard> langeFarbe = determineShortLongSuit(true);
+		ArrayList<PlayingCard> longSuit = determineShortLongSuit(true);
 
 		// Spielart auf die der Spieler reizt
 		IGameVariety zuReizendeSpielart;
 
-		for (PlayingCard karte : hand) {
+		for (PlayingCard card : hand) {
 
-			if (karte.getRank() == PlayingCard.Rank.SEVEN || karte.getRank() == PlayingCard.Rank.EIGHT
-					|| karte.getRank() == PlayingCard.Rank.NINE) {
+			if (card.getRank() == PlayingCard.Rank.SEVEN || card.getRank() == PlayingCard.Rank.EIGHT
+					|| card.getRank() == PlayingCard.Rank.NINE) {
 
 				kartenKleiner10++;
 			}
 
-			if (karte.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
+			if (card.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				buben++;
 			}
 
-			if (karte.getRank() == PlayingCard.Rank.DAUS || karte.getRank() == PlayingCard.Rank.TEN) {
+			if (card.getRank() == PlayingCard.Rank.DAUS || card.getRank() == PlayingCard.Rank.TEN) {
 
 				kartenGroesserKoenig++;
 			}
 		}
 
-		cardsOfsuitCount = langeFarbe.size();
+		cardsOfsuitCount = longSuit.size();
 
 		// Auswertung
 		if (kartenKleiner10 >= 5) {
@@ -1932,7 +1932,7 @@ public class SmartPlayer extends Player {
 		else if ((buben >= 2 && cardsOfsuitCount >= 4)
 				|| (buben < 2 && cardsOfsuitCount >= 6)) {
 
-			zuReizendeSpielart = new SuitGame(langeFarbe.get(0).getSuit());
+			zuReizendeSpielart = new SuitGame(longSuit.get(0).getSuit());
 		}
 
 		else {
@@ -1947,35 +1947,35 @@ public class SmartPlayer extends Player {
 	 * Ermittelt die kurze oder lange Farbe und speichert diese in einer
 	 * ArrayList. Buben werden nicht beachtet und werden entfernt.
 	 * 
-	 * @param lang
+	 * @param isLong
 	 *            - Wenn lang gleich true ist, wird die lange Farbe ermittelt,
 	 *            ansonsten die Kurze.
 	 * @return Die ArrayList von der Farbe mit den Karten, die am
 	 *         h&auml;ufigsten bzw. am wenigsten vorkommt.
 	 */
-	public ArrayList<PlayingCard> determineShortLongSuit(boolean lang) {
+	public ArrayList<PlayingCard> determineShortLongSuit(boolean isLong) {
 
 		ArrayList<PlayingCard> karo = cardsOfSuit(hand, PlayingCard.Suit.BELLS);
 		ArrayList<PlayingCard> herz = cardsOfSuit(hand, PlayingCard.Suit.HEARTS);
 		ArrayList<PlayingCard> pik = cardsOfSuit(hand, PlayingCard.Suit.LEAVES);
 		ArrayList<PlayingCard> kreuz = cardsOfSuit(hand, PlayingCard.Suit.ACORNS);
-		ArrayList<PlayingCard> gewinner = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> winner = new ArrayList<PlayingCard>();
 
 		// Die übergegebene Variable lang ist true, d.h. man möchte die lange
 		// Farbe ermitteln
-		if (lang) {
+		if (isLong) {
 
-			gewinner = ermittleLangeFarbe(karo, herz, pik, kreuz);
+			winner = ermittleLangeFarbe(karo, herz, pik, kreuz);
 		}
 
 		// Die übergegebene Variable lang ist false, d.h. man möchte die kurze
 		// Farbe ermitteln
 		else {
 
-			gewinner = ermittleKurzeFarbe(karo, herz, pik, kreuz);
+			winner = ermittleKurzeFarbe(karo, herz, pik, kreuz);
 		}
 
-		return gewinner;
+		return winner;
 	}
 
 	/**
@@ -1997,33 +1997,33 @@ public class SmartPlayer extends Player {
 			ArrayList<PlayingCard> herz, ArrayList<PlayingCard> pik,
 			ArrayList<PlayingCard> kreuz) {
 
-		ArrayList<PlayingCard> kurzeFarbe = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> shortSuit = new ArrayList<PlayingCard>();
 
 		if ((karo.size() < herz.size())
 				&& (karo.size() != 0 && herz.size() != 0)) {
 
-			kurzeFarbe = karo;
+			shortSuit = karo;
 		}
 
 		else {
 
 			if ((karo.size() != 0 && herz.size() != 0)) {
 
-				kurzeFarbe = herz;
+				shortSuit = herz;
 			}
 		}
 
-		if ((pik.size() <= kurzeFarbe.size()) && pik.size() != 0) {
+		if ((pik.size() <= shortSuit.size()) && pik.size() != 0) {
 
-			kurzeFarbe = pik;
+			shortSuit = pik;
 		}
 
-		if ((kreuz.size() <= kurzeFarbe.size()) && kreuz.size() != 0) {
+		if ((kreuz.size() <= shortSuit.size()) && kreuz.size() != 0) {
 
-			kurzeFarbe = kreuz;
+			shortSuit = kreuz;
 		}
 
-		return kurzeFarbe;
+		return shortSuit;
 	}
 
 	/**
@@ -2045,29 +2045,29 @@ public class SmartPlayer extends Player {
 			ArrayList<PlayingCard> herz, ArrayList<PlayingCard> pik,
 			ArrayList<PlayingCard> kreuz) {
 
-		ArrayList<PlayingCard> langeFarbe = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> longSuit = new ArrayList<PlayingCard>();
 
 		if (karo.size() > herz.size()) {
 
-			langeFarbe = karo;
+			longSuit = karo;
 		}
 
 		else {
 
-			langeFarbe = herz;
+			longSuit = herz;
 		}
 
-		if (pik.size() >= langeFarbe.size()) {
+		if (pik.size() >= longSuit.size()) {
 
-			langeFarbe = pik;
+			longSuit = pik;
 		}
 
-		if (kreuz.size() >= langeFarbe.size()) {
+		if (kreuz.size() >= longSuit.size()) {
 
-			langeFarbe = kreuz;
+			longSuit = kreuz;
 		}
 
-		return langeFarbe;
+		return longSuit;
 	}
 
 	/**
@@ -2078,107 +2078,107 @@ public class SmartPlayer extends Player {
 	 */
 	public PlayingCard.Suit ermittleTrumpffarbe() {
 
-		PlayingCard.Suit ergebnis = null;
-		ArrayList<PlayingCard> gewinner = determineShortLongSuit(true);
+		PlayingCard.Suit result = null;
+		ArrayList<PlayingCard> winner = determineShortLongSuit(true);
 
 		// Gewinner feststellen
-		switch (gewinner.get(0).getSuit()) {
+		switch (winner.get(0).getSuit()) {
 
 		case BELLS:
-			ergebnis = PlayingCard.Suit.BELLS;
+			result = PlayingCard.Suit.BELLS;
 			break;
 		case HEARTS:
-			ergebnis = PlayingCard.Suit.HEARTS;
+			result = PlayingCard.Suit.HEARTS;
 			break;
 		case LEAVES:
-			ergebnis = PlayingCard.Suit.LEAVES;
+			result = PlayingCard.Suit.LEAVES;
 			break;
 		case ACORNS:
-			ergebnis = PlayingCard.Suit.ACORNS;
+			result = PlayingCard.Suit.ACORNS;
 			break;
 		default:
 			System.err.println("Fehler in ermittleTrumpfarbe!");
 		}
-		return ergebnis;
+		return result;
 	}
 
 	/**
 	 * Ermittelt die Augen eines Spielers nach Spielschluss.
 	 * 
-	 * @param stiche
+	 * @param tricks
 	 *            - Stiche, die der Spieler gewonnen hat
 	 * @return Augen des Spielers
 	 */
-	public int werteAugen(ArrayList<PlayingCard> stiche) {
+	public int werteAugen(ArrayList<PlayingCard> tricks) {
 
-		int erg = 0;
+		int result = 0;
 
-		for (int i = 0; i < stiche.size(); i++) {
+		for (int i = 0; i < tricks.size(); i++) {
 
-			if (stiche.get(i).getRank() == PlayingCard.Rank.DAUS) {
+			if (tricks.get(i).getRank() == PlayingCard.Rank.DAUS) {
 
-				erg += 11;
+				result += 11;
 
-			} else if (stiche.get(i).getRank() == PlayingCard.Rank.TEN) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.TEN) {
 
-				erg += 10;
+				result += 10;
 
-			} else if (stiche.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
-				erg += 2;
+				result += 2;
 
-			} else if (stiche.get(i).getRank() == PlayingCard.Rank.OVER_KNAVE) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.OVER_KNAVE) {
 
-				erg += 3;
+				result += 3;
 
-			} else if (stiche.get(i).getRank() == PlayingCard.Rank.KING) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.KING) {
 
-				erg += 4;
+				result += 4;
 
-			} else if (stiche.get(i).getRank() == PlayingCard.Rank.SIX) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.SIX) {
 
-				erg += 6;
+				result += 6;
 			}
 		}
 
-		return erg;
+		return result;
 	}
 
 	/**
 	 * Diese Methode liefert für eine Karte den entsprechenden Augenwert.
 	 * 
-	 * @param karte
+	 * @param card
 	 *            - Die Karte f&uml;r die der Augenwert bestimmt werden soll.
 	 * @return Die Augenzahl der &uml;bergebenen Karte.
 	 */
-	public int augenKarte(PlayingCard karte) {
+	public int augenKarte(PlayingCard card) {
 
-		int ergebnis;
+		int result;
 
-		switch (karte.getRank()) {
+		switch (card.getRank()) {
 		case SIX:
-			ergebnis = 6;
+			result = 6;
 			break;
 		case OVER_KNAVE:
-			ergebnis = 3;
+			result = 3;
 			break;
 		case KING:
-			ergebnis = 4;
+			result = 4;
 			break;
 		case TEN:
-			ergebnis = 10;
+			result = 10;
 			break;
 		case DAUS:
-			ergebnis = 11;
+			result = 11;
 			break;
 		case UNDER_KNAVE:
-			ergebnis = 2;
+			result = 2;
 			break;
 		default:
-			ergebnis = 0;
+			result = 0;
 			break;
 		}
 
-		return ergebnis;
+		return result;
 	}
 }
