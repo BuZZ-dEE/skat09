@@ -1424,7 +1424,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		
 		assertEquals(playingCard1, 
-				player.alleinspieleralsZweiterKarteSpielenGrand(playedCards));
+				player.playSecondCardGrandAsDeclarer(playedCards));
 	}
 	
 	@Test
@@ -1453,7 +1453,7 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		
 		assertEquals(playingCard1, 
-				player.alleinspieleralsZweiterKarteSpielenGrand(playedCards));
+				player.playSecondCardGrandAsDeclarer(playedCards));
 	}
 	
 	@Test

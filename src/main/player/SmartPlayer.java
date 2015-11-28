@@ -295,18 +295,18 @@ public class SmartPlayer extends Player {
 	 */
 	public PlayingCard playSecondCardGrand(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (isDeclarer) {
 
-			ergebnis = alleinspieleralsZweiterKarteSpielenGrand(playedCards);
+			result = playSecondCardGrandAsDeclarer(playedCards);
 		}
 
 		else {
 
 			if (playedCards[0].getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(playableCards(playedCards));
+				result = hoechsteSpielbareKarte(playableCards(playedCards));
 			}
 
 			else {
@@ -318,18 +318,18 @@ public class SmartPlayer extends Player {
 						.equals(
 								hoechsteSpielbareKarte(playableCards(playedCards)))) {
 
-					ergebnis = hoechsteSpielbareKarte(playableCards(playedCards));
+					result = hoechsteSpielbareKarte(playableCards(playedCards));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(playableCards(playedCards));
+					result = niedrigsteSpielbareKarte(playableCards(playedCards));
 
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -342,11 +342,11 @@ public class SmartPlayer extends Player {
 	 */
 	public PlayingCard playThirdCardGrand(PlayingCard[] playedCards) {
 
-		PlayingCard ergebnis = null;
+		PlayingCard result = null;
 
 		if (isDeclarer) {
 
-			ergebnis = alleinspieleralsDritterKarteSpielenGrand(playedCards);
+			result = alleinspieleralsDritterKarteSpielenGrand(playedCards);
 		}
 
 		else {
@@ -354,7 +354,7 @@ public class SmartPlayer extends Player {
 			if (gameVariety.higherCard(playedCards[0], playedCards[1])
 					.getOwner().equals(teammate)) {
 
-				ergebnis = hoechsteSpielbareKarte(playableCards(playedCards));
+				result = hoechsteSpielbareKarte(playableCards(playedCards));
 			}
 
 			else {
@@ -372,17 +372,17 @@ public class SmartPlayer extends Player {
 								.equals(
 										hoechsteSpielbareKarte(playableCards(playedCards)))) {
 
-					ergebnis = hoechsteSpielbareKarte(playableCards(playedCards));
+					result = hoechsteSpielbareKarte(playableCards(playedCards));
 				}
 
 				else {
 
-					ergebnis = niedrigsteSpielbareKarte(playableCards(playedCards));
+					result = niedrigsteSpielbareKarte(playableCards(playedCards));
 				}
 			}
 		}
 
-		return ergebnis;
+		return result;
 	}
 
 	/**
@@ -804,7 +804,7 @@ public class SmartPlayer extends Player {
 	 *            diesem Fall ist in dem Array eine Karte
 	 * @return die Karte, die gespielt wird
 	 */
-	public PlayingCard alleinspieleralsZweiterKarteSpielenGrand(
+	public PlayingCard playSecondCardGrandAsDeclarer(
 			PlayingCard[] playedCards) {
 
 		PlayingCard result = null;
@@ -832,7 +832,7 @@ public class SmartPlayer extends Player {
 		}
 
 		// TODO loeschen
-		System.out.println("alleinspieleralsZweiterKarteSpielenGrand"
+		System.out.println("playSecondCardGrandAsDeclarer"
 				+ result.toString());
 
 		return result;
