@@ -20,7 +20,7 @@ public class HumanPlayer extends Player implements IPlayer,
 		IHumanPlayer {
 	
 	/**
-	 * Controller zur direkten Kommunikation mit der TUI/GUI
+	 * Controller zur direkten Kommunikation with der TUI/GUI
 	 */
 	IController controller;
 	
@@ -31,7 +31,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	 * @param name
 	 *            Der gew&uuml;nschte Name des Spielers
 	 * @param controller
-	 *            Der Controller, mit dem gespielt werden soll. Diesen braucht
+	 *            Der Controller, with dem gespielt werden soll. Diesen braucht
 	 *            der Spieler, damit er Benutzereingaben abfragen kann.
 	 */
 	public HumanPlayer(String name, IController controller) {

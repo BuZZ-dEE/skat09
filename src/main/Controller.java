@@ -578,7 +578,7 @@ public class Controller implements Observer, IController {
 				if (table.getVariant() == SkatVariant.SKAT
 						|| table.getVariant() == SkatVariant.RAMSCHBOCK) {
 					
-					((SmartPlayer) allPlayer).bestimmeMaxReizwert();
+					((SmartPlayer) allPlayer).determineMaxBiddingValue();
 				}
 			}
 		}

@@ -146,7 +146,7 @@ public interface IOutput {
 	 * Diese Methode fragt den Spieler nach der Trumpffarbe, die er spielen
 	 * m&ouml;chte, sofern er ein Farbspiel gew&auml;hlt hat.
 	 * 
-	 * @return - das neue Farbspiel mit der gew&auml;hlten Trumpffarbe
+	 * @return - das neue Farbspiel with der gew&auml;hlten Trumpffarbe
 	 */
 	SuitGame suitGame();
 
@@ -189,7 +189,7 @@ public interface IOutput {
 	void outputSkat(PlayingCard[] skat) throws IOException;
 
 	/**
-	 * Teilt mit, dass ein Spieler pass ist.
+	 * Teilt with, dass ein Spieler pass ist.
 	 * 
 	 * @param spieler
 	 *            - spieler der pass ist.
@@ -197,7 +197,7 @@ public interface IOutput {
 	void pass(IPlayer spieler);
 
 	/**
-	 * Diese Methode teilt dem Spieler mit, dass das Spiel beendet ist.
+	 * Diese Methode teilt dem Spieler with, dass das Spiel beendet ist.
 	 */
 	void gameOver();
 
@@ -227,12 +227,12 @@ public interface IOutput {
 	void blankLine();
 
 	/**
-	 * Teilt dem Spieler mit, dass das Spiel eingepasst wird.
+	 * Teilt dem Spieler with, dass das Spiel eingepasst wird.
 	 */
 	void passGame();
 
 	/**
-	 * Teilt dem Spieler mit, dass das Spiel beginnt.
+	 * Teilt dem Spieler with, dass das Spiel beginnt.
 	 */
 	void gameBegins();
 
@@ -299,7 +299,7 @@ public interface IOutput {
 	/**
 	 * Fragt den Spieler, ob der Reizagent aktiviert werden soll.
 	 * 
-	 * @return true, falls der Spieler mit Agent spielen will.
+	 * @return true, falls der Spieler with Agent spielen will.
 	 */
 	boolean biddingAgent();
 

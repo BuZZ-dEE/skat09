@@ -19,7 +19,7 @@ import main.ui.gui.*;
 
 
 /**
- * Diese Klasse besch&auml;ftigt sich mit der gesamten Ausgabe des Spiels fuer
+ * Diese Klasse besch&auml;ftigt sich with der gesamten Ausgabe des Spiels fuer
  * den menschlichen Spieler.
  * 
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns

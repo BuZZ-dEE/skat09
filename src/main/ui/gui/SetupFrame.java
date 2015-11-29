@@ -105,7 +105,7 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 	 */
 	private JLabel lsechser;
 	/**
-	 * kennzeichnet die Wahl ob mit deutschen oder franz&ouml;sischen Blatt
+	 * kennzeichnet die Wahl ob with deutschen oder franz&ouml;sischen Blatt
 	 * gespielt werden soll
 	 */
 	private JLabel lblattw;
@@ -349,22 +349,22 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 		});
 		lname.setLabelFor(name);
 
-		// ComboBox mit Label:
+		// ComboBox with Label:
 		gegner1 = new JComboBox<String>(gegner);
 		gegner1.setSelectedIndex(1);
 		lgegner1.setLabelFor(gegner1);
 
-		// Combobox Gegner2 mit Label:
+		// Combobox Gegner2 with Label:
 		gegner2 = new JComboBox<String>(gegner);
 		gegner2.setSelectedIndex(1);
 		lgegner2.setLabelFor(gegner2);
 
-		// Combobox Skatvariante mit Label
+		// Combobox Skatvariante with Label
 		skatvariante = new JComboBox<String>(variante);
 		skatvariante.setSelectedIndex(0);
 		lvariante.setLabelFor(skatvariante);
 
-		// ComboBox Blattwahl mit Label
+		// ComboBox Blattwahl with Label
 		blattwahl = new JComboBox<String>(blattwahl2);
 		
 		if (Configuration.getInstance().getDeck().equalsIgnoreCase("de")) {
@@ -395,7 +395,7 @@ public class SetupFrame extends JFrame implements ActionListener, KeyListener {
 		}
 		lblattw.setLabelFor(blattwahl);
 
-		// Checkbox Sechserskat mit Label
+		// Checkbox Sechserskat with Label
 		sechser = new JCheckBox();
 		sechser.setName("sechser");
 		lsechser.setLabelFor(sechser);

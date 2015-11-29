@@ -14,7 +14,7 @@ import main.playingcard.PlayingCard;
 
 
 /**
- * Diese Klasse Spieler simuliert einen Skatspieler mit all seinen
+ * Diese Klasse Spieler simuliert einen Skatspieler with all seinen
  * Möglichkeiten am Spiel teilzunehmen. Ein Spieler hat zum Beispiel ein
  * Blatt, eine Position am Spieltisch, kann reizen und Karten Spielen.
  * 

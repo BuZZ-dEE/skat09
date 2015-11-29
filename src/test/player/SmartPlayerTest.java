@@ -1478,7 +1478,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.KING);
 		
 		assertEquals(playingCard1, 
-				player.alleinspieleralsDritterKarteSpielenGrand(playedCards));
+				player.playThirdCardGrandAsDeclarer(playedCards));
 	}
 	
 	@Test
@@ -1503,7 +1503,7 @@ public class SmartPlayerTest {
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		
 		assertEquals(playingCard1, 
-				player.alleinspieleralsDritterKarteSpielenGrand(playedCards));
+				player.playThirdCardGrandAsDeclarer(playedCards));
 	}
 	
 	@Test
@@ -1611,7 +1611,7 @@ public class SmartPlayerTest {
 			}
 		}
 		
-		assertEquals(ergebnisKarten, player.gegnerMoeglicheSpielbareKarten(playedCards));
+		assertEquals(ergebnisKarten, player.possiblePlayableAdversaryCards(playedCards));
 	}
 	
 	@Test
@@ -1778,7 +1778,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteNeun(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardNine(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1793,7 +1793,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteNeun(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardNine(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1808,7 +1808,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteNeun(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardNine(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1823,7 +1823,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteKoenig(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardKing(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1838,7 +1838,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteKoenig(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardKing(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1853,7 +1853,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteKoenig(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardKing(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1868,7 +1868,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteZehn(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardTen(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1883,7 +1883,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteZehn(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardTen(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1898,7 +1898,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		
 		boolean success = false;
-		if (card.equals(player.naechstHoehereKarteZehn(PlayingCard.Suit.LEAVES))) {
+		if (card.equals(player.nextHigherCardTen(PlayingCard.Suit.LEAVES))) {
 			
 			success = true;
 		}
@@ -1911,7 +1911,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX);
 		
-		assertEquals(null, player.naechstNiedrigereKarte(PlayingCard.Suit.BELLS, card));
+		assertEquals(null, player.nextLowerCard(PlayingCard.Suit.BELLS, card));
 	}
 	
 	@Test
@@ -1920,7 +1920,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX);
 		boolean result = false;
-		if (card2.equals(player.naechstNiedrigereKarte(PlayingCard.Suit.BELLS, card))) {
+		if (card2.equals(player.nextLowerCard(PlayingCard.Suit.BELLS, card))) {
 			result = true;
 		}
 		assertTrue(result);
@@ -1932,7 +1932,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		boolean result = false;
-		if (card2.equals(player.naechstNiedrigereKarte(PlayingCard.Suit.BELLS, card))) {
+		if (card2.equals(player.nextLowerCard(PlayingCard.Suit.BELLS, card))) {
 			result = true;
 		}
 		assertTrue(result);
@@ -1944,7 +1944,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
 		boolean result = false;
-		if (card2.equals(player.naechstNiedrigereKarte(PlayingCard.Suit.BELLS, card))) {
+		if (card2.equals(player.nextLowerCard(PlayingCard.Suit.BELLS, card))) {
 			result = true;
 		}
 		assertTrue(result);
@@ -1956,7 +1956,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		boolean result = false;
-		if (card2.equals(player.naechstNiedrigereKarte(PlayingCard.Suit.BELLS, card))) {
+		if (card2.equals(player.nextLowerCard(PlayingCard.Suit.BELLS, card))) {
 			result = true;
 		}
 		assertTrue(result);
@@ -1968,7 +1968,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
 		boolean result = false;
-		if (card2.equals(player.naechstNiedrigereKarte(PlayingCard.Suit.BELLS, card))) {
+		if (card2.equals(player.nextLowerCard(PlayingCard.Suit.BELLS, card))) {
 			result = true;
 		}
 		assertTrue(result);
@@ -1980,7 +1980,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
 		boolean result = false;
-		if (card2.equals(player.naechstNiedrigereKarte(PlayingCard.Suit.BELLS, card))) {
+		if (card2.equals(player.nextLowerCard(PlayingCard.Suit.BELLS, card))) {
 			result = true;
 		}
 		assertTrue(result);
@@ -1992,7 +1992,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
 		boolean result = false;
-		if (card2.equals(player.naechstNiedrigereKarte(PlayingCard.Suit.BELLS, card))) {
+		if (card2.equals(player.nextLowerCard(PlayingCard.Suit.BELLS, card))) {
 			result = true;
 		}
 		assertTrue(result);
@@ -2004,7 +2004,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteDame(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardOverKnave(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2019,7 +2019,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteDame(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardOverKnave(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2034,7 +2034,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteDame(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardOverKnave(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2049,7 +2049,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteZehn(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardTen(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2064,7 +2064,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteZehn(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardTen(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2079,7 +2079,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteZehn(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardTen(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2094,7 +2094,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteAss(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardDaus(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2109,7 +2109,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteAss(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardDaus(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2124,7 +2124,7 @@ public class SmartPlayerTest {
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
 		
 		boolean success = false;
-		if (card.equals(player.naechstNiedrigereKarteAss(PlayingCard.Suit.ACORNS))) {
+		if (card.equals(player.nextLowerCardDaus(PlayingCard.Suit.ACORNS))) {
 			
 			success = true;
 		}
@@ -2340,7 +2340,7 @@ public class SmartPlayerTest {
 		player.setGameVariety(new GrandGame());
 		
 		assertEquals(card1,
-				player.hoechsteSpielbareKarteBestimmen(card1, card2));
+				player.determineHighestPlayableCard(card1, card2));
 	}
 	
 	@Test
@@ -2351,7 +2351,7 @@ public class SmartPlayerTest {
 		player.setGameVariety(new NullGame());
 		
 		assertEquals(card2,
-				player.hoechsteSpielbareKarteBestimmen(card1, card2));
+				player.determineHighestPlayableCard(card1, card2));
 	}
 	
 	@Test
@@ -2362,7 +2362,7 @@ public class SmartPlayerTest {
 		player.setGameVariety(new NullGame());
 		
 		assertEquals(card1,
-				player.hoechsteSpielbareKarteBestimmen(card1, card2));
+				player.determineHighestPlayableCard(card1, card2));
 	}
 	
 	@Test
@@ -2373,7 +2373,7 @@ public class SmartPlayerTest {
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE);
 		
 		assertEquals(card2,
-				player.niedrigsteSpielbareKarteBestimmen(card1, card2));
+				player.determineLowestPlayableCard(card1, card2));
 	}
 	
 	@Test
@@ -2384,7 +2384,7 @@ public class SmartPlayerTest {
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
 		
 		assertEquals(card1,
-				player.niedrigsteSpielbareKarteBestimmen(card1, card2));
+				player.determineLowestPlayableCard(card1, card2));
 	}
 	
 	@Test
@@ -2395,7 +2395,7 @@ public class SmartPlayerTest {
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
 		
 		assertEquals(card1,
-				player.niedrigsteSpielbareKarteBestimmen(card1, card2));
+				player.determineLowestPlayableCard(card1, card2));
 	}
 	
 	@Test
@@ -2519,7 +2519,7 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.EIGHT));
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE));
 		player.setHand(hand);
-		player.bestimmeMaxReizwert();
+		player.determineMaxBiddingValue();
 		assertEquals(23, player.getMaxBiddingValue());
 	}
 	
@@ -2538,7 +2538,7 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN));
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
 		player.setHand(hand);
-		player.bestimmeMaxReizwert();
+		player.determineMaxBiddingValue();
 		assertEquals(24, player.getMaxBiddingValue());
 	}
 	
@@ -2557,7 +2557,7 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE));
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SEVEN));
 		player.setHand(hand);
-		player.bestimmeMaxReizwert();
+		player.determineMaxBiddingValue();
 		assertEquals(33, player.getMaxBiddingValue());
 	}
 	
@@ -2666,7 +2666,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard[] spitzen = new PlayingCard[13];
 		spitzen[12] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX);
-		assertEquals(12, player.ohne(spitzen));
+		assertEquals(12, player.without(spitzen));
 	}
 	
 	@Test
@@ -2674,7 +2674,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard[] spitzen = new PlayingCard[13];
 		spitzen[3] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
-		assertEquals(3, player.ohne(spitzen));
+		assertEquals(3, player.without(spitzen));
 	}
 	
 	@Test
@@ -2707,7 +2707,7 @@ public class SmartPlayerTest {
 		spitzen[10] = card11;
 		spitzen[11] = card12;
 		
-		assertEquals(12, player.mit(spitzen));
+		assertEquals(12, player.with(spitzen));
 	}
 	
 	@Test
@@ -2722,7 +2722,7 @@ public class SmartPlayerTest {
 		spitzen[1] = card2;
 		spitzen[2] = card3;
 		
-		assertEquals(3, player.mit(spitzen));
+		assertEquals(3, player.with(spitzen));
 	}
 	
 	@Test

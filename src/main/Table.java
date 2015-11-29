@@ -83,7 +83,7 @@ public class Table extends Observable {
 	 */
 	private int biddingAgentValue;
 	/**
-	 * Skatvariante: Raeuberskat oder normales Skat oder Skat mit Ramsch und
+	 * Skatvariante: Raeuberskat oder normales Skat oder Skat with Ramsch und
 	 * Bock?
 	 */
 	private SkatVariant skatVariant;
@@ -92,11 +92,11 @@ public class Table extends Observable {
 	 */
 	private SortedSet<Integer> biddingValues;
 	/**
-	 * zählt die bisher gespielten Spiele mit
+	 * zählt die bisher gespielten Spiele with
 	 */
 	private int gameRoundCounter;
 	/**
-	 * Die Trümpfe, mit denen der Alleinspieler spielt
+	 * Die Trümpfe, with denen der Alleinspieler spielt
 	 */
 	private PlayingCard[] trumps = new PlayingCard[12];
 	/**
@@ -530,7 +530,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das schneider-flag mit dem übergebenen Wert.
+	 * Setzt das schneider-flag with dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -541,7 +541,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das schwarz-flag mit dem übergebenen Wert.
+	 * Setzt das schwarz-flag with dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -552,7 +552,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das ouvert-flag mit dem übergebenen Wert.
+	 * Setzt das ouvert-flag with dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -678,7 +678,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Erstellt ein neues Deck mit 32 Karten. Jede Karte darf nur einmal
+	 * Erstellt ein neues Deck with 32 Karten. Jede Karte darf nur einmal
 	 * vorkommen.
 	 */
 	public void createDeck() {
@@ -964,7 +964,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Befüllt das Reizwerte-Array mit allen Reizwerten, die vorkommen
+	 * Befüllt das Reizwerte-Array with allen Reizwerten, die vorkommen
 	 * können.
 	 */
 	public void generateBiddingValues() {
@@ -1316,10 +1316,10 @@ public class Table extends Observable {
 
 	/**
 	 * Erstellt ein Array, dass alle Spieler enthaelt, aufsteigend sortiert, der
-	 * Spieler mit den wenigsten Augen zuerst.
+	 * Spieler with den wenigsten Augen zuerst.
 	 * 
 	 * @param player
-	 *            - array mit allen Spielern
+	 *            - array with allen Spielern
 	 * @return das sortierte Array
 	 */
 	public IPlayer[] sortPlayerRamsch(IPlayer[] player) {
@@ -1344,7 +1344,7 @@ public class Table extends Observable {
 	 * Punkte.
 	 * 
 	 * @param player
-	 *            Bekommt das sortierte Array mit den Spielern
+	 *            Bekommt das sortierte Array with den Spielern
 	 * @param skataugen
 	 *            Die Augen, die im Skat lagen
 	 * @param bock
@@ -1373,7 +1373,7 @@ public class Table extends Observable {
 							* bock);
 			player[1].getGames().add(0);
 			player[0].getGames().add(0);
-			// Ansonsten bekommt der Spieler mit den meisten Augen so viele
+			// Ansonsten bekommt der Spieler with den meisten Augen so viele
 			// Minuspunkte, wie er Augen erspielt hat und Augen im Skat lagen.
 		} else {
 			player[2].getGames().add(

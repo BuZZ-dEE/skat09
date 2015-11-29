@@ -346,7 +346,7 @@ public class SmartPlayer extends Player {
 
 		if (isDeclarer) {
 
-			result = alleinspieleralsDritterKarteSpielenGrand(playedCards);
+			result = playThirdCardGrandAsDeclarer(playedCards);
 		}
 
 		else {
@@ -704,7 +704,7 @@ public class SmartPlayer extends Player {
 
 		else if (buben.size() == 2) {
 
-			result = bubeSpielen(playedCards, buben, random);
+			result = playUnderKnave(playedCards, buben, random);
 
 		}
 
@@ -763,20 +763,20 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Die Methode gibt aus einer Arrayliste mit Buben einen ausgewählten
+	 * Die Methode gibt aus einer Arrayliste with Buben einen ausgewählten
 	 * zufälligen Buben zurück. Dies tut sie aber nur, wenn in der Liste der
 	 * Kreuz Bube oder der Pik Bube vorhanden ist.
 	 * 
 	 * @param playedCards
 	 *            - die bisher gespielten Karten auf dem Tisch
 	 * @param buben
-	 *            - die Arrayliste mit den Buben
+	 *            - die Arrayliste with den Buben
 	 * @param random
 	 *            - Zufallswert
 	 * @return der zufällig aus der Liste ausgewählte Bube
 	 */
-	public PlayingCard bubeSpielen(PlayingCard[] playedCards,
-			ArrayList<PlayingCard> buben, Random random) {
+	public PlayingCard playUnderKnave(PlayingCard[] playedCards,
+									  ArrayList<PlayingCard> buben, Random random) {
 
 		PlayingCard result = null;
 
@@ -819,7 +819,7 @@ public class SmartPlayer extends Player {
 				&& gameVariety
 						.higherCard(
 								highestPlayableCard(playableCards(playedCards)),
-								highestPlayableCard(gegnerMoeglicheSpielbareKarten(playedCards)))
+								highestPlayableCard(possiblePlayableAdversaryCards(playedCards)))
 						.equals(
 								highestPlayableCard(playableCards(playedCards)))) {
 
@@ -848,7 +848,7 @@ public class SmartPlayer extends Player {
 	 *            diesem Fall sind in dem Array zwei Karten
 	 * @return die Karte, die gespielt wird
 	 */
-	public PlayingCard alleinspieleralsDritterKarteSpielenGrand(
+	public PlayingCard playThirdCardGrandAsDeclarer(
 			PlayingCard[] playedCards) {
 
 		PlayingCard result = null;
@@ -940,7 +940,7 @@ public class SmartPlayer extends Player {
 	// for (Spielkarte karte : blatt) {
 	//			
 	// zuSpielendeKarte[0] = karte;
-	// ergebnis.addAll(gegnerMoeglicheSpielbareKarten(zuSpielendeKarte));
+	// ergebnis.addAll(possiblePlayableAdversaryCards(zuSpielendeKarte));
 	// }
 	//		
 	// return ergebnis;
@@ -953,9 +953,9 @@ public class SmartPlayer extends Player {
 	 * 
 	 * @param playedCards
 	 *            - Karten, die gerade auf dem Tisch liegen
-	 * @return Ein Liste mit den m&oumlglichen spielbaren Karten.
+	 * @return Ein Liste with den m&oumlglichen spielbaren Karten.
 	 */
-	public ArrayList<PlayingCard> gegnerMoeglicheSpielbareKarten(
+	public ArrayList<PlayingCard> possiblePlayableAdversaryCards(
 			PlayingCard[] playedCards) {
 
 		System.out.println("gegnermoeglicheSpielbareKarten");
@@ -982,7 +982,7 @@ public class SmartPlayer extends Player {
 	 *            - alle Karten, die bisher gespielt wurden
 	 * @param playedCards
 	 *            - Karten, die gerade auf dem Tisch liegen
-	 * @return Eine Liste mit den Karten, die beide Gegner zusammen haben.
+	 * @return Eine Liste with den Karten, die beide Gegner zusammen haben.
 	 */
 	public ArrayList<PlayingCard> possibleAdversaryCards(
 			ArrayList<PlayingCard> allPlayedCards,
@@ -1095,22 +1095,22 @@ public class SmartPlayer extends Player {
 			result = new PlayingCard(suit, PlayingCard.Rank.NINE);
 			break;
 		case NINE:
-			result = naechstHoehereKarteNeun(suit);
+			result = nextHigherCardNine(suit);
 			break;
 		case OVER_KNAVE:
 			result = new PlayingCard(suit, PlayingCard.Rank.KING);
 			break;
 		case KING:
-			result = naechstHoehereKarteKoenig(suit);
+			result = nextHigherCardKing(suit);
 			break;
 		case TEN:
-			result = naechstHoehereKarteZehn(suit);
+			result = nextHigherCardTen(suit);
 			break;
 		case DAUS:
 			result = null;
 			break;
 		case UNDER_KNAVE:
-			result = naechstHoehereKarteBube(suit);
+			result = nextHigherCardUnderKnave(suit);
 			break;
 		default:
 			result = null;
@@ -1121,7 +1121,7 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Die Methode liefert f&uuml;r die Karte mit dem Wert "NEUN" die
+	 * Die Methode liefert f&uuml;r die Karte with dem Wert "NEUN" die
 	 * n&auml;chst h&ouml;here Karte der gleichen Farbe zur&uuml;ck. Dies
 	 * geschieht unter Betrachtung der Spielart.
 	 * 
@@ -1130,7 +1130,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteNeun(PlayingCard.Suit suit) {
+	public PlayingCard nextHigherCardNine(PlayingCard.Suit suit) {
 
 		PlayingCard result = null;
 
@@ -1147,7 +1147,7 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Die Methode liefert für die Karte mit dem Wert "KOENIG" die n&auml;chst
+	 * Die Methode liefert für die Karte with dem Wert "KOENIG" die n&auml;chst
 	 * h&ouml;here Karte der gleichen Farbe zurück. Dies geschieht unter
 	 * Betrachtung der Spielart.
 	 * 
@@ -1155,7 +1155,7 @@ public class SmartPlayer extends Player {
 	 *            - Farbe von der die n&auml;chst niedrigere Karte verlangt wird
 	 * @return die n&aumlchst h&ouml;here Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstHoehereKarteKoenig(PlayingCard.Suit suit) {
+	public PlayingCard nextHigherCardKing(PlayingCard.Suit suit) {
 
 		PlayingCard result = null;
 
@@ -1172,7 +1172,7 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Die Methode liefert f&uuml;r die Karte mit dem Wert "ZEHN" die
+	 * Die Methode liefert f&uuml;r die Karte with dem Wert "ZEHN" die
 	 * n&auml;chst h&ouml;here Karte der gleichen Farbe zur&uuml;ck. Dies
 	 * geschieht unter Betrachtung der Spielart.
 	 * 
@@ -1181,7 +1181,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteZehn(PlayingCard.Suit suit) {
+	public PlayingCard nextHigherCardTen(PlayingCard.Suit suit) {
 
 		PlayingCard result = null;
 
@@ -1198,7 +1198,7 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Die Methode liefert f&uuml;r die Karte mit dem Wert "BUBE" die
+	 * Die Methode liefert f&uuml;r die Karte with dem Wert "BUBE" die
 	 * n&auml;chst h&ouml;here Karte der gleichen Farbe zur&uuml;ck. Dies
 	 * geschieht unter Betrachtung der Spielart.
 	 * 
@@ -1207,7 +1207,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst h&ouml;here Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstHoehereKarteBube(PlayingCard.Suit suit) {
+	public PlayingCard nextHigherCardUnderKnave(PlayingCard.Suit suit) {
 
 		PlayingCard result = null;
 
@@ -1237,7 +1237,7 @@ public class SmartPlayer extends Player {
 	 *            Farbe bestimmt werden soll
 	 * @return die n&aumlchst niedrigere Karte
 	 */
-	public PlayingCard naechstNiedrigereKarte(PlayingCard.Suit suit, PlayingCard card) {
+	public PlayingCard nextLowerCard(PlayingCard.Suit suit, PlayingCard card) {
 
 		PlayingCard result = null;
 
@@ -1256,19 +1256,19 @@ public class SmartPlayer extends Player {
 			result = new PlayingCard(suit, PlayingCard.Rank.EIGHT);
 			break;
 		case OVER_KNAVE:
-			result = naechstNiedrigereKarteDame(suit);
+			result = nextLowerCardOverKnave(suit);
 			break;
 		case KING:
 			result = new PlayingCard(suit, PlayingCard.Rank.OVER_KNAVE);
 			break;
 		case TEN:
-			result = naechstNiedrigereKarteZehn(suit);
+			result = nextLowerCardTen(suit);
 			break;
 		case DAUS:
-			result = naechstNiedrigereKarteAss(suit);
+			result = nextLowerCardDaus(suit);
 			break;
 		case UNDER_KNAVE:
-			result = naechstNiedrigereKarteBube(suit);
+			result = nextLowerCardUnderKnave(suit);
 			break;
 		default:
 			result = null;
@@ -1279,7 +1279,7 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Die Methode liefert für die Karte mit dem Wert "DAME" die n&auml;chst
+	 * Die Methode liefert für die Karte with dem Wert "DAME" die n&auml;chst
 	 * niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies geschieht unter
 	 * Betrachtung der Spielart.
 	 * 
@@ -1288,7 +1288,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteDame(PlayingCard.Suit suit) {
+	public PlayingCard nextLowerCardOverKnave(PlayingCard.Suit suit) {
 
 		PlayingCard result = null;
 
@@ -1305,7 +1305,7 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Die Methode liefert f&uuml;r die Karte mit dem Wert "ZEHN" die
+	 * Die Methode liefert f&uuml;r die Karte with dem Wert "ZEHN" die
 	 * n&auml;chst niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies
 	 * geschieht unter Betrachtung der Spielart.
 	 * 
@@ -1314,7 +1314,7 @@ public class SmartPlayer extends Player {
 	 * @return die n&aumlchst niedrigere Karte, in Abh&auml;ngigkeit der
 	 *         Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteZehn(PlayingCard.Suit suit) {
+	public PlayingCard nextLowerCardTen(PlayingCard.Suit suit) {
 
 		PlayingCard result = null;
 
@@ -1331,7 +1331,7 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Die Methode liefert für die Karte mit dem Wert "ASS" die n&auml;chst
+	 * Die Methode liefert für die Karte with dem Wert "ASS" die n&auml;chst
 	 * niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies geschieht unter
 	 * Betrachtung der Spielart.
 	 * 
@@ -1339,7 +1339,7 @@ public class SmartPlayer extends Player {
 	 *            - Farbe der zu suchenden Karte"
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteAss(PlayingCard.Suit suit) {
+	public PlayingCard nextLowerCardDaus(PlayingCard.Suit suit) {
 
 		PlayingCard result = null;
 
@@ -1356,7 +1356,7 @@ public class SmartPlayer extends Player {
 	}
 	
 	/**
-	 * Die Methode liefert für die Karte mit dem Wert "BUBE" die n&auml;chst
+	 * Die Methode liefert für die Karte with dem Wert "BUBE" die n&auml;chst
 	 * niedrigere Karte der gleichen Farbe zur&uuml;ck. Dies geschieht unter
 	 * Betrachtung der Spielart.
 	 * 
@@ -1364,7 +1364,7 @@ public class SmartPlayer extends Player {
 	 *            - Farbe der zu suchenden Karte
 	 * @return die n&aumlchst niedrigere Karte, in Abhängigkeit der Spielart
 	 */
-	public PlayingCard naechstNiedrigereKarteBube(PlayingCard.Suit suit) {
+	public PlayingCard nextLowerCardUnderKnave(PlayingCard.Suit suit) {
 		
 		PlayingCard result = null;
 		
@@ -1390,7 +1390,7 @@ public class SmartPlayer extends Player {
 	 *            soll.
 	 * @param rank
 	 *            - Der Wert einer Karte. z.B.: Ein Ass
-	 * @return Die ArrayList mit den Assen.
+	 * @return Die ArrayList with den Assen.
 	 */
 	public ArrayList<PlayingCard> cardsOfRank(ArrayList<PlayingCard> hand,
 			PlayingCard.Rank rank) {
@@ -1417,7 +1417,7 @@ public class SmartPlayer extends Player {
 	 *            soll.
 	 * @param suit
 	 *            - Die Farbe einer Karte. z.B.: Kreuz
-	 * @return Die ArrayList mit den Karten der Farbe Kreuz.
+	 * @return Die ArrayList with den Karten der Farbe Kreuz.
 	 */
 	public ArrayList<PlayingCard> cardsOfSuit(ArrayList<PlayingCard> hand,
 			PlayingCard.Suit suit) {
@@ -1440,7 +1440,7 @@ public class SmartPlayer extends Player {
 	 * bestimmt und zur&uuml;ck geliefert.
 	 * 
 	 * @param playedCards
-	 *            - Eine Liste mit den m&ouml;glichen zu spielenden Karten.
+	 *            - Eine Liste with den m&ouml;glichen zu spielenden Karten.
 	 * @return Die h&ouml;chste spielbare Karte.
 	 */
 	public PlayingCard highestPlayableCard(
@@ -1450,7 +1450,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 1; i < playedCards.size(); i++) {
 
-			result = hoechsteSpielbareKarteBestimmen(result,
+			result = determineHighestPlayableCard(result,
 					playedCards.get(i));
 		}
 
@@ -1463,7 +1463,7 @@ public class SmartPlayer extends Player {
 	 * relevant.
 	 * 
 	 * @param playedCards
-	 *            - Eine Liste mit den m&ouml;glichen zu spielenden Karten.
+	 *            - Eine Liste with den m&ouml;glichen zu spielenden Karten.
 	 * @return Die niedrigste spielbare Karte.
 	 */
 	public PlayingCard lowestPlayableCard(
@@ -1473,7 +1473,7 @@ public class SmartPlayer extends Player {
 
 		for (int i = 1; i < playedCards.size(); i++) {
 
-			result = niedrigsteSpielbareKarteBestimmen(result,
+			result = determineLowestPlayableCard(result,
 					playedCards.get(i));
 		}
 
@@ -1491,8 +1491,8 @@ public class SmartPlayer extends Player {
 	 *            - Die zweite Karte.
 	 * @return - Die h&ouml;here von zwei Karten.
 	 */
-	public PlayingCard hoechsteSpielbareKarteBestimmen(PlayingCard card1,
-			PlayingCard card2) {
+	public PlayingCard determineHighestPlayableCard(PlayingCard card1,
+													PlayingCard card2) {
 
 		PlayingCard result = null;
 
@@ -1527,8 +1527,8 @@ public class SmartPlayer extends Player {
 	 *            - Die zweite Karte.
 	 * @return - Die niedrigere von zwei Karten.
 	 */
-	public PlayingCard niedrigsteSpielbareKarteBestimmen(PlayingCard card1,
-			PlayingCard card2) {
+	public PlayingCard determineLowestPlayableCard(PlayingCard card1,
+												   PlayingCard card2) {
 
 		PlayingCard result = null;
 
@@ -1649,21 +1649,21 @@ public class SmartPlayer extends Player {
 		return 0;
 	}
 
-	public void bestimmeMaxReizwert() {
+	public void determineMaxBiddingValue() {
 
-		IGameVariety zuReizendeSpielart = determineGameVariety();
-		System.out.println(zuReizendeSpielart);
+		IGameVariety gameVarietyToBid = determineGameVariety();
+		System.out.println(gameVarietyToBid);
 
-		if (zuReizendeSpielart != null) {
+		if (gameVarietyToBid != null) {
 
-			switch (zuReizendeSpielart.getGameVariety()) {
+			switch (gameVarietyToBid.getGameVariety()) {
 
 			case SUIT:
-				maxReizwertFarbe(ermittleSpitzen(zuReizendeSpielart));
+				maxReizwertFarbe(ermittleSpitzen(gameVarietyToBid));
 				break;
 
 			case GRAND:
-				maxReizwertGrand(ermittleSpitzen(zuReizendeSpielart));
+				maxReizwertGrand(ermittleSpitzen(gameVarietyToBid));
 				break;
 
 			case NULL:
@@ -1747,7 +1747,7 @@ public class SmartPlayer extends Player {
 	 * die Karten einer Farbe geordnet enth&auml;lt.
 	 * 
 	 * @param spitzen
-	 *            - sortiertes Array mit den Karten einer Farbe
+	 *            - sortiertes Array with den Karten einer Farbe
 	 * @return Anzahl der Spitzen
 	 */
 	public int spitzenZaehlen(PlayingCard[] spitzen) {
@@ -1756,26 +1756,26 @@ public class SmartPlayer extends Player {
 
 		if (spitzen[0] != null) {
 
-			result = mit(spitzen);
+			result = with(spitzen);
 		}
 
 		else {
 
-			result = ohne(spitzen);
+			result = without(spitzen);
 		}
 
 		return result;
 	}
 
 	/**
-	 * Bekommt ein SpielkartenArray mit allen Karten einer Farbe, absteigend
+	 * Bekommt ein SpielkartenArray with allen Karten einer Farbe, absteigend
 	 * geordnet und ermittelt daraus die Anzahl der fehlenden Spitzen.
 	 * 
 	 * @param spitzen
 	 *            - Array, dass alle Karten einer Farbe enth&auml;lt
 	 * @return anzahl der Spitzen
 	 */
-	public int ohne(PlayingCard[] spitzen) {
+	public int without(PlayingCard[] spitzen) {
 
 		int result = 0;
 
@@ -1792,14 +1792,14 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Bekommt ein SpielkartenArray mit allen Karten einer Farbe, absteigend
+	 * Bekommt ein SpielkartenArray with allen Karten einer Farbe, absteigend
 	 * geordnet und ermittelt daraus die Anzahl der Spitzen.
 	 * 
 	 * @param spitzen
 	 *            - Array, dass alle Karten einer Farbe enth&auml;lt
 	 * @return anzahl der Spitzen
 	 */
-	public int mit(PlayingCard[] spitzen) {
+	public int with(PlayingCard[] spitzen) {
 
 		int result = 0;
 
@@ -1848,11 +1848,11 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Liefert ein Array mit allen Spitzen f&uuml;r ein Grandspiel.
+	 * Liefert ein Array with allen Spitzen f&uuml;r ein Grandspiel.
 	 * 
 	 * @param zuReizendeSpielart
 	 *            - das Grandspiel
-	 * @return Array mit Spitzen
+	 * @return Array with Spitzen
 	 */
 	public PlayingCard[] grandSpitzen(IGameVariety zuReizendeSpielart) {
 
@@ -1872,17 +1872,17 @@ public class SmartPlayer extends Player {
 	}
 
 	/**
-	 * Diese Methode entscheidet, welche Spielart der schlaue Spieler mit seinen
+	 * Diese Methode entscheidet, welche Spielart der schlaue Spieler with seinen
 	 * Handkarten w&auml;len w&uuml;rde.
 	 */
 	public IGameVariety determineGameVariety() {
 
 		// Damit der Computerspieler ein Nullspiel macht, darf er
 		// keinen Buben auf der Hand haben und zudem muss er mindestens
-		// 9 Karten mit den Wert 7,8 oder 9 haben.
+		// 9 Karten with den Wert 7,8 oder 9 haben.
 
 		// Damit der Computerspieler einen Grand spielt, muss er
-		// mindestens 4 Buben, oder 3 Buben und 3 Karten mit dem
+		// mindestens 4 Buben, oder 3 Buben und 3 Karten with dem
 		// Wert Ass oder 10 haben
 
 		// Sonst wird Farbe gespielt, wobei Trumpfarbe die Farbe
@@ -1950,7 +1950,7 @@ public class SmartPlayer extends Player {
 	 * @param isLong
 	 *            - Wenn lang gleich true ist, wird die lange Farbe ermittelt,
 	 *            ansonsten die Kurze.
-	 * @return Die ArrayList von der Farbe mit den Karten, die am
+	 * @return Die ArrayList von der Farbe with den Karten, die am
 	 *         h&auml;ufigsten bzw. am wenigsten vorkommt.
 	 */
 	public ArrayList<PlayingCard> determineShortLongSuit(boolean isLong) {
@@ -1984,14 +1984,14 @@ public class SmartPlayer extends Player {
 	 * wenigsten Karten vorhanden sind.
 	 * 
 	 * @param karo
-	 *            - Die Liste mit der Anzahl der Karo-Karten.
+	 *            - Die Liste with der Anzahl der Karo-Karten.
 	 * @param herz
-	 *            - Die Liste mit der Anzahl der Herz-Karten.
+	 *            - Die Liste with der Anzahl der Herz-Karten.
 	 * @param pik
-	 *            - Die Liste mit der Anzahl der Pik-Karten.
+	 *            - Die Liste with der Anzahl der Pik-Karten.
 	 * @param kreuz
-	 *            - Die Liste mit der Anzahl der Kreuz-Karten.
-	 * @return - Die Liste mit den wenigsten Karten von einer Farbe.
+	 *            - Die Liste with der Anzahl der Kreuz-Karten.
+	 * @return - Die Liste with den wenigsten Karten von einer Farbe.
 	 */
 	public ArrayList<PlayingCard> ermittleKurzeFarbe(ArrayList<PlayingCard> karo,
 			ArrayList<PlayingCard> herz, ArrayList<PlayingCard> pik,
@@ -2032,14 +2032,14 @@ public class SmartPlayer extends Player {
 	 * Karten vorhanden sind.
 	 * 
 	 * @param karo
-	 *            - Die Liste mit der Anzahl der Karo-Karten.
+	 *            - Die Liste with der Anzahl der Karo-Karten.
 	 * @param herz
-	 *            - Die Liste mit der Anzahl der Herz-Karten.
+	 *            - Die Liste with der Anzahl der Herz-Karten.
 	 * @param pik
-	 *            - Die Liste mit der Anzahl der Pik-Karten.
+	 *            - Die Liste with der Anzahl der Pik-Karten.
 	 * @param kreuz
-	 *            - Die Liste mit der Anzahl der Kreuz-Karten.
-	 * @return - Die Liste mit den meisten Karten von einer Farbe.
+	 *            - Die Liste with der Anzahl der Kreuz-Karten.
+	 * @return - Die Liste with den meisten Karten von einer Farbe.
 	 */
 	public ArrayList<PlayingCard> ermittleLangeFarbe(ArrayList<PlayingCard> karo,
 			ArrayList<PlayingCard> herz, ArrayList<PlayingCard> pik,

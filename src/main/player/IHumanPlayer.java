@@ -61,7 +61,7 @@ public interface IHumanPlayer {
 	boolean handgame();
 
 	/**
-	 * Ouvert ermittelt, ob der Spieler mit offenen Karten spielen will.
+	 * Ouvert ermittelt, ob der Spieler with offenen Karten spielen will.
 	 * 
 	 * @return true, falls offenes Spiel
 	 */
@@ -90,10 +90,10 @@ public interface IHumanPlayer {
 	IGameVariety declareGame();
 
 	/**
-	 * Liefert ein Farbspiel mit korrekt gesetzten Trumpffarbe zur&uuml;ck,
+	 * Liefert ein Farbspiel with korrekt gesetzten Trumpffarbe zur&uuml;ck,
 	 * nachdem der Spieler seine Wahl getroffen hat.
 	 * 
-	 * @return Farbspiel mit gesetzter Trumpffarbe
+	 * @return Farbspiel with gesetzter Trumpffarbe
 	 */
 	SuitGame suit();
 
@@ -106,9 +106,9 @@ public interface IHumanPlayer {
 	int setBidLimit();
 
 	/**
-	 * Fragt den Spieler, ob er mit Reizagent spielen m&ouml;chte.
+	 * Fragt den Spieler, ob er with Reizagent spielen m&ouml;chte.
 	 * 
-	 * @return true, falls der Spieler mit Reizagent spielt
+	 * @return true, falls der Spieler with Reizagent spielt
 	 */
 	boolean agent();
 

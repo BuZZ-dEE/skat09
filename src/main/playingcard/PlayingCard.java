@@ -10,7 +10,7 @@ import main.player.IPlayer;
 import main.ui.gui.SvgImageProcessing;
 
 /**
- * Die Klasse Spielkarte erzeugt eine Spielkarte mit einer Farbe und einem Wert.
+ * Die Klasse Spielkarte erzeugt eine Spielkarte with einer Farbe und einem Wert.
  * 
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
@@ -211,11 +211,11 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	}
 
 	/**
-	 * equals vergleich die Spielkarte mit einer &uuml;bergebenen Spielkarte und
+	 * equals vergleich die Spielkarte with einer &uuml;bergebenen Spielkarte und
 	 * stellt fest, ob die Datenfelder der beiden Karten gleich sind.
 	 * 
 	 * @param card
-	 *            Karte mit der verglichen werden soll
+	 *            Karte with der verglichen werden soll
 	 * @return true, falls die beiden Karten gleich sind
 	 */
 	public boolean equals(PlayingCard card) {
@@ -235,7 +235,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * Gleichheit zweier Karten implementiert, sie kann (noch) nicht
 	 * zur Sortierung verwendet werden!
 	 * 
-	 * @param card - spielkarte, die mit dem aktuellen Objekt verglichen werden soll
+	 * @param card - spielkarte, die with dem aktuellen Objekt verglichen werden soll
 	 * @return 0 falls gleich, ansonsten negativen/positiven Wert
 	 */
 	public int compareTo(PlayingCard card) {

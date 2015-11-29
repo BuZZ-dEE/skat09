@@ -227,7 +227,7 @@ public interface IController {
 	void playRaeuberskat() throws IOException;
 
 	/**
-	 * Spielablauf mit Ramsch und Bock
+	 * Spielablauf with Ramsch und Bock
 	 * 
 	 * @throws IOException
 	 */
@@ -243,7 +243,7 @@ public interface IController {
 	/**
 	 * Falls ein intelligenter Computerspieler mitspielt, m&uuml;ss dieser
 	 * die Zahl seiner Spitzen kennen. Diese Methode berechnet die Spitzen
-	 * des Computerspielers und teil sie dem Computerspieler mit.
+	 * des Computerspielers und teil sie dem Computerspieler with.
 	 */
 	void initializeSmartPlayer();
 	

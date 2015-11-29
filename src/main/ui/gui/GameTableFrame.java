@@ -109,7 +109,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	private boolean zug = false;
 
 	/**
-	 * Ausgabe, durch die die Interaktion mit dem menschlichen Spieler
+	 * Ausgabe, durch die die Interaktion with dem menschlichen Spieler
 	 * stattfindet
 	 */
 	private GUIOutput ausgabe;
@@ -159,7 +159,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 */
 	private boolean hoeren = false;
 	/**
-	 * h&auml;lt das Reizlimit, falls mit Reizagent gespielt wird
+	 * h&auml;lt das Reizlimit, falls with Reizagent gespielt wird
 	 */
 	private int reizlimit = 0;
 	/**
@@ -911,7 +911,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Diese Methode zeigt dem Menschen ein Dialogfeld mit den Optionen Ja und
+	 * Diese Methode zeigt dem Menschen ein Dialogfeld with den Optionen Ja und
 	 * Nein. Er soll entscheiden, ob er Hand spielen will oder nicht. Wird Ja
 	 * gew&auml;hlt, wird die globale Variable handgame true gesetzt, ansonsten
 	 * bleibt sie false. Anschliessend wird die Ausgabe wiedergelassen.
@@ -935,7 +935,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Diese Methode zeigt dem Menschen ein Dialogfeld mit den Optionen Ja und
+	 * Diese Methode zeigt dem Menschen ein Dialogfeld with den Optionen Ja und
 	 * Nein. Er soll entscheiden, ob er Schneider spielen will oder nicht. Wird
 	 * Ja gew&auml;hlt, wird die globale Variable schneider true gesetzt,
 	 * ansonsten bleibt sie false. Anschliessend wird die Ausgabe
@@ -959,7 +959,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Diese Methode zeigt dem Menschen ein Dialogfeld mit den Optionen Ja und
+	 * Diese Methode zeigt dem Menschen ein Dialogfeld with den Optionen Ja und
 	 * Nein. Er soll entscheiden, ob er Schwarz spielen will oder nicht. Wird Ja
 	 * gew&auml;hlt, wird die globale Variable schwarz true gesetzt, ansonsten
 	 * bleibt sie false. Anschliessend wird die Ausgabe wiedergelassen.
@@ -982,7 +982,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Diese Methode zeigt dem Menschen ein Dialogfeld mit den Optionen Ja und
+	 * Diese Methode zeigt dem Menschen ein Dialogfeld with den Optionen Ja und
 	 * Nein. Er soll entscheiden, ob er Ouvert spielen will oder nicht. Wird Ja
 	 * gew&auml;hlt, wird die globale Variable ouvert true gesetzt, ansonsten
 	 * bleibt sie false. Anschliessend wird die Ausgabe wiedergelassen.
@@ -1086,7 +1086,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * In dieser Methode wird ein Dialogfenster mit der Nachricht:
+	 * In dieser Methode wird ein Dialogfenster with der Nachricht:
 	 * "Das Spiel beginnt!" angezeigt.
 	 */
 	public void spielBeginnt() {
@@ -1192,7 +1192,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	/***
 	 * Diese Methode wird aufgerufen, wenn der Mensch einem anderen Mitspieler
 	 * einen Reizwert bid soll. Hierbei wird ihm der n&auml;chste Reizwert
-	 * angeboten und er kann mit Ja best&auml;tigen oder mit Nein pass sein. Hat
+	 * angeboten und er kann with Ja best&auml;tigen oder with Nein pass sein. Hat
 	 * er den Reizwert best&auml;tigt, wird die globale Variable bid auf true
 	 * gesetzt.
 	 * 
@@ -1219,7 +1219,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	/***
 	 * Diese Methode wird aufgerufen, wenn der Mensch von einem anderen
 	 * Mitspieler einen Reizwert h&ouml;ren soll. Hierbei wird ihm der gebotene
-	 * Reizwert angeboten und er kann mit Ja best&auml;tigen oder mit Nein pass
+	 * Reizwert angeboten und er kann with Ja best&auml;tigen oder with Nein pass
 	 * sein. Hat er den Reizwert best&auml;tigt, wird die globale Variable
 	 * respond auf true gesetzt.
 	 * 
@@ -1341,7 +1341,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Wird ausgef&uuml;hrt, falls eine Komponente mit der Maus angeklickt
+	 * Wird ausgef&uuml;hrt, falls eine Komponente with der Maus angeklickt
 	 * wurde.
 	 */
 	public void mouseClicked(MouseEvent e) {
@@ -1392,7 +1392,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	}
 
 	/**
-	 * Erstellt ein JLayeredPane mit so vielen Kartenr&uuml;cken, wie der
+	 * Erstellt ein JLayeredPane with so vielen Kartenr&uuml;cken, wie der
 	 * Spieler noch Karten auf der Hand hat
 	 * 
 	 * @param spieler
@@ -1661,7 +1661,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 			if (0 < gewaehlteKarte) {
 				gewaehlteKarte = gewaehlteKarte - 1;
 				// Ist der Index gleich Null, ist die gewaehlte Karte nun
-				// die mit dem hoechsten Index
+				// die with dem hoechsten Index
 			} else {
 				gewaehlteKarte = aufHand.getComponentCount() - 1;
 			}
@@ -1717,7 +1717,7 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 	 * 
 	 * @param spieler
 	 *            Der Spieler, dessen Statistik ausgegeben werden soll
-	 * @return Das Array mit den Strings, die die Daten enthalten
+	 * @return Das Array with den Strings, die die Daten enthalten
 	 */
 	public String[] statistikText(IPlayer spieler) {
 		String[] s = new String[3];
