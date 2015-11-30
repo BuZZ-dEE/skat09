@@ -505,67 +505,67 @@ abstract public class Player implements IPlayer {
 	@Override
 	public int rankSuitHelp(int i) {
 		
-		int erg = -1;
+		int result = -1;
 		
 		if (i == 6) {
 			
-			erg = 11;
+			result = 11;
 		}
 		
 		if (i == 7) {
 			
-			erg = 10;
+			result = 10;
 		}
 		
 		if (i == 8) {
 			
-			erg = 9;
+			result = 9;
 		}
 		
 		if (i == 9) {
 			
-			erg = 8;
+			result = 8;
 		}
 		
 		if (i == 10) {
 			
-			erg = 7;
+			result = 7;
 		}
 		
 		if (i == 11) {
 			
-			erg = 6;
+			result = 6;
 		}
 		
 		if (i == 12) {
 			
-			erg = 5;
+			result = 5;
 		}
 		
 		if (i == 13) {
 			
-			erg = 4;
+			result = 4;
 		}
 		
-		return erg;
+		return result;
 	}
 	
 	@Override
 	public int matadorsJackStraitCount() {
 		
-		int erg = 0;
+		int result = 0;
 
 		if (trumps[0] != null) {
 			
-			erg = matadorsJackStraitWith(erg);
+			result = matadorsJackStraitWith(result);
 		}
 		
 		else {
 			
-			erg = matadorsJackStraitWithout(erg);
+			result = matadorsJackStraitWithout(result);
 		}
 
-		return erg;
+		return result;
 	}
 	
 	@Override

@@ -2568,21 +2568,21 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE));
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
 		player.setHand(hand);
-		player.maxReizwertFarbe(1);
+		player.maxBiddingValueSuit(1);
 		assertEquals(24, player.getMaxBiddingValue());
 	}
 	
 	@Test
 	public void maxReizwertGrandTest() {
 		
-		player.maxReizwertGrand(1);
+		player.maxBiddingValueGrand(1);
 		assertEquals(48, player.getMaxBiddingValue());
 	}
 	
 	@Test
 	public void maxReizwertNullTest() {
 		
-		player.maxReizwertNull();
+		player.maxBiddingValueNull();
 		assertEquals(23, player.getMaxBiddingValue());
 	}
 	
@@ -2604,7 +2604,7 @@ public class SmartPlayerTest {
 		hand.add(card6);
 		player.setHand(hand);
 		
-		assertEquals(6, player.ermittleSpitzen(new SuitGame(PlayingCard.Suit.BELLS)));
+		assertEquals(6, player.determineMatadorsJackStrait(new SuitGame(PlayingCard.Suit.BELLS)));
 	}
 	
 	@Test
@@ -2617,7 +2617,7 @@ public class SmartPlayerTest {
 		blatt.add(card2);
 		player.setHand(blatt);
 		
-		assertEquals(2, player.ermittleSpitzen(new GrandGame()));
+		assertEquals(2, player.determineMatadorsJackStrait(new GrandGame()));
 	}
 	
 	@Test
@@ -2650,7 +2650,7 @@ public class SmartPlayerTest {
 		spitzen[10] = card11;
 		spitzen[11] = card12;
 		
-		assertEquals(12, player.spitzenZaehlen(spitzen));
+		assertEquals(12, player.countMatadorsJackStrait(spitzen));
 	}
 	
 	@Test
@@ -2659,7 +2659,7 @@ public class SmartPlayerTest {
 		PlayingCard[] spitzen = new PlayingCard[13];
 		spitzen[4] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
 		
-		assertEquals(4, player.spitzenZaehlen(spitzen));
+		assertEquals(4, player.countMatadorsJackStrait(spitzen));
 	}
 	@Test
 	public void ohneTest1() {
@@ -2761,7 +2761,7 @@ public class SmartPlayerTest {
 		spitzen[8] = card7;
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.farbeSpitzen(new SuitGame(PlayingCard.Suit.BELLS));
+		PlayingCard[] spielerSpitzen = player.suitMatadorsJackStrait(new SuitGame(PlayingCard.Suit.BELLS));
 		
 		assertArrayEquals(spitzen, spielerSpitzen);
 	}
@@ -2791,7 +2791,7 @@ public class SmartPlayerTest {
 		
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.grandSpitzen(new GrandGame());
+		PlayingCard[] spielerSpitzen = player.grandMatadorsJackStrait(new GrandGame());
 		
 		boolean result = true;
 		for (int i = 0; i < 4; i++) {
@@ -2827,7 +2827,7 @@ public class SmartPlayerTest {
 		
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.grandSpitzen(new GrandGame());
+		PlayingCard[] spielerSpitzen = player.grandMatadorsJackStrait(new GrandGame());
 		
 		PlayingCard[] spitzen = {card1, null, null, null};
 		
@@ -2865,7 +2865,7 @@ public class SmartPlayerTest {
 		
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.grandSpitzen(new GrandGame());
+		PlayingCard[] spielerSpitzen = player.grandMatadorsJackStrait(new GrandGame());
 		
 		PlayingCard[] spitzen = {null, null, null, null};
 		
@@ -2895,7 +2895,7 @@ public class SmartPlayerTest {
 		
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.grandSpitzen(new GrandGame());
+		PlayingCard[] spielerSpitzen = player.grandMatadorsJackStrait(new GrandGame());
 		
 		PlayingCard[] spitzen = {null, null, card3, null};
 		
@@ -3130,7 +3130,7 @@ public class SmartPlayerTest {
 		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(karo, player.ermittleLangeFarbe(karo, herz, pik, kreuz));
+		assertEquals(karo, player.determineLongSuit(karo, herz, pik, kreuz));
 	}
 	
 	@Test
@@ -3150,7 +3150,7 @@ public class SmartPlayerTest {
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(herz, player.ermittleLangeFarbe(karo, herz, pik, kreuz));
+		assertEquals(herz, player.determineLongSuit(karo, herz, pik, kreuz));
 	}
 	
 	@Test
@@ -3172,7 +3172,7 @@ public class SmartPlayerTest {
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(pik, player.ermittleLangeFarbe(karo, herz, pik, kreuz));
+		assertEquals(pik, player.determineLongSuit(karo, herz, pik, kreuz));
 	}
 	
 	@Test
@@ -3187,7 +3187,7 @@ public class SmartPlayerTest {
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(kreuz, player.ermittleLangeFarbe(karo, herz, pik, kreuz));
+		assertEquals(kreuz, player.determineLongSuit(karo, herz, pik, kreuz));
 	}
 	
 	@Test
@@ -3206,7 +3206,7 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		player.setHand(hand);
 		
-		assertEquals(PlayingCard.Suit.LEAVES, player.ermittleTrumpffarbe());
+		assertEquals(PlayingCard.Suit.LEAVES, player.determineTrumpSuit());
 	}
 
 	@Test
@@ -3225,7 +3225,7 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		player.setHand(hand);
 		
-		assertEquals(PlayingCard.Suit.ACORNS, player.ermittleTrumpffarbe());
+		assertEquals(PlayingCard.Suit.ACORNS, player.determineTrumpSuit());
 	}
 	
 	@Test
@@ -3244,7 +3244,7 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		player.setHand(hand);
 		
-		assertEquals(PlayingCard.Suit.BELLS, player.ermittleTrumpffarbe());
+		assertEquals(PlayingCard.Suit.BELLS, player.determineTrumpSuit());
 	}
 	
 	@Test
@@ -3263,7 +3263,7 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		player.setHand(hand);
 		
-		assertEquals(PlayingCard.Suit.HEARTS, player.ermittleTrumpffarbe());
+		assertEquals(PlayingCard.Suit.HEARTS, player.determineTrumpSuit());
 	}
 	
 	@Test

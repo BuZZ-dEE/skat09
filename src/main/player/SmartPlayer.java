@@ -1629,7 +1629,7 @@ public class SmartPlayer extends Player {
 	@Override
 	public SuitGame suit() {
 
-		SuitGame suit = new SuitGame(ermittleTrumpffarbe());
+		SuitGame suit = new SuitGame(determineTrumpSuit());
 
 		return suit;
 	}
@@ -1659,15 +1659,15 @@ public class SmartPlayer extends Player {
 			switch (gameVarietyToBid.getGameVariety()) {
 
 			case SUIT:
-				maxReizwertFarbe(ermittleSpitzen(gameVarietyToBid));
+				maxBiddingValueSuit(determineMatadorsJackStrait(gameVarietyToBid));
 				break;
 
 			case GRAND:
-				maxReizwertGrand(ermittleSpitzen(gameVarietyToBid));
+				maxBiddingValueGrand(determineMatadorsJackStrait(gameVarietyToBid));
 				break;
 
 			case NULL:
-				maxReizwertNull();
+				maxBiddingValueNull();
 				break;
 			default:
 				break;
@@ -1686,9 +1686,9 @@ public class SmartPlayer extends Player {
 	 * @param ermittelteSpitzen
 	 *            - Spitzen des Spielers
 	 */
-	public void maxReizwertFarbe(int ermittelteSpitzen) {
+	public void maxBiddingValueSuit(int ermittelteSpitzen) {
 
-		PlayingCard.Suit suit = ermittleTrumpffarbe();
+		PlayingCard.Suit suit = determineTrumpSuit();
 
 		maxBiddingValue = (ermittelteSpitzen + 1) * suit.value();
 	}
@@ -1700,7 +1700,7 @@ public class SmartPlayer extends Player {
 	 * @param ermittelteSpitzen
 	 *            - die Spitzen des Spielers
 	 */
-	public void maxReizwertGrand(int ermittelteSpitzen) {
+	public void maxBiddingValueGrand(int ermittelteSpitzen) {
 
 		maxBiddingValue = (ermittelteSpitzen + 1) * 24;
 	}
@@ -1710,7 +1710,7 @@ public class SmartPlayer extends Player {
 	 * 
 	 * Befindet sich im Ausbau.
 	 */
-	public void maxReizwertNull() {
+	public void maxBiddingValueNull() {
 
 		maxBiddingValue = 23;
 	}
@@ -1718,25 +1718,25 @@ public class SmartPlayer extends Player {
 	/**
 	 * Ermittelt die Spitzen des Spielers f&uuml;r eine bestimmte Spielart.
 	 * 
-	 * @param zuReizendeSpielart
+	 * @param gameVarietyToBid
 	 *            - Spielart, f&uuml;r die die Spitzen ermittelt werden soll
 	 * @return Zahl der Spitzen
 	 */
-	public int ermittleSpitzen(IGameVariety zuReizendeSpielart) {
+	public int determineMatadorsJackStrait(IGameVariety gameVarietyToBid) {
 
 		int result = 0;
-		PlayingCard[] spitzen;
+		PlayingCard[] matadorsJackStrait;
 
-		if (zuReizendeSpielart.getGameVariety() == GameVariety.Name.SUIT) {
+		if (gameVarietyToBid.getGameVariety() == GameVariety.Name.SUIT) {
 
-			spitzen = farbeSpitzen(zuReizendeSpielart);
-			result = spitzenZaehlen(spitzen);
+			matadorsJackStrait = suitMatadorsJackStrait(gameVarietyToBid);
+			result = countMatadorsJackStrait(matadorsJackStrait);
 		}
 
-		else if (zuReizendeSpielart.getGameVariety() == GameVariety.Name.GRAND) {
+		else if (gameVarietyToBid.getGameVariety() == GameVariety.Name.GRAND) {
 
-			spitzen = grandSpitzen(zuReizendeSpielart);
-			result = spitzenZaehlen(spitzen);
+			matadorsJackStrait = grandMatadorsJackStrait(gameVarietyToBid);
+			result = countMatadorsJackStrait(matadorsJackStrait);
 		}
 
 		return result;
@@ -1746,22 +1746,22 @@ public class SmartPlayer extends Player {
 	 * Ermittelt die Anzahl der Spitzen in einem &uuml;bergebenen Array, dass
 	 * die Karten einer Farbe geordnet enth&auml;lt.
 	 * 
-	 * @param spitzen
+	 * @param matadorsJackStrait
 	 *            - sortiertes Array with den Karten einer Farbe
 	 * @return Anzahl der Spitzen
 	 */
-	public int spitzenZaehlen(PlayingCard[] spitzen) {
+	public int countMatadorsJackStrait(PlayingCard[] matadorsJackStrait) {
 
 		int result = 0;
 
-		if (spitzen[0] != null) {
+		if (matadorsJackStrait[0] != null) {
 
-			result = with(spitzen);
+			result = with(matadorsJackStrait);
 		}
 
 		else {
 
-			result = without(spitzen);
+			result = without(matadorsJackStrait);
 		}
 
 		return result;
@@ -1771,17 +1771,17 @@ public class SmartPlayer extends Player {
 	 * Bekommt ein SpielkartenArray with allen Karten einer Farbe, absteigend
 	 * geordnet und ermittelt daraus die Anzahl der fehlenden Spitzen.
 	 * 
-	 * @param spitzen
+	 * @param matadorsJackStrait
 	 *            - Array, dass alle Karten einer Farbe enth&auml;lt
 	 * @return anzahl der Spitzen
 	 */
-	public int without(PlayingCard[] spitzen) {
+	public int without(PlayingCard[] matadorsJackStrait) {
 
 		int result = 0;
 
-		for (int i = 1; i < spitzen.length; i++) {
+		for (int i = 1; i < matadorsJackStrait.length; i++) {
 
-			if (spitzen[i] != null) {
+			if (matadorsJackStrait[i] != null) {
 
 				result = i;
 				break;
@@ -1795,17 +1795,17 @@ public class SmartPlayer extends Player {
 	 * Bekommt ein SpielkartenArray with allen Karten einer Farbe, absteigend
 	 * geordnet und ermittelt daraus die Anzahl der Spitzen.
 	 * 
-	 * @param spitzen
+	 * @param matadorsJackStrait
 	 *            - Array, dass alle Karten einer Farbe enth&auml;lt
 	 * @return anzahl der Spitzen
 	 */
-	public int with(PlayingCard[] spitzen) {
+	public int with(PlayingCard[] matadorsJackStrait) {
 
 		int result = 0;
 
-		for (int i = 1; i < spitzen.length; i++) {
+		for (int i = 1; i < matadorsJackStrait.length; i++) {
 
-			if (spitzen[i] == null) {
+			if (matadorsJackStrait[i] == null) {
 
 				result = i;
 				break;
@@ -1819,56 +1819,56 @@ public class SmartPlayer extends Player {
 	 * Gibt f&uuml;r ein &uuml;bergebenes Farbspiel die Spitzen in einem Array
 	 * zur&uuml;ck.
 	 * 
-	 * @param zuReizendeSpielart
+	 * @param gameVarietyToBid
 	 *            - das Farbspiel
 	 * @return Array, dass die Spitzen enth&auml;lt
 	 */
-	public PlayingCard[] farbeSpitzen(IGameVariety zuReizendeSpielart) {
+	public PlayingCard[] suitMatadorsJackStrait(IGameVariety gameVarietyToBid) {
 
 		int cardValue = 0;
-		PlayingCard[] spitzen = new PlayingCard[13];
+		PlayingCard[] matadorsJackStrait = new PlayingCard[13];
 		ArrayList<PlayingCard> longSuit = determineShortLongSuit(true);
 
 		for (int i = 0; i < hand.size(); i++) {
 
 			if (hand.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
-				cardValue = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[rankUnderKnavesHelp(cardValue)] = hand.get(i);
+				cardValue = gameVarietyToBid.evaluateCard(hand.get(i));
+				matadorsJackStrait[rankUnderKnavesHelp(cardValue)] = hand.get(i);
 			}
 
 			else if (hand.get(i).getSuit() == longSuit.get(0).getSuit()) {
 
-				cardValue = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[rankSuitHelp(cardValue)] = hand.get(i);
+				cardValue = gameVarietyToBid.evaluateCard(hand.get(i));
+				matadorsJackStrait[rankSuitHelp(cardValue)] = hand.get(i);
 			}
 		}
 
-		return spitzen;
+		return matadorsJackStrait;
 	}
 
 	/**
 	 * Liefert ein Array with allen Spitzen f&uuml;r ein Grandspiel.
 	 * 
-	 * @param zuReizendeSpielart
+	 * @param gameVarietyToBid
 	 *            - das Grandspiel
 	 * @return Array with Spitzen
 	 */
-	public PlayingCard[] grandSpitzen(IGameVariety zuReizendeSpielart) {
+	public PlayingCard[] grandMatadorsJackStrait(IGameVariety gameVarietyToBid) {
 
 		int cardValue = 0;
-		PlayingCard[] spitzen = new PlayingCard[4];
+		PlayingCard[] matadorsJackStrait = new PlayingCard[4];
 
 		for (int i = 0; i < hand.size(); i++) {
 
 			if (hand.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
-				cardValue = zuReizendeSpielart.evaluateCard(hand.get(i));
-				spitzen[rankUnderKnavesHelp(cardValue)] = hand.get(i);
+				cardValue = gameVarietyToBid.evaluateCard(hand.get(i));
+				matadorsJackStrait[rankUnderKnavesHelp(cardValue)] = hand.get(i);
 			}
 		}
 
-		return spitzen;
+		return matadorsJackStrait;
 	}
 
 	/**
@@ -1888,59 +1888,59 @@ public class SmartPlayer extends Player {
 		// Sonst wird Farbe gespielt, wobei Trumpfarbe die Farbe
 		// ist, von der der Spieler die meisten Karten hat
 
-		int kartenKleiner10 = 0;
-		int buben = 0;
-		int kartenGroesserKoenig = 0;
+		int cardsLessThenTen = 0;
+		int underKnave = 0;
+		int cardsGreaterThenKing = 0;
 
 		ArrayList<PlayingCard> longSuit = determineShortLongSuit(true);
 
 		// Spielart auf die der Spieler reizt
-		IGameVariety zuReizendeSpielart;
+		IGameVariety gameVarietyToBid;
 
 		for (PlayingCard card : hand) {
 
 			if (card.getRank() == PlayingCard.Rank.SEVEN || card.getRank() == PlayingCard.Rank.EIGHT
 					|| card.getRank() == PlayingCard.Rank.NINE) {
 
-				kartenKleiner10++;
+				cardsLessThenTen++;
 			}
 
 			if (card.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
-				buben++;
+				underKnave++;
 			}
 
 			if (card.getRank() == PlayingCard.Rank.DAUS || card.getRank() == PlayingCard.Rank.TEN) {
 
-				kartenGroesserKoenig++;
+				cardsGreaterThenKing++;
 			}
 		}
 
 		cardsOfsuitCount = longSuit.size();
 
 		// Auswertung
-		if (kartenKleiner10 >= 5) {
+		if (cardsLessThenTen >= 5) {
 
-			zuReizendeSpielart = new NullGame();
+			gameVarietyToBid = new NullGame();
 		}
 
-		else if (buben >= 2 && kartenGroesserKoenig >= 4) {
+		else if (underKnave >= 2 && cardsGreaterThenKing >= 4) {
 
-			zuReizendeSpielart = new GrandGame();
+			gameVarietyToBid = new GrandGame();
 		}
 
-		else if ((buben >= 2 && cardsOfsuitCount >= 4)
-				|| (buben < 2 && cardsOfsuitCount >= 6)) {
+		else if ((underKnave >= 2 && cardsOfsuitCount >= 4)
+				|| (underKnave < 2 && cardsOfsuitCount >= 6)) {
 
-			zuReizendeSpielart = new SuitGame(longSuit.get(0).getSuit());
+			gameVarietyToBid = new SuitGame(longSuit.get(0).getSuit());
 		}
 
 		else {
 
-			zuReizendeSpielart = null;
+			gameVarietyToBid = null;
 		}
 
-		return zuReizendeSpielart;
+		return gameVarietyToBid;
 	}
 
 	/**
@@ -1955,24 +1955,24 @@ public class SmartPlayer extends Player {
 	 */
 	public ArrayList<PlayingCard> determineShortLongSuit(boolean isLong) {
 
-		ArrayList<PlayingCard> karo = cardsOfSuit(hand, PlayingCard.Suit.BELLS);
-		ArrayList<PlayingCard> herz = cardsOfSuit(hand, PlayingCard.Suit.HEARTS);
-		ArrayList<PlayingCard> pik = cardsOfSuit(hand, PlayingCard.Suit.LEAVES);
-		ArrayList<PlayingCard> kreuz = cardsOfSuit(hand, PlayingCard.Suit.ACORNS);
+		ArrayList<PlayingCard> bells = cardsOfSuit(hand, PlayingCard.Suit.BELLS);
+		ArrayList<PlayingCard> hearts = cardsOfSuit(hand, PlayingCard.Suit.HEARTS);
+		ArrayList<PlayingCard> leaves = cardsOfSuit(hand, PlayingCard.Suit.LEAVES);
+		ArrayList<PlayingCard> acorns = cardsOfSuit(hand, PlayingCard.Suit.ACORNS);
 		ArrayList<PlayingCard> winner = new ArrayList<PlayingCard>();
 
 		// Die übergegebene Variable lang ist true, d.h. man möchte die lange
 		// Farbe ermitteln
 		if (isLong) {
 
-			winner = ermittleLangeFarbe(karo, herz, pik, kreuz);
+			winner = determineLongSuit(bells, hearts, leaves, acorns);
 		}
 
 		// Die übergegebene Variable lang ist false, d.h. man möchte die kurze
 		// Farbe ermitteln
 		else {
 
-			winner = ermittleKurzeFarbe(karo, herz, pik, kreuz);
+			winner = ermittleKurzeFarbe(bells, hearts, leaves, acorns);
 		}
 
 		return winner;
@@ -1983,44 +1983,44 @@ public class SmartPlayer extends Player {
 	 * liefert die Liste der Karten von einer Farbe zur&uuml;ck, von der am
 	 * wenigsten Karten vorhanden sind.
 	 * 
-	 * @param karo
+	 * @param bells
 	 *            - Die Liste with der Anzahl der Karo-Karten.
-	 * @param herz
+	 * @param hearts
 	 *            - Die Liste with der Anzahl der Herz-Karten.
-	 * @param pik
+	 * @param leaves
 	 *            - Die Liste with der Anzahl der Pik-Karten.
-	 * @param kreuz
+	 * @param acorns
 	 *            - Die Liste with der Anzahl der Kreuz-Karten.
 	 * @return - Die Liste with den wenigsten Karten von einer Farbe.
 	 */
-	public ArrayList<PlayingCard> ermittleKurzeFarbe(ArrayList<PlayingCard> karo,
-			ArrayList<PlayingCard> herz, ArrayList<PlayingCard> pik,
-			ArrayList<PlayingCard> kreuz) {
+	public ArrayList<PlayingCard> ermittleKurzeFarbe(ArrayList<PlayingCard> bells,
+			ArrayList<PlayingCard> hearts, ArrayList<PlayingCard> leaves,
+			ArrayList<PlayingCard> acorns) {
 
 		ArrayList<PlayingCard> shortSuit = new ArrayList<PlayingCard>();
 
-		if ((karo.size() < herz.size())
-				&& (karo.size() != 0 && herz.size() != 0)) {
+		if ((bells.size() < hearts.size())
+				&& (bells.size() != 0 && hearts.size() != 0)) {
 
-			shortSuit = karo;
+			shortSuit = bells;
 		}
 
 		else {
 
-			if ((karo.size() != 0 && herz.size() != 0)) {
+			if ((bells.size() != 0 && hearts.size() != 0)) {
 
-				shortSuit = herz;
+				shortSuit = hearts;
 			}
 		}
 
-		if ((pik.size() <= shortSuit.size()) && pik.size() != 0) {
+		if ((leaves.size() <= shortSuit.size()) && leaves.size() != 0) {
 
-			shortSuit = pik;
+			shortSuit = leaves;
 		}
 
-		if ((kreuz.size() <= shortSuit.size()) && kreuz.size() != 0) {
+		if ((acorns.size() <= shortSuit.size()) && acorns.size() != 0) {
 
-			shortSuit = kreuz;
+			shortSuit = acorns;
 		}
 
 		return shortSuit;
@@ -2031,40 +2031,40 @@ public class SmartPlayer extends Player {
 	 * liefert die Liste der Karten von einer Farbe zurück, von der am meisten
 	 * Karten vorhanden sind.
 	 * 
-	 * @param karo
+	 * @param bells
 	 *            - Die Liste with der Anzahl der Karo-Karten.
-	 * @param herz
+	 * @param hearts
 	 *            - Die Liste with der Anzahl der Herz-Karten.
-	 * @param pik
+	 * @param leaves
 	 *            - Die Liste with der Anzahl der Pik-Karten.
-	 * @param kreuz
+	 * @param acorns
 	 *            - Die Liste with der Anzahl der Kreuz-Karten.
 	 * @return - Die Liste with den meisten Karten von einer Farbe.
 	 */
-	public ArrayList<PlayingCard> ermittleLangeFarbe(ArrayList<PlayingCard> karo,
-			ArrayList<PlayingCard> herz, ArrayList<PlayingCard> pik,
-			ArrayList<PlayingCard> kreuz) {
+	public ArrayList<PlayingCard> determineLongSuit(ArrayList<PlayingCard> bells,
+													ArrayList<PlayingCard> hearts, ArrayList<PlayingCard> leaves,
+													ArrayList<PlayingCard> acorns) {
 
 		ArrayList<PlayingCard> longSuit = new ArrayList<PlayingCard>();
 
-		if (karo.size() > herz.size()) {
+		if (bells.size() > hearts.size()) {
 
-			longSuit = karo;
+			longSuit = bells;
 		}
 
 		else {
 
-			longSuit = herz;
+			longSuit = hearts;
 		}
 
-		if (pik.size() >= longSuit.size()) {
+		if (leaves.size() >= longSuit.size()) {
 
-			longSuit = pik;
+			longSuit = leaves;
 		}
 
-		if (kreuz.size() >= longSuit.size()) {
+		if (acorns.size() >= longSuit.size()) {
 
-			longSuit = kreuz;
+			longSuit = acorns;
 		}
 
 		return longSuit;
@@ -2076,7 +2076,7 @@ public class SmartPlayer extends Player {
 	 * 
 	 * @return Farbe, die am h&auml;ufigsten Vorkommt.
 	 */
-	public PlayingCard.Suit ermittleTrumpffarbe() {
+	public PlayingCard.Suit determineTrumpSuit() {
 
 		PlayingCard.Suit result = null;
 		ArrayList<PlayingCard> winner = determineShortLongSuit(true);
