@@ -3280,7 +3280,7 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		
-		assertEquals(36, player.werteAugen(hand));
+		assertEquals(36, player.calculateAugen(hand));
 	}
 
 	@Test
@@ -3288,7 +3288,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX);
 		
-		assertEquals(6, player.augenKarte(card));
+		assertEquals(6, player.getCardAugen(card));
 	}
 	
 	@Test
@@ -3296,7 +3296,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
 		
-		assertEquals(0, player.augenKarte(card));
+		assertEquals(0, player.getCardAugen(card));
 	}
 	
 	@Test
@@ -3304,7 +3304,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 		
-		assertEquals(0, player.augenKarte(card));
+		assertEquals(0, player.getCardAugen(card));
 	}
 	
 	@Test
@@ -3312,7 +3312,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE);
 		
-		assertEquals(0, player.augenKarte(card));
+		assertEquals(0, player.getCardAugen(card));
 	}
 	
 	@Test
@@ -3320,7 +3320,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN);
 		
-		assertEquals(10, player.augenKarte(card));
+		assertEquals(10, player.getCardAugen(card));
 	}
 	
 	@Test
@@ -3328,7 +3328,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		assertEquals(2, player.augenKarte(card));
+		assertEquals(2, player.getCardAugen(card));
 	}
 	
 	@Test
@@ -3336,7 +3336,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE);
 		
-		assertEquals(3, player.augenKarte(card));
+		assertEquals(3, player.getCardAugen(card));
 	}
 	
 	@Test
@@ -3344,7 +3344,7 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING);
 		
-		assertEquals(4, player.augenKarte(card));
+		assertEquals(4, player.getCardAugen(card));
 	}
 	
 	@Test
@@ -3352,6 +3352,6 @@ public class SmartPlayerTest {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
 		
-		assertEquals(11, player.augenKarte(card));
+		assertEquals(11, player.getCardAugen(card));
 	}
 }

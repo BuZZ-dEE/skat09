@@ -60,15 +60,6 @@ public class PlayingCard implements Comparable<PlayingCard> {
         private int suitValue;
 
         /**
-         * Gibt den Ordnungswert eines Elements zur&uuml;ck
-         * @return Den Wert eines Elements
-         */
-        public int value() {
-
-            return suitValue;
-        }
-
-        /**
          * Der Konstruktor der Enum Farbe
          * @param suitValue Der Ordnungswert, den eine Farbe haben soll
          */
@@ -77,6 +68,14 @@ public class PlayingCard implements Comparable<PlayingCard> {
             this.suitValue = suitValue;
         }
 
+        /**
+         * Gibt den Ordnungswert eines Elements zur&uuml;ck
+         * @return Den Wert eines Elements
+         */
+        public int value() {
+
+            return suitValue;
+        }
     }
 
     public enum Rank {
@@ -84,43 +83,65 @@ public class PlayingCard implements Comparable<PlayingCard> {
         /**
          * Halter des Farbwertes 6
          */
-        SIX,
+        SIX(6),
         /**
          * Halter des Farbwertes 7
          */
-        SEVEN,
+        SEVEN(0),
         /**
          * Halter des Farbwertes 8
          */
-        EIGHT,
+        EIGHT(0),
         /**
          * Halter des Farbwertes 9
          */
-        NINE,
+        NINE(0),
         /**
          * Halter des Farbwertes 10
          */
-        TEN,
+        TEN(10),
         /**
          * Halter des Farbwertes Bube
          * Under knave (Unter) == Jack (Junge / Bube)
          */
-        UNDER_KNAVE,
+        UNDER_KNAVE(2),
         /**
          * Halter des Farbwertes Dame
          * Over knave (Ober) == Queen (Dame)
          */
-        OVER_KNAVE,
+        OVER_KNAVE(3),
         /**
          * Halter des Farbwertes König
          * King == King (König)
          */
-        KING,
+        KING(4),
         /**
          * Halter des Farbwertes Ass
          * Daus (Daus) == Ace (Ass)
          */
-        DAUS
+        DAUS(11);
+
+        /**
+         * Der Wert, den ein Element aus der Enum haben kann
+         */
+        private int rankValue;
+
+        /**
+         * Der Konstruktor der Enum Rank
+         * @param rankValue Der Ordnungswert, den ein Rank haben soll
+         */
+		Rank(int rankValue) {
+            this.rankValue = rankValue;
+        }
+
+        /**
+         * Gibt den Ordnungswert eines Elements zur&uuml;ck
+         * @return Den Wert eines Elements
+         */
+        public int value() {
+
+            return rankValue;
+        }
     }
 	
 	/**

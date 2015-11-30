@@ -862,7 +862,7 @@ public class SmartPlayer extends Player {
 						playedCards[1])
 				.equals(
 						highestPlayableCard(playableCards(playedCards))))
-				&& ((augenKarte(playedCards[0]) > 3) && (augenKarte(playedCards[1]) > 3))) {
+				&& ((getCardAugen(playedCards[0]) > 3) && (getCardAugen(playedCards[1]) > 3))) {
 
 			result = highestPlayableCard(playableCards(playedCards));
 		}
@@ -2109,7 +2109,7 @@ public class SmartPlayer extends Player {
 	 *            - Stiche, die der Spieler gewonnen hat
 	 * @return Augen des Spielers
 	 */
-	public int werteAugen(ArrayList<PlayingCard> tricks) {
+	public int calculateAugen(ArrayList<PlayingCard> tricks) {
 
 		int result = 0;
 
@@ -2151,34 +2151,36 @@ public class SmartPlayer extends Player {
 	 *            - Die Karte f&uml;r die der Augenwert bestimmt werden soll.
 	 * @return Die Augenzahl der &uml;bergebenen Karte.
 	 */
-	public int augenKarte(PlayingCard card) {
+	public int getCardAugen(PlayingCard card) {
 
-		int result;
+//		int result;
+//
+//		switch (card.getRank()) {
+//		case SIX:
+//			result = 6; // TODO why 6, six-sakt has other rules
+//			break;
+//		case OVER_KNAVE:
+//			result = 3;
+//			break;
+//		case KING:
+//			result = 4;
+//			break;
+//		case TEN:
+//			result = 10;
+//			break;
+//		case DAUS:
+//			result = 11;
+//			break;
+//		case UNDER_KNAVE:
+//			result = 2;
+//			break;
+//		default:
+//			result = 0;
+//			break;
+//		}
+//
+//		return result;
 
-		switch (card.getRank()) {
-		case SIX:
-			result = 6;
-			break;
-		case OVER_KNAVE:
-			result = 3;
-			break;
-		case KING:
-			result = 4;
-			break;
-		case TEN:
-			result = 10;
-			break;
-		case DAUS:
-			result = 11;
-			break;
-		case UNDER_KNAVE:
-			result = 2;
-			break;
-		default:
-			result = 0;
-			break;
-		}
-
-		return result;
+		return card.getRank().value();
 	}
 }
