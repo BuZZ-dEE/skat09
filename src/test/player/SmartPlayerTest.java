@@ -1666,7 +1666,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteTest1() {
+	public void nextHigherCardTest1() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX);
 		PlayingCard hcard = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
@@ -1680,7 +1680,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteTest2() {
+	public void nextHigherCardTest2() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard hcard = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
@@ -1694,7 +1694,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteTest3() {
+	public void nextHigherCardTest3() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
 		PlayingCard hcard = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
@@ -1708,7 +1708,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteTest4() {
+	public void nextHigherCardTest4() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard hcard = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
@@ -1722,7 +1722,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteTest5() {
+	public void nextHigherCardTest5() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
 		PlayingCard hcard = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
@@ -1736,7 +1736,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteTest6() {
+	public void nextHigherCardTest6() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
 		PlayingCard hcard = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
@@ -1750,7 +1750,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteTest7() {
+	public void nextHigherCardTest7() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
 		PlayingCard hcard = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
@@ -1764,7 +1764,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteTest8() {
+	public void nextHigherCardTest8() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		
@@ -1772,7 +1772,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteNeunTest1() {
+	public void nextHigherCardNineTest1() {
 		
 		player.setGameVariety(new SuitGame(PlayingCard.Suit.LEAVES));
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
@@ -1787,7 +1787,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteNeunTest2() {
+	public void nextHigherCardNineTest2() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
@@ -1802,7 +1802,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteNeunTest3() {
+	public void nextHigherCardNineTest3() {
 		
 		player.setGameVariety(new NullGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN);
@@ -1817,7 +1817,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechsteHoehereKarteKoenigTest1() {
+	public void nextHigherCardKingTest1() {
 		
 		player.setGameVariety(new SuitGame(PlayingCard.Suit.LEAVES));
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN);
@@ -1832,7 +1832,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechsteHoehereKarteKoenigTest2() {
+	public void nextHigherCardKingTest2() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN);
@@ -1847,7 +1847,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechsteHoehereKarteKoenigTest3() {
+	public void nextHigherCardKingTest3() {
 		
 		player.setGameVariety(new NullGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
@@ -1862,7 +1862,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteZehnTest1() {
+	public void nextHigherCardTenTest1() {
 		
 		player.setGameVariety(new SuitGame(PlayingCard.Suit.LEAVES));
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
@@ -1877,7 +1877,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteZehnTest2() {
+	public void nextHigherCardTenTest2() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
@@ -1892,7 +1892,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstHoehereKarteZehnTest3() {
+	public void nextHigherCardTenTest3() {
 		
 		player.setGameVariety(new NullGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
@@ -1907,7 +1907,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteTest1() {
+	public void nextLowerCardTest1() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX);
 		
@@ -1915,7 +1915,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteTest2() {
+	public void nextLowerCardTest2() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX);
@@ -1927,7 +1927,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteTest3() {
+	public void nextLowerCardTest3() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
@@ -1939,7 +1939,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteTest4() {
+	public void nextLowerCardTest4() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
@@ -1951,7 +1951,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteTest5() {
+	public void nextLowerCardTest5() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
@@ -1963,7 +1963,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteTest6() {
+	public void nextLowerCardTest6() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
@@ -1975,7 +1975,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteTest7() {
+	public void nextLowerCardTest7() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
@@ -1987,7 +1987,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteTest8() {
+	public void nextLowerCardTest8() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
@@ -1998,7 +1998,7 @@ public class SmartPlayerTest {
 		assertTrue(result);
 	}
 	@Test
-	public void naechstNiedrigereKarteDameTest1() {
+	public void nextLowerCardOverKnaveTest1() {
 		
 		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
@@ -2013,7 +2013,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteDameTest2() {
+	public void nextLowerCardOverKnaveTest2() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
@@ -2028,7 +2028,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteDameTest3() {
+	public void nextLowerCardOverKnaveTest3() {
 		
 		player.setGameVariety(new NullGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
@@ -2043,7 +2043,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteZehnTest1() {
+	public void nextLowerCardTenTest1() {
 		
 		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
@@ -2058,7 +2058,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteZehnTest2() {
+	public void nextLowerCardTenTest2() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
@@ -2073,7 +2073,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteZehnTest3() {
+	public void nextLowerCardTenTest3() {
 		
 		player.setGameVariety(new NullGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.NINE);
@@ -2088,7 +2088,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteAssTest1() {
+	public void nextLowerCardDausTest1() {
 		
 		player.setGameVariety(new SuitGame(PlayingCard.Suit.BELLS));
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
@@ -2103,7 +2103,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteAssTest2() {
+	public void nextLowerCardDausTest2() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
@@ -2118,7 +2118,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void naechstNiedrigereKarteAssTest3() {
+	public void nextLowerCardDausTest3() {
 		
 		player.setGameVariety(new NullGame());
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
@@ -2133,7 +2133,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void kartenEinesWertesTest1() {
+	public void cardsOfRankTest1() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
@@ -2166,7 +2166,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void kartenEinerFarbeTest1() {
+	public void cardsOfSuitTest1() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
@@ -2191,15 +2191,15 @@ public class SmartPlayerTest {
 		hand.add(card9);
 		hand.add(card10);
 		
-		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
-		karo.add(card1);
-		karo.add(card2);
+		ArrayList<PlayingCard> bells = new ArrayList<PlayingCard>();
+		bells.add(card1);
+		bells.add(card2);
 		
-		assertEquals(karo, player.cardsOfSuit(hand, PlayingCard.Suit.BELLS));
+		assertEquals(bells, player.cardsOfSuit(hand, PlayingCard.Suit.BELLS));
 	}
 	
 	@Test
-	public void kartenEinerFarbeTest2() {
+	public void cardsOfSuitTest2() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
@@ -2224,17 +2224,17 @@ public class SmartPlayerTest {
 		hand.add(card9);
 		hand.add(card10);
 		
-		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
-		herz.add(card3);
-		herz.add(card4);
-		herz.add(card5);
-		herz.add(card6);
+		ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+		hearts.add(card3);
+		hearts.add(card4);
+		hearts.add(card5);
+		hearts.add(card6);
 		
-		assertEquals(herz, player.cardsOfSuit(hand, PlayingCard.Suit.HEARTS));
+		assertEquals(hearts, player.cardsOfSuit(hand, PlayingCard.Suit.HEARTS));
 	}
 	
 	@Test
-	public void kartenEinerFarbeTest3() {
+	public void cardsOfSuitTest3() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
@@ -2259,16 +2259,16 @@ public class SmartPlayerTest {
 		hand.add(card9);
 		hand.add(card10);
 		
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		pik.add(card7);
-		pik.add(card8);
-		pik.add(card9);
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		leaves.add(card7);
+		leaves.add(card8);
+		leaves.add(card9);
 		
-		assertEquals(pik, player.cardsOfSuit(hand, PlayingCard.Suit.LEAVES));
+		assertEquals(leaves, player.cardsOfSuit(hand, PlayingCard.Suit.LEAVES));
 	}
 	
 	@Test
-	public void kartenEinerFarbeTest4() {
+	public void cardsOfSuitTest4() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
@@ -2293,14 +2293,14 @@ public class SmartPlayerTest {
 		hand.add(card9);
 		hand.add(card10);
 		
-		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
-		kreuz.add(card10);
+		ArrayList<PlayingCard> acorns = new ArrayList<PlayingCard>();
+		acorns.add(card10);
 		
-		assertEquals(kreuz, player.cardsOfSuit(hand, PlayingCard.Suit.ACORNS));
+		assertEquals(acorns, player.cardsOfSuit(hand, PlayingCard.Suit.ACORNS));
 	}
 	
 	@Test
-	public void hoechsteSpielbareKarteTest() {
+	public void highestPlayableCardTest() {
 		
 		ArrayList<PlayingCard> playableCards = new ArrayList<PlayingCard>();
 		
@@ -2317,7 +2317,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void niedrigsteSpielbareKarteTest() {
+	public void lowestPlayableCardTest() {
 		
 		ArrayList<PlayingCard> playableCards = new ArrayList<PlayingCard>();
 		
@@ -2333,7 +2333,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void hoechsteSpielbareKarteBestimmenTest1() {
+	public void determineHighestPlayableCardTest1() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
@@ -2344,7 +2344,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void hoechsteSpielbareKarteBestimmenTest2() {
+	public void determineHighestPlayableCardTest2() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
@@ -2355,8 +2355,8 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void hoechsteSpielbareKarteBestimmenTest3() {
-		
+	public void determineHighestPlayableCardTest3() {
+
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
 		player.setGameVariety(new NullGame());
@@ -2366,7 +2366,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void niedrigsteSpielbareKarteBestimmenTest1() {
+	public void determineLowestPlayableCardTestTest1() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN);
@@ -2377,7 +2377,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void niedrigsteSpielbareKarteBestimmenTest2() {
+	public void determineLowestPlayableCardTestTest2() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
@@ -2388,7 +2388,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void niedrigsteSpielbareKarteBestimmenTest3() {
+	public void determineLowestPlayableCardTestTest3() {
 		
 		player.setGameVariety(new GrandGame());
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
@@ -2406,7 +2406,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void handspielTest() {
+	public void handgameTest() {
 		
 		assertTrue(player.handgame());
 	}
@@ -2430,7 +2430,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void spielAnsagenTest() {
+	public void declareGameTest() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
@@ -2447,7 +2447,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void hoerenTest() {
+	public void respondTest() {
 		
 		player.setMaxBiddingValue(23);
 		
@@ -2455,7 +2455,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void hoerenTest2() {
+	public void respondTest2() {
 		
 		player.setMaxBiddingValue(23);
 		
@@ -2463,7 +2463,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void sagenTest() {
+	public void bidTest() {
 		
 		
 		player.setMaxBiddingValue(23);
@@ -2472,7 +2472,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void sagenTest2() {
+	public void bidTest2() {
 		
 		
 		player.setMaxBiddingValue(23);
@@ -2481,7 +2481,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void farbeTest() {
+	public void suitTest() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
@@ -2499,13 +2499,13 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void reizlimitFestlegenTest() {
+	public void setBidLimitTest() {
 		
 		assertEquals(0, player.setBidLimit());
 	}
 	
 	@Test
-	public void bestimmeMaxReizwert1() {
+	public void determineMaxBiddingValueTest1() {
 	
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN));
@@ -2524,7 +2524,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void bestimmeMaxReizwert2() {
+	public void determineMaxBiddingValueTest2() {
 	
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
@@ -2543,7 +2543,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void bestimmeMaxReizwert3() {
+	public void determineMaxBiddingValueTest3() {
 	
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
@@ -2562,7 +2562,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void maxReizwertFarbeTest() {
+	public void maxBiddingValueSuitTest() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE));
@@ -2573,21 +2573,21 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void maxReizwertGrandTest() {
+	public void maxBiddingValueGrandTest() {
 		
 		player.maxBiddingValueGrand(1);
 		assertEquals(48, player.getMaxBiddingValue());
 	}
 	
 	@Test
-	public void maxReizwertNullTest() {
+	public void maxBiddingValueNullTest() {
 		
 		player.maxBiddingValueNull();
 		assertEquals(23, player.getMaxBiddingValue());
 	}
 	
 	@Test
-	public void ermittleSpitzenTest1() {
+	public void determineMatadorsJackStraitTest1() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
@@ -2608,20 +2608,20 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void ermittleSpitzenTest2() {
+	public void determineMatadorsJackStraitTest2() {
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
-		blatt.add(card1);
-		blatt.add(card2);
-		player.setHand(blatt);
+		hand.add(card1);
+		hand.add(card2);
+		player.setHand(hand);
 		
 		assertEquals(2, player.determineMatadorsJackStrait(new GrandGame()));
 	}
 	
 	@Test
-	public void spitzenZaehlenTest1() {
+	public void countMatadorsJackStraitTest1() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
@@ -2636,49 +2636,49 @@ public class SmartPlayerTest {
 		PlayingCard card11 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SEVEN);
 		PlayingCard card12 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX);
 	
-		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[0] = card1;
-		spitzen[1] = card2;
-		spitzen[2] = card3;
-		spitzen[3] = card4;
-		spitzen[4] = card5;
-		spitzen[5] = card6;
-		spitzen[6] = card7;
-		spitzen[7] = card8;
-		spitzen[8] = card9;
-		spitzen[9] = card10;
-		spitzen[10] = card11;
-		spitzen[11] = card12;
+		PlayingCard[] matadorsJackStrait = new PlayingCard[13];
+		matadorsJackStrait[0] = card1;
+		matadorsJackStrait[1] = card2;
+		matadorsJackStrait[2] = card3;
+		matadorsJackStrait[3] = card4;
+		matadorsJackStrait[4] = card5;
+		matadorsJackStrait[5] = card6;
+		matadorsJackStrait[6] = card7;
+		matadorsJackStrait[7] = card8;
+		matadorsJackStrait[8] = card9;
+		matadorsJackStrait[9] = card10;
+		matadorsJackStrait[10] = card11;
+		matadorsJackStrait[11] = card12;
 		
-		assertEquals(12, player.countMatadorsJackStrait(spitzen));
+		assertEquals(12, player.countMatadorsJackStrait(matadorsJackStrait));
 	}
 	
 	@Test
-	public void spitzenZaehlenTest2() {
+	public void countMatadorsJackStraitTest2() {
 		
-		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[4] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
+		PlayingCard[] matadorsJackStrait = new PlayingCard[13];
+		matadorsJackStrait[4] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
 		
-		assertEquals(4, player.countMatadorsJackStrait(spitzen));
+		assertEquals(4, player.countMatadorsJackStrait(matadorsJackStrait));
 	}
 	@Test
-	public void ohneTest1() {
+	public void withoutTest1() {
 		
-		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[12] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX);
-		assertEquals(12, player.without(spitzen));
-	}
-	
-	@Test
-	public void ohneTest2() {
-		
-		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[3] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
-		assertEquals(3, player.without(spitzen));
+		PlayingCard[] matadorsJackStrait = new PlayingCard[13];
+		matadorsJackStrait[12] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX);
+		assertEquals(12, player.without(matadorsJackStrait));
 	}
 	
 	@Test
-	public void mitTest1() {
+	public void withoutTest2() {
+		
+		PlayingCard[] matadorsJackStrait = new PlayingCard[13];
+		matadorsJackStrait[3] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+		assertEquals(3, player.without(matadorsJackStrait));
+	}
+	
+	@Test
+	public void withTest1() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
@@ -2693,40 +2693,40 @@ public class SmartPlayerTest {
 		PlayingCard card11 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SEVEN);
 		PlayingCard card12 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX);
 	
-		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[0] = card1;
-		spitzen[1] = card2;
-		spitzen[2] = card3;
-		spitzen[3] = card4;
-		spitzen[4] = card5;
-		spitzen[5] = card6;
-		spitzen[6] = card7;
-		spitzen[7] = card8;
-		spitzen[8] = card9;
-		spitzen[9] = card10;
-		spitzen[10] = card11;
-		spitzen[11] = card12;
+		PlayingCard[] matadorsJackStrait = new PlayingCard[13];
+		matadorsJackStrait[0] = card1;
+		matadorsJackStrait[1] = card2;
+		matadorsJackStrait[2] = card3;
+		matadorsJackStrait[3] = card4;
+		matadorsJackStrait[4] = card5;
+		matadorsJackStrait[5] = card6;
+		matadorsJackStrait[6] = card7;
+		matadorsJackStrait[7] = card8;
+		matadorsJackStrait[8] = card9;
+		matadorsJackStrait[9] = card10;
+		matadorsJackStrait[10] = card11;
+		matadorsJackStrait[11] = card12;
 		
-		assertEquals(12, player.with(spitzen));
+		assertEquals(12, player.with(matadorsJackStrait));
 	}
 	
 	@Test
-	public void mitTest2() {
+	public void withTest2() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard card3 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 
-		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[0] = card1;
-		spitzen[1] = card2;
-		spitzen[2] = card3;
+		PlayingCard[] matadorsJackStrait = new PlayingCard[13];
+		matadorsJackStrait[0] = card1;
+		matadorsJackStrait[1] = card2;
+		matadorsJackStrait[2] = card3;
 		
-		assertEquals(3, player.with(spitzen));
+		assertEquals(3, player.with(matadorsJackStrait));
 	}
 	
 	@Test
-	public void farbeSpitzenTest() {
+	public void suitMatadorsJackStraitTest() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
@@ -2751,23 +2751,23 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SEVEN));
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.EIGHT));
 	
-		PlayingCard[] spitzen = new PlayingCard[13];
-		spitzen[0] = card1;
-		spitzen[1] = card2;
-		spitzen[2] = card3;
-		spitzen[3] = card4;
-		spitzen[4] = card5;
-		spitzen[7] = card6;
-		spitzen[8] = card7;
+		PlayingCard[] matadorsJackStrait = new PlayingCard[13];
+		matadorsJackStrait[0] = card1;
+		matadorsJackStrait[1] = card2;
+		matadorsJackStrait[2] = card3;
+		matadorsJackStrait[3] = card4;
+		matadorsJackStrait[4] = card5;
+		matadorsJackStrait[7] = card6;
+		matadorsJackStrait[8] = card7;
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.suitMatadorsJackStrait(new SuitGame(PlayingCard.Suit.BELLS));
+		PlayingCard[] playerMatadorsJackStrait = player.suitMatadorsJackStrait(new SuitGame(PlayingCard.Suit.BELLS));
 		
-		assertArrayEquals(spitzen, spielerSpitzen);
+		assertArrayEquals(matadorsJackStrait, playerMatadorsJackStrait);
 	}
 	
 	@Test
-	public void grandSpitzenTest1() {
+	public void grandMatadorsJackStraitTest1() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
@@ -2787,16 +2787,16 @@ public class SmartPlayerTest {
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SEVEN));
 		hand.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.EIGHT));
 	
-		PlayingCard[] spitzen = {card1, card2, card3, card4};
+		PlayingCard[] matadorsJackStrait = {card1, card2, card3, card4};
 		
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.grandMatadorsJackStrait(new GrandGame());
+		PlayingCard[] playerMatadorsJackStrait = player.grandMatadorsJackStrait(new GrandGame());
 		
 		boolean result = true;
 		for (int i = 0; i < 4; i++) {
 			
-			if (!spitzen[i].equals(spielerSpitzen[i])) {
+			if (!matadorsJackStrait[i].equals(playerMatadorsJackStrait[i])) {
 				
 				result = false;
 			}
@@ -2805,7 +2805,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void grandSpitzenTest2() {
+	public void grandMatadorsJackStraitTest2() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
@@ -2827,14 +2827,14 @@ public class SmartPlayerTest {
 		
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.grandMatadorsJackStrait(new GrandGame());
+		PlayingCard[] playerMatadorsJackStrait = player.grandMatadorsJackStrait(new GrandGame());
 		
-		PlayingCard[] spitzen = {card1, null, null, null};
+		PlayingCard[] matadorsJackStrait = {card1, null, null, null};
 		
 		boolean result = true;
 		for (int i = 0; i < 1; i++) {
 			
-			if (!spitzen[i].equals(spielerSpitzen[i])) {
+			if (!matadorsJackStrait[i].equals(playerMatadorsJackStrait[i])) {
 				
 				result = false;
 			}
@@ -2843,7 +2843,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void grandSpitzenTest3() {
+	public void grandMatadorsJackStraitTest3() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX);
@@ -2865,15 +2865,15 @@ public class SmartPlayerTest {
 		
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.grandMatadorsJackStrait(new GrandGame());
+		PlayingCard[] playerMatadorsJackStrait = player.grandMatadorsJackStrait(new GrandGame());
 		
-		PlayingCard[] spitzen = {null, null, null, null};
+		PlayingCard[] matadorsJackStrait = {null, null, null, null};
 		
-		assertArrayEquals(spitzen, spielerSpitzen);
+		assertArrayEquals(matadorsJackStrait, playerMatadorsJackStrait);
 	}
 	
 	@Test
-	public void grandSpitzenTest4() {
+	public void grandMatadorsJackStraitTest4() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX);
@@ -2895,15 +2895,15 @@ public class SmartPlayerTest {
 		
 		player.setHand(hand);
 		
-		PlayingCard[] spielerSpitzen = player.grandMatadorsJackStrait(new GrandGame());
+		PlayingCard[] playerMatadorsJackStrait = player.grandMatadorsJackStrait(new GrandGame());
 		
-		PlayingCard[] spitzen = {null, null, card3, null};
+		PlayingCard[] matadorsJackStrait = {null, null, card3, null};
 		
-		assertArrayEquals(spitzen, spielerSpitzen);
+		assertArrayEquals(matadorsJackStrait, playerMatadorsJackStrait);
 	}
 	
 	@Test
-	public void bestimmeSpielartTest() {
+	public void determineGameVarietyTest() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN));
@@ -2923,7 +2923,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void bestimmeSpielartTest2() {
+	public void determineGameVarietyTest2() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
@@ -2943,7 +2943,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void bestimmeSpielartTest3() {
+	public void determineGameVarietyTest3() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
@@ -2963,7 +2963,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void bestimmeSpielartTest4() {
+	public void determineGameVarietyTest4() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
@@ -2983,7 +2983,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void ermittleKurzeLangeFarbeTest() {
+	public void determineShortLongSuitTest() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
@@ -3011,7 +3011,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void ermittleKurzeLangeFarbeTest2() {
+	public void determineShortLongSuitTest2() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
@@ -3030,14 +3030,14 @@ public class SmartPlayerTest {
 		PlayingCard card4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.EIGHT);
 		hand.add(card4);
 		player.setHand(hand);
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		pik.add(card5);
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		leaves.add(card5);
 		
-		assertEquals(pik, player.determineShortLongSuit(false));
+		assertEquals(leaves, player.determineShortLongSuit(false));
 	}
 	
 	@Test
-	public void ermittleKurzeFarbeTest() {
+	public void determineShortSuitTest() {
 		
 		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
 		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
@@ -3052,146 +3052,146 @@ public class SmartPlayerTest {
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(karo, player.ermittleKurzeFarbe(karo, herz, pik, kreuz));
+		assertEquals(karo, player.determineShortSuit(karo, herz, pik, kreuz));
 	}
 	
 	@Test
-	public void ermittleKurzeFarbeTest2() {
+	public void determineShortSuitTest2() {
 		
-		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> bells = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> acorns = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		leaves.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		leaves.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(herz, player.ermittleKurzeFarbe(karo, herz, pik, kreuz));
+		assertEquals(hearts, player.determineShortSuit(bells, hearts, leaves, acorns));
 	}
 	
 	@Test
-	public void ermittleKurzeFarbeTest3() {
+	public void determineShortSuitTest3() {
 		
-		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> bells = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> acorns = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		leaves.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(pik, player.ermittleKurzeFarbe(karo, herz, pik, kreuz));
+		assertEquals(leaves, player.determineShortSuit(bells, hearts, leaves, acorns));
 	}
 	
 	@Test
-	public void ermittleKurzeFarbeTest4() {
+	public void determineShortSuitTest4() {
 		
-		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> bells = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> acorns = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		leaves.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(kreuz, player.ermittleKurzeFarbe(karo, herz, pik, kreuz));
+		assertEquals(acorns, player.determineShortSuit(bells, hearts, leaves, acorns));
 	}
 	
 	@Test
-	public void ermittleLangeFarbeTest1() {
+	public void determineLongSuitTest1() {
 		
-		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> bells = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> acorns = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		leaves.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(karo, player.determineLongSuit(karo, herz, pik, kreuz));
+		assertEquals(bells, player.determineLongSuit(bells, hearts, leaves, acorns));
 	}
 	
 	@Test
-	public void ermittleLangeFarbeTest2() {
+	public void determineLongSuitTest2() {
 		
-		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> bells = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> acorns = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(herz, player.determineLongSuit(karo, herz, pik, kreuz));
+		assertEquals(hearts, player.determineLongSuit(bells, hearts, leaves, acorns));
 	}
 	
 	@Test
-	public void ermittleLangeFarbeTest3() {
+	public void determineLongSuitTest3() {
 		
-		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> bells = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> corns = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		herz.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
-		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		pik.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		hearts.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX));
+		leaves.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		leaves.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		leaves.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		corns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		corns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(pik, player.determineLongSuit(karo, herz, pik, kreuz));
+		assertEquals(leaves, player.determineLongSuit(bells, hearts, leaves, corns));
 	}
 	
 	@Test
-	public void ermittleLangeFarbeTest4() {
+	public void determineLongSuitTest4() {
 		
-		ArrayList<PlayingCard> karo = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> herz = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> pik = new ArrayList<PlayingCard>();
-		ArrayList<PlayingCard> kreuz = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> bells = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> leaves = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> acorns = new ArrayList<PlayingCard>();
 		
-		karo.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
-		kreuz.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		bells.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
+		acorns.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.SIX));
 		
-		assertEquals(kreuz, player.determineLongSuit(karo, herz, pik, kreuz));
+		assertEquals(acorns, player.determineLongSuit(bells, hearts, leaves, acorns));
 	}
 	
 	@Test
-	public void ermittleTrumpffarbeTest1() {
+	public void determineTrumpSuitTest1() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
@@ -3210,7 +3210,7 @@ public class SmartPlayerTest {
 	}
 
 	@Test
-	public void ermittleTrumpffarbeTest2() {
+	public void determineTrumpSuitTest2() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
@@ -3229,7 +3229,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void ermittleTrumpffarbeTest3() {
+	public void determineTrumpSuitTest3() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
@@ -3248,7 +3248,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void ermittleTrumpffarbeTest4() {
+	public void determineTrumpSuitTest4() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
@@ -3267,7 +3267,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void werteAugenTest() {
+	public void calculateAugenTest() {
 		
 		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
 		
@@ -3284,7 +3284,7 @@ public class SmartPlayerTest {
 	}
 
 	@Test
-	public void augenKarteTest1() {
+	public void getCardAugenTest1() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SIX);
 		
@@ -3292,7 +3292,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void augenKarteTest2() {
+	public void getCardAugenTest2() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
 		
@@ -3300,7 +3300,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void augenKarteTest3() {
+	public void getCardAugenTest3() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 		
@@ -3308,7 +3308,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void augenKarteTest4() {
+	public void getCardAugenTest4() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE);
 		
@@ -3316,7 +3316,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void augenKarteTest5() {
+	public void getCardAugenTest5() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN);
 		
@@ -3324,7 +3324,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void augenKarteTest6() {
+	public void getCardAugenTest6() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		
@@ -3332,7 +3332,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void augenKarteTest7() {
+	public void getCardAugenTest7() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE);
 		
@@ -3340,7 +3340,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void augenKarteTest8() {
+	public void getCardAugenTest8() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING);
 		
@@ -3348,7 +3348,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void augenKarteTest9() {
+	public void getCardAugenTest9() {
 		
 		PlayingCard card = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
 		

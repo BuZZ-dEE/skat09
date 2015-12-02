@@ -1972,7 +1972,7 @@ public class SmartPlayer extends Player {
 		// Farbe ermitteln
 		else {
 
-			winner = ermittleKurzeFarbe(bells, hearts, leaves, acorns);
+			winner = determineShortSuit(bells, hearts, leaves, acorns);
 		}
 
 		return winner;
@@ -1993,9 +1993,9 @@ public class SmartPlayer extends Player {
 	 *            - Die Liste with der Anzahl der Kreuz-Karten.
 	 * @return - Die Liste with den wenigsten Karten von einer Farbe.
 	 */
-	public ArrayList<PlayingCard> ermittleKurzeFarbe(ArrayList<PlayingCard> bells,
-			ArrayList<PlayingCard> hearts, ArrayList<PlayingCard> leaves,
-			ArrayList<PlayingCard> acorns) {
+	public ArrayList<PlayingCard> determineShortSuit(ArrayList<PlayingCard> bells,
+													 ArrayList<PlayingCard> hearts, ArrayList<PlayingCard> leaves,
+													 ArrayList<PlayingCard> acorns) {
 
 		ArrayList<PlayingCard> shortSuit = new ArrayList<PlayingCard>();
 
