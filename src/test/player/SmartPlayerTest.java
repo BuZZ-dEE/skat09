@@ -553,10 +553,10 @@ public class SmartPlayerTest {
 	@Test
 	public void playSecondCardGrandTest3() {
 		
-		Table tisch = new Table();
+		Table table = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.createDeck();
-		deck = tisch.getDeck();
+		table.createDeck();
+		deck = table.getDeck();
 		player.setDeck(deck);
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -565,20 +565,20 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
-		player.setHand(blatt);
+		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
-		playedCards[0].setOwner(gegner);
+		playedCards[0].setOwner(adversary);
 		
 		assertEquals( playingCard1, player.playSecondCardGrand(playedCards));
 	}
@@ -586,10 +586,10 @@ public class SmartPlayerTest {
 	@Test
 	public void playSecondCardGrandTest4() {
 		
-		Table tisch = new Table();
+		Table table = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.createDeck();
-		deck = tisch.getDeck();
+		table.createDeck();
+		deck = table.getDeck();
 		player.setDeck(deck);
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -598,20 +598,20 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
-		player.setHand(blatt);
+		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
-		playedCards[0].setOwner(gegner);
+		playedCards[0].setOwner(adversary);
 		
 		assertEquals( playingCard1, player.playSecondCardGrand(playedCards));
 	}
@@ -626,21 +626,21 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
-		player.setHand(blatt);
+		player.setHand(hand);
 		player.setIsDeclarer(true);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
-		playedCards[0].setOwner(gegner);
+		playedCards[0].setOwner(adversary);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
@@ -657,22 +657,22 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
-		player.setHand(blatt);
+		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
 		playedCards[0].setOwner(mate);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
-		playedCards[1].setOwner(gegner);
+		playedCards[1].setOwner(adversary);
 		
 		assertEquals( playingCard1, player.playThirdCardGrand(playedCards));
 	}
@@ -687,20 +687,20 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
-		player.setHand(blatt);
+		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
-		playedCards[0].setOwner(gegner);
+		playedCards[0].setOwner(adversary);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
@@ -717,20 +717,20 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
-		player.setHand(blatt);
+		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
-		playedCards[0].setOwner(gegner);
+		playedCards[0].setOwner(adversary);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
@@ -822,8 +822,8 @@ public class SmartPlayerTest {
 		IPlayer mate = new Granny("mate");
 		player.setTeammate(mate);
 		mate.setPosition(Position.HINTERHAND);
-		IPlayer gegner = new Granny("adversary");
-		gegner.setPosition(Position.MITTELHAND);
+		IPlayer adversary = new Granny("adversary");
+		adversary.setPosition(Position.MITTELHAND);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
 		boolean success = false;
@@ -834,7 +834,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alsZweiterKarteSpielenTest1() {
+	public void playSecondCardSuitTest1() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -843,28 +843,28 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		player.setIsDeclarer(true);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		
 		
-		boolean erfolg = false;
-		if (!blatt.contains(player.playSecondCardSuit(playedCards))) {
-			erfolg = true;
+		boolean success = false;
+		if (!hand.contains(player.playSecondCardSuit(playedCards))) {
+			success = true;
 		}
-		assertTrue(erfolg);
+		assertTrue(success);
 	}
 	
 	@Test
-	public void alsZweiterKarteSpielenTest2() {
+	public void playSecondCardSuitTest2() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -873,16 +873,16 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
@@ -892,7 +892,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alsZweiterKarteSpielenTest3() {
+	public void playSecondCardSuitTest3() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -901,26 +901,26 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
-		playedCards[0].setOwner(gegner);
+		playedCards[0].setOwner(adversary);
 		
 		assertEquals(playingCard1, player.playSecondCardSuit(playedCards));
 	}
 	
 	@Test
-	public void alsZweiterKarteSpielenTest4() {
+	public void playSecondCardSuitTest4() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -929,20 +929,20 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		IPlayer mate = new Granny("mate");
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		player.setTeammate(mate);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
-		playedCards[0].setOwner(gegner);
+		playedCards[0].setOwner(adversary);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
@@ -950,7 +950,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alsDritterKarteSpielenTest1() {
+	public void playThirdCardSuitTest1() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -959,28 +959,28 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		player.setIsDeclarer(true);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		
-		boolean erfolg = false;
-		if (!blatt.contains(player.playThirdCardSuit(playedCards))) {
-			erfolg = true;
+		boolean success = false;
+		if (!hand.contains(player.playThirdCardSuit(playedCards))) {
+			success = true;
 		}
-		assertTrue(erfolg);
+		assertTrue(success);
 	}
 	
 	@Test
-	public void alsDritterKarteSpielenTest2() {
+	public void playThirdCardSuitTest2() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -989,20 +989,20 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		IPlayer mate = new Granny("mate");
 		player.setTeammate(mate);
-		IPlayer wicht = new Granny("wicht");
+		IPlayer granny = new Granny("wicht");
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
-		playedCards[0].setOwner(wicht);
+		playedCards[0].setOwner(granny);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
@@ -1010,7 +1010,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alsDritterKarteSpielenTest3() {
+	public void playThirdCardSuitTest3() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1019,20 +1019,20 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		IPlayer mate = new Granny("mate");
 		player.setTeammate(mate);
-		IPlayer wicht = new Granny("wicht");
+		IPlayer granny = new Granny("wicht");
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SEVEN);
-		playedCards[0].setOwner(wicht);
+		playedCards[0].setOwner(granny);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
@@ -1040,7 +1040,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alsDritterKarteSpielenTest4() {
+	public void playThirdCardSuitTest4() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1049,20 +1049,20 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		PlayingCard[] playedCards = new PlayingCard[3];
 		IPlayer mate = new Granny("mate");
 		player.setTeammate(mate);
-		IPlayer wicht = new Granny("wicht");
+		IPlayer granny = new Granny("wicht");
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
-		playedCards[0].setOwner(wicht);
+		playedCards[0].setOwner(granny);
 		playedCards[1] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
 		playedCards[1].setOwner(mate);
 		
@@ -1070,7 +1070,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alleinspielerRauskommenGrandTest() {
+	public void playFirstCardGrandAsDeclarerTest1() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1079,29 +1079,29 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		blatt.add(playingCard6);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		hand.add(playingCard6);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
-		boolean ergebnis = false;
-		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
-		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
+		boolean result = false;
+		PlayingCard playedCard = player.playFirstCardGrandAsDeclarer(playedCards);
+		if (playedCard.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
-			ergebnis = true;
+			result = true;
 		}
 		
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void alleinspielerRauskommenGrandTest2() {
+	public void playFirstCardGrandAsDeclarerTest2() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1109,28 +1109,28 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
-		boolean ergebnis = false;
-		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
-		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
+		boolean result = false;
+		PlayingCard playedCard = player.playFirstCardGrandAsDeclarer(playedCards);
+		if (playedCard.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
-			ergebnis = true;
+			result = true;
 		}
 		
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void alleinspielerRauskommenGrandTest3() {
+	public void playFirstCardGrandAsDeclarerTest3() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1138,28 +1138,28 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
-		boolean ergebnis = false;
-		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
-		if (gespielt.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
+		boolean result = false;
+		PlayingCard playedCard = player.playFirstCardGrandAsDeclarer(playedCards);
+		if (playedCard.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
-			ergebnis = true;
+			result = true;
 		}
 		
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void alleinspielerRauskommenGrandTest4() {
+	public void playFirstCardGrandAsDeclarerTest4() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
@@ -1167,29 +1167,29 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		player.setHand(blatt);
-		player.setStartHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		player.setHand(hand);
+		player.setStartHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
-		boolean ergebnis = false;
-		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
-		if (gespielt.getRank() == PlayingCard.Rank.DAUS) {
+		boolean result = false;
+		PlayingCard playedCard = player.playFirstCardGrandAsDeclarer(playedCards);
+		if (playedCard.getRank() == PlayingCard.Rank.DAUS) {
 			
-			ergebnis = true;
+			result = true;
 		}
 		
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void alleinspielerRauskommenGrandTest5() {
+	public void playFirstCardGrandAsDeclarerTest5() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE);
@@ -1198,31 +1198,31 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard7 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS);
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
 		player.getAllPlayedCards().add(playingCard6);
 		player.getAllPlayedCards().add(playingCard7);
-		player.setHand(blatt);
-		player.setStartHand(blatt);
+		player.setHand(hand);
+		player.setStartHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
-		boolean ergebnis = false;
-		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
-		if (blatt.contains(gespielt)) {
+		boolean result = false;
+		PlayingCard playedCard = player.playFirstCardGrandAsDeclarer(playedCards);
+		if (hand.contains(playedCard)) {
 			
-			ergebnis = true;
+			result = true;
 		}
 		
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void alleinspielerRauskommenGrandTest6() {
+	public void playFirstCardGrandAsDeclarerTest6() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE);
@@ -1231,33 +1231,33 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard7 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
 		player.getAllPlayedCards().add(playingCard6);
 		player.getAllPlayedCards().add(playingCard7);
-		player.setHand(blatt);
-		player.setStartHand(blatt);
+		player.setHand(hand);
+		player.setStartHand(hand);
 		player.getStartHand().add(playingCard6);
 		player.getStartHand().add(playingCard7);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
-		boolean ergebnis = false;
-		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
-		if (gespielt.getRank() == PlayingCard.Rank.TEN) {
+		boolean result = false;
+		PlayingCard playedCard = player.playFirstCardGrandAsDeclarer(playedCards);
+		if (playedCard.getRank() == PlayingCard.Rank.TEN) {
 			
-			ergebnis = true;
+			result = true;
 		}
 		
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void alleinspielerRauskommenGrandTest7() {
+	public void playFirstCardGrandAsDeclarerTest7() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE);
@@ -1266,53 +1266,53 @@ public class SmartPlayerTest {
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SEVEN);
 		PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.EIGHT);
 		PlayingCard playingCard7 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
 		player.getAllPlayedCards().add(playingCard6);
 		player.getAllPlayedCards().add(playingCard7);
-		player.setHand(blatt);
-		player.setStartHand(blatt);
+		player.setHand(hand);
+		player.setStartHand(hand);
 		player.getStartHand().add(playingCard6);
 		player.getStartHand().add(playingCard7);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
-		boolean ergebnis = false;
-		PlayingCard gespielt = player.playFirstCardGrandAsDeclarer(playedCards);
-		if (blatt.contains(gespielt)) {
+		boolean result = false;
+		PlayingCard playedCard = player.playFirstCardGrandAsDeclarer(playedCards);
+		if (hand.contains(playedCard)) {
 			
-			ergebnis = true;
+			result = true;
 		}
 		
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void rauskommenGrandTest() {
+	public void playFirstCardGrandTest() {
 		
-		Table tisch = new Table();
+		Table table = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.createDeck();
-		deck = tisch.getDeck();
+		table.createDeck();
+		deck = table.getDeck();
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard3 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
 		player.setIsDeclarer(true);
 		player.setDeck(deck);
-		player.setHand(blatt);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
@@ -1321,28 +1321,28 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void rauskommenGrandTest2() {
+	public void playFirstCardGrandTest2() {
 		
-		Table tisch = new Table();
+		Table table = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.createDeck();
-		deck = tisch.getDeck();
+		table.createDeck();
+		deck = table.getDeck();
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard3 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
 		player.setDeck(deck);
-		player.setHand(blatt);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		IPlayer mate = new Granny("mate");
 		player.setTeammate(mate);
 		player.setTeammate(mate);
@@ -1350,38 +1350,38 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		player.setPosition(Position.VORHAND);
 		mate.setPosition(Position.MITTELHAND);
-		gegner.setPosition(Position.HINTERHAND);
+		adversary.setPosition(Position.HINTERHAND);
 		
-		boolean erfolg = false;
-		if (!blatt.contains(player.playFirstCardGrand(playedCards))) {
-			erfolg = true;
+		boolean success = false;
+		if (!hand.contains(player.playFirstCardGrand(playedCards))) {
+			success = true;
 		}
-		assertTrue(erfolg);
+		assertTrue(success);
 	}
 	
 	@Test
-	public void rauskommenGrandTest3() {
+	public void playFirstCardGrandTest3() {
 		
-		Table tisch = new Table();
+		Table table = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.createDeck();
-		deck = tisch.getDeck();
+		table.createDeck();
+		deck = table.getDeck();
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
 		PlayingCard playingCard3 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
 		player.setDeck(deck);
-		player.setHand(blatt);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
-		IPlayer gegner = new Granny("adversary");
+		IPlayer adversary = new Granny("adversary");
 		IPlayer mate = new Granny("mate");
 		player.setTeammate(mate);
 		player.setTeammate(mate);
@@ -1389,36 +1389,36 @@ public class SmartPlayerTest {
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		player.setPosition(Position.VORHAND);
 		mate.setPosition(Position.MITTELHAND);
-		gegner.setPosition(Position.HINTERHAND);
+		adversary.setPosition(Position.HINTERHAND);
 		
-		boolean erfolg = false;
+		boolean success = false;
 		if (PlayingCard.Suit.ACORNS == player.playFirstCardGrand(playedCards).getSuit()) {
-			erfolg = true;
+			success = true;
 		}
-		assertTrue(erfolg);
+		assertTrue(success);
 	}
 	
 	@Test
-	public void alleinspieleralsZweiteKarteSpielenGrandTest1() {
+	public void playSecondCardGrandAsDeclarerTest1() {
 		
-		Table tisch = new Table();
+		Table table = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
-		tisch.createDeck();
-		deck = tisch.getDeck();
+		table.createDeck();
+		deck = table.getDeck();
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 		PlayingCard playingCard3 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE);
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
 		player.setDeck(deck);
-		player.setHand(blatt);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
@@ -1428,7 +1428,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alleinspieleralsZweiteKarteSpielenGrandTest2() {
+	public void playSecondCardGrandAsDeclarerTest2() {
 		
 		Table tisch = new Table();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
@@ -1440,14 +1440,14 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
 		player.setDeck(deck);
-		player.setHand(blatt);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
@@ -1457,7 +1457,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alleinspieleralsDritterKarteSpielenGrandTest1() {
+	public void playThirdCardGrandAsDeclarerTest1() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1465,13 +1465,13 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
@@ -1482,7 +1482,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alleinspieleralsDritterKarteSpielenGrandTest2() {
+	public void playThirdCardGrandAsDeclarerTest2() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1490,13 +1490,13 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		player.setHand(hand);
 		player.setGameVariety(new GrandGame());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
@@ -1507,7 +1507,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void rauskommenRamsch() {
+	public void playFirstCardRamschTest() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1515,13 +1515,13 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		player.setHand(hand);
 		player.setGameVariety(new Ramsch());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		
@@ -1530,7 +1530,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alsZweiterKarteSpielenRamschTest() {
+	public void playSecondCardRamschTest() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1538,13 +1538,13 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		player.setHand(hand);
 		player.setGameVariety(new Ramsch());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
@@ -1554,7 +1554,7 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void alsDritterKarteSpielenRamschTest() {
+	public void playThirdCardRamschTest() {
 		
 		PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
 		PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -1562,13 +1562,13 @@ public class SmartPlayerTest {
 		PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(playingCard1);
-		blatt.add(playingCard2);
-		blatt.add(playingCard3);
-		blatt.add(playingCard4);
-		blatt.add(playingCard5);
-		player.setHand(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(playingCard1);
+		hand.add(playingCard2);
+		hand.add(playingCard3);
+		hand.add(playingCard4);
+		hand.add(playingCard5);
+		player.setHand(hand);
 		player.setGameVariety(new Ramsch());
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
@@ -1579,70 +1579,70 @@ public class SmartPlayerTest {
 	}
 	
 	@Test
-	public void gegnerMoeglicheSpielbareKartenTest() {
+	public void possiblePlayableAdversaryCardsTest() {
 		
-		Table tisch = new Table();
-		tisch.createDeck();
+		Table table = new Table();
+		table.createDeck();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		//Collections.shuffle(deck);
-		deck.addAll(tisch.getDeck());
+		deck.addAll(table.getDeck());
 		player.setDeck(deck);
 		player.setIsDeclarer(true);
 		player.setHand(new ArrayList<PlayingCard>());
 		for (int j = 0; j < 6; j++) {
 			player.getHand().add(deck.remove(0));
 		}
-		ArrayList<PlayingCard> alleGespielteKarten = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> allPlayedCards = new ArrayList<PlayingCard>();
 		for (int i = 0; i < 12; i++) {
 			
-			alleGespielteKarten.add(deck.remove(0));
+			allPlayedCards.add(deck.remove(0));
 		}
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = deck.remove(0);
 		player.setSkat(new ArrayList<PlayingCard>(Arrays.asList(playedCards)));
 		
-		ArrayList<PlayingCard> ergebnisKarten = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> resultCards = new ArrayList<PlayingCard>();
 		for (int k = 0; k < deck.size(); k++) {
 			
 			if(player.getGameVariety().
 					checkedPlayedCards(deck, playedCards, deck.get(k))) {
 				
-				ergebnisKarten.add(deck.get(k));
+				resultCards.add(deck.get(k));
 			}
 		}
 		
-		assertEquals(ergebnisKarten, player.possiblePlayableAdversaryCards(playedCards));
+		assertEquals(resultCards, player.possiblePlayableAdversaryCards(playedCards));
 	}
 	
 	@Test
-	public void moeglicheGegnerKarteTest() {
+	public void possibleAdversaryCardsTest() {
 		
-		Table tisch = new Table();
-		tisch.createDeck();
+		Table table = new Table();
+		table.createDeck();
 		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 		Collections.shuffle(deck);
-		deck.addAll(tisch.getDeck());
+		deck.addAll(table.getDeck());
 		player.setDeck(deck);
 		player.setIsDeclarer(true);
 		player.setHand(new ArrayList<PlayingCard>());
 		for (int j = 0; j < 6; j++) {
 			player.getHand().add(deck.remove(0));
 		}
-		ArrayList<PlayingCard> alleGespielteKarten = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> allPlayedCards = new ArrayList<PlayingCard>();
 		for (int i = 0; i < 12; i++) {
 			
-			alleGespielteKarten.add(deck.remove(0));
+			allPlayedCards.add(deck.remove(0));
 		}
 		PlayingCard[] playedCards = new PlayingCard[3];
 		playedCards[0] = deck.remove(0);
 		player.setSkat(new ArrayList<PlayingCard>(Arrays.asList(playedCards)));
 	
 		assertEquals(deck, 
-				player.possibleAdversaryCards(alleGespielteKarten, playedCards));
+				player.possibleAdversaryCards(allPlayedCards, playedCards));
 	}
 	
 	@Test
-	public void zufallszahlTest() {
+	public void randomNumberTest() {
 		
 		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
 		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
@@ -1650,19 +1650,19 @@ public class SmartPlayerTest {
 		PlayingCard card4 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
 		PlayingCard card5 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(card1);
-		blatt.add(card2);
-		blatt.add(card3);
-		blatt.add(card4);
-		blatt.add(card5);
-		int zufallszahl = player.randomNumber(blatt);
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(card1);
+		hand.add(card2);
+		hand.add(card3);
+		hand.add(card4);
+		hand.add(card5);
+		int randomNumber = player.randomNumber(hand);
 		
-		boolean ergebnis = false;
-		if (zufallszahl >= 0 && zufallszahl < blatt.size()) {
-			ergebnis = true;
+		boolean result = false;
+		if (randomNumber >= 0 && randomNumber < hand.size()) {
+			result = true;
 		}
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
