@@ -83,7 +83,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
         /**
          * Halter des Farbwertes 6
          */
-        SIX(6),
+        SIX(6), // TODO why 6, six-skat has other rules?
         /**
          * Halter des Farbwertes 7
          */

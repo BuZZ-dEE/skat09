@@ -2157,7 +2157,7 @@ public class SmartPlayer extends Player {
 //
 //		switch (card.getRank()) {
 //		case SIX:
-//			result = 6; // TODO why 6, six-sakt has other rules
+//			result = 6; // TODO why 6, six-skat has other rules?
 //			break;
 //		case OVER_KNAVE:
 //			result = 3;
