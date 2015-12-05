@@ -693,28 +693,28 @@ public class SmartPlayer extends Player {
 
 		PlayingCard result = null;
 		Random random = new Random();
-		ArrayList<PlayingCard> buben = cardsOfRank(hand, PlayingCard.Rank.UNDER_KNAVE);
-		ArrayList<PlayingCard> asse = cardsOfRank(hand, PlayingCard.Rank.DAUS);
-		ArrayList<PlayingCard> zehnen = cardsOfRank(hand, PlayingCard.Rank.TEN);
+		ArrayList<PlayingCard> underKnave = cardsOfRank(hand, PlayingCard.Rank.UNDER_KNAVE);
+		ArrayList<PlayingCard> daus = cardsOfRank(hand, PlayingCard.Rank.DAUS);
+		ArrayList<PlayingCard> ten = cardsOfRank(hand, PlayingCard.Rank.TEN);
 
-		if (buben.size() > 2) {
+		if (underKnave.size() > 2) {
 
-			result = buben.get(random.nextInt(buben.size()));
+			result = underKnave.get(random.nextInt(underKnave.size()));
 		}
 
-		else if (buben.size() == 2) {
+		else if (underKnave.size() == 2) {
 
-			result = playUnderKnave(playedCards, buben, random);
+			result = playUnderKnave(playedCards, underKnave, random);
 
 		}
 
-		else if (!asse.isEmpty()) {
+		else if (!daus.isEmpty()) {
 
-			for (PlayingCard card : asse) {
+			for (PlayingCard card : daus) {
 
 				if (cardsOfSuit(startHand, card.getSuit()).size() <= 4) {
 
-					result = asse.get(random.nextInt(asse.size()));
+					result = daus.get(random.nextInt(daus.size()));
 					break;
 
 				}
@@ -722,18 +722,9 @@ public class SmartPlayer extends Player {
 
 		}
 
-		else if (!zehnen.isEmpty()) {
+		else if (!ten.isEmpty()) {
 
-			for (PlayingCard card : zehnen) {
-
-				// if (cardsOfSuit(anfangsBlatt,
-				// karte.getFarbe()).size() <= 4
-				// && alleGespielteKarten.contains(nextHigherCard(
-				// karte.getFarbe(), karte))) {
-				//
-				// ergebnis = zehnen.get(zufall.nextInt(zehnen.size()));
-				// break;
-				// }
+			for (PlayingCard card : ten) {
 
 				boolean isContained = false;
 				PlayingCard higherCard = nextHigherCard(card.getSuit(),
@@ -748,7 +739,7 @@ public class SmartPlayer extends Player {
 				if (cardsOfSuit(startHand, card.getSuit()).size() <= 4
 						&& isContained) {
 
-					result = zehnen.get(random.nextInt(zehnen.size()));
+					result = ten.get(random.nextInt(ten.size()));
 					break;
 				}
 			}
@@ -925,26 +916,6 @@ public class SmartPlayer extends Player {
 
 		return result;
 	}
-
-	// /**
-	// * Diese Methode
-	// * @param karte
-	// * @return
-	// */
-	// public ArrayList<Spielkarte>
-	// rauskommenGegnerMoeglicheSpielbareKarten(ArrayList<Spielkarte> blatt) {
-	//		
-	// ArrayList<Spielkarte> ergebnis = null;
-	// Spielkarte[] zuSpielendeKarte = new Spielkarte[3];
-	//		
-	// for (Spielkarte karte : blatt) {
-	//			
-	// zuSpielendeKarte[0] = karte;
-	// ergebnis.addAll(possiblePlayableAdversaryCards(zuSpielendeKarte));
-	// }
-	//		
-	// return ergebnis;
-	// }
 
 	/**
 	 * Diese Methode bestimmt aus den Karten, die beide Gegener zusammen haben,
