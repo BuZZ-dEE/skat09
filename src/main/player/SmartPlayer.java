@@ -1654,26 +1654,26 @@ public class SmartPlayer extends Player {
 	/**
 	 * Ermittelt den maxReizwert, sofern ein Farbspiel gespielt wird.
 	 * 
-	 * @param ermittelteSpitzen
+	 * @param determinedMatadorsJackStrait
 	 *            - Spitzen des Spielers
 	 */
-	public void maxBiddingValueSuit(int ermittelteSpitzen) {
+	public void maxBiddingValueSuit(int determinedMatadorsJackStrait) {
 
 		PlayingCard.Suit suit = determineTrumpSuit();
 
-		maxBiddingValue = (ermittelteSpitzen + 1) * suit.value();
+		maxBiddingValue = (determinedMatadorsJackStrait + 1) * suit.value();
 	}
 
 	/**
 	 * Berechnet den maxReizwert des Spielers, sofern ein Grandspiel gemacht
 	 * wird.
 	 * 
-	 * @param ermittelteSpitzen
+	 * @param determinedMatadorsJackStrait
 	 *            - die Spitzen des Spielers
 	 */
-	public void maxBiddingValueGrand(int ermittelteSpitzen) {
+	public void maxBiddingValueGrand(int determinedMatadorsJackStrait) {
 
-		maxBiddingValue = (ermittelteSpitzen + 1) * 24;
+		maxBiddingValue = (determinedMatadorsJackStrait + 1) * 24;
 	}
 
 	/**
