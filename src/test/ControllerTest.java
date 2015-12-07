@@ -70,7 +70,7 @@ public class ControllerTest {
 	@Test
 	public void logInTest() {
 		
-		OutputStub stubbie = new OutputStub(null,null,null);
+		OutputStub stubbie = new OutputStub(null, null, null);
 		Controller controller2 = new Controller(table, stubbie);
 		controller2.logIn();
 		assertEquals("Knut",controller2.getOutput().name());
@@ -79,8 +79,8 @@ public class ControllerTest {
 	@Test
 	public void selectAdversaryTest1(){
 		
-		OutputStub gegner1 = new OutputStub("o",null,null);
-		Controller controller = new Controller(table,gegner1);
+		OutputStub adversary1 = new OutputStub("o", null, null);
+		Controller controller = new Controller(table, adversary1);
 		controller.selectAdversary();
 		
 		IPlayer player = new Granny("Oma Karla");
@@ -98,8 +98,8 @@ public class ControllerTest {
 	@Test
 	public void selectAdversaryTest2(){
 		
-		OutputStub adversry1 = new OutputStub("o",null,null);
-		Controller controller = new Controller(table,adversry1);
+		OutputStub adversry1 = new OutputStub("o", null, null);
+		Controller controller = new Controller(table, adversry1);
 		controller.selectAdversary();
 		
 		IPlayer player = new Granny("Oma Berta");
@@ -117,8 +117,8 @@ public class ControllerTest {
 	@Test
 	public void selectAdversaryTest3(){
 		
-		OutputStub adversary1 = new OutputStub("r",null,null);
-		Controller controller = new Controller(table,adversary1);
+		OutputStub adversary1 = new OutputStub("r", null, null);
+		Controller controller = new Controller(table, adversary1);
 		controller.selectAdversary();
 		
 		IPlayer player = new RuleCompliantPlayer("Hans");
@@ -136,8 +136,8 @@ public class ControllerTest {
 	@Test
 	public void selectAdversaryTest4(){
 		
-		OutputStub adversary1 = new OutputStub("r",null,null);
-		Controller controller = new Controller(table,adversary1);
+		OutputStub adversary1 = new OutputStub("r", null, null);
+		Controller controller = new Controller(table, adversary1);
 		controller.selectAdversary();
 		
 		IPlayer player = new RuleCompliantPlayer("Franz");
@@ -155,8 +155,8 @@ public class ControllerTest {
 	@Test
 	public void selectAdversaryTest5(){
 		
-		OutputStub adversary1 = new OutputStub("s",null,null);
-		Controller controller = new Controller(table,adversary1);
+		OutputStub adversary1 = new OutputStub("s", null, null);
+		Controller controller = new Controller(table, adversary1);
 		controller.selectAdversary();
 		
 		IPlayer player = new SmartPlayer("Heinz");
@@ -174,8 +174,8 @@ public class ControllerTest {
 	@Test
 	public void selectAdversaryTest6(){
 		
-		OutputStub adversary1 = new OutputStub("s",null,null);
-		Controller controller = new Controller(table,adversary1);
+		OutputStub adversary1 = new OutputStub("s", null, null);
+		Controller controller = new Controller(table, adversary1);
 		controller.selectAdversary();
 		
 		IPlayer player = new SmartPlayer("Wolfgang");
@@ -193,8 +193,8 @@ public class ControllerTest {
 	@Test
 	public void chooseSkatVariantTest1() {
 		
-		OutputStub skat1 = new OutputStub(null,"r",null);
-		Controller controller = new Controller(table,skat1);
+		OutputStub skat1 = new OutputStub(null, "r", null);
+		Controller controller = new Controller(table, skat1);
 		controller.chooseSkatVariant();
 		SkatVariant variant = SkatVariant.RAEUBER;
 		assertEquals(variant,controller.getTable().getVariant());
@@ -203,8 +203,8 @@ public class ControllerTest {
 	@Test
 	public void chooseSkatVariantTest2() {
 		
-		OutputStub skat1 = new OutputStub(null,"i",null);
-		Controller controller = new Controller(table,skat1);
+		OutputStub skat1 = new OutputStub(null, "i", null);
+		Controller controller = new Controller(table, skat1);
 		controller.chooseSkatVariant();
 		SkatVariant variant = SkatVariant.SKAT;
 		assertEquals(variant,controller.getTable().getVariant());
@@ -213,8 +213,8 @@ public class ControllerTest {
 	@Test
 	public void chooseSkatVariantTest3() {
 		
-		OutputStub skat1 = new OutputStub(null,"b",null);
-		Controller controller = new Controller(table,skat1);
+		OutputStub skat1 = new OutputStub(null, "b", null);
+		Controller controller = new Controller(table, skat1);
 		controller.chooseSkatVariant();
 		SkatVariant variant = SkatVariant.RAMSCHBOCK;
 		assertEquals(variant,controller.getTable().getVariant());
@@ -223,8 +223,8 @@ public class ControllerTest {
 	@Test
 	public void selectSkatDeckTest1() {
 		
-		OutputStub selection1 = new OutputStub(null,null,"f");
-		Controller controller = new Controller(table,selection1);
+		OutputStub selection1 = new OutputStub(null, null, "f");
+		Controller controller = new Controller(table, selection1);
 		controller.selectSkatDeck();
 		assertFalse(PlayingCard.isGermanDeck());
 		}
@@ -233,8 +233,8 @@ public class ControllerTest {
 	@Ignore
 	public void selectSkatDeckTest2() {
 		// FIXME failing test
-		OutputStub selection1 = new OutputStub(null,null,"d");
-		Controller controller = new Controller(table,selection1);
+		OutputStub selection1 = new OutputStub(null, null, "d");
+		Controller controller = new Controller(table, selection1);
 		controller.selectSkatDeck();
 		assertTrue(PlayingCard.isGermanDeck());
 		}
@@ -362,90 +362,90 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void reizen1Test1() {
+	public void bidding1Test1() {
 		
-		IPlayer spieler1 = new Granny("Hannelore");
-		IPlayer spieler2 = new Granny("Friedel");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
+		IPlayer player1 = new Granny("Hannelore");
+		IPlayer player2 = new Granny("Friedel");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
 		
-		assertEquals(spieler1.getName(), controller.bidding1(spieler1, spieler2).getName());
+		assertEquals(player1.getName(), controller.bidding1(player1, player2).getName());
 	}
 	
 	@Test
-	public void reizen1Test2() {
+	public void bidding1Test2() {
 		
-		IPlayer spieler1 = new Granny("Hannelore");
-		IPlayer spieler2 = new RuleCompliantPlayer("Friedel");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
+		IPlayer player1 = new Granny("Hannelore");
+		IPlayer player2 = new RuleCompliantPlayer("Friedel");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
 		
-		assertEquals(spieler2.getName(), controller.bidding1(spieler1, spieler2).getName());
+		assertEquals(player2.getName(), controller.bidding1(player1, player2).getName());
 	}
 	
 	
 	@Test
-	public void reizen2Test1() {
+	public void bidding2Test1() {
 		
-		IPlayer spieler1 = new Granny("Hannelore");
-		IPlayer spieler2 = new Granny("Friedel");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
+		IPlayer player1 = new Granny("Hannelore");
+		IPlayer player2 = new Granny("Friedel");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
 		
-		assertEquals(null, controller.bidding2(spieler1, spieler2));
-	}
-	
-	@Test
-	@Ignore
-	public void reizen2Test2() {
-		
-		IPlayer spieler1 = new HumanPlayerStub("Hannelore");
-		IPlayer spieler2 = new HumanPlayerStub2("Friedel");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		// FIXME if returned player is null
-		assertEquals(spieler1, controller.bidding2(spieler1, spieler2));
+		assertEquals(null, controller.bidding2(player1, player2));
 	}
 	
 	@Test
 	@Ignore
-	public void reizen2Test3() {
+	public void bidding2Test2() {
 		
-		IPlayer spieler1 = new HumanPlayerStub2("Hannelore");
-		IPlayer spieler2 = new HumanPlayerStub("Friedel");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
+		IPlayer player1 = new HumanPlayerStub("Hannelore");
+		IPlayer player2 = new HumanPlayerStub2("Friedel");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
 		// FIXME if returned player is null
-		assertEquals(spieler2, controller.bidding2(spieler1, spieler2));
+		assertEquals(player1, controller.bidding2(player1, player2));
 	}
 	
 	@Test
 	@Ignore
-	public void reizen2Test4() {
+	public void bidding2Test3() {
 		
-		IPlayer spieler1 = new HumanPlayerStub2("Hannelore");
-		IPlayer spieler2 = new Granny("Friedel");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
+		IPlayer player1 = new HumanPlayerStub2("Hannelore");
+		IPlayer player2 = new HumanPlayerStub("Friedel");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
 		// FIXME if returned player is null
-		assertEquals(spieler1, controller.bidding2(spieler1, spieler2));
+		assertEquals(player2, controller.bidding2(player1, player2));
 	}
 	
 	@Test
 	@Ignore
-	public void reizen2Test5() {
+	public void bidding2Test4() {
 		
-		IPlayer spieler1 = new Granny("Hannelore");
-		IPlayer spieler2 = new HumanPlayerStub2("Friedel");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
+		IPlayer player1 = new HumanPlayerStub2("Hannelore");
+		IPlayer player2 = new Granny("Friedel");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
 		// FIXME if returned player is null
-		assertEquals(spieler2, controller.bidding2(spieler1, spieler2));
+		assertEquals(player1, controller.bidding2(player1, player2));
+	}
+	
+	@Test
+	@Ignore
+	public void bidding2Test5() {
+		
+		IPlayer player1 = new Granny("Hannelore");
+		IPlayer player2 = new HumanPlayerStub2("Friedel");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		// FIXME if returned player is null
+		assertEquals(player2, controller.bidding2(player1, player2));
 	}
 	
 	
 	@Test
-	public void entscheideRauberspielTest() {
+	public void decideRaeuberGameTest() {
 		
 		
 		table.setPlayer1(new Granny("Hildegard"));
@@ -461,60 +461,60 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void bereiteSpielvorTest() {
+	public void prepareGameTest() {
 		
 		table.setPlayer1(new HumanPlayer("Hildegard", controller));
-		SmartPlayer sspieler = new SmartPlayer("Gräfin Johanita von Schwanenstein");
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
-		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
-		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
-		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
-		sspieler.setHand(blatt);
-		sspieler.setStartHand(blatt);
-		table.setPlayer2(sspieler);
+		SmartPlayer smartPlayer = new SmartPlayer("Gräfin Johanita von Schwanenstein");
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
+		smartPlayer.setHand(hand);
+		smartPlayer.setStartHand(hand);
+		table.setPlayer2(smartPlayer);
 		table.setPlayer3(new Granny("Zensursula"));
 		
 		Controller controller = new Controller(table, output);
 		
 		controller.prepareGame();
-			boolean hatnamen = true;
-		for (PlayingCard karte : table.getPlayer1().getHand()) {
-			if (karte.getOwner() == null) {
-				hatnamen = false;
+			boolean hasNames = true;
+		for (PlayingCard card : table.getPlayer1().getHand()) {
+			if (card.getOwner() == null) {
+				hasNames = false;
 			}
 				}
-		for (PlayingCard karte : table.getPlayer2().getHand()) {
-			if (karte.getOwner() == null) {
-				hatnamen = false;
+		for (PlayingCard card : table.getPlayer2().getHand()) {
+			if (card.getOwner() == null) {
+				hasNames = false;
 			}
 				}
-		for (PlayingCard karte : table.getPlayer3().getHand()) {
-			if (karte.getOwner() == null) {
-				hatnamen = false;
+		for (PlayingCard card : table.getPlayer3().getHand()) {
+			if (card.getOwner() == null) {
+				hasNames = false;
 			}
 				}
-		assertTrue(hatnamen);
+		assertTrue(hasNames);
 	}
 	
 	@Test
 	@Ignore
 	public void alleinspielerAktionenTest() {
 		
-		Table tisch2 = new Table();
-		OutputStub ausgabe2 = new OutputStub(null, null, null);
-		Controller controller2 = new Controller(tisch2, ausgabe2);
-		HumanPlayerStub mensch = new HumanPlayerStub("Bernd");
-		mensch.setIsDeclarer(true);
-		mensch.setHand(new ArrayList<PlayingCard>());
+		Table table2 = new Table();
+		OutputStub output2 = new OutputStub(null, null, null);
+		Controller controller2 = new Controller(table2, output2);
+		HumanPlayerStub human = new HumanPlayerStub("Bernd");
+		human.setIsDeclarer(true);
+		human.setHand(new ArrayList<PlayingCard>());
 		for (int i = 0; i < 10; i++) {
-			mensch.getHand().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
+			human.getHand().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		}
-		controller2.getTable().setPlayer1(mensch);
-		Player spieler2 = new Granny("Basti");
-		Player spieler3 = new Granny("ungluecklich");
-		controller2.getTable().setPlayer2(spieler2);
-		controller2.getTable().setPlayer3(spieler3);
+		controller2.getTable().setPlayer1(human);
+		Player player2 = new Granny("Basti");
+		Player player3 = new Granny("ungluecklich");
+		controller2.getTable().setPlayer2(player2);
+		controller2.getTable().setPlayer3(player3);
 		controller2.getTable().setSixSkat(true);
 		PlayingCard[] skat = new PlayingCard[3];
 		skat[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
@@ -525,16 +525,16 @@ public class ControllerTest {
 
 		
 		//handgame pruefen
-		boolean handspiel = false;
+		boolean handGame = false;
 		if (!controller2.getTable().getHandGame()) {
-			handspiel = true;
+			handGame = true;
 		}
 		
 		//spielart pruefen
-		boolean spielart2 = false;
+		boolean gameVariety2 = false;
 		System.out.println(controller2.getTable().getGameVariety().toString());
 		if (controller2.getTable().getGameVariety().toString().equals((new SuitGame(PlayingCard.Suit.BELLS)).toString())) {
-			spielart2 = true;
+			gameVariety2 = true;
 		}
 		
 		try {
@@ -544,12 +544,12 @@ public class ControllerTest {
 			e.printStackTrace();
 		}
 		
-		boolean allesKorrekt = false;
-		if (handspiel && spielart2) {
-			allesKorrekt = true;
+		boolean allCorrect = false;
+		if (handGame && gameVariety2) {
+			allCorrect = true;
 		}
 		
-		assertTrue(allesKorrekt);
+		assertTrue(allCorrect);
 	}
 	
 	@Test
