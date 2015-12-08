@@ -553,66 +553,66 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void auswertungTest() {
+	public void evaluationTest() {
 		
-		OutputStub ausgabe = new OutputStub(null, null, null);
-		Table tisch2 = new Table();
-		Controller controller = new Controller(tisch2, ausgabe);
+		OutputStub output = new OutputStub(null, null, null);
+		Table table2 = new Table();
+		Controller controller = new Controller(table2, output);
 		
-		IPlayer spieler1 = new Granny("Erna");
-		IPlayer spieler2 = new Granny("Roy");
-		IPlayer spieler3 = new Granny("Marry");
+		IPlayer player1 = new Granny("Erna");
+		IPlayer player2 = new Granny("Roy");
+		IPlayer player3 = new Granny("Marry");
 		
-		spieler1.setIsDeclarer(true);
+		player1.setIsDeclarer(true);
 		
-		ArrayList<PlayingCard> blatt1 = new ArrayList<PlayingCard>(); 
-		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
-		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
-		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN));
-		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE));
-		blatt1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
-		blatt1.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
-		blatt1.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
-		blatt1.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS));
-		blatt1.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
-		spieler1.setTricks(blatt1);
-		spieler1.setHand(blatt1);
-		spieler1.setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
-		spieler1.arrangeMatadorsJackStraitOrder();
+		ArrayList<PlayingCard> hand1 = new ArrayList<PlayingCard>();
+		hand1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
+		hand1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
+		hand1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN));
+		hand1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE));
+		hand1.add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
+		hand1.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
+		hand1.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
+		hand1.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS));
+		hand1.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
+		player1.setTricks(hand1);
+		player1.setHand(hand1);
+		player1.setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
+		player1.arrangeMatadorsJackStraitOrder();
 		
-		ArrayList<PlayingCard> blatt2 = new ArrayList<PlayingCard>(); 
-		blatt2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE));
-		blatt2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
-		blatt2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
-		blatt2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE));
-		spieler2.setTricks(blatt2);
+		ArrayList<PlayingCard> hand2 = new ArrayList<PlayingCard>();
+		hand2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.NINE));
+		hand2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SIX));
+		hand2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
+		hand2.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE));
+		player2.setTricks(hand2);
 		
-		ArrayList<PlayingCard> blatt3 = new ArrayList<PlayingCard>(); 
-		blatt3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
-		blatt3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
-		blatt3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
-		blatt3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN));
-		spieler3.setTricks(blatt3);
+		ArrayList<PlayingCard> hand3 = new ArrayList<PlayingCard>();
+		hand3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
+		hand3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
+		hand3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
+		hand3.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN));
+		player3.setTricks(hand3);
 		
-		tisch2.setPlayer1(spieler1);
-		tisch2.setPlayer2(spieler2);
-		tisch2.setPlayer3(spieler3);
-		tisch2.setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
+		table2.setPlayer1(player1);
+		table2.setPlayer2(player2);
+		table2.setPlayer3(player3);
+		table2.setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
 		
 		controller.evaluation();
 		
-		OutputStub ausgabe2 = (OutputStub) controller.getOutput();
-		assertEquals(24, ausgabe2.getPoints());
+		OutputStub output2 = (OutputStub) controller.getOutput();
+		assertEquals(24, output2.getPoints());
 		
 	}
 	
 	@Test
-	public void aufrauemenTest() {
+	public void cleanUpTest() {
 		
 		
-		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
-		controller.getTable().setSkat(skatkarten);
+		PlayingCard[] skatCards = new PlayingCard[3];
+		skatCards[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
+		controller.getTable().setSkat(skatCards);
 		controller.getTable().setBiddingAgentValue(120);
 		controller.getTable().setBiddingValue(23);
 		controller.getTable().setBock(true);
@@ -625,42 +625,42 @@ public class ControllerTest {
 		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
 		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 	
-		Player spieler1 = new Granny("Joy");
-		spieler1.setHand(blatt);
-		spieler1.setGameVariety(new GrandGame());
-		spieler1.setIsDeclarer(true);
-		Player spieler2 = new RuleCompliantPlayer("Leon");
-		spieler2.setHand(blatt);
-		spieler2.setTricks(blatt);
-		Player spieler3 = new RuleCompliantPlayer("John Wayne");
-		spieler3.setHand(blatt);
-		spieler3.setAllPlayedCards(blatt);
+		Player player1 = new Granny("Joy");
+		player1.setHand(blatt);
+		player1.setGameVariety(new GrandGame());
+		player1.setIsDeclarer(true);
+		Player player2 = new RuleCompliantPlayer("Leon");
+		player2.setHand(blatt);
+		player2.setTricks(blatt);
+		Player player3 = new RuleCompliantPlayer("John Wayne");
+		player3.setHand(blatt);
+		player3.setAllPlayedCards(blatt);
 		
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		controller.getTable().setPlayer3(spieler3);
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		controller.getTable().setPlayer3(player3);
 		
 		controller.cleanUp();
 		
-		Table tisch3 = controller.getTable();
+		Table table3 = controller.getTable();
 				
-		boolean spieler3Aufgeraeumt = false;
+		boolean isPlayer3CleanedUp = false;
 
-		IPlayer sp3 = controller.getTable().getPlayer3();
-		if (sp3.getHand() == null && sp3.isDeclarer() == false &&
-				sp3.getTricks().size() == 0 && sp3.getAllPlayedCards().size() == 0) {
-			spieler3Aufgeraeumt = true;
+		IPlayer pl3 = controller.getTable().getPlayer3();
+		if (pl3.getHand() == null && pl3.isDeclarer() == false &&
+				pl3.getTricks().size() == 0 && pl3.getAllPlayedCards().size() == 0) {
+			isPlayer3CleanedUp = true;
 		}
 		
-		assertTrue(spieler3Aufgeraeumt);
+		assertTrue(isPlayer3CleanedUp);
 	}
 	
 	@Test
-	public void aufraeumenTest2() {
+	public void cleanUpTest2() {
 		
-		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
-		controller.getTable().setSkat(skatkarten);
+		PlayingCard[] skatCards = new PlayingCard[3];
+		skatCards[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
+		controller.getTable().setSkat(skatCards);
 		controller.getTable().setBiddingAgentValue(120);
 		controller.getTable().setBiddingValue(23);
 		controller.getTable().setBock(true);
@@ -668,46 +668,46 @@ public class ControllerTest {
 		controller.getTable().setSpaltarsch(true);
 		controller.getTable().setBockRounds(0);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 	
-		Player spieler1 = new Granny("Joy");
-		spieler1.setHand(blatt);
-		spieler1.setGameVariety(new GrandGame());
-		spieler1.setIsDeclarer(true);
-		Player spieler2 = new RuleCompliantPlayer("Leon");
-		spieler2.setHand(blatt);
-		spieler2.setTricks(blatt);
-		Player spieler3 = new RuleCompliantPlayer("John Wayne");
-		spieler3.setHand(blatt);
-		spieler3.setAllPlayedCards(blatt);
+		Player player1 = new Granny("Joy");
+		player1.setHand(hand);
+		player1.setGameVariety(new GrandGame());
+		player1.setIsDeclarer(true);
+		Player player2 = new RuleCompliantPlayer("Leon");
+		player2.setHand(hand);
+		player2.setTricks(hand);
+		Player player3 = new RuleCompliantPlayer("John Wayne");
+		player3.setHand(hand);
+		player3.setAllPlayedCards(hand);
 		
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		controller.getTable().setPlayer3(spieler3);
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		controller.getTable().setPlayer3(player3);
 		
 		controller.cleanUp();
 		
-		Table tisch3 = controller.getTable();
+		Table table3 = controller.getTable();
 		
-		boolean tischAufgeraeumt = false;
+		boolean isTableCleanedUp = false;
 		
-		if (tisch3.getSkat()[0] == null && tisch3.getBiddingAgentValue() == 0 && tisch3.getBiddingValue() == 18 &&
-				tisch3.getBock() == false && tisch3.getSpaltarsch() == false) {
-			tischAufgeraeumt = true;
+		if (table3.getSkat()[0] == null && table3.getBiddingAgentValue() == 0 && table3.getBiddingValue() == 18 &&
+				table3.getBock() == false && table3.getSpaltarsch() == false) {
+			isTableCleanedUp = true;
 		}
 		
-		assertTrue(tischAufgeraeumt);
+		assertTrue(isTableCleanedUp);
 	}
 	
 	@Test
-	public void aufraeumenTest3() {
+	public void cleanUpTest3() {
 		
-		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
-		controller.getTable().setSkat(skatkarten);
+		PlayingCard[] skatCards = new PlayingCard[3];
+		skatCards[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
+		controller.getTable().setSkat(skatCards);
 		controller.getTable().setBiddingAgentValue(120);
 		controller.getTable().setBiddingValue(23);
 		controller.getTable().setBock(true);
@@ -715,47 +715,47 @@ public class ControllerTest {
 		controller.getTable().setSpaltarsch(true);
 		controller.getTable().setBockRounds(0);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 	
-		Player spieler1 = new Granny("Joy");
-		spieler1.setHand(blatt);
-		spieler1.setGameVariety(new GrandGame());
-		spieler1.setIsDeclarer(true);
-		Player spieler2 = new RuleCompliantPlayer("Leon");
-		spieler2.setHand(blatt);
-		spieler2.setTricks(blatt);
-		Player spieler3 = new RuleCompliantPlayer("John Wayne");
-		spieler3.setHand(blatt);
-		spieler3.setAllPlayedCards(blatt);
+		Player player1 = new Granny("Joy");
+		player1.setHand(hand);
+		player1.setGameVariety(new GrandGame());
+		player1.setIsDeclarer(true);
+		Player player2 = new RuleCompliantPlayer("Leon");
+		player2.setHand(hand);
+		player2.setTricks(hand);
+		Player player3 = new RuleCompliantPlayer("John Wayne");
+		player3.setHand(hand);
+		player3.setAllPlayedCards(hand);
 		
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		controller.getTable().setPlayer3(spieler3);
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		controller.getTable().setPlayer3(player3);
 		
 		controller.cleanUp();
 		
-		Table tisch3 = controller.getTable();
+		Table table3 = controller.getTable();
 		
-		boolean spieler1Aufgeraeumt = false;
+		boolean isPlayer1CleanedUp = false;
 		
 		IPlayer sp1 = controller.getTable().getPlayer1();
 		if (sp1.getHand() == null && !sp1.isDeclarer() &&
 				sp1.getTricks().size() == 0 && sp1.getAllPlayedCards().size() == 0) {
-			spieler1Aufgeraeumt = true;
+			isPlayer1CleanedUp = true;
 		}
 		
-		assertTrue(spieler1Aufgeraeumt);
+		assertTrue(isPlayer1CleanedUp);
 	}
 	
 	@Test
-	public void aufraeumen4Test() {
+	public void cleanUpTest4() {
 	
-		PlayingCard[] skatkarten = new PlayingCard[3];
-		skatkarten[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
-		controller.getTable().setSkat(skatkarten);
+		PlayingCard[] skatCards = new PlayingCard[3];
+		skatCards[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
+		controller.getTable().setSkat(skatCards);
 		controller.getTable().setBiddingAgentValue(120);
 		controller.getTable().setBiddingValue(23);
 		controller.getTable().setBock(true);
@@ -763,39 +763,39 @@ public class ControllerTest {
 		controller.getTable().setSpaltarsch(true);
 		controller.getTable().setBockRounds(0);
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SIX));
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE));
 	
-		Player spieler1 = new Granny("Joy");
-		spieler1.setHand(blatt);
-		spieler1.setGameVariety(new GrandGame());
-		spieler1.setIsDeclarer(true);
-		Player spieler2 = new RuleCompliantPlayer("Leon");
-		spieler2.setHand(blatt);
-		spieler2.setTricks(blatt);
-		Player spieler3 = new RuleCompliantPlayer("John Wayne");
-		spieler3.setHand(blatt);
-		spieler3.setAllPlayedCards(blatt);
+		Player player1 = new Granny("Joy");
+		player1.setHand(hand);
+		player1.setGameVariety(new GrandGame());
+		player1.setIsDeclarer(true);
+		Player player2 = new RuleCompliantPlayer("Leon");
+		player2.setHand(hand);
+		player2.setTricks(hand);
+		Player player3 = new RuleCompliantPlayer("John Wayne");
+		player3.setHand(hand);
+		player3.setAllPlayedCards(hand);
 		
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		controller.getTable().setPlayer3(spieler3);
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		controller.getTable().setPlayer3(player3);
 		
 		controller.cleanUp();
 		
-		Table tisch3 = controller.getTable();
+		Table table3 = controller.getTable();
 		
-		boolean spieler2Aufgeraeumt = false;
+		boolean isPlayer2CleanedUp = false;
 		
 		IPlayer sp2 = controller.getTable().getPlayer2();
 		if (sp2.getHand() == null && sp2.isDeclarer() == false &&
 				sp2.getTricks().size() == 0 && sp2.getAllPlayedCards().size() == 0) {
-			spieler2Aufgeraeumt = true;
+			isPlayer2CleanedUp = true;
 		}
 		
-		assertTrue(spieler2Aufgeraeumt);
+		assertTrue(isPlayer2CleanedUp);
 	}
 	
 	@Test
