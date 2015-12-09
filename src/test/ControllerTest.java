@@ -799,30 +799,30 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void stichAuswertungTest() {
+	public void trickEvaluationTest() {
 		
-		Table tisch2 = new Table();
-		OutputStub ausgabe2 = new OutputStub(null, null, null);
-		Controller controller2 = new Controller(tisch2, ausgabe2);
+		Table table2 = new Table();
+		OutputStub output2 = new OutputStub(null, null, null);
+		Controller controller2 = new Controller(table2, output2);
 		
-		Player gewinner = new Granny("Gustav Gans");
+		Player winner = new Granny("Gustav Gans");
 		Player s2 = new Granny("Benny");
 		Player s3 = new Granny("Daniel");
-		PlayingCard[] gespielteKarten = new PlayingCard[3];
+		PlayingCard[] playedCards = new PlayingCard[3];
 		PlayingCard k1 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE);
 		PlayingCard k2 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS);
 		PlayingCard k3 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
-		k1.setOwner(gewinner);
+		k1.setOwner(winner);
 		k2.setOwner(s2);
 		k3.setOwner(s3);
-		gespielteKarten[0] = k1;
-		gespielteKarten[1] = k2;
-		gespielteKarten[2] = k3;
+		playedCards[0] = k1;
+		playedCards[1] = k2;
+		playedCards[2] = k3;
 		
-		controller2.outputTrickEvaluation(gespielteKarten, gewinner);
+		controller2.outputTrickEvaluation(playedCards, winner);
 		
-		OutputStub ausgabe = (OutputStub) controller2.getOutput();
-		assertEquals(3, ausgabe.getPlayedCardsCount());
+		OutputStub output = (OutputStub) controller2.getOutput();
+		assertEquals(3, output.getPlayedCardsCount());
 		
 		
 	}
