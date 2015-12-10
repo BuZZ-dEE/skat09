@@ -828,28 +828,28 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void reizagentTest() {
+	public void bidAgentTest() {
 		
-		Player spieler = new Granny("Tini");
+		Player player = new Granny("Tini");
 		table.setBiddingValue(23);
 		table.setBiddingAgentValue(30);
-		assertTrue(controller.bidAgent(spieler));
+		assertTrue(controller.bidAgent(player));
 	}
 	
 	@Test
-	public void reizagentTest2() {
+	public void bidAgentTest2() {
 		
-		Player spieler = new Granny("Tini");
+		Player player = new Granny("Tini");
 		table.setBiddingValue(30);
 		table.setBiddingAgentValue(23);
-		assertFalse(controller.bidAgent(spieler));
+		assertFalse(controller.bidAgent(player));
 	}
 	
 	@Test
 	public void skartkartenBesitzerGebenTest() {
 		
-		IPlayer oma = new Granny("o1");
-		controller.getTable().setPlayer1(oma);
+		IPlayer granny = new Granny("o1");
+		controller.getTable().setPlayer1(granny);
 		controller.getTable().getPlayer1().setIsDeclarer(true);
 		controller.getTable().setPlayer2(new Granny("o2"));
 		controller.getTable().setPlayer3(new Granny("o3"));
@@ -861,17 +861,17 @@ public class ControllerTest {
 		controller.assignSkatCardsToOwner();
 		
 		PlayingCard[] skat = controller.getTable().getSkat();
-		boolean initErfolgreich = false;
-		if(skat[0].getOwner().equals(oma) && skat[1].getOwner().equals(oma) && 
-				skat[2].getOwner().equals(oma)) {
+		boolean success = false;
+		if(skat[0].getOwner().equals(granny) && skat[1].getOwner().equals(granny) &&
+				skat[2].getOwner().equals(granny)) {
 
-			initErfolgreich = true;
+			success = true;
 		}
-		assertTrue(initErfolgreich);
+		assertTrue(success);
 	}
 	
 	@Test
-	public void flagsSetzenTest1() {
+	public void setFlagsTest1() {
 		
 		table.setPlayer1(new Granny("Erna"));
 		table.getPlayer1().setIsDeclarer(true);
@@ -880,15 +880,15 @@ public class ControllerTest {
 		table.setGameVariety(new NullGame());
 		controller.setFlags(table.getPlayer1(), table.getGameVariety());
 		
-		boolean ergebnis = false;
+		boolean result = false;
 		if (table.getSchneider() && table.getSchwarz()) {
-			ergebnis = true;
+			result = true;
 		}
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void flagsSetzenTest2() {
+	public void setFlagsTest2() {
 		
 		table.setPlayer1(new Granny("Erna"));
 		table.getPlayer1().setIsDeclarer(true);
@@ -898,15 +898,15 @@ public class ControllerTest {
 		table.setHandGame(false);
 		controller.setFlags(table.getPlayer1(), table.getGameVariety());
 		
-		boolean ergebnis = false;
+		boolean result = false;
 		if (table.getSchneider() && table.getSchwarz()) {
-			ergebnis = true;
+			result = true;
 		}
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void flagsSetzenTest3() {
+	public void setFlagsTest3() {
 		
 		table.setPlayer1(new Granny("Erna"));
 		table.getPlayer1().setIsDeclarer(true);
@@ -915,15 +915,15 @@ public class ControllerTest {
 		table.setGameVariety(new GrandGame());
 		controller.setFlags(table.getPlayer1(), table.getGameVariety());
 		
-		boolean ergebnis = false;
+		boolean result = false;
 		if (!table.getSchneider() && !table.getSchwarz() && !table.getOuvert()) {
-			ergebnis = true;
+			result = true;
 		}
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
-	public void flagsSetzenTest4() {
+	public void setFlagsTest4() {
 		
 		table.setPlayer1(new HumanPlayerStub("Bert"));
 		table.getPlayer1().setIsDeclarer(true);
@@ -933,26 +933,26 @@ public class ControllerTest {
 		table.setHandGame(true);
 		controller.setFlags(table.getPlayer1(), table.getGameVariety());
 		
-		boolean ergebnis = false;
+		boolean result = false;
 		if (table.getSchneider() && table.getSchwarz() && table.getOuvert()) {
-			ergebnis = true;
+			result = true;
 		}
-		assertTrue(ergebnis);
+		assertTrue(result);
 	}
 	
 	@Test
 	public void ramschenTest() {
 		
-		Table tisch2 = new Table();
-		tisch2.setPlayer1(new Granny("Hilde"));
-		tisch2.setPlayer2(new Granny("Heide"));
-		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.initializePositions();
-		tisch2.createDeck();
-		tisch2.dealOutCards();
-		tisch2.giveCardsToOwner();
-		Output ausgabe = new CLIOutput(tisch2);
-		Controller controller2 = new Controller(tisch2, ausgabe);
+		Table table2 = new Table();
+		table2.setPlayer1(new Granny("Hilde"));
+		table2.setPlayer2(new Granny("Heide"));
+		table2.setPlayer3(new Granny("Harald"));
+		table2.initializePositions();
+		table2.createDeck();
+		table2.dealOutCards();
+		table2.giveCardsToOwner();
+		Output output = new CLIOutput(table2);
+		Controller controller2 = new Controller(table2, output);
 		try {
 			controller2.ramschen();
 		} catch (NullPointerException e) {
@@ -966,17 +966,17 @@ public class ControllerTest {
 	@Test
 	public void normalerSpielverlaufTest() {
 		
-		Table tisch2 = new Table();
-		tisch2.setPlayer1(new Granny("Hilde"));
-		tisch2.setPlayer2(new Granny("Heide"));
-		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getPlayer1().setIsDeclarer(true);
-		tisch2.initializePositions();
-		tisch2.createDeck();
-		tisch2.dealOutCards();
-		tisch2.giveCardsToOwner();
-		Output ausgabe = new CLIOutput(tisch2);
-		Controller controller2 = new Controller(tisch2, ausgabe);
+		Table table2 = new Table();
+		table2.setPlayer1(new Granny("Hilde"));
+		table2.setPlayer2(new Granny("Heide"));
+		table2.setPlayer3(new Granny("Harald"));
+		table2.getPlayer1().setIsDeclarer(true);
+		table2.initializePositions();
+		table2.createDeck();
+		table2.dealOutCards();
+		table2.giveCardsToOwner();
+		Output output = new CLIOutput(table2);
+		Controller controller2 = new Controller(table2, output);
 		try {
 			controller2.normalGamePlay();
 		} catch (IOException e) {
@@ -988,17 +988,17 @@ public class ControllerTest {
 	@Test
 	public void spielRaeuberskatTest() {
 		
-		Table tisch2 = new Table();
-		tisch2.setPlayer1(new Granny("Hilde"));
-		tisch2.setPlayer2(new Granny("Heide"));
-		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getPlayer1().setIsDeclarer(true);
-		tisch2.initializePositions();
-		tisch2.createDeck();
-		tisch2.dealOutCards();
-		tisch2.giveCardsToOwner();
-		Output ausgabe = new CLIOutput(tisch2);
-		Controller controller2 = new Controller(tisch2, ausgabe);
+		Table table2 = new Table();
+		table2.setPlayer1(new Granny("Hilde"));
+		table2.setPlayer2(new Granny("Heide"));
+		table2.setPlayer3(new Granny("Harald"));
+		table2.getPlayer1().setIsDeclarer(true);
+		table2.initializePositions();
+		table2.createDeck();
+		table2.dealOutCards();
+		table2.giveCardsToOwner();
+		Output output = new CLIOutput(table2);
+		Controller controller2 = new Controller(table2, output);
 		try {
 			controller2.playRaeuberskat();
 		} catch (IOException e) {
@@ -1010,19 +1010,19 @@ public class ControllerTest {
 	@Test
 	public void spielRamschBockTest() {
 		
-		Table tisch2 = new Table();
-		tisch2.setPlayer1(new Granny("Hilde"));
-		tisch2.setPlayer2(new Granny("Heide"));
-		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getPlayer1().setIsDeclarer(true);
-		tisch2.setSpaltarsch(true);
-		tisch2.setRamschRounds(0);
-		tisch2.initializePositions();
-		tisch2.createDeck();
-		tisch2.dealOutCards();
-		tisch2.giveCardsToOwner();
-		Output ausgabe = new CLIOutput(tisch2);
-		Controller controller2 = new Controller(tisch2, ausgabe);
+		Table table2 = new Table();
+		table2.setPlayer1(new Granny("Hilde"));
+		table2.setPlayer2(new Granny("Heide"));
+		table2.setPlayer3(new Granny("Harald"));
+		table2.getPlayer1().setIsDeclarer(true);
+		table2.setSpaltarsch(true);
+		table2.setRamschRounds(0);
+		table2.initializePositions();
+		table2.createDeck();
+		table2.dealOutCards();
+		table2.giveCardsToOwner();
+		Output output = new CLIOutput(table2);
+		Controller controller2 = new Controller(table2, output);
 		try {
 			controller2.playRamschBock();
 		} catch (IOException e) {
@@ -1034,19 +1034,19 @@ public class ControllerTest {
 	@Test
 	public void spielRamschBockTest2() {
 		
-		Table tisch2 = new Table();
-		tisch2.setPlayer1(new Granny("Hilde"));
-		tisch2.setPlayer2(new Granny("Heide"));
-		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getPlayer1().setIsDeclarer(true);
-		tisch2.setSpaltarsch(true);
-		tisch2.setRamschRounds(1);
-		tisch2.initializePositions();
-		tisch2.createDeck();
-		tisch2.dealOutCards();
-		tisch2.giveCardsToOwner();
-		Output ausgabe = new CLIOutput(tisch2);
-		Controller controller2 = new Controller(tisch2, ausgabe);
+		Table table2 = new Table();
+		table2.setPlayer1(new Granny("Hilde"));
+		table2.setPlayer2(new Granny("Heide"));
+		table2.setPlayer3(new Granny("Harald"));
+		table2.getPlayer1().setIsDeclarer(true);
+		table2.setSpaltarsch(true);
+		table2.setRamschRounds(1);
+		table2.initializePositions();
+		table2.createDeck();
+		table2.dealOutCards();
+		table2.giveCardsToOwner();
+		Output output = new CLIOutput(table2);
+		Controller controller2 = new Controller(table2, output);
 		try {
 			controller2.playRamschBock();
 		} catch (IOException e) {
@@ -1058,17 +1058,17 @@ public class ControllerTest {
 	@Test
 	public void spielRamschBockTest3() {
 		
-		Table tisch2 = new Table();
-		tisch2.setPlayer1(new RuleCompliantPlayer("Hilde"));
-		tisch2.setPlayer2(new RuleCompliantPlayer("Heide"));
-		tisch2.setPlayer3(new RuleCompliantPlayer("Harald"));
-		tisch2.getPlayer1().setIsDeclarer(true);
-		tisch2.initializePositions();
-		tisch2.createDeck();
-		tisch2.dealOutCards();
-		tisch2.giveCardsToOwner();
-		Output ausgabe = new CLIOutput(tisch2);
-		Controller controller2 = new Controller(tisch2, ausgabe);
+		Table table2 = new Table();
+		table2.setPlayer1(new RuleCompliantPlayer("Hilde"));
+		table2.setPlayer2(new RuleCompliantPlayer("Heide"));
+		table2.setPlayer3(new RuleCompliantPlayer("Harald"));
+		table2.getPlayer1().setIsDeclarer(true);
+		table2.initializePositions();
+		table2.createDeck();
+		table2.dealOutCards();
+		table2.giveCardsToOwner();
+		Output output = new CLIOutput(table2);
+		Controller controller2 = new Controller(table2, output);
 		try {
 			controller2.playRamschBock();
 		} catch (IOException e) {
@@ -1080,17 +1080,17 @@ public class ControllerTest {
 	@Test
 	public void spielIntSkatTest() {
 		
-		Table tisch2 = new Table();
-		tisch2.setPlayer1(new Granny("Hilde"));
-		tisch2.setPlayer2(new Granny("Heide"));
-		tisch2.setPlayer3(new Granny("Harald"));
-		tisch2.getPlayer1().setIsDeclarer(true);
-		tisch2.initializePositions();
-		tisch2.createDeck();
-		tisch2.dealOutCards();
-		tisch2.giveCardsToOwner();
-		Output ausgabe = new CLIOutput(tisch2);
-		Controller controller2 = new Controller(tisch2, ausgabe);
+		Table table2 = new Table();
+		table2.setPlayer1(new Granny("Hilde"));
+		table2.setPlayer2(new Granny("Heide"));
+		table2.setPlayer3(new Granny("Harald"));
+		table2.getPlayer1().setIsDeclarer(true);
+		table2.initializePositions();
+		table2.createDeck();
+		table2.dealOutCards();
+		table2.giveCardsToOwner();
+		Output output = new CLIOutput(table2);
+		Controller controller2 = new Controller(table2, output);
 		try {
 			controller2.playIntSkat();
 		} catch (IOException e) {
@@ -1102,17 +1102,17 @@ public class ControllerTest {
 	@Test
 	public void spielIntSkatTest2() {
 		
-		Table tisch2 = new Table();
-		tisch2.setPlayer1(new RuleCompliantPlayer("Hilde"));
-		tisch2.setPlayer2(new RuleCompliantPlayer("Heide"));
-		tisch2.setPlayer3(new RuleCompliantPlayer("Harald"));
-		tisch2.getPlayer1().setIsDeclarer(true);
-		tisch2.initializePositions();
-		tisch2.createDeck();
-		tisch2.dealOutCards();
-		tisch2.giveCardsToOwner();
-		Output ausgabe = new CLIOutput(tisch2);
-		Controller controller2 = new Controller(tisch2, ausgabe);
+		Table table2 = new Table();
+		table2.setPlayer1(new RuleCompliantPlayer("Hilde"));
+		table2.setPlayer2(new RuleCompliantPlayer("Heide"));
+		table2.setPlayer3(new RuleCompliantPlayer("Harald"));
+		table2.getPlayer1().setIsDeclarer(true);
+		table2.initializePositions();
+		table2.createDeck();
+		table2.dealOutCards();
+		table2.giveCardsToOwner();
+		Output output = new CLIOutput(table2);
+		Controller controller2 = new Controller(table2, output);
 		try {
 			controller2.playIntSkat();
 		} catch (IOException e) {
@@ -1124,50 +1124,50 @@ public class ControllerTest {
 	@Test
 	public void schlauerSpielerInitTest() {
 		
-		Player spieler1 = new SmartPlayer("Halo");
-		Player spieler2 = new SmartPlayer("Evin");
-		Player spieler3 = new RuleCompliantPlayer("Bernd");
+		Player player1 = new SmartPlayer("Halo");
+		Player player2 = new SmartPlayer("Evin");
+		Player player3 = new RuleCompliantPlayer("Bernd");
 		
-		ArrayList<PlayingCard> blatt = new ArrayList<PlayingCard>();
-		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN));
-		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
-		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
-		blatt.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
-		blatt.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SEVEN));
-		blatt.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN));
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT));
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.NINE));
+		hand.add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
+		hand.add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.SEVEN));
+		hand.add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
 		
-		spieler1.setHand(blatt);
-		spieler2.setHand(blatt);
-		spieler3.setHand(blatt);
+		player1.setHand(hand);
+		player2.setHand(hand);
+		player3.setHand(hand);
 		
-		spieler1.setIsDeclarer(true);
+		player1.setIsDeclarer(true);
 		
 		PlayingCard[] skat = new PlayingCard[3];
 		skat[0] = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 		skat[1] = new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS);
 		skat[2] = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE);
 		table.setSkat(skat);
-		table.setPlayer1(spieler1);
-		table.setPlayer2(spieler2);
-		table.setPlayer3(spieler3);
+		table.setPlayer1(player1);
+		table.setPlayer2(player2);
+		table.setPlayer3(player3);
 		ArrayList<PlayingCard> skat2 = new ArrayList<PlayingCard>(Arrays.asList(skat));
 		
-		SmartPlayer ergebnis = (SmartPlayer) table.getPlayer1();
+		SmartPlayer result = (SmartPlayer) table.getPlayer1();
 		
 		controller.initializeSmartPlayer();
 		
-		assertEquals(skat2, ergebnis.getSkat());
+		assertEquals(skat2, result.getSkat());
 	}
 	
 	@Test
 	public void namenVergleichTest() {
 		
-		IPlayer spieler1 = new Granny("Gertrud");
-		IPlayer spieler2 = new Granny("Gertrud");
-		IPlayer spieler3 = new Granny("Gertrud");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		controller.getTable().setPlayer3(spieler3);
+		IPlayer player1 = new Granny("Gertrud");
+		IPlayer player2 = new Granny("Gertrud");
+		IPlayer player3 = new Granny("Gertrud");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		controller.getTable().setPlayer3(player3);
 		controller.namesComparison();
 		assertEquals("Gertrud1", controller.getTable().getPlayer1().getName());
 	}
@@ -1175,12 +1175,12 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest2() {
 		
-		IPlayer spieler1 = new Granny("Gertrud");
-		IPlayer spieler2 = new Granny("Gertrud");
-		IPlayer spieler3 = new Granny("Hans");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		controller.getTable().setPlayer3(spieler3);
+		IPlayer player1 = new Granny("Gertrud");
+		IPlayer player2 = new Granny("Gertrud");
+		IPlayer player3 = new Granny("Hans");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		controller.getTable().setPlayer3(player3);
 		controller.namesComparison();
 		assertEquals("Gertrud2", controller.getTable().getPlayer2().getName());
 	}
@@ -1188,12 +1188,12 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest3() {
 		
-		IPlayer spieler1 = new Granny("Gertrud");
-		IPlayer spieler2 = new Granny("Hans");
-		IPlayer spieler3 = new Granny("Gertrud");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		controller.getTable().setPlayer3(spieler3);
+		IPlayer player1 = new Granny("Gertrud");
+		IPlayer player2 = new Granny("Hans");
+		IPlayer player3 = new Granny("Gertrud");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		controller.getTable().setPlayer3(player3);
 		controller.namesComparison();
 		assertEquals("Gertrud2", controller.getTable().getPlayer3().getName());
 	}
@@ -1201,12 +1201,12 @@ public class ControllerTest {
 	@Test
 	public void namenVergleichTest4() {
 		
-		IPlayer spieler1 = new Granny("Hans");
-		IPlayer spieler2 = new Granny("Gertrud");
-		IPlayer spieler3 = new Granny("Gertrud");
-		controller.getTable().setPlayer1(spieler1);
-		controller.getTable().setPlayer2(spieler2);
-		controller.getTable().setPlayer3(spieler3);
+		IPlayer player1 = new Granny("Hans");
+		IPlayer player2 = new Granny("Gertrud");
+		IPlayer player3 = new Granny("Gertrud");
+		controller.getTable().setPlayer1(player1);
+		controller.getTable().setPlayer2(player2);
+		controller.getTable().setPlayer3(player3);
 		controller.namesComparison();
 		assertEquals("Gertrud1", controller.getTable().getPlayer2().getName());
 	}
@@ -1214,18 +1214,18 @@ public class ControllerTest {
 	@Test
 	public void spielbeendenTest() {
 		
-		OutputStub stubbie = new OutputStub(null,null,null);
-		Controller controll = new Controller(table,stubbie);
+		OutputStub outputStub = new OutputStub(null,null,null);
+		Controller controller = new Controller(table,outputStub);
 		
-		assertTrue(controll.quitGame());
+		assertTrue(controller.quitGame());
 	}
 	
 	@Test
 	public void warteTest() {
 		
-		OutputStub stubbie = new OutputStub(null,null,null);
-		Controller controll = new Controller(table,stubbie);
-		controll.waiting();
-		assertTrue(controll.getOutput().getRelease());
+		OutputStub outputStub = new OutputStub(null,null,null);
+		Controller controller = new Controller(table,outputStub);
+		controller.waiting();
+		assertTrue(controller.getOutput().getRelease());
 	}
 }
