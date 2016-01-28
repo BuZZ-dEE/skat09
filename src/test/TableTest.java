@@ -394,7 +394,7 @@ public class TableTest {
 		table.getPlayer1().getGames().add(18);
 		//table.addGameCount();
 		
-		assertEquals(1, table.getAnzahlAllein(player1));
+		assertEquals(1, table.getDeclarerCount(player1));
 	}
 	
 	@Test
@@ -690,7 +690,7 @@ public class TableTest {
 	public void getAktuellePunkteTest() {
 		table.getPlayer1().getGames().clear();
 		table.getPlayer1().getGames().add(18);
-		assertEquals(18, table.getAktuellePunkte(table.getPlayer1()));
+		assertEquals(18, table.getCurrentPoints(table.getPlayer1()));
 	}
 	
 	@Test

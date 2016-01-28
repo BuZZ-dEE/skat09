@@ -1394,7 +1394,7 @@ public class Table extends Observable {
 	 *            - spieler dessen Punkte berechnet werden sollen
 	 * @return Punktzahl des Spielers
 	 */
-	public int getAktuellePunkte(IPlayer player) {
+	public int getCurrentPoints(IPlayer player) {
 
 		int result = 0;
 
@@ -1431,7 +1431,7 @@ public class Table extends Observable {
 	 *            - Spieler dessen Anzahl der Alleinspiele gesucht ist
 	 * @return Anzahl der Spiele
 	 */
-	public int getAnzahlAllein(IPlayer player) {
+	public int getDeclarerCount(IPlayer player) {
 		int result = 0;
 		for (int i = 0; i < player.getGames().size(); i++) {
 			if (player.getGames().get(i) != 0) {

@@ -687,9 +687,9 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 		setzeStats(augen, 5, 0);
 		punkteliste();
 
-		punkte = new JLabel(tisch.getAktuellePunkte(spieler1) + "");
-		punkte1 = new JLabel(tisch.getAktuellePunkte(spieler2) + "");
-		punkte2 = new JLabel(tisch.getAktuellePunkte(spieler3) + "");
+		punkte = new JLabel(tisch.getCurrentPoints(spieler1) + "");
+		punkte1 = new JLabel(tisch.getCurrentPoints(spieler2) + "");
+		punkte2 = new JLabel(tisch.getCurrentPoints(spieler3) + "");
 		setzeStats(punkt, 0, 1 + tisch.getPlayer1().getGames().size());
 		setzeStats(punkte, 1, 1 + tisch.getPlayer1().getGames().size());
 		setzeStats(punkte1, 2, 1 + tisch.getPlayer1().getGames().size());
@@ -1724,12 +1724,12 @@ public class GameTableFrame extends JFrame implements ActionListener, MouseListe
 
 		// Prozent allein
 		s[0] = tisch.getPercentDeclarer(spieler) + "("
-				+ +tisch.getAnzahlAllein(spieler) + ")";
+				+ +tisch.getDeclarerCount(spieler) + ")";
 		// Anzahl Gewinne
 		s[1] = tisch.getDeclarersWonGamesSum(spieler) + "/"
-				+ tisch.getAnzahlAllein(spieler);
+				+ tisch.getDeclarerCount(spieler);
 		// Handspiele
-		s[2] = spieler.getHandGames() + "/" + tisch.getAnzahlAllein(spieler);
+		s[2] = spieler.getHandGames() + "/" + tisch.getDeclarerCount(spieler);
 
 		return s;
 	}
