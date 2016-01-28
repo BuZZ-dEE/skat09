@@ -855,7 +855,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	//@Override
+	@Override
 	public void namesComparison() {
 
 		String player1 = table.getPlayer1().getName();
