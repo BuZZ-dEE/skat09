@@ -454,7 +454,7 @@ public class Table extends Observable {
 	 * 
 	 * @return pointsList
 	 */
-	public ArrayList<Integer> getPunkteListe() {
+	public ArrayList<Integer> getPoints() {
 		return pointsList;
 	}
 	
@@ -1446,25 +1446,22 @@ public class Table extends Observable {
 	 * Ermittelt die Punkte eines Spielers nach Spielabschluss.
 	 * 
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            Zahl der Augen, die der Spieler bekommen hat
 	 * @return Punkte des Spielers
 	 */
-	public int calculatePoints(int augenzahl) {
+	public int calculatePoints(int augen) {
 
 		int result = 0;
 		isOverbidding = false;
-		// int zwerg = 0;
-		// int stufe = calculateLevel(augenzahl);
 
-		result = pointsVariants(result, augenzahl);
+		result = pointsVariants(result, augen);
 
 		if (skatVariant == SkatVariant.RAMSCHBOCK && bock == true) {
 			result = result * 2;
 		}
 
-		// erg = ( Math.abs((matadorsJackStraitCount() ) + 1 + stufe) * zwerg);
-		if (checkVerloren(augenzahl)) {
+		if (isGameLost(augen)) {
 			result = result * (-2);
 		}
 
@@ -1601,20 +1598,20 @@ public class Table extends Observable {
 	/**
 	 * Die Methode prüft, ob ein Spiel gewonnen wurde oder nicht.
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            Die erreichte Augenzahl des Alleinspielers
 	 * @return false für gewonnen, true für verloren
 	 */
-	public boolean checkVerloren(int augenzahl) {
-		// Gründe zu verlieren_
+	public boolean isGameLost(int augen) {
+
 		boolean lost = false;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.NULL) {
-			lost = nullVerloren();
+			lost = isNullGameLost();
 		}
 
 		else if (gameVariety.getGameVariety() != GameVariety.Name.NULL) {
-			lost = anderesSpielVerloren(augenzahl);
+			lost = isSuitOrGrandGameLost(augen);
 		}
 
 		return lost;
@@ -1625,7 +1622,7 @@ public class Table extends Observable {
 	 * 
 	 * @return false für gewonnen, true für verloren
 	 */
-	public boolean nullVerloren() {
+	public boolean isNullGameLost() {
 
 		boolean lost = false;
 
@@ -1640,28 +1637,22 @@ public class Table extends Observable {
 	 * Die Methode prüft, ob ein Farbspiel oder Grandspiel gewonnen wurde
 	 * oder nicht.
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            - die erreichte Augenzahl des Alleinspielers
 	 * @return false für gewonnen, true für verloren
 	 */
-	public boolean anderesSpielVerloren(int augenzahl) {
+	public boolean isSuitOrGrandGameLost(int augen) {
 
 		boolean lost = false;
 
-		if (augenzahl < winLimit) {
+		if (augen < winLimit) {
 			lost = true;
-		}
-
-		else if (schneider && augenzahl <= adversarySchneiderLimit) {
+		} else if (schneider && augen <= adversarySchneiderLimit) {
 			lost = true;
-		}
-
-		else if (schwarz
+		} else if (schwarz
 				&& getDeclarer().getTricks().size() < allTricks) {
 			lost = true;
-		}
-
-		else if (ouvert
+		} else if (ouvert
 				&& getDeclarer().getTricks().size() < allTricks) {
 			lost = true;
 		}
@@ -1680,15 +1671,15 @@ public class Table extends Observable {
 	 */
 	public int checkOverbid(int points) {
 
-		int zwierg = 0;
+		int intermediateResult = 0;
 		int result = 0;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
-			zwierg = 24;
+			intermediateResult = 24;
 		}
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 			SuitGame suit = (SuitGame) gameVariety;
-			zwierg = suit.getTrumpSuit().value();
+			intermediateResult = suit.getTrumpSuit().value();
 		}
 		
 		if (points < 0) {
@@ -1697,13 +1688,13 @@ public class Table extends Observable {
 		int level = getLLevel();
 		
 
-		if (((Math.abs(getDeclarer().matadorsJackStraitCount()) + level) * zwierg) < biddingValue
+		if (((Math.abs(getDeclarer().matadorsJackStraitCount()) + level) * intermediateResult) < biddingValue
 				&& gameVariety.getGameVariety() != GameVariety.Name.NULL) {
 			
 			if (biddingValue > points) {
 				setOverbidding(true);
 				while (biddingValue > result) {
-					result = result + zwierg;
+					result = result + intermediateResult;
 				}
 			}
 		}
@@ -1780,13 +1771,13 @@ public class Table extends Observable {
 	 * Berechnet wieviele Punkte ein Spieler für ein beendetes Grandspiel
 	 * erhält.
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            - Die vom Spieler gemachten Augen
 	 * @return gewonnene Punkte
 	 */
-	public int pointsGrandGame(int augenzahl) {
+	public int pointsGrandGame(int augen) {
 		int points = 0;
-		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augenzahl)) * 24;
+		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augen)) * 24;
 		return points;
 	}
 
@@ -1794,17 +1785,17 @@ public class Table extends Observable {
 	 * Berechnet, wieviele Punkte ein Spieler für ein gewonnenes Farbspiel
 	 * erhält.
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            - vom Spieler erreichte Augenzahl
 	 * @return gewonnene Punkte
 	 */
-	public int pointsSuitGame(int augenzahl) {
+	public int pointsSuitGame(int augen) {
 		int points = 0;
 		int baseValue = 0;
 		SuitGame suitGame = (SuitGame) gameVariety;
 		baseValue = suitGame.getTrumpSuit().value();
 		baseValues.add(baseValue);
-		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augenzahl))
+		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augen))
 				* baseValue;
 		return points;
 	}
