@@ -24,20 +24,20 @@ public class GrannyTest {
 	PlayingCard playingCard9 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
 	PlayingCard playingCard10 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 
-	ArrayList<PlayingCard> grandHand = new ArrayList<PlayingCard>();
+	ArrayList<PlayingCard> grannyHand = new ArrayList<PlayingCard>();
 	
 	public GrannyTest(){
-		grandHand.add(playingCard1);
-		grandHand.add(playingCard2);
-		grandHand.add(playingCard3);
-		grandHand.add(playingCard4);
-		grandHand.add(playingCard5);
-		grandHand.add(playingCard6);
-		grandHand.add(playingCard7);
-		grandHand.add(playingCard8);
-		grandHand.add(playingCard9);
-		grandHand.add(playingCard10);
-		granny.setHand(grandHand);
+		grannyHand.add(playingCard1);
+		grannyHand.add(playingCard2);
+		grannyHand.add(playingCard3);
+		grannyHand.add(playingCard4);
+		grannyHand.add(playingCard5);
+		grannyHand.add(playingCard6);
+		grannyHand.add(playingCard7);
+		grannyHand.add(playingCard8);
+		grannyHand.add(playingCard9);
+		grannyHand.add(playingCard10);
+		granny.setHand(grannyHand);
 		
 	}
 
@@ -50,7 +50,7 @@ public class GrannyTest {
 	public void playCardTest(){
 		boolean temp = true;
 	for (int i=0; i<10; i++){
-		if (!grandHand.get(grandHand.size()-1).equals(granny.playCard(null))){
+		if (!grannyHand.get(grannyHand.size()-1).equals(granny.playCard(null))){
 			temp = false;
 		}
 	}
