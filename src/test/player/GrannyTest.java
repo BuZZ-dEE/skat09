@@ -1,47 +1,43 @@
 package test.player;
 
-import java.util.ArrayList;
-//import java.util.Random;
-
-
-
-
-import org.junit.Test;
-
 import main.gamevariety.GrandGame;
 import main.player.Granny;
 import main.playingcard.PlayingCard;
+import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
-//import de.uniluebeck.main.*;
+
 public class GrannyTest {
 
-	private Granny oma = new Granny("Franz");
-	PlayingCard spielkarte1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
-	PlayingCard spielkarte2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
-	PlayingCard spielkarte3 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
-	PlayingCard spielkarte4 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
-	PlayingCard spielkarte5 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
-	PlayingCard spielkarte6 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
-	PlayingCard spielkarte7 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
-	PlayingCard spielkarte8 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
-	PlayingCard spielkarte9 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
-	PlayingCard spielkarte10 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
+	private Granny granny = new Granny("Franz");
+	PlayingCard playingCard1 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.SEVEN);
+	PlayingCard playingCard2 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.EIGHT);
+	PlayingCard playingCard3 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.NINE);
+	PlayingCard playingCard4 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN);
+	PlayingCard playingCard5 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE);
+	PlayingCard playingCard6 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE);
+	PlayingCard playingCard7 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING);
+	PlayingCard playingCard8 = new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS);
+	PlayingCard playingCard9 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.SEVEN);
+	PlayingCard playingCard10 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.EIGHT);
 
-	ArrayList<PlayingCard> omablatt = new ArrayList<PlayingCard>();
+	ArrayList<PlayingCard> grandHand = new ArrayList<PlayingCard>();
 	
 	public GrannyTest(){
-		omablatt.add(spielkarte1);
-		omablatt.add(spielkarte2);
-		omablatt.add(spielkarte3);
-		omablatt.add(spielkarte4);
-		omablatt.add(spielkarte5);
-		omablatt.add(spielkarte6);
-		omablatt.add(spielkarte7);
-		omablatt.add(spielkarte8);
-		omablatt.add(spielkarte9);
-		omablatt.add(spielkarte10);
-		oma.setHand(omablatt);
+		grandHand.add(playingCard1);
+		grandHand.add(playingCard2);
+		grandHand.add(playingCard3);
+		grandHand.add(playingCard4);
+		grandHand.add(playingCard5);
+		grandHand.add(playingCard6);
+		grandHand.add(playingCard7);
+		grandHand.add(playingCard8);
+		grandHand.add(playingCard9);
+		grandHand.add(playingCard10);
+		granny.setHand(grandHand);
 		
 	}
 
@@ -51,10 +47,10 @@ public class GrannyTest {
 	 * die richtige Karte wirft
 	 */
 	@Test
-	public void testeGibKarte(){
+	public void playCardTest(){
 		boolean temp = true;
 	for (int i=0; i<10; i++){
-		if (!omablatt.get(omablatt.size()-1).equals(oma.playCard(null))){
+		if (!grandHand.get(grandHand.size()-1).equals(granny.playCard(null))){
 			temp = false;
 		}
 	}
@@ -63,62 +59,62 @@ public class GrannyTest {
 	}
 	
 	@Test
-	public void testsagen(){
+	public void bidTest(){
 		
-		assertEquals(false,(oma.bid(18)));
+		assertEquals(false,(granny.bid(18)));
 	}
 	
 	@Test
-	public void testhoeren(){
+	public void respondTest(){
 		
-		assertFalse(oma.respond(18));
+		assertFalse(granny.respond(18));
 	}
 	
 	@SuppressWarnings("deprecation")
 	@Test
-	public void testdruecken(){
+	public void drueckenTest(){
 		
 		PlayingCard[] temp = new PlayingCard[2];
-		temp[0] = oma.getHand().get(1);
-		temp[1] = oma.getHand().get(2);
-		assertEquals(null,oma.druecken(temp));
+		temp[0] = granny.getHand().get(1);
+		temp[1] = granny.getHand().get(2);
+		assertEquals(null, granny.druecken(temp));
 		
 	}
 	
 	@Test
-	public void testhandspiel(){
+	public void handGameTest(){
 		
-		assertTrue(oma.handgame());
+		assertTrue(granny.handgame());
 	}
 	
 	@Test
-	public void testouvert(){
-		assertFalse(oma.ouvert());
+	public void ouvertTest(){
+		assertFalse(granny.ouvert());
 	}
 	
 	@Test
-	public void testschneider(){
-		assertFalse(oma.schneider());
+	public void schneiderTest(){
+		assertFalse(granny.schneider());
 	}
 	
 	@Test
-	public void testschwarz(){
+	public void schwarzTest(){
 		
-		assertFalse(oma.schwarz());
+		assertFalse(granny.schwarz());
 	}
 	
 	@Test
-	public void testSpielAnsagen(){
+	public void declareGameTest(){
 		boolean test = false;
-		if (oma.declareGame() instanceof GrandGame) {
+		if (granny.declareGame() instanceof GrandGame) {
 			test = true;
 		}
 		assertEquals(true, test);
 	}
 	
 	@Test
-	public void testFarbe(){
+	public void suitTest(){
 		
-		assertEquals(null, oma.suit());
+		assertEquals(null, granny.suit());
 	}
 }
