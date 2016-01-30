@@ -17,17 +17,18 @@ public class OutputStub implements IOutput{
 
 	private String adversary;
 	private String variant;
-	private String blattwahl;
+	private String selectedDeck;
 	private boolean releasetest;
 	private int releasecount = 5;
 	private int points;
 	private int playedCardsCount;
 	
-	public OutputStub(String adversary, String variant, String blattwahl) {
+	public OutputStub(String adversary, String variant, String selectedDeck
+	) {
 	
 		this.adversary = adversary;
 		this.variant = variant;
-		this.blattwahl = blattwahl;
+		this.selectedDeck = selectedDeck;
 		points = 0;
 		playedCardsCount = 0;
 	}
@@ -111,7 +112,7 @@ public class OutputStub implements IOutput{
 
 	
 	public String getDeckSelection() {
-		return blattwahl;
+		return selectedDeck;
 	}
 
 	

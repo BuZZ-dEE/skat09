@@ -499,7 +499,7 @@ public class ControllerTest {
 	
 	@Test
 	@Ignore
-	public void alleinspielerAktionenTest() {
+	public void declarerActionsTest() {
 		
 		Table table2 = new Table();
 		OutputStub output2 = new OutputStub(null, null, null);
@@ -846,7 +846,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void skartkartenBesitzerGebenTest() {
+	public void assignSkatCardsToOwnerTest() {
 		
 		IPlayer granny = new Granny("o1");
 		controller.getTable().setPlayer1(granny);
@@ -964,7 +964,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void normalerSpielverlaufTest() {
+	public void normalGamePlayTest() {
 		
 		Table table2 = new Table();
 		table2.setPlayer1(new Granny("Hilde"));
@@ -986,7 +986,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void spielRaeuberskatTest() {
+	public void playRaeuberskatTest() {
 		
 		Table table2 = new Table();
 		table2.setPlayer1(new Granny("Hilde"));
@@ -1008,7 +1008,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void spielRamschBockTest() {
+	public void playRamschBockTest() {
 		
 		Table table2 = new Table();
 		table2.setPlayer1(new Granny("Hilde"));
@@ -1032,7 +1032,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void spielRamschBockTest2() {
+	public void playRamschBockTest2() {
 		
 		Table table2 = new Table();
 		table2.setPlayer1(new Granny("Hilde"));
@@ -1056,7 +1056,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void spielRamschBockTest3() {
+	public void playRamschBockTest3() {
 		
 		Table table2 = new Table();
 		table2.setPlayer1(new RuleCompliantPlayer("Hilde"));
@@ -1078,7 +1078,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void spielIntSkatTest() {
+	public void playIntSkatTest() {
 		
 		Table table2 = new Table();
 		table2.setPlayer1(new Granny("Hilde"));
@@ -1100,7 +1100,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void spielIntSkatTest2() {
+	public void playIntSkatTest2() {
 		
 		Table table2 = new Table();
 		table2.setPlayer1(new RuleCompliantPlayer("Hilde"));
@@ -1122,7 +1122,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void schlauerSpielerInitTest() {
+	public void smartPlayerInitTest() {
 		
 		Player player1 = new SmartPlayer("Halo");
 		Player player2 = new SmartPlayer("Evin");
@@ -1160,7 +1160,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void namenVergleichTest() {
+	public void namesComparisonTest1() {
 		
 		IPlayer player1 = new Granny("Gertrud");
 		IPlayer player2 = new Granny("Gertrud");
@@ -1173,7 +1173,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void namenVergleichTest2() {
+	public void namesComparisonTest2() {
 		
 		IPlayer player1 = new Granny("Gertrud");
 		IPlayer player2 = new Granny("Gertrud");
@@ -1186,7 +1186,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void namenVergleichTest3() {
+	public void namesComparisonTest3() {
 		
 		IPlayer player1 = new Granny("Gertrud");
 		IPlayer player2 = new Granny("Hans");
@@ -1199,7 +1199,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void namenVergleichTest4() {
+	public void namesComparisonTest4() {
 		
 		IPlayer player1 = new Granny("Hans");
 		IPlayer player2 = new Granny("Gertrud");
@@ -1212,7 +1212,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void spielbeendenTest() {
+	public void quitGameTest() {
 		
 		OutputStub outputStub = new OutputStub(null,null,null);
 		Controller controller = new Controller(table,outputStub);
@@ -1221,7 +1221,7 @@ public class ControllerTest {
 	}
 	
 	@Test
-	public void warteTest() {
+	public void waitingTest() {
 		
 		OutputStub outputStub = new OutputStub(null,null,null);
 		Controller controller = new Controller(table,outputStub);
