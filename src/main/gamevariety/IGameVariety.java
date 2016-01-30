@@ -102,13 +102,13 @@ public interface IGameVariety {
 	PlayingCard higherUnderKnave(PlayingCard karte1, PlayingCard karte2);
 
 	/**
-	 * Ermittelt von 2 Karten die Karte mit der ho&uml;herwertigeren Farbe und
+	 * Ermittelt von 2 Karten die Karte with der ho&uml;herwertigeren Farbe und
 	 * gibt diese zur&uuml;ck. In Falle der gleichen Farbe, wird die erste Karte 
 	 * zur&uuml;ck gegeben.
 	 * 
 	 * @param karte1 - Die erste Karte.
 	 * @param karte2 - Die zweite Karte.
-	 * @return Die Karte mit der ho&uml;heren Farbe.
+	 * @return Die Karte with der ho&uml;heren Farbe.
 	 */
 	PlayingCard higherSuit(PlayingCard karte1, PlayingCard karte2);
 

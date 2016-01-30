@@ -23,7 +23,7 @@ public interface INullGame {
 							   PlayingCard[] gespielteKarten, PlayingCard zuPruefendeKarte);
 	
 	/**
-	 * pr&uuml;ft ob mit der gegeben Karte zu bedienen ist 
+	 * pr&uuml;ft ob with der gegeben Karte zu bedienen ist
 	 * @param blatt
 	 * @param gespielteKarten
 	 * @param zuPruefendeKarte

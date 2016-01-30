@@ -140,7 +140,7 @@ public interface IPlayer {
 	void setTeammate(IPlayer teammate);
 
 	/**
-	 * Setzt die Liste mit den vom Spieler gespielten Spielen
+	 * Setzt die Liste with den vom Spieler gespielten Spielen
 	 * 
 	 * @param games
 	 */
@@ -263,7 +263,7 @@ public interface IPlayer {
 	boolean handgame();
 
 	/**
-	 * Ouvert ermittelt, ob der Spieler mit offenen Karten spielen will.
+	 * Ouvert ermittelt, ob der Spieler with offenen Karten spielen will.
 	 * 
 	 * @return true, falls offenes Spiel
 	 */
@@ -284,10 +284,10 @@ public interface IPlayer {
 	boolean schwarz();
 
 	/**
-	 * Liefert ein Farbspiel mit korrekt gesetzten Trumpffarbe zurück,
+	 * Liefert ein Farbspiel with korrekt gesetzten Trumpffarbe zurück,
 	 * nachdem der Spieler seine Wahl getroffen hat.
 	 * 
-	 * @return Farbspiel mit gesetzter Trumpffarbe
+	 * @return Farbspiel with gesetzter Trumpffarbe
 	 */
 	SuitGame suit();
 
@@ -329,18 +329,18 @@ public interface IPlayer {
 	void sortHand(final IGameVariety spielart);
 
 	/**
-	 * Fragt den Spieler, ob er mit Reizagent spielen möchte.
+	 * Fragt den Spieler, ob er with Reizagent spielen möchte.
 	 * 
-	 * @return true, falls der Spieler mit Reizagent spielt
+	 * @return true, falls der Spieler with Reizagent spielt
 	 */
 	boolean agent();
 
 	/**
-	 * Vergleicht den Spieler mit dem übergebenen Spieler. Das Ergebnis ist
+	 * Vergleicht den Spieler with dem übergebenen Spieler. Das Ergebnis ist
 	 * true, falls die beiden Spieler den gleichen Namen haben.
 	 * 
 	 * @param spieler
-	 *            - spieler, mit dem der Spieler an dem die Methode aufgerufen
+	 *            - spieler, with dem der Spieler an dem die Methode aufgerufen
 	 *            wird verglichen werden soll
 	 * @return true, falls die Spieler den gleichen Namen haben
 	 */

@@ -19,7 +19,7 @@ import main.ui.gui.*;
 
 
 /**
- * Diese Klasse besch&auml;ftigt sich mit der gesamten Ausgabe des Spiels fuer
+ * Diese Klasse besch&auml;ftigt sich with der gesamten Ausgabe des Spiels fuer
  * den menschlichen Spieler.
  * 
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
@@ -336,8 +336,7 @@ public class GUIOutput extends Output {
 		return null;
 	}
 
-	@Override
-	public boolean reizAgent() {
+	public boolean biddingAgent() {
 
 		hfenster.reizagent();
 		warte();
@@ -346,7 +345,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public int reizlimitFestlegen() {
+	public int setBiddingLimit() {
 		boolean fertig = false;
 		hfenster.reizLimfest();
 		warte();
@@ -367,7 +366,7 @@ public class GUIOutput extends Output {
 	}
 
 	@Override
-	public void spieltKarte(IPlayer player, PlayingCard card) {
+	public void playCard(IPlayer player, PlayingCard card) {
 		if (tisch.getHumanPlayer().getName() == player.getName()) {
 			hfenster.menschSpieltKarte();
 		} else {

@@ -15,31 +15,32 @@ import main.ui.IOutput;
 
 public class OutputStub implements IOutput{
 
-	private String gegner;
-	private String variante;
-	private String blattwahl;
+	private String adversary;
+	private String variant;
+	private String selectedDeck;
 	private boolean releasetest;
 	private int releasecount = 5;
-	private int punkte;
-	private int gespielteKartenZahl;
+	private int points;
+	private int playedCardsCount;
 	
-	public OutputStub(String gegner, String variante, String blattwahl) {
+	public OutputStub(String adversary, String variant, String selectedDeck
+	) {
 	
-		this.gegner = gegner;
-		this.variante = variante;
-		this.blattwahl = blattwahl;
-		punkte = 0;
-		gespielteKartenZahl = 0;
+		this.adversary = adversary;
+		this.variant = variant;
+		this.selectedDeck = selectedDeck;
+		points = 0;
+		playedCardsCount = 0;
 	}
 	
-	public int getPunkte() {
+	public int getPoints() {
 		
-		return punkte;
+		return points;
 	}
 	
-	public int getGespielteKartenZahl() {
+	public int getPlayedCardsCount() {
 		
-		return gespielteKartenZahl;
+		return playedCardsCount;
 	}
 	
 	public void showDeclarer() {
@@ -64,11 +65,11 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void outputHand(IPlayer spieler) throws IOException {
+	public void outputHand(IPlayer player) throws IOException {
 		
 	}
 	
-	public int druecken(ArrayList<PlayingCard> blatt, int nummer) {
+	public int druecken(ArrayList<PlayingCard> hand, int number) {
 		
 		return 0; 
 	}
@@ -88,8 +89,8 @@ public class OutputStub implements IOutput{
 	
 	public SuitGame suitGame() {
 		
-		SuitGame farbspiel = new SuitGame(PlayingCard.Suit.LEAVES);
-		return farbspiel;
+		SuitGame suitGame = new SuitGame(PlayingCard.Suit.LEAVES);
+		return suitGame;
 	}
 
 	
@@ -100,18 +101,18 @@ public class OutputStub implements IOutput{
 
 	
 	public String askForVariant() {
-		return variante;
+		return variant;
 	}
 
 	
-	public String adversary(int nummer) {
+	public String adversary(int number) {
 		
-		return gegner;
+		return adversary;
 	}
 
 	
 	public String getDeckSelection() {
-		return blattwahl;
+		return selectedDeck;
 	}
 
 	
@@ -143,15 +144,15 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public boolean respond(int wert) {
+	public boolean respond(int value) {
 		
-		boolean ergebnis = false;
+		boolean result = false;
 		
-		if(wert <= 20) {
+		if(value <= 20) {
 			
-			ergebnis = true;
+			result = true;
 		}
-		return ergebnis;
+		return result;
 	}
 
 	
@@ -192,9 +193,9 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void points(int punkte) {
+	public void points(int points) {
 		
-		this.punkte = punkte;
+		this.points = points;
 	}
 
 	
@@ -203,13 +204,13 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public boolean reizAgent() {
+	public boolean biddingAgent() {
 		
 		return false;
 	}
 
 	
-	public int reizlimitFestlegen() {
+	public int setBiddingLimit() {
 		
 		return 23;
 	}
@@ -220,15 +221,15 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public boolean bid(int reizWert) {
+	public boolean bid(int biddingValue) {
 		
-	boolean ergebnis = false;
+	boolean result = false;
 		
-		if(reizWert <= 20) {
+		if(biddingValue <= 20) {
 			
-			ergebnis = true;
+			result = true;
 		}
-		return ergebnis;
+		return result;
 	}
 
 	
@@ -295,21 +296,21 @@ public class OutputStub implements IOutput{
 	}
 
 
-	public PlayingCard playCard(PlayingCard[] gespielteKarten, IPlayer spieler)
+	public PlayingCard playCard(PlayingCard[] playedCards, IPlayer player)
 			throws IOException {
 		
-		PlayingCard karte = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
-		return karte;
+		PlayingCard card = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
+		return card;
 	}
 
 	
-	public void spieltKarte(IPlayer player, PlayingCard card) {
+	public void playCard(IPlayer player, PlayingCard card) {
 		
-		gespielteKartenZahl++;
+		playedCardsCount++;
 	}
 
 	
-	public void trickWon(IPlayer spieler) {
+	public void trickWon(IPlayer player) {
 		
 	}
 
@@ -331,7 +332,7 @@ public class OutputStub implements IOutput{
 	}
 
 	
-	public void pass(IPlayer spieler) {
+	public void pass(IPlayer player) {
 		// TODO Auto-generated method stub
 		
 	}

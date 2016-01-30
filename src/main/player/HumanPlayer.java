@@ -20,7 +20,7 @@ public class HumanPlayer extends Player implements IPlayer,
 		IHumanPlayer {
 	
 	/**
-	 * Controller zur direkten Kommunikation mit der TUI/GUI
+	 * Controller zur direkten Kommunikation with der TUI/GUI
 	 */
 	IController controller;
 	
@@ -31,7 +31,7 @@ public class HumanPlayer extends Player implements IPlayer,
 	 * @param name
 	 *            Der gew&uuml;nschte Name des Spielers
 	 * @param controller
-	 *            Der Controller, mit dem gespielt werden soll. Diesen braucht
+	 *            Der Controller, with dem gespielt werden soll. Diesen braucht
 	 *            der Spieler, damit er Benutzereingaben abfragen kann.
 	 */
 	public HumanPlayer(String name, IController controller) {
@@ -165,9 +165,9 @@ public class HumanPlayer extends Player implements IPlayer,
 
 	@Override
 	public int setBidLimit() {
-		int erg = controller.getOutput().reizlimitFestlegen();
+		int erg = controller.getOutput().setBiddingLimit();
 		while (erg == -1) {
-			erg = controller.getOutput().reizlimitFestlegen();
+			erg = controller.getOutput().setBiddingLimit();
 		}
 
 		return erg;
@@ -176,6 +176,6 @@ public class HumanPlayer extends Player implements IPlayer,
 	@Override
 	public boolean agent() {
 
-		return controller.getOutput().reizAgent();
+		return controller.getOutput().biddingAgent();
 	}
 }

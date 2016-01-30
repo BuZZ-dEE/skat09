@@ -83,7 +83,7 @@ public class Table extends Observable {
 	 */
 	private int biddingAgentValue;
 	/**
-	 * Skatvariante: Raeuberskat oder normales Skat oder Skat mit Ramsch und
+	 * Skatvariante: Raeuberskat oder normales Skat oder Skat with Ramsch und
 	 * Bock?
 	 */
 	private SkatVariant skatVariant;
@@ -92,11 +92,11 @@ public class Table extends Observable {
 	 */
 	private SortedSet<Integer> biddingValues;
 	/**
-	 * zählt die bisher gespielten Spiele mit
+	 * zählt die bisher gespielten Spiele with
 	 */
 	private int gameRoundCounter;
 	/**
-	 * Die Trümpfe, mit denen der Alleinspieler spielt
+	 * Die Trümpfe, with denen der Alleinspieler spielt
 	 */
 	private PlayingCard[] trumps = new PlayingCard[12];
 	/**
@@ -454,7 +454,7 @@ public class Table extends Observable {
 	 * 
 	 * @return pointsList
 	 */
-	public ArrayList<Integer> getPunkteListe() {
+	public ArrayList<Integer> getPoints() {
 		return pointsList;
 	}
 	
@@ -530,7 +530,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das schneider-flag mit dem übergebenen Wert.
+	 * Setzt das schneider-flag with dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -541,7 +541,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das schwarz-flag mit dem übergebenen Wert.
+	 * Setzt das schwarz-flag with dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -552,7 +552,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Setzt das ouvert-flag mit dem übergebenen Wert.
+	 * Setzt das ouvert-flag with dem übergebenen Wert.
 	 * 
 	 * @param value
 	 *            - true falls gesetzt
@@ -678,7 +678,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Erstellt ein neues Deck mit 32 Karten. Jede Karte darf nur einmal
+	 * Erstellt ein neues Deck with 32 Karten. Jede Karte darf nur einmal
 	 * vorkommen.
 	 */
 	public void createDeck() {
@@ -696,7 +696,7 @@ public class Table extends Observable {
 				deck.add(card);
 
 				// Falls kein 6er Skat gespielt wird, alle 6er Karten entfernen
-				if ((card.getValue() == PlayingCard.Rank.SIX) && (sixSkat == false)) {
+				if ((card.getRank() == PlayingCard.Rank.SIX) && (sixSkat == false)) {
 					deck.remove(card);
 				}
 			}
@@ -964,7 +964,7 @@ public class Table extends Observable {
 	}
 
 	/**
-	 * Befüllt das Reizwerte-Array mit allen Reizwerten, die vorkommen
+	 * Befüllt das Reizwerte-Array with allen Reizwerten, die vorkommen
 	 * können.
 	 */
 	public void generateBiddingValues() {
@@ -1316,10 +1316,10 @@ public class Table extends Observable {
 
 	/**
 	 * Erstellt ein Array, dass alle Spieler enthaelt, aufsteigend sortiert, der
-	 * Spieler mit den wenigsten Augen zuerst.
+	 * Spieler with den wenigsten Augen zuerst.
 	 * 
 	 * @param player
-	 *            - array mit allen Spielern
+	 *            - array with allen Spielern
 	 * @return das sortierte Array
 	 */
 	public IPlayer[] sortPlayerRamsch(IPlayer[] player) {
@@ -1344,7 +1344,7 @@ public class Table extends Observable {
 	 * Punkte.
 	 * 
 	 * @param player
-	 *            Bekommt das sortierte Array mit den Spielern
+	 *            Bekommt das sortierte Array with den Spielern
 	 * @param skataugen
 	 *            Die Augen, die im Skat lagen
 	 * @param bock
@@ -1373,7 +1373,7 @@ public class Table extends Observable {
 							* bock);
 			player[1].getGames().add(0);
 			player[0].getGames().add(0);
-			// Ansonsten bekommt der Spieler mit den meisten Augen so viele
+			// Ansonsten bekommt der Spieler with den meisten Augen so viele
 			// Minuspunkte, wie er Augen erspielt hat und Augen im Skat lagen.
 		} else {
 			player[2].getGames().add(
@@ -1394,7 +1394,7 @@ public class Table extends Observable {
 	 *            - spieler dessen Punkte berechnet werden sollen
 	 * @return Punktzahl des Spielers
 	 */
-	public int getAktuellePunkte(IPlayer player) {
+	public int getCurrentPoints(IPlayer player) {
 
 		int result = 0;
 
@@ -1431,7 +1431,7 @@ public class Table extends Observable {
 	 *            - Spieler dessen Anzahl der Alleinspiele gesucht ist
 	 * @return Anzahl der Spiele
 	 */
-	public int getAnzahlAllein(IPlayer player) {
+	public int getDeclarerCount(IPlayer player) {
 		int result = 0;
 		for (int i = 0; i < player.getGames().size(); i++) {
 			if (player.getGames().get(i) != 0) {
@@ -1446,25 +1446,22 @@ public class Table extends Observable {
 	 * Ermittelt die Punkte eines Spielers nach Spielabschluss.
 	 * 
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            Zahl der Augen, die der Spieler bekommen hat
 	 * @return Punkte des Spielers
 	 */
-	public int calculatePoints(int augenzahl) {
+	public int calculatePoints(int augen) {
 
 		int result = 0;
 		isOverbidding = false;
-		// int zwerg = 0;
-		// int stufe = calculateLevel(augenzahl);
 
-		result = pointsVariants(result, augenzahl);
+		result = pointsVariants(result, augen);
 
 		if (skatVariant == SkatVariant.RAMSCHBOCK && bock == true) {
 			result = result * 2;
 		}
 
-		// erg = ( Math.abs((matadorsJackStraitCount() ) + 1 + stufe) * zwerg);
-		if (checkVerloren(augenzahl)) {
+		if (isGameLost(augen)) {
 			result = result * (-2);
 		}
 
@@ -1508,27 +1505,27 @@ public class Table extends Observable {
 
 		for (int i = 0; i < tricks.size(); i++) {
 
-			if (tricks.get(i).getValue() == PlayingCard.Rank.DAUS) {
+			if (tricks.get(i).getRank() == PlayingCard.Rank.DAUS) {
 
 				result += 11;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.TEN) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.TEN) {
 
 				result += 10;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 				result += 2;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.OVER_KNAVE) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.OVER_KNAVE) {
 
 				result += 3;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.KING) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.KING) {
 
 				result += 4;
 
-			} else if (tricks.get(i).getValue() == PlayingCard.Rank.SIX) {
+			} else if (tricks.get(i).getRank() == PlayingCard.Rank.SIX) {
 
 				result += 6;
 			}
@@ -1601,20 +1598,20 @@ public class Table extends Observable {
 	/**
 	 * Die Methode prüft, ob ein Spiel gewonnen wurde oder nicht.
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            Die erreichte Augenzahl des Alleinspielers
 	 * @return false für gewonnen, true für verloren
 	 */
-	public boolean checkVerloren(int augenzahl) {
-		// Gründe zu verlieren_
+	public boolean isGameLost(int augen) {
+
 		boolean lost = false;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.NULL) {
-			lost = nullVerloren();
+			lost = isNullGameLost();
 		}
 
 		else if (gameVariety.getGameVariety() != GameVariety.Name.NULL) {
-			lost = anderesSpielVerloren(augenzahl);
+			lost = isSuitOrGrandGameLost(augen);
 		}
 
 		return lost;
@@ -1625,7 +1622,7 @@ public class Table extends Observable {
 	 * 
 	 * @return false für gewonnen, true für verloren
 	 */
-	public boolean nullVerloren() {
+	public boolean isNullGameLost() {
 
 		boolean lost = false;
 
@@ -1640,28 +1637,22 @@ public class Table extends Observable {
 	 * Die Methode prüft, ob ein Farbspiel oder Grandspiel gewonnen wurde
 	 * oder nicht.
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            - die erreichte Augenzahl des Alleinspielers
 	 * @return false für gewonnen, true für verloren
 	 */
-	public boolean anderesSpielVerloren(int augenzahl) {
+	public boolean isSuitOrGrandGameLost(int augen) {
 
 		boolean lost = false;
 
-		if (augenzahl < winLimit) {
+		if (augen < winLimit) {
 			lost = true;
-		}
-
-		else if (schneider && augenzahl <= adversarySchneiderLimit) {
+		} else if (schneider && augen <= adversarySchneiderLimit) {
 			lost = true;
-		}
-
-		else if (schwarz
+		} else if (schwarz
 				&& getDeclarer().getTricks().size() < allTricks) {
 			lost = true;
-		}
-
-		else if (ouvert
+		} else if (ouvert
 				&& getDeclarer().getTricks().size() < allTricks) {
 			lost = true;
 		}
@@ -1680,15 +1671,15 @@ public class Table extends Observable {
 	 */
 	public int checkOverbid(int points) {
 
-		int zwierg = 0;
+		int intermediateResult = 0;
 		int result = 0;
 
 		if (gameVariety.getGameVariety() == GameVariety.Name.GRAND) {
-			zwierg = 24;
+			intermediateResult = 24;
 		}
 		if (gameVariety.getGameVariety() == GameVariety.Name.SUIT) {
 			SuitGame suit = (SuitGame) gameVariety;
-			zwierg = suit.getTrumpSuit().value();
+			intermediateResult = suit.getTrumpSuit().value();
 		}
 		
 		if (points < 0) {
@@ -1697,13 +1688,13 @@ public class Table extends Observable {
 		int level = getLLevel();
 		
 
-		if (((Math.abs(getDeclarer().matadorsJackStraitCount()) + level) * zwierg) < biddingValue
+		if (((Math.abs(getDeclarer().matadorsJackStraitCount()) + level) * intermediateResult) < biddingValue
 				&& gameVariety.getGameVariety() != GameVariety.Name.NULL) {
 			
 			if (biddingValue > points) {
 				setOverbidding(true);
 				while (biddingValue > result) {
-					result = result + zwierg;
+					result = result + intermediateResult;
 				}
 			}
 		}
@@ -1780,13 +1771,13 @@ public class Table extends Observable {
 	 * Berechnet wieviele Punkte ein Spieler für ein beendetes Grandspiel
 	 * erhält.
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            - Die vom Spieler gemachten Augen
 	 * @return gewonnene Punkte
 	 */
-	public int pointsGrandGame(int augenzahl) {
+	public int pointsGrandGame(int augen) {
 		int points = 0;
-		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augenzahl)) * 24;
+		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augen)) * 24;
 		return points;
 	}
 
@@ -1794,17 +1785,17 @@ public class Table extends Observable {
 	 * Berechnet, wieviele Punkte ein Spieler für ein gewonnenes Farbspiel
 	 * erhält.
 	 * 
-	 * @param augenzahl
+	 * @param augen
 	 *            - vom Spieler erreichte Augenzahl
 	 * @return gewonnene Punkte
 	 */
-	public int pointsSuitGame(int augenzahl) {
+	public int pointsSuitGame(int augen) {
 		int points = 0;
 		int baseValue = 0;
 		SuitGame suitGame = (SuitGame) gameVariety;
 		baseValue = suitGame.getTrumpSuit().value();
 		baseValues.add(baseValue);
-		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augenzahl))
+		points = (Math.abs(getDeclarer().matadorsJackStraitCount()) + calculateLevel(augen))
 				* baseValue;
 		return points;
 	}

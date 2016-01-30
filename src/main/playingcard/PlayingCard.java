@@ -10,7 +10,7 @@ import main.player.IPlayer;
 import main.ui.gui.SvgImageProcessing;
 
 /**
- * Die Klasse Spielkarte erzeugt eine Spielkarte mit einer Farbe und einem Wert.
+ * Die Klasse Spielkarte erzeugt eine Spielkarte with einer Farbe und einem Wert.
  * 
  * @author Ann-Christine Kycler, Sebastian Schlatow, Mathias Stoislow, Martin Bruhns
  * @version 03.07.2009
@@ -21,11 +21,11 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	/**
 	 * Feld f&uuml;r die Farbe
 	 */
-	private Suit suit;
+	private final Suit suit;
 	/**
 	 * Feld f&uuml;r den Wert
 	 */
-	private Rank rank;
+	private final Rank rank;
 	/**
 	 * Feld f&uuml;r den Besitzer
 	 */
@@ -60,15 +60,6 @@ public class PlayingCard implements Comparable<PlayingCard> {
         private int suitValue;
 
         /**
-         * Gibt den Ordnungswert eines Elements zur&uuml;ck
-         * @return Den Wert eines Elements
-         */
-        public int value() {
-
-            return suitValue;
-        }
-
-        /**
          * Der Konstruktor der Enum Farbe
          * @param suitValue Der Ordnungswert, den eine Farbe haben soll
          */
@@ -77,6 +68,14 @@ public class PlayingCard implements Comparable<PlayingCard> {
             this.suitValue = suitValue;
         }
 
+        /**
+         * Gibt den Ordnungswert eines Elements zur&uuml;ck
+         * @return Den Wert eines Elements
+         */
+        public int value() {
+
+            return suitValue;
+        }
     }
 
     public enum Rank {
@@ -84,43 +83,65 @@ public class PlayingCard implements Comparable<PlayingCard> {
         /**
          * Halter des Farbwertes 6
          */
-        SIX,
+        SIX(6), // TODO why 6, six-skat has other rules?
         /**
          * Halter des Farbwertes 7
          */
-        SEVEN,
+        SEVEN(0),
         /**
          * Halter des Farbwertes 8
          */
-        EIGHT,
+        EIGHT(0),
         /**
          * Halter des Farbwertes 9
          */
-        NINE,
+        NINE(0),
         /**
          * Halter des Farbwertes 10
          */
-        TEN,
+        TEN(10),
         /**
          * Halter des Farbwertes Bube
          * Under knave (Unter) == Jack (Junge / Bube)
          */
-        UNDER_KNAVE,
+        UNDER_KNAVE(2),
         /**
          * Halter des Farbwertes Dame
          * Over knave (Ober) == Queen (Dame)
          */
-        OVER_KNAVE,
+        OVER_KNAVE(3),
         /**
          * Halter des Farbwertes König
          * King == King (König)
          */
-        KING,
+        KING(4),
         /**
          * Halter des Farbwertes Ass
          * Daus (Daus) == Ace (Ass)
          */
-        DAUS
+        DAUS(11);
+
+        /**
+         * Der Wert, den ein Element aus der Enum haben kann
+         */
+        private int rankValue;
+
+        /**
+         * Der Konstruktor der Enum Rank
+         * @param rankValue Der Ordnungswert, den ein Rank haben soll
+         */
+		Rank(int rankValue) {
+            this.rankValue = rankValue;
+        }
+
+        /**
+         * Gibt den Ordnungswert eines Elements zur&uuml;ck
+         * @return Den Wert eines Elements
+         */
+        public int value() {
+
+            return rankValue;
+        }
     }
 	
 	/**
@@ -157,7 +178,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @return wert der Karte
 	 */
-	public Rank getValue() {
+	public Rank getRank() {
 		return rank;
 	}
 
@@ -202,7 +223,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 			string = suit + " " + rank;
 		} else {
 			String frenchSuit = frenchSuit();
-			String frenchValue = frenchValue();
+			String frenchValue = frenchRank();
 			string = frenchSuit + " " + frenchValue;
 		}
 		
@@ -211,11 +232,11 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	}
 
 	/**
-	 * equals vergleich die Spielkarte mit einer &uuml;bergebenen Spielkarte und
+	 * equals vergleich die Spielkarte with einer &uuml;bergebenen Spielkarte und
 	 * stellt fest, ob die Datenfelder der beiden Karten gleich sind.
 	 * 
 	 * @param card
-	 *            Karte mit der verglichen werden soll
+	 *            Karte with der verglichen werden soll
 	 * @return true, falls die beiden Karten gleich sind
 	 */
 	public boolean equals(PlayingCard card) {
@@ -223,7 +244,7 @@ public class PlayingCard implements Comparable<PlayingCard> {
 		boolean result;
 
 		result = this.suit.ordinal() == card.getSuit().ordinal()
-				&& this.rank.ordinal() == card.getValue().ordinal();
+				&& this.rank.ordinal() == card.getRank().ordinal();
 
 		return result;
 	}
@@ -235,14 +256,14 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * Gleichheit zweier Karten implementiert, sie kann (noch) nicht
 	 * zur Sortierung verwendet werden!
 	 * 
-	 * @param card - spielkarte, die mit dem aktuellen Objekt verglichen werden soll
+	 * @param card - spielkarte, die with dem aktuellen Objekt verglichen werden soll
 	 * @return 0 falls gleich, ansonsten negativen/positiven Wert
 	 */
 	public int compareTo(PlayingCard card) {
 		
 		int result = Integer.MAX_VALUE;
 		
-		if (rank == card.getValue() && suit == card.getSuit()) {
+		if (rank == card.getRank() && suit == card.getSuit()) {
 			
 			result = 0;
 		}
@@ -280,18 +301,18 @@ public class PlayingCard implements Comparable<PlayingCard> {
 	 * 
 	 * @version 20.07.2015 22:21:36
 	 */
-	public String frenchValue() {
-		String frenchValue ="";
+	public String frenchRank() {
+		String frenchRank ="";
 		if (rank == Rank.UNDER_KNAVE) {
-			frenchValue = "JACK";
+			frenchRank = "JACK";
 		} else if (rank == Rank.OVER_KNAVE) {
-			frenchValue = "QUEEN";
+			frenchRank = "QUEEN";
 		} else if (rank == Rank.DAUS) {
-			frenchValue = "ACE";
+			frenchRank = "ACE";
 		} else {
-			frenchValue = "" + rank;
+			frenchRank = "" + rank;
 		}
-		return frenchValue;
+		return frenchRank;
 	}
 	
 	/**

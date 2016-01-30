@@ -394,7 +394,7 @@ public class TableTest {
 		table.getPlayer1().getGames().add(18);
 		//table.addGameCount();
 		
-		assertEquals(1, table.getAnzahlAllein(player1));
+		assertEquals(1, table.getDeclarerCount(player1));
 	}
 	
 	@Test
@@ -556,34 +556,34 @@ public class TableTest {
 
 	@Test
 	public void checkverlorenTest() {
-		assertEquals(false, table.checkVerloren(61));
+		assertEquals(false, table.isGameLost(61));
 	}
 
 	@Test
 	public void checkverlorenTest2() {
-		assertEquals(false, table.checkVerloren(99));
+		assertEquals(false, table.isGameLost(99));
 	}
 
 	@Test
 	public void checkverlorenTest3() {
 		table.getDeclarer().setTricks(deck);
-		assertEquals(false, table.checkVerloren(120));
+		assertEquals(false, table.isGameLost(120));
 	}
 
 	@Test
 	public void checkverlorenTest4() {
-		assertEquals(true, table.checkVerloren(60));
+		assertEquals(true, table.isGameLost(60));
 	}
 
 	@Test
 	public void checkverlorenTest5() {
-		assertEquals(true, table.checkVerloren(29));
+		assertEquals(true, table.isGameLost(29));
 	}
 
 	@Test
 	public void checkverlorenTest6() {
 		table.getDeclarer().setTricks(null);
-		assertEquals(true, table.checkVerloren(0));
+		assertEquals(true, table.isGameLost(0));
 	}
 
 	@Test
@@ -690,7 +690,7 @@ public class TableTest {
 	public void getAktuellePunkteTest() {
 		table.getPlayer1().getGames().clear();
 		table.getPlayer1().getGames().add(18);
-		assertEquals(18, table.getAktuellePunkte(table.getPlayer1()));
+		assertEquals(18, table.getCurrentPoints(table.getPlayer1()));
 	}
 	
 	@Test
@@ -1215,7 +1215,7 @@ public class TableTest {
 	public void nullVerlorenTest() {
 		
 		table.getDeclarer().getTricks().clear();
-		assertFalse(table.nullVerloren());
+		assertFalse(table.isNullGameLost());
 	}
 	
 	@Test
@@ -1227,20 +1227,20 @@ public class TableTest {
 		stiche.add(playingCard2);
 		stiche.add(playingCard3);
 		table.getDeclarer().setTricks(stiche);
-		assertTrue(table.nullVerloren());
+		assertTrue(table.isNullGameLost());
 	}
 	
 	@Test
 	public void anderesSpielVerlorenTest() {
 		
-		assertTrue(table.anderesSpielVerloren(60));
+		assertTrue(table.isSuitOrGrandGameLost(60));
 	}
 	
 	@Test
 	public void anderesSpielVerlorenTest2() {
 		
 		table.setSchneider(true);
-		assertTrue(table.anderesSpielVerloren(88));
+		assertTrue(table.isSuitOrGrandGameLost(88));
 	}
 	
 	@Test
@@ -1259,7 +1259,7 @@ public class TableTest {
 			player1.getTricks().remove(0);
 		}
 		System.out.println(player1.getTricks().size());
-		assertTrue(table.anderesSpielVerloren(100));
+		assertTrue(table.isSuitOrGrandGameLost(100));
 	}
 	
 	@Test
@@ -1269,13 +1269,13 @@ public class TableTest {
 		table.setSchwarz(false);
 		table.setOuvert(true);
 		player1.getTricks().clear();
-		assertTrue(table.anderesSpielVerloren(61));
+		assertTrue(table.isSuitOrGrandGameLost(61));
 	}
 	
 	@Test
 	public void anderesSpielVerlorenTest5() {
 		
 		table.setOuvert(false);
-		assertFalse(table.anderesSpielVerloren(62));
+		assertFalse(table.isSuitOrGrandGameLost(62));
 	}
 }

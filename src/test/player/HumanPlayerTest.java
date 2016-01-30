@@ -1,15 +1,5 @@
 package test.player;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import main.IController;
 import main.Table;
 import main.gamevariety.GameVariety;
@@ -19,9 +9,15 @@ import main.gamevariety.SuitGame;
 import main.player.HumanPlayer;
 import main.playingcard.PlayingCard;
 import main.ui.IOutput;
+import org.junit.Before;
+import org.junit.Test;
 import test.ControllerStub;
 import test.gamevariety.NullGameStub;
 import test.ui.OutputStub;
+
+import java.util.ArrayList;
+
+import static org.junit.Assert.*;
 
 
 public class HumanPlayerTest {
@@ -38,25 +34,25 @@ public class HumanPlayerTest {
 	}
 
 	@Test
-	public void hoerenTest1() {
+	public void respondTest1() {
 
 		assertTrue(humanPlayer.respond(20));
 	}
 
 	@Test
-	public void hoerenTest2() {
+	public void respondTest2() {
 
 		assertFalse(humanPlayer.respond(23));
 	}
 
 	@Test
-	public void sagenTest1() {
+	public void bidTest1() {
 
 		assertTrue(humanPlayer.bid(20));
 	}
 
 	@Test
-	public void sagenTest2() {
+	public void bidTest2() {
 
 		assertFalse(humanPlayer.bid(23));
 	}
@@ -143,7 +139,7 @@ public class HumanPlayerTest {
 
 		boolean result = false;
 
-		IGameVariety gameVariety = new GrandGame();
+		GrandGame gameVariety = new GrandGame();
 		if (gameVariety.getGameVariety().equals(humanPlayer.declareGame().getGameVariety())) {
 
 			result = true;

@@ -43,7 +43,7 @@ public class SuitGame extends GameVariety {
 		if (playedCards[0] == null) {
 
 			result = true;
-		} else if (playedCards[0].getValue() == PlayingCard.Rank.UNDER_KNAVE || playedCards[0].getSuit() == getTrumpSuit()) {
+		} else if (playedCards[0].getRank() == PlayingCard.Rank.UNDER_KNAVE || playedCards[0].getSuit() == getTrumpSuit()) {
 			
 			result = followingUnderKnaveOrTrump(deck, playedCards, cardToCheck);
 		} else {
@@ -68,7 +68,7 @@ public class SuitGame extends GameVariety {
 		boolean result = true;
 		
 		// Wenn Bube oder Trumpf gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (cardToCheck.getValue() == PlayingCard.Rank.UNDER_KNAVE || getTrumpSuit() == cardToCheck.getSuit()) {
+		if (cardToCheck.getRank() == PlayingCard.Rank.UNDER_KNAVE || getTrumpSuit() == cardToCheck.getSuit()) {
 
 			result = true;
 		} else { // Wenn nicht bedient wurde, schaue, ob bedient werden konnte.
@@ -77,7 +77,7 @@ public class SuitGame extends GameVariety {
 			for (int i = 0; i < deck.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (deck.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE || deck.get(i).getSuit() == getTrumpSuit()) {
+				if (deck.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE || deck.get(i).getSuit() == getTrumpSuit()) {
 
 					result = false;
 					break;
@@ -93,11 +93,11 @@ public class SuitGame extends GameVariety {
 
 		PlayingCard highestCard = null;
 
-		if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE && card2.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE && card2.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			highestCard = higherUnderKnave(card1, card2);
 			
-		} else if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE || card2.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		} else if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE || card2.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			highestCard = higherCardOneUnderKnave(card1, card2);
 			
@@ -151,11 +151,11 @@ public class SuitGame extends GameVariety {
 
 		PlayingCard highestCard = null;
 
-		if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE && card2.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE && card2.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			highestCard = higherUnderKnave(card1, card2);
 			
-		} else if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE || card2.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		} else if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE || card2.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			highestCard = higherCardOneUnderKnave(card1, card2);
 			

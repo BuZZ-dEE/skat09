@@ -573,12 +573,12 @@ public class Controller implements Observer, IController {
 
 			if (allPlayer instanceof SmartPlayer) {
 
-				((SmartPlayer) allPlayer).setAnfangsblatt(allPlayer
+				((SmartPlayer) allPlayer).setStartHand(allPlayer
 						.getHand());
 				if (table.getVariant() == SkatVariant.SKAT
 						|| table.getVariant() == SkatVariant.RAMSCHBOCK) {
 					
-					((SmartPlayer) allPlayer).bestimmeMaxReizwert();
+					((SmartPlayer) allPlayer).determineMaxBiddingValue();
 				}
 			}
 		}
@@ -649,7 +649,7 @@ public class Controller implements Observer, IController {
 
 			PlayingCard card = playedCards[i];
 			IPlayer owner = card.getOwner();
-			output.spieltKarte(owner, card);
+			output.playCard(owner, card);
 		}
 		output.blankLine();
 		output.trickWon(winner);
@@ -855,7 +855,7 @@ public class Controller implements Observer, IController {
 		}
 	}
 
-	//@Override
+	@Override
 	public void namesComparison() {
 
 		String player1 = table.getPlayer1().getName();

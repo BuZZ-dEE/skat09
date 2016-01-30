@@ -26,7 +26,7 @@ public class Ramsch extends GameVariety {
 		if (playedCards[0] == null) {
 
 			result = true;
-		} else if (playedCards[0].getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		} else if (playedCards[0].getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 			
 			result = followingUnderKnave(deck, playedCards, cardToCheck);
 		} else {
@@ -51,7 +51,7 @@ public class Ramsch extends GameVariety {
 		boolean result = true;
 		
 		// Wenn Bube gespielt wurde und korrekt bedient wurde gib true zurueck.
-		if (cardToCheck.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (cardToCheck.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			result = true;
 		} else { // Wenn nicht bedient wurde, schaue, ob bedient werden konnte.
@@ -60,7 +60,7 @@ public class Ramsch extends GameVariety {
 			for (int i = 0; i < deck.size(); i++) {
 
 				// Hatte der Spieler Bube/Trumpf darf er diese Karte nicht spielen, sonst schon.
-				if (deck.get(i).getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+				if (deck.get(i).getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 					result = false;
 					break;
@@ -76,11 +76,11 @@ public class Ramsch extends GameVariety {
 
 		PlayingCard highestCard = null;
 
-		if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE && card2.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE && card2.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			highestCard = higherUnderKnave(card1, card2);
 
-		} else if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE || card2.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		} else if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE || card2.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			highestCard = higherCardOneUnderKnave(card1, card2);
 
@@ -100,11 +100,11 @@ public class Ramsch extends GameVariety {
 	public PlayingCard sortCard(PlayingCard card1, PlayingCard card2) {
 		PlayingCard highestCard = null;
 
-		if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE && card2.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE && card2.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			highestCard = higherUnderKnave(card1, card2);
 
-		} else if (card1.getValue() == PlayingCard.Rank.UNDER_KNAVE || card2.getValue() == PlayingCard.Rank.UNDER_KNAVE) {
+		} else if (card1.getRank() == PlayingCard.Rank.UNDER_KNAVE || card2.getRank() == PlayingCard.Rank.UNDER_KNAVE) {
 
 			highestCard = higherCardOneUnderKnave(card1, card2);
 
@@ -134,7 +134,7 @@ public class Ramsch extends GameVariety {
 	 */
 	public int evaluateCard(PlayingCard card) {
 
-		PlayingCard.Rank rank = card.getValue();
+		PlayingCard.Rank rank = card.getRank();
 		int result = 0;
 
 		switch (rank) {

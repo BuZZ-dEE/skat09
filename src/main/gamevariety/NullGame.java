@@ -106,7 +106,7 @@ public class NullGame extends GameVariety implements INullGame {
 	@Override
 	public int evaluateCard(PlayingCard card) {
 
-		PlayingCard.Rank value = card.getValue();
+		PlayingCard.Rank value = card.getRank();
 		int result = -1;
 
 		switch (value) {
