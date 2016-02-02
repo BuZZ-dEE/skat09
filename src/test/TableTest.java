@@ -166,7 +166,7 @@ public class TableTest {
 	
 	//Testet , ob die Reizwerte korrekt zurueckgegeben werden
 	@Test
-	public void getReizwerteTest() {
+	public void getBiddingValuesTest() {
 		SortedSet<Integer> biddingValues = new TreeSet<Integer>();
 		for (int i = 18; i <= 162; i += 9) {
 			biddingValues.add(i);
@@ -211,14 +211,14 @@ public class TableTest {
 	
 	// Testet ob das erstellte Deck tatsaechlich alle Karten enthaelt
 	@Test
-	public void erstelleDeckTest() {
+	public void createDeckTest() {
 		table.setSixSkat(true);
 		table.createDeck();
 		assertEquals(36, table.getDeck().size());
 	}
 
 	@Test
-	public void erstelleDeckTest2() {
+	public void createDeckTest2() {
 		int test = 0;
 		table.createDeck();
 		for (int i = 0; i<deck.size(); i++) {
@@ -233,7 +233,7 @@ public class TableTest {
 	
 	// Test ob Kartenzahl gleich bleibt
 	@Test
-	public void mischeDeckTest() {
+	public void shuffleDeckTest() {
 		table.createDeck();
 		table.shuffleDeck();
 		assertEquals(32, table.getDeck().size());
@@ -244,7 +244,7 @@ public class TableTest {
 	 * ist.
 	 */
 	@Test
-	public void mischeDeckTest2() {
+	public void shuffleDeckTest2() {
 		// test dient zum durchzaehlen, ob jede Karte nur einmal vorhanden ist
 		int test = 0;
 		table.createDeck();
@@ -340,7 +340,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void KartenAusteilenTest() {
+	public void dealOutCardsTest() {
 		boolean test = false;
 		table.createDeck();
 		table.dealOutCards();
@@ -351,28 +351,28 @@ public class TableTest {
 	}
 
 	@Test
-	public void kartenAusteilenTest2() {
+	public void dealOutCardsTest2() {
 		table.createDeck();
 		table.dealOutCards();
 		assertEquals(10, table.getPlayer2().getHand().size());
 	}
 
 	@Test
-	public void kartenAusteilenTest3() {
+	public void dealOutCardsTest3() {
 		table.createDeck();
 		table.dealOutCards();
 		assertEquals(10, table.getPlayer3().getHand().size());
 	}
 
 	@Test
-	public void kartenAusteilenTest4() {
+	public void dealOutCardsTest4() {
 		table.createDeck();
 		table.dealOutCards();
 		assertEquals(0, table.getDeck().size());
 	}
 	
 	@Test
-	public void kartenAusteilenTest5() {
+	public void dealOutCardsTest5() {
 		table.setSixSkat(true);
 		table.createDeck();
 		table.dealOutCards();
@@ -380,7 +380,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void getProzentAlleinTest() {
+	public void getPercentDeclarerTest() {
 		table.getPlayer1().getGames().clear();
 		table.getPlayer1().getGames().add(18);
 		//table.addGameCount();
@@ -389,7 +389,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void getAnzahlAlleinTest() {
+	public void getDeclarerCountTest() {
 		table.getPlayer1().getGames().clear();
 		table.getPlayer1().getGames().add(18);
 		//table.addGameCount();
@@ -398,14 +398,14 @@ public class TableTest {
 	}
 	
 	@Test
-	public void anzahlGewinneTest() {
+	public void getDeclarersWonGamesSumTest() {
 		table.getPlayer1().getGames().clear();
 		table.getPlayer1().getGames().add(18);
 		assertEquals(1, table.getDeclarersWonGamesSum(player1));
 	}
 
 	@Test
-	public void ermittleAlleinspielerTest() {
+	public void getDeclarerTest() {
 		assertEquals(player1, table.getDeclarer());
 	}
 
@@ -424,7 +424,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void werteAugenTest() {
+	public void calculateAugenTest() {
 		assertEquals(144, table.calculateAugen(deck));
 	}
 
@@ -445,7 +445,7 @@ public class TableTest {
 	}
 
 	@Test
-	public void positionWechselnTest() {
+	public void changePositionTest() {
 		table.changePosition();
 		int erg = 0;
 		if (table.getHinterhand().equals(player1)) {
@@ -461,7 +461,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void positionWechselnTest2() {
+	public void changePositionTest2() {
 		table.changePosition();
 		table.changePosition();
 		int erg = 0;
@@ -478,7 +478,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void positionWechselnTest3() {
+	public void changePositionTest3() {
 		table.changePosition();
 		table.changePosition();
 		table.changePosition();
@@ -496,7 +496,7 @@ public class TableTest {
 	}
 
 	@Test
-	public void positionInitialisierenTest() {
+	public void initializePositionsTest() {
 		table.initializePositions();
 		int erg = 0;
 		if (table.getPlayer1().getPosition() == Position.VORHAND) {
@@ -512,41 +512,41 @@ public class TableTest {
 	}
 
 	@Test
-	public void berechneStufeTest() {
+	public void calculateLevelTest() {
 		assertEquals(1, table.calculateLevel(61));
 	}
 
 	@Test
-	public void berechneStufeTest2() {
+	public void calculateLevelTest2() {
 		assertEquals(2, table.calculateLevel(92));
 	}
 
 	@Test
-	public void berechneStufeTest3() {
+	public void calculateLevelTest3() {
 		table.getDeclarer().getTricks().clear();
 		assertEquals(3, table.calculateLevel(0));
 	}
 
 	@Test
-	public void berechneStufeTest4() {
+	public void calculateLevelTest4() {
 		table.setHandGame(true);
 		assertEquals(2, table.calculateLevel(61));
 	}
 
 	@Test
-	public void berechneStufeTest5() {
+	public void calculateLevelTest5() {
 		table.setHandGame(true);
 		assertEquals(3, table.calculateLevel(92));
 	}
 
 	@Test
-	public void berechneStufeTest6() {
+	public void calculateLevelTest6() {
 		table.setHandGame(true);
 		assertEquals(3, table.calculateLevel(120));
 	}
 	
 	@Test
-	public void berechneStufeTest7() {
+	public void calculateLevelTest7() {
 		table.setHandGame(true);
 		table.setSchneider(true);
 		table.setSchwarz(true);
@@ -555,39 +555,39 @@ public class TableTest {
 	}
 
 	@Test
-	public void checkverlorenTest() {
+	public void isGameLostTest() {
 		assertEquals(false, table.isGameLost(61));
 	}
 
 	@Test
-	public void checkverlorenTest2() {
+	public void isGameLostTest2() {
 		assertEquals(false, table.isGameLost(99));
 	}
 
 	@Test
-	public void checkverlorenTest3() {
+	public void isGameLostTest3() {
 		table.getDeclarer().setTricks(deck);
 		assertEquals(false, table.isGameLost(120));
 	}
 
 	@Test
-	public void checkverlorenTest4() {
+	public void isGameLostTest4() {
 		assertEquals(true, table.isGameLost(60));
 	}
 
 	@Test
-	public void checkverlorenTest5() {
+	public void isGameLostTest5() {
 		assertEquals(true, table.isGameLost(29));
 	}
 
 	@Test
-	public void checkverlorenTest6() {
+	public void isGameLostTest6() {
 		table.getDeclarer().setTricks(null);
 		assertEquals(true, table.isGameLost(0));
 	}
 
 	@Test
-	public void ueberreizCheckTest() {
+	public void checkOverbidTest() {
 		
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
@@ -596,7 +596,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void ueberreizCheckTest4() {
+	public void checkOverbidTest4() {
 		GameVariety spiel = new SuitGame(PlayingCard.Suit.BELLS);
 		table.setGameVariety(spiel);
 		table.setBiddingValue(23);
@@ -608,7 +608,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void ueberreizCheckTest5() {
+	public void checkOverbidTest5() {
 		table.setVariant(SkatVariant.SKAT);
 		table.setHandGame(false);
 		table.setSchneider(false);
@@ -626,7 +626,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void ueberreizCheckTest2() {
+	public void checkOverbidTest2() {
 		
 		table.setGameVariety(new GrandGame());
 		table.getDeclarer().getHand().add(
@@ -636,7 +636,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void ueberreizCheckTest3() {
+	public void checkOverbidTest3() {
 		
 		table.setSchneider(true);
 		table.setSchwarz(true);
@@ -651,27 +651,27 @@ public class TableTest {
 	
 
 	@Test
-	public void naechsterSpielerTest() {
+	public void nextPlayerTest() {
 		assertEquals(player2, table.nextPlayer(player1));
 	}
 
 	@Test
-	public void naechsterSpielerTest2() {
+	public void nextPlayerTest2() {
 		assertEquals(player3, table.nextPlayer(player2));
 	}
 
 	@Test
-	public void naechsterSpielerTest3() {
+	public void nextPlayerTest3() {
 		assertEquals(player1, table.nextPlayer(player3));
 	}
 	
 	@Test
-	public void gibMenschlicherSpielerTest1() {
+	public void getHumanPlayerTest1() {
 		assertEquals(player3, table.getHumanPlayer());
 	}
 	
 	@Test
-	public void gibMenschlicherSpielerTest2() {
+	public void getHumanPlayerTest2() {
 		table.setPlayer1(player3);
 		table.setPlayer2(player1);
 		table.setPlayer3(player2);
@@ -679,7 +679,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void gibMenschlicherSpielerTest3() {
+	public void getHumanPlayerTest3() {
 		table.setPlayer1(player1);
 		table.setPlayer2(player3);
 		table.setPlayer3(player2);
@@ -687,14 +687,14 @@ public class TableTest {
 	}
 	
 	@Test
-	public void getAktuellePunkteTest() {
+	public void getCurrentPointsTest() {
 		table.getPlayer1().getGames().clear();
 		table.getPlayer1().getGames().add(18);
 		assertEquals(18, table.getCurrentPoints(table.getPlayer1()));
 	}
 	
 	@Test
-	public void kartenbesitzerGebenTest() {
+	public void giveCardsToOwnerTest() {
 		boolean test = false;
 		table.giveCardsToOwner();
 		for (int i= 0; i< table.getPlayer1().getHand().size(); i++){
@@ -707,7 +707,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void kartenbesitzerGebenTest2() {
+	public void giveCardsToOwnerTest2() {
 		boolean test = false;
 		table.giveCardsToOwner();
 		for (int i= 0; i< table.getPlayer3().getHand().size(); i++){
@@ -719,51 +719,51 @@ public class TableTest {
 	}
 
 	@Test
-	public void naechstHoehererReizwertTest() {
+	public void nextGreaterBiddingValueTest() {
 		assertEquals(20, table.nextGreaterBiddingValue(18));
 	}
 	
 	@Test
-	public void pruefeNeuenReizwertTest() {
+	public void checkNewBiddingValueTest() {
 		assertEquals(true, table.checkNewBiddingValue(18, 0));
 	}
 	
 	@Test
-	public void pruefeNeuenReizwertTest2() {
+	public void checkNewBiddingValueTest2() {
 		assertEquals(true, table.checkNewBiddingValue(18, 20));
 	}
 	
 	@Test
-	public void pruefeNeuenReizwertTest3() {
+	public void checkNewBiddingValueTest3() {
 		assertEquals(false, table.checkNewBiddingValue(18, 21));
 	}
 	
 	@Test
-	public void naechstniedrigerReizwertTest() {
+	public void nextLowerBiddingValueTest() {
 		assertEquals(18, table.nextLowerBiddingValue(20));
 	}
 	
 	@Test
-	public void naechstniedrigerReizwertTest2() {
+	public void nextLowerBiddingValueTest2() {
 		assertEquals(20, table.nextLowerBiddingValue(22));
 	}
 	
 	@Test
-	public void naechstniedrigerReizwertTest3() {
+	public void nextLowerBiddingValueTest3() {
 		assertEquals(22, table.nextLowerBiddingValue(23));
 	}
 	
 	@Test
-	public void wertePunkteTest1() {
+	public void calculatePointsTest1() {
 		table.setVariant(SkatVariant.RAEUBER);
-		NullGame spiel = new NullGame();
-		table.setGameVariety(spiel);
+		NullGame game = new NullGame();
+		table.setGameVariety(game);
 		table.getDeclarer().getTricks().clear();
 		assertEquals(23, table.calculatePoints(0));
 	}
 	
 	@Test
-	public void wertePunkteTest() {
+	public void calculatePointsTest() {
 		table.setVariant(SkatVariant.SKAT);
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
@@ -773,18 +773,18 @@ public class TableTest {
 	}
 	
 	@Test
-	public void wertePunkteTest2() {
+	public void calculatePointsTest2() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
-		IGameVariety spielart = new SuitGame(PlayingCard.Suit.BELLS);
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new SuitGame(PlayingCard.Suit.BELLS);
+		table.setGameVariety(gameVariety);
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		assertEquals(27, table.calculatePoints(91));
 	}
 	
 	@Test
-	public void wertePunkteTest3() {
+	public void calculatePointsTest3() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
@@ -793,7 +793,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void wertePunkteTest4() {
+	public void calculatePointsTest4() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
@@ -805,7 +805,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void wertePunkteTest5() {
+	public void calculatePointsTest5() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
@@ -816,7 +816,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void wertePunkteTest6() {
+	public void calculatePointsTest6() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
@@ -827,20 +827,20 @@ public class TableTest {
 	}
 	
 	@Test
-	public void wertePunkteTest7() {
+	public void calculatePointsTest7() {
 		table.setVariant(SkatVariant.SKAT);
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new SuitGame(PlayingCard.Suit.BELLS);
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new SuitGame(PlayingCard.Suit.BELLS);
+		table.setGameVariety(gameVariety);
 		table.setBiddingValue(48);
 		assertEquals(-108, table.calculatePoints(62));
 	}
 	
 	@Test
-	public void wertePunkteTest8() {
+	public void calculatePointsTest8() {
 		
 		table.setBock(true);
 		table.setVariant(SkatVariant.RAMSCHBOCK);
@@ -855,60 +855,60 @@ public class TableTest {
 	}
 	
 	@Test
-	public void punkteFarbspielTest() {
+	public void pointsSuitGameTest() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new SuitGame(PlayingCard.Suit.BELLS);
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new SuitGame(PlayingCard.Suit.BELLS);
+		table.setGameVariety(gameVariety);
 	assertEquals(18, table.pointsSuitGame(62));
 	}
 	
 	@Test
-	public void punkteGrandspielTest() {
+	public void pointsGrandGameTest() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new GrandGame();
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new GrandGame();
+		table.setGameVariety(gameVariety);
 		assertEquals(48, table.pointsGrandGame(62));
 	}
 	
 	@Test
-	public void punkteNullspielTest() {
+	public void pointsNullGameTest() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new NullGame();
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new NullGame();
+		table.setGameVariety(gameVariety);
 		table.getDeclarer().getTricks().clear();
 		assertEquals(23, table.pointsNullGame());
 	}
 	
 	@Test
-	public void punkteNullspielTest2() {
+	public void pointsNullGameTest2() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new NullGame();
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new NullGame();
+		table.setGameVariety(gameVariety);
 		table.getDeclarer().getTricks().clear();
 		table.setHandGame(true);
 		assertEquals(35, table.pointsNullGame());
 	}
 	
 	@Test
-	public void punkteNullspielTest3() {
+	public void pointsNullGameTest3() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new NullGame();
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new NullGame();
+		table.setGameVariety(gameVariety);
 		table.getDeclarer().getTricks().clear();
 		table.setHandGame(false);
 		table.setOuvert(true);
@@ -916,13 +916,13 @@ public class TableTest {
 	}
 	
 	@Test
-	public void punkteNullspielTest4() {
+	public void pointsNullGameTest4() {
 		table.getDeclarer().getHand().clear();
 		table.getDeclarer().getHand().add(
 				new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
-		IGameVariety spielart = new NullGame();
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new NullGame();
+		table.setGameVariety(gameVariety);
 		table.getDeclarer().getTricks().clear();
 		table.setHandGame(true);
 		table.setOuvert(true);
@@ -930,43 +930,43 @@ public class TableTest {
 	}
 	
 	@Test
-	public void spielAuswertenTest() {
+	public void evaluateGameTest() {
 		table.getDeclarer().getTricks().clear();
 		assertFalse(table.evaluateGame());
 	}
 	
 	@Test
-	public void spielAuswertenTest2() {
+	public void evaluateGameTest2() {
 		table.getDeclarer().getTricks().clear();
-		IGameVariety spielart = new NullGame();
-		table.setGameVariety(spielart);
+		IGameVariety gameVariety = new NullGame();
+		table.setGameVariety(gameVariety);
 		assertTrue(table.evaluateGame());
 	}
 	
 	@Test
-	public void spielAuswertenTest3() {
+	public void evaluateGameTest3() {
 		
 		table.setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
 		table.getDeclarer().getTricks().clear();
 		table.getDeclarer().setGameVariety(new SuitGame(PlayingCard.Suit.ACORNS));
-		PlayingCard karte = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		table.getDeclarer().getTricks().add(karte);
-		PlayingCard karte2 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
-		table.getDeclarer().getTricks().add(karte2);
-		PlayingCard karte3 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING);
-		table.getDeclarer().getTricks().add(karte3);
-		table.getDeclarer().getTricks().add(karte3);
-		table.getDeclarer().getHand().add(karte2);
+		PlayingCard card1 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		table.getDeclarer().getTricks().add(card1);
+		PlayingCard card2 = new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE);
+		table.getDeclarer().getTricks().add(card2);
+		PlayingCard card3 = new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING);
+		table.getDeclarer().getTricks().add(card3);
+		table.getDeclarer().getTricks().add(card3);
+		table.getDeclarer().getHand().add(card2);
 		table.getDeclarer().arrangeMatadorsJackStraitOrder();
 		
 		table.setHandGame(true);
@@ -975,7 +975,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void spielAuswertenTest4() {
+	public void evaluateGameTest4() {
 		IPlayer tmp = table.getPlayer1();
 		table.setPlayer1(player2);
 		table.setPlayer2(tmp);
@@ -984,7 +984,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void spielAuswertenTest5() {
+	public void evaluateGameTest5() {
 		IPlayer tmp = table.getPlayer1();
 		table.setPlayer1(player3);
 		table.setPlayer3(tmp);
@@ -993,8 +993,8 @@ public class TableTest {
 	}
 	
 	@Test
-	public void spielAuswertenTest6() {
-		
+	public void evaluateGameTest6() {
+
 		table.setGameVariety(new Ramsch());
 		table.setBock(true);
 		table.setSixSkat(true);
@@ -1013,7 +1013,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void sortiereSpielerRamschTest() {
+	public void sortPlayerRamschTest() {
 		
 		table.getPlayer1().getTricks().clear();
 		table.getPlayer1().getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
@@ -1025,106 +1025,106 @@ public class TableTest {
 		table.getPlayer3().getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
 		table.getPlayer3().getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.KING));
 		
-		IPlayer[] spielerU = new IPlayer[3];
-		spielerU[0] = player1;
-		spielerU[1] = player2;
-		spielerU[2] = player3;
+		IPlayer[] playersBeforeSort = new IPlayer[3];
+		playersBeforeSort[0] = player1;
+		playersBeforeSort[1] = player2;
+		playersBeforeSort[2] = player3;
 	
-		IPlayer[] spieler = new IPlayer[3];
-		spieler[0] = player2;
-		spieler[1] = player3;
-		spieler[2] = player1;
+		IPlayer[] playersAfterSort = new IPlayer[3];
+		playersAfterSort[0] = player2;
+		playersAfterSort[1] = player3;
+		playersAfterSort[2] = player1;
 	
-		assertArrayEquals(spieler, table.sortPlayerRamsch(spielerU));
+		assertArrayEquals(playersAfterSort, table.sortPlayerRamsch(playersBeforeSort));
 	}
 	
 	@Test
-	public void entscheideRamschTest() {
+	public void decideRamschTest() {
 		
-		IPlayer[] spieler = new IPlayer[3];
-		spieler[0] = player1;
-		spieler[1] = player2;
-		spieler[2] = player3;
-		spieler[2].getTricks().clear();
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.KING));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
+		IPlayer[] players = new IPlayer[3];
+		players[0] = player1;
+		players[1] = player2;
+		players[2] = player3;
+		players[2].getTricks().clear();
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.UNDER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.OVER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.KING));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.TEN));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.OVER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.KING));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.TEN));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.DAUS));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.UNDER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.OVER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.KING));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.TEN));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.LEAVES, PlayingCard.Rank.DAUS));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.UNDER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.OVER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.KING));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.TEN));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.ACORNS, PlayingCard.Rank.DAUS));
 		
-		IPlayer[] ergebnis = table.decideRamsch(spieler, 0, 2);
+		IPlayer[] result = table.decideRamsch(players, 0, 2);
 		
-		Granny vergleich = new Granny("heino");
-		vergleich.getGames().add(240);
+		Granny granny = new Granny("heino");
+		granny.getGames().add(240);
 		
-		assertEquals(vergleich.getGames().get(0), ergebnis[2].getGames().get(0)); 
+		assertEquals(granny.getGames().get(0), result[2].getGames().get(0));
 	}
 	
 	@Test
-	public void entscheideRamschTest2() {
+	public void decideRamschTest2() {
 		
-		IPlayer[] spieler = new IPlayer[3];
-		spieler[0] = player1;
-		spieler[1] = player2;
-		spieler[2] = player3;
-		spieler[0].getTricks().clear();
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
-		IPlayer[] ergebnis = table.decideRamsch(spieler, 20, 2);
+		IPlayer[] players = new IPlayer[3];
+		players[0] = player1;
+		players[1] = player2;
+		players[2] = player3;
+		players[0].getTricks().clear();
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
+		IPlayer[] result = table.decideRamsch(players, 20, 2);
 		
-		Granny vergleich = new Granny("heino");
-		vergleich.getGames().add(-124);
+		Granny granny = new Granny("heino");
+		granny.getGames().add(-124);
 		
-		assertEquals(vergleich.getGames().get(0), ergebnis[2].getGames().get(0));
+		assertEquals(granny.getGames().get(0), result[2].getGames().get(0));
 	}
 	
 	@Test
-	public void entscheideRamschTest3() {
+	public void decideRamschTest3() {
 		
-		IPlayer[] spieler = new IPlayer[3];
-		spieler[0] = player1;
-		spieler[1] = player2;
-		spieler[2] = player3;
-		spieler[0].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
-		spieler[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
-		IPlayer[] ergebnis = table.decideRamsch(spieler, 20, 2);
+		IPlayer[] players = new IPlayer[3];
+		players[0] = player1;
+		players[1] = player2;
+		players[2] = player3;
+		players[0].getTricks().add(new PlayingCard(PlayingCard.Suit.HEARTS, PlayingCard.Rank.UNDER_KNAVE));
+		players[2].getTricks().add(new PlayingCard(PlayingCard.Suit.BELLS, PlayingCard.Rank.DAUS));
+		IPlayer[] result = table.decideRamsch(players, 20, 2);
 		
-		Granny vergleich = new Granny("heino");
-		vergleich.getGames().add(-62);
+		Granny granny = new Granny("heino");
+		granny.getGames().add(-62);
 		
-		assertEquals(vergleich.getGames().get(0), ergebnis[2].getGames().get(0));
+		assertEquals(granny.getGames().get(0), result[2].getGames().get(0));
 	}
 	
 	@Test
-	public void addAnzahlSpieleTest() {
+	public void addGameCountTest() {
 		
 		table.addGameCount();
 		assertEquals(2, table.getGameRoundCounter());
 	}
 	
 	@Test
-	public void ermittleMitspielerTest1() {
+	public void determineTeammateTest1() {
 		
 		table.getPlayer1().setIsDeclarer(true);
 		assertEquals(player3, table.determineTeammate(player2));
 	}
 	
 	@Test
-	public void ermittleMitspielerTest2() {
+	public void determineTeammateTest2() {
 		
 		table.getPlayer1().setIsDeclarer(true);
 		assertEquals(player2, table.determineTeammate(player3));
@@ -1132,7 +1132,7 @@ public class TableTest {
 	
 	//Spieler 1 ist default Alleinspieler =D
 	@Test
-	public void ermittleMitspielerTest3() {
+	public void determineTeammateTest3() {
 		
 		table.getPlayer1().setIsDeclarer(false);
 		table.getPlayer2().setIsDeclarer(true);
@@ -1140,7 +1140,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void ermittleMitspielerTest4() {
+	public void determineTeammateTest4() {
 		
 		table.getPlayer1().setIsDeclarer(false);
 		table.getPlayer2().setIsDeclarer(true);
@@ -1148,7 +1148,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void ermittleMitspielerTest5() {
+	public void determineTeammateTest5() {
 		
 		table.getPlayer1().setIsDeclarer(false);
 		table.getPlayer3().setIsDeclarer(true);
@@ -1156,7 +1156,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void ermittleMitspielerTest6() {
+	public void determineTeammateTest6() {
 		
 		table.getPlayer1().setIsDeclarer(false);
 		table.getPlayer3().setIsDeclarer(true);
@@ -1164,25 +1164,25 @@ public class TableTest {
 	}
 	
 	@Test
-	public void mitspielerSetzenTest1() {
+	public void setTeammateTest1() {
 		table.setTeammate();
 		assertEquals(null, table.getPlayer1().getTeammate());
 	}
 	
 	@Test
-	public void mitspielerSetzenTest2() {
+	public void setTeammateTest2() {
 		table.setTeammate();
 		assertEquals(player3, table.getPlayer2().getTeammate());
 	}
 	
 	@Test 
-	public void mitspielerSetzenTest3() {
+	public void setTeammateTest3() {
 		table.setTeammate();
 		assertEquals(player2, table.getPlayer3().getTeammate());
 	}
 	
 	@Test
-	public void mitspielerSetzenTest4() {
+	public void setTeammateTest4() {
 		
 		player1.setIsDeclarer(false);
 		player2.setIsDeclarer(true);
@@ -1191,35 +1191,35 @@ public class TableTest {
 	}
 	
 	@Test
-	public void mitspielerSetzenTest5() {
+	public void setTeammateTest5() {
 		table.setGameVariety(new Ramsch());
 		table.setTeammate();
 		assertEquals(null, table.getPlayer1().getTeammate());
 	}
 	
 	@Test
-	public void mitspielerSetzenTest6() {
+	public void setTeammateTest6() {
 		table.setGameVariety(new Ramsch());
 		table.setTeammate();
 		assertEquals(null, table.getPlayer2().getTeammate());
 	}
 	
 	@Test
-	public void mitspielerSetzenTest7() {
+	public void setTeammateTest7() {
 		table.setGameVariety(new Ramsch());
 		table.setTeammate();
 		assertEquals(null, table.getPlayer3().getTeammate());
 	}
 	
 	@Test
-	public void nullVerlorenTest() {
+	public void isNullGameLostTest() {
 		
 		table.getDeclarer().getTricks().clear();
 		assertFalse(table.isNullGameLost());
 	}
 	
 	@Test
-	public void nullVerlorenTest2() {
+	public void isNullGameLostTest2() {
 		
 		table.getDeclarer().getTricks().clear();
 		ArrayList<PlayingCard> stiche = new ArrayList<PlayingCard>();
@@ -1231,28 +1231,28 @@ public class TableTest {
 	}
 	
 	@Test
-	public void anderesSpielVerlorenTest() {
+	public void isSuitOrGrandGameLostTest() {
 		
 		assertTrue(table.isSuitOrGrandGameLost(60));
 	}
 	
 	@Test
-	public void anderesSpielVerlorenTest2() {
+	public void isSuitOrGrandGameLostTest2() {
 		
 		table.setSchneider(true);
 		assertTrue(table.isSuitOrGrandGameLost(88));
 	}
 	
 	@Test
-	public void anderesSpielVerlorenTest3() {
+	public void isSuitOrGrandGameLostTest3() {
 	
 		table.setSixSkat(false);
 		table.setSchwarz(true);
 		table.createDeck();
 		player1.getTricks().clear();
-		for (PlayingCard karte : table.getDeck()) {
+		for (PlayingCard card : table.getDeck()) {
 			
-			player1.getTricks().add(karte);
+			player1.getTricks().add(card);
 		}
 		for (int i = 0; i < 2; i++) {
 			
@@ -1263,7 +1263,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void anderesSpielVerlorenTest4() {
+	public void isSuitOrGrandGameLostTest4() {
 		
 		table.setSchneider(false);
 		table.setSchwarz(false);
@@ -1273,7 +1273,7 @@ public class TableTest {
 	}
 	
 	@Test
-	public void anderesSpielVerlorenTest5() {
+	public void isSuitOrGrandGameLostTest5() {
 		
 		table.setOuvert(false);
 		assertFalse(table.isSuitOrGrandGameLost(62));
