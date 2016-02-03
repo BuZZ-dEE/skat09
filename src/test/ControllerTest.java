@@ -1215,7 +1215,7 @@ public class ControllerTest {
 	public void quitGameTest() {
 		
 		OutputStub outputStub = new OutputStub(null,null,null);
-		Controller controller = new Controller(table,outputStub);
+		Controller controller = new Controller(table, outputStub);
 		
 		assertTrue(controller.quitGame());
 	}
@@ -1224,7 +1224,7 @@ public class ControllerTest {
 	public void waitingTest() {
 		
 		OutputStub outputStub = new OutputStub(null,null,null);
-		Controller controller = new Controller(table,outputStub);
+		Controller controller = new Controller(table, outputStub);
 		controller.waiting();
 		assertTrue(controller.getOutput().getRelease());
 	}
