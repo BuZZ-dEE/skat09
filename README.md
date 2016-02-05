@@ -1,6 +1,7 @@
 # A [Skat][1] Game
 
 [![Build Status](https://travis-ci.org/BuZZ-dEE/skat09.svg)](https://travis-ci.org/BuZZ-dEE/skat09)
+[![codecov.io](https://codecov.io/github/BuZZ-dEE/skat09/coverage.svg?branch=master)](https://codecov.io/github/BuZZ-dEE/skat09?branch=master)
 [![GitHub license](https://img.shields.io/badge/license-GPL3-blue.svg)](https://raw.githubusercontent.com/BuZZ-dEE/skat09/master/LICENSE.md)
 
 __TODOs:__
