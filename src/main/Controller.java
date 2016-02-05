@@ -358,7 +358,7 @@ public class Controller implements Observer, IController {
 
 		boolean ready = false;
 		boolean bid = false;
-		boolean resond = false;
+		boolean respond = false;
 		int biddingValue = table.getBiddingValue();
 
 		while (!ready) {
@@ -376,9 +376,9 @@ public class Controller implements Observer, IController {
 			} else {
 
 				// Spieler1 h&ouml;ren lassen oder Reizagent &uuml;bernimmt
-				resond = bidOrBiddingAgent(player1, biddingValue, false);
+				respond = bidOrBiddingAgent(player1, biddingValue, false);
 
-				if (!resond) {
+				if (!respond) {
 
 					winner = player2;
 					output.pass(player1);
